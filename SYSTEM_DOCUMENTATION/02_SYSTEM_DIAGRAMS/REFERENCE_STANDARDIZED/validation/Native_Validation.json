@@ -1,0 +1,303 @@
+﻿{
+    "passed":  true,
+    "date":  "2026-10-21",
+    "originalTrackedHashesCompared":  1483,
+    "allOriginalTrackedFilesUnchanged":  true,
+    "diagrams":  36,
+    "pages":  331,
+    "pagePngsDecoded":  331,
+    "nativePdf":  [
+                      {
+                          "flow":  "ADMIN_MAIN",
+                          "editablePages":  6,
+                          "pdfPages":  6,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_AUTHENTICATION",
+                          "editablePages":  12,
+                          "pdfPages":  12,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_MASTERLIST",
+                          "editablePages":  14,
+                          "pdfPages":  14,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_TOOL_PROFILE",
+                          "editablePages":  5,
+                          "pdfPages":  5,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_REQUEST",
+                          "editablePages":  15,
+                          "pdfPages":  15,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_TRANSFER",
+                          "editablePages":  6,
+                          "pdfPages":  6,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_RETURN",
+                          "editablePages":  5,
+                          "pdfPages":  5,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_REPAIR",
+                          "editablePages":  10,
+                          "pdfPages":  10,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_MISSING",
+                          "editablePages":  10,
+                          "pdfPages":  10,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_DASHBOARD",
+                          "editablePages":  4,
+                          "pdfPages":  4,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_SITES",
+                          "editablePages":  5,
+                          "pdfPages":  5,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_SITE_DETAIL",
+                          "editablePages":  9,
+                          "pdfPages":  9,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_CONSUMABLES",
+                          "editablePages":  22,
+                          "pdfPages":  22,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_PURCHASE",
+                          "editablePages":  11,
+                          "pdfPages":  11,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_REPORTS",
+                          "editablePages":  9,
+                          "pdfPages":  9,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_ACTIVITY",
+                          "editablePages":  5,
+                          "pdfPages":  5,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_USERS",
+                          "editablePages":  16,
+                          "pdfPages":  16,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_SETTINGS",
+                          "editablePages":  3,
+                          "pdfPages":  3,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_GLOBAL_SEARCH",
+                          "editablePages":  5,
+                          "pdfPages":  5,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ADMIN_NOTIFICATIONS",
+                          "editablePages":  6,
+                          "pdfPages":  6,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_MAIN",
+                          "editablePages":  5,
+                          "pdfPages":  5,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_AUTHENTICATION",
+                          "editablePages":  12,
+                          "pdfPages":  12,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_MASTERLIST",
+                          "editablePages":  4,
+                          "pdfPages":  4,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_TOOL_PROFILE",
+                          "editablePages":  3,
+                          "pdfPages":  3,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_REQUEST",
+                          "editablePages":  18,
+                          "pdfPages":  18,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_TRANSFER",
+                          "editablePages":  45,
+                          "pdfPages":  45,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_RETURN",
+                          "editablePages":  18,
+                          "pdfPages":  18,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_REPAIR",
+                          "editablePages":  8,
+                          "pdfPages":  8,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_MISSING",
+                          "editablePages":  9,
+                          "pdfPages":  9,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_DASHBOARD",
+                          "editablePages":  5,
+                          "pdfPages":  5,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_SITES",
+                          "editablePages":  2,
+                          "pdfPages":  2,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_SITE_DETAIL",
+                          "editablePages":  5,
+                          "pdfPages":  5,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_ACTIVITY",
+                          "editablePages":  5,
+                          "pdfPages":  5,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_SETTINGS",
+                          "editablePages":  3,
+                          "pdfPages":  3,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_GLOBAL_SEARCH",
+                          "editablePages":  5,
+                          "pdfPages":  5,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      },
+                      {
+                          "flow":  "ENGINEER_ARCHITECT_NOTIFICATIONS",
+                          "editablePages":  6,
+                          "pdfPages":  6,
+                          "allPagePngsDecoded":  true,
+                          "allPdfPagesRendered":  true,
+                          "paper":  "US Legal portrait"
+                      }
+                  ],
+    "applicationFilesModified":  0,
+    "liveDatabaseCalls":  0,
+    "productionWrites":  0,
+    "sourceRoleDiscrepancy":  "Only requested Admin and Engineer/Architect documented; Secretary/Tool Handler remain in source and need owner verification."
+}

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "workflows": 14,
+  "pages": 37,
+  "nodes": 377,
+  "decisions": 70,
+  "arrows": 337,
+  "onPagePairs": 11,
+  "offPagePairs": 25,
+  "checks": [
+    "Correctly labeled two-way decision branches",
+    "Reachable from Start and able to reach End",
+    "Paired same-page circles and actual cross-page pentagons",
+    "Orthogonal forward arrows; retries use explicitly paired connectors",
+    "No overlapping shapes, arrow/shape intersections or crossing arrows",
+    "All cited source files exist"
+  ]
+}

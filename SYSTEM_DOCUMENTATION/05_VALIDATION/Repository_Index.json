@@ -1,0 +1,4593 @@
+{
+  "scope": "Static source index; test-fixture DDL excluded from schema evidence",
+  "sources": [
+    {
+      "file": "1-admin/modules/activity/activity.css",
+      "lines": 4
+    },
+    {
+      "file": "1-admin/modules/activity/activity.html",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/activity/activity.js",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/consumables/README.md",
+      "lines": 121
+    },
+    {
+      "file": "1-admin/modules/consumables/consumables.css",
+      "lines": 39
+    },
+    {
+      "file": "1-admin/modules/consumables/consumables.html",
+      "lines": 46
+    },
+    {
+      "file": "1-admin/modules/consumables/consumables.js",
+      "lines": 351
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "lines": 207
+    },
+    {
+      "file": "1-admin/modules/consumables/tests/consumables.browser.cjs",
+      "lines": 245
+    },
+    {
+      "file": "1-admin/modules/consumables/tests/consumables.database.cjs",
+      "lines": 81
+    },
+    {
+      "file": "1-admin/modules/consumables/tests/database.cjs",
+      "lines": 33
+    },
+    {
+      "file": "1-admin/modules/dashboard/dashboard.css",
+      "lines": 24
+    },
+    {
+      "file": "1-admin/modules/dashboard/dashboard.html",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/dashboard/dashboard.js",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/masterlist/masterlist.css",
+      "lines": 40
+    },
+    {
+      "file": "1-admin/modules/masterlist/masterlist.html",
+      "lines": 249
+    },
+    {
+      "file": "1-admin/modules/masterlist/masterlist.js",
+      "lines": 810
+    },
+    {
+      "file": "1-admin/modules/missing/missing.css",
+      "lines": 10
+    },
+    {
+      "file": "1-admin/modules/missing/missing.html",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/missing/missing.js",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/movements/README.md",
+      "lines": 105
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "lines": 357
+    },
+    {
+      "file": "1-admin/modules/purchases/purchases.css",
+      "lines": 15
+    },
+    {
+      "file": "1-admin/modules/purchases/purchases.html",
+      "lines": 9
+    },
+    {
+      "file": "1-admin/modules/purchases/purchases.js",
+      "lines": 107
+    },
+    {
+      "file": "1-admin/modules/repairs/repairs.css",
+      "lines": 4
+    },
+    {
+      "file": "1-admin/modules/repairs/repairs.html",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/repairs/repairs.js",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/reports/reports.css",
+      "lines": 12
+    },
+    {
+      "file": "1-admin/modules/reports/reports.html",
+      "lines": 8
+    },
+    {
+      "file": "1-admin/modules/reports/reports.js",
+      "lines": 88
+    },
+    {
+      "file": "1-admin/modules/requests/requests.css",
+      "lines": 19
+    },
+    {
+      "file": "1-admin/modules/requests/requests.html",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/requests/requests.js",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/returns/returns.css",
+      "lines": 4
+    },
+    {
+      "file": "1-admin/modules/returns/returns.html",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/returns/returns.js",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/settings/settings.css",
+      "lines": 4
+    },
+    {
+      "file": "1-admin/modules/settings/settings.html",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/settings/settings.js",
+      "lines": 10
+    },
+    {
+      "file": "1-admin/modules/sites/README.md",
+      "lines": 98
+    },
+    {
+      "file": "1-admin/modules/sites/prototype-access.sql",
+      "lines": 19
+    },
+    {
+      "file": "1-admin/modules/sites/realtime-archive.sql",
+      "lines": 48
+    },
+    {
+      "file": "1-admin/modules/sites/setup.sql",
+      "lines": 176
+    },
+    {
+      "file": "1-admin/modules/sites/sites.css",
+      "lines": 49
+    },
+    {
+      "file": "1-admin/modules/sites/sites.html",
+      "lines": 42
+    },
+    {
+      "file": "1-admin/modules/sites/sites.js",
+      "lines": 581
+    },
+    {
+      "file": "1-admin/modules/sites/tests/sites.browser.cjs",
+      "lines": 311
+    },
+    {
+      "file": "1-admin/modules/sites/tests/sites.database.cjs",
+      "lines": 91
+    },
+    {
+      "file": "1-admin/modules/transfers/transfers.css",
+      "lines": 4
+    },
+    {
+      "file": "1-admin/modules/transfers/transfers.html",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/transfers/transfers.js",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/users/users.css",
+      "lines": 4
+    },
+    {
+      "file": "1-admin/modules/users/users.html",
+      "lines": 2
+    },
+    {
+      "file": "1-admin/modules/users/users.js",
+      "lines": 123
+    },
+    {
+      "file": "2-engr/index.html",
+      "lines": 118
+    },
+    {
+      "file": "2-engr/modules/activity/activity.css",
+      "lines": 4
+    },
+    {
+      "file": "2-engr/modules/activity/activity.html",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/activity/activity.js",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/dashboard/dashboard.css",
+      "lines": 24
+    },
+    {
+      "file": "2-engr/modules/dashboard/dashboard.html",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/dashboard/dashboard.js",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/masterlist/masterlist.css",
+      "lines": 17
+    },
+    {
+      "file": "2-engr/modules/masterlist/masterlist.html",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/masterlist/masterlist.js",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/missing/missing.css",
+      "lines": 10
+    },
+    {
+      "file": "2-engr/modules/missing/missing.html",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/missing/missing.js",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/repairs/repairs.css",
+      "lines": 4
+    },
+    {
+      "file": "2-engr/modules/repairs/repairs.html",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/repairs/repairs.js",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/reports/reports.css",
+      "lines": 8
+    },
+    {
+      "file": "2-engr/modules/reports/reports.html",
+      "lines": 57
+    },
+    {
+      "file": "2-engr/modules/reports/reports.js",
+      "lines": 4
+    },
+    {
+      "file": "2-engr/modules/requests/requests.css",
+      "lines": 19
+    },
+    {
+      "file": "2-engr/modules/requests/requests.html",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/requests/requests.js",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/returns/returns.css",
+      "lines": 4
+    },
+    {
+      "file": "2-engr/modules/returns/returns.html",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/returns/returns.js",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/settings/settings.css",
+      "lines": 4
+    },
+    {
+      "file": "2-engr/modules/settings/settings.html",
+      "lines": 40
+    },
+    {
+      "file": "2-engr/modules/settings/settings.js",
+      "lines": 4
+    },
+    {
+      "file": "2-engr/modules/transfers/transfers.css",
+      "lines": 177
+    },
+    {
+      "file": "2-engr/modules/transfers/transfers.html",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/transfers/transfers.js",
+      "lines": 2
+    },
+    {
+      "file": "2-engr/modules/users/users.css",
+      "lines": 4
+    },
+    {
+      "file": "2-engr/modules/users/users.html",
+      "lines": 24
+    },
+    {
+      "file": "2-engr/modules/users/users.js",
+      "lines": 4
+    },
+    {
+      "file": "EQUIPMENT-OFFICE-IMPLEMENTATION.md",
+      "lines": 66
+    },
+    {
+      "file": "FEATURE-COMPLETION-REPORT.md",
+      "lines": 195
+    },
+    {
+      "file": "FRONTEND-UPDATES.md",
+      "lines": 57
+    },
+    {
+      "file": "GLOBAL-SEARCH-VERIFICATION.md",
+      "lines": 71
+    },
+    {
+      "file": "MERGE-INTEGRATION-REPORT.md",
+      "lines": 191
+    },
+    {
+      "file": "OFFICE-RETURN-IMPLEMENTATION.md",
+      "lines": 93
+    },
+    {
+      "file": "PDF-REPORTS-VERIFICATION.md",
+      "lines": 53
+    },
+    {
+      "file": "PRODUCT.md",
+      "lines": 75
+    },
+    {
+      "file": "REQUEST-PROJECTS-IMPLEMENTATION.md",
+      "lines": 73
+    },
+    {
+      "file": "REQUEST-TURNOVER-SYNC-REPORT.md",
+      "lines": 102
+    },
+    {
+      "file": "SUPABASE-RELEASE-READINESS.md",
+      "lines": 111
+    },
+    {
+      "file": "THEME-SEARCH-VERIFICATION.md",
+      "lines": 85
+    },
+    {
+      "file": "UX-CONTINUATION-VERIFICATION.md",
+      "lines": 108
+    },
+    {
+      "file": "css/components.css",
+      "lines": 228
+    },
+    {
+      "file": "css/global-search.css",
+      "lines": 19
+    },
+    {
+      "file": "css/global.css",
+      "lines": 81
+    },
+    {
+      "file": "css/layout.css",
+      "lines": 160
+    },
+    {
+      "file": "css/movement-overview.css",
+      "lines": 198
+    },
+    {
+      "file": "css/movement.css",
+      "lines": 151
+    },
+    {
+      "file": "css/theme.css",
+      "lines": 158
+    },
+    {
+      "file": "documentation/inventory-status-verification.md",
+      "lines": 63
+    },
+    {
+      "file": "documentation/project-count-navigation-verification.md",
+      "lines": 47
+    },
+    {
+      "file": "documentation/user-manuals/README.md",
+      "lines": 43
+    },
+    {
+      "file": "documentation/user-manuals/SiteTrace_Admin_User_Manual.html",
+      "lines": 1
+    },
+    {
+      "file": "documentation/user-manuals/SiteTrace_Admin_User_Manual.md",
+      "lines": 824
+    },
+    {
+      "file": "documentation/user-manuals/SiteTrace_Engineer_Architect_User_Manual.html",
+      "lines": 1
+    },
+    {
+      "file": "documentation/user-manuals/SiteTrace_Engineer_Architect_User_Manual.md",
+      "lines": 699
+    },
+    {
+      "file": "documentation/user-manuals/SiteTrace_System_Module_and_Role_Review.md",
+      "lines": 225
+    },
+    {
+      "file": "documentation/user-manuals/source/build.cjs",
+      "lines": 50
+    },
+    {
+      "file": "documentation/user-manuals/source/capture.cjs",
+      "lines": 111
+    },
+    {
+      "file": "documentation/user-manuals/source/cdp-socket.cjs",
+      "lines": 12
+    },
+    {
+      "file": "documentation/user-manuals/source/manual-content.cjs",
+      "lines": 163
+    },
+    {
+      "file": "documentation/user-manuals/source/render-pdf.cjs",
+      "lines": 30
+    },
+    {
+      "file": "index.html",
+      "lines": 116
+    },
+    {
+      "file": "js/app.js",
+      "lines": 288
+    },
+    {
+      "file": "js/auth.js",
+      "lines": 160
+    },
+    {
+      "file": "js/dashboard-view.js",
+      "lines": 184
+    },
+    {
+      "file": "js/data.js",
+      "lines": 25
+    },
+    {
+      "file": "js/equipment-photos.js",
+      "lines": 87
+    },
+    {
+      "file": "js/equipment-tracking.js",
+      "lines": 155
+    },
+    {
+      "file": "js/equipment-visual.js",
+      "lines": 43
+    },
+    {
+      "file": "js/global-search.js",
+      "lines": 159
+    },
+    {
+      "file": "js/mobile-navigation.js",
+      "lines": 44
+    },
+    {
+      "file": "js/monitoring.js",
+      "lines": 105
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "lines": 153
+    },
+    {
+      "file": "js/movement-overview.js",
+      "lines": 203
+    },
+    {
+      "file": "js/movement-store.js",
+      "lines": 479
+    },
+    {
+      "file": "js/movement-ui.js",
+      "lines": 885
+    },
+    {
+      "file": "js/navigation-history.js",
+      "lines": 175
+    },
+    {
+      "file": "js/navigation.js",
+      "lines": 161
+    },
+    {
+      "file": "js/pdf-reports.js",
+      "lines": 147
+    },
+    {
+      "file": "js/permissions.js",
+      "lines": 44
+    },
+    {
+      "file": "js/project-scope.js",
+      "lines": 17
+    },
+    {
+      "file": "js/utils.js",
+      "lines": 29
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/README.md",
+      "lines": 190
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/chunk-2BOC2OMW.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/chunk-DDJLRBDX.js",
+      "lines": 3
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/chunk-F4GETNPB.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/chunk-JDT7TZ73.js",
+      "lines": 9
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/chunk-NNS5RQRF.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/chunk-QY3QWFKW.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/chunk-RYDTTX3G.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/amcheck.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/amcheck.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/amcheck.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/auto_explain.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/auto_explain.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/auto_explain.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/bloom.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/bloom.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/bloom.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/btree_gin.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/btree_gin.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/btree_gin.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/btree_gist.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/btree_gist.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/btree_gist.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/citext.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/citext.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/citext.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/cube.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/cube.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/cube.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/dict_int.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/dict_int.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/dict_int.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/dict_xsyn.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/dict_xsyn.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/dict_xsyn.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/earthdistance.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/earthdistance.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/earthdistance.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/file_fdw.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/file_fdw.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/file_fdw.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/fuzzystrmatch.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/fuzzystrmatch.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/fuzzystrmatch.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/hstore.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/hstore.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/hstore.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/intarray.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/intarray.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/intarray.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/isn.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/isn.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/isn.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/lo.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/lo.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/lo.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/ltree.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/ltree.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/ltree.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/moddatetime.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/moddatetime.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/moddatetime.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pageinspect.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pageinspect.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pageinspect.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_buffercache.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_buffercache.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_buffercache.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_freespacemap.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_freespacemap.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_freespacemap.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_stat_statements.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_stat_statements.d.ts",
+      "lines": 12
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_stat_statements.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_surgery.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_surgery.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_surgery.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_trgm.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_trgm.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_trgm.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_visibility.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_visibility.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_visibility.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_walinspect.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_walinspect.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_walinspect.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pgcrypto.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pgcrypto.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/pgcrypto.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/seg.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/seg.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/seg.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/tablefunc.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/tablefunc.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/tablefunc.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/tcn.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/tcn.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/tcn.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/tsm_system_rows.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/tsm_system_rows.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/tsm_system_rows.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/tsm_system_time.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/tsm_system_time.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/tsm_system_time.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/unaccent.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/unaccent.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/unaccent.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/uuid_ossp.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/uuid_ossp.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/contrib/uuid_ossp.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/fs/base.cjs",
+      "lines": 3
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/fs/base.d.ts",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/fs/base.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/fs/nodefs.cjs",
+      "lines": 3
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/fs/nodefs.d.ts",
+      "lines": 13
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/fs/nodefs.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/fs/opfs-ahp.cjs",
+      "lines": 5
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/fs/opfs-ahp.d.ts",
+      "lines": 113
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/fs/opfs-ahp.js",
+      "lines": 4
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/index.cjs",
+      "lines": 16
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/index.d.ts",
+      "lines": 372
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/index.js",
+      "lines": 6
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/initdb.js",
+      "lines": 17
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/live/index.cjs",
+      "lines": 133
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/live/index.d.ts",
+      "lines": 150
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/live/index.js",
+      "lines": 133
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/pglite-BdeXTuy6.d.ts",
+      "lines": 1120
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/pglite.cjs",
+      "lines": 4
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/pglite.js",
+      "lines": 17
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/templating.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/templating.d.ts",
+      "lines": 70
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/templating.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/worker/index.cjs",
+      "lines": 9
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/worker/index.d.ts",
+      "lines": 129
+    },
+    {
+      "file": "modules/consumables/tests/node_modules/@electric-sql/pglite/dist/worker/index.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/README.md",
+      "lines": 190
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/chunk-2BOC2OMW.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/chunk-DDJLRBDX.js",
+      "lines": 3
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/chunk-F4GETNPB.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/chunk-JDT7TZ73.js",
+      "lines": 9
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/chunk-NNS5RQRF.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/chunk-QY3QWFKW.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/chunk-RYDTTX3G.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/amcheck.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/amcheck.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/amcheck.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/auto_explain.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/auto_explain.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/auto_explain.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/bloom.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/bloom.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/bloom.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/btree_gin.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/btree_gin.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/btree_gin.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/btree_gist.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/btree_gist.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/btree_gist.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/citext.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/citext.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/citext.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/cube.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/cube.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/cube.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/dict_int.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/dict_int.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/dict_int.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/dict_xsyn.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/dict_xsyn.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/dict_xsyn.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/earthdistance.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/earthdistance.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/earthdistance.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/file_fdw.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/file_fdw.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/file_fdw.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/fuzzystrmatch.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/fuzzystrmatch.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/fuzzystrmatch.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/hstore.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/hstore.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/hstore.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/intarray.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/intarray.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/intarray.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/isn.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/isn.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/isn.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/lo.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/lo.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/lo.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/ltree.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/ltree.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/ltree.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/moddatetime.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/moddatetime.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/moddatetime.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pageinspect.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pageinspect.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pageinspect.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_buffercache.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_buffercache.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_buffercache.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_freespacemap.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_freespacemap.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_freespacemap.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_stat_statements.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_stat_statements.d.ts",
+      "lines": 12
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_stat_statements.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_surgery.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_surgery.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_surgery.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_trgm.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_trgm.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_trgm.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_visibility.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_visibility.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_visibility.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_walinspect.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_walinspect.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pg_walinspect.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pgcrypto.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pgcrypto.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/pgcrypto.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/seg.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/seg.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/seg.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/tablefunc.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/tablefunc.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/tablefunc.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/tcn.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/tcn.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/tcn.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/tsm_system_rows.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/tsm_system_rows.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/tsm_system_rows.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/tsm_system_time.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/tsm_system_time.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/tsm_system_time.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/unaccent.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/unaccent.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/unaccent.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/uuid_ossp.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/uuid_ossp.d.ts",
+      "lines": 11
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/contrib/uuid_ossp.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/fs/base.cjs",
+      "lines": 3
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/fs/base.d.ts",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/fs/base.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/fs/nodefs.cjs",
+      "lines": 3
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/fs/nodefs.d.ts",
+      "lines": 13
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/fs/nodefs.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/fs/opfs-ahp.cjs",
+      "lines": 5
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/fs/opfs-ahp.d.ts",
+      "lines": 113
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/fs/opfs-ahp.js",
+      "lines": 4
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/index.cjs",
+      "lines": 16
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/index.d.ts",
+      "lines": 372
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/index.js",
+      "lines": 6
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/initdb.js",
+      "lines": 17
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/live/index.cjs",
+      "lines": 133
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/live/index.d.ts",
+      "lines": 150
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/live/index.js",
+      "lines": 133
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/pglite-BdeXTuy6.d.ts",
+      "lines": 1120
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/pglite.cjs",
+      "lines": 4
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/pglite.js",
+      "lines": 17
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/templating.cjs",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/templating.d.ts",
+      "lines": 70
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/templating.js",
+      "lines": 2
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/worker/index.cjs",
+      "lines": 9
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/worker/index.d.ts",
+      "lines": 129
+    },
+    {
+      "file": "modules/sites/tests/node_modules/@electric-sql/pglite/dist/worker/index.js",
+      "lines": 2
+    },
+    {
+      "file": "scripts/bundle-pdf.mjs",
+      "lines": 33
+    },
+    {
+      "file": "scripts/repair-development-engineer-a.mjs",
+      "lines": 106
+    },
+    {
+      "file": "scripts/repair-development-engineer-a.test.mjs",
+      "lines": 100
+    },
+    {
+      "file": "scripts/seed-test-users.mjs",
+      "lines": 66
+    },
+    {
+      "file": "scripts/seed-test-users.test.mjs",
+      "lines": 68
+    },
+    {
+      "file": "scripts/seed-transfer-users.mjs",
+      "lines": 55
+    },
+    {
+      "file": "scripts/seed-transfer-users.test.mjs",
+      "lines": 22
+    },
+    {
+      "file": "scripts/verify-test-login.browser.cjs",
+      "lines": 93
+    },
+    {
+      "file": "supabase/ACCOUNT-MANAGEMENT-DEPLOYMENT.md",
+      "lines": 283
+    },
+    {
+      "file": "supabase/AUTH-DEPLOYMENT.md",
+      "lines": 74
+    },
+    {
+      "file": "supabase/ENGINEER-PORTAL-DEPLOYMENT.md",
+      "lines": 150
+    },
+    {
+      "file": "supabase/TEST-ACCOUNTS.md",
+      "lines": 181
+    },
+    {
+      "file": "supabase/config.toml",
+      "lines": 5
+    },
+    {
+      "file": "supabase/equipment-office-confirmed-correction.sql",
+      "lines": 37
+    },
+    {
+      "file": "supabase/equipment-office-preflight.sql",
+      "lines": 31
+    },
+    {
+      "file": "supabase/feature-completion-preflight.sql",
+      "lines": 22
+    },
+    {
+      "file": "supabase/functions/manage-accounts/handler.mjs",
+      "lines": 117
+    },
+    {
+      "file": "supabase/functions/manage-accounts/index.ts",
+      "lines": 14
+    },
+    {
+      "file": "supabase/merge-integration-verification.sql",
+      "lines": 27
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "lines": 275
+    },
+    {
+      "file": "supabase/migrations/202610050001_legacy_handover_lockdown.sql",
+      "lines": 75
+    },
+    {
+      "file": "supabase/migrations/202610050002_independent_profile_identity.sql",
+      "lines": 114
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "lines": 243
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "lines": 374
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "lines": 143
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "lines": 167
+    },
+    {
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "lines": 164
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "lines": 153
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "lines": 293
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "lines": 110
+    },
+    {
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "lines": 272
+    },
+    {
+      "file": "supabase/migrations/202610120001_request_turnover_notifications.sql",
+      "lines": 92
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "lines": 194
+    },
+    {
+      "file": "supabase/migrations/202610120003_equipment_office_default.sql",
+      "lines": 85
+    },
+    {
+      "file": "supabase/migrations/202610120003_optional_request_purpose.sql",
+      "lines": 32
+    },
+    {
+      "file": "supabase/migrations/202610150001_inventory_availability.sql",
+      "lines": 36
+    },
+    {
+      "file": "supabase/office-configuration-verification.sql",
+      "lines": 9
+    },
+    {
+      "file": "supabase/office-location-configuration.sql",
+      "lines": 37
+    },
+    {
+      "file": "supabase/office-return-preflight.sql",
+      "lines": 52
+    },
+    {
+      "file": "supabase/preflight.sql",
+      "lines": 20
+    },
+    {
+      "file": "supabase/project-history-preflight.sql",
+      "lines": 69
+    },
+    {
+      "file": "supabase/release-compatibility-diagnostics.sql",
+      "lines": 67
+    },
+    {
+      "file": "supabase/request-turnover-preflight.sql",
+      "lines": 19
+    },
+    {
+      "file": "tests/accounts-database.test.cjs",
+      "lines": 93
+    },
+    {
+      "file": "tests/accounts-edge.test.mjs",
+      "lines": 54
+    },
+    {
+      "file": "tests/archive-database.test.cjs",
+      "lines": 28
+    },
+    {
+      "file": "tests/auth-database.test.cjs",
+      "lines": 66
+    },
+    {
+      "file": "tests/auth-test-db.cjs",
+      "lines": 64
+    },
+    {
+      "file": "tests/auth.browser.cjs",
+      "lines": 427
+    },
+    {
+      "file": "tests/browser-session.cjs",
+      "lines": 24
+    },
+    {
+      "file": "tests/cancellation.browser-checks.cjs",
+      "lines": 80
+    },
+    {
+      "file": "tests/dashboard-view.test.cjs",
+      "lines": 129
+    },
+    {
+      "file": "tests/development-accounts.test.mjs",
+      "lines": 139
+    },
+    {
+      "file": "tests/engineer-portal.browser-checks.cjs",
+      "lines": 78
+    },
+    {
+      "file": "tests/engineer-portal.database.cjs",
+      "lines": 67
+    },
+    {
+      "file": "tests/engineer-ux.browser-checks.cjs",
+      "lines": 98
+    },
+    {
+      "file": "tests/engineer-ux.database.test.cjs",
+      "lines": 45
+    },
+    {
+      "file": "tests/equipment-office.browser-checks.cjs",
+      "lines": 76
+    },
+    {
+      "file": "tests/equipment-office.database.test.cjs",
+      "lines": 107
+    },
+    {
+      "file": "tests/feature-frontend.browser-checks.cjs",
+      "lines": 86
+    },
+    {
+      "file": "tests/feature-frontend.test.cjs",
+      "lines": 120
+    },
+    {
+      "file": "tests/feature-storage.test.cjs",
+      "lines": 140
+    },
+    {
+      "file": "tests/global-search.browser-checks.cjs",
+      "lines": 92
+    },
+    {
+      "file": "tests/global-search.test.cjs",
+      "lines": 33
+    },
+    {
+      "file": "tests/inventory-availability.browser-checks.cjs",
+      "lines": 57
+    },
+    {
+      "file": "tests/inventory-availability.database.test.cjs",
+      "lines": 37
+    },
+    {
+      "file": "tests/inventory.browser.cjs",
+      "lines": 124
+    },
+    {
+      "file": "tests/inventory.test.cjs",
+      "lines": 97
+    },
+    {
+      "file": "tests/legacy-handover-lockdown.test.cjs",
+      "lines": 54
+    },
+    {
+      "file": "tests/legacy-test-db.cjs",
+      "lines": 38
+    },
+    {
+      "file": "tests/mobile-search-ui-checks.cjs",
+      "lines": 222
+    },
+    {
+      "file": "tests/module-navigation.test.cjs",
+      "lines": 210
+    },
+    {
+      "file": "tests/monitoring-database.test.cjs",
+      "lines": 203
+    },
+    {
+      "file": "tests/movement-cancellation.test.cjs",
+      "lines": 239
+    },
+    {
+      "file": "tests/movement-database.test.cjs",
+      "lines": 185
+    },
+    {
+      "file": "tests/movement-navigation.test.cjs",
+      "lines": 36
+    },
+    {
+      "file": "tests/movement-store.test.cjs",
+      "lines": 316
+    },
+    {
+      "file": "tests/movement-sync.test.cjs",
+      "lines": 36
+    },
+    {
+      "file": "tests/movement-test-db.cjs",
+      "lines": 57
+    },
+    {
+      "file": "tests/movement.browser.cjs",
+      "lines": 101
+    },
+    {
+      "file": "tests/navigation-history.browser-checks.cjs",
+      "lines": 184
+    },
+    {
+      "file": "tests/notification-ui-checks.cjs",
+      "lines": 188
+    },
+    {
+      "file": "tests/office-return-fixture.cjs",
+      "lines": 14
+    },
+    {
+      "file": "tests/office-return.browser-checks.cjs",
+      "lines": 65
+    },
+    {
+      "file": "tests/office-return.database.test.cjs",
+      "lines": 148
+    },
+    {
+      "file": "tests/pdf-reports.browser-checks.cjs",
+      "lines": 114
+    },
+    {
+      "file": "tests/pdf-reports.test.cjs",
+      "lines": 57
+    },
+    {
+      "file": "tests/pdf-test-utils.cjs",
+      "lines": 59
+    },
+    {
+      "file": "tests/procurement-monitoring.browser-checks.cjs",
+      "lines": 94
+    },
+    {
+      "file": "tests/profile-identity.test.cjs",
+      "lines": 62
+    },
+    {
+      "file": "tests/project-history-dependency.test.cjs",
+      "lines": 50
+    },
+    {
+      "file": "tests/project-history-repair.test.cjs",
+      "lines": 96
+    },
+    {
+      "file": "tests/projects-errors.browser-checks.cjs",
+      "lines": 81
+    },
+    {
+      "file": "tests/purchase-ledger.test.cjs",
+      "lines": 63
+    },
+    {
+      "file": "tests/release-compatibility.test.cjs",
+      "lines": 78
+    },
+    {
+      "file": "tests/request-projects.browser-checks.cjs",
+      "lines": 81
+    },
+    {
+      "file": "tests/request-projects.database.test.cjs",
+      "lines": 67
+    },
+    {
+      "file": "tests/request-turnover.browser-checks.cjs",
+      "lines": 112
+    },
+    {
+      "file": "tests/request-turnover.database.test.cjs",
+      "lines": 95
+    },
+    {
+      "file": "tests/transfer-history.browser-checks.cjs",
+      "lines": 136
+    },
+    {
+      "file": "tests/workspace-ui-checks.cjs",
+      "lines": 247
+    }
+  ],
+  "tables": [
+    {
+      "name": "public.consumables",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 9,
+      "definition": "id uuid primary key,\r\n  name text not null check (char_length(btrim(name)) between 1 and 120),\r\n  unit text not null check (char_length(btrim(unit)) between 1 and 30),\r\n  current_stock numeric(12,3) not null default 0 check (current_stock >= 0 and current_stock < 1000000000),\r\n  minimum_stock numeric(12,3) not null default 0 check (minimum_stock >= 0 and minimum_stock < 1000000000),\r\n  stock_status text generated always as (case when current_stock = 0 then 'out' when current_stock < minimum_stock then 'low' else 'ok' end) stored,\r\n  version integer not null default 1,\r\n  created_at timestamptz not null default now(),\r\n  updated_at timestamptz not null default now()"
+    },
+    {
+      "name": "public.consumable_requests",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 22,
+      "definition": "id uuid primary key,\r\n  request_number bigint generated always as identity unique,\r\n  consumable_id uuid not null references public.consumables(id) on delete restrict,\r\n  item_name text not null,\r\n  unit text not null,\r\n  quantity numeric(12,3) not null check (quantity > 0 and quantity < 1000000000),\r\n  received_quantity numeric(12,3) not null default 0 check (received_quantity >= 0 and received_quantity <= quantity),\r\n  requester text not null check (char_length(btrim(requester)) between 1 and 120 and requester ~ '\\S'),\r\n  purpose text not null check (char_length(btrim(purpose)) between 1 and 1000 and purpose ~ '\\S'),\r\n  needed_by date,\r\n  status text not null default 'pending' check (status in ('pending','partial','received','cancelled')),\r\n  cancellation_reason text check (char_length(btrim(cancellation_reason)) between 1 and 1000 and cancellation_reason ~ '\\S'),\r\n  version integer not null default 1,\r\n  created_at timestamptz not null default now(),\r\n  updated_at timestamptz not null default now(),\r\n  check ((status = 'pending' and received_quantity = 0) or (status = 'partial' and received_quantity > 0 and received_quantity < quantity) or (status = 'received' and received_quantity = quantity) or (status = 'cancelled' and received_quantity < quantity and cancellation_reason is not null))"
+    },
+    {
+      "name": "public.consumable_stock_movements",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 42,
+      "definition": "id uuid primary key,\r\n  consumable_id uuid not null references public.consumables(id) on delete restrict,\r\n  request_id uuid references public.consumable_requests(id) on delete restrict,\r\n  kind text not null check (kind in ('opening','usage','restock','correction','receipt')),\r\n  quantity_change numeric(12,3) not null,\r\n  balance_after numeric(12,3) not null check (balance_after >= 0 and balance_after < 1000000000),\r\n  note text not null check (char_length(btrim(note)) between 1 and 1000 and note ~ '\\S'),\r\n  created_at timestamptz not null default now(),\r\n  check ((kind = 'receipt' and request_id is not null and quantity_change > 0) or (kind <> 'receipt' and request_id is null)),\r\n  check (kind not in ('restock','usage') or (kind = 'restock' and quantity_change > 0) or (kind = 'usage' and quantity_change < 0))"
+    },
+    {
+      "name": "public.mcpa_movements",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 10,
+      "definition": "id text primary key,\n  kind text not null check (kind in ('request','transfer','return','repair','missing')),\n  data jsonb not null check (jsonb_typeof(data) = 'object'),\n  actor_id uuid not null references public.profiles(id) on delete restrict,\n  destination_id uuid references public.sites(id) on delete restrict,\n  receiver_id uuid references public.profiles(id) on delete restrict,\n  created_at timestamptz not null default clock_timestamp(),\n  check (data->>'id' = id)"
+    },
+    {
+      "name": "public.mcpa_movement_assets",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 20,
+      "definition": "movement_id text not null references public.mcpa_movements(id) on delete restrict,\n  equipment_id uuid not null references public.equipment(id) on delete restrict,\n  primary key (movement_id,equipment_id)"
+    },
+    {
+      "name": "public.mcpa_movement_reservations",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 25,
+      "definition": "equipment_id uuid primary key references public.equipment(id) on delete restrict,\n  movement_id text not null references public.mcpa_movements(id) on delete restrict"
+    },
+    {
+      "name": "public.mcpa_movement_sites",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 29,
+      "definition": "movement_id text not null references public.mcpa_movements(id) on delete restrict,\n  site_id uuid not null references public.sites(id) on delete restrict,\n  primary key (movement_id,site_id)"
+    },
+    {
+      "name": "public.mcpa_movement_operations",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 34,
+      "definition": "id uuid primary key,\n  action text not null,\n  payload jsonb not null,\n  result jsonb not null,\n  activity jsonb not null,\n  created_at timestamptz not null default clock_timestamp()"
+    },
+    {
+      "name": "public.sites",
+      "file": "1-admin/modules/sites/setup.sql",
+      "line": 5,
+      "definition": "id uuid primary key default gen_random_uuid(),\r\n  name text not null check (char_length(btrim(name)) between 1 and 120),\r\n  location text not null check (char_length(btrim(location)) between 1 and 240),\r\n  assigned_engineer text not null check (char_length(btrim(assigned_engineer)) between 1 and 120),\r\n  phase text not null default '' check (char_length(btrim(phase)) <= 80),\r\n  status text not null default 'planning'\r\n    check (status in ('active', 'discrepancy', 'verified', 'turnover', 'idle', 'planning', 'completed')),\r\n  progress integer not null default 0 check (progress between 0 and 100),\r\n  last_inventory_check date,\r\n  created_at timestamptz not null default now(),\r\n  updated_at timestamptz not null default now()"
+    },
+    {
+      "name": "public.project_history",
+      "file": "1-admin/modules/sites/setup.sql",
+      "line": 65,
+      "definition": "id uuid primary key default gen_random_uuid(),\r\n  project_id uuid not null references public.sites(id) on delete restrict,\r\n  changed_at timestamptz not null default clock_timestamp(),\r\n  change_types text[] not null,\r\n  before_values jsonb,\r\n  after_values jsonb not null,\r\n  actor_id uuid,\r\n  actor_name text"
+    },
+    {
+      "name": "public.mcpa_account_invitations",
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 16,
+      "definition": "id uuid primary key,\r\n  profile_id uuid not null unique references public.profiles(id) on delete restrict,\r\n  email text not null unique,\r\n  name text not null,\r\n  role text not null check (role in ('engineer','architect','secretary','tool_handler')),\r\n  state text not null default 'prepared' check (state in ('prepared','sent')),\r\n  created_by uuid not null references public.profiles(id) on delete restrict,\r\n  created_at timestamptz not null default now(),\r\n  sent_at timestamptz,\r\n  lease_until timestamptz,\r\n  lease_id uuid,\r\n  attempts integer not null default 0"
+    },
+    {
+      "name": "public.mcpa_account_audit",
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 30,
+      "definition": "id uuid primary key default gen_random_uuid(),\r\n  actor_id uuid not null references public.profiles(id) on delete restrict,\r\n  profile_id uuid not null references public.profiles(id) on delete restrict,\r\n  event text not null,\r\n  details jsonb not null default '{}'::jsonb,\r\n  created_at timestamptz not null default now()"
+    },
+    {
+      "name": "public.mcpa_development_accounts",
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 7,
+      "definition": "id uuid primary key,\r\n  email text not null unique,\r\n  name text not null,\r\n  role text not null check (role in ('engineer','architect')),\r\n  profile_id uuid unique references public.profiles(id) on delete restrict,\r\n  state text not null default 'prepared' check (state in ('prepared','created')),\r\n  created_by uuid not null references public.profiles(id) on delete restrict,\r\n  created_at timestamptz not null default now(),\r\n  completed_at timestamptz,\r\n  lease_id uuid,\r\n  lease_until timestamptz,\r\n  check ((state='prepared' and profile_id is null) or (state='created' and profile_id is not null))"
+    },
+    {
+      "name": "mcpa_auth_private.receiving_qr",
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 7,
+      "definition": "token_hash text primary key,\r\n receiver_id uuid not null references public.profiles(id),\r\n site_id uuid not null references public.sites(id),\r\n created_at timestamptz not null default now(),\r\n expires_at timestamptz not null,\r\n revoked_at timestamptz"
+    },
+    {
+      "name": "public.project_history",
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 54,
+      "definition": "id uuid primary key default gen_random_uuid(),\r\n  project_id uuid not null references public.sites(id) on delete restrict,\r\n  changed_at timestamptz not null default clock_timestamp(),\r\n  change_types text[] not null,\r\n  before_values jsonb,\r\n  after_values jsonb not null,\r\n  actor_id uuid,\r\n  actor_name text"
+    },
+    {
+      "name": "public.mcpa_movement_cancellations",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 6,
+      "definition": "operation_id uuid not null references public.mcpa_movement_operations(id) on delete restrict,\n  movement_id text not null references public.mcpa_movements(id) on delete restrict,\n  action text not null check (action in ('withdrawRequest','cancelReservation','cancelTransfer')),\n  actor_id uuid not null references public.profiles(id) on delete restrict,\n  actor_name text not null,\n  actor_role text not null,\n  reason text not null check (char_length(btrim(reason)) between 1 and 2000),\n  canceled_at timestamptz not null,\n  before_data jsonb not null check (jsonb_typeof(before_data)='object'),\n  after_data jsonb not null check (jsonb_typeof(after_data)='object'),\n  primary key (operation_id,movement_id)"
+    },
+    {
+      "name": "public.mcpa_movement_refusals",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 22,
+      "definition": "operation_id uuid primary key references public.mcpa_movement_operations(id) on delete restrict,\n  movement_id text not null references public.mcpa_movements(id) on delete restrict,\n  action text not null check (action in ('refuseTransfer','reopenTransfer')),\n  actor_id uuid not null references public.profiles(id) on delete restrict,\n  actor_name text not null,\n  actor_role text not null,\n  reason text not null check (char_length(btrim(reason)) between 1 and 2000),\n  recorded_at timestamptz not null,\n  before_data jsonb not null check (jsonb_typeof(before_data)='object'),\n  after_data jsonb not null check (jsonb_typeof(after_data)='object')"
+    },
+    {
+      "name": "public.mcpa_purchases",
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 11,
+      "definition": "id uuid primary key,\n purchase_number bigint generated always as identity unique,\n supplier text not null check(char_length(btrim(supplier)) between 1 and 160),\n reference text not null check(char_length(btrim(reference)) between 1 and 120),\n purchase_date date not null,\n request_id uuid references public.consumable_requests(id) on delete restrict,\n items jsonb not null check(jsonb_typeof(items)='array' and jsonb_array_length(items) between 1 and 100),\n total numeric(18,2) not null check(total>=0 and total<10000000000000000),\n receipt_path text,\n notes text not null default '' check(char_length(notes)<=2000),\n version integer not null default 1 check(version>0),\n created_by uuid not null references public.profiles(id) on delete restrict,\n updated_by uuid not null references public.profiles(id) on delete restrict,\n created_at timestamptz not null default now(),\n updated_at timestamptz not null default now()"
+    },
+    {
+      "name": "public.mcpa_purchase_history",
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 31,
+      "definition": "operation_id uuid primary key,\n purchase_id uuid not null references public.mcpa_purchases(id) on delete restrict,\n actor_id uuid not null references public.profiles(id) on delete restrict,\n input jsonb not null,\n before_record jsonb,\n after_record jsonb not null,\n created_at timestamptz not null default now()"
+    },
+    {
+      "name": "public.mcpa_notifications",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 23,
+      "definition": "id uuid primary key default gen_random_uuid(),\n  recipient_id uuid not null references public.profiles(id) on delete restrict,\n  kind text not null check(kind in ('overdue','weekly_monitoring','movement')),\n  entity_id text,\n  dedupe_key text not null,\n  title text not null check(char_length(title) between 1 and 200),\n  message text not null check(char_length(message) between 1 and 2000),\n  data jsonb not null default '{}'::jsonb check(jsonb_typeof(data)='object'),\n  created_at timestamptz not null default clock_timestamp(),\n  read_at timestamptz,\n  unique(recipient_id,dedupe_key)"
+    },
+    {
+      "name": "public.mcpa_inventory_snapshots",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 38,
+      "definition": "id uuid primary key default gen_random_uuid(),\n  captured_at timestamptz not null default clock_timestamp(),\n  local_date date not null,\n  week_start date not null unique,\n  tools jsonb not null check(jsonb_typeof(tools)='array'),\n  check(extract(isodow from week_start)=1)"
+    },
+    {
+      "name": "mcpa_auth_private.return_office",
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 44,
+      "definition": "singleton boolean primary key default true check(singleton),\r\n  site_id uuid not null references public.sites(id) on delete restrict"
+    }
+  ],
+  "functions": [
+    {
+      "name": "public.consumables_save_item",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 59
+    },
+    {
+      "name": "public.consumables_adjust_stock",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 90
+    },
+    {
+      "name": "public.consumables_create_request",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 117
+    },
+    {
+      "name": "public.consumables_receive_request",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 141
+    },
+    {
+      "name": "public.consumables_cancel_request",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 172
+    },
+    {
+      "name": "public.mcpa_movement_set_status",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 48
+    },
+    {
+      "name": "public.mcpa_movement_snapshot",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 60
+    },
+    {
+      "name": "public.mcpa_movement_action",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 87
+    },
+    {
+      "name": "public.sites_sync_archive",
+      "file": "1-admin/modules/sites/realtime-archive.sql",
+      "line": 10
+    },
+    {
+      "name": "public.sites_touch_updated_at",
+      "file": "1-admin/modules/sites/setup.sql",
+      "line": 49
+    },
+    {
+      "name": "public.project_record_history",
+      "file": "1-admin/modules/sites/setup.sql",
+      "line": 82
+    },
+    {
+      "name": "public.project_history_immutable",
+      "file": "1-admin/modules/sites/setup.sql",
+      "line": 125
+    },
+    {
+      "name": "mcpa_auth_private.identity",
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 42
+    },
+    {
+      "name": "public.mcpa_my_profile",
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 52
+    },
+    {
+      "name": "public.mcpa_has_role",
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 57
+    },
+    {
+      "name": "mcpa_auth_private.can_view_tool",
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 61
+    },
+    {
+      "name": "mcpa_auth_private.can_view_movement",
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 69
+    },
+    {
+      "name": "public.mcpa_movement_action",
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 86
+    },
+    {
+      "name": "public.mcpa_movement_snapshot",
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 133
+    },
+    {
+      "name": "public.mcpa_accounts",
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 210
+    },
+    {
+      "name": "public.mcpa_save_account",
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 217
+    },
+    {
+      "name": "public.mcpa_accounts",
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 47
+    },
+    {
+      "name": "public.mcpa_save_account",
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 65
+    },
+    {
+      "name": "public.mcpa_invitation_step",
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 113
+    },
+    {
+      "name": "mcpa_auth_private.mcpa_movement_action",
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 3
+    },
+    {
+      "name": "public.mcpa_movement_action",
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 258
+    },
+    {
+      "name": "public.mcpa_movement_snapshot",
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 306
+    },
+    {
+      "name": "public.mcpa_development_account_step",
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 26
+    },
+    {
+      "name": "public.mcpa_accounts",
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 107
+    },
+    {
+      "name": "public.mcpa_personal_equipment_snapshot",
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 21
+    },
+    {
+      "name": "public.mcpa_project_snapshot",
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 51
+    },
+    {
+      "name": "mcpa_auth_private.receiving_context",
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 68
+    },
+    {
+      "name": "public.mcpa_create_receiving_qr",
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 85
+    },
+    {
+      "name": "public.mcpa_resolve_receiving_qr",
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 103
+    },
+    {
+      "name": "public.mcpa_revoke_receiving_qr",
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 113
+    },
+    {
+      "name": "public.mcpa_movement_action",
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 126
+    },
+    {
+      "name": "public.project_record_history",
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 75
+    },
+    {
+      "name": "public.project_history_immutable",
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 110
+    },
+    {
+      "name": "public.mcpa_can_write_equipment_photo",
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 64
+    },
+    {
+      "name": "public.mcpa_can_read_equipment_photo",
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 73
+    },
+    {
+      "name": "public.mcpa_can_access_purchase_receipt",
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 85
+    },
+    {
+      "name": "mcpa_auth_private.guard_equipment_photo_reference",
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 100
+    },
+    {
+      "name": "mcpa_auth_private.cancellation_audit_immutable",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 37
+    },
+    {
+      "name": "mcpa_auth_private.can_adjust_movement",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 65
+    },
+    {
+      "name": "public.mcpa_movement_action",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 95
+    },
+    {
+      "name": "mcpa_auth_private.can_view_tool",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 250
+    },
+    {
+      "name": "public.mcpa_movement_snapshot",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 268
+    },
+    {
+      "name": "mcpa_auth_private.purchase_history_immutable",
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 47
+    },
+    {
+      "name": "public.mcpa_save_purchase",
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 52
+    },
+    {
+      "name": "public.mcpa_purchase_snapshot",
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 98
+    },
+    {
+      "name": "mcpa_auth_private.monitoring_immutable",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 62
+    },
+    {
+      "name": "mcpa_auth_private.monitoring_due_date",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 80
+    },
+    {
+      "name": "mcpa_auth_private.monitoring_overdue",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 90
+    },
+    {
+      "name": "mcpa_auth_private.monitoring_current_tools",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 119
+    },
+    {
+      "name": "public.mcpa_monitoring_snapshot",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 128
+    },
+    {
+      "name": "public.mcpa_monitoring_mark_read",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 145
+    },
+    {
+      "name": "public.mcpa_capture_inventory_snapshot",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 158
+    },
+    {
+      "name": "public.mcpa_generate_monitoring",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 170
+    },
+    {
+      "name": "public.mcpa_monitoring_report",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 201
+    },
+    {
+      "name": "mcpa_auth_private.notify_new_movement_operation",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 221
+    },
+    {
+      "name": "mcpa_auth_private.notify_new_movement_operation",
+      "file": "supabase/migrations/202610120001_request_turnover_notifications.sql",
+      "line": 26
+    },
+    {
+      "name": "mcpa_auth_private.office_return_site",
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 74
+    },
+    {
+      "name": "public.mcpa_return_destination",
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 91
+    },
+    {
+      "name": "public.mcpa_movement_action",
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 111
+    },
+    {
+      "name": "public.mcpa_inventory_office",
+      "file": "supabase/migrations/202610120003_equipment_office_default.sql",
+      "line": 46
+    },
+    {
+      "name": "mcpa_auth_private.new_equipment_office",
+      "file": "supabase/migrations/202610120003_equipment_office_default.sql",
+      "line": 61
+    },
+    {
+      "name": "public.mcpa_movement_snapshot",
+      "file": "supabase/migrations/202610150001_inventory_availability.sql",
+      "line": 15
+    }
+  ],
+  "policies": [
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 188,
+      "definition": "create policy consumables_read on public.consumables for select to anon, authenticated using(true);"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 190,
+      "definition": "create policy consumable_requests_read on public.consumable_requests for select to anon, authenticated using(true);"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 192,
+      "definition": "create policy consumable_movements_read on public.consumable_stock_movements for select to anon, authenticated using(true);"
+    },
+    {
+      "file": "1-admin/modules/sites/prototype-access.sql",
+      "line": 10,
+      "definition": "create policy sites_read on public.sites for select to anon, authenticated using (true);"
+    },
+    {
+      "file": "1-admin/modules/sites/prototype-access.sql",
+      "line": 12,
+      "definition": "create policy sites_insert on public.sites for insert to anon, authenticated with check (true);"
+    },
+    {
+      "file": "1-admin/modules/sites/prototype-access.sql",
+      "line": 14,
+      "definition": "create policy sites_update on public.sites for update to anon, authenticated using (true) with check (true);"
+    },
+    {
+      "file": "1-admin/modules/sites/prototype-access.sql",
+      "line": 16,
+      "definition": "create policy sites_delete on public.sites for delete to anon, authenticated using (true);"
+    },
+    {
+      "file": "1-admin/modules/sites/setup.sql",
+      "line": 138,
+      "definition": "create policy project_history_read on public.project_history for select to anon, authenticated using (true);"
+    },
+    {
+      "file": "1-admin/modules/sites/setup.sql",
+      "line": 162,
+      "definition": "create policy sites_read on public.sites"
+    },
+    {
+      "file": "1-admin/modules/sites/setup.sql",
+      "line": 165,
+      "definition": "create policy sites_insert on public.sites"
+    },
+    {
+      "file": "1-admin/modules/sites/setup.sql",
+      "line": 168,
+      "definition": "create policy sites_update on public.sites"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 184,
+      "definition": "create policy mcpa_equipment_read on public.equipment for select to authenticated using(public.mcpa_has_role(array['admin','tool_handler']));"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 185,
+      "definition": "create policy mcpa_equipment_insert on public.equipment for insert to authenticated with check(public.mcpa_has_role(array['admin','tool_handler']) and current_holder_id is null and site_id is null and status::text='AVAILABLE');"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 186,
+      "definition": "create policy mcpa_equipment_edit on public.equipment for update to authenticated using(public.mcpa_has_role(array['admin','tool_handler'])) with check(public.mcpa_has_role(array['admin','tool_handler']));"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 196,
+      "definition": "create policy mcpa_sites_read on public.sites for select to authenticated using(public.mcpa_has_role(array['admin','tool_handler']));"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 198,
+      "definition": "create policy mcpa_sites_insert on public.sites for insert to authenticated with check(public.mcpa_has_role(array['admin']));"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 199,
+      "definition": "create policy mcpa_sites_update on public.sites for update to authenticated using(public.mcpa_has_role(array['admin'])) with check(public.mcpa_has_role(array['admin']));"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 201,
+      "definition": "create policy mcpa_profiles_read on public.profiles for select to authenticated using(public.mcpa_has_role(array['admin','tool_handler']));"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 206,
+      "definition": "create policy mcpa_history_read on public.project_history for select to authenticated using(public.mcpa_has_role(array['admin','tool_handler']));"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 43,
+      "definition": "create policy mcpa_account_audit_read on public.mcpa_account_audit for select to authenticated"
+    },
+    {
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 70,
+      "definition": "create policy mcpa_history_read on public.project_history for select to authenticated"
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 128,
+      "definition": "create policy mcpa_equipment_photos_read on storage.objects for select to authenticated"
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 131,
+      "definition": "create policy mcpa_equipment_photos_insert on storage.objects for insert to authenticated"
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 134,
+      "definition": "create policy mcpa_purchase_receipts_read on storage.objects for select to authenticated"
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 137,
+      "definition": "create policy mcpa_purchase_receipts_insert on storage.objects for insert to authenticated"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 44,
+      "definition": "create policy mcpa_purchase_read on public.mcpa_purchases for select to authenticated using(public.mcpa_has_role(array['admin','secretary']));"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 45,
+      "definition": "create policy mcpa_purchase_history_read on public.mcpa_purchase_history for select to authenticated using(public.mcpa_has_role(array['admin','secretary']));"
+    },
+    {
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 55,
+      "definition": "create policy mcpa_notifications_own_read on public.mcpa_notifications for select to authenticated"
+    },
+    {
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 59,
+      "definition": "create policy mcpa_inventory_snapshots_admin_read on public.mcpa_inventory_snapshots for select to authenticated"
+    }
+  ],
+  "calls": [
+    {
+      "name": "mcpa_purchase_snapshot",
+      "file": "1-admin/modules/purchases/purchases.js",
+      "line": 31
+    },
+    {
+      "name": "mcpa_save_purchase",
+      "file": "1-admin/modules/purchases/purchases.js",
+      "line": 77
+    },
+    {
+      "name": "mcpa_monitoring_report",
+      "file": "1-admin/modules/reports/reports.js",
+      "line": 50
+    },
+    {
+      "name": "mcpa_project_snapshot",
+      "file": "1-admin/modules/sites/sites.js",
+      "line": 117
+    },
+    {
+      "name": "mcpa_project_snapshot",
+      "file": "1-admin/modules/sites/sites.js",
+      "line": 162
+    },
+    {
+      "name": "mcpa_accounts",
+      "file": "1-admin/modules/users/users.js",
+      "line": 62
+    },
+    {
+      "name": "mcpa_save_account",
+      "file": "1-admin/modules/users/users.js",
+      "line": 75
+    },
+    {
+      "name": "mcpa_my_profile",
+      "file": "js/auth.js",
+      "line": 85
+    },
+    {
+      "name": "mcpa_monitoring_snapshot",
+      "file": "js/monitoring.js",
+      "line": 54
+    },
+    {
+      "name": "mcpa_monitoring_mark_read",
+      "file": "js/monitoring.js",
+      "line": 70
+    },
+    {
+      "name": "mcpa_movement_snapshot",
+      "file": "js/movement-cloud.js",
+      "line": 38
+    },
+    {
+      "name": "mcpa_movement_action",
+      "file": "js/movement-cloud.js",
+      "line": 68
+    },
+    {
+      "name": "mcpa_return_destination",
+      "file": "js/movement-cloud.js",
+      "line": 87
+    },
+    {
+      "name": "mcpa_personal_equipment_snapshot",
+      "file": "js/movement-overview.js",
+      "line": 98
+    },
+    {
+      "name": "mcpa_project_snapshot",
+      "file": "js/movement-ui.js",
+      "line": 203
+    }
+  ],
+  "errors": [
+    {
+      "file": "1-admin/modules/consumables/consumables.js",
+      "line": 48,
+      "text": "if (!window.supabase?.createClient) throw new Error('The database connection could not load. Check your connection and refresh.');"
+    },
+    {
+      "file": "1-admin/modules/consumables/consumables.js",
+      "line": 248,
+      "text": "if (!raw.trim() || !Number.isFinite(value) || value < 0 || value > 999999999.999 || Math.abs(value * 1000 - Math.round(value * 1000)) > 0.0001) throw new Error('Enter valid quantities with up to three decimal places.');"
+    },
+    {
+      "file": "1-admin/modules/consumables/consumables.js",
+      "line": 254,
+      "text": "if (!normalize(input.value)) throw new Error('Required fields cannot contain only blank spaces.');"
+    },
+    {
+      "file": "1-admin/modules/consumables/consumables.js",
+      "line": 258,
+      "text": "if (state.items.some(item => item.id !== context.id && normalize(item.name).toLowerCase() === name.toLowerCase())) throw new Error('A consumable with this name already exists.');"
+    },
+    {
+      "file": "1-admin/modules/consumables/consumables.js",
+      "line": 263,
+      "text": "if (text('needed') && text('needed') < today()) throw new Error('Needed-by date cannot be in the past.');"
+    },
+    {
+      "file": "1-admin/modules/consumables/consumables.js",
+      "line": 264,
+      "text": "if (openRequest(text('item'))) throw new Error('This consumable already has an open purchase request.');"
+    },
+    {
+      "file": "1-admin/modules/consumables/consumables.js",
+      "line": 284,
+      "text": "if (!data) throw new Error('The server did not confirm the save. Retry this form or refresh to check the result.');"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 64,
+      "text": "raise exception 'Enter quantities with at most three decimal places.' using errcode = '22023';"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 75,
+      "text": "raise exception 'This item was already saved. Refresh to see its latest details.' using errcode = '40001';"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 85,
+      "text": "if not found then raise exception 'This item changed. Close the form and refresh before trying again.' using errcode = '40001'; end if;"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 95,
+      "text": "raise exception 'Enter a valid stock quantity with at most three decimal places.' using errcode = '22023';"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 98,
+      "text": "if not found then raise exception 'Consumable no longer exists.' using errcode = '22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 104,
+      "text": "raise exception 'This operation was already saved with different values. Refresh before trying again.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 108,
+      "text": "if v_item.version is distinct from p_version then raise exception 'Stock changed. Close the form and refresh before trying again.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 110,
+      "text": "if v_item.current_stock+v_delta < 0 then raise exception 'Usage cannot exceed available stock.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 122,
+      "text": "if not found then raise exception 'Consumable no longer exists.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 126,
+      "text": "raise exception 'This request was already saved with different values. Refresh before trying again.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 131,
+      "text": "raise exception 'Check the quantity and needed-by date. Past dates are not allowed.' using errcode='22023';"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 134,
+      "text": "raise exception 'This item already has an open purchase request. Refresh to view it.' using errcode='23505';"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 148,
+      "text": "if not found then raise exception 'Request no longer exists.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 152,
+      "text": "raise exception 'This receipt was already saved with different values. Refresh before trying again.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 157,
+      "text": "raise exception 'Request changed or is closed. Close the form and refresh before trying again.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 160,
+      "text": "raise exception 'Received quantity must be positive and cannot exceed the outstanding quantity.' using errcode='22023';"
+    },
+    {
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 178,
+      "text": "if not found then raise exception 'Request changed or is closed. Close the form and refresh before trying again.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "1-admin/modules/masterlist/masterlist.js",
+      "line": 618,
+      "text": "try { user = window.MCPAAuth.requireLive(); if (user.role !== 'admin') throw new Error('Only Admin can save inventory items.'); }"
+    },
+    {
+      "file": "1-admin/modules/masterlist/masterlist.js",
+      "line": 646,
+      "text": "if (!form.isConnected || window.MCPAAuth.requireLive().id !== user.id || equipmentPhotoState !== state) throw new Error('Your screen or account changed. Reopen the item before saving.');"
+    },
+    {
+      "file": "1-admin/modules/masterlist/masterlist.js",
+      "line": 651,
+      "text": "if (error) throw new Error('The item could not be saved. Your form and photo selection have been kept. Check your connection and retry. ' + error.message);"
+    },
+    {
+      "file": "1-admin/modules/masterlist/masterlist.js",
+      "line": 652,
+      "text": "if (!data || data.asset_id !== assetId) throw new Error('The saved item could not be verified. Refresh the inventory before retrying.');"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 56,
+      "text": "else raise exception 'Invalid equipment status.' using errcode='22023';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 100,
+      "text": "raise exception 'Supply a valid operation and movement form.' using errcode='22023';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 108,
+      "text": "raise exception 'This operation was already saved with different values. Refresh and try again.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 113,
+      "text": "raise exception 'Unknown movement action.' using errcode='22023';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 116,
+      "text": "if v_role is null or v_role not in ('admin','engineer') then raise exception 'Select an application role.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 118,
+      "text": "exception when invalid_text_representation then raise exception 'Select an existing profile.' using errcode='22023'; end;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 121,
+      "text": "raise exception 'Select an existing profile before creating a movement.' using errcode='22023';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 124,
+      "text": "raise exception 'Switch to Admin review for this action.' using errcode='42501';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 127,
+      "text": "if char_length(v_notes)>2000 then raise exception 'Notes must be at most 2000 characters.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 131,
+      "text": "if not found then raise exception 'Movement no longer exists. Refresh and try again.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 138,
+      "text": "raise exception 'Select between 1 and 100 tools.' using errcode='22023';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 142,
+      "text": "raise exception 'Choose each valid tool once.' using errcode='22023';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 146,
+      "text": "raise exception 'A selected tool is missing or has an ambiguous asset ID. Refresh the masterlist.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 149,
+      "text": "if coalesce(array_length(v_equipment_ids,1),0)=0 then raise exception 'Movement contains no equipment.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 152,
+      "text": "raise exception 'Only equipment with a positive quantity can move.' using errcode='22023';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 155,
+      "text": "raise exception 'An asset identifier changed. Review the movement before continuing.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 161,
+      "text": "if v_count<>1 then raise exception 'Choose an existing destination site.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 166,
+      "text": "if v_count<>1 then raise exception 'Choose an existing receiver with a unique profile name.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 168,
+      "text": "raise exception 'Engineers must request equipment for their own custody.' using errcode='42501';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 174,
+      "text": "raise exception 'A tool is unavailable because it is missing, under repair, or retired.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 179,
+      "text": "raise exception 'Requests may allocate only available stock with no current holder. Ask the current holder to transfer equipment already in use.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 182,
+      "text": "raise exception 'Only equipment currently in use can be returned.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 185,
+      "text": "raise exception 'A tool is reserved by an approved request or pending transfer.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 190,
+      "text": "raise exception 'Engineers may only transfer, return or report tools in their custody. Request available stock through Admin review.' using errcode='42501';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 195,
+      "text": "if nullif(btrim(p_payload->>'purpose'),'') is null or char_length(p_payload->>'purpose')>2000 then raise exception 'Enter a purpose of at most 2000 characters.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 197,
+      "text": "if (p_payload->>'neededUntil') !~ '^\\d{4}-\\d{2}-\\d{2}$' then raise exception 'Enter the needed-until date as YYYY-MM-DD.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 199,
+      "text": "exception when invalid_datetime_format or datetime_field_overflow then raise exception 'Enter a valid needed-until date.' using errcode='22023'; end;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 200,
+      "text": "if to_char(v_needed_until,'YYYY-MM-DD')<>p_payload->>'neededUntil' then raise exception 'Enter a valid needed-until date.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 201,
+      "text": "if v_needed_until < (current_timestamp at time zone 'Asia/Manila')::date then raise exception 'The needed-until date cannot be in the past.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 207,
+      "text": "if v_record.kind<>'request' or v_record.data->>'status'<>'pending' then raise exception 'Only pending requests can be reviewed.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 208,
+      "text": "if p_action='rejectRequest' and (nullif(btrim(p_payload->>'reason'),'') is null or char_length(p_payload->>'reason')>2000) then raise exception 'Enter a rejection reason of at most 2000 characters.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 216,
+      "text": "if v_record.kind<>'request' or v_record.data->>'status'<>'approved' then raise exception 'Only approved requests can be released.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 217,
+      "text": "if (select count(*) from public.mcpa_movement_reservations where movement_id=v_id)<>array_length(v_equipment_ids,1) then raise exception 'The request reservation changed.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 230,
+      "text": "if v_record.kind<>'transfer' or v_record.data->>'status'<>'pending' then raise exception 'Only pending transfers can be received.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 231,
+      "text": "if v_role<>'admin' and v_record.receiver_id is distinct from v_actor_id then raise exception 'Only the named receiver or Admin may confirm receipt.' using errcode='42501'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 234,
+      "text": "if (select count(*) from public.mcpa_movement_reservations where movement_id=v_id)<>array_length(v_equipment_ids,1) then raise exception 'Transfer reservation changed.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 238,
+      "text": "raise exception 'Tool custody or status changed after dispatch. Refresh and resolve the transfer.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 249,
+      "text": "if nullif(v_notes,'') is null then raise exception 'Describe the damage or missing tool.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 259,
+      "text": "raise exception 'This report is already closed or has changed.' using errcode='40001';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 263,
+      "text": "(p_action='recoverMissing' and regexp_replace(lower(v_tool.status::text),'[ _-]','','g')<>'missing') then raise exception 'Equipment status changed. Review it before resolving this report.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 264,
+      "text": "if p_action='recoverMissing' and coalesce(p_payload->>'condition','') not in ('good','damaged') then raise exception 'Record the recovered tool condition.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 265,
+      "text": "if p_action='recoverMissing' and p_payload->>'condition'='damaged' and nullif(v_notes,'') is null then raise exception 'Describe the recovered damage.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 299,
+      "text": "raise exception 'Record exactly one condition for every selected tool.' using errcode='22023';"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 304,
+      "text": "if not found or coalesce(v_condition,'') not in ('good','damaged','lost') then raise exception 'Choose a valid condition for every tool.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 306,
+      "text": "if char_length(v_notes)>2000 or (v_condition<>'good' and nullif(v_notes,'') is null) then raise exception 'Describe each damaged or lost tool using at most 2000 characters.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "1-admin/modules/purchases/purchases.js",
+      "line": 78,
+      "text": "if (error) throw error; if (!data?.id) throw new Error('No saved purchase returned');"
+    },
+    {
+      "file": "1-admin/modules/sites/setup.sql",
+      "line": 128,
+      "text": "raise exception 'Project history cannot be edited or deleted.' using errcode = '42501';"
+    },
+    {
+      "file": "1-admin/modules/users/users.js",
+      "line": 62,
+      "text": "const {data,error}=await client.rpc('mcpa_accounts');if(error)throw new Error('People could not load. Verify Admin access and the account-management migration, then refresh.');if(!root.isConnected)return;"
+    },
+    {
+      "file": "1-admin/modules/users/users.js",
+      "line": 74,
+      "text": "async function invoke(body){const {data,error}=await client.functions.invoke('manage-accounts',{body});if(error){let detail;try{detail=await error.context?.json();}catch(_){}throw new Error(detail?.error||'Account service could not complete the request. Verify Edge Function deployment and refresh; retry the same account request.');}return data;}"
+    },
+    {
+      "file": "1-admin/modules/users/users.js",
+      "line": 75,
+      "text": "async function save(p,role,status,authId=p.auth_user_id){const {error}=await client.rpc('mcpa_save_account',{p_id:p.id,p_name:p.name,p_role:role,p_status:status,p_auth_user_id:authId||null});if(error)throw new Error(['22023','42501'].includes(error.code)?error.message:error.code==='23505'?'This Auth account is already linked to another person.':'Account changes could not be saved. Refresh and try again.');}"
+    },
+    {
+      "file": "js/app.js",
+      "line": 92,
+      "text": ".then(function(res){ if (!res.ok) throw new Error('Screen could not load (' + res.status + ').'); return res.text(); })"
+    },
+    {
+      "file": "js/auth.js",
+      "line": 132,
+      "text": "requireLive(){if(demo || !profile)throw new Error('Sign in with an active company account to access live records.');return {...profile};}"
+    },
+    {
+      "file": "js/equipment-photos.js",
+      "line": 10,
+      "text": "if (!user || (admin && user.role !== 'admin')) throw new Error('Only an active Admin account can save equipment photos.');"
+    },
+    {
+      "file": "js/equipment-photos.js",
+      "line": 20,
+      "text": "if (!file || !types[file.type]) throw new Error('Choose a JPEG, PNG, or WebP photo.');"
+    },
+    {
+      "file": "js/equipment-photos.js",
+      "line": 21,
+      "text": "if (!Number.isFinite(file.size) || file.size <= 0 || file.size > maxBytes) throw new Error('Choose a photo between 1 byte and 5 MB.');"
+    },
+    {
+      "file": "js/equipment-photos.js",
+      "line": 26,
+      "text": "if (!(file.type === 'image/png' && png || file.type === 'image/jpeg' && jpeg || file.type === 'image/webp' && webp)) throw new Error('The selected file is not a valid JPEG, PNG, or WebP photo.');"
+    },
+    {
+      "file": "js/equipment-photos.js",
+      "line": 32,
+      "text": "if (!assetId || !String(assetId).trim()) throw new Error('Save the photo with a valid equipment ID.');"
+    },
+    {
+      "file": "js/equipment-photos.js",
+      "line": 41,
+      "text": "catch (_) { throw new Error('Photo upload could not complete. Your item has not been saved. Check your connection and retry.'); }"
+    },
+    {
+      "file": "js/equipment-photos.js",
+      "line": 42,
+      "text": "if (result.error) throw new Error('Photo upload failed. Check your connection and that equipment photo storage is installed, then retry. Your item has not been saved.');"
+    },
+    {
+      "file": "js/equipment-photos.js",
+      "line": 43,
+      "text": "if (identity(true).id !== user.id) throw new Error('Your account changed during the upload. Sign in again before saving the item.');"
+    },
+    {
+      "file": "js/equipment-photos.js",
+      "line": 56,
+      "text": "if (error || !data?.signedUrl) throw new Error('The saved photo could not load.');"
+    },
+    {
+      "file": "js/equipment-photos.js",
+      "line": 57,
+      "text": "if (identity().id !== user.id) throw new Error('Your account changed while loading the photo.');"
+    },
+    {
+      "file": "js/equipment-tracking.js",
+      "line": 7,
+      "text": "if (!window.supabase?.createClient) throw new Error('The database connection could not load. Please try again.');"
+    },
+    {
+      "file": "js/global-search.js",
+      "line": 63,
+      "text": "const records = (data, key) => {if(!Array.isArray(data?.[key]))throw new Error('Invalid search source');return data[key];};"
+    },
+    {
+      "file": "js/monitoring.js",
+      "line": 57,
+      "text": "if(!data||!Array.isArray(data.notifications)||!Array.isArray(data.overdue))throw new Error('Invalid monitoring snapshot');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 13,
+      "text": "if (!window.supabase?.createClient) throw new Error('The database connection could not load. Check your connection and refresh, or explicitly open demo data.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 40,
+      "text": "if (!data || !Array.isArray(data.tools) || !Array.isArray(data.requests)) throw new Error('The movement database returned an invalid snapshot. Refresh after checking the setup.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 53,
+      "text": "if (!window.MCPAAuth?.canAction(action)) throw new Error('This action is not permitted for your account.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 57,
+      "text": "if (saving) throw new Error('A movement is already saving. Please wait.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 58,
+      "text": "if (stale) throw new Error('A movement was saved, but the latest records could not load. Refresh before making another change.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 60,
+      "text": "if (requestRevision !== revision) throw new Error('Your session changed. Sign in again before continuing.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 62,
+      "text": "if (!actor.id) throw new Error('Sign in to record a movement.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 69,
+      "text": "if (requestRevision !== revision) throw new Error('Your session changed. Check the saved records after signing in again.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 74,
+      "text": "catch (error) { if (requestRevision === revision) stale = true; throw new Error('Saved successfully, but the updated records could not load. Refresh before continuing. ' + error.message); }"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 75,
+      "text": "if (requestRevision !== revision) throw new Error('Your session changed. Check the saved records after signing in again.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 89,
+      "text": "if (['PGRST202','42883','42P01'].includes(error.code)) throw new Error('Office returns are not configured yet. Contact Admin.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 92,
+      "text": "if (!data?.id || typeof data.name !== 'string' || !data.name.trim()) throw new Error('The Office destination could not be verified. Contact Admin.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 105,
+      "text": "if (value !== mode) throw new Error('Exit this workspace before changing between demo and company data.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 120,
+      "text": "if (!addressed(transfer)) throw new Error('Only the named receiver can confirm this handover.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 124,
+      "text": "if (assets.length !== 1) throw new Error('No unique equipment tag or transfer matches this code. Scan the original tag or enter its exact ID.');"
+    },
+    {
+      "file": "js/movement-cloud.js",
+      "line": 127,
+      "text": "if (matches.length > 1) throw new Error('This equipment has multiple pending handovers. Use the transfer reference and ask Admin to review the conflict.');"
+    },
+    {
+      "file": "js/movement-overview.js",
+      "line": 99,
+      "text": "if(error)throw new Error(['PGRST202','42883'].includes(error.code)?'Personal equipment access is not installed yet. Contact your administrator.':'Your equipment could not load. Please retry.');"
+    },
+    {
+      "file": "js/movement-overview.js",
+      "line": 100,
+      "text": "if(!Array.isArray(data?.tools))throw new Error('Invalid personal equipment response.');"
+    },
+    {
+      "file": "js/movement-store.js",
+      "line": 17,
+      "text": "function fail(message) { throw new Error(message); }"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 204,
+      "text": "if(error)throw new Error('Assigned projects could not load. Check your connection and retry.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 214,
+      "text": "if(error)throw new Error(['22023','42501'].includes(error.code)?error.message:'Receiving QR service is unavailable. Check your connection or contact your administrator.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 237,
+      "text": "if(!/^MCPA-RECEIVER:[a-f0-9]{64}$/.test(decoded))throw new Error('This is not a receiving QR. Ask the receiving person to generate their receiving QR.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 428,
+      "text": "if (!condition) throw new Error('Inspect every selected tool before confirming.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 429,
+      "text": "if (condition !== 'good' && !notes) throw new Error('Add inspection notes for every damaged or missing tool.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 431,
+      "text": "if (form.dataset.form === 'receive' && condition !== 'lost' && !tested) throw new Error('Test each received tool before confirming receipt.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 433,
+      "text": "if (form.dataset.form === 'receive' && !disposition) throw new Error('Choose a custody decision for each damaged tool.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 486,
+      "text": "if (!transfer) throw new Error('No transfer found for that code. Check the code and data source.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 496,
+      "text": "if (['request', 'transfer', 'return'].includes(kind) && !toolIds.length) throw new Error('Select at least one tool.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 498,
+      "text": "if(kind==='request'&&mode()==='live'&&!requestSites().some(site=>site.name===payload.destination))throw new Error(requestSites().length?'Choose a project assigned to your account.':noRequestProject);"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 501,
+      "text": "if(!current.returnOffice)throw new Error('The company Office destination is unavailable. Retry the Office connection or contact Admin.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 510,
+      "text": "if(!['withdrawRequest','cancelReservation','cancelTransfer','reopenTransfer'].includes(method))throw new Error('Unknown movement action. Refresh and try again.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 512,
+      "text": "if(!reason||!confirmed)throw new Error('Enter a reason and confirm the action before submitting.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 519,
+      "text": "if(!canAdjust(detailRecord(),'refuseTransfer'))throw new Error('Damage refusal is unavailable for this account or handover. Refresh and try again.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 521,
+      "text": "if(!reason||!confirmed)throw new Error('Enter a refusal reason and confirm the refusal.');"
+    },
+    {
+      "file": "js/movement-ui.js",
+      "line": 717,
+      "text": "if (!store()) throw new Error('The movement service has not loaded. Reload the page and try again.');"
+    },
+    {
+      "file": "js/pdf-reports.js",
+      "line": 128,
+      "text": "if (!(bytes instanceof ArrayBuffer) || !bytes.byteLength) throw new Error('Empty PDF output');"
+    },
+    {
+      "file": "supabase/equipment-office-confirmed-correction.sql",
+      "line": 14,
+      "text": "raise exception 'Install the prospective Office inventory migration first.';"
+    },
+    {
+      "file": "supabase/equipment-office-confirmed-correction.sql",
+      "line": 19,
+      "text": "raise exception 'The physically verified asset no longer matches the reviewed record. Stop and review.';"
+    },
+    {
+      "file": "supabase/equipment-office-confirmed-correction.sql",
+      "line": 29,
+      "text": "raise exception 'T-8862 now has a real location or active custody/workflow. No equipment was changed. Rerun the preflight and verify physically again.';"
+    },
+    {
+      "file": "supabase/merge-integration-verification.sql",
+      "line": 5,
+      "text": "$optional$if char_length(p_payload->>'purpose')>2000 then raise exception 'Purpose must be at most 2000 characters.' using errcode='22023'; end if;$optional$)>0"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 9,
+      "text": "raise exception 'Preflight: Auth, profiles, equipment and movement setup must exist.';"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 13,
+      "text": "raise exception 'Preflight: inspect profiles; expected existing UUID id and name.';"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 16,
+      "text": "raise exception 'Preflight: existing profiles.role is not text. Review its enum/dependencies before adapting this migration.';"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 48,
+      "text": "raise exception 'An active authorized account is required.' using errcode='42501';"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 97,
+      "text": "if not coalesce(allowed,false) then raise exception 'This action is not permitted for your account.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 104,
+      "text": "raise exception 'Request tools for a project assigned to your account.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 108,
+      "text": "if receiver.id is null then raise exception 'Choose an active Engineer or Architect receiver.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 113,
+      "text": "raise exception 'The receiver must have an active operational account.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 117,
+      "text": "raise exception 'The current holder must transfer tools already in custody.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 120,
+      "text": "if m.receiver_id is distinct from p.id then raise exception 'Only the named receiver can confirm receipt.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 123,
+      "text": "raise exception 'Test every received tool before confirming receipt.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 126,
+      "text": "raise exception 'Explicitly accept custody with recorded damage, or contact Admin before confirming receipt.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 214,
+      "text": "p:=mcpa_auth_private.identity();if p.role<>'admin' then raise exception 'Admin access required.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 221,
+      "text": "actor:=mcpa_auth_private.identity();if actor.role<>'admin' then raise exception 'Admin access required.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 224,
+      "text": "if p_id=actor.id and (p_role<>'admin' or p_status<>'active' or p_auth_user_id is distinct from actor.auth_user_id) then raise exception 'You cannot remove your own administrator access.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 225,
+      "text": "if p_status='active' and p_auth_user_id is null then raise exception 'Link a Supabase Auth account before activation.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 226,
+      "text": "if p_auth_user_id is not null and not exists(select 1 from auth.users where id=p_auth_user_id) then raise exception 'Create or invite the Auth account first.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610040001_authenticated_access.sql",
+      "line": 231,
+      "text": "if result is null then raise exception 'Profile no longer exists.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610050001_legacy_handover_lockdown.sql",
+      "line": 15,
+      "text": "raise exception 'Legacy schema differs from the reviewed preflight. Stop and review; no changes applied.';"
+    },
+    {
+      "file": "supabase/migrations/202610050001_legacy_handover_lockdown.sql",
+      "line": 39,
+      "text": "raise exception 'Unexpected inherited access remains for % on %. Transaction will roll back; review role memberships.', browser_role, table_name;"
+    },
+    {
+      "file": "supabase/migrations/202610050001_legacy_handover_lockdown.sql",
+      "line": 45,
+      "text": "raise exception 'Unexpected inherited legacy RPC access remains for %. Transaction will roll back; review role memberships.', browser_role;"
+    },
+    {
+      "file": "supabase/migrations/202610050002_independent_profile_identity.sql",
+      "line": 16,
+      "text": "raise exception 'Schema differs from reviewed preflight. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610050002_independent_profile_identity.sql",
+      "line": 20,
+      "text": "raise exception 'Complete and verify legacy handover lockdown first.';"
+    },
+    {
+      "file": "supabase/migrations/202610050002_independent_profile_identity.sql",
+      "line": 26,
+      "text": "raise exception 'Legacy browser access remains. Complete and verify lockdown first.';"
+    },
+    {
+      "file": "supabase/migrations/202610050002_independent_profile_identity.sql",
+      "line": 41,
+      "text": "raise exception 'Required identity columns are missing. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610050002_independent_profile_identity.sql",
+      "line": 45,
+      "text": "raise exception 'profiles.id must remain the primary key. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610050002_independent_profile_identity.sql",
+      "line": 50,
+      "text": "raise exception 'Expected validated auth_user_id -> auth.users(id) ON DELETE SET NULL is missing.';"
+    },
+    {
+      "file": "supabase/migrations/202610050002_independent_profile_identity.sql",
+      "line": 61,
+      "text": "raise exception 'profiles_id_fkey differs from the reviewed constraint. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610050002_independent_profile_identity.sql",
+      "line": 66,
+      "text": "raise exception 'An additional profile-ID/Auth foreign key exists. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610050002_independent_profile_identity.sql",
+      "line": 87,
+      "text": "raise exception 'Profile data or retained constraints changed unexpectedly. Rolling back.';"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 13,
+      "text": "raise exception 'Stop: profiles.id still references auth.users. Complete the separately reviewed identity migration before account management.';"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 52,
+      "text": "if actor.role<>'admin' then raise exception 'Admin access required.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 70,
+      "text": "if actor.role<>'admin' then raise exception 'Admin access required.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 74,
+      "text": "if not found then raise exception 'Profile no longer exists.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 78,
+      "text": "raise exception 'Check the account details.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 80,
+      "text": "raise exception 'Creating administrators requires a separately authorized process.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 82,
+      "text": "raise exception 'You cannot remove your own administrator access.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 84,
+      "text": "raise exception 'An existing account link cannot be reassigned or removed here.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 86,
+      "text": "raise exception 'Finish the prepared invitation before editing this account.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 87,
+      "text": "if p_status='active' and p_auth_user_id is null then raise exception 'Link a Supabase Auth account before activation.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 89,
+      "text": "raise exception 'Create or invite the Auth account first.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 92,
+      "text": "raise exception 'A person with this name exists. Select the correct existing profile before recovery linking.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 120,
+      "text": "if actor.id is null then raise exception 'Active Admin access required.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 126,
+      "text": "raise exception 'Enter a valid name, email, invitation ID and supported role.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 131,
+      "text": "raise exception 'This invitation already exists with different details. Open its existing person record.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 135,
+      "text": "raise exception 'This email already has an Auth account. Use Advanced / Recovery Account Linking for the correct person.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 140,
+      "text": "raise exception 'Select an existing unlinked, non-Admin company profile.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 141,
+      "text": "if person.name<>full_name then raise exception 'Use the existing person name when inviting their account.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 146,
+      "text": "raise exception 'A person with this name exists. Select that profile, or explicitly confirm this is a different person.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 156,
+      "text": "if job.id is null then raise exception 'Invitation no longer exists.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 159,
+      "text": "if job.lease_until>clock_timestamp() then raise exception 'Invitation is already being sent. Wait two minutes, then refresh.' using errcode='40001';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 160,
+      "text": "if job.sent_at>clock_timestamp()-interval '60 seconds' then raise exception 'Wait one minute before resending the invitation.' using errcode='40001';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 161,
+      "text": "if job.state='sent' and person.account_status<>'active' then raise exception 'Reactivate this account before resending.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 165,
+      "text": "raise exception 'An Auth account already owns this email. Review its identity in Advanced / Recovery.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 167,
+      "text": "raise exception 'This Auth account is linked to another person.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 171,
+      "text": "raise exception 'The account link changed. Review it before continuing.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 176,
+      "text": "if job.lease_id is null or job.lease_id is distinct from (p_payload->>'lease_id')::uuid then raise exception 'Invitation attempt changed. Refresh and retry.' using errcode='40001';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 184,
+      "text": "raise exception 'Invitation account could not be verified.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 186,
+      "text": "raise exception 'The account link changed. Review it before continuing.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 201,
+      "text": "raise exception 'Unsupported invitation action.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 16,
+      "text": "raise exception 'Supply a valid operation and movement form.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 24,
+      "text": "raise exception 'This operation was already saved with different values. Refresh and try again.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 29,
+      "text": "raise exception 'Unknown movement action.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 32,
+      "text": "if v_role is null or v_role not in ('admin','engineer') then raise exception 'Select an application role.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 34,
+      "text": "exception when invalid_text_representation then raise exception 'Select an existing profile.' using errcode='22023'; end;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 37,
+      "text": "raise exception 'Select an existing profile before creating a movement.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 40,
+      "text": "raise exception 'Switch to Admin review for this action.' using errcode='42501';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 43,
+      "text": "if char_length(v_notes)>2000 then raise exception 'Notes must be at most 2000 characters.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 47,
+      "text": "if not found then raise exception 'Movement no longer exists. Refresh and try again.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 54,
+      "text": "raise exception 'Select between 1 and 100 tools.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 58,
+      "text": "raise exception 'Choose each valid tool once.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 62,
+      "text": "raise exception 'A selected tool is missing or has an ambiguous asset ID. Refresh the masterlist.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 65,
+      "text": "if coalesce(array_length(v_equipment_ids,1),0)=0 then raise exception 'Movement contains no equipment.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 68,
+      "text": "raise exception 'Only equipment with a positive quantity can move.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 71,
+      "text": "raise exception 'An asset identifier changed. Review the movement before continuing.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 77,
+      "text": "if v_count<>1 then raise exception 'Choose an existing destination site.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 82,
+      "text": "if not found then raise exception 'Choose an active Engineer or Architect receiver by profile ID.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 84,
+      "text": "raise exception 'Engineers must request equipment for their own custody.' using errcode='42501';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 90,
+      "text": "raise exception 'A tool is unavailable because it is missing, under repair, or retired.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 95,
+      "text": "raise exception 'Requests may allocate only available stock with no current holder. Ask the current holder to transfer equipment already in use.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 98,
+      "text": "raise exception 'Only equipment currently in use can be returned.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 101,
+      "text": "raise exception 'A tool is reserved by an approved request or pending transfer.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 106,
+      "text": "raise exception 'Engineers may only transfer, return or report tools in their custody. Request available stock through Admin review.' using errcode='42501';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 111,
+      "text": "if nullif(btrim(p_payload->>'purpose'),'') is null or char_length(p_payload->>'purpose')>2000 then raise exception 'Enter a purpose of at most 2000 characters.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 113,
+      "text": "if (p_payload->>'neededUntil') !~ '^\\d{4}-\\d{2}-\\d{2}$' then raise exception 'Enter the needed-until date as YYYY-MM-DD.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 115,
+      "text": "exception when invalid_datetime_format or datetime_field_overflow then raise exception 'Enter a valid needed-until date.' using errcode='22023'; end;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 116,
+      "text": "if to_char(v_needed_until,'YYYY-MM-DD')<>p_payload->>'neededUntil' then raise exception 'Enter a valid needed-until date.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 117,
+      "text": "if v_needed_until < (current_timestamp at time zone 'Asia/Manila')::date then raise exception 'The needed-until date cannot be in the past.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 123,
+      "text": "if v_record.kind<>'request' or v_record.data->>'status'<>'pending' then raise exception 'Only pending requests can be reviewed.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 124,
+      "text": "if p_action='rejectRequest' and (nullif(btrim(p_payload->>'reason'),'') is null or char_length(p_payload->>'reason')>2000) then raise exception 'Enter a rejection reason of at most 2000 characters.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 132,
+      "text": "if v_record.kind<>'request' or v_record.data->>'status'<>'approved' then raise exception 'Only approved requests can be released.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 133,
+      "text": "if (select count(*) from public.mcpa_movement_reservations where movement_id=v_id)<>array_length(v_equipment_ids,1) then raise exception 'The request reservation changed.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 146,
+      "text": "if v_record.kind<>'transfer' or v_record.data->>'status'<>'pending' then raise exception 'Only pending transfers can be received.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 147,
+      "text": "if v_role<>'admin' and v_record.receiver_id is distinct from v_actor_id then raise exception 'Only the named receiver or Admin may confirm receipt.' using errcode='42501'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 150,
+      "text": "if (select count(*) from public.mcpa_movement_reservations where movement_id=v_id)<>array_length(v_equipment_ids,1) then raise exception 'Transfer reservation changed.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 154,
+      "text": "raise exception 'Tool custody or status changed after dispatch. Refresh and resolve the transfer.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 165,
+      "text": "if nullif(v_notes,'') is null then raise exception 'Describe the damage or missing tool.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 175,
+      "text": "raise exception 'This report is already closed or has changed.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 179,
+      "text": "(p_action='recoverMissing' and regexp_replace(lower(v_tool.status::text),'[ _-]','','g')<>'missing') then raise exception 'Equipment status changed. Review it before resolving this report.' using errcode='40001'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 180,
+      "text": "if p_action='recoverMissing' and coalesce(p_payload->>'condition','') not in ('good','damaged') then raise exception 'Record the recovered tool condition.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 181,
+      "text": "if p_action='recoverMissing' and p_payload->>'condition'='damaged' and nullif(v_notes,'') is null then raise exception 'Describe the recovered damage.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 215,
+      "text": "raise exception 'Record exactly one condition for every selected tool.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 220,
+      "text": "if not found or coalesce(v_condition,'') not in ('good','damaged','lost') then raise exception 'Choose a valid condition for every tool.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 222,
+      "text": "if char_length(v_notes)>2000 or (v_condition<>'good' and nullif(v_notes,'') is null) then raise exception 'Describe each damaged or lost tool using at most 2000 characters.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 271,
+      "text": "if not coalesce(allowed,false) then raise exception 'This action is not permitted for your account.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 278,
+      "text": "raise exception 'Request tools for a project assigned to your account.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 282,
+      "text": "if receiver.id is null then raise exception 'Choose an active Engineer or Architect receiver.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 287,
+      "text": "raise exception 'The receiver must have an active operational account.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 291,
+      "text": "raise exception 'The current holder must transfer tools already in custody.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 294,
+      "text": "if m.receiver_id is distinct from p.id then raise exception 'Only the named receiver can confirm receipt.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 297,
+      "text": "raise exception 'Test every received tool before confirming receipt.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060002_recipient_identity.sql",
+      "line": 300,
+      "text": "raise exception 'Explicitly accept custody with recorded damage, or contact Admin before confirming receipt.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 33,
+      "text": "if actor.id is null then raise exception 'Active Admin access required.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 35,
+      "text": "raise exception 'Invalid development account operation.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 45,
+      "text": "raise exception 'Enter a valid name, email and Engineer or Architect role.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 50,
+      "text": "raise exception 'This test account was already prepared with different details. Retry its original details.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 55,
+      "text": "raise exception 'This email already belongs to an account or invitation. Use a new test email.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 57,
+      "text": "raise exception 'A company person with this name exists. Use a distinct test name; existing people cannot be converted to test accounts.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 63,
+      "text": "if job.id is null then raise exception 'Test account request no longer exists.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 69,
+      "text": "raise exception 'Test account attempt changed. Refresh and retry.' using errcode='40001';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 79,
+      "text": "raise exception 'An unrelated Auth account owns this email. No account was changed.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 83,
+      "text": "raise exception 'This person or email now belongs to another account or invitation. Review before retrying.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 85,
+      "text": "if job.lease_until>clock_timestamp() then raise exception 'Test account creation is already running. Wait two minutes, then retry.' using errcode='40001';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 91,
+      "text": "raise exception 'Test account attempt expired or changed. Retry the same request.' using errcode='40001';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 93,
+      "text": "raise exception 'The test Auth account could not be verified.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 101,
+      "text": "raise exception 'Unsupported development account action.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 112,
+      "text": "if actor.role<>'admin' then raise exception 'Admin access required.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 26,
+      "text": "if p.role not in ('engineer','architect') then raise exception 'Engineer or Architect access required.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 56,
+      "text": "if p.role not in ('engineer','architect') then raise exception 'Engineer or Architect access required.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 75,
+      "text": "raise exception 'This receiving QR is expired or revoked. Ask the receiver to generate a new one.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 79,
+      "text": "raise exception 'The receiver no longer has an active Engineer or Architect account.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 81,
+      "text": "raise exception 'The receiving project assignment changed. Ask the receiver for a new QR.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 90,
+      "text": "if p.role not in ('engineer','architect') then raise exception 'Engineer or Architect access required.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 95,
+      "text": "if not found then raise exception 'Choose an active project assigned to your account.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 108,
+      "text": "if p.role not in ('engineer','architect','tool_handler') then raise exception 'Transfer access required.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 134,
+      "text": "if p.role not in ('engineer','architect','tool_handler') then raise exception 'Transfer access required.' using errcode='42501';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 138,
+      "text": "raise exception 'Choose an active Engineer or Architect receiver.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 140,
+      "text": "raise exception 'Choose an active destination assigned to the receiving Engineer or Architect. Contact Admin to arrange the assignment.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 144,
+      "text": "raise exception 'The receiver or destination does not match this receiving QR. Scan again or enter details manually.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 16,
+      "text": "raise exception 'Project history already exists or differs from the reviewed preflight. Stop and review; no changes applied.';"
+    },
+    {
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 22,
+      "text": "raise exception 'Required authenticated Projects functions are missing. Stop and review; no changes applied.';"
+    },
+    {
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 29,
+      "text": "raise exception 'Projects definitions or triggers differ from the reviewed preflight. Stop and review; no changes applied.';"
+    },
+    {
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 38,
+      "text": "raise exception 'Projects columns differ from the reviewed preflight. Stop and review; no changes applied.';"
+    },
+    {
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 50,
+      "text": "raise exception 'A possible project history relation exists. Stop and review it before creating another history table.';"
+    },
+    {
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 113,
+      "text": "raise exception 'Project history cannot be edited or deleted.' using errcode='42501';"
+    },
+    {
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 129,
+      "text": "raise exception 'Unexpected inherited anonymous history access. Transaction will roll back; review role memberships.';"
+    },
+    {
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 136,
+      "text": "raise exception 'Unexpected inherited history write/trigger access for %. Transaction will roll back.',browser_role;"
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 16,
+      "text": "raise exception 'Authenticated access and Supabase Storage must be installed before feature storage. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 19,
+      "text": "raise exception 'Storage objects must already have row-level security enabled. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 23,
+      "text": "raise exception 'Existing equipment.image_url is not a supported text column. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 33,
+      "text": "raise exception 'Existing Storage policy % requires review before private feature buckets can be installed.',policy_row.polname;"
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 39,
+      "text": "raise exception 'Existing function % differs from this attachment implementation. Stop and review.',function_name;"
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 48,
+      "text": "raise exception 'Existing bucket % has conflicting privacy, size or MIME settings. Stop and review.',bucket_row.id;"
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 108,
+      "text": "if person.role<>'admin' then raise exception 'Only Admin can change managed equipment photos.' using errcode='42501'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100003_feature_storage.sql",
+      "line": 113,
+      "text": "raise exception 'Select a valid uploaded equipment photo.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 40,
+      "text": "raise exception 'Cancellation history is immutable.' using errcode='42501';"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 89,
+      "text": "raise exception 'Install the authenticated Engineer portal migration before cancellation.';"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 111,
+      "text": "raise exception 'Only the accountable Engineer or Architect can perform this action.' using errcode='42501';"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 118,
+      "text": "raise exception 'Enter a movement reference and reason of 1 to 2000 characters.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 121,
+      "text": "raise exception 'Confirm the action before submitting.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 131,
+      "text": "raise exception 'This operation was already saved with different values or another account.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 136,
+      "text": "if not found then raise exception 'Movement no longer exists. Refresh and try again.' using errcode='40001';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 138,
+      "text": "raise exception 'This movement is no longer eligible, or belongs to another accountable person.' using errcode='42501';"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 141,
+      "text": "if coalesce(array_length(equipment_ids,1),0)=0 then raise exception 'Movement contains no tracked equipment.' using errcode='40001';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 146,
+      "text": "raise exception 'The pending request has an unexpected reservation or handover. Refresh before continuing.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 153,
+      "text": "raise exception 'The reservation changed. Refresh and review the equipment before continuing.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 159,
+      "text": "raise exception 'This reservation has already been fulfilled or its inventory changed.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 168,
+      "text": "raise exception 'Equipment custody or condition changed after dispatch. Refresh and review the handover.' using errcode='40001';"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 176,
+      "text": "raise exception 'Inspect every tool before refusing the handover.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 178,
+      "text": "raise exception 'Inspect every tool before refusing the handover.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 183,
+      "text": "raise exception 'Inspection records must match each selected tool exactly once.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 187,
+      "text": "raise exception 'Describe each damaged or missing tool using at most 2000 characters.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 189,
+      "text": "raise exception 'Test every received tool before recording the inspection.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 191,
+      "text": "raise exception 'Record a custody decision for each damaged tool.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 194,
+      "text": "raise exception 'Damage refusal requires at least one damaged tool declined with inspection notes.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 212,
+      "text": "raise exception 'The linked request changed. Refresh before canceling the handover.' using errcode='40001';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 8,
+      "text": "or to_regclass('storage.objects') is null then raise exception 'Authenticated materials and private storage setup are required.';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 48,
+      "text": "begin raise exception 'Purchase history is append-only.' using errcode='42501';end $$;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 59,
+      "text": "if p_id is null or p_operation_id is null or jsonb_typeof(p_record) is distinct from 'object' or octet_length(p_record::text)>131072 then raise exception 'Valid purchase and operation IDs and a bounded purchase record are required.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 62,
+      "text": "or char_length(coalesce(p_record->>'notes',''))>2000 then raise exception 'Enter a supplier, reference and notes within the allowed lengths.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 66,
+      "text": "if existing.purchase_id<>p_id or existing.actor_id<>actor.id or existing.input is distinct from jsonb_build_object('version',p_version,'record',p_record) then raise exception 'This save was already submitted with different values.' using errcode='40001';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 69,
+      "text": "if jsonb_typeof(p_record->'items') is distinct from 'array' or jsonb_array_length(p_record->'items') not between 1 and 100 then raise exception 'Add between one and 100 purchase items.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 72,
+      "text": "or coalesce(line->>'quantity','') !~ '^[0-9]+(\\.[0-9]{1,3})?$' or coalesce(line->>'unit_price','') !~ '^[0-9]+(\\.[0-9]{1,2})?$' then raise exception 'Item descriptions, positive quantities and prices with at most two decimal places are required.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 74,
+      "text": "if quantity<=0 or quantity>=1000000000 or price>=1000000000000 then raise exception 'Purchase quantities or prices exceed the allowed limits.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 78,
+      "text": "if amount>=10000000000000000 then raise exception 'Purchase total exceeds the allowed limit.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 79,
+      "text": "if coalesce(p_record->>'purchase_date','') !~ '^\\d{4}-\\d{2}-\\d{2}$' then raise exception 'Enter a purchase date.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 82,
+      "text": "if link is not null and not exists(select 1 from public.consumable_requests where id=link) then raise exception 'The linked Material Request no longer exists.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 84,
+      "text": "if (prior.id is null and p_version is not null) or (prior.id is not null and prior.version is distinct from p_version) then raise exception 'This purchase changed. Reopen it before saving.' using errcode='40001';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 86,
+      "text": "if receipt is not null and (receipt !~ ('^'||p_id::text||'/[0-9a-f-]{36}\\.(pdf|jpg|png|webp)$') or not exists(select 1 from storage.objects where bucket_id='purchase-receipts' and name=receipt)) then raise exception 'Upload the receipt for this purchase before saving.' using errcode='22023';end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 13,
+      "text": "raise exception 'Authenticated movement infrastructure is required for monitoring.';"
+    },
+    {
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 18,
+      "text": "raise exception 'Existing monitoring relation % differs from this implementation. Stop and review.',relation_name;"
+    },
+    {
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 67,
+      "text": "raise exception 'Monitoring history and notification event fields are immutable.' using errcode='42501';"
+    },
+    {
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 152,
+      "text": "if notification_id is null then raise exception 'Notification is not available to your account.' using errcode='42501'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 206,
+      "text": "if person.role<>'admin' then raise exception 'Admin reports access required.' using errcode='42501'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 208,
+      "text": "raise exception 'Choose a valid reporting range of at most 367 days.' using errcode='22023'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610120001_request_turnover_notifications.sql",
+      "line": 15,
+      "text": "raise exception 'Existing authenticated monitoring setup is required. Stop and review the preflight result; do not rerun prototype setup scripts.';"
+    },
+    {
+      "file": "supabase/migrations/202610120001_request_turnover_notifications.sql",
+      "line": 22,
+      "text": "raise exception 'The existing movement notification trigger is missing, disabled or different. Stop and review before changing it.';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 14,
+      "text": "raise exception 'Authenticated Engineer portal is required. Stop and review the preflight.';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 23,
+      "text": "$optional$if char_length(p_payload->>'purpose')>2000 then raise exception 'Purpose must be at most 2000 characters.' using errcode='22023'; end if;$optional$,"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 24,
+      "text": "$required$if nullif(btrim(p_payload->>'purpose'),'') is null or char_length(p_payload->>'purpose')>2000 then raise exception 'Enter a purpose of at most 2000 characters.' using errcode='22023'; end if;$required$));"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 26,
+      "text": "raise exception 'The return lifecycle differs from the reviewed implementation. Stop and inspect it before installing Office returns.';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 32,
+      "text": "raise exception 'The movement gateway differs from the reviewed portal/cancellation gateways. Stop and inspect the preflight.';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 36,
+      "text": "raise exception 'The Office return gateway has changed. Stop rather than replacing it.';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 40,
+      "text": "raise exception 'Existing Office configuration differs. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 58,
+      "text": "raise exception 'Choose the verified existing Office UUID from office-return-preflight.sql before deployment. No Office record has been created.';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 62,
+      "text": "raise exception 'The selected receiving Office does not exist or is inactive. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 65,
+      "text": "raise exception 'The receiving Office name is ambiguous to the existing movement engine. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 68,
+      "text": "raise exception 'A different receiving Office is already configured. Stop and review; do not silently rebind it.';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 83,
+      "text": "raise exception 'The company Office return destination is unavailable. Contact Admin.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 86,
+      "text": "raise exception 'The company Office destination is ambiguous. Contact Admin.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 97,
+      "text": "raise exception 'Engineer or Architect return access required.' using errcode='42501';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 125,
+      "text": "raise exception 'Engineer or Architect return access required.' using errcode='42501';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 129,
+      "text": "raise exception 'Supply a valid operation and return form.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 152,
+      "text": "raise exception 'Equipment returns must go to the company Office. Use Transfers for project handovers.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 157,
+      "text": "raise exception 'Equipment returns must use the configured Office destination.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 160,
+      "text": "raise exception 'Equipment returns must use the configured Office destination.' using errcode='22023';"
+    },
+    {
+      "file": "supabase/migrations/202610120003_equipment_office_default.sql",
+      "line": 14,
+      "text": "raise exception 'Configure the verified Office through the Office returns migration first.';"
+    },
+    {
+      "file": "supabase/migrations/202610120003_equipment_office_default.sql",
+      "line": 18,
+      "text": "raise exception 'Equipment RLS must be enabled. Stop and review the preflight.';"
+    },
+    {
+      "file": "supabase/migrations/202610120003_equipment_office_default.sql",
+      "line": 21,
+      "text": "raise exception 'Unexpected equipment insert policies. Stop rather than weakening access.';"
+    },
+    {
+      "file": "supabase/migrations/202610120003_equipment_office_default.sql",
+      "line": 30,
+      "text": "raise exception 'The equipment insert policy differs from the reviewed policy. Stop and inspect it.';"
+    },
+    {
+      "file": "supabase/migrations/202610120003_equipment_office_default.sql",
+      "line": 36,
+      "text": "raise exception 'An unrelated Office function already exists. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610120003_equipment_office_default.sql",
+      "line": 41,
+      "text": "raise exception 'An unrelated equipment Office trigger exists. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610120003_equipment_office_default.sql",
+      "line": 52,
+      "text": "raise exception 'Equipment access required.' using errcode='42501';"
+    },
+    {
+      "file": "supabase/migrations/202610120003_optional_request_purpose.sql",
+      "line": 11,
+      "text": "old_check text := $old$if nullif(btrim(p_payload->>'purpose'),'') is null or char_length(p_payload->>'purpose')>2000 then raise exception 'Enter a purpose of at most 2000 characters.' using errcode='22023'; end if;$old$;"
+    },
+    {
+      "file": "supabase/migrations/202610120003_optional_request_purpose.sql",
+      "line": 12,
+      "text": "new_check text := $new$if char_length(p_payload->>'purpose')>2000 then raise exception 'Purpose must be at most 2000 characters.' using errcode='22023'; end if;$new$;"
+    },
+    {
+      "file": "supabase/migrations/202610120003_optional_request_purpose.sql",
+      "line": 14,
+      "text": "if target is null then raise exception 'Private movement implementation is missing. Stop and review.'; end if;"
+    },
+    {
+      "file": "supabase/migrations/202610120003_optional_request_purpose.sql",
+      "line": 17,
+      "text": "raise exception 'Stable recipient identity is not installed. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610120003_optional_request_purpose.sql",
+      "line": 21,
+      "text": "raise exception 'Unexpected purpose validation definition. Stop and review.';"
+    },
+    {
+      "file": "supabase/migrations/202610120003_optional_request_purpose.sql",
+      "line": 27,
+      "text": "raise exception 'Purpose validation differs from the reviewed implementation. Stop and review.';"
+    },
+    {
+      "file": "supabase/office-location-configuration.sql",
+      "line": 15,
+      "text": "raise exception 'Enter the actual company equipment-receiving Office address/location before running this configuration. No location was created.';"
+    },
+    {
+      "file": "supabase/office-location-configuration.sql",
+      "line": 23,
+      "text": "raise exception 'An Office-like location already exists. Stop, rerun office-return-preflight.sql and verify its identity rather than creating or changing another record.';"
+    },
+    {
+      "file": "supabase/office-return-preflight.sql",
+      "line": 42,
+      "text": "$optional$if char_length(p_payload->>'purpose')>2000 then raise exception 'Purpose must be at most 2000 characters.' using errcode='22023'; end if;$optional$,"
+    },
+    {
+      "file": "supabase/office-return-preflight.sql",
+      "line": 43,
+      "text": "$required$if nullif(btrim(p_payload->>'purpose'),'') is null or char_length(p_payload->>'purpose')>2000 then raise exception 'Enter a purpose of at most 2000 characters.' using errcode='22023'; end if;$required$))='5b94b3b5642f26981a80382a2b1b6be7'"
+    },
+    {
+      "file": "supabase/office-return-preflight.sql",
+      "line": 45,
+      "text": "'optional_purpose_installed',(select strpos(prosrc,$optional$if char_length(p_payload->>'purpose')>2000 then raise exception 'Purpose must be at most 2000 characters.' using errcode='22023'; end if;$optional$)>0"
+    }
+  ]
+}

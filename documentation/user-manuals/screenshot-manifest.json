@@ -1,0 +1,473 @@
+{
+  "preparedDate": "2026-10-12",
+  "environment": "Unmodified repository UI; isolated PGlite database; Auth and Edge capabilities modeled; HTTPS blocked; business writes denied after seed; QR libraries unavailable.",
+  "screenshots": [
+    {
+      "filename": "shared-login.png",
+      "caption": "Sign-in screen, empty credentials.",
+      "role": "signed out",
+      "route": "",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "b0af34cd04e75037ee854025bd1bbe67d8c9657e21dee090ae472f67591603ab"
+    },
+    {
+      "filename": "admin-dashboard.png",
+      "caption": "Admin dashboard and authorized sidebar.",
+      "role": "admin",
+      "route": "#dashboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e15dc8f5bc0ebf2b3f5447fc13493e22eadd28f7821f93f2214dd4827076a429"
+    },
+    {
+      "filename": "admin-inventory.png",
+      "caption": "Admin Equipment Tracking: search, filters, and inventory.",
+      "role": "admin",
+      "route": "#masterlist",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "475a0317ad4f37b1d2c5afd9711bd1dc8fbf5bba205eb87472e13b519abe91a3"
+    },
+    {
+      "filename": "admin-add-item.png",
+      "caption": "Add New Item form; no item is saved.",
+      "role": "admin",
+      "route": "#masterlist",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "946fdbd82db6723cbc6c80885b1dd5762005210fd16cd16e8ad6f6118e69018d"
+    },
+    {
+      "filename": "admin-projects.png",
+      "caption": "Projects list and controls.",
+      "role": "admin",
+      "route": "#sites",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "3f2a49418f4f50217117d4dd515e038cc833845fc5839d6838559592ebe9da14"
+    },
+    {
+      "filename": "admin-project-form.png",
+      "caption": "Add Project dialog; no project is saved.",
+      "role": "admin",
+      "route": "#sites",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "114689538bfa2ef2f7eb23397aa70c05ebfa7211d02a48e9b008ee6d6f3b8b23"
+    },
+    {
+      "filename": "admin-requests.png",
+      "caption": "Requests queue and Admin review guidance.",
+      "role": "admin",
+      "route": "#request",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "2065fcdd50f584cc74b1c69632573e90f017f889ebc25f99a8f0a8c87b161596"
+    },
+    {
+      "filename": "admin-request-review.png",
+      "caption": "Pending request detail: approval and rejection controls.",
+      "role": "admin",
+      "route": "#request",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8a22da70f25bc2416bafc484418b72c7662f1151bc34e403f85a7848cfc6ad9c"
+    },
+    {
+      "filename": "admin-release.png",
+      "caption": "Approved reservation: Release tools & create transfer.",
+      "role": "admin",
+      "route": "#request",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ac87f9394b2f13bf26f358f13296a7c90daad08142211eafd2060e5b63cb6c13"
+    },
+    {
+      "filename": "admin-transfers.png",
+      "caption": "Admin Transfer history: monitoring only.",
+      "role": "admin",
+      "route": "#transfer",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "729951c2adaa5d513c7664673bfcf6f5799cd461a42d2b22b1c317880c345fca"
+    },
+    {
+      "filename": "admin-returns.png",
+      "caption": "Admin Returns: saved return records and inspection results.",
+      "role": "admin",
+      "route": "#return",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "9884402e94739c583717e3ef9cb5f3a02422596d6ed9e386a7a89b61e0b312d3"
+    },
+    {
+      "filename": "admin-repair.png",
+      "caption": "Under repair: completion destination and notes.",
+      "role": "admin",
+      "route": "#repair",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f8f6c74d93955ed6a349eb23fe1d5d51543f57d5736367dd277032f88fbde101"
+    },
+    {
+      "filename": "admin-recovery.png",
+      "caption": "Missing case: recovery condition and destination.",
+      "role": "admin",
+      "route": "#missing",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "847d10fb43d5bb48fa291567f8185062b08590f5c9fb89e87a6e7e09f44c0cfd"
+    },
+    {
+      "filename": "admin-materials.png",
+      "caption": "Material Requests opens the Consumables module.",
+      "role": "admin",
+      "route": "#consumables",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "d2720aa343d2a6287d177d6e1bb13a8408565d7423af2a0d994da189519ac03e"
+    },
+    {
+      "filename": "admin-material-request.png",
+      "caption": "Purchase Request form for consumable stock.",
+      "role": "admin",
+      "route": "#consumables",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "53c9d2415a36deb2ab6e6a9791a56642cd0624edabdcbfe5f45663c078206e02"
+    },
+    {
+      "filename": "admin-purchases.png",
+      "caption": "Purchases ledger, linked delivery status and search.",
+      "role": "admin",
+      "route": "#purchase",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "800c5e225779b4e4f616f7cbd7af6f8e1e910c9a00b7d626a475190f67fc9df5"
+    },
+    {
+      "filename": "admin-purchase-form.png",
+      "caption": "Record purchase dialog; no purchase is saved.",
+      "role": "admin",
+      "route": "#purchase",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "471a4adf109a10d140ec0302dd9b62d295fecb826940f886431cd38b3ba16eba"
+    },
+    {
+      "filename": "admin-reports.png",
+      "caption": "Reports: Current inventory and Export CSV.",
+      "role": "admin",
+      "route": "#reports",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5e9b7181440537e6ab024680832794695d4fecf4c584a124ab8d3b007f5475d5"
+    },
+    {
+      "filename": "admin-activity.png",
+      "caption": "Activity Logs with saved transaction links and Export CSV.",
+      "role": "admin",
+      "route": "#activity",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5b25376545b1bb4926ba9d1cff02532b81c280abd694120720ffc55aebe0351f"
+    },
+    {
+      "filename": "admin-people.png",
+      "caption": "Restored original Add Account form; isolated fixture, blank credentials, no hosted changes.",
+      "role": "admin",
+      "route": "#users",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "838876070b1bbfe95df1bead5cc0942204daa6d7cfd5544e19589e11c2d1fc5d",
+      "refreshedDate": "2026-10-27",
+      "environment": "Disposable local functionality-audit fixture; this test run includes local business writes. External HTTPS blocked."
+    },
+    {
+      "filename": "shared-account.png",
+      "caption": "My account: authorized identity, display mode and logout.",
+      "role": "admin",
+      "route": "#settings",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "0ed02ae1047090ca77644cde7b0f7a774839f8b55338879fa216d610a36ca0d9"
+    },
+    {
+      "filename": "admin-notifications.png",
+      "caption": "Notifications interface. No notice is opened or marked read.",
+      "role": "admin",
+      "route": "#settings",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "d4042457bd6c0fba9fdf3bd8b74c4317cbed09c3c772e6b2a62edc344c59736f"
+    },
+    {
+      "filename": "engineer-dashboard.png",
+      "caption": "Engineer dashboard and authorized navigation.",
+      "role": "engineer",
+      "route": "#dashboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e3d70a2d907fd1491133b6709a765559a07aaa17f17f9bc684dca98968af8809"
+    },
+    {
+      "filename": "engineer-equipment.png",
+      "caption": "Engineer Equipment Tracking shows confirmed personal custody.",
+      "role": "engineer",
+      "route": "#masterlist",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e906df976f11557461cf9191efbcfebd38d32681ae39316ced38d4bbca988ec0"
+    },
+    {
+      "filename": "engineer-tool-detail.png",
+      "caption": "Tool Details and permitted movement history.",
+      "role": "engineer",
+      "route": "#masterlist",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "912dbca548e0da373aec565d59198d7e70ac53bb56c9ce453b7f6fd7f73b2eba"
+    },
+    {
+      "filename": "engineer-projects.png",
+      "caption": "Engineer Projects contains assigned projects.",
+      "role": "engineer",
+      "route": "#sites",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "01d155722e9ebb179b9c3f3e878748704d359e8cfbe3e45d2ff4d20a0514111d"
+    },
+    {
+      "filename": "engineer-request.png",
+      "caption": "Request tools: eligible catalog and required fields.",
+      "role": "engineer",
+      "route": "#request",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7b8f1604a0f3c2a099355e78cd1d01093ad4c3ec9d98c7ec56d702d883191c4c"
+    },
+    {
+      "filename": "engineer-withdraw.png",
+      "caption": "Requester controls for a pending request.",
+      "role": "engineer",
+      "route": "#request",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "58bfd0a0bb5379a7b1f625655d06a56145478805d99bdeff6f458c8514772d13"
+    },
+    {
+      "filename": "engineer-send.png",
+      "caption": "Send Transfer with Enter Details Manually revealed.",
+      "role": "engineer",
+      "route": "#transfer",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e048e820ca84e68f59fbde44e75c6e2ee98d89ad24885acf3bf2adc467f0bda7"
+    },
+    {
+      "filename": "engineer-receiving.png",
+      "caption": "Receive Transfer: Your receiving QR panel and handover lookup.",
+      "role": "engineer",
+      "route": "#transfer",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "483dce7aa41bea6856a5a1fa2e654462a8accbe55ee233bb5574af01e7142fb8"
+    },
+    {
+      "filename": "engineer-inspection.png",
+      "caption": "Incoming transfer inspection before confirmation.",
+      "role": "engineer",
+      "route": "#transfer",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "696391598fd51d23bf1ff7596a569431ec8563ff09e6acdd12e9e0e8591fcb82"
+    },
+    {
+      "filename": "engineer-inspection-confirm.png",
+      "caption": "Lower receipt form including mandatory test checkbox and confirmation.",
+      "role": "engineer",
+      "route": "#transfer",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "0d702f5ee701d24f689d2492e0cd26172286509825f0bc2f6b91d2552d57d06d"
+    },
+    {
+      "filename": "engineer-refusal.png",
+      "caption": "Lower damage refusal form with reason and confirmation; no receipt or refusal is submitted.",
+      "role": "engineer",
+      "route": "#transfer",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "33ffb6fc9f97218c85c3d215f5efa16cd772c8d3984817f93aabd489cb293fa6"
+    },
+    {
+      "filename": "engineer-transfer-history.png",
+      "caption": "Transfer History: sender, receiver, destination and saved status.",
+      "role": "engineer",
+      "route": "#transfer",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8839999a649c0ab0ba7e49ab321a89ea6e58610a69a4c90ce657248c3b4e0e75"
+    },
+    {
+      "filename": "engineer-return.png",
+      "caption": "Return tools with per-tool condition fields.",
+      "role": "engineer",
+      "route": "#return",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5b8cde46a9074a75badf80c6e480e3d31ec77d6f6de5e8b3c81edd93bf65e6d4"
+    },
+    {
+      "filename": "engineer-repair.png",
+      "caption": "Report a repair form.",
+      "role": "engineer",
+      "route": "#repair",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "67118ff71504b0dbf76f405005586d60578396abbab3f7c0a599508255f4272d"
+    },
+    {
+      "filename": "engineer-missing.png",
+      "caption": "Report a missing tool form.",
+      "role": "engineer",
+      "route": "#missing",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "110e4a2e65fc2f34e4d62a4658d8795e7f46eeeeb43d2663019cdb8bc08dae92"
+    },
+    {
+      "filename": "engineer-activity.png",
+      "caption": "Engineer Activity Logs, authorized records and CSV export.",
+      "role": "engineer",
+      "route": "#activity",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "99d07135356e4f14d6237afb6be9a850f7805db8cc721027160ab3f799604af7"
+    },
+    {
+      "filename": "engineer-account.png",
+      "caption": "Engineer My account preferences.",
+      "role": "engineer",
+      "route": "#settings",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "32aa97946c671d22fd29b419e4ca9a8ad26486bc69d4abeccceb7f8e90eac502"
+    },
+    {
+      "filename": "architect-dashboard.png",
+      "caption": "Architect dashboard, same permission model as Engineer.",
+      "role": "architect",
+      "route": "#dashboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "79fcb5a99c005eebdfca8ad6745f835983dc89a677a512d50d0064a4ed8e4ce1"
+    },
+    {
+      "filename": "secretary-navigation.png",
+      "caption": "Secretary navigation: Material Requests, Purchases and Settings.",
+      "role": "secretary",
+      "route": "#consumables",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "d26b4a29a19643b2c9130933f03cfa51d47d4b8a10fb34b6622fab2c3674cf95"
+    },
+    {
+      "filename": "handler-navigation.png",
+      "caption": "Tool Handler navigation and company equipment scope.",
+      "role": "tool_handler",
+      "route": "#dashboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f597efc59cc93b33b31da96956cdda71c41291cfd6ec248615b8c0071a60443b"
+    }
+  ],
+  "uncaughtErrors": 0,
+  "browserBusinessWrites": 0,
+  "rpcReads": 70
+}

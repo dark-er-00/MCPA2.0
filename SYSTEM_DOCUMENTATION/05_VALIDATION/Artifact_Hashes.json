@@ -1,0 +1,634 @@
+{
+  "date": "2026-10-20",
+  "excludes": [
+    "Documentation_File_Manifest.md",
+    "05_VALIDATION/Artifact_Hashes.json"
+  ],
+  "files": [
+    {
+      "file": "01_FEATURE_INVENTORY/SiteTrace_Feature_Inventory.xlsx",
+      "bytes": 27875,
+      "sha256": "fa0821bffe5f384e32c0e3093f165e59ac1fce9e342eec1e65dfd532e14fffb0"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication.drawio",
+      "bytes": 6097,
+      "sha256": "f368766521eb16eec8ba1697e995917488fec35c39216f03ec82b32f4d454d51"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication.html",
+      "bytes": 6600,
+      "sha256": "6d1d3b89cdef72eaa45eaf4a937e28499571bf85ba24add7e37c83cd64ac3ef3"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication.pdf",
+      "bytes": 88115,
+      "sha256": "545e52b5ad4912f7c239fe44470deb0e258a09cc860a971db0f5a0b7b4a84085"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication.png",
+      "bytes": 205229,
+      "sha256": "7fa3be07b451a280be9ccca7bc16e77689cacbcd0625c4de82ee1fe43c91463b"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication.svg",
+      "bytes": 6299,
+      "sha256": "ad2547a9da3adc93377bb44945ca51b1a4c24a5176bffd2ce4855c11f37b30ba"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration.drawio",
+      "bytes": 6725,
+      "sha256": "cc1c8afe898938a0f818d17f77c07a6ab91efcf00346bcfe3853d0657b21e43f"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration.html",
+      "bytes": 7170,
+      "sha256": "8e30dfde981c0163628434fa37437972ced6475794a9c58f7c9a61950fe6cd5e"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration.pdf",
+      "bytes": 118499,
+      "sha256": "84e5d32ed87d02295b4eb34c89139f035d788a515b17643fe414d27838ad42b6"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration.png",
+      "bytes": 218674,
+      "sha256": "eeedf9dc37df8a42a337e2c8be80b8bf65b446bb53ff76d50f0c59393a625b0e"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration.svg",
+      "bytes": 6875,
+      "sha256": "a11137c2c1b086ba6235afdbfe4efaddc993ae32b802b33aa52b33a158f32162"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Request_Approval_Release.drawio",
+      "bytes": 6875,
+      "sha256": "53c686b5491356dac566bcbb82c94e6963ffa12abf16488e2fd0672aac2fde7d"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Request_Approval_Release.html",
+      "bytes": 7850,
+      "sha256": "77c849ea9ce02128682c28e89f7dd26f303e2c49b816872e8eae83ed38a4f2f0"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Request_Approval_Release.pdf",
+      "bytes": 111947,
+      "sha256": "ab00f4576cb497b9ac4e6f7dd274e9167c6104deab51fc6cd294c19c20f055f9"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Request_Approval_Release.png",
+      "bytes": 248843,
+      "sha256": "8d6cd40339be6b8173a56f654c7029847e6efdbe595f3f465b46fa06522318c7"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Request_Approval_Release.svg",
+      "bytes": 7557,
+      "sha256": "2416faa0a80b4cff966a5c5fb4d3917644e512c9f20aab4945d9f409e80db7de"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_QR_Transfer_Receiving.drawio",
+      "bytes": 7008,
+      "sha256": "de0ecd73efc85bd1b79a6a9733a135f1f936f8904a46d271566395ba21657d22"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_QR_Transfer_Receiving.html",
+      "bytes": 8118,
+      "sha256": "866ba763b422a0645d28a389ae1130d857c883b96fe9bdeb5f9dca30a4fa31d1"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_QR_Transfer_Receiving.pdf",
+      "bytes": 93746,
+      "sha256": "17c273264a47c860f88d84e7c148d05179daad0c4bfd97bca1b5653925ed99eb"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_QR_Transfer_Receiving.png",
+      "bytes": 264660,
+      "sha256": "ce42869352819f2d1244fd8de6d8d77e41ac913f1e573a99940ea973c748fcb9"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_QR_Transfer_Receiving.svg",
+      "bytes": 7821,
+      "sha256": "b280c005790f7fb1a1ce77cef3f821e21389f05707b16d8d0e9a3d444c40cd23"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_Office_Return.drawio",
+      "bytes": 7106,
+      "sha256": "e8f2bc2f09dc885c7b9bcaaf0557ba3459f25406951076e4b1fe95f8e9881154"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_Office_Return.html",
+      "bytes": 7637,
+      "sha256": "df36491140897978dfd514969a0c5b4e902b7b2394981f4aaa4dfd1c8a4fbcec"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_Office_Return.pdf",
+      "bytes": 111974,
+      "sha256": "450c6558fa9d937ded3efae7b007204d7707d3e86cfb81a631a7856d89392759"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_Office_Return.png",
+      "bytes": 238510,
+      "sha256": "95a255a4a195c52a7b6c4b551919b5425e481a54f78a0d34b1a92620b293f79d"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_Office_Return.svg",
+      "bytes": 7346,
+      "sha256": "458672fc241557c8df37673fdb81e197e14e47de8d46258c691bdc2659a1ebd2"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Repair.drawio",
+      "bytes": 6726,
+      "sha256": "6a4f1d1e81075e102dbea1c6c408fb739e8130d6f98ff492c8cba17fc236c1b2"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Repair.html",
+      "bytes": 7317,
+      "sha256": "11e0b5ad2a919dd82972c286c441b8137bccea11855cac6857eb354ece8f282b"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Repair.pdf",
+      "bytes": 90418,
+      "sha256": "a6a1e1e98ef9342de64f73a5a9a146d420cfd6a0983f4a9c25d78374471f16ff"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Repair.png",
+      "bytes": 219611,
+      "sha256": "a06bf353e4b2510aa2483230fd24f2337273d6f58c00042bcb1cd2254f993a17"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Repair.svg",
+      "bytes": 7026,
+      "sha256": "488c8369114d748854ccae0933c6a5244245a3a89f57ee5a35e1f22729b697fa"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Missing_Recovery.drawio",
+      "bytes": 6975,
+      "sha256": "6345d2ba405cfdbf200ac5fb0a05a35f82f0ae2d566519878be595f2a7f89c5f"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Missing_Recovery.html",
+      "bytes": 7372,
+      "sha256": "15dda435cc65fd93ce27e930d54c70495edff98a102f8b406f0d4c1cfd08dc40"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Missing_Recovery.pdf",
+      "bytes": 89513,
+      "sha256": "bdc49fcfe4e672e595ea31acc8f4a5b551d72ca4261cc8b72d0b0530f5600193"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Missing_Recovery.png",
+      "bytes": 218166,
+      "sha256": "1f6a1d9b5f7b62e9f5da7394645a68f1cdb559fefc1ce2debb8f4178b7309a55"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Missing_Recovery.svg",
+      "bytes": 7088,
+      "sha256": "1596020278255c27094bd18b1380510ab6907d24cf70e0ea371ee0d66ee4084b"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Consumables_Procurement.drawio",
+      "bytes": 7165,
+      "sha256": "350b3b723f471ac8830deb37c5410b913f5c871f285841e8c94131f3d6e35a3e"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Consumables_Procurement.html",
+      "bytes": 7952,
+      "sha256": "2353a8e5c04b0511a8c47500cb9137f19de8eab6bd9b7932e65945092b1c52e8"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Consumables_Procurement.pdf",
+      "bytes": 91699,
+      "sha256": "b97b4ebcd42984aa5650ade5407847cf97609067daf109fbd47b45b02d00c356"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Consumables_Procurement.png",
+      "bytes": 244088,
+      "sha256": "ad97537d6b7445f3eb1c6c129311cd7d974e3e9e081a490035eef72d9fb024b1"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Consumables_Procurement.svg",
+      "bytes": 7652,
+      "sha256": "4eaab7f1f4927640f75b28b05a9120fc7e48d587809d5b1d6c8d617118301e86"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_01_Core.drawio",
+      "bytes": 5683,
+      "sha256": "73f900ea0b168a8d25f14bafa97da1c5bb9f454bb9025da17b20c7ec40fbfd64"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_01_Core.html",
+      "bytes": 9182,
+      "sha256": "cfeba69e0445547eb479b93644d3b57f75e14ac35c2148cf206cfb1717c04a2a"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_01_Core.pdf",
+      "bytes": 208941,
+      "sha256": "533caa928291291320a92b9f0bf7d75e3c5870ebf4e59aeca1f689cba44b3331"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_01_Core.png",
+      "bytes": 236314,
+      "sha256": "72170d7bd8bc8194b43f616bde050e689a5a2799e844be142bbc21f45cc6108b"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_01_Core.svg",
+      "bytes": 8882,
+      "sha256": "2008edbb242a9fb7eee47957e0727b1aa853073c40e23bf940fdee772cbc86e4"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_02_Movements.drawio",
+      "bytes": 8675,
+      "sha256": "39dfc9dd0b6dbfbb13e1d7d228e3159703ea4769bb3635fe703d8e33f33553e5"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_02_Movements.html",
+      "bytes": 12718,
+      "sha256": "935e79e7900329f2228f4912dcb5f2c2311522c7e1d9d4d7a72fca9f6f453d6c"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_02_Movements.pdf",
+      "bytes": 208835,
+      "sha256": "7b9a08e0256dbc15f6b4c25969c9116d8cc7095fe2e7edc893a2c7f3d8df8036"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_02_Movements.png",
+      "bytes": 252626,
+      "sha256": "2e3b58311d83173365ab6d4004aedb2268d03b6a723525f2c2429505aa71874a"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_02_Movements.svg",
+      "bytes": 12406,
+      "sha256": "e2a430bce14c902c0240d36b2c6ac8c451ffbe22cc64126ee25e3f51d4e8cee7"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_03_Materials.drawio",
+      "bytes": 5959,
+      "sha256": "4a45af33896b834d1f3a001b3b013b4e906712c19708ecdafa61ff76d327d1dc"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_03_Materials.html",
+      "bytes": 9438,
+      "sha256": "49b966a04b9688261b60ec272503e1cf06c3aa2c03362ce8f6029b55a70fc4f9"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_03_Materials.pdf",
+      "bytes": 182884,
+      "sha256": "06ebfa7d1497c1adb485ab052677a1a8c4446d8db2818e6c9cb23bec9e456f04"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_03_Materials.png",
+      "bytes": 222082,
+      "sha256": "0a6dfe528c719a3bdac9b638bd2ae8b2f6c46b8a9957d81e0d7e1efa2f3647b1"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_03_Materials.svg",
+      "bytes": 9138,
+      "sha256": "292ac98ae64ef57eaeb171be8abbeb808b87483361e678bde691cbb2dac7ca85"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_04_Support.drawio",
+      "bytes": 6459,
+      "sha256": "3cf6c77bab827307b59c23feb434be80565b6ae07523ea3f0ceccda8425b272f"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_04_Support.html",
+      "bytes": 10601,
+      "sha256": "335861ea82d08018e14302a74357f0f337b162c8981c4880739a6613d73824ad"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_04_Support.pdf",
+      "bytes": 168411,
+      "sha256": "7b18add691f55a77559eff7886c5f7d831097232b70c7331862a1f73ff4cd616"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_04_Support.png",
+      "bytes": 234139,
+      "sha256": "153012621277ed4254d588f67fdb1a7e4b66fb9bf50d471485b8e603aed409ff"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_04_Support.svg",
+      "bytes": 10284,
+      "sha256": "27ed242dcecacc182c491c8d2e8681bd40953c8f9cbc9128740cced37749238e"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/README.md",
+      "bytes": 912,
+      "sha256": "b8b2d1bcf9072d7d01b58c8d89461768915e9208299e8cf46a85c6520d0a46f5"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/System_Architecture_Diagram/System_Architecture.drawio",
+      "bytes": 8252,
+      "sha256": "43085b0a3c976892711887de65dfbdc1b4c0af814f00d6a45fd273ccae58fd80"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/System_Architecture_Diagram/System_Architecture.html",
+      "bytes": 11638,
+      "sha256": "c9a642b9460cdf99284673d786713b4dd01ffda6af13c26161edccd20e47e438"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/System_Architecture_Diagram/System_Architecture.pdf",
+      "bytes": 250118,
+      "sha256": "b3a6b3cda3a4f6b046a41f34e730630d48e2c7d7be31cf7aee121edf825e3529"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/System_Architecture_Diagram/System_Architecture.png",
+      "bytes": 297902,
+      "sha256": "d857fa011302d83f8922a98853902b0d7c037b9bcfee3019c5ffc800f8261aec"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/System_Architecture_Diagram/System_Architecture.svg",
+      "bytes": 11347,
+      "sha256": "73a68eb205e9e99182463fd77ec5eabd51a131a80fe7ad70078ad02d13f2b680"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Use_Case_Diagram/Use_Case.drawio",
+      "bytes": 19508,
+      "sha256": "6c004b2971484910a22a3c08a20f69f7958e482d1d1afb4faf08eefebdae6130"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Use_Case_Diagram/Use_Case.html",
+      "bytes": 16520,
+      "sha256": "c1276ef91672e50eac75d91d99f1c96e4b4900b132939a9ba9c14ed01a61c69c"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Use_Case_Diagram/Use_Case.pdf",
+      "bytes": 128722,
+      "sha256": "cf77df69480850454b61d124d2af993b9acc15842f7a4c067444ec558843faa8"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Use_Case_Diagram/Use_Case.png",
+      "bytes": 392607,
+      "sha256": "78528764600c15fe2f81943f415dcff5706833f6533ac713e14ac4940be50b51"
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Use_Case_Diagram/Use_Case.svg",
+      "bytes": 16212,
+      "sha256": "3c19b59f29d8fd7e5c379c630aed267cf0bad2f1faac3cdd204ef6076ee2aa45"
+    },
+    {
+      "file": "03_TECHNICAL_DOCUMENTATION/Schema_Catalog.md",
+      "bytes": 23537,
+      "sha256": "3e427d3cf8029dc579837fdebae5ec02a2c69e4efbedb26d2a433aad5ce4bd5f"
+    },
+    {
+      "file": "03_TECHNICAL_DOCUMENTATION/SiteTrace_Technical_Documentation.docx",
+      "bytes": 310495,
+      "sha256": "cd068a489f917a72280ad6f8ba223b79bf4c0103c3666461352e9024ea92c113"
+    },
+    {
+      "file": "03_TECHNICAL_DOCUMENTATION/SiteTrace_Technical_Documentation.html",
+      "bytes": 63861,
+      "sha256": "2edf0fc6844afa8144baa0e654edc16bce4e8a699c2c70aaf44479d2a0bdd3c2"
+    },
+    {
+      "file": "03_TECHNICAL_DOCUMENTATION/SiteTrace_Technical_Documentation.md",
+      "bytes": 55527,
+      "sha256": "0196690b86a5be57150499c407fb491ca781841e3d70c30c5b20c98ef9bdd1be"
+    },
+    {
+      "file": "03_TECHNICAL_DOCUMENTATION/SiteTrace_Technical_Documentation.pdf",
+      "bytes": 486245,
+      "sha256": "521f03ba142d674604158d09c6e96975681d5eb7ea4a3e1cfadb69a669e1ed8e"
+    },
+    {
+      "file": "04_TROUBLESHOOTING/SiteTrace_Troubleshooting_Guide.docx",
+      "bytes": 18086,
+      "sha256": "215e3352748c15709274fb471ad760da2dca2542051d87919aafcc4735e0e53e"
+    },
+    {
+      "file": "04_TROUBLESHOOTING/SiteTrace_Troubleshooting_Guide.html",
+      "bytes": 49557,
+      "sha256": "c3b4c0135772def014420affcf4304dc51191799121a9c4e09cb41ce6d583df1"
+    },
+    {
+      "file": "04_TROUBLESHOOTING/SiteTrace_Troubleshooting_Guide.md",
+      "bytes": 42240,
+      "sha256": "835d7f232a921420f12507d29f1cf59320050e66b749ce2b95a71f87eed7d0dd"
+    },
+    {
+      "file": "04_TROUBLESHOOTING/SiteTrace_Troubleshooting_Guide.pdf",
+      "bytes": 196440,
+      "sha256": "6575cd294e13e8eabcc5b049c97a97d8fea953f60eef7bbd602592baddff8ae8"
+    },
+    {
+      "file": "05_VALIDATION/Content_Validation.json",
+      "bytes": 620,
+      "sha256": "59d97ddd57b88a168f36d28f4d9c0253d886bc033ba41fc8fb5aac27c592897b"
+    },
+    {
+      "file": "05_VALIDATION/Diagram_Model.json",
+      "bytes": 8068,
+      "sha256": "27c5295fd9897c67f6a840abbcc5705fd443685233bf7f06f2892b54eda24b06"
+    },
+    {
+      "file": "05_VALIDATION/Diagram_Render.json",
+      "bytes": 2366,
+      "sha256": "d56dcd5093579c485c3292ff800529a65603ff564999dd89f62b613530ac557f"
+    },
+    {
+      "file": "05_VALIDATION/Document_Build.json",
+      "bytes": 398,
+      "sha256": "a54f3b15489eecd0982df890275414299d78e6a2ce88fdbfc79d5b3c0907fd95"
+    },
+    {
+      "file": "05_VALIDATION/Document_Render.json",
+      "bytes": 863,
+      "sha256": "3387ac232b3a2c81c6dc9619f82519fa0db7cd1ad2130c59680e045fcc67b85c"
+    },
+    {
+      "file": "05_VALIDATION/Documentation_Review_Checklist.md",
+      "bytes": 9762,
+      "sha256": "5125cf51c3e9362f07a675196e28df3d5c6970c783c3d1fde77d5b16dc6611d4"
+    },
+    {
+      "file": "05_VALIDATION/Previews/01_Authentication-page-1.png",
+      "bytes": 146378,
+      "sha256": "a9fd49ed2f896270d8234abe01cc5d3e1486a86d2ceeb9e939f435b8aa5e2e0b"
+    },
+    {
+      "file": "05_VALIDATION/Previews/02_Equipment_Registration-page-1.png",
+      "bytes": 142982,
+      "sha256": "89110743e752dd191fd4937087d486942cd02d41f6de51bb6da66c7ce0bffbf0"
+    },
+    {
+      "file": "05_VALIDATION/Previews/03_Request_Approval_Release-page-1.png",
+      "bytes": 162024,
+      "sha256": "7b5b52a2b23f4bf2c710c6e8172bf675667d069f66eb40f04a91c2a0fc79150c"
+    },
+    {
+      "file": "05_VALIDATION/Previews/04_QR_Transfer_Receiving-page-1.png",
+      "bytes": 171421,
+      "sha256": "832bdac75147d44e1a000549f63f67e4bf5b2cceb7ed2de77cf6a3396e82e428"
+    },
+    {
+      "file": "05_VALIDATION/Previews/05_Office_Return-page-1.png",
+      "bytes": 152273,
+      "sha256": "52696743103ffee5601805c7a2dc0b5ca65c90e54f141acf2c8c8891c3db9c61"
+    },
+    {
+      "file": "05_VALIDATION/Previews/06_Repair-page-1.png",
+      "bytes": 146696,
+      "sha256": "80a47ae0c7dd28bff9b9a42efb637050ea64a95e2993cbb36d4dc3069509a2b8"
+    },
+    {
+      "file": "05_VALIDATION/Previews/07_Missing_Recovery-page-1.png",
+      "bytes": 142437,
+      "sha256": "16734db4b970a2d7e886a639bb0e98cc7e938ea315c10881768e09f833e1c1b2"
+    },
+    {
+      "file": "05_VALIDATION/Previews/08_Consumables_Procurement-page-1.png",
+      "bytes": 159654,
+      "sha256": "1169728af45835b831813b953b76915beafe62cb2397ad0952ce6f2cf0816263"
+    },
+    {
+      "file": "05_VALIDATION/Previews/ERD_01_Core-page-1.png",
+      "bytes": 176517,
+      "sha256": "1f781347afb471c8c7b004e08b762a0777cb1688384b06afbb260e960279296d"
+    },
+    {
+      "file": "05_VALIDATION/Previews/ERD_02_Movements-page-1.png",
+      "bytes": 133098,
+      "sha256": "bf62fd858f558754a755cdf8d70651fcf8cc4cd9433a03b03c4df7bc0ad866eb"
+    },
+    {
+      "file": "05_VALIDATION/Previews/ERD_03_Materials-page-1.png",
+      "bytes": 167659,
+      "sha256": "12ab418a2bc41c248418989fc354bdedb099206d607c9a027620598a85295497"
+    },
+    {
+      "file": "05_VALIDATION/Previews/ERD_04_Support-page-1.png",
+      "bytes": 160636,
+      "sha256": "71e8935692068b08047d302f38e8cb80932dacc66d3952a0e26b65a2c4174863"
+    },
+    {
+      "file": "05_VALIDATION/Previews/SiteTrace_Technical_Documentation-page-1.png",
+      "bytes": 56711,
+      "sha256": "1a9b08fd8c693def3ba463e0847632b0712e5aa1f83acd5e3ca5bf7f339534cf"
+    },
+    {
+      "file": "05_VALIDATION/Previews/SiteTrace_Technical_Documentation-page-15.png",
+      "bytes": 89538,
+      "sha256": "42800a350ce763789e873507cea6d34ed186da0c4dfb35cbb66dc4463aba93c0"
+    },
+    {
+      "file": "05_VALIDATION/Previews/SiteTrace_Technical_Documentation-page-2.png",
+      "bytes": 90823,
+      "sha256": "bb0fbae153a29f75eca7d7e40d1b866d61db8318571e3fe26b99bd9fb8d8589d"
+    },
+    {
+      "file": "05_VALIDATION/Previews/SiteTrace_Technical_Documentation-page-29.png",
+      "bytes": 208487,
+      "sha256": "e3766c2d0b91fff696e8c89fcd860adec70a8764a21e248facf2289b22d397ed"
+    },
+    {
+      "file": "05_VALIDATION/Previews/SiteTrace_Technical_Documentation-page-5.png",
+      "bytes": 129051,
+      "sha256": "1af11a10b85dde80f8a70f62b4242c1e925f26b0284f1f52548d311183193203"
+    },
+    {
+      "file": "05_VALIDATION/Previews/SiteTrace_Troubleshooting_Guide-page-1.png",
+      "bytes": 55213,
+      "sha256": "545fd08d10fdc97dcac8eb4e0e4d5baf908c520b12edbba8302ea6fe511f806e"
+    },
+    {
+      "file": "05_VALIDATION/Previews/SiteTrace_Troubleshooting_Guide-page-10.png",
+      "bytes": 235725,
+      "sha256": "acaaf4a51070d0bae426cb2a3895797a0a07309e8587606a0df7d3b5c2e7c909"
+    },
+    {
+      "file": "05_VALIDATION/Previews/SiteTrace_Troubleshooting_Guide-page-19.png",
+      "bytes": 161652,
+      "sha256": "654bef42241b5e78e9d6781e86bac5869e125f18b4bbea4407a62edcaa90b93c"
+    },
+    {
+      "file": "05_VALIDATION/Previews/SiteTrace_Troubleshooting_Guide-page-2.png",
+      "bytes": 42767,
+      "sha256": "443e253b7379e98034831884d3f7fe6dc939e2655bf9c3e3f72924bd962dcb52"
+    },
+    {
+      "file": "05_VALIDATION/Previews/SiteTrace_Troubleshooting_Guide-page-5.png",
+      "bytes": 251459,
+      "sha256": "33a870e5a9f262a60f7ce9fb1953c87dc30fe55e4ba96b2f8e0d44c5d439cbf1"
+    },
+    {
+      "file": "05_VALIDATION/Previews/System_Architecture-page-1.png",
+      "bytes": 231811,
+      "sha256": "69cf8a298922a2e391859bb2026352e963e7d23f51c53cdd5fbbf0717a609c6b"
+    },
+    {
+      "file": "05_VALIDATION/Previews/Use_Case-page-1.png",
+      "bytes": 226751,
+      "sha256": "604107d9684ec891f3fe42c067d2b8fb432a732a560a397dc2a2f84dc310cb65"
+    },
+    {
+      "file": "05_VALIDATION/Repository_Index.json",
+      "bytes": 176636,
+      "sha256": "7f924e1231a6c7de0fef9c66e6e8d8c9eb4586c35b9bb38299c6376512130197"
+    },
+    {
+      "file": "05_VALIDATION/Schema_Extract.json",
+      "bytes": 22366,
+      "sha256": "ddd34635a07c2433cb299358de05362581b274e8917d46e5a4b92cd327c05fa0"
+    },
+    {
+      "file": "05_VALIDATION/Source_Baseline.json",
+      "bytes": 197575,
+      "sha256": "1750f53bb08a78faf3a19412715ff5af9c7b4167d5e7b29d42148172f3d5e841"
+    },
+    {
+      "file": "05_VALIDATION/Source_Evidence_Register.md",
+      "bytes": 9208,
+      "sha256": "2a2d5294c14813d1daae51d0eee3cc2ad895c77a0bc1d7facd38e47d43d17be4"
+    },
+    {
+      "file": "05_VALIDATION/Validation_Report.json",
+      "bytes": 13986,
+      "sha256": "824753ed759f2f2cda23aaa7a4eebda9311ec9387ac8df864edf7e9968b1a8ed"
+    },
+    {
+      "file": "05_VALIDATION/source/build.cjs",
+      "bytes": 20251,
+      "sha256": "e59f252efe50251ee9fc99ec583a18f853aa2df233f496f679e8393efa264b86"
+    },
+    {
+      "file": "05_VALIDATION/source/catalog.cjs",
+      "bytes": 8798,
+      "sha256": "4cc5ef241f6dc22c1fd39cfe01c9cdd25a8232bd551e36320bba5c7c2c11d3ef"
+    },
+    {
+      "file": "05_VALIDATION/source/diagrams.cjs",
+      "bytes": 32400,
+      "sha256": "d04573261b4ab3659502be9ffe56fb11977c208f81102dedbd704e813c7ec87f"
+    },
+    {
+      "file": "05_VALIDATION/source/finalize.cjs",
+      "bytes": 13329,
+      "sha256": "81a07ce5685161fd181e8af3a6bc040ab7dfcfe1a0cc96d5fad9e6c37c053472"
+    },
+    {
+      "file": "05_VALIDATION/source/inspect.cjs",
+      "bytes": 2771,
+      "sha256": "59c80540e05fb534a373366412754fa8a61348585bf79e842f2f2779fe82d8d5"
+    },
+    {
+      "file": "05_VALIDATION/source/inventory.cjs",
+      "bytes": 32736,
+      "sha256": "1c6aab9a4c6bc2e21435be0a2f36542117971c4c30226fc5918fbed248eb97ae"
+    },
+    {
+      "file": "05_VALIDATION/source/render.cjs",
+      "bytes": 6253,
+      "sha256": "47d791a958fcea6b2345a76b178a360e6237623ae62d7f3c3b4feb5443636518"
+    },
+    {
+      "file": "05_VALIDATION/source/validate.ps1",
+      "bytes": 9014,
+      "sha256": "d40406bdfe4cefe54d77fa9dab3afa0315c3536e3e994e360735f21851b253af"
+    },
+    {
+      "file": "README.md",
+      "bytes": 13129,
+      "sha256": "26440feebd6122546349686acbd748e888358627fd5fda71d87ec1c697714473"
+    }
+  ]
+}

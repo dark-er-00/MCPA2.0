@@ -1,0 +1,97 @@
+{
+  "provenance": "User-supplied cropped MCPA project photographs. Originals and embedded branding preserved; no generated imagery.",
+  "encoder": "@napi-rs/canvas WebP",
+  "quality": 82,
+  "assets": [
+    {
+      "source": "project-10.jpg",
+      "output": "project-10.jpg",
+      "width": 3200,
+      "height": 2132,
+      "sourceBytes": 2201112,
+      "outputBytes": 2201112,
+      "sourceSha256": "93ead3eff98e0d7c5f0336a4f0dd708ee9a67fdf3cd7df8a19cb33700ca10819"
+    },
+    {
+      "source": "project-1.png",
+      "output": "project-1.webp",
+      "width": 430,
+      "height": 574,
+      "sourceBytes": 388123,
+      "outputBytes": 38616,
+      "sourceSha256": "b4dcce46ea93ceea127bb7d2ac76cecb442a7d634593dddf547b92a3a290801a"
+    },
+    {
+      "source": "project-2.png",
+      "output": "project-2.webp",
+      "width": 560,
+      "height": 747,
+      "sourceBytes": 456024,
+      "outputBytes": 26006,
+      "sourceSha256": "a4d73406e182d6ec05a27fc6b703f8894e447d7b7209d200f6a8e9d4e700c3fa"
+    },
+    {
+      "source": "project-3.png",
+      "output": "project-3.webp",
+      "width": 559,
+      "height": 745,
+      "sourceBytes": 637680,
+      "outputBytes": 45418,
+      "sourceSha256": "48cd7fb196155b111217cdc1514b8508400c3e3f65ad830f72345c02046647f7"
+    },
+    {
+      "source": "project-4.png",
+      "output": "project-4.webp",
+      "width": 476,
+      "height": 635,
+      "sourceBytes": 563905,
+      "outputBytes": 61996,
+      "sourceSha256": "2a979ef1d3197427815f88abd5ed6f88504bd1b08365220d7689c6e384c27a63"
+    },
+    {
+      "source": "project-5.png",
+      "output": "project-5.webp",
+      "width": 306,
+      "height": 408,
+      "sourceBytes": 196386,
+      "outputBytes": 18946,
+      "sourceSha256": "4514782457db5e8bd7ef0574057616c166e17ad116187c68898d04c57f5fd856"
+    },
+    {
+      "source": "project-6.png",
+      "output": "project-6.webp",
+      "width": 307,
+      "height": 409,
+      "sourceBytes": 178465,
+      "outputBytes": 14610,
+      "sourceSha256": "c7cee94428f33589594fbbbc99e1f0ac7881af6d1c52b1d2940b9624148e5ade"
+    },
+    {
+      "source": "project-7.png",
+      "output": "project-7.webp",
+      "width": 502,
+      "height": 670,
+      "sourceBytes": 478676,
+      "outputBytes": 34128,
+      "sourceSha256": "42781321204af093ee528ee62b76c948e68c7561396de1545ccca4186ac3d372"
+    },
+    {
+      "source": "project-8.png",
+      "output": "project-8.webp",
+      "width": 335,
+      "height": 446,
+      "sourceBytes": 220335,
+      "outputBytes": 18794,
+      "sourceSha256": "8ee83ef4b53bde872c83decdcc1396678010f873a3302d159e1827aa54ffd8be"
+    },
+    {
+      "source": "project-9.png",
+      "output": "project-9.webp",
+      "width": 498,
+      "height": 664,
+      "sourceBytes": 431155,
+      "outputBytes": 29772,
+      "sourceSha256": "7da6cdc303aef54e96ce7b817ed47e9f53cdad55f3243af1374b4098eb8796c0"
+    }
+  ]
+}

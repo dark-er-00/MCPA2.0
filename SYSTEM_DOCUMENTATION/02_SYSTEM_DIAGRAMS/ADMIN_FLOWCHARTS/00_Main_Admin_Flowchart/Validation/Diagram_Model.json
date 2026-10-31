@@ -1,0 +1,2902 @@
+{
+  "title": "SiteTrace (MCPA) - Main Admin System Flowchart",
+  "date": "2026-10-20",
+  "revision": "071ae16832dba4b58bc09e4572fd044cba9ddfc2",
+  "stage": 1,
+  "pages": [
+    {
+      "title": "Login and verified Admin authorization",
+      "note": "Interactive company sign-in path. A retries credential entry. Other active roles enter their own permitted workspace; they are not rejected solely for being non-Admin.",
+      "nodes": [
+        {
+          "type": "terminator",
+          "text": "Start",
+          "id": "P1N1",
+          "x": 200,
+          "y": 190,
+          "w": 900,
+          "h": 96,
+          "lines": [
+            "Start"
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "process",
+          "text": "Open SiteTrace.",
+          "id": "P1N2",
+          "x": 130,
+          "y": 334,
+          "w": 1040,
+          "h": 120,
+          "lines": [
+            "Open SiteTrace."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "io",
+          "text": "Display the company Login page.",
+          "id": "P1N3",
+          "x": 130,
+          "y": 502,
+          "w": 1040,
+          "h": 120,
+          "lines": [
+            "Display the company Login page."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "onpage",
+          "text": "A",
+          "ref": "A",
+          "direction": "in",
+          "id": "P1N4",
+          "x": 608,
+          "y": 670,
+          "w": 84,
+          "h": 84,
+          "lines": [
+            "A"
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "io",
+          "text": "Enter email and password; submit\nthe valid login form.",
+          "id": "P1N5",
+          "x": 130,
+          "y": 802,
+          "w": 1040,
+          "h": 123.6,
+          "lines": [
+            "Enter email and password; submit",
+            "the valid login form."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "process",
+          "text": "Validate credentials using Supabase Auth\nsignInWithPassword(email, password).",
+          "id": "P1N6",
+          "x": 130,
+          "y": 973.6,
+          "w": 1040,
+          "h": 123.6,
+          "lines": [
+            "Validate credentials using Supabase Auth",
+            "signInWithPassword(email, password)."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "decision",
+          "text": "Authentication\nsuccessful?",
+          "branch": [
+            {
+              "type": "io",
+              "text": "Display credential, email\nconfirmation or connection\nerror on the login form."
+            },
+            {
+              "type": "onpage",
+              "text": "A",
+              "ref": "A",
+              "direction": "out"
+            }
+          ],
+          "down": "Yes",
+          "right": "No",
+          "id": "P1N7",
+          "x": 130,
+          "y": 1145.2,
+          "w": 1040,
+          "h": 260,
+          "lines": [
+            "Authentication",
+            "successful?"
+          ],
+          "font": 33,
+          "lh": 39.6
+        },
+        {
+          "type": "io",
+          "text": "Display credential, email\nconfirmation or connection\nerror on the login form.",
+          "id": "P1N8",
+          "x": 1410,
+          "y": 1200.2,
+          "w": 640,
+          "h": 150,
+          "lines": [
+            "Display credential, email",
+            "confirmation or connection",
+            "error on the login form."
+          ],
+          "font": 30,
+          "lh": 36
+        },
+        {
+          "type": "onpage",
+          "text": "A",
+          "ref": "A",
+          "direction": "out",
+          "id": "P1N9",
+          "x": 1688,
+          "y": 1398.2,
+          "w": 84,
+          "h": 84,
+          "lines": [
+            "A"
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "process",
+          "text": "Clear the password field on success.\nFetch company profile with mcpa_my_profile.",
+          "id": "P1N10",
+          "x": 130,
+          "y": 1453.2,
+          "w": 1040,
+          "h": 123.6,
+          "lines": [
+            "Clear the password field on success.",
+            "Fetch company profile with mcpa_my_profile."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "decision",
+          "text": "Profile verified,\nactive and supported?",
+          "branch": [
+            {
+              "type": "io",
+              "text": "Display the actual profile /\ninactive / verification error\non the Login page."
+            },
+            {
+              "type": "terminator",
+              "text": "End - Admin access unavailable"
+            }
+          ],
+          "down": "Yes",
+          "right": "No",
+          "id": "P1N11",
+          "x": 130,
+          "y": 1624.8,
+          "w": 1040,
+          "h": 260,
+          "lines": [
+            "Profile verified,",
+            "active and supported?"
+          ],
+          "font": 33,
+          "lh": 39.6
+        },
+        {
+          "type": "io",
+          "text": "Display the actual profile /\ninactive / verification error\non the Login page.",
+          "id": "P1N12",
+          "x": 1410,
+          "y": 1679.8,
+          "w": 640,
+          "h": 150,
+          "lines": [
+            "Display the actual profile /",
+            "inactive / verification error",
+            "on the Login page."
+          ],
+          "font": 30,
+          "lh": 36
+        },
+        {
+          "type": "terminator",
+          "text": "End - Admin access unavailable",
+          "id": "P1N13",
+          "x": 1410,
+          "y": 1877.8,
+          "w": 640,
+          "h": 96,
+          "lines": [
+            "End - Admin access unavailable"
+          ],
+          "font": 30,
+          "lh": 36
+        },
+        {
+          "type": "decision",
+          "text": "Profile role is Admin?",
+          "branch": [
+            {
+              "type": "process",
+              "text": "Open the active user's own\npermitted workspace.\nNo Admin access is granted."
+            },
+            {
+              "type": "terminator",
+              "text": "End - Other role workspace"
+            }
+          ],
+          "down": "Yes",
+          "right": "No",
+          "id": "P1N14",
+          "x": 130,
+          "y": 1978.8000000000002,
+          "w": 1040,
+          "h": 260,
+          "lines": [
+            "Profile role is Admin?"
+          ],
+          "font": 33,
+          "lh": 39.6
+        },
+        {
+          "type": "process",
+          "text": "Open the active user's own\npermitted workspace.\nNo Admin access is granted.",
+          "id": "P1N15",
+          "x": 1410,
+          "y": 2033.8000000000002,
+          "w": 640,
+          "h": 150,
+          "lines": [
+            "Open the active user's own",
+            "permitted workspace.",
+            "No Admin access is granted."
+          ],
+          "font": 30,
+          "lh": 36
+        },
+        {
+          "type": "terminator",
+          "text": "End - Other role workspace",
+          "id": "P1N16",
+          "x": 1410,
+          "y": 2231.8,
+          "w": 640,
+          "h": 96,
+          "lines": [
+            "End - Other role workspace"
+          ],
+          "font": 30,
+          "lh": 36
+        },
+        {
+          "type": "process",
+          "text": "Initialize the live workspace; hide Login.\nBuild the permitted Admin navigation\nand initialize monitoring.",
+          "id": "P1N17",
+          "x": 130,
+          "y": 2286.8,
+          "w": 1040,
+          "h": 164.39999999999998,
+          "lines": [
+            "Initialize the live workspace; hide Login.",
+            "Build the permitted Admin navigation",
+            "and initialize monitoring."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "offpage",
+          "ref": "S",
+          "page": 2,
+          "direction": "out",
+          "text": "S - To page 2\nResolve Admin entry route",
+          "id": "P1N18",
+          "x": 170,
+          "y": 2499.2000000000003,
+          "w": 960,
+          "h": 150,
+          "lines": [
+            "S - To page 2",
+            "Resolve Admin entry route"
+          ],
+          "font": 31,
+          "lh": 37.199999999999996
+        }
+      ],
+      "number": 1,
+      "id": "Admin_P01",
+      "width": 2100,
+      "height": 2970,
+      "edges": [
+        {
+          "id": "P1E1",
+          "from": "P1N1",
+          "to": "P1N2",
+          "label": "",
+          "points": [
+            [
+              650,
+              286
+            ],
+            [
+              650,
+              334
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E2",
+          "from": "P1N2",
+          "to": "P1N3",
+          "label": "",
+          "points": [
+            [
+              650,
+              454
+            ],
+            [
+              650,
+              502
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E3",
+          "from": "P1N3",
+          "to": "P1N4",
+          "label": "",
+          "points": [
+            [
+              650,
+              622
+            ],
+            [
+              650,
+              670
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E4",
+          "from": "P1N4",
+          "to": "P1N5",
+          "label": "",
+          "points": [
+            [
+              650,
+              754
+            ],
+            [
+              650,
+              802
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E5",
+          "from": "P1N5",
+          "to": "P1N6",
+          "label": "",
+          "points": [
+            [
+              650,
+              925.6
+            ],
+            [
+              650,
+              973.6
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E6",
+          "from": "P1N6",
+          "to": "P1N7",
+          "label": "",
+          "points": [
+            [
+              650,
+              1097.2
+            ],
+            [
+              650,
+              1145.2
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E7",
+          "from": "P1N7",
+          "to": "P1N8",
+          "label": "No",
+          "points": [
+            [
+              1170,
+              1275.2
+            ],
+            [
+              1410,
+              1275.2
+            ]
+          ],
+          "horizontal": true
+        },
+        {
+          "id": "P1E8",
+          "from": "P1N8",
+          "to": "P1N9",
+          "label": "",
+          "points": [
+            [
+              1730,
+              1350.2
+            ],
+            [
+              1730,
+              1398.2
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E9",
+          "from": "P1N7",
+          "to": "P1N10",
+          "label": "Yes",
+          "points": [
+            [
+              650,
+              1405.2
+            ],
+            [
+              650,
+              1453.2
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E10",
+          "from": "P1N10",
+          "to": "P1N11",
+          "label": "",
+          "points": [
+            [
+              650,
+              1576.8
+            ],
+            [
+              650,
+              1624.8
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E11",
+          "from": "P1N11",
+          "to": "P1N12",
+          "label": "No",
+          "points": [
+            [
+              1170,
+              1754.8
+            ],
+            [
+              1410,
+              1754.8
+            ]
+          ],
+          "horizontal": true
+        },
+        {
+          "id": "P1E12",
+          "from": "P1N12",
+          "to": "P1N13",
+          "label": "",
+          "points": [
+            [
+              1730,
+              1829.8
+            ],
+            [
+              1730,
+              1877.8
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E13",
+          "from": "P1N11",
+          "to": "P1N14",
+          "label": "Yes",
+          "points": [
+            [
+              650,
+              1884.8
+            ],
+            [
+              650,
+              1978.8000000000002
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E14",
+          "from": "P1N14",
+          "to": "P1N15",
+          "label": "No",
+          "points": [
+            [
+              1170,
+              2108.8
+            ],
+            [
+              1410,
+              2108.8
+            ]
+          ],
+          "horizontal": true
+        },
+        {
+          "id": "P1E15",
+          "from": "P1N15",
+          "to": "P1N16",
+          "label": "",
+          "points": [
+            [
+              1730,
+              2183.8
+            ],
+            [
+              1730,
+              2231.8
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E16",
+          "from": "P1N14",
+          "to": "P1N17",
+          "label": "Yes",
+          "points": [
+            [
+              650,
+              2238.8
+            ],
+            [
+              650,
+              2286.8
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P1E17",
+          "from": "P1N17",
+          "to": "P1N18",
+          "label": "",
+          "points": [
+            [
+              650,
+              2451.2000000000003
+            ],
+            [
+              650,
+              2499.2000000000003
+            ]
+          ],
+          "horizontal": false
+        }
+      ]
+    },
+    {
+      "title": "Dashboard, persistent navigation and module selection",
+      "note": "D returns to Dashboard loading. R retries a failed Dashboard load. The persistent sidebar and account menu also remain available in loaded modules. Module details are deferred to Stage 2.",
+      "nodes": [
+        {
+          "type": "offpage",
+          "ref": "S",
+          "page": 1,
+          "direction": "in",
+          "text": "S - From page 1\nVerified active Admin",
+          "id": "P2N1",
+          "x": 170,
+          "y": 190,
+          "w": 960,
+          "h": 150,
+          "lines": [
+            "S - From page 1",
+            "Verified active Admin"
+          ],
+          "font": 31,
+          "lh": 37.199999999999996
+        },
+        {
+          "type": "process",
+          "text": "Resolve the initial route using saved\nhistory / URL hash; default to Dashboard.",
+          "id": "P2N2",
+          "x": 130,
+          "y": 388,
+          "w": 1040,
+          "h": 123.6,
+          "lines": [
+            "Resolve the initial route using saved",
+            "history / URL hash; default to Dashboard."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "decision",
+          "text": "Known non-Dashboard\nroute requested?",
+          "branch": [
+            {
+              "type": "offpage",
+              "ref": "H",
+              "page": 3,
+              "direction": "out",
+              "text": "H - To page 3\nResume the requested module"
+            }
+          ],
+          "down": "No",
+          "right": "Yes",
+          "id": "P2N3",
+          "x": 130,
+          "y": 559.6,
+          "w": 1040,
+          "h": 260,
+          "lines": [
+            "Known non-Dashboard",
+            "route requested?"
+          ],
+          "font": 33,
+          "lh": 39.6
+        },
+        {
+          "type": "offpage",
+          "ref": "H",
+          "page": 3,
+          "direction": "out",
+          "text": "H - To page 3\nResume the requested module",
+          "id": "P2N4",
+          "x": 1410,
+          "y": 614.6,
+          "w": 640,
+          "h": 150,
+          "lines": [
+            "H - To page 3",
+            "Resume the requested module"
+          ],
+          "font": 30,
+          "lh": 36
+        },
+        {
+          "type": "onpage",
+          "text": "D",
+          "ref": "D",
+          "direction": "in",
+          "id": "P2N5",
+          "x": 608,
+          "y": 867.6,
+          "w": 84,
+          "h": 84,
+          "lines": [
+            "D"
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "onpage",
+          "text": "R",
+          "ref": "R",
+          "direction": "in",
+          "id": "P2N6",
+          "x": 608,
+          "y": 999.6,
+          "w": 84,
+          "h": 84,
+          "lines": [
+            "R"
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "process",
+          "text": "Load or reuse the Dashboard module\nthrough showScreen(\"dashboard\").",
+          "id": "P2N7",
+          "x": 130,
+          "y": 1131.6,
+          "w": 1040,
+          "h": 123.6,
+          "lines": [
+            "Load or reuse the Dashboard module",
+            "through showScreen(\"dashboard\")."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "decision",
+          "text": "Dashboard screen\nloaded?",
+          "branch": [
+            {
+              "type": "io",
+              "text": "Display Unable to load\nthis screen. Admin selects\nRetry for this route."
+            },
+            {
+              "type": "onpage",
+              "text": "R",
+              "ref": "R",
+              "direction": "out"
+            }
+          ],
+          "down": "Yes",
+          "right": "No",
+          "id": "P2N8",
+          "x": 130,
+          "y": 1303.1999999999998,
+          "w": 1040,
+          "h": 260,
+          "lines": [
+            "Dashboard screen",
+            "loaded?"
+          ],
+          "font": 33,
+          "lh": 39.6
+        },
+        {
+          "type": "io",
+          "text": "Display Unable to load\nthis screen. Admin selects\nRetry for this route.",
+          "id": "P2N9",
+          "x": 1410,
+          "y": 1358.1999999999998,
+          "w": 640,
+          "h": 150,
+          "lines": [
+            "Display Unable to load",
+            "this screen. Admin selects",
+            "Retry for this route."
+          ],
+          "font": 30,
+          "lh": 36
+        },
+        {
+          "type": "onpage",
+          "text": "R",
+          "ref": "R",
+          "direction": "out",
+          "id": "P2N10",
+          "x": 1688,
+          "y": 1556.1999999999998,
+          "w": 84,
+          "h": 84,
+          "lines": [
+            "R"
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "io",
+          "text": "Display Admin Dashboard\nand the available Admin modules.",
+          "id": "P2N11",
+          "x": 130,
+          "y": 1611.1999999999998,
+          "w": 1040,
+          "h": 123.6,
+          "lines": [
+            "Display Admin Dashboard",
+            "and the available Admin modules."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "io",
+          "text": "Admin selects a module or Dashboard\nfrom persistent navigation, or selects Log Out.",
+          "id": "P2N12",
+          "x": 130,
+          "y": 1782.7999999999997,
+          "w": 1040,
+          "h": 123.6,
+          "lines": [
+            "Admin selects a module or Dashboard",
+            "from persistent navigation, or selects Log Out."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "decision",
+          "text": "Log Out selected?",
+          "branch": [
+            {
+              "type": "offpage",
+              "ref": "L",
+              "page": 4,
+              "direction": "out",
+              "text": "L - To page 4\nPerform the verified logout"
+            }
+          ],
+          "down": "No",
+          "right": "Yes",
+          "id": "P2N13",
+          "x": 130,
+          "y": 1954.3999999999996,
+          "w": 1040,
+          "h": 260,
+          "lines": [
+            "Log Out selected?"
+          ],
+          "font": 33,
+          "lh": 39.6
+        },
+        {
+          "type": "offpage",
+          "ref": "L",
+          "page": 4,
+          "direction": "out",
+          "text": "L - To page 4\nPerform the verified logout",
+          "id": "P2N14",
+          "x": 1410,
+          "y": 2009.3999999999996,
+          "w": 640,
+          "h": 150,
+          "lines": [
+            "L - To page 4",
+            "Perform the verified logout"
+          ],
+          "font": 30,
+          "lh": 36
+        },
+        {
+          "type": "decision",
+          "text": "Dashboard selected?",
+          "branch": [
+            {
+              "type": "onpage",
+              "text": "D",
+              "ref": "D",
+              "direction": "out"
+            }
+          ],
+          "down": "No",
+          "right": "Yes",
+          "id": "P2N15",
+          "x": 130,
+          "y": 2262.3999999999996,
+          "w": 1040,
+          "h": 260,
+          "lines": [
+            "Dashboard selected?"
+          ],
+          "font": 33,
+          "lh": 39.6
+        },
+        {
+          "type": "onpage",
+          "text": "D",
+          "ref": "D",
+          "direction": "out",
+          "id": "P2N16",
+          "x": 1688,
+          "y": 2350.3999999999996,
+          "w": 84,
+          "h": 84,
+          "lines": [
+            "D"
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "offpage",
+          "ref": "N",
+          "page": 3,
+          "direction": "out",
+          "text": "N - To page 3\nNavigate to the selected module",
+          "id": "P2N17",
+          "x": 170,
+          "y": 2570.3999999999996,
+          "w": 960,
+          "h": 150,
+          "lines": [
+            "N - To page 3",
+            "Navigate to the selected module"
+          ],
+          "font": 31,
+          "lh": 37.199999999999996
+        }
+      ],
+      "number": 2,
+      "id": "Admin_P02",
+      "width": 2100,
+      "height": 2970,
+      "edges": [
+        {
+          "id": "P2E1",
+          "from": "P2N1",
+          "to": "P2N2",
+          "label": "",
+          "points": [
+            [
+              650,
+              340
+            ],
+            [
+              650,
+              388
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P2E2",
+          "from": "P2N2",
+          "to": "P2N3",
+          "label": "",
+          "points": [
+            [
+              650,
+              511.6
+            ],
+            [
+              650,
+              559.6
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P2E3",
+          "from": "P2N3",
+          "to": "P2N4",
+          "label": "Yes",
+          "points": [
+            [
+              1170,
+              689.6
+            ],
+            [
+              1410,
+              689.6
+            ]
+          ],
+          "horizontal": true
+        },
+        {
+          "id": "P2E4",
+          "from": "P2N3",
+          "to": "P2N5",
+          "label": "No",
+          "points": [
+            [
+              650,
+              819.6
+            ],
+            [
+              650,
+              867.6
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P2E5",
+          "from": "P2N5",
+          "to": "P2N6",
+          "label": "",
+          "points": [
+            [
+              650,
+              951.6
+            ],
+            [
+              650,
+              999.6
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P2E6",
+          "from": "P2N6",
+          "to": "P2N7",
+          "label": "",
+          "points": [
+            [
+              650,
+              1083.6
+            ],
+            [
+              650,
+              1131.6
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P2E7",
+          "from": "P2N7",
+          "to": "P2N8",
+          "label": "",
+          "points": [
+            [
+              650,
+              1255.1999999999998
+            ],
+            [
+              650,
+              1303.1999999999998
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P2E8",
+          "from": "P2N8",
+          "to": "P2N9",
+          "label": "No",
+          "points": [
+            [
+              1170,
+              1433.1999999999998
+            ],
+            [
+              1410,
+              1433.1999999999998
+            ]
+          ],
+          "horizontal": true
+        },
+        {
+          "id": "P2E9",
+          "from": "P2N9",
+          "to": "P2N10",
+          "label": "",
+          "points": [
+            [
+              1730,
+              1508.1999999999998
+            ],
+            [
+              1730,
+              1556.1999999999998
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P2E10",
+          "from": "P2N8",
+          "to": "P2N11",
+          "label": "Yes",
+          "points": [
+            [
+              650,
+              1563.1999999999998
+            ],
+            [
+              650,
+              1611.1999999999998
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P2E11",
+          "from": "P2N11",
+          "to": "P2N12",
+          "label": "",
+          "points": [
+            [
+              650,
+              1734.7999999999997
+            ],
+            [
+              650,
+              1782.7999999999997
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P2E12",
+          "from": "P2N12",
+          "to": "P2N13",
+          "label": "",
+          "points": [
+            [
+              650,
+              1906.3999999999996
+            ],
+            [
+              650,
+              1954.3999999999996
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P2E13",
+          "from": "P2N13",
+          "to": "P2N14",
+          "label": "Yes",
+          "points": [
+            [
+              1170,
+              2084.3999999999996
+            ],
+            [
+              1410,
+              2084.3999999999996
+            ]
+          ],
+          "horizontal": true
+        },
+        {
+          "id": "P2E14",
+          "from": "P2N13",
+          "to": "P2N15",
+          "label": "No",
+          "points": [
+            [
+              650,
+              2214.3999999999996
+            ],
+            [
+              650,
+              2262.3999999999996
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P2E15",
+          "from": "P2N15",
+          "to": "P2N16",
+          "label": "Yes",
+          "points": [
+            [
+              1170,
+              2392.3999999999996
+            ],
+            [
+              1688,
+              2392.3999999999996
+            ]
+          ],
+          "horizontal": true
+        },
+        {
+          "id": "P2E16",
+          "from": "P2N15",
+          "to": "P2N17",
+          "label": "No",
+          "points": [
+            [
+              650,
+              2522.3999999999996
+            ],
+            [
+              650,
+              2570.3999999999996
+            ]
+          ],
+          "horizontal": false
+        }
+      ]
+    },
+    {
+      "title": "Verified module destinations - Stage 1 only",
+      "note": "Follow exactly ONE labeled exit for the selected route. The common vertical line is a shared choice bus, not parallel execution. M01-M13 are future module flowcharts: PLANNED - STAGE 2.",
+      "catalog": true,
+      "number": 3,
+      "id": "Admin_P03",
+      "width": 2100,
+      "height": 2970,
+      "nodes": [
+        {
+          "type": "offpage",
+          "ref": "N",
+          "page": 2,
+          "direction": "in",
+          "text": "N - From page 2\nSelected module from navigation",
+          "id": "P3N1",
+          "x": 60,
+          "y": 185,
+          "w": 680,
+          "h": 140,
+          "lines": [
+            "N - From page 2",
+            "Selected module from navigation"
+          ],
+          "font": 30,
+          "lh": 36
+        },
+        {
+          "type": "onpage",
+          "text": "C",
+          "ref": "C",
+          "direction": "in",
+          "id": "P3N2",
+          "x": 358,
+          "y": 360,
+          "w": 84,
+          "h": 84,
+          "lines": [
+            "C"
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "offpage",
+          "ref": "H",
+          "page": 2,
+          "direction": "in",
+          "text": "H - From page 2\nKnown non-Dashboard initial route",
+          "id": "P3N3",
+          "x": 1420,
+          "y": 185,
+          "w": 640,
+          "h": 140,
+          "lines": [
+            "H - From page 2",
+            "Known non-Dashboard initial route"
+          ],
+          "font": 30,
+          "lh": 36
+        },
+        {
+          "type": "onpage",
+          "text": "C",
+          "ref": "C",
+          "direction": "out",
+          "id": "P3N4",
+          "x": 1698,
+          "y": 360,
+          "w": 84,
+          "h": 84,
+          "lines": [
+            "C"
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "decision",
+          "text": "Which module owns\nthe selected route?",
+          "multiway": true,
+          "id": "P3N5",
+          "x": 30,
+          "y": 480,
+          "w": 740,
+          "h": 230,
+          "lines": [
+            "Which module owns",
+            "the selected route?"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nEquipment Tracking",
+          "id": "P3N6",
+          "x": 750,
+          "y": 722,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "Equipment Tracking"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M01 - Equipment Tracking\nPLANNED — STAGE 2",
+          "ref": "M01",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future Equipment Tracking module flowchart",
+          "id": "P3N7",
+          "x": 1450,
+          "y": 708,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M01 - Equipment Tracking",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nProjects",
+          "id": "P3N8",
+          "x": 750,
+          "y": 886,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "Projects"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M02 - Projects\nPLANNED — STAGE 2",
+          "ref": "M02",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future Projects module flowchart",
+          "id": "P3N9",
+          "x": 1450,
+          "y": 872,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M02 - Projects",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nRequests",
+          "id": "P3N10",
+          "x": 750,
+          "y": 1050,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "Requests"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M03 - Requests\nPLANNED — STAGE 2",
+          "ref": "M03",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future Requests module flowchart",
+          "id": "P3N11",
+          "x": 1450,
+          "y": 1036,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M03 - Requests",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nTransfers",
+          "id": "P3N12",
+          "x": 750,
+          "y": 1214,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "Transfers"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M04 - Transfers\nPLANNED — STAGE 2",
+          "ref": "M04",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future Transfers module flowchart",
+          "id": "P3N13",
+          "x": 1450,
+          "y": 1200,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M04 - Transfers",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nReturns",
+          "id": "P3N14",
+          "x": 750,
+          "y": 1378,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "Returns"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M05 - Returns\nPLANNED — STAGE 2",
+          "ref": "M05",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future Returns module flowchart",
+          "id": "P3N15",
+          "x": 1450,
+          "y": 1364,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M05 - Returns",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nRepairs",
+          "id": "P3N16",
+          "x": 750,
+          "y": 1542,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "Repairs"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M06 - Repairs\nPLANNED — STAGE 2",
+          "ref": "M06",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future Repairs module flowchart",
+          "id": "P3N17",
+          "x": 1450,
+          "y": 1528,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M06 - Repairs",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nMissing",
+          "id": "P3N18",
+          "x": 750,
+          "y": 1706,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "Missing"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M07 - Missing\nPLANNED — STAGE 2",
+          "ref": "M07",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future Missing module flowchart",
+          "id": "P3N19",
+          "x": 1450,
+          "y": 1692,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M07 - Missing",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nMaterial Requests",
+          "id": "P3N20",
+          "x": 750,
+          "y": 1870,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "Material Requests"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M08 - Material Requests\nPLANNED — STAGE 2",
+          "ref": "M08",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future Material Requests module flowchart",
+          "id": "P3N21",
+          "x": 1450,
+          "y": 1856,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M08 - Material Requests",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nPurchases",
+          "id": "P3N22",
+          "x": 750,
+          "y": 2034,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "Purchases"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M09 - Purchases\nPLANNED — STAGE 2",
+          "ref": "M09",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future Purchases module flowchart",
+          "id": "P3N23",
+          "x": 1450,
+          "y": 2020,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M09 - Purchases",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nReports",
+          "id": "P3N24",
+          "x": 750,
+          "y": 2198,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "Reports"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M10 - Reports\nPLANNED — STAGE 2",
+          "ref": "M10",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future Reports module flowchart",
+          "id": "P3N25",
+          "x": 1450,
+          "y": 2184,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M10 - Reports",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nActivity Logs",
+          "id": "P3N26",
+          "x": 750,
+          "y": 2362,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "Activity Logs"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M11 - Activity Logs\nPLANNED — STAGE 2",
+          "ref": "M11",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future Activity Logs module flowchart",
+          "id": "P3N27",
+          "x": 1450,
+          "y": 2348,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M11 - Activity Logs",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nPeople & Accountability",
+          "id": "P3N28",
+          "x": 750,
+          "y": 2526,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "People & Accountability"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M12 - People & Accountability\nPLANNED — STAGE 2",
+          "ref": "M12",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future People & Accountability module flowchart",
+          "id": "P3N29",
+          "x": 1450,
+          "y": 2512,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M12 - People & Accountability",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        },
+        {
+          "type": "process",
+          "text": "Navigate to\nSettings",
+          "id": "P3N30",
+          "x": 750,
+          "y": 2690,
+          "w": 600,
+          "h": 116,
+          "lines": [
+            "Navigate to",
+            "Settings"
+          ],
+          "font": 32,
+          "lh": 38.4
+        },
+        {
+          "type": "offpage",
+          "text": "M13 - Settings\nPLANNED — STAGE 2",
+          "ref": "M13",
+          "direction": "out",
+          "planned": true,
+          "destination": "Future Settings module flowchart",
+          "id": "P3N31",
+          "x": 1450,
+          "y": 2676,
+          "w": 610,
+          "h": 144,
+          "lines": [
+            "M13 - Settings",
+            "PLANNED — STAGE 2"
+          ],
+          "font": 26,
+          "lh": 33
+        }
+      ],
+      "edges": [
+        {
+          "id": "P3E1",
+          "from": "P3N1",
+          "to": "P3N2",
+          "points": [
+            [
+              400,
+              325
+            ],
+            [
+              400,
+              360
+            ]
+          ],
+          "label": ""
+        },
+        {
+          "id": "P3E2",
+          "from": "P3N3",
+          "to": "P3N4",
+          "points": [
+            [
+              1740,
+              325
+            ],
+            [
+              1740,
+              360
+            ]
+          ],
+          "label": ""
+        },
+        {
+          "id": "P3E3",
+          "from": "P3N2",
+          "to": "P3N5",
+          "points": [
+            [
+              400,
+              444
+            ],
+            [
+              400,
+              480
+            ]
+          ],
+          "label": ""
+        },
+        {
+          "id": "P3E4",
+          "from": "P3N5",
+          "to": "P3N6",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              780
+            ],
+            [
+              750,
+              780
+            ]
+          ],
+          "label": "masterlist / tool-profile",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 761,
+          "labelLines": [
+            "masterlist",
+            "tool-profile"
+          ]
+        },
+        {
+          "id": "P3E5",
+          "from": "P3N6",
+          "to": "P3N7",
+          "points": [
+            [
+              1350,
+              780
+            ],
+            [
+              1450,
+              780
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        },
+        {
+          "id": "P3E6",
+          "from": "P3N5",
+          "to": "P3N8",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              944
+            ],
+            [
+              750,
+              944
+            ]
+          ],
+          "label": "sites / site-detail",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 925,
+          "labelLines": [
+            "sites",
+            "site-detail"
+          ]
+        },
+        {
+          "id": "P3E7",
+          "from": "P3N8",
+          "to": "P3N9",
+          "points": [
+            [
+              1350,
+              944
+            ],
+            [
+              1450,
+              944
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        },
+        {
+          "id": "P3E8",
+          "from": "P3N5",
+          "to": "P3N10",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              1108
+            ],
+            [
+              750,
+              1108
+            ]
+          ],
+          "label": "request",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 1089,
+          "labelLines": [
+            "request"
+          ]
+        },
+        {
+          "id": "P3E9",
+          "from": "P3N10",
+          "to": "P3N11",
+          "points": [
+            [
+              1350,
+              1108
+            ],
+            [
+              1450,
+              1108
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        },
+        {
+          "id": "P3E10",
+          "from": "P3N5",
+          "to": "P3N12",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              1272
+            ],
+            [
+              750,
+              1272
+            ]
+          ],
+          "label": "transfer",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 1253,
+          "labelLines": [
+            "transfer"
+          ]
+        },
+        {
+          "id": "P3E11",
+          "from": "P3N12",
+          "to": "P3N13",
+          "points": [
+            [
+              1350,
+              1272
+            ],
+            [
+              1450,
+              1272
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        },
+        {
+          "id": "P3E12",
+          "from": "P3N5",
+          "to": "P3N14",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              1436
+            ],
+            [
+              750,
+              1436
+            ]
+          ],
+          "label": "return",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 1417,
+          "labelLines": [
+            "return"
+          ]
+        },
+        {
+          "id": "P3E13",
+          "from": "P3N14",
+          "to": "P3N15",
+          "points": [
+            [
+              1350,
+              1436
+            ],
+            [
+              1450,
+              1436
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        },
+        {
+          "id": "P3E14",
+          "from": "P3N5",
+          "to": "P3N16",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              1600
+            ],
+            [
+              750,
+              1600
+            ]
+          ],
+          "label": "repair",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 1581,
+          "labelLines": [
+            "repair"
+          ]
+        },
+        {
+          "id": "P3E15",
+          "from": "P3N16",
+          "to": "P3N17",
+          "points": [
+            [
+              1350,
+              1600
+            ],
+            [
+              1450,
+              1600
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        },
+        {
+          "id": "P3E16",
+          "from": "P3N5",
+          "to": "P3N18",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              1764
+            ],
+            [
+              750,
+              1764
+            ]
+          ],
+          "label": "missing",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 1745,
+          "labelLines": [
+            "missing"
+          ]
+        },
+        {
+          "id": "P3E17",
+          "from": "P3N18",
+          "to": "P3N19",
+          "points": [
+            [
+              1350,
+              1764
+            ],
+            [
+              1450,
+              1764
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        },
+        {
+          "id": "P3E18",
+          "from": "P3N5",
+          "to": "P3N20",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              1928
+            ],
+            [
+              750,
+              1928
+            ]
+          ],
+          "label": "consumables",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 1909,
+          "labelLines": [
+            "consumables"
+          ]
+        },
+        {
+          "id": "P3E19",
+          "from": "P3N20",
+          "to": "P3N21",
+          "points": [
+            [
+              1350,
+              1928
+            ],
+            [
+              1450,
+              1928
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        },
+        {
+          "id": "P3E20",
+          "from": "P3N5",
+          "to": "P3N22",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              2092
+            ],
+            [
+              750,
+              2092
+            ]
+          ],
+          "label": "purchase",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 2073,
+          "labelLines": [
+            "purchase"
+          ]
+        },
+        {
+          "id": "P3E21",
+          "from": "P3N22",
+          "to": "P3N23",
+          "points": [
+            [
+              1350,
+              2092
+            ],
+            [
+              1450,
+              2092
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        },
+        {
+          "id": "P3E22",
+          "from": "P3N5",
+          "to": "P3N24",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              2256
+            ],
+            [
+              750,
+              2256
+            ]
+          ],
+          "label": "reports",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 2237,
+          "labelLines": [
+            "reports"
+          ]
+        },
+        {
+          "id": "P3E23",
+          "from": "P3N24",
+          "to": "P3N25",
+          "points": [
+            [
+              1350,
+              2256
+            ],
+            [
+              1450,
+              2256
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        },
+        {
+          "id": "P3E24",
+          "from": "P3N5",
+          "to": "P3N26",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              2420
+            ],
+            [
+              750,
+              2420
+            ]
+          ],
+          "label": "activity",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 2401,
+          "labelLines": [
+            "activity"
+          ]
+        },
+        {
+          "id": "P3E25",
+          "from": "P3N26",
+          "to": "P3N27",
+          "points": [
+            [
+              1350,
+              2420
+            ],
+            [
+              1450,
+              2420
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        },
+        {
+          "id": "P3E26",
+          "from": "P3N5",
+          "to": "P3N28",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              2584
+            ],
+            [
+              750,
+              2584
+            ]
+          ],
+          "label": "users",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 2565,
+          "labelLines": [
+            "users"
+          ]
+        },
+        {
+          "id": "P3E27",
+          "from": "P3N28",
+          "to": "P3N29",
+          "points": [
+            [
+              1350,
+              2584
+            ],
+            [
+              1450,
+              2584
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        },
+        {
+          "id": "P3E28",
+          "from": "P3N5",
+          "to": "P3N30",
+          "points": [
+            [
+              400,
+              710
+            ],
+            [
+              400,
+              2748
+            ],
+            [
+              750,
+              2748
+            ]
+          ],
+          "label": "settings",
+          "bus": "module-choice",
+          "labelX": 440,
+          "labelY": 2729,
+          "labelLines": [
+            "settings"
+          ]
+        },
+        {
+          "id": "P3E29",
+          "from": "P3N30",
+          "to": "P3N31",
+          "points": [
+            [
+              1350,
+              2748
+            ],
+            [
+              1450,
+              2748
+            ]
+          ],
+          "label": "",
+          "horizontal": true
+        }
+      ],
+      "bus": {
+        "x": 400,
+        "top": 710,
+        "bottom": 2748
+      }
+    },
+    {
+      "title": "Verified company logout and retry",
+      "note": "Logout clears the local UI and navigation before Supabase confirms sign-out. A retries unconfirmed sign-out. The call uses scope: local; this diagram makes no claim about other devices.",
+      "nodes": [
+        {
+          "type": "offpage",
+          "ref": "L",
+          "page": 2,
+          "direction": "in",
+          "text": "L - From page 2\nAdmin selects Log Out",
+          "id": "P4N1",
+          "x": 170,
+          "y": 190,
+          "w": 960,
+          "h": 150,
+          "lines": [
+            "L - From page 2",
+            "Admin selects Log Out"
+          ],
+          "font": 31,
+          "lh": 37.199999999999996
+        },
+        {
+          "type": "onpage",
+          "text": "A",
+          "ref": "A",
+          "direction": "in",
+          "id": "P4N2",
+          "x": 608,
+          "y": 388,
+          "w": 84,
+          "h": 84,
+          "lines": [
+            "A"
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "process",
+          "text": "End the navigation session; clear local\nprofile, workspace and setup/demo markers.\nRemove the route hash; show Signing out.",
+          "id": "P4N3",
+          "x": 130,
+          "y": 520,
+          "w": 1040,
+          "h": 164.39999999999998,
+          "lines": [
+            "End the navigation session; clear local",
+            "profile, workspace and setup/demo markers.",
+            "Remove the route hash; show Signing out."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "process",
+          "text": "Call Supabase Auth signOut({scope:\"local\"}).",
+          "id": "P4N4",
+          "x": 130,
+          "y": 732.4,
+          "w": 1040,
+          "h": 120,
+          "lines": [
+            "Call Supabase Auth signOut({scope:\"local\"})."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "decision",
+          "text": "Sign-out confirmed?",
+          "branch": [
+            {
+              "type": "io",
+              "text": "Show Sign out could not\nbe confirmed and the\nRetry sign out button."
+            },
+            {
+              "type": "onpage",
+              "text": "A",
+              "ref": "A",
+              "direction": "out"
+            }
+          ],
+          "down": "Yes",
+          "right": "No",
+          "id": "P4N5",
+          "x": 130,
+          "y": 900.4,
+          "w": 1040,
+          "h": 260,
+          "lines": [
+            "Sign-out confirmed?"
+          ],
+          "font": 33,
+          "lh": 39.6
+        },
+        {
+          "type": "io",
+          "text": "Show Sign out could not\nbe confirmed and the\nRetry sign out button.",
+          "id": "P4N6",
+          "x": 1410,
+          "y": 955.4000000000001,
+          "w": 640,
+          "h": 150,
+          "lines": [
+            "Show Sign out could not",
+            "be confirmed and the",
+            "Retry sign out button."
+          ],
+          "font": 30,
+          "lh": 36
+        },
+        {
+          "type": "onpage",
+          "text": "A",
+          "ref": "A",
+          "direction": "out",
+          "id": "P4N7",
+          "x": 1688,
+          "y": 1153.4,
+          "w": 84,
+          "h": 84,
+          "lines": [
+            "A"
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "io",
+          "text": "Display Login with\nYou have been signed out.",
+          "id": "P4N8",
+          "x": 130,
+          "y": 1208.4,
+          "w": 1040,
+          "h": 123.6,
+          "lines": [
+            "Display Login with",
+            "You have been signed out."
+          ],
+          "font": 34,
+          "lh": 40.8
+        },
+        {
+          "type": "terminator",
+          "text": "End - Company session signed out",
+          "id": "P4N9",
+          "x": 200,
+          "y": 1380,
+          "w": 900,
+          "h": 96,
+          "lines": [
+            "End - Company session signed out"
+          ],
+          "font": 34,
+          "lh": 40.8
+        }
+      ],
+      "number": 4,
+      "id": "Admin_P04",
+      "width": 2100,
+      "height": 2970,
+      "edges": [
+        {
+          "id": "P4E1",
+          "from": "P4N1",
+          "to": "P4N2",
+          "label": "",
+          "points": [
+            [
+              650,
+              340
+            ],
+            [
+              650,
+              388
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P4E2",
+          "from": "P4N2",
+          "to": "P4N3",
+          "label": "",
+          "points": [
+            [
+              650,
+              472
+            ],
+            [
+              650,
+              520
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P4E3",
+          "from": "P4N3",
+          "to": "P4N4",
+          "label": "",
+          "points": [
+            [
+              650,
+              684.4
+            ],
+            [
+              650,
+              732.4
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P4E4",
+          "from": "P4N4",
+          "to": "P4N5",
+          "label": "",
+          "points": [
+            [
+              650,
+              852.4
+            ],
+            [
+              650,
+              900.4
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P4E5",
+          "from": "P4N5",
+          "to": "P4N6",
+          "label": "No",
+          "points": [
+            [
+              1170,
+              1030.4
+            ],
+            [
+              1410,
+              1030.4
+            ]
+          ],
+          "horizontal": true
+        },
+        {
+          "id": "P4E6",
+          "from": "P4N6",
+          "to": "P4N7",
+          "label": "",
+          "points": [
+            [
+              1730,
+              1105.4
+            ],
+            [
+              1730,
+              1153.4
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P4E7",
+          "from": "P4N5",
+          "to": "P4N8",
+          "label": "Yes",
+          "points": [
+            [
+              650,
+              1160.4
+            ],
+            [
+              650,
+              1208.4
+            ]
+          ],
+          "horizontal": false
+        },
+        {
+          "id": "P4E8",
+          "from": "P4N8",
+          "to": "P4N9",
+          "label": "",
+          "points": [
+            [
+              650,
+              1332
+            ],
+            [
+              650,
+              1380
+            ]
+          ],
+          "horizontal": false
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "route": "masterlist",
+      "label": "Equipment Tracking",
+      "ref": "M01",
+      "module": "masterlist",
+      "summary": "Register / edit equipment, view details and QR labels, search and export inventory.",
+      "routes": [
+        "masterlist",
+        "tool-profile"
+      ]
+    },
+    {
+      "route": "sites",
+      "label": "Projects",
+      "ref": "M02",
+      "module": "sites",
+      "summary": "View projects and project detail; Admin project management and assignments.",
+      "routes": [
+        "sites",
+        "site-detail"
+      ]
+    },
+    {
+      "route": "request",
+      "label": "Requests",
+      "ref": "M03",
+      "module": "requests",
+      "summary": "Review requests; approve, reject and release eligible requests.",
+      "routes": [
+        "request"
+      ]
+    },
+    {
+      "route": "transfer",
+      "label": "Transfers",
+      "ref": "M04",
+      "module": "transfers",
+      "summary": "Monitor handovers and their records; Admin cannot act as the named field receiver.",
+      "routes": [
+        "transfer"
+      ]
+    },
+    {
+      "route": "return",
+      "label": "Returns",
+      "ref": "M05",
+      "module": "returns",
+      "summary": "Monitor recorded returns; no separate Admin acceptance stage.",
+      "routes": [
+        "return"
+      ]
+    },
+    {
+      "route": "repair",
+      "label": "Repairs",
+      "ref": "M06",
+      "module": "repairs",
+      "summary": "Review repair cases; start and complete eligible repairs.",
+      "routes": [
+        "repair"
+      ]
+    },
+    {
+      "route": "missing",
+      "label": "Missing",
+      "ref": "M07",
+      "module": "missing",
+      "summary": "Review missing cases and record eligible Good / Damaged recovery.",
+      "routes": [
+        "missing"
+      ]
+    },
+    {
+      "route": "consumables",
+      "label": "Material Requests",
+      "ref": "M08",
+      "module": "consumables",
+      "summary": "Manage consumable items / stock and material requests; record receipts or cancel outstanding requests.",
+      "routes": [
+        "consumables"
+      ]
+    },
+    {
+      "route": "purchase",
+      "label": "Purchases",
+      "ref": "M09",
+      "module": "purchases",
+      "summary": "View and save purchase ledger records with optional private receipts; does not receive stock.",
+      "routes": [
+        "purchase"
+      ]
+    },
+    {
+      "route": "reports",
+      "label": "Reports",
+      "ref": "M10",
+      "module": "reports",
+      "summary": "Load monitoring reports for a selected period and export PDF.",
+      "routes": [
+        "reports"
+      ]
+    },
+    {
+      "route": "activity",
+      "label": "Activity Logs",
+      "ref": "M11",
+      "module": "activity",
+      "summary": "Search saved movement activity, follow record links and export PDF.",
+      "routes": [
+        "activity"
+      ]
+    },
+    {
+      "route": "users",
+      "label": "People & Accountability",
+      "ref": "M12",
+      "module": "users",
+      "summary": "Manage company people, accounts and accountability using Admin controls.",
+      "routes": [
+        "users"
+      ]
+    },
+    {
+      "route": "settings",
+      "label": "Settings",
+      "ref": "M13",
+      "module": "settings",
+      "summary": "View My account identity, change display theme and log out; roles are managed by Admin.",
+      "routes": [
+        "settings"
+      ]
+    }
+  ],
+  "adminMenu": [
+    {
+      "route": "dashboard",
+      "label": "Dashboard"
+    },
+    {
+      "route": "masterlist",
+      "label": "Equipment Tracking"
+    },
+    {
+      "route": "sites",
+      "label": "Projects"
+    },
+    {
+      "route": "request",
+      "label": "Requests"
+    },
+    {
+      "route": "transfer",
+      "label": "Transfers"
+    },
+    {
+      "route": "return",
+      "label": "Returns"
+    },
+    {
+      "route": "repair",
+      "label": "Repairs"
+    },
+    {
+      "route": "missing",
+      "label": "Missing"
+    },
+    {
+      "route": "consumables",
+      "label": "Material Requests"
+    },
+    {
+      "route": "purchase",
+      "label": "Purchases"
+    },
+    {
+      "route": "reports",
+      "label": "Reports"
+    },
+    {
+      "route": "activity",
+      "label": "Activity Logs"
+    },
+    {
+      "route": "users",
+      "label": "People & Accountability"
+    },
+    {
+      "route": "settings",
+      "label": "Settings"
+    }
+  ],
+  "adminAllowedRoutes": [
+    "dashboard",
+    "masterlist",
+    "tool-profile",
+    "sites",
+    "site-detail",
+    "request",
+    "transfer",
+    "return",
+    "repair",
+    "missing",
+    "consumables",
+    "purchase",
+    "reports",
+    "activity",
+    "users",
+    "settings"
+  ],
+  "screenModules": {
+    "dashboard": "dashboard",
+    "masterlist": "masterlist",
+    "tool-profile": "masterlist",
+    "sites": "sites",
+    "site-detail": "sites",
+    "consumables": "consumables",
+    "request": "requests",
+    "transfer": "transfers",
+    "return": "returns",
+    "repair": "repairs",
+    "missing": "missing",
+    "purchase": "purchases",
+    "reports": "reports",
+    "activity": "activity",
+    "users": "users",
+    "settings": "settings"
+  }
+}

@@ -1,0 +1,341 @@
+{
+  "explicitTableCount": 21,
+  "incompleteCore": [
+    "public.profiles",
+    "public.equipment"
+  ],
+  "tables": [
+    {
+      "name": "public.consumables",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 9,
+      "definition": "id uuid primary key,\r\n  name text not null check (char_length(btrim(name)) between 1 and 120),\r\n  unit text not null check (char_length(btrim(unit)) between 1 and 30),\r\n  current_stock numeric(12,3) not null default 0 check (current_stock >= 0 and current_stock < 1000000000),\r\n  minimum_stock numeric(12,3) not null default 0 check (minimum_stock >= 0 and minimum_stock < 1000000000),\r\n  stock_status text generated always as (case when current_stock = 0 then 'out' when current_stock < minimum_stock then 'low' else 'ok' end) stored,\r\n  version integer not null default 1,\r\n  created_at timestamptz not null default now(),\r\n  updated_at timestamptz not null default now()"
+    },
+    {
+      "name": "public.consumable_requests",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 22,
+      "definition": "id uuid primary key,\r\n  request_number bigint generated always as identity unique,\r\n  consumable_id uuid not null references public.consumables(id) on delete restrict,\r\n  item_name text not null,\r\n  unit text not null,\r\n  quantity numeric(12,3) not null check (quantity > 0 and quantity < 1000000000),\r\n  received_quantity numeric(12,3) not null default 0 check (received_quantity >= 0 and received_quantity <= quantity),\r\n  requester text not null check (char_length(btrim(requester)) between 1 and 120 and requester ~ '\\S'),\r\n  purpose text not null check (char_length(btrim(purpose)) between 1 and 1000 and purpose ~ '\\S'),\r\n  needed_by date,\r\n  status text not null default 'pending' check (status in ('pending','partial','received','cancelled')),\r\n  cancellation_reason text check (char_length(btrim(cancellation_reason)) between 1 and 1000 and cancellation_reason ~ '\\S'),\r\n  version integer not null default 1,\r\n  created_at timestamptz not null default now(),\r\n  updated_at timestamptz not null default now(),\r\n  check ((status = 'pending' and received_quantity = 0) or (status = 'partial' and received_quantity > 0 and received_quantity < quantity) or (status = 'received' and received_quantity = quantity) or (status = 'cancelled' and received_quantity < quantity and cancellation_reason is not null))"
+    },
+    {
+      "name": "public.consumable_stock_movements",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 42,
+      "definition": "id uuid primary key,\r\n  consumable_id uuid not null references public.consumables(id) on delete restrict,\r\n  request_id uuid references public.consumable_requests(id) on delete restrict,\r\n  kind text not null check (kind in ('opening','usage','restock','correction','receipt')),\r\n  quantity_change numeric(12,3) not null,\r\n  balance_after numeric(12,3) not null check (balance_after >= 0 and balance_after < 1000000000),\r\n  note text not null check (char_length(btrim(note)) between 1 and 1000 and note ~ '\\S'),\r\n  created_at timestamptz not null default now(),\r\n  check ((kind = 'receipt' and request_id is not null and quantity_change > 0) or (kind <> 'receipt' and request_id is null)),\r\n  check (kind not in ('restock','usage') or (kind = 'restock' and quantity_change > 0) or (kind = 'usage' and quantity_change < 0))"
+    },
+    {
+      "name": "public.mcpa_movements",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 10,
+      "definition": "id text primary key,\n  kind text not null check (kind in ('request','transfer','return','repair','missing')),\n  data jsonb not null check (jsonb_typeof(data) = 'object'),\n  actor_id uuid not null references public.profiles(id) on delete restrict,\n  destination_id uuid references public.sites(id) on delete restrict,\n  receiver_id uuid references public.profiles(id) on delete restrict,\n  created_at timestamptz not null default clock_timestamp(),\n  check (data->>'id' = id)"
+    },
+    {
+      "name": "public.mcpa_movement_assets",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 20,
+      "definition": "movement_id text not null references public.mcpa_movements(id) on delete restrict,\n  equipment_id uuid not null references public.equipment(id) on delete restrict,\n  primary key (movement_id,equipment_id)"
+    },
+    {
+      "name": "public.mcpa_movement_reservations",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 25,
+      "definition": "equipment_id uuid primary key references public.equipment(id) on delete restrict,\n  movement_id text not null references public.mcpa_movements(id) on delete restrict"
+    },
+    {
+      "name": "public.mcpa_movement_sites",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 29,
+      "definition": "movement_id text not null references public.mcpa_movements(id) on delete restrict,\n  site_id uuid not null references public.sites(id) on delete restrict,\n  primary key (movement_id,site_id)"
+    },
+    {
+      "name": "public.mcpa_movement_operations",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 34,
+      "definition": "id uuid primary key,\n  action text not null,\n  payload jsonb not null,\n  result jsonb not null,\n  activity jsonb not null,\n  created_at timestamptz not null default clock_timestamp()"
+    },
+    {
+      "name": "public.sites",
+      "file": "1-admin/modules/sites/setup.sql",
+      "line": 5,
+      "definition": "id uuid primary key default gen_random_uuid(),\r\n  name text not null check (char_length(btrim(name)) between 1 and 120),\r\n  location text not null check (char_length(btrim(location)) between 1 and 240),\r\n  assigned_engineer text not null check (char_length(btrim(assigned_engineer)) between 1 and 120),\r\n  phase text not null default '' check (char_length(btrim(phase)) <= 80),\r\n  status text not null default 'planning'\r\n    check (status in ('active', 'discrepancy', 'verified', 'turnover', 'idle', 'planning', 'completed')),\r\n  progress integer not null default 0 check (progress between 0 and 100),\r\n  last_inventory_check date,\r\n  created_at timestamptz not null default now(),\r\n  updated_at timestamptz not null default now()"
+    },
+    {
+      "name": "public.project_history",
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 54,
+      "definition": "id uuid primary key default gen_random_uuid(),\r\n  project_id uuid not null references public.sites(id) on delete restrict,\r\n  changed_at timestamptz not null default clock_timestamp(),\r\n  change_types text[] not null,\r\n  before_values jsonb,\r\n  after_values jsonb not null,\r\n  actor_id uuid,\r\n  actor_name text"
+    },
+    {
+      "name": "public.mcpa_account_invitations",
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 16,
+      "definition": "id uuid primary key,\r\n  profile_id uuid not null unique references public.profiles(id) on delete restrict,\r\n  email text not null unique,\r\n  name text not null,\r\n  role text not null check (role in ('engineer','architect','secretary','tool_handler')),\r\n  state text not null default 'prepared' check (state in ('prepared','sent')),\r\n  created_by uuid not null references public.profiles(id) on delete restrict,\r\n  created_at timestamptz not null default now(),\r\n  sent_at timestamptz,\r\n  lease_until timestamptz,\r\n  lease_id uuid,\r\n  attempts integer not null default 0"
+    },
+    {
+      "name": "public.mcpa_account_audit",
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 30,
+      "definition": "id uuid primary key default gen_random_uuid(),\r\n  actor_id uuid not null references public.profiles(id) on delete restrict,\r\n  profile_id uuid not null references public.profiles(id) on delete restrict,\r\n  event text not null,\r\n  details jsonb not null default '{}'::jsonb,\r\n  created_at timestamptz not null default now()"
+    },
+    {
+      "name": "public.mcpa_development_accounts",
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 7,
+      "definition": "id uuid primary key,\r\n  email text not null unique,\r\n  name text not null,\r\n  role text not null check (role in ('engineer','architect')),\r\n  profile_id uuid unique references public.profiles(id) on delete restrict,\r\n  state text not null default 'prepared' check (state in ('prepared','created')),\r\n  created_by uuid not null references public.profiles(id) on delete restrict,\r\n  created_at timestamptz not null default now(),\r\n  completed_at timestamptz,\r\n  lease_id uuid,\r\n  lease_until timestamptz,\r\n  check ((state='prepared' and profile_id is null) or (state='created' and profile_id is not null))"
+    },
+    {
+      "name": "mcpa_auth_private.receiving_qr",
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 7,
+      "definition": "token_hash text primary key,\r\n receiver_id uuid not null references public.profiles(id),\r\n site_id uuid not null references public.sites(id),\r\n created_at timestamptz not null default now(),\r\n expires_at timestamptz not null,\r\n revoked_at timestamptz"
+    },
+    {
+      "name": "public.mcpa_movement_cancellations",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 6,
+      "definition": "operation_id uuid not null references public.mcpa_movement_operations(id) on delete restrict,\n  movement_id text not null references public.mcpa_movements(id) on delete restrict,\n  action text not null check (action in ('withdrawRequest','cancelReservation','cancelTransfer')),\n  actor_id uuid not null references public.profiles(id) on delete restrict,\n  actor_name text not null,\n  actor_role text not null,\n  reason text not null check (char_length(btrim(reason)) between 1 and 2000),\n  canceled_at timestamptz not null,\n  before_data jsonb not null check (jsonb_typeof(before_data)='object'),\n  after_data jsonb not null check (jsonb_typeof(after_data)='object'),\n  primary key (operation_id,movement_id)"
+    },
+    {
+      "name": "public.mcpa_movement_refusals",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 22,
+      "definition": "operation_id uuid primary key references public.mcpa_movement_operations(id) on delete restrict,\n  movement_id text not null references public.mcpa_movements(id) on delete restrict,\n  action text not null check (action in ('refuseTransfer','reopenTransfer')),\n  actor_id uuid not null references public.profiles(id) on delete restrict,\n  actor_name text not null,\n  actor_role text not null,\n  reason text not null check (char_length(btrim(reason)) between 1 and 2000),\n  recorded_at timestamptz not null,\n  before_data jsonb not null check (jsonb_typeof(before_data)='object'),\n  after_data jsonb not null check (jsonb_typeof(after_data)='object')"
+    },
+    {
+      "name": "public.mcpa_purchases",
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 11,
+      "definition": "id uuid primary key,\n purchase_number bigint generated always as identity unique,\n supplier text not null check(char_length(btrim(supplier)) between 1 and 160),\n reference text not null check(char_length(btrim(reference)) between 1 and 120),\n purchase_date date not null,\n request_id uuid references public.consumable_requests(id) on delete restrict,\n items jsonb not null check(jsonb_typeof(items)='array' and jsonb_array_length(items) between 1 and 100),\n total numeric(18,2) not null check(total>=0 and total<10000000000000000),\n receipt_path text,\n notes text not null default '' check(char_length(notes)<=2000),\n version integer not null default 1 check(version>0),\n created_by uuid not null references public.profiles(id) on delete restrict,\n updated_by uuid not null references public.profiles(id) on delete restrict,\n created_at timestamptz not null default now(),\n updated_at timestamptz not null default now()"
+    },
+    {
+      "name": "public.mcpa_purchase_history",
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 31,
+      "definition": "operation_id uuid primary key,\n purchase_id uuid not null references public.mcpa_purchases(id) on delete restrict,\n actor_id uuid not null references public.profiles(id) on delete restrict,\n input jsonb not null,\n before_record jsonb,\n after_record jsonb not null,\n created_at timestamptz not null default now()"
+    },
+    {
+      "name": "public.mcpa_notifications",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 23,
+      "definition": "id uuid primary key default gen_random_uuid(),\n  recipient_id uuid not null references public.profiles(id) on delete restrict,\n  kind text not null check(kind in ('overdue','weekly_monitoring','movement')),\n  entity_id text,\n  dedupe_key text not null,\n  title text not null check(char_length(title) between 1 and 200),\n  message text not null check(char_length(message) between 1 and 2000),\n  data jsonb not null default '{}'::jsonb check(jsonb_typeof(data)='object'),\n  created_at timestamptz not null default clock_timestamp(),\n  read_at timestamptz,\n  unique(recipient_id,dedupe_key)"
+    },
+    {
+      "name": "public.mcpa_inventory_snapshots",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 38,
+      "definition": "id uuid primary key default gen_random_uuid(),\n  captured_at timestamptz not null default clock_timestamp(),\n  local_date date not null,\n  week_start date not null unique,\n  tools jsonb not null check(jsonb_typeof(tools)='array'),\n  check(extract(isodow from week_start)=1)"
+    },
+    {
+      "name": "mcpa_auth_private.return_office",
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 44,
+      "definition": "singleton boolean primary key default true check(singleton),\r\n  site_id uuid not null references public.sites(id) on delete restrict"
+    }
+  ],
+  "fks": [
+    {
+      "table": "public.consumable_requests",
+      "definition": "consumable_id uuid not null references public.consumables(id) on delete restrict",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 22
+    },
+    {
+      "table": "public.consumable_stock_movements",
+      "definition": "consumable_id uuid not null references public.consumables(id) on delete restrict",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 42
+    },
+    {
+      "table": "public.consumable_stock_movements",
+      "definition": "request_id uuid references public.consumable_requests(id) on delete restrict",
+      "file": "1-admin/modules/consumables/setup.sql",
+      "line": 42
+    },
+    {
+      "table": "public.mcpa_movements",
+      "definition": "actor_id uuid not null references public.profiles(id) on delete restrict",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 10
+    },
+    {
+      "table": "public.mcpa_movements",
+      "definition": "destination_id uuid references public.sites(id) on delete restrict",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 10
+    },
+    {
+      "table": "public.mcpa_movements",
+      "definition": "receiver_id uuid references public.profiles(id) on delete restrict",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 10
+    },
+    {
+      "table": "public.mcpa_movement_assets",
+      "definition": "movement_id text not null references public.mcpa_movements(id) on delete restrict",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 20
+    },
+    {
+      "table": "public.mcpa_movement_assets",
+      "definition": "equipment_id uuid not null references public.equipment(id) on delete restrict",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 20
+    },
+    {
+      "table": "public.mcpa_movement_reservations",
+      "definition": "equipment_id uuid primary key references public.equipment(id) on delete restrict",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 25
+    },
+    {
+      "table": "public.mcpa_movement_reservations",
+      "definition": "movement_id text not null references public.mcpa_movements(id) on delete restrict",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 25
+    },
+    {
+      "table": "public.mcpa_movement_sites",
+      "definition": "movement_id text not null references public.mcpa_movements(id) on delete restrict",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 29
+    },
+    {
+      "table": "public.mcpa_movement_sites",
+      "definition": "site_id uuid not null references public.sites(id) on delete restrict",
+      "file": "1-admin/modules/movements/setup.sql",
+      "line": 29
+    },
+    {
+      "table": "public.project_history",
+      "definition": "project_id uuid not null references public.sites(id) on delete restrict",
+      "file": "supabase/migrations/202610100002_project_history.sql",
+      "line": 54
+    },
+    {
+      "table": "public.mcpa_account_invitations",
+      "definition": "profile_id uuid not null unique references public.profiles(id) on delete restrict",
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 16
+    },
+    {
+      "table": "public.mcpa_account_invitations",
+      "definition": "created_by uuid not null references public.profiles(id) on delete restrict",
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 16
+    },
+    {
+      "table": "public.mcpa_account_audit",
+      "definition": "actor_id uuid not null references public.profiles(id) on delete restrict",
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 30
+    },
+    {
+      "table": "public.mcpa_account_audit",
+      "definition": "profile_id uuid not null references public.profiles(id) on delete restrict",
+      "file": "supabase/migrations/202610060001_account_management.sql",
+      "line": 30
+    },
+    {
+      "table": "public.mcpa_development_accounts",
+      "definition": "profile_id uuid unique references public.profiles(id) on delete restrict",
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 7
+    },
+    {
+      "table": "public.mcpa_development_accounts",
+      "definition": "created_by uuid not null references public.profiles(id) on delete restrict",
+      "file": "supabase/migrations/202610060003_development_accounts.sql",
+      "line": 7
+    },
+    {
+      "table": "mcpa_auth_private.receiving_qr",
+      "definition": "receiver_id uuid not null references public.profiles(id)",
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 7
+    },
+    {
+      "table": "mcpa_auth_private.receiving_qr",
+      "definition": "site_id uuid not null references public.sites(id)",
+      "file": "supabase/migrations/202610100001_engineer_portal.sql",
+      "line": 7
+    },
+    {
+      "table": "public.mcpa_movement_cancellations",
+      "definition": "operation_id uuid not null references public.mcpa_movement_operations(id) on delete restrict",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 6
+    },
+    {
+      "table": "public.mcpa_movement_cancellations",
+      "definition": "movement_id text not null references public.mcpa_movements(id) on delete restrict",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 6
+    },
+    {
+      "table": "public.mcpa_movement_cancellations",
+      "definition": "actor_id uuid not null references public.profiles(id) on delete restrict",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 6
+    },
+    {
+      "table": "public.mcpa_movement_refusals",
+      "definition": "operation_id uuid primary key references public.mcpa_movement_operations(id) on delete restrict",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 22
+    },
+    {
+      "table": "public.mcpa_movement_refusals",
+      "definition": "movement_id text not null references public.mcpa_movements(id) on delete restrict",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 22
+    },
+    {
+      "table": "public.mcpa_movement_refusals",
+      "definition": "actor_id uuid not null references public.profiles(id) on delete restrict",
+      "file": "supabase/migrations/202610100004_movement_cancellation.sql",
+      "line": 22
+    },
+    {
+      "table": "public.mcpa_purchases",
+      "definition": "request_id uuid references public.consumable_requests(id) on delete restrict",
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 11
+    },
+    {
+      "table": "public.mcpa_purchases",
+      "definition": "created_by uuid not null references public.profiles(id) on delete restrict",
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 11
+    },
+    {
+      "table": "public.mcpa_purchases",
+      "definition": "updated_by uuid not null references public.profiles(id) on delete restrict",
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 11
+    },
+    {
+      "table": "public.mcpa_purchase_history",
+      "definition": "purchase_id uuid not null references public.mcpa_purchases(id) on delete restrict",
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 31
+    },
+    {
+      "table": "public.mcpa_purchase_history",
+      "definition": "actor_id uuid not null references public.profiles(id) on delete restrict",
+      "file": "supabase/migrations/202610100005_purchase_ledger.sql",
+      "line": 31
+    },
+    {
+      "table": "public.mcpa_notifications",
+      "definition": "recipient_id uuid not null references public.profiles(id) on delete restrict",
+      "file": "supabase/migrations/202610100006_monitoring.sql",
+      "line": 23
+    },
+    {
+      "table": "mcpa_auth_private.return_office",
+      "definition": "site_id uuid not null references public.sites(id) on delete restrict",
+      "file": "supabase/migrations/202610120002_office_returns.sql",
+      "line": 44
+    }
+  ]
+}

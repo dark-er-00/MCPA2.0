@@ -1,0 +1,90 @@
+﻿{
+    "passed":  true,
+    "date":  "2026-10-20",
+    "stage":  1,
+    "revision":  "071ae16832dba4b58bc09e4572fd044cba9ddfc2",
+    "preExistingFilesCompared":  1445,
+    "allPreExistingFilesUnchanged":  true,
+    "newFilesRestrictedTo":  "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/ADMIN_FLOWCHARTS/00_Main_Admin_Flowchart/",
+    "editablePages":  4,
+    "editableNodesVerified":  75,
+    "editableArrowsVerified":  70,
+    "structure":  {
+                      "passed":  true,
+                      "pages":  4,
+                      "nodes":  75,
+                      "decisions":  9,
+                      "arrows":  70,
+                      "onPagePairs":  5,
+                      "actualOffPagePairs":  4,
+                      "plannedModuleExits":  13,
+                      "allAdminRoutesCovered":  16,
+                      "sharedChoiceBus":  "Intentional single-route dispatch, drawn once in SVG; not parallel execution",
+                      "stage2":  "13 named planned exits; no Stage 2 module flowcharts created"
+                  },
+    "browserTextFitPassed":  true,
+    "pngs":  [
+                 {
+                     "file":  "SiteTrace_Main_Admin_Flowchart.png",
+                     "width":  4800,
+                     "height":  1890,
+                     "decoded":  true
+                 },
+                 {
+                     "file":  "SiteTrace_Main_Admin_Flowchart_P01.png",
+                     "width":  3150,
+                     "height":  4455,
+                     "decoded":  true
+                 },
+                 {
+                     "file":  "SiteTrace_Main_Admin_Flowchart_P02.png",
+                     "width":  3150,
+                     "height":  4455,
+                     "decoded":  true
+                 },
+                 {
+                     "file":  "SiteTrace_Main_Admin_Flowchart_P03.png",
+                     "width":  3150,
+                     "height":  4455,
+                     "decoded":  true
+                 },
+                 {
+                     "file":  "SiteTrace_Main_Admin_Flowchart_P04.png",
+                     "width":  3150,
+                     "height":  4455,
+                     "decoded":  true
+                 }
+             ],
+    "nativePdfPages":  [
+                           {
+                               "page":  1,
+                               "nativePdfRendered":  true,
+                               "paper":  "A3 portrait"
+                           },
+                           {
+                               "page":  2,
+                               "nativePdfRendered":  true,
+                               "paper":  "A3 portrait"
+                           },
+                           {
+                               "page":  3,
+                               "nativePdfRendered":  true,
+                               "paper":  "A3 portrait"
+                           },
+                           {
+                               "page":  4,
+                               "nativePdfRendered":  true,
+                               "paper":  "A3 portrait"
+                           }
+                       ],
+    "explanationLinksVerified":  31,
+    "plannedStage2ModuleExits":  13,
+    "stage2ModuleFlowchartsCreated":  0,
+    "applicationFilesModified":  0,
+    "databaseCalls":  0,
+    "productionWrites":  0,
+    "deployments":  0,
+    "commitsCreated":  0,
+    "manualVerification":  "Live sign-in / active Admin accounts, deployed RPC/policy versions and production network/session behavior were not accessed",
+    "editableApplicationCheck":  "Uncompressed draw.io XML, symbols, label newlines, page geometry and every source/target edge checked directly; native draw.io UI not opened"
+}

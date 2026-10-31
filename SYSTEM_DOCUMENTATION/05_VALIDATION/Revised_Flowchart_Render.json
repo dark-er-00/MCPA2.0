@@ -1,0 +1,149 @@
+{
+  "passed": true,
+  "localOnly": true,
+  "outboundHttpBlocked": true,
+  "applicationOrDatabaseCalls": 0,
+  "exports": [
+    {
+      "stem": "01_Authentication_Revised",
+      "pdfPages": 2,
+      "pngPages": 2,
+      "pdfBytes": 67944,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "02_Equipment_Registration_Revised",
+      "pdfPages": 3,
+      "pngPages": 3,
+      "pdfBytes": 83334,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "03_Equipment_Request_Approval_Revised",
+      "pdfPages": 3,
+      "pngPages": 3,
+      "pdfBytes": 82523,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "04_Equipment_Release_Assignment_Revised",
+      "pdfPages": 2,
+      "pngPages": 2,
+      "pdfBytes": 67114,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "05_QR_Equipment_Transfer_Revised",
+      "pdfPages": 2,
+      "pngPages": 2,
+      "pdfBytes": 74671,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "06_Transfer_Receipt_Revised",
+      "pdfPages": 4,
+      "pngPages": 4,
+      "pdfBytes": 86222,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "07_Office_Return_Receiving_Revised",
+      "pdfPages": 4,
+      "pngPages": 4,
+      "pdfBytes": 87047,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "08_Equipment_Repair_Revised",
+      "pdfPages": 3,
+      "pngPages": 3,
+      "pdfBytes": 79899,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "09_Missing_Recovery_Revised",
+      "pdfPages": 3,
+      "pngPages": 3,
+      "pdfBytes": 78683,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "10_Consumables_Procurement_Revised",
+      "pdfPages": 3,
+      "pngPages": 3,
+      "pdfBytes": 79095,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "11_Cancellation_Refusal_Revised",
+      "pdfPages": 4,
+      "pngPages": 4,
+      "pdfBytes": 98167,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "12_Password_Recovery_Setup_Revised",
+      "pdfPages": 2,
+      "pngPages": 2,
+      "pdfBytes": 71281,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "13_Purchase_Ledger_Revised",
+      "pdfPages": 1,
+      "pngPages": 1,
+      "pdfBytes": 62528,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    },
+    {
+      "stem": "14_Offline_Demo_Revised",
+      "pdfPages": 1,
+      "pngPages": 1,
+      "pdfBytes": 51711,
+      "pngPixels": [
+        2250,
+        3270
+      ]
+    }
+  ],
+  "textFitViolations": []
+}

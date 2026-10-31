@@ -1,0 +1,147 @@
+{
+  "date": "2026-10-24",
+  "environment": "Unmodified repository UI on local HTTP. Disposable PGlite database; Auth/Storage transport modeled. External HTTPS blocked. No production access.",
+  "screenshots": [
+    {
+      "file": "dashboard.png",
+      "caption": "Admin dashboard; values are disposable local fixtures.",
+      "role": "admin",
+      "route": "#dashboard",
+      "sha256": "ee8ed0027d3cd473d58e073011b31a7de509aa56a246804e773f222aaa74c43c"
+    },
+    {
+      "file": "equipment-list.png",
+      "caption": "Equipment inventory in the actual Admin interface.",
+      "role": "admin",
+      "route": "#masterlist",
+      "sha256": "4cd3e7baa12f8d13b2114864e37ebd94798fb6ea5322ea69311668e2698583da"
+    },
+    {
+      "file": "equipment-detail.png",
+      "caption": "Equipment details and recorded custody in the Engineer interface.",
+      "role": "engineer",
+      "route": "#masterlist?record=TOOL-002",
+      "sha256": "8c405ca9ded05cf7054bdfb3c1886b2bf02e000347b62fa27184a7f3bd909208"
+    },
+    {
+      "file": "request-form.png",
+      "caption": "Actual request form before submission.",
+      "role": "engineer",
+      "route": "#request",
+      "sha256": "a4056fd1941d6cca9d9d9c942ed07c7aa19435791c495b4cc423e23f5749c0f8"
+    },
+    {
+      "file": "approval.png",
+      "caption": "Admin review of the same submitted request.",
+      "role": "admin",
+      "route": "#request",
+      "sha256": "9d4de9a2d3329d7890bea7e62ad426dacff27fbf0ba5dcac420d2e36767225b2"
+    },
+    {
+      "file": "release.png",
+      "caption": "Approved reservation before release; custody is unchanged.",
+      "role": "admin",
+      "route": "#request",
+      "sha256": "0c29b3f0f593b7c572272ad8581446730f47e41f83e8fb671aef25634e4cca4b"
+    },
+    {
+      "file": "handover-pending.png",
+      "caption": "Released transfer remains pending for the named recipient.",
+      "role": "admin",
+      "route": "#transfer",
+      "sha256": "615b6c32a3821fe5eb2ea9ceb3defa0e731ecdaa621df97ec97dc66e9b025295"
+    },
+    {
+      "file": "inspection.png",
+      "caption": "Named receiver records Good and confirms physical testing.",
+      "role": "engineer",
+      "route": "#transfer",
+      "sha256": "c9a670af3649eef6af36259ddbd20321f0c31b0e1a698bc779a39e1c27003a4c"
+    },
+    {
+      "file": "inspection-confirm.png",
+      "caption": "Lower receipt form with physical-test confirmation and the Confirm receipt action.",
+      "role": "engineer",
+      "route": "#transfer",
+      "sha256": "0156c33f4d7ca62efe9b5a77ad028bbd949f1315b6429850aac2098cd874c964"
+    },
+    {
+      "file": "received-custody.png",
+      "caption": "After the demonstrated receipt, personal equipment includes DEMO-EQ-001.",
+      "role": "engineer",
+      "route": "#masterlist",
+      "sha256": "a29948c3526d5f268e799d9378fe19a2445222a7f3cb814d855c74ebafd91aed"
+    },
+    {
+      "file": "received-detail.png",
+      "caption": "The same equipment record after receipt, with the new holder and destination.",
+      "role": "engineer",
+      "route": "#masterlist?record=DEMO-EQ-001",
+      "sha256": "5c9fa0d7fb03007e86c551732c6d19393367e8ab1803f0e97deb3a6837c277b3"
+    },
+    {
+      "file": "movement-history.png",
+      "caption": "Saved history of the demonstrated transfer.",
+      "role": "engineer",
+      "route": "#transfer",
+      "sha256": "a8aa12ad0b964bc8ec5fd02b79d5715649368482b2ea3821755175b2ad34c02a"
+    },
+    {
+      "file": "return-form.png",
+      "caption": "Supported Office return form; no return is submitted.",
+      "role": "engineer",
+      "route": "#return",
+      "sha256": "901d6d1da0d8b4ea31fbb092f1561c4d7ec3510752a7e75833ab3f3cc91c3430"
+    },
+    {
+      "file": "projects.png",
+      "caption": "Project records and linked equipment.",
+      "role": "admin",
+      "route": "#sites",
+      "sha256": "3c22876931026caa2496ac1141bf951f1fd04b2fed9b405bef74b7a75eb06cfe"
+    },
+    {
+      "file": "project-detail.png",
+      "caption": "Project equipment, accountable Engineer and construction tracking.",
+      "role": "admin",
+      "route": "#site-detail?record=9c535abb-6c8d-4df0-88c0-2ae0b014ab29",
+      "sha256": "313b61dc517850f345d077ac97b4e1d98fb6f23fe20fdd15db10b443697d2b21"
+    },
+    {
+      "file": "project-editor.png",
+      "caption": "Actual project editor and construction tracking, local upgraded fixture.",
+      "role": "admin",
+      "route": "#site-detail?record=9c535abb-6c8d-4df0-88c0-2ae0b014ab29",
+      "sha256": "9d540b2f2f810ec080a8e8ab2b1842e6fc821870b49d9deb772dc80ff3fe353b"
+    },
+    {
+      "file": "consumables.png",
+      "caption": "SKU specification, stock, threshold and stock actions; all quantities are synthetic.",
+      "role": "admin",
+      "route": "#consumables",
+      "sha256": "7d4f6fa79aef70df2b912d00f8457a300857e5c981243459883e2b6ac4b9911b"
+    },
+    {
+      "file": "purchases.png",
+      "caption": "Actual purchasing ledger with a synthetic training record.",
+      "role": "admin",
+      "route": "#purchase",
+      "sha256": "35a42abab4b6a607447848233bbf2e986f865fd0e1db93c7c924738c8ba67d85"
+    },
+    {
+      "file": "reports.png",
+      "caption": "Actual current-inventory report.",
+      "role": "admin",
+      "route": "#reports",
+      "sha256": "503405fd93febba7f2cb5e8d6dd4e0b27f923fb695a0675eb24f29081c80aac7"
+    },
+    {
+      "file": "activity.png",
+      "caption": "Actual activity log, including the executed request, release and receipt.",
+      "role": "admin",
+      "route": "#activity",
+      "sha256": "2938c3a38e86347ccd3a1603ea8175379d8275e13a89364bf5c998729e5af67a"
+    }
+  ],
+  "uncaughtErrors": 0
+}

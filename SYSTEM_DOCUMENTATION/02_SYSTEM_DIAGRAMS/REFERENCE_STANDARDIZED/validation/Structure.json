@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "flows": 36,
+  "pages": 331,
+  "nodes": 3259,
+  "decisions": 548,
+  "edges": 2928,
+  "offPageCodes": 329,
+  "onPageGroups": 210,
+  "errors": [],
+  "checks": [
+    "All decisions have Yes/No",
+    "Top-to-bottom process; left-to-right branches",
+    "No overlapping shapes, crossing arrows or arrows through shapes",
+    "Every off-page code has one destination and all references match",
+    "Local numeric connectors match within a page",
+    "All nodes reachable from role Start and can reach an End"
+  ]
+}

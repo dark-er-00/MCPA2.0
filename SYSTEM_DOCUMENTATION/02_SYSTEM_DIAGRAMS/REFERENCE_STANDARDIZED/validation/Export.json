@@ -1,0 +1,297 @@
+{
+  "passed": true,
+  "outboundHttpBlocked": true,
+  "applicationPagesOpened": 0,
+  "databaseCalls": 0,
+  "exports": [
+    {
+      "flow": "ADMIN_MAIN",
+      "pages": 6,
+      "pdfPages": 6,
+      "pngPages": 6,
+      "overviewPng": true,
+      "pdfBytes": 107922
+    },
+    {
+      "flow": "ADMIN_AUTHENTICATION",
+      "pages": 12,
+      "pdfPages": 12,
+      "pngPages": 12,
+      "overviewPng": true,
+      "pdfBytes": 190495
+    },
+    {
+      "flow": "ADMIN_MASTERLIST",
+      "pages": 14,
+      "pdfPages": 14,
+      "pngPages": 14,
+      "overviewPng": true,
+      "pdfBytes": 201855
+    },
+    {
+      "flow": "ADMIN_TOOL_PROFILE",
+      "pages": 5,
+      "pdfPages": 5,
+      "pngPages": 5,
+      "overviewPng": true,
+      "pdfBytes": 90229
+    },
+    {
+      "flow": "ADMIN_REQUEST",
+      "pages": 15,
+      "pdfPages": 15,
+      "pngPages": 15,
+      "overviewPng": true,
+      "pdfBytes": 217249
+    },
+    {
+      "flow": "ADMIN_TRANSFER",
+      "pages": 6,
+      "pdfPages": 6,
+      "pngPages": 6,
+      "overviewPng": true,
+      "pdfBytes": 108016
+    },
+    {
+      "flow": "ADMIN_RETURN",
+      "pages": 5,
+      "pdfPages": 5,
+      "pngPages": 5,
+      "overviewPng": true,
+      "pdfBytes": 91094
+    },
+    {
+      "flow": "ADMIN_REPAIR",
+      "pages": 10,
+      "pdfPages": 10,
+      "pngPages": 10,
+      "overviewPng": true,
+      "pdfBytes": 154880
+    },
+    {
+      "flow": "ADMIN_MISSING",
+      "pages": 10,
+      "pdfPages": 10,
+      "pngPages": 10,
+      "overviewPng": true,
+      "pdfBytes": 161288
+    },
+    {
+      "flow": "ADMIN_DASHBOARD",
+      "pages": 4,
+      "pdfPages": 4,
+      "pngPages": 4,
+      "overviewPng": true,
+      "pdfBytes": 83104
+    },
+    {
+      "flow": "ADMIN_SITES",
+      "pages": 5,
+      "pdfPages": 5,
+      "pngPages": 5,
+      "overviewPng": true,
+      "pdfBytes": 83107
+    },
+    {
+      "flow": "ADMIN_SITE_DETAIL",
+      "pages": 9,
+      "pdfPages": 9,
+      "pngPages": 9,
+      "overviewPng": true,
+      "pdfBytes": 150045
+    },
+    {
+      "flow": "ADMIN_CONSUMABLES",
+      "pages": 22,
+      "pdfPages": 22,
+      "pngPages": 22,
+      "overviewPng": true,
+      "pdfBytes": 323377
+    },
+    {
+      "flow": "ADMIN_PURCHASE",
+      "pages": 11,
+      "pdfPages": 11,
+      "pngPages": 11,
+      "overviewPng": true,
+      "pdfBytes": 173462
+    },
+    {
+      "flow": "ADMIN_REPORTS",
+      "pages": 9,
+      "pdfPages": 9,
+      "pngPages": 9,
+      "overviewPng": true,
+      "pdfBytes": 130686
+    },
+    {
+      "flow": "ADMIN_ACTIVITY",
+      "pages": 5,
+      "pdfPages": 5,
+      "pngPages": 5,
+      "overviewPng": true,
+      "pdfBytes": 95616
+    },
+    {
+      "flow": "ADMIN_USERS",
+      "pages": 16,
+      "pdfPages": 16,
+      "pngPages": 16,
+      "overviewPng": true,
+      "pdfBytes": 226580
+    },
+    {
+      "flow": "ADMIN_SETTINGS",
+      "pages": 3,
+      "pdfPages": 3,
+      "pngPages": 3,
+      "overviewPng": true,
+      "pdfBytes": 61974
+    },
+    {
+      "flow": "ADMIN_GLOBAL_SEARCH",
+      "pages": 5,
+      "pdfPages": 5,
+      "pngPages": 5,
+      "overviewPng": true,
+      "pdfBytes": 94277
+    },
+    {
+      "flow": "ADMIN_NOTIFICATIONS",
+      "pages": 6,
+      "pdfPages": 6,
+      "pngPages": 6,
+      "overviewPng": true,
+      "pdfBytes": 107755
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_MAIN",
+      "pages": 5,
+      "pdfPages": 5,
+      "pngPages": 5,
+      "overviewPng": true,
+      "pdfBytes": 98118
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_AUTHENTICATION",
+      "pages": 12,
+      "pdfPages": 12,
+      "pngPages": 12,
+      "overviewPng": true,
+      "pdfBytes": 194331
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_MASTERLIST",
+      "pages": 4,
+      "pdfPages": 4,
+      "pngPages": 4,
+      "overviewPng": true,
+      "pdfBytes": 74198
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_TOOL_PROFILE",
+      "pages": 3,
+      "pdfPages": 3,
+      "pngPages": 3,
+      "overviewPng": true,
+      "pdfBytes": 57224
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_REQUEST",
+      "pages": 18,
+      "pdfPages": 18,
+      "pngPages": 18,
+      "overviewPng": true,
+      "pdfBytes": 241490
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_TRANSFER",
+      "pages": 45,
+      "pdfPages": 45,
+      "pngPages": 45,
+      "overviewPng": true,
+      "pdfBytes": 617662
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_RETURN",
+      "pages": 18,
+      "pdfPages": 18,
+      "pngPages": 18,
+      "overviewPng": true,
+      "pdfBytes": 256796
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_REPAIR",
+      "pages": 8,
+      "pdfPages": 8,
+      "pngPages": 8,
+      "overviewPng": true,
+      "pdfBytes": 126722
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_MISSING",
+      "pages": 9,
+      "pdfPages": 9,
+      "pngPages": 9,
+      "overviewPng": true,
+      "pdfBytes": 132719
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_DASHBOARD",
+      "pages": 5,
+      "pdfPages": 5,
+      "pngPages": 5,
+      "overviewPng": true,
+      "pdfBytes": 100054
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_SITES",
+      "pages": 2,
+      "pdfPages": 2,
+      "pngPages": 2,
+      "overviewPng": true,
+      "pdfBytes": 53526
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_SITE_DETAIL",
+      "pages": 5,
+      "pdfPages": 5,
+      "pngPages": 5,
+      "overviewPng": true,
+      "pdfBytes": 99107
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_ACTIVITY",
+      "pages": 5,
+      "pdfPages": 5,
+      "pngPages": 5,
+      "overviewPng": true,
+      "pdfBytes": 96899
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_SETTINGS",
+      "pages": 3,
+      "pdfPages": 3,
+      "pngPages": 3,
+      "overviewPng": true,
+      "pdfBytes": 62095
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_GLOBAL_SEARCH",
+      "pages": 5,
+      "pdfPages": 5,
+      "pngPages": 5,
+      "overviewPng": true,
+      "pdfBytes": 96258
+    },
+    {
+      "flow": "ENGINEER_ARCHITECT_NOTIFICATIONS",
+      "pages": 6,
+      "pdfPages": 6,
+      "pngPages": 6,
+      "overviewPng": true,
+      "pdfBytes": 110386
+    }
+  ],
+  "textFitViolations": []
+}

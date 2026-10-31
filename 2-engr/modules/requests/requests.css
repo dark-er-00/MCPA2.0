@@ -1,0 +1,18 @@
+/* Requests-specific styles.
+   Shared primitives (.form-grid, .qty-row, .upload-box, .notice,
+   .two-col, etc.) live in css/components.css. */
+
+/* Steps / workflow */
+.workflow{display:flex; align-items:center; gap:0; margin-bottom:6px; flex-wrap:wrap;}
+.wf-step{
+  display:flex; align-items:center; gap:8px; padding:9px 15px; border-radius:20px; font-size:12px;
+  font-weight:700; background:var(--gray-light); color:var(--gray); white-space:nowrap;
+}
+.wf-step.done{background:var(--black); color:var(--white);}
+.wf-step.now{background:var(--gold); color:var(--black-deep);}
+.wf-arrow{color:var(--line); margin:0 4px; font-size:14px;}
+
+/* Quantity stepper */
+.stepper{display:flex; align-items:center; gap:0; border:1px solid var(--line); border-radius:7px; overflow:hidden;}
+.stepper button{width:28px; height:28px; background:var(--off-white); border:none; font-weight:700; color:var(--black);}
+.stepper span{width:32px; text-align:center; font-weight:700; font-size:13px;}

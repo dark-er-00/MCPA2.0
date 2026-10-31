@@ -1,0 +1,274 @@
+<!-- MASTERLIST SCREEN CONTAINER -->
+<section class="screen active" id="screen-masterlist">
+  <div class="page-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+    <div>
+      <h1 class="display" style="font-size:24px; font-weight:700; margin:0 0 4px 0;">Equipment Tracking</h1>
+      <p class="sub" style="color:var(--gray); font-size:13px; margin:0;">Manage registered tools, equipment, and their identifying information</p>
+    </div>
+    <div class="page-head-actions" style="display:flex; gap:8px;">
+      <span class="inventory-sync" id="inventory-sync" role="status"></span>
+      <button class="btn btn-secondary btn-sm" id="exportBtn">Export</button>
+      <button type="button" class="btn btn-secondary btn-sm" id="importEquipmentBtn" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 16V3m-5 5 5-5 5 5M4 15v6h16v-6"/></svg> Import Tools</button>
+      <button class="btn btn-accent btn-sm" id="openAddEquipment">+ Add Item</button>
+    </div>
+  </div>
+
+  <div class="equipment-summary" role="group" aria-label="Filter equipment by status" aria-describedby="equipment-summary-note">
+    <button type="button" class="card kpi" data-equipment-status="all" aria-pressed="true">
+      <span class="command-kpi-icon" data-equipment-icon="box" aria-hidden="true"></span>
+      <span class="command-kpi-copy"><span class="lbl">Total Equipment</span><span class="num" data-equipment-count="total">…</span><span class="kpi-description">Tracked equipment units</span></span>
+    </button>
+    <button type="button" class="card kpi" data-equipment-status="available" aria-pressed="false">
+      <span class="command-kpi-icon" data-equipment-icon="inbox" aria-hidden="true"></span>
+      <span class="command-kpi-copy"><span class="lbl">Available</span><span class="num" data-equipment-count="available">…</span><span class="kpi-description">Available for new requests</span></span>
+    </button>
+    <button type="button" class="card kpi" data-equipment-status="inuse" aria-pressed="false">
+      <span class="command-kpi-icon" data-equipment-icon="swap" aria-hidden="true"></span>
+      <span class="command-kpi-copy"><span class="lbl">In Use</span><span class="num" data-equipment-count="deployed">…</span><span class="kpi-description">Equipment currently in use</span></span>
+    </button>
+  </div>
+  <p class="equipment-summary-note" id="equipment-summary-note">Overall equipment quantities across all projects. Search and filters below narrow the matching records, not these totals.</p>
+
+  <!-- UPDATED TOOLBAR -->
+<div class="table-toolbar" style="display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
+    <div class="search-wrap" style="flex:1; min-width:240px;">
+      <!-- Updated oninput -->
+      <input id="searchEquipment" type="search" aria-label="Search equipment by asset ID, name, brand, serial number, project, or holder" placeholder="Search ID, item, brand, serial, project, holder…" style="width:100%; padding:8px 12px; border:1px solid var(--line); border-radius:6px;" oninput="filterAndResetPage()"/>
+    </div>
+    <!-- Updated onchange -->
+    <select id="siteFilter" class="chip-filter" aria-label="Filter equipment by project" onchange="filterAndResetPage()"><option value="">Project</option></select>
+    <select id="typeFilter" class="chip-filter" aria-label="Filter equipment by category" onchange="filterAndResetPage()"><option value="">Category</option></select>
+    <select id="statusFilter" class="chip-filter" aria-label="Filter equipment by status" onchange="navigateEquipmentStatus(this.value)">
+      <option value="">All Equipment</option>
+      <option value="Available">Available to request</option>
+      <option value="In Use">In Use</option>
+      <option value="For Repair">For Repair</option>
+      <option value="Missing">Missing</option>
+      <option value="Sold">Sold</option>
+      <option value="Disposed">Disposed</option>
+    </select>
+  </div>
+
+  <div class="card" style="background:var(--white); border-radius:8px; border:1px solid var(--line); overflow:hidden;">
+    
+    <!-- BULK ACTION BAR (Hidden by default, shown via JS) -->
+    <!-- BULK ACTION BAR -->
+    <div id="bulkActionBar" style="display:none; background:var(--gold); padding:10px 16px; border-bottom:1px solid var(--line); justify-content:space-between; align-items:center;">
+      <span style="font-size:13px; font-weight:700; color:var(--black);"><span id="selectedCount">0</span> items selected</span>
+      <div style="display:flex; gap:8px;">
+        <button id="btnBulkStatus" class="btn btn-secondary btn-sm" style="background:var(--white); border:none;">Update Status</button>
+        <button id="btnBulkLocation" class="btn btn-secondary btn-sm" style="background:var(--white); border:none;">Assign Location</button>
+        <button id="btnBulkCancel" class="btn btn-secondary btn-sm" style="background:transparent; border:1px solid var(--black); color:var(--black);">Cancel Selection</button>
+      </div>
+    </div>
+    
+    <div class="table-wrap" role="region" aria-label="Equipment inventory; scroll horizontally for all columns" tabindex="0" style="overflow-x:auto;">
+
+      <table style="width:100%; border-collapse:collapse; text-align:left; font-size:13px;">
+        <thead>
+          <tr style="background:var(--off-white); border-bottom:1px solid var(--line); color:var(--gray); font-size:11px; text-transform:uppercase;">
+            <th style="padding:12px; width:40px;"><input type="checkbox" id="selectAll"></th>
+            <th style="padding:12px;">Asset ID</th>
+            <th style="padding:12px;">Item</th>
+            <th style="padding:12px;">Category</th>
+            <th style="padding:12px;">Brand</th>
+            <th style="padding:12px;">Location</th>
+            <th style="padding:12px;">Status / new requests</th>
+            <th style="padding:12px;">Condition</th>
+            <th style="padding:12px;">Acquired</th>
+            <th style="padding:12px; text-align:right;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="equipmentTableBody"></tbody>
+      </table>
+      <div class="empty-state hidden" id="emptyState" style="padding:32px; text-align:center; color:var(--gray);">
+        <div class="t" style="font-weight:600;">No items found</div>
+        <div class="d" style="font-size:12px; margin-top:4px;">Try adjusting your search or filters.</div>
+      </div>
+    </div>
+    
+    <!-- DYNAMIC PAGINATION FOOTER -->
+    <div id="paginationContainer" style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; border-top:1px solid var(--line); font-size:12px; color:var(--gray);">
+      <div id="paginationInfo">Showing <strong>0-0</strong> of <strong>0</strong> entries</div>
+      <div id="paginationControls" style="display:flex; gap:4px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL PROFILE SCREEN -->
+<section class="screen" id="screen-tool-profile" style="display:none;">
+  <div class="eyebrow" style="margin-bottom:12px; cursor:pointer; font-weight:600; font-size:12px; color:var(--gold);" onclick="showScreen('masterlist')">← MASTERLIST</div>
+  <div id="profileContent"></div>
+</section>
+
+<!-- ADD / EDIT ITEM MODAL -->
+<dialog id="equipmentModal" aria-labelledby="modalTitle" style="display:none;">
+  <div class="equipment-modal-panel">
+    <div class="equipment-modal-header">
+      <h2 class="display" id="modalTitle" style="font-size:18px; font-weight:700; margin:0;">Add New Item</h2>
+      <button class="icon-btn" id="closeEquipmentModal" type="button" aria-label="Close equipment form" style="background:none; border:none; font-size:20px; cursor:pointer; color:var(--gray);">×</button>
+    </div>
+
+    <form id="equipmentForm">
+      <div class="equipment-form-body">
+      <div class="field" id="equipmentInitialLocation">
+        <label for="equipmentInitialLocationValue">Initial location</label>
+        <input id="equipmentInitialLocationValue" value="Office" readonly aria-describedby="equipmentInitialLocationHelp">
+        <p id="equipmentInitialLocationHelp" class="equipment-photo-help">New equipment starts at Office. Use a transfer to move it to a project.</p>
+      </div>
+      <div class="field full">
+        <label for="equipmentType" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">Item Name / Classification <span style="color:#c58b00;">*</span></label>
+        <input type="text" id="equipmentType" placeholder="e.g. Shovel (Pala, Lapad)" style="width:100%; padding:9px; border:1px solid var(--line); border-radius:6px;" required />
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="field">
+          <label for="equipmentCategory" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">Category <span style="color:#c58b00;">*</span></label>
+          <select id="equipmentCategory" style="width:100%; padding:9px; border:1px solid var(--line); border-radius:6px;" required>
+            <option value="">Select category</option>
+            <option value="Hand Tools">Hand Tools</option>
+            <option value="Power Tools">Power Tools</option>
+            <option value="Equipment">Equipment</option>
+            <option value="Scaffolding">Scaffolding</option>
+            <option value="Construction Materials">Construction Materials</option>
+            <option value="Water & Plumbing">Water & Plumbing</option>
+            <option value="Electrical">Electrical</option>
+            <option value="Appliances">Appliances</option>
+            <option value="Storage Containers">Storage Containers</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="brand" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">Brand <span style="font-size:11px; font-weight:400; color:#888;">(Optional)</span></label>
+          <input type="text" id="brand" placeholder="e.g. Bosch, Makita" style="width:100%; padding:9px; border:1px solid var(--line); border-radius:6px;" />
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="field">
+          <label for="equipmentModel" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">Model <span style="font-size:11px; font-weight:400; color:#888;">(Optional)</span></label>
+          <input type="text" id="equipmentModel" placeholder="Enter model number" style="width:100%; padding:9px; border:1px solid var(--line); border-radius:6px;" />
+        </div>
+
+        <div class="field">
+          <label for="serialNumber" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">Serial Number <span style="font-size:11px; font-weight:400; color:#888;">(Optional)</span></label>
+          <input type="text" id="serialNumber" placeholder="Enter serial number" style="width:100%; padding:9px; border:1px solid var(--line); border-radius:6px;" />
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="field">
+          <label for="equipmentCondition" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">Initial Condition <span style="color:#c58b00;">*</span></label>
+          <select id="equipmentCondition" style="width:100%; padding:9px; border:1px solid var(--line); border-radius:6px;" required>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+            <option value="Damaged">Damaged</option>
+            <option value="Needs Inspection">Needs Inspection</option>
+            <option value="Not Assessed">Not Assessed</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="trackingType" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">Tracking Type <span style="color:#c58b00;">*</span></label>
+          <select id="trackingType" style="width:100%; padding:9px; border:1px solid var(--line); border-radius:6px;" required>
+            <option value="">Select tracking type</option>
+            <option value="Individual">Individual Asset</option>
+            <option value="Bulk">Bulk Stock</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field full" id="quantityGroup" style="display:none;">
+        <label for="equipmentQuantity" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">Quantity <span style="color:#c58b00;">*</span></label>
+        <input type="number" id="equipmentQuantity" min="1" value="1" placeholder="Enter quantity" style="width:100%; padding:9px; border:1px solid var(--line); border-radius:6px;" />
+      </div>
+
+      <div class="field full" id="unitGroup" style="display:none;">
+        <label for="equipmentUnit" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">Unit <span style="color:#c58b00;">*</span></label>
+        <select id="equipmentUnit" style="width:100%; padding:9px; border:1px solid var(--line); border-radius:6px;">
+          <option value="">Select unit</option>
+          <option value="Pieces">Pieces</option>
+          <option value="Sets">Sets</option>
+          <option value="Meters">Meters</option>
+          <option value="Kilograms">Kilograms</option>
+          <option value="Liters">Liters</option>
+          <option value="Boxes">Boxes</option>
+          <option value="Rolls">Rolls</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="field full">
+        <label for="identifyingDetails" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">Identifying Details <span style="font-size:11px; font-weight:400; color:#888;">(Optional)</span></label>
+        <textarea id="identifyingDetails" rows="2" placeholder="e.g. Red handle, large blade..." style="width:100%; padding:9px; border:1px solid var(--line); border-radius:6px;"></textarea>
+      </div>
+
+      <!-- Item Photo Field -->
+      <div class="field full">
+        <label for="equipmentPhoto" id="equipmentPhotoLabel">Item photo (optional)</label>
+        <input type="file" id="equipmentPhoto" accept="image/jpeg,image/png,image/webp" aria-describedby="equipmentPhotoHelp equipmentPhotoStatus" />
+        <p id="equipmentPhotoHelp" class="equipment-photo-help">JPEG, PNG, or WebP. Maximum 5 MB.</p>
+        <div id="equipmentPhotoPreview" class="equipment-photo-preview" hidden></div>
+        <button type="button" id="clearEquipmentPhoto" class="btn btn-secondary btn-sm" hidden>Clear selected photo</button>
+        <p id="equipmentPhotoStatus" class="equipment-photo-help" role="status" aria-live="polite"></p>
+      </div>
+
+      <p id="equipmentFormFeedback" class="equipment-form-feedback" role="alert" aria-live="assertive"></p>
+
+      <!-- QR Notice Box -->
+      <div class="field full" style="display:flex; align-items:center; gap:12px; padding:10px 12px; background:var(--off-white); border:1px solid var(--line); border-radius:8px;">
+        <div style="width:34px; height:34px; border-radius:6px; background:var(--black); color:var(--gold); display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0;">QR</div>
+        <div>
+          <strong style="display:block; font-size:12px; margin-bottom:1px;">Asset ID & QR Code</strong>
+          <p style="margin:0; font-size:11px; color:var(--gray); line-height:1.3;">Automatically generated after saving. No manual ID entry required.</p>
+        </div>
+      </div>
+
+      </div>
+      <div class="equipment-modal-footer">
+        <button type="button" class="btn btn-secondary" id="cancelEquipmentModal" style="flex:1; padding:10px; border:1px solid var(--line); background:var(--white); border-radius:6px; cursor:pointer;">Cancel</button>
+        <button type="submit" id="modalSubmitBtn" class="btn btn-accent" style="flex:1; padding:10px; background:var(--black); color:var(--white); border:none; border-radius:6px; cursor:pointer; font-weight:600;">Save Item</button>
+      </div>
+    </form>
+
+  </div>
+</dialog>
+
+<!-- BULK ACTION MODAL (Pasted at the very bottom) -->
+<div class="modal-overlay" id="bulkActionModal" style="position:fixed; inset:0; background:rgba(0,0,0,0.4); display:none; align-items:center; justify-content:center; z-index:50; padding:16px;">
+  <div class="card card-pad" style="width:100%; max-width:400px; background:var(--white); padding:24px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+      <h2 class="display" id="bulkModalTitle" style="font-size:18px; font-weight:700; margin:0;">Bulk Update</h2>
+      <button class="icon-btn" id="closeBulkModal" style="background:none; border:none; font-size:20px; cursor:pointer; color:var(--gray);">×</button>
+    </div>
+
+    <form id="bulkActionForm" class="form-grid" style="display:flex; flex-direction:column; gap:14px;">
+      
+      <!-- Dynamic Input for Status -->
+      <div class="field full" id="bulkStatusField" style="display:none;">
+        <label for="bulkStatusSelect" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">New Status <span style="color:#c58b00;">*</span></label>
+        <select id="bulkStatusSelect" style="width:100%; padding:9px; border:1px solid var(--line); border-radius:6px;">
+          <option value="">Select status</option>
+          <option value="AVAILABLE">Available</option>
+          <option value="IN USE">In Use</option>
+          <option value="FOR REPAIR">For Repair</option>
+          <option value="MISSING">Missing</option>
+        </select>
+      </div>
+
+      <!-- Dynamic Input for Location -->
+      <div class="field full" id="bulkLocationField" style="display:none;">
+        <label for="bulkLocationInput" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">New Location <span style="color:#c58b00;">*</span></label>
+        <input type="text" id="bulkLocationInput" placeholder="e.g. Warehouse A, Project B..." style="width:100%; padding:9px; border:1px solid var(--line); border-radius:6px;" />
+      </div>
+
+      <div class="form-grid full" style="display:flex; gap:10px; margin-top:10px;">
+        <button type="button" class="btn btn-secondary" id="cancelBulkModal" style="flex:1; padding:10px; border:1px solid var(--line); background:var(--white); border-radius:6px; cursor:pointer;">Cancel</button>
+        <button type="submit" id="bulkModalSubmitBtn" class="btn btn-accent" style="flex:1; padding:10px; background:var(--black); color:var(--white); border:none; border-radius:6px; cursor:pointer; font-weight:600;">Update Items</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+

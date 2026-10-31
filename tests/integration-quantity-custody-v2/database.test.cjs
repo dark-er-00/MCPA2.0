@@ -1,0 +1,92 @@
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const {fixture,randomUUID:id}=require('./fixture.cjs');
+test('combined import, quantity allocation, release, receipt, QR transfer and inspected return preserve physical identity',async t=>{
+  const f=await fixture(t),a=f.actors;
+  const imported=await f.call(a.admin,'mcpa_import_equipment_v2',{p_operation_id:id(),p_rows:[{source_row:2,name:'Integration drill',category:'Power Tools',brand:'Bosch',tracking_type:'Individual',quantity:2,condition:'Good'}]});
+  assert.equal(imported.created,2);assert.equal(new Set(imported.assets.map(v=>v.asset_id)).size,2);
+  const catalog=await f.call(a.sky,'mcpa_wa_equipment_catalog');
+  const group=catalog.groups.find(g=>g.type_name==='Integration drill');
+  const request=await f.call(a.sky,'mcpa_wa_submit_equipment',{p_operation_id:id(),p_type_id:group.type_id,p_site_id:f.sites.casa,p_quantity:2,p_purpose:'Integrated workflow'});
+  const op=id(),args={p_operation_id:op,p_request_id:request.id,p_asset_ids:imported.assets.map(v=>v.id)};
+  const allocated=await f.call(a.admin,'mcpa_wa_allocate_equipment',args);
+  assert.deepEqual(await f.call(a.admin,'mcpa_wa_allocate_equipment',args),allocated);
+  assert.equal((await f.tool(imported.assets[0].asset_id)).current_holder_id,null);
+  await assert.rejects(f.query(a.admin,'update equipment set quantity=2 where id=$1',[imported.assets[0].id]),/identity/);
+  const tr=await f.rpc(a.admin,'mcpa_movement_action',{p_action:'releaseRequest',p_payload:{id:allocated.movement_id},p_operation_id:id()});
+  await f.action(a.sky,'receiveTransfer',{id:tr.id,inspections:imported.assets.map(v=>({toolId:v.asset_id,condition:'good',physicallyReceived:true,tested:true}))});
+  const tag=imported.assets[0].asset_id;
+  assert.equal((await f.lookup(a.sky,'mcpa:asset:'+tag,'transfer')).id,tag);
+  await assert.rejects(f.lookup(a.pau,tag,'transfer'));
+  await assert.rejects(f.query(a.handler,"update equipment set tracking_type='Bulk' where asset_id=$1",[tag]),/identity/);
+  const moved=await f.action(a.sky,'createTransfer',{assetIds:[tag],destinationId:f.sites.main,receiverId:a.pau.id});
+  await f.action(a.pau,'receiveTransfer',{id:moved.id,inspections:[{toolId:tag,condition:'good',tested:true,physicallyReceived:true}]});
+  const returned=await f.action(a.pau,'submitReturn',{assetIds:[tag],destinationId:f.sites.office});
+  assert.equal((await f.rpc(a.admin,'mcpa_movement_snapshot')).tools.find(v=>v.id===tag).movementLock,'inspection');
+  await f.inspect(returned.id,[{assetId:tag,outcome:'good',physicallyReceived:true}]);
+  assert.equal((await f.tool(tag)).status,'AVAILABLE');assert.equal((await f.tool(tag)).current_holder_id,null);
+  assert.equal((await f.tool(tag)).quantity,1);
+});
+test('combined return outcomes, note privacy, repair and dual Admin retirement',async t=>{
+  const f=await fixture(t),a=f.actors,b=await f.submit(['TOOL-002','TOOL-003','TOOL-004','TOOL-005']);
+  await f.inspect(b.id,[{assetId:'TOOL-002',outcome:'good',physicallyReceived:true,notes:'Private inspection note'},
+    {assetId:'TOOL-003',outcome:'damaged',physicallyReceived:true,notes:'Cracked'},
+    {assetId:'TOOL-004',outcome:'missing',physicallyReceived:false,notes:'Not delivered'},
+    {assetId:'TOOL-005',outcome:'disputed',physicallyReceived:false,notes:'Wrong unit'}]);
+  assert.equal((await f.tool('TOOL-003')).status,'REPAIR');assert.equal((await f.tool('TOOL-004')).current_holder_id,a.sky.id);
+  assert.equal((await f.snapshot(a.admin)).returns[0].unresolvedCount,2);
+  assert.ok(!JSON.stringify(await f.rpc(a.handler,'mcpa_movement_snapshot')).includes('Private inspection note'));
+  assert.ok(!JSON.stringify(await f.rpc(a.handler,'mcpa_movement_snapshot')).includes('Cracked'));
+  assert.ok(JSON.stringify(await f.rpc(a.sky,'mcpa_movement_snapshot')).includes('Private inspection note'));
+  const repair=(await f.db.query("select id from mcpa_movements where kind='repair' and data->>'toolId'='TOOL-003'")).rows[0];
+  for(const action of ['startRepair','completeRepair'])await f.rpc(a.admin,'mcpa_movement_action',{p_action:action,p_payload:{id:repair.id},p_operation_id:id()});
+  assert.equal((await f.tool('TOOL-003')).condition,'Good');
+  const proposal=await f.action(a.admin,'proposeRetirement',{assetId:'TOOL-002',disposition:'sold',reason:'End of service',effectiveDate:'2026-10-01'});
+  await assert.rejects(f.action(a.admin,'approveRetirement',{id:proposal.id}),/different/);
+  await f.action(a.admin2,'approveRetirement',{id:proposal.id});
+  assert.equal((await f.rpc(a.admin,'mcpa_movement_snapshot')).tools.find(v=>v.id==='TOOL-002').retirementDisposition,'sold');
+  await assert.rejects(f.action(a.sky,'submitReturn',{assetIds:['TOOL-002'],destinationId:f.sites.office}));
+});
+test('outward issuance, analytics, archive obligations, roles and stock replay',async t=>{
+  const f=await fixture(t),a=f.actors;
+  const item=await f.call(a.admin,'consumables_save_item',{p_id:id(),p_version:null,p_name:'Integration cement',p_unit:'bags',p_minimum:2,p_opening:20,p_category:'Masonry & Carpentry',p_specification:'40 kg',p_item_code:null});
+  const request=await f.call(a.sky,'mcpa_wa_submit_consumables',{p_operation_id:id(),p_site_id:f.sites.casa,p_purpose:'Site',p_items:[{consumable_id:item.id,quantity:4,unit:'bags'}]});
+  assert.ok((await f.db.query("select 1 from mcpa_notifications where recipient_id=$1 and entity_id=$2 and data->>'route'='outward-materials'",[a.admin.id,request.id])).rows.length);
+  await f.query(a.admin,'select 1');
+  await assert.rejects(f.db.query("update consumables set archived_at=now(),archive_reason='Close' where id=$1",[item.id]),/outward/);
+  const review={p_operation_id:id(),p_request_id:request.id,p_decision:'approve',p_items:[{item_id:request.items[0].id,quantity:4}],p_note:''};
+  await assert.rejects(f.call(a.sky,'mcpa_wa_review_consumables',review));await f.call(a.admin,'mcpa_wa_review_consumables',review);
+  const issue={p_operation_id:id(),p_request_id:request.id,p_items:[{item_id:request.items[0].id,quantity:4}],p_issued_at:null};
+  const saved=await f.call(a.admin,'mcpa_wa_issue_consumables',issue);assert.equal(saved.status,'issued');
+  assert.deepEqual(await f.call(a.admin,'mcpa_wa_issue_consumables',issue),saved);
+  assert.equal(Number((await f.db.query('select current_stock from consumables where id=$1',[item.id])).rows[0].current_stock),16);
+  const snapshot=await f.call(a.admin,'mcpa_wa_consumables_snapshot');
+  const report=require('../../js/upgrades/consumables-requests/analytics.js').report(snapshot);
+  assert.equal(report.summary.find(v=>v.consumable_id===item.id).issued,4);
+  await assert.rejects(f.call(a.secretary,'mcpa_wa_consumables_snapshot'));
+});
+test('identity, legacy aggregate exclusion, availability normalization and active dual approval fail safely',async t=>{
+  const f=await fixture(t),a=f.actors;
+  await f.db.exec("alter type equipment_status add value 'IN_OFFICE'");
+  const imported=await f.call(a.admin,'mcpa_import_equipment_v2',{p_operation_id:id(),p_rows:[{source_row:2,name:'Legacy Office state',category:'Power Tools',condition:'Good',tracking_type:'Individual',quantity:1},{source_row:3,name:'Legacy grouped stock',category:'Power Tools',condition:'Good',tracking_type:'Bulk',quantity:3}]});
+  await f.db.query("update equipment set status='IN_OFFICE' where id=$1",[imported.assets[0].id]);
+  const catalog=await f.call(a.sky,'mcpa_wa_equipment_catalog');assert.equal(catalog.groups.find(g=>g.type_name==='Legacy Office state').available_quantity,0);
+  await assert.rejects(f.rpc(a.sky,'mcpa_movement_action',{p_action:'createRequest',p_payload:{toolIds:[imported.assets[1].asset_id],destination:'Casa Buena'},p_operation_id:id()}),/individual Asset IDs/);
+  const b=await f.submit();await assert.rejects(f.query(a.admin,"update equipment set tracking_type='Bulk' where asset_id='TOOL-002'"),/identity/);
+  await assert.rejects(f.action(a.admin,'proposeRetirement',{assetId:'TOOL-002',disposition:'disposed',reason:'Blocked',effectiveDate:'2026-10-01'}));
+  const r=await f.action(a.admin,'proposeRetirement',{assetId:'TOOL-001',disposition:'disposed',reason:'Review',effectiveDate:'2026-10-01'});
+  await f.db.query("update profiles set account_status='inactive' where id=$1",[a.admin.id]);
+  await assert.rejects(f.action(a.admin2,'approveRetirement',{id:r.id}),/Two distinct active Admin/);
+  assert.equal((await f.tool('TOOL-001')).status,'AVAILABLE');assert.equal((await f.snapshot(a.admin2)).returns[0].id,b.id);
+});
+test('completed evidence cannot be deleted or overwritten before or after attachment',async t=>{
+  const f=await fixture(t),op=id(),ticket=await f.evidence(f.actors.sky,'stage',{assetId:'TOOL-002',phase:'submit_return',mimeType:'image/png',byteSize:8},op);
+  await f.upload(f.actors.sky,ticket);
+  await f.db.query("update storage.objects set metadata=metadata||'{\"cacheControl\":\"60\"}' where name=$1",[ticket.objectName]);
+  await f.evidence(f.actors.sky,'complete',{},op);
+  await assert.rejects(f.db.query("update storage.objects set metadata='{}' where name=$1",[ticket.objectName]),/retained/);
+  assert.equal((await f.query(f.actors.sky,"delete from storage.objects where name=$1 returning id",[ticket.objectName])).rows.length,0);
+  await assert.rejects(f.db.query('delete from storage.objects where name=$1',[ticket.objectName]),/retained/);
+  const b=await f.action(f.actors.sky,'submitReturn',{assetIds:['TOOL-002'],destinationId:f.sites.office,evidenceIds:[op]});
+  assert.equal((await f.snapshot(f.actors.sky)).evidence[0].movement_id,b.id);
+  await assert.rejects(f.db.query('delete from storage.objects where name=$1',[ticket.objectName]),/retained/);
+});

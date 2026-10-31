@@ -1,0 +1,19 @@
+{
+  "name": "mcpa-development-tools",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.0.0"
+  },
+  "scripts": {
+    "test": "node --test seed-test-users.test.mjs seed-transfer-users.test.mjs",
+    "bundle:pdf": "node bundle-pdf.mjs"
+  },
+  "devDependencies": {
+    "jspdf": "4.2.1",
+    "jspdf-autotable": "5.0.8"
+  }
+}

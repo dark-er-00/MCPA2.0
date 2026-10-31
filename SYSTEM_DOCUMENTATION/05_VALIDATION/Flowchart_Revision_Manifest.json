@@ -1,0 +1,865 @@
+{
+  "date": "2026-10-20",
+  "revision": "071ae16",
+  "scope": "Only new documentation additions. Manifest excludes its own hash.",
+  "workflows": 14,
+  "pages": 37,
+  "files": [
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication_Revised.drawio",
+      "bytes": 17530,
+      "sha256": "12faebffa4cb38ecd0bd613bc4bcf8f93b58c51f3ffa912944884173779a781a"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication_Revised.html",
+      "bytes": 13308,
+      "sha256": "eebb0f010d85a02310e5f66040b088eb24d7e412a35c1d414f64b449838722ea"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication_Revised.pdf",
+      "bytes": 67944,
+      "sha256": "2ba65c294033310a18661d8f77aff1824d257e27c3bda6463a4cb70fba748f92"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication_Revised_P01.png",
+      "bytes": 254484,
+      "sha256": "82af0cf40e1fced2948a6bccfe01f473c27f5a31d433bc31329b2d124dd8f850"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication_Revised_P01.svg",
+      "bytes": 5839,
+      "sha256": "eed0386934e14fbc2ad3018351b7cdfb03bc9722f4a6a7e7b1afcc98b2a888f0"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication_Revised_P02.png",
+      "bytes": 324807,
+      "sha256": "6294d0d7b170002f97e04ede6a05a0ee415c524c5e524267c41e150b2d03a8c2"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication_Revised_P02.svg",
+      "bytes": 6966,
+      "sha256": "d9f261e9734dad6b193571a2015e16d4e249dd5868849c776f6c4ed9ee08abc6"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration_Revised.drawio",
+      "bytes": 28357,
+      "sha256": "88a8113204f629fff07feca4c1f6e46ec8b4ed535629aed8ef6de4df268015ed"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration_Revised.html",
+      "bytes": 21668,
+      "sha256": "f7b486fe79dd750976d4f021af9dfdc34e6dbd127671076e2054a56087e90d52"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration_Revised.pdf",
+      "bytes": 83334,
+      "sha256": "ac6cc18eac7265e25c39d5f8da24f74fd881947fee6fe1c6ea99717d50aea674"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration_Revised_P01.png",
+      "bytes": 349510,
+      "sha256": "6f8a387a9c17378babef51810cf91ab9a4cc0de282f80be7b7a24519c321fa0f"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration_Revised_P01.svg",
+      "bytes": 7304,
+      "sha256": "70bb524c9b642fd9cac320a73b7dedef1813cc9b3c9e40976e795285b23a08c0"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration_Revised_P02.png",
+      "bytes": 289246,
+      "sha256": "9dad94d8c90f2576b6a439375e17f9158430fb6c0c8bc7d71705198e7bc5ff62"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration_Revised_P02.svg",
+      "bytes": 6207,
+      "sha256": "c0a5d60a00c073b24221b11f0d97aeff5a1b69592eaa6565a006b9342a6fa665"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration_Revised_P03.png",
+      "bytes": 361062,
+      "sha256": "22583f689d5ee855adf08463fc3017363dfd267a348cc671035857c629b41224"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration_Revised_P03.svg",
+      "bytes": 7683,
+      "sha256": "517e4d6a08ec8b6ded1e92ae2ed3417ad81ca89b2a3ba9cf6118aee63cb34661"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Equipment_Request_Approval_Revised.drawio",
+      "bytes": 30041,
+      "sha256": "ae805f79664f141c21df5c41032e7b017d2e3bf2a7c645f0861d8cc3d100ad9e"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Equipment_Request_Approval_Revised.html",
+      "bytes": 23352,
+      "sha256": "0e3baa69899d2aeb99f7d07e569de84b16155fe0f2a2eefb8296069e506b2e32"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Equipment_Request_Approval_Revised.pdf",
+      "bytes": 82523,
+      "sha256": "289b591611716eea47f8882343e6f26e742cbb51f98dac9caff68fe7e09dd9ae"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Equipment_Request_Approval_Revised_P01.png",
+      "bytes": 365699,
+      "sha256": "577d36b2fdb83a0602df60633673660758bfde5d4d264bb4cb207f53ef7a7855"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Equipment_Request_Approval_Revised_P01.svg",
+      "bytes": 7267,
+      "sha256": "1999a96e63c8ba3e3c593fc475719c7b70bab192353236c7313683c764872929"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Equipment_Request_Approval_Revised_P02.png",
+      "bytes": 403404,
+      "sha256": "026f5278e62aa8f85af1f40ff95fe38f7c79d9ca90e487e15b8940af14ed2bf6"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Equipment_Request_Approval_Revised_P02.svg",
+      "bytes": 8283,
+      "sha256": "06580d4940aebdbec7a58bc60a234544644a5053f38d48686407ab4d0ffc5fd6"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Equipment_Request_Approval_Revised_P03.png",
+      "bytes": 349274,
+      "sha256": "7b01ce767867e773043e915950816da601a18e1952b6cecdbafbd6d3708b46a8"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Equipment_Request_Approval_Revised_P03.svg",
+      "bytes": 7320,
+      "sha256": "450b2c40882a034abfb0aa64c39338802e68e6fc045a4a4386fa33f31c60c726"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_Equipment_Release_Assignment_Revised.drawio",
+      "bytes": 16522,
+      "sha256": "96530c55692d500b370a3bf1343830ce9bdd7c1e49c19bf60782e70b29a6496e"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_Equipment_Release_Assignment_Revised.html",
+      "bytes": 12730,
+      "sha256": "b3716a37da1f0d3d57ae8c181a1b14fc8da8257c4ecb0d13c8694625a7c9d38e"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_Equipment_Release_Assignment_Revised.pdf",
+      "bytes": 67114,
+      "sha256": "a0a8ef2bf18ca2eb36e2027c1f715e61ab47f672ef388d50be721913185df351"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_Equipment_Release_Assignment_Revised_P01.png",
+      "bytes": 359389,
+      "sha256": "268d6eaeaa993813daa15a2d848de6f8dc8e21e4341b2dc046aa0d39a57bae3c"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_Equipment_Release_Assignment_Revised_P01.svg",
+      "bytes": 7110,
+      "sha256": "7eecb7eee75ab8cdd6361d2b947481448cae92bf8e4cd1cd26e820c6d752db94"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_Equipment_Release_Assignment_Revised_P02.png",
+      "bytes": 254177,
+      "sha256": "612e32aa5dec0b6afe629f34e895cd41e3f2654ce770f89d785becaf90a18f39"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_Equipment_Release_Assignment_Revised_P02.svg",
+      "bytes": 5114,
+      "sha256": "28355bc5d4d8caf8a881fb79abdda9588bd00af8c6ee8754b4d9d5e85edd52c2"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_QR_Equipment_Transfer_Revised.drawio",
+      "bytes": 22120,
+      "sha256": "9b9c5819004c3f6a9c0bd310e5501fb381d6616d6de9fe4f5677ccf62c133d59"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_QR_Equipment_Transfer_Revised.html",
+      "bytes": 16915,
+      "sha256": "6527efca165a07b6aefdadd5b6bb5d9fcce0401c9c39816b0f68a225c993be0b"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_QR_Equipment_Transfer_Revised.pdf",
+      "bytes": 74671,
+      "sha256": "9392e0ab3e8dc22585275eaa4dde351542fba50ae67a91bd9ae41c64304c0987"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_QR_Equipment_Transfer_Revised_P01.png",
+      "bytes": 329958,
+      "sha256": "26ee0d60074b897de3e740b9df1f975b32589472d7b07e76f40903f34ae871b1"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_QR_Equipment_Transfer_Revised_P01.svg",
+      "bytes": 6841,
+      "sha256": "422e4adb9013c022a1ed8ade76fadd98838cb455b298d293de2c8306980f21e1"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_QR_Equipment_Transfer_Revised_P02.png",
+      "bytes": 456471,
+      "sha256": "4f1afab447a450884b16978933f8bc731d9d725072ba281b3b9c65d7c19b45ad"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_QR_Equipment_Transfer_Revised_P02.svg",
+      "bytes": 9573,
+      "sha256": "8c63598dc603b119edcb9ef4db49a9d788c18a25dc4baa4cdd6d9bf9fdb21a19"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Transfer_Receipt_Revised.drawio",
+      "bytes": 35201,
+      "sha256": "bcf1ac3f3c9edff98b54eb29a5bafe533d24a6e202dbc598660027008d01f1f7"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Transfer_Receipt_Revised.html",
+      "bytes": 26444,
+      "sha256": "4bd0b1dd97b4fc5529c0f7f9abe5360f90de8f03e852610a8174768e628832df"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Transfer_Receipt_Revised.pdf",
+      "bytes": 86222,
+      "sha256": "ac2ccae8d2677e19c66435d160819832b2ae0441a1e27601501b0704ce91ac58"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Transfer_Receipt_Revised_P01.png",
+      "bytes": 380167,
+      "sha256": "3bd15cdfc8fe8fd3140287b9dc5e3e4e9c0c8003966e7342d7915903939e6112"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Transfer_Receipt_Revised_P01.svg",
+      "bytes": 7357,
+      "sha256": "9a20e74e0894462bf2f3f7a369ea60b9ab1e6a83d455c8e32cac2418fb84fbc0"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Transfer_Receipt_Revised_P02.png",
+      "bytes": 289532,
+      "sha256": "2b4028cfea5a9fbddf0f2c736c4944b495994729a01504c66b14c295e6277a3b"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Transfer_Receipt_Revised_P02.svg",
+      "bytes": 6747,
+      "sha256": "2a48a17715eb17689dec0c020b48986de9883adb14b1ae4c647bf92f45cf5bec"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Transfer_Receipt_Revised_P03.png",
+      "bytes": 215636,
+      "sha256": "e24155a2fdb32a981f4e14b6f45b5827a4119dc999dfc1d02727a75d3165c7a0"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Transfer_Receipt_Revised_P03.svg",
+      "bytes": 4825,
+      "sha256": "bc3658120692e4327350d62dbc3f92d6636a1c2ab11b7cc59f4c86dffd40ef84"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Transfer_Receipt_Revised_P04.png",
+      "bytes": 335136,
+      "sha256": "bb53c107c0ead1b6e15e82c3ff8abfc1396e006fdd3a2442a0bdcf2d0f53b136"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Transfer_Receipt_Revised_P04.svg",
+      "bytes": 7052,
+      "sha256": "d6dac6b3652031ce9a225cf8e14913506f98acc422a0b6ecdb783fc70aa2c68f"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Office_Return_Receiving_Revised.drawio",
+      "bytes": 34979,
+      "sha256": "e7f43dcce08d5cf7dbc0c2b7272a7fda533a63fa1d0dc0746a60fd3760c9a4f4"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Office_Return_Receiving_Revised.html",
+      "bytes": 26281,
+      "sha256": "49d9d657d039c0dc4dce8991638618063b04d7f2456e8f5f3a363778caea3982"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Office_Return_Receiving_Revised.pdf",
+      "bytes": 87047,
+      "sha256": "833c2d6e926f0807abb1e0833115ff5b7ea73c24613dc71c98730c23165151be"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Office_Return_Receiving_Revised_P01.png",
+      "bytes": 358662,
+      "sha256": "f0f30161d649bfe0f6f87602fadfd93133337eeca393d9b4c446df1b2962c1ae"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Office_Return_Receiving_Revised_P01.svg",
+      "bytes": 7122,
+      "sha256": "d19793a04421f92aff5947e5c05a6f41ba58285268773dad3657f41b445c3975"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Office_Return_Receiving_Revised_P02.png",
+      "bytes": 288243,
+      "sha256": "79254d1afb883ce725a1d11eeab97655f959d5f7777a208f1c3c4c2280d5134f"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Office_Return_Receiving_Revised_P02.svg",
+      "bytes": 6764,
+      "sha256": "f94a6d135332edeef029f72ce0257c760c7ed743b3055681c9346d649f4b0b1a"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Office_Return_Receiving_Revised_P03.png",
+      "bytes": 224073,
+      "sha256": "2004d2d0687a04c247ab5f7cf5b311e99ef218f38a8ccf6bfa63715bbe8da2d8"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Office_Return_Receiving_Revised_P03.svg",
+      "bytes": 4933,
+      "sha256": "3b9d85fd073304f9912ea25a062f5f35187a0b0534a7e01c5fdc133019b0b542"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Office_Return_Receiving_Revised_P04.png",
+      "bytes": 331416,
+      "sha256": "4b8b829adfda45d4cab59d4b9de4d888283b34d6a0a2323f5d50d878dc7eb626"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Office_Return_Receiving_Revised_P04.svg",
+      "bytes": 6995,
+      "sha256": "4711feab305aada6e8a9ea706a021b75b549123d30b72d29cd9118da77567399"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Equipment_Repair_Revised.drawio",
+      "bytes": 31242,
+      "sha256": "e7f6daee6e6768b37f1458e46fe0d571e69230781bcdf773f9e02d437c769dd1"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Equipment_Repair_Revised.html",
+      "bytes": 24022,
+      "sha256": "960983674190a11fd88f6c1f5c09e3e3541decd5c10b36b6785c5cd3082ec24a"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Equipment_Repair_Revised.pdf",
+      "bytes": 79899,
+      "sha256": "068bea7acddce222c2a60784e9c263be8534b5da30790f509021171cb167c1e2"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Equipment_Repair_Revised_P01.png",
+      "bytes": 338478,
+      "sha256": "f49668b64cc4996c99aa4bb651468196baad4b004cfb06dcf53b3bd44dd9531b"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Equipment_Repair_Revised_P01.svg",
+      "bytes": 7111,
+      "sha256": "34852e39206ced6c6b4b69e709624d130f360d090d0e92635af7d8980f8133d3"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Equipment_Repair_Revised_P02.png",
+      "bytes": 329427,
+      "sha256": "1dbca3863fb50a4c62f70e3c807362101e869a308c1b3a97a8bad6cf7586c62c"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Equipment_Repair_Revised_P02.svg",
+      "bytes": 6982,
+      "sha256": "b22b22b8ccf1f715e6f183882dc1339c0c49d114e56522d83bc6de71819e7a86"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Equipment_Repair_Revised_P03.png",
+      "bytes": 430403,
+      "sha256": "1c22ca12b5b4ebdfa62d87f7b7c49665256c061573979961d2a977216d8e359c"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Equipment_Repair_Revised_P03.svg",
+      "bytes": 9461,
+      "sha256": "af3e461dd1c949a66804a2430dc6a75c94d57f595a14aa52e07f85fa0fb7c4a8"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/09_Missing_Recovery_Revised.drawio",
+      "bytes": 28636,
+      "sha256": "91aaabda3ced87cce8dbe9a1d3b8bca873bbe38f02552a2da2118e53beab95b7"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/09_Missing_Recovery_Revised.html",
+      "bytes": 21937,
+      "sha256": "c1b77f4fb3d5e030ce0638248db4a00958b8d2739e22d1df5ee6ab1df7006bbb"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/09_Missing_Recovery_Revised.pdf",
+      "bytes": 78683,
+      "sha256": "ef4885f4b97244772c22fb47ef67fd85aac6425482f596882736a66d19f072d6"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/09_Missing_Recovery_Revised_P01.png",
+      "bytes": 343080,
+      "sha256": "b9c8c31f65d3582bfcadb54a95a923439641eddc49531a4e9c1735541094da97"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/09_Missing_Recovery_Revised_P01.svg",
+      "bytes": 6923,
+      "sha256": "e90012fb6897d131fc8cc1d626f19d1ab584b2a10d54e295e64a0463511b4a15"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/09_Missing_Recovery_Revised_P02.png",
+      "bytes": 351407,
+      "sha256": "da949065a859e286cd211197d76a6e2c5079b48c19fca0322be3ae467720ec26"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/09_Missing_Recovery_Revised_P02.svg",
+      "bytes": 7568,
+      "sha256": "119b32f309691bd4ea2709ca3bd13d6ab835140aef243ea068f03c76c5bde664"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/09_Missing_Recovery_Revised_P03.png",
+      "bytes": 344488,
+      "sha256": "59341b59941c46103747bfce0d981fee02aa734e9e812e9bba56ba2bed5f386b"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/09_Missing_Recovery_Revised_P03.svg",
+      "bytes": 6964,
+      "sha256": "1e7070e00d229633e4773288414aa8babed5f319956de82773389cf93e64663f"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/10_Consumables_Procurement_Revised.drawio",
+      "bytes": 28082,
+      "sha256": "78103f28f5ca850ec459c3829fe715080877f1bafca3d15386246242cc358a3d"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/10_Consumables_Procurement_Revised.html",
+      "bytes": 21665,
+      "sha256": "9abdaa0db48a3b58e48ca97cea3f1059f1cf6dbea8672792160ca6ab48e34bca"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/10_Consumables_Procurement_Revised.pdf",
+      "bytes": 79095,
+      "sha256": "76816c8a7b20d04c54c6b20a822c12f8ed1360275c6e52dba5e671b1f1a27e95"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/10_Consumables_Procurement_Revised_P01.png",
+      "bytes": 376443,
+      "sha256": "84822480775210ab348a0590d477e9ddb7b19022a1e9b8c88acd73dd7b1abfdd"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/10_Consumables_Procurement_Revised_P01.svg",
+      "bytes": 7395,
+      "sha256": "0cf55564bbfc2d757385f15cb9c4be552cb625d2af713f38062236f7c7171aee"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/10_Consumables_Procurement_Revised_P02.png",
+      "bytes": 319443,
+      "sha256": "559ca4b8d8978189bd3b0bf5ad23bf763f57767f3df948dbc43dcbc7caa4a3e9"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/10_Consumables_Procurement_Revised_P02.svg",
+      "bytes": 6789,
+      "sha256": "5916d1c754c2e7c6ae0147e8dc3c130bba1ce0378cc6ab56faab01a7c915b5d8"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/10_Consumables_Procurement_Revised_P03.png",
+      "bytes": 344682,
+      "sha256": "4125b4cf6d1d8a467dde7bf1d58d14d217761d8ad73d93dd9f802ad4aacb80e5"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/10_Consumables_Procurement_Revised_P03.svg",
+      "bytes": 6994,
+      "sha256": "3faab1a81ed5ddff36d800f36554d99bc7c57296abd4fb4b2b5aecff59d006ae"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/11_Cancellation_Refusal_Revised.drawio",
+      "bytes": 40056,
+      "sha256": "a0de3c3008de41f4c10ebbf484880ed8425566684925ade22d6dbc49badf3338"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/11_Cancellation_Refusal_Revised.html",
+      "bytes": 30960,
+      "sha256": "e41db00a22b5fdb2d4f3d8f57825d883cb18a48eab5db36c193b69a3045c0e29"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/11_Cancellation_Refusal_Revised.pdf",
+      "bytes": 98167,
+      "sha256": "d1cc487de966c07d0d4e39091fc6125482619ad94cef608e44712f0094ac774b"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/11_Cancellation_Refusal_Revised_P01.png",
+      "bytes": 337825,
+      "sha256": "36c947047bcd65a89f791ef44259daa5be4e7261da78e2fc7115eba0a87d6e30"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/11_Cancellation_Refusal_Revised_P01.svg",
+      "bytes": 6674,
+      "sha256": "ce48c7e0cd2d68506d54f140d73b1cd36982da2beaf5a8b8429c536796cdfccb"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/11_Cancellation_Refusal_Revised_P02.png",
+      "bytes": 409124,
+      "sha256": "6d0acea19ede7765f0bf7794ce1f0f80e377b6c5f803e371f97bdcc624a93d34"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/11_Cancellation_Refusal_Revised_P02.svg",
+      "bytes": 8088,
+      "sha256": "7a2f9cad3711825f8155cb41ed22f4501b8c09053fb9887f04e553d02d5f02cb"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/11_Cancellation_Refusal_Revised_P03.png",
+      "bytes": 406312,
+      "sha256": "5992df68000c3531adbdcdc1d436d786809cc3c14e95582903c6b13cfc3ce3c2"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/11_Cancellation_Refusal_Revised_P03.svg",
+      "bytes": 7903,
+      "sha256": "09c0d999ce55fe5a820a0ebc043ef2a9ac68cc88be8dfa989a126380e751dc29"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/11_Cancellation_Refusal_Revised_P04.png",
+      "bytes": 405019,
+      "sha256": "ac8a8b59d0560e6178a67cca4d31888922becfb08acbeadf6f1c0960cd224f70"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/11_Cancellation_Refusal_Revised_P04.svg",
+      "bytes": 7830,
+      "sha256": "4d6aa28746ff351e308604943f247f20364f6bd1442b2e7230d8174e6f4d257c"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/12_Password_Recovery_Setup_Revised.drawio",
+      "bytes": 21418,
+      "sha256": "6a9cb8cc4d7ca3893e6681abb03f9d475e58947c2fd67987548e226c184f2ac7"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/12_Password_Recovery_Setup_Revised.html",
+      "bytes": 16257,
+      "sha256": "854415490d852d2847005390f6fca9fca1a7da6d4774ef5f38afa973bfda1cbd"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/12_Password_Recovery_Setup_Revised.pdf",
+      "bytes": 71281,
+      "sha256": "4cef2f558c3a03168d992e0ab3846e66bf8e770a4e2fedfd5ec661aa5422ee80"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/12_Password_Recovery_Setup_Revised_P01.png",
+      "bytes": 351091,
+      "sha256": "ec9226649a8b7cda45003cf3a19aed8b6939c526dc2ac918982cc2c111c1a25b"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/12_Password_Recovery_Setup_Revised_P01.svg",
+      "bytes": 7293,
+      "sha256": "7c6e115ef5d95eb6d97f702bdc235999a33daa685a0c28d4f4c372539f8f8aa2"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/12_Password_Recovery_Setup_Revised_P02.png",
+      "bytes": 409839,
+      "sha256": "9c3f257306f5598aa7b3f77deb8472db22ad0e2c329d1684d8a69fb9e6fc4190"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/12_Password_Recovery_Setup_Revised_P02.svg",
+      "bytes": 8455,
+      "sha256": "97a58a0667d3c1c40ac651685a0b3f4f18430f2befdffdfdb7dbb01990111fd5"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/13_Purchase_Ledger_Revised.drawio",
+      "bytes": 11085,
+      "sha256": "af4778fa738db14e03dd3ec9e62363af92945b357593f6a66f2ddc49c4982e4b"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/13_Purchase_Ledger_Revised.html",
+      "bytes": 8858,
+      "sha256": "95fc5cbbce2def62f1395559d49d10d94c0776084e14d0ddbd7409453194787c"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/13_Purchase_Ledger_Revised.pdf",
+      "bytes": 62528,
+      "sha256": "20474cf5fa2338487b95da59c53e3e2b038ba4bb4a7b824084e342b3ccb3cfae"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/13_Purchase_Ledger_Revised_P01.png",
+      "bytes": 426850,
+      "sha256": "a7f2a0182770db9af60a68bedf46631f15920c2c4fbe81fa3ddfc0f043abfc75"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/13_Purchase_Ledger_Revised_P01.svg",
+      "bytes": 8347,
+      "sha256": "cbc1419ae55b2e69b48cb8d21263512eb78a1c74b794d17234a3c79be45bb97b"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/14_Offline_Demo_Revised.drawio",
+      "bytes": 5492,
+      "sha256": "29e1e5da5e4e90920ace620a300c7f399bfb608e6bdd442735e9efcc5eb4d809"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/14_Offline_Demo_Revised.html",
+      "bytes": 4208,
+      "sha256": "8132d6935c48ba485c0cee47ff5b9778c62cb2c4ee001cf2615719c481d52741"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/14_Offline_Demo_Revised.pdf",
+      "bytes": 51711,
+      "sha256": "79c91b34331dc99252549e1f248ab0fa7505007e1ca4d0aec6671ed6a39402ea"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/14_Offline_Demo_Revised_P01.png",
+      "bytes": 196734,
+      "sha256": "b27240b396edccbdb401496b3ec3c4d8db9ede3e294be117412b3b01f7a9f879"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/14_Offline_Demo_Revised_P01.svg",
+      "bytes": 3691,
+      "sha256": "9041ed26eec966ed5970766c23a0be8f4e4ca333e513af250aab84fef176fd63"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/Revised_Flowcharts_Index.md",
+      "bytes": 10464,
+      "sha256": "b953c5abfbcbf5abc6d18602a2012937fa6bdb061e5c20cbbc3645f96ebfa8d0"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Flowchart_Revision_Baseline.json",
+      "bytes": 229568,
+      "sha256": "4c4b6f560138402a8460c481401b8c5653c0881cfeee8b82e3cbd1cc131898b8"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Flowchart_Revision_Source_Review.md",
+      "bytes": 7692,
+      "sha256": "e0279e6d903c0f42b962d6837ea1517251c76087086136a614b5799a4f92e60e"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Flowchart_Revision_Validation.json",
+      "bytes": 10318,
+      "sha256": "db0fdac420ddf7995a94c19d76cd5175bbf5183b2e08f584067fd3b35f821d1b"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_Flowchart_Model.json",
+      "bytes": 359672,
+      "sha256": "a9d4c10c6fa721c0e20f824b410e2d2a621a61a90641090c213de7b184f5b192"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_Flowchart_Render.json",
+      "bytes": 2738,
+      "sha256": "970bb733096882c78e57772560ade4d879441b84b4ade5261e0c033962e7956a"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_Flowchart_Structure.json",
+      "bytes": 518,
+      "sha256": "91f47147ec3338b7181f8e1b83fa46ebb7a625fb8dedc9f201844dc11ac85726"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/01_Authentication_Revised_P01.png",
+      "bytes": 117117,
+      "sha256": "81c54e41a32e7aa533b06bfc7483c37400971c81c4fea21a38f6c94cfdedd10d"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/01_Authentication_Revised_P02.png",
+      "bytes": 140345,
+      "sha256": "204f94c27b57369aa40793b670ea7d2aa4160e52e09ba5b70feffa8dee588a22"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/02_Equipment_Registration_Revised_P01.png",
+      "bytes": 154303,
+      "sha256": "12b5ffd0eaaa3c91e12b61cc52e1c61b0cbb37953da162a9a34f27d6311a63f8"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/02_Equipment_Registration_Revised_P02.png",
+      "bytes": 125889,
+      "sha256": "8a375802f2cf3c620b468bd50ce8dc2097e73f62223a0d094d311f61338f6714"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/02_Equipment_Registration_Revised_P03.png",
+      "bytes": 155981,
+      "sha256": "824e5f67a6e1433681e8c35b5ad35a93ce92485446eecc3bb1fb8eaf9b228543"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/03_Equipment_Request_Approval_Revised_P01.png",
+      "bytes": 159880,
+      "sha256": "27b8ac6288da8f1ac8a04f8e5ee10ff2a26ad7a611e9e1b9ddd0b26429dfd687"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/03_Equipment_Request_Approval_Revised_P02.png",
+      "bytes": 172793,
+      "sha256": "33e440da3c847f8d8c4f82de802eceee60076693c130369543b756108e8c799d"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/03_Equipment_Request_Approval_Revised_P03.png",
+      "bytes": 155304,
+      "sha256": "7ca0b7389f8d42b8e04712f0c339fed5c5e2245788f8af992c286957449a86c9"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/04_Equipment_Release_Assignment_Revised_P01.png",
+      "bytes": 159488,
+      "sha256": "e3f51e152f8da5c34790d9bfbbf4f793c8c7b72aaac0e4b15eab3221670bcae0"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/04_Equipment_Release_Assignment_Revised_P02.png",
+      "bytes": 110074,
+      "sha256": "9ce3c701718bb70ffb61dc9f4e91d8270e2dcf10f6504a90471462ec80de7d94"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/05_QR_Equipment_Transfer_Revised_P01.png",
+      "bytes": 145265,
+      "sha256": "1a57382645465f89bccf4f1bd6da277f9e770050bff044020d2a49701a4564f7"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/05_QR_Equipment_Transfer_Revised_P02.png",
+      "bytes": 196738,
+      "sha256": "90fdefb07326e8e5a3bce8b6a70c1d2dfe1d966685bdb4e238666d5538a639e1"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/06_Transfer_Receipt_Revised_P01.png",
+      "bytes": 167063,
+      "sha256": "347e3dcf59e595a10cd1c07bbdd6450be0f81aa32fe779b4b761629905b982c0"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/06_Transfer_Receipt_Revised_P02.png",
+      "bytes": 128621,
+      "sha256": "2127082c6ab2112a691889f4f46855fdf0b063f12732796349d0b877652ce6e3"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/06_Transfer_Receipt_Revised_P03.png",
+      "bytes": 95785,
+      "sha256": "83bfdafb0cdf18c81e1f9cb82b7c67948612aaa7d58706529205745312aed227"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/06_Transfer_Receipt_Revised_P04.png",
+      "bytes": 146428,
+      "sha256": "a903b2eddc1114b6cdc2dc81d69925800e7077315a839fd71f9e1bed21121401"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/07_Office_Return_Receiving_Revised_P01.png",
+      "bytes": 158722,
+      "sha256": "5f2b1c4a11fd0744ea1f216de40d9486b339cbad93a399e20b4575ae4aaa4e2f"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/07_Office_Return_Receiving_Revised_P02.png",
+      "bytes": 126019,
+      "sha256": "74befe487d9112d779b41eac81c822101ff38c128a414f4ffe51fd2c600de42d"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/07_Office_Return_Receiving_Revised_P03.png",
+      "bytes": 99929,
+      "sha256": "e29317f66066077e6fd3649a3b60bfc546b1a66e700f7378d9f14bb1e420d0ac"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/07_Office_Return_Receiving_Revised_P04.png",
+      "bytes": 144869,
+      "sha256": "29f17bb2ff10af577a4dfeedc553a2c9e64c4c00a8aad75a3d72a9906ba50710"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/08_Equipment_Repair_Revised_P01.png",
+      "bytes": 150032,
+      "sha256": "fb90b24e1b64747f554e57f3edeac5b55c1febbf2f315e1602b60ce2e9103bee"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/08_Equipment_Repair_Revised_P02.png",
+      "bytes": 142509,
+      "sha256": "afad59cf357dac5f16a782ecc582a0f0324b5a7ec9a77f887ac9222085e4d578"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/08_Equipment_Repair_Revised_P03.png",
+      "bytes": 187562,
+      "sha256": "f254eaefb9fac5c9feab72cf3dd416b6b8e993442fb8f170425ff95e19583e60"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/09_Missing_Recovery_Revised_P01.png",
+      "bytes": 149916,
+      "sha256": "6f0aecbd19796b62743bf6b88f5d8785800911e62fd0882f79de0ff35eed51b7"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/09_Missing_Recovery_Revised_P02.png",
+      "bytes": 153933,
+      "sha256": "d52a7145cca384188f6518a671d822076a7f6f1ca1271abe7d428ecde016ecea"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/09_Missing_Recovery_Revised_P03.png",
+      "bytes": 149749,
+      "sha256": "5fdcef5637101f365bb5a41b320dc19c65713a08cb8a665404b9a7e26d72bb5f"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/10_Consumables_Procurement_Revised_P01.png",
+      "bytes": 165829,
+      "sha256": "1986302ccc49e16b02705d6844e6f2bbd6df98d707c5c3006cd079be653b2735"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/10_Consumables_Procurement_Revised_P02.png",
+      "bytes": 142630,
+      "sha256": "bdb20571d12986c2364c17daf071459b0cd5bb72e94860f58436bbfc8b913c2c"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/10_Consumables_Procurement_Revised_P03.png",
+      "bytes": 150997,
+      "sha256": "f4094d8c8ee3424e5c81fd566aa38198a530b4308d7cd1d42036cee0ab8d9009"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/11_Cancellation_Refusal_Revised_P01.png",
+      "bytes": 150330,
+      "sha256": "29470f917b8cb76927225e295b9459489a753a05b32e3e51746ab1518bcec874"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/11_Cancellation_Refusal_Revised_P02.png",
+      "bytes": 183895,
+      "sha256": "8666e57caf41963ae73c67a55f18106059600c5a6a93b79d94c7c1c947f510c0"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/11_Cancellation_Refusal_Revised_P03.png",
+      "bytes": 178843,
+      "sha256": "599693916ca775ebac71901d1d08bf81b6168194238210989d1a5c86e8502f99"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/11_Cancellation_Refusal_Revised_P04.png",
+      "bytes": 176880,
+      "sha256": "90712e072b0daeacda0e6a78947ee5b017c76e50513255e61d65960c8c134aea"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/12_Password_Recovery_Setup_Revised_P01.png",
+      "bytes": 153660,
+      "sha256": "038143c13f7431972ff3b8260d89eeee062944d57099ac4c12648aa07997f559"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/12_Password_Recovery_Setup_Revised_P02.png",
+      "bytes": 179380,
+      "sha256": "b7ad0eeac607718a12b15b2d8c1420d3bc22cae85dc9fb9df2b8210898094218"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/13_Purchase_Ledger_Revised_P01.png",
+      "bytes": 182865,
+      "sha256": "f66a6883b996d97077f9f30930fd8f191d15605573706f9369575acc2a6195be"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/14_Offline_Demo_Revised_P01.png",
+      "bytes": 93157,
+      "sha256": "ebbc41f59c834ff238feb3b3b41828764becfadbfb47299fa4357a4465bd51bc"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/Contact_Sheet_01.png",
+      "bytes": 699073,
+      "sha256": "776a8143fa30f920bc07d01b89b0728b155c690b53731612bba82d9c2b44573b"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/Contact_Sheet_02.png",
+      "bytes": 656922,
+      "sha256": "7ba102967299e8df5f03a238d684843a34360d1e93bd1ee05a640b0d36cb8223"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/Contact_Sheet_03.png",
+      "bytes": 691112,
+      "sha256": "25889bd5db36c2f4f60320c65f2cf35173f2c2e9be85c0108e301e6d28a1ec72"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/Contact_Sheet_04.png",
+      "bytes": 803723,
+      "sha256": "e130fd3f6601f58253279d738b6dc3933aeb84aa61b376ebd388025faa2d70d7"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/Revised_PDF_Previews/Contact_Sheet_05.png",
+      "bytes": 73532,
+      "sha256": "d2142e68c66c8153ebff424b0534e57624d848d6578db6d64bf7a82e1e37b2a4"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/source/package-revised-flowcharts.cjs",
+      "bytes": 15864,
+      "sha256": "a9cec1ec1561e3c6fa8d9bb12f52ba7b1c50c90280382c5c80cba211d2e7ccec"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/source/render-revised-flowcharts.cjs",
+      "bytes": 5496,
+      "sha256": "f2d3aae29600b3efcaa200e539c611d8dd7c6fcd761bc122d87b4e83afd7d603"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/source/review-revised-flowcharts.cjs",
+      "bytes": 1594,
+      "sha256": "b8ae5d9e115ee03a714c28e12726208bfdd44ec7a5b6195f22807786277e5bf2"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/source/revise-flowcharts.cjs",
+      "bytes": 14031,
+      "sha256": "7f9e2383f4436a44d5ea4937eef11874ef8b952a31050309d9950559267207b2"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/source/revised-workflow-content.cjs",
+      "bytes": 26344,
+      "sha256": "5f78ae5f809802a041b930f7c68aeca2f37adcb5e3b37d1affb82c55b2752e0f"
+    },
+    {
+      "file": "SYSTEM_DOCUMENTATION/05_VALIDATION/source/validate-revised-flowcharts.ps1",
+      "bytes": 7634,
+      "sha256": "9b93916a90068ed1a377cbfbe546b9d9f409a8748b27fcc780503d0060c72da0"
+    }
+  ],
+  "totalBytes": 23761421
+}

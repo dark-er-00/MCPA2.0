@@ -1,0 +1,36 @@
+.equipment-requests{min-width:0;max-width:1280px;margin-inline:auto;overflow-wrap:anywhere}
+.equipment-requests [hidden]{display:none!important}
+.equipment-requests .page-head{gap:16px;flex-wrap:wrap}
+.equipment-requests .equipment-methods{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.equipment-requests .equipment-header-actions{display:flex;gap:12px;flex-wrap:wrap}
+.equipment-requests .tool-id-chip{white-space:normal;overflow-wrap:anywhere;max-width:100%}
+.equipment-requests .equipment-quantity-create .wa-q-catalog{max-height:440px;overflow:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.equipment-requests .equipment-specific>.movement-ui>.page-head,
+.equipment-requests .equipment-specific [data-summary],
+.equipment-requests .equipment-specific .mv-record-area,
+.equipment-requests .equipment-specific .mv-guide,
+.equipment-requests .equipment-hide-create [data-create-panel],
+.equipment-requests .equipment-quantity-create .wa-q-history-section,
+.equipment-requests .equipment-quantity-review .wa-q-browse,
+.equipment-requests .equipment-quantity-review .wa-q-header{display:none}
+.equipment-requests .equipment-specific .mv-workspace,
+.equipment-requests .equipment-quantity-review .wa-q-workspace{display:block}
+.equipment-requests .equipment-history{margin-top:28px}
+.equipment-requests .equipment-filters{display:grid;grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}
+.equipment-requests .equipment-filters label{display:grid;gap:6px;font-size:13px;font-weight:600}
+.equipment-requests .equipment-filters .mv-input{width:100%;min-width:0;min-height:44px}
+.equipment-requests .equipment-queue{list-style:none;padding:0;margin:0}
+.equipment-requests .equipment-queue>li{padding:22px 0;border-top:1px solid var(--border)}
+.equipment-requests .equipment-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px}
+.equipment-requests .equipment-row p{font-size:13px;line-height:1.6;margin:6px 0;color:var(--text-secondary)}
+.equipment-requests .equipment-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.equipment-requests summary{cursor:pointer;min-height:44px;padding:12px 0;font-size:13px}
+.equipment-progress{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;padding:0;margin:20px 0;gap:12px}
+.equipment-progress li{border-top:2px solid var(--border);padding-top:10px;font-size:13px;font-weight:600}
+.equipment-progress li[data-complete=true]{border-top-color:var(--gold)}
+.equipment-progress small{display:block;font-size:12px;font-weight:400;margin-top:4px}
+.equipment-requests [data-equipment-review]{margin-top:24px}
+.equipment-requests [data-review-stage]{margin:20px 0}
+.equipment-requests .equipment-empty{padding:20px 0}
+.equipment-requests :is(button,a,input,select,summary):focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-width:700px){.equipment-requests .equipment-filters,.equipment-requests .equipment-row{grid-template-columns:minmax(0,1fr);gap:12px}.equipment-progress{grid-template-columns:repeat(2,minmax(0,1fr))}.equipment-requests :is(input,select,textarea){font-size:16px}.equipment-requests .equipment-actions>*{min-height:44px}}

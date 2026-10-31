@@ -1,0 +1,11 @@
+/* Reports-specific styles.
+   Shared primitives (.chart-placeholder, .chart-bar, .kv, .two-col,
+   etc.) live in css/components.css. */
+
+.tabs{display:flex; gap:4px; border-bottom:1px solid var(--line); margin-bottom:18px;}
+.tab{padding:10px 4px; margin-right:22px; font-size:13px; font-weight:600; color:var(--gray); border-bottom:2px solid transparent; cursor:pointer;}
+.tab.active{color:var(--black); border-color:var(--gold);}
+.report-filters{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;margin-bottom:20px}.report-filters .field{margin:0;min-width:150px}
+#report-feedback{margin-bottom:16px;line-height:1.6}#report-scope{margin-bottom:20px;max-width:70ch}
+#report-snapshot-field{max-width:420px;margin-bottom:20px}
+@media(max-width:600px){.report-filters .field{flex:1;min-width:140px}.report-filters .field:first-child{flex-basis:100%}}

@@ -1,0 +1,5 @@
+/* Keep the original account form visible below the sticky workspace controls. */
+#screen-users #account-panel { scroll-margin-top: 80px; }
+@media (max-width: 768px) {
+  #screen-users #account-panel { scroll-margin-top: 132px; }
+}

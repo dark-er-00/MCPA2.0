@@ -1,0 +1,127 @@
+﻿{
+    "stage":  1,
+    "scope":  "SYSTEM_DOCUMENTATION/02_SYSTEM_DIAGRAMS/ADMIN_FLOWCHARTS/00_Main_Admin_Flowchart/",
+    "excludesOwnHash":  true,
+    "files":  [
+                  {
+                      "file":  "Build_Main_Admin_Flowchart.ps1",
+                      "bytes":  33751,
+                      "sha256":  "a974023e6122421588bc8cb205377de85d1a354d5c7c00cf2e1d45c1c7894ae2"
+                  },
+                  {
+                      "file":  "Render_Main_Admin_Flowchart.ps1",
+                      "bytes":  7949,
+                      "sha256":  "df01a84038e33f83e8aa07922d1356130ae0e94d3d81f228190e0113c1d95fd3"
+                  },
+                  {
+                      "file":  "SiteTrace_Main_Admin_Flowchart.drawio",
+                      "bytes":  63417,
+                      "sha256":  "12cf68e6b2df217dc10a477270d8a4d99bd842f0edd6d61a06155f0106ef14b8"
+                  },
+                  {
+                      "file":  "SiteTrace_Main_Admin_Flowchart.pdf",
+                      "bytes":  97949,
+                      "sha256":  "da0c3c9641ab4390dfde385f8203d1aaf1ff1e35943b8f8a892e0cb2e3309852"
+                  },
+                  {
+                      "file":  "SiteTrace_Main_Admin_Flowchart.png",
+                      "bytes":  867616,
+                      "sha256":  "02b6c08812fc20ce62f4c30fc374d2b4dc759df15d01e85460e2983a23ce9330"
+                  },
+                  {
+                      "file":  "SiteTrace_Main_Admin_Flowchart_Explanation.md",
+                      "bytes":  17150,
+                      "sha256":  "cc4414c300f7dbcbd2c51d8b88662c5e136f76c608d1472e56e2b30f0dca069e"
+                  },
+                  {
+                      "file":  "SiteTrace_Main_Admin_Flowchart_P01.png",
+                      "bytes":  504712,
+                      "sha256":  "504d32fc6d9d38bb9af2abb17b1ebd2b00f04ef0e897e6bfcd6175d4138ae9bc"
+                  },
+                  {
+                      "file":  "SiteTrace_Main_Admin_Flowchart_P01.svg",
+                      "bytes":  10771,
+                      "sha256":  "b96591d451cc0b29117e63d983878f34aceff0f3ad1d90d913f3bf03c79efcbb"
+                  },
+                  {
+                      "file":  "SiteTrace_Main_Admin_Flowchart_P02.png",
+                      "bytes":  453201,
+                      "sha256":  "69705862864985bd4719bbfb95fc17fa9edc943b16150ccd6509548c664b0070"
+                  },
+                  {
+                      "file":  "SiteTrace_Main_Admin_Flowchart_P02.svg",
+                      "bytes":  11224,
+                      "sha256":  "523649c83db0325fcc81f977aef3d21d1764e3e5f859a64ca0ee1f71218e4a6b"
+                  },
+                  {
+                      "file":  "SiteTrace_Main_Admin_Flowchart_P03.png",
+                      "bytes":  513019,
+                      "sha256":  "c8f08b95e2be762559c06c2aec244db66c8464c6196dd35120ca6714ba78a6b7"
+                  },
+                  {
+                      "file":  "SiteTrace_Main_Admin_Flowchart_P03.svg",
+                      "bytes":  17783,
+                      "sha256":  "812a0e029d74f678b0494f3e4556794e935e0ddf588338cc4be64e0caad5fe68"
+                  },
+                  {
+                      "file":  "SiteTrace_Main_Admin_Flowchart_P04.png",
+                      "bytes":  316497,
+                      "sha256":  "3284c800a09dd036e971e742b79da6884430f36bddcab712ff9c9805fb5dbb84"
+                  },
+                  {
+                      "file":  "SiteTrace_Main_Admin_Flowchart_P04.svg",
+                      "bytes":  5658,
+                      "sha256":  "b668a8ecf056913928efcb91ddc1d0c743676f5386e459f3754e99786f3bfb90"
+                  },
+                  {
+                      "file":  "Validate_Main_Admin_Flowchart.ps1",
+                      "bytes":  10049,
+                      "sha256":  "aa40f46bf2a5188c05bc085e17fa98b95bcd5305a6ddd1153cc87a2406c8d49e"
+                  },
+                  {
+                      "file":  "Validation/Diagram_Model.json",
+                      "bytes":  64687,
+                      "sha256":  "7e545d4aa3704ff2b2b88d1127aa37f256ab5ca9d8c2e2337748b9e1e20cf0c8"
+                  },
+                  {
+                      "file":  "Validation/PDF_Preview_P01.png",
+                      "bytes":  201932,
+                      "sha256":  "545b19229f00b820b41743361b129e1c4363e43826ec33c58add6f044f8beb8c"
+                  },
+                  {
+                      "file":  "Validation/PDF_Preview_P02.png",
+                      "bytes":  181096,
+                      "sha256":  "21f4d03e4b00829143f1c4e714e81f732ddc004e00971feaff184fc8f105316a"
+                  },
+                  {
+                      "file":  "Validation/PDF_Preview_P03.png",
+                      "bytes":  236712,
+                      "sha256":  "af535dcd26709c6773b588be552a21fbaf217e29a5b9bbb49035506757873590"
+                  },
+                  {
+                      "file":  "Validation/PDF_Preview_P04.png",
+                      "bytes":  124825,
+                      "sha256":  "3d89532ea7dda177ba00ad8cd3cc4911352d688f6594731b03ac2e959a17b323"
+                  },
+                  {
+                      "file":  "Validation/Render.json",
+                      "bytes":  287,
+                      "sha256":  "26c26682f27b31c60432eae992812836a0da33597b0241b8d2c22c7178c00933"
+                  },
+                  {
+                      "file":  "Validation/Source_Baseline.json",
+                      "bytes":  266305,
+                      "sha256":  "fb30759c769cbe4aeac74617d0b803ebc11265ab31c3f8a5b4bb2dbef002120c"
+                  },
+                  {
+                      "file":  "Validation/Structure.json",
+                      "bytes":  366,
+                      "sha256":  "a698437e283a3fda38f1fe5ecac58b98506ab294e8c3da6fc92f0a7af6996048"
+                  },
+                  {
+                      "file":  "Validation/Validation_Report.json",
+                      "bytes":  3827,
+                      "sha256":  "3ad6d6b402df8ba960dd6327523e7c48c70e105c7fff10bad22c2f9d0ca244c5"
+                  }
+              ]
+}

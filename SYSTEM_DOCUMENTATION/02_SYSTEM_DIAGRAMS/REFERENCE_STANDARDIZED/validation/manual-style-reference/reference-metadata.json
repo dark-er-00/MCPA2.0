@@ -1,0 +1,502 @@
+[
+  {
+    "name": "00_Main",
+    "pageCount": 6,
+    "pages": [
+      {
+        "number": 1,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Main role flowchart Page 1 of 6 | Login to Dashboard Continue to Admin workspace modules To ADMIN MAIN / P2 START Open SiteTrace; enter email and password, or restore an existing Auth session. Restore Auth session or submit signInWithPassword. Authentication successful? Show normal sign-in for no session. Show feedback for a failed submitted login. 1 Read authorized company profile using mcpa_my_profile. Active, authorized company profile? Show inactive/unauthorized profile or verification feedback; contact Admin. END Switch movement store to live mode; build Admin menus; initialize monitoring. Display Dashboard, or a permitted initial route requested by the user. A No Yes No Yes XX 1"
+      },
+      {
+        "number": 2,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.897499951377474,
+        "text": "SITETRACE (MCPA) - Admin Main role flowchart Page 2 of 6 | Available modules and entry events - 1 From Admin workspace modules Continue: Authentication and session Continue: Tools and Equipment Masterlist Continue: Tool Profile Continue: Tool Requests More choices on next page To ADMIN AUTHENTICATION / P1 To ADMIN MASTERLIST / P1 To ADMIN TOOL PROFILE / P1 To ADMIN REQUEST / P1 To ADMIN MAIN / P3 A Use sign-in help, email callback or sign-out? B Open Tools and Equipment Masterlist? C Open Tool Profile? D Open Tool Requests? E U Yes No Yes No Yes No Yes No"
+      },
+      {
+        "number": 3,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.897499951377474,
+        "text": "SITETRACE (MCPA) - Admin Main role flowchart Page 3 of 6 | Available modules and entry events - 2 From Main role flowchart / Available modules and entry events next choices Continue: Equipment Transfers Continue: Equipment Returns Continue: Repair Management Continue: Missing Equipment More choices on next page To ADMIN TRANSFER / P1 To ADMIN RETURN / P1 To ADMIN REPAIR / P1 To ADMIN MISSING / P1 To ADMIN MAIN / P4 U Open Equipment Transfers? F Open Equipment Returns? G Open Repair Management? H Open Missing Equipment? I V Yes No Yes No Yes No Yes No"
+      },
+      {
+        "number": 4,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.897499951377474,
+        "text": "SITETRACE (MCPA) - Admin Main role flowchart Page 4 of 6 | Available modules and entry events - 3 From Main role flowchart / Available modules and entry events next choices Continue: Dashboard / Movement Overview Continue: Projects / Site List Continue: Project Details / Accountability and History Continue: Material Requests / Consumables Procurement More choices on next page To ADMIN DASHBOARD / P1 To ADMIN SITES / P1 To ADMIN SITE DETAIL / P1 To ADMIN CONSUMABLES / P1 To ADMIN MAIN / P5 V Open Dashboard / Movement Overview? J Open Projects / Site List? K Open Project Details / Accountability and History? L Open Material Requests / Consumables Procurement? M W Yes No Yes No Yes No Yes No"
+      },
+      {
+        "number": 5,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.897499951377474,
+        "text": "SITETRACE (MCPA) - Admin Main role flowchart Page 5 of 6 | Available modules and entry events - 4 From Main role flowchart / Available modules and entry events next choices Continue: Purchases / Recorded Purchase Ledger Continue: Reports / Current and Historical Monitoring Continue: Activity Logs / Saved Movement Audit Continue: People and Accountability / Account Management More choices on next page To ADMIN PURCHASE / P1 To ADMIN REPORTS / P1 To ADMIN ACTIVITY / P1 To ADMIN USERS / P1 To ADMIN MAIN / P6 W Open Purchases / Recorded Purchase Ledger? N Open Reports / Current and Historical Monitoring? O Open Activity Logs / Saved Movement Audit? P Open People and Accountability / Account Management? Q X Yes No Yes No Yes No Yes No"
+      },
+      {
+        "number": 6,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.897499951377474,
+        "text": "SITETRACE (MCPA) - Admin Main role flowchart Page 6 of 6 | Available modules and entry events - 5 From Main role flowchart / Available modules and entry events next choices Continue: My Account / Display Preferences and Sign Out Continue: Global Search / Authorized Record Discovery Continue: Notifications / Own-Recipient Monitoring Use workspace navigation to return To ADMIN MAIN / P2 To ADMIN SETTINGS / P1 To ADMIN GLOBAL SEARCH / P1 To ADMIN NOTIFICATIONS / P1 X Open My Account / Display Preferences and Sign Out? R Open Global Search / Authorized Record Discovery? S Open Notifications / Own-Recipient Monitoring? T A Yes No Yes No Yes No"
+      }
+    ]
+  },
+  {
+    "name": "01_Authentication",
+    "pageCount": 12,
+    "pages": [
+      {
+        "number": 1,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.897499951377474,
+        "text": "SITETRACE (MCPA) - Admin Authentication and session Page 1 of 12 | Action selection - 1 From Admin / Authentication and session Continue: action pages Continue: action pages Continue: action pages Continue: action pages More choices on next page To ADMIN AUTHENTICATION / P3 To ADMIN AUTHENTICATION / P5 To ADMIN AUTHENTICATION / P6 To ADMIN AUTHENTICATION / P8 To ADMIN AUTHENTICATION / P2 B Sign in or restore a session? Y Request password recovery? Z Set password from invitation or reset? AA Sign out and retry failed sign-out? AB AF Yes No Yes No Yes No Yes No"
+      },
+      {
+        "number": 2,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.897499951377474,
+        "text": "SITETRACE (MCPA) - Admin Authentication and session Page 2 of 12 | Action selection - 2 From Authentication and session / Action selection next choices Continue: action pages Continue: action pages Continue: action pages Use workspace navigation to return To ADMIN MAIN / P2 To ADMIN AUTHENTICATION / P9 To ADMIN AUTHENTICATION / P10 To ADMIN AUTHENTICATION / P12 AF Use and exit offline demonstration? AC Handle session boot and revalidation? AD Load authorized module and retry loading? AE A Yes No Yes No Yes No"
+      },
+      {
+        "number": 3,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Authentication and session Page 3 of 12 | Sign in or restore a session - 1 / 2 From Admin / Authentication and session / Sign in or restore a session Continue on next page To ADMIN AUTHENTICATION / P4 Y Open SiteTrace; enter email and password if an existing session is unavailable. Use Auth getSession for restoration, or signInWithPassword for submitted credentials. Authenticated session available? No existing session: show normal sign-in. Submitted login failure: show error and retry. 1 Clear submitted password after sign-in; read mcpa_my_profile for the session user. Profile read succeeds? Show profile-verification error. Check connection and sign in again. AG No Yes No Yes 1 XX"
+      },
+      {
+        "number": 4,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Authentication and session Page 4 of 12 | Sign in or restore a session - 2 / 2 From Authentication and session / Sign in or restore a session continuation AG Active, supported company profile? Show unauthorized or inactive-account message; contact Admin. Workspace remains closed. Switch MovementStore to live mode; build permitted menus and initialize monitoring. Open permitted initial route if supplied; otherwise open Dashboard. Authorized workspace opened No Yes XX XX"
+      },
+      {
+        "number": 5,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Authentication and session Page 5 of 12 | Request password recovery From Admin / Authentication and session / Request password recovery Z Enter a valid email on sign-in; choose Forgot password. Email passes native form validity? Browser requests a valid email. Correct the email before continuing. 1 Call resetPasswordForEmail with the email and root sign-in URL as redirect. Reset request succeeds? Show unable-to-request-reset message; check connection and retry. 1 Show neutral confirmation: if the account exists, a reset link has been sent. Await email callback No Yes No Yes 1 XX"
+      },
+      {
+        "number": 6,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Authentication and session Page 6 of 12 | Set password from invitation or reset - 1 / 2 From Admin / Authentication and session / Set password from invitation or reset Continue on next page To ADMIN AUTHENTICATION / P7 AA Open invitation/reset email callback or resume pending password setup. Callback valid and session available? Reject invalid/expired link; request a fresh invitation or password reset. Hide workspace; remember setup user/kind in sessionStorage and clean callback URL. Enter new password (at least 12 characters); submit Set your password. Password meets native minimum length? Correct password; setup form remains open. 1 1 AH No Yes No Yes XX"
+      },
+      {
+        "number": 7,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Authentication and session Page 7 of 12 | Set password from invitation or reset - 2 / 2 From Authentication and session / Set password from invitation or reset continuation AH Continue with current screen / retained form; retry as directed by the displayed feedback. Call Auth updateUser with new password. Password saved? Show save failure; check connection/password. Expired links require a fresh email link. 1 1 Clear setup state and attempt local sign-out; failed sign-out offers Retry sign out. Show password-saved message; sign in with the new password. Password setup completed No Yes XX"
+      },
+      {
+        "number": 8,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Authentication and session Page 8 of 12 | Sign out and retry failed sign-out From Admin / Authentication and session / Sign out and retry failed sign-out AB Choose Log Out in the account menu or Cancel and sign out during setup. Clear profile, application, navigation and setup/demo session flags; show sign-in. Call Auth signOut with local scope. Sign-out confirmed? Show unconfirmed sign-out and Retry sign out. Use that button to repeat local sign-out. 1 1 Display signed-out confirmation. Local session ended No Yes XX"
+      },
+      {
+        "number": 9,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Authentication and session Page 9 of 12 | Use and exit offline demonstration From Admin / Authentication and session / Use and exit offline demonstration AC Choose Try offline demo; select Admin, Engineer or Architect sample identity. Set sample profile and demo role in sessionStorage; use browser-only demo store. Open demo Dashboard. Users, Consumables and Purchases are blocked in demo mode. Perform supported sample workflows locally; no live credentials or database writes. Choose Exit demo in account menu. Clear demo session role and workspace; retain browser sample records. Show Demo closed on sign-in screen. Demo session ended XX"
+      },
+      {
+        "number": 10,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Authentication and session Page 10 of 12 | Handle session boot and revalidation - 1 / 2 From Admin / Authentication and session / Handle session boot and revalidation Continue on next page To ADMIN AUTHENTICATION / P11 AD On boot, request Auth session; on focus, Auth storage change or 60-second check, verify session. Session service responds? On boot show service-load error; refresh. Offline demonstration remains available. Authenticated session still exists? Clear workspace and navigation; show sign-in after session ends. Recheck mcpa_my_profile; refresh account UI or rebuild workspace for changed identity/role. Profile verification succeeds? Close workspace; show verification, inactive-account or authorization feedback. AI No Yes No Yes No Yes XX XX XX"
+      },
+      {
+        "number": 11,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 9.337201458949924,
+        "text": "SITETRACE (MCPA) - Admin Authentication and session Page 11 of 12 | Handle session boot and revalidation - 2 / 2 From Authentication and session / Handle session boot and revalidation continuation AI Continue authorized workspace. Session state reconciled XX"
+      },
+      {
+        "number": 12,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.055447725022995,
+        "text": "SITETRACE (MCPA) - Admin Authentication and session Page 12 of 12 | Load authorized module and retry loading From Admin / Authentication and session / Load authorized module and retry loading AE Select module, detail link or browser-history route from the workspace. Role can access route? Show Access restricted with Return to workspace. Do not load the restricted module. Reuse active module, or load mapped module HTML, CSS and script; dispose previous views. HTML and script load? Show Unable to load this screen and Retry. Retry repeats the requested route. 1 1 Render the requested view; preserve current route context and navigation history. Display authorized module or detail screen. Module rendered No Yes No Yes XX XX"
+      }
+    ]
+  },
+  {
+    "name": "02_Masterlist",
+    "pageCount": 14,
+    "pages": [
+      {
+        "number": 1,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.897499951377474,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 1 of 14 | Action selection - 1 From Admin / Tools and Equipment Masterlist Continue: action pages Continue: action pages Continue: action pages Continue: action pages More choices on next page To ADMIN MASTERLIST / P3 To ADMIN MASTERLIST / P5 To ADMIN MASTERLIST / P8 To ADMIN MASTERLIST / P11 To ADMIN MASTERLIST / P2 C Load, search, filter and paginate inventory? AJ Add inventory item? AK Edit inventory metadata? AL Validate and stage optional equipment photo? AM AP Yes No Yes No Yes No Yes No"
+      },
+      {
+        "number": 2,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.900708926803782,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 2 of 14 | Action selection - 2 From Tools and Equipment Masterlist / Action selection next choices Continue: action pages Continue: action pages Use workspace navigation to return To ADMIN MAIN / P2 To ADMIN MASTERLIST / P13 To ADMIN MASTERLIST / P14 AP Select rows and open controlled movement review? AN Export the filtered masterlist through browser print? AO A Yes No Yes No"
+      },
+      {
+        "number": 3,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.055447725022995,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 3 of 14 | Load, search, filter and paginate inventory - 1 / 2 From Admin / Tools and Equipment Masterlist / Load, search, filter and paginate inventory Continue on next page To ADMIN MASTERLIST / P4 AJ Open Masterlist Read equipment, sites and holder names; refresh movement reservations Equipment and site reads succeeded? Show sync/load failure Retry automatically on focus, reconnect or polling 1 1 Map IDs to names and normalize status; calculate request availability Enter asset/name/brand/serial/project/holder search; select category, status or project Filter equipment; reset page to 1; show ten records per page Any records match? Display empty state; hide pagination Change search or filters 2 2 AQ No Yes No Yes"
+      },
+      {
+        "number": 4,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.055447725022995,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 4 of 14 | Load, search, filter and paginate inventory - 2 / 2 From Tools and Equipment Masterlist / Load, search, filter and paginate inventory continuation AQ Read status, condition and current custody; choose page, Prev or Next Display selected page; background sync refreshes inventory. Unverified movement stock is labeled unavailable/unverified. XX"
+      },
+      {
+        "number": 5,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 5 of 14 | Add inventory item - 1 / 3 From Admin / Tools and Equipment Masterlist / Add inventory item Continue on next page To ADMIN MASTERLIST / P6 AK Choose Add New Item; enter name, category, condition and tracking type Optionally enter brand/model/serial/details; Bulk quantity/unit; optional photo Required form values and numeric constraints valid? Browser shows invalid/missing field Correct form values 1 1 Live Admin session active and photo check finished? Display Admin/session or wait-for-photo feedback Keep form; sign in or finish validation 1 AR No Yes No Yes"
+      },
+      {
+        "number": 6,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 6 of 14 | Add inventory item - 2 / 3 From Tools and Equipment Masterlist / Add inventory item continuation Continue on next page To ADMIN MASTERLIST / P7 AR Continue with current screen / retained form; retry as directed by the displayed feedback. Generate asset ID and record UUID; resolve configured Office via mcpa_inventory_office Office verified and optional photo prepared? Show Office or upload failure; item has not been saved Keep inputs and selected/staged photo for retry 1 1 Same screen and authenticated account? Abort save; reopen item after screen/account changed AS No Yes No Yes XX"
+      },
+      {
+        "number": 7,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.055447725022995,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 7 of 14 | Add inventory item - 3 / 3 From Tools and Equipment Masterlist / Add inventory item continuation AS Continue with current screen / retained form; retry as directed by the displayed feedback. Insert equipment metadata, ID, optional photo reference, AVAILABLE status and Office site ID Write returned the expected asset ID and Office? Show save/verification error; retain form If verification is uncertain, refresh inventory before retry 1 1 Close/reset modal; show Item saved; reload inventory Inventory reload succeeded? Item is saved; show refresh-failed message Reload inventory to see committed changes New Office inventory item displayed; automatically generated asset ID can be viewed as a QR tag. No Yes No Yes XX AS"
+      },
+      {
+        "number": 8,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 8 of 14 | Edit inventory metadata - 1 / 3 From Admin / Tools and Equipment Masterlist / Edit inventory metadata Continue on next page To ADMIN MASTERLIST / P9 AL Choose Edit from inventory or tool profile Find current asset; populate metadata and hide initial-location field Change name/ category/ brand/ model/ serial/ condition/ tracking/ details; optionally replace photo Form constraints valid and photo check finished? Show invalid field or photo-check feedback Correct fields or choose valid photo 1 1 Live Admin session and same screen/account? Show access/ session/ screen- changed feedback Sign in and reopen item 1 AT No Yes No Yes"
+      },
+      {
+        "number": 9,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 9 of 14 | Edit inventory metadata - 2 / 3 From Tools and Equipment Masterlist / Edit inventory metadata continuation Continue on next page To ADMIN MASTERLIST / P10 AT Continue with current screen / retained form; retry as directed by the displayed feedback. Prepare optional immutable photo upload; retain old photo if no replacement selected Optional photo upload ready? Show upload failure; keep form and old saved photo Retry upload 1 1 Update equipment metadata/photo by asset_id; do not submit custody or status changes Write succeeded and returned expected asset ID? Show save or unverifiable-result feedback Retain inputs; refresh before retry if save cannot be verified 1 AU No Yes No Yes"
+      },
+      {
+        "number": 10,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 10 of 14 | Edit inventory metadata - 3 / 3 From Tools and Equipment Masterlist / Edit inventory metadata continuation AU Close/reset form; show Item updated; reload inventory/profile Reload succeeded? Item is saved; show inventory-refresh failure Reload to inspect committed update Updated metadata displayed; existing location, holder and movement status are preserved by this payload. No Yes XX XX"
+      },
+      {
+        "number": 11,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.055447725022995,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 11 of 14 | Validate and stage optional equipment photo - 1 / 2 From Admin / Tools and Equipment Masterlist / Validate and stage optional equipment photo Continue on next page To ADMIN MASTERLIST / P12 AM Select JPEG, PNG or WebP photo in Add/Edit form Clear prior unsaved photo selection; read MIME type, size and file signature Supported image, valid signature and 1 byte to 5 MB? Clear invalid selection; show specific photo validation error Choose another image 1 1 Create temporary object URL and load preview image Preview image opened? Reset unsaved photo; show image-could-not-open error Choose another image 1 Preview selection; choose Clear selected photo / Keep current photo or save item AV No Yes No Yes"
+      },
+      {
+        "number": 12,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.055447725022995,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 12 of 14 | Validate and stage optional equipment photo - 2 / 2 From Tools and Equipment Masterlist / Validate and stage optional equipment photo continuation AV Continue with current screen / retained form; retry as directed by the displayed feedback. On save: require active Admin; upload unique private equipment-photos object without overwrite Upload and account-identity verification succeeded? Show upload/account error; do not write equipment metadata Keep form and retry if account remains valid 1 1 Stage storage reference for equipment.image_url; reuse staged object on matching metadata retry Continue Add/Edit save with staged photo; clearing selection before save keeps the existing stored photo. No Yes XX"
+      },
+      {
+        "number": 13,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.055447725022995,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 13 of 14 | Select rows and open controlled movement review From Admin / Tools and Equipment Masterlist / Select rows and open controlled movement review AN Select individual rows or Select All on the current page Maintain selected asset IDs; display selection count and action bar Choose Review repairs, Review transfers, or Clear selection Review repairs opens Repair; Review transfers opens Transfer; Clear unchecks selected rows Continue at the selected movement module. These buttons do not perform a bulk inventory update. XX"
+      },
+      {
+        "number": 14,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tools and Equipment Masterlist Page 14 of 14 | Export the filtered masterlist through browser print From Admin / Tools and Equipment Masterlist / Export the filtered masterlist through browser print AO Set inventory filters and choose Export Collect every filtered record across pages; build dated inventory receipt Open popup with asset ID, name, category, location, holder and recorded status Browser print dialog: choose printer or Save as PDF, or cancel Close the export window after print is invoked User controls browser print output; no database write. Popup/print failure has no explicit application recovery handler. XX"
+      }
+    ]
+  },
+  {
+    "name": "03_Tool Profile",
+    "pageCount": 5,
+    "pages": [
+      {
+        "number": 1,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.897499951377474,
+        "text": "SITETRACE (MCPA) - Admin Tool Profile Page 1 of 5 | Action selection - 1 From Admin / Tool Profile Continue: action pages Continue: action pages Continue: action pages Use workspace navigation to return To ADMIN MAIN / P2 To ADMIN TOOL PROFILE / P2 To ADMIN TOOL PROFILE / P4 To ADMIN TOOL PROFILE / P5 D Open equipment profile and recorded history? AW Edit from tool profile? AX Print asset QR tag? AY A Yes No Yes No Yes No"
+      },
+      {
+        "number": 2,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Profile Page 2 of 5 | Open equipment profile and recorded history - 1 / 2 From Admin / Tool Profile / Open equipment profile and recorded history Continue on next page To ADMIN TOOL PROFILE / P3 AW Choose View or open tool-profile with the asset record ID Resolve asset in current inventory snapshot Asset exists and account can view it? Display equipment unavailable or access removed Display identity, category, quantity, details, photo, location, holder and availability Refresh MovementStore; filter activity by this asset ID Recorded movement read succeeded? Display movement-read error in timeline Reopen profile or refresh to retry 1 1 AZ No Yes No Yes XX"
+      },
+      {
+        "number": 3,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.055447725022995,
+        "text": "SITETRACE (MCPA) - Admin Tool Profile Page 3 of 5 | Open equipment profile and recorded history - 2 / 2 From Tool Profile / Open equipment profile and recorded history continuation AZ Any recorded events for this asset? Show No movement has been recorded for this tool Render dated action, summary, actor and movement record ID; display asset QR Inspect equipment and its recorded history. Return to Masterlist or use the shared Edit action. No Yes XX XX"
+      },
+      {
+        "number": 4,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Profile Page 4 of 5 | Edit from tool profile From Admin / Tool Profile / Edit from tool profile AX Choose Edit Tool Populate the shared equipment edit form for this asset Continue to Masterlist / Edit inventory metadata flow The same validated Admin metadata/photo update is used; no separate profile write implementation exists. XX"
+      },
+      {
+        "number": 5,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Profile Page 5 of 5 | Print asset QR tag From Admin / Tool Profile / Print asset QR tag AY Choose Print Tag Open print popup; request QR image encoding the asset ID External QR image loaded? Print callback is not invoked; popup can remain open Retry print after restoring QR service/network access 1 1 Display browser print dialog; print/save or cancel Close tag print popup after invoking print Printable asset-ID QR tag; no database write. Popup blockers have no explicit catch. END No Yes"
+      }
+    ]
+  },
+  {
+    "name": "04_Request",
+    "pageCount": 15,
+    "pages": [
+      {
+        "number": 1,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.897499951377474,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 1 of 15 | Action selection - 1 From Admin / Tool Requests Continue: action pages Continue: action pages Continue: action pages Continue: action pages More choices on next page To ADMIN REQUEST / P3 To ADMIN REQUEST / P6 To ADMIN REQUEST / P9 To ADMIN REQUEST / P12 To ADMIN REQUEST / P2 E Load, filter and inspect tool requests? BA Approve a pending request and reserve equipment? BB Reject a pending request with a reason? BC Release approved request into a pending handover? BD BF Yes No Yes No Yes No Yes No"
+      },
+      {
+        "number": 2,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.897499951377474,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 2 of 15 | Action selection - 2 From Tool Requests / Action selection next choices Continue: action pages Use workspace navigation to return To ADMIN MAIN / P2 To ADMIN REQUEST / P15 BF Follow the released handover? BE A Yes No"
+      },
+      {
+        "number": 3,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 3 of 15 | Load, filter and inspect tool requests - 1 / 3 From Admin / Tool Requests / Load, filter and inspect tool requests Continue on next page To ADMIN REQUEST / P4 BA Open tool requests; load authenticated movement records Call mcpa_movement_snapshot; use role-scoped records and current equipment data Snapshot valid and available? Show unavailable/setup/access message Retry connection or await automatic reconnect 1 1 Enter search text and/or choose a status filter Match ID, tool, person or project; sort saved records; calculate summary Any matching records? Show empty/no-match state Change search or status filters 2 2 BG No Yes No Yes"
+      },
+      {
+        "number": 4,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 4 of 15 | Load, filter and inspect tool requests - 2 / 3 From Tool Requests / Load, filter and inspect tool requests continuation Continue on next page To ADMIN REQUEST / P5 BG Choose View on a saved record Refresh snapshot; resolve request ID within visible records Record still visible to this account? Show record unavailable or access removed Refresh list and choose another record 1 1 Show tools, people, project, notes, status, inspections and available follow-up actions Choose Close after inspection; a dirty follow-up form asks whether to discard unsaved notes No unsaved notes, or discard confirmed? Keep detail and unsaved inputs open Close detail; restore list navigation/focus BH No Yes No Yes XX"
+      },
+      {
+        "number": 5,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 9.337201458949924,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 5 of 15 | Load, filter and inspect tool requests - 3 / 3 From Tool Requests / Load, filter and inspect tool requests continuation BH Close detail and return to the filtered record list; no write occurs. XX"
+      },
+      {
+        "number": 6,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 6 of 15 | Approve a pending request and reserve equipment - 1 / 3 From Admin / Tool Requests / Approve a pending request and reserve equipment Continue on next page To ADMIN REQUEST / P7 BB Open pending request; review tools, requester, receiver, project and optional purpose/date Choose Approve request Live Admin session and save gate valid? Show permission/ session/ busy/ stale- state error Sign in or refresh committed records before retrying 1 1 Request still pending and selected tools remain valid? Show changed/missing request or equipment error Refresh request and inventory 1 BI No Yes No Yes"
+      },
+      {
+        "number": 7,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 7 of 15 | Approve a pending request and reserve equipment - 2 / 3 From Tool Requests / Approve a pending request and reserve equipment continuation Continue on next page To ADMIN REQUEST / P8 BI Continue with current screen / retained form; retry as directed by the displayed feedback. All tools AVAILABLE, positive quantity, unheld, undamaged and unreserved? Reject approval with unavailable- condition/ custody/ reservation conflict Refresh and review the authorized workflow 1 1 mcpa_movement_action: approveRequest; atomically reserve each asset and mark request approved Record authenticated review actor, activity operation and eligible recipient notifications Movement RPC succeeded? Show server validation, reservation conflict, permission or network error Keep inputs; refresh changed records and retry with the retained operation identity 1 BJ No Yes No Yes"
+      },
+      {
+        "number": 8,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 8 of 15 | Approve a pending request and reserve equipment - 3 / 3 From Tool Requests / Approve a pending request and reserve equipment continuation BJ Read committed snapshot and rebuild list/detail Committed records refreshed? Write may already be committed; show saved-but-refresh-failed feedback Block further changes until a successful refresh; inspect saved record Show approval success; request tools reserved and ready for release Approved reservation awaits Admin release or accountable requester cancellation; no custody change. No Yes XX XX"
+      },
+      {
+        "number": 9,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 9 of 15 | Reject a pending request with a reason - 1 / 3 From Admin / Tool Requests / Reject a pending request with a reason Continue on next page To ADMIN REQUEST / P10 BC Open pending request; enter rejection reason of 1 to 2000 characters Reason present and form valid? Display required-field feedback Enter a valid reason 1 1 Live Admin session and save gate valid? Show permission/ session/ busy/ stale- state error Sign in or refresh committed records before retrying 1 Request still exists and is pending? Show only- pending- requests- can- be- reviewed error Refresh request status 1 BK No Yes No Yes No Yes"
+      },
+      {
+        "number": 10,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 10 of 15 | Reject a pending request with a reason - 2 / 3 From Tool Requests / Reject a pending request with a reason continuation Continue on next page To ADMIN REQUEST / P11 BK Continue with current screen / retained form; retry as directed by the displayed feedback. mcpa_movement_action: rejectRequest; save rejected status, reason and reviewer Record activity operation and eligible recipient notification; create no reservation Movement RPC succeeded? Show server validation, reservation conflict, permission or network error Keep inputs; refresh changed records and retry with the retained operation identity 1 1 Refresh committed request snapshot Committed records refreshed? Write may already be committed; show saved-but-refresh-failed feedback Block further changes until a successful refresh; inspect saved record BL No Yes No Yes XX"
+      },
+      {
+        "number": 11,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 11 of 15 | Reject a pending request with a reason - 3 / 3 From Tool Requests / Reject a pending request with a reason continuation BL Show rejection success; reason visible to requester Request rejected; original request and rejection history remain available. XX"
+      },
+      {
+        "number": 12,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 12 of 15 | Release approved request into a pending handover - 1 / 3 From Admin / Tool Requests / Release approved request into a pending handover Continue on next page To ADMIN REQUEST / P13 BD Open approved request; confirm physical tools are ready; choose Release tools & create transfer Live Admin session and save gate valid? Show permission/ session/ busy/ stale- state error Sign in or refresh committed records before retrying 1 1 Receiver still has an active Engineer/Architect account? Show inactive/invalid receiver access error Resolve account availability and refresh 1 Request approved and every asset reservation still belongs to it? Show changed request or reservation error Refresh and inspect current record 1 BM No Yes No Yes No Yes"
+      },
+      {
+        "number": 13,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 13 of 15 | Release approved request into a pending handover - 2 / 3 From Tool Requests / Release approved request into a pending handover continuation Continue on next page To ADMIN REQUEST / P14 BM Continue with current screen / retained form; retry as directed by the displayed feedback. Assets still positive, AVAILABLE, unheld and have usable condition? Show changed inventory/condition error Refresh and review stock 1 1 Create TRF handover code, source snapshots, receiver and destination; set transfer pending Move request reservations to transfer; mark request released with linked transfer ID Record activity and Equipment Pending Turnover notice for the intended receiver Movement RPC succeeded? Show server validation, reservation conflict, permission or network error Keep inputs; refresh changed records and retry with the retained operation identity 1 BN No Yes No Yes"
+      },
+      {
+        "number": 14,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 14 of 15 | Release approved request into a pending handover - 3 / 3 From Tool Requests / Release approved request into a pending handover continuation BN Refresh committed request/transfer snapshot Committed records refreshed? Write may already be committed; show saved-but-refresh-failed feedback Block further changes until a successful refresh; inspect saved record Display tools released and handover code; choose Open transfer to share/monitor Named receiver inspects/tests and confirms custody in their Transfer module; Admin monitors pending/received/refused status. No Yes XX XX"
+      },
+      {
+        "number": 15,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Tool Requests Page 15 of 15 | Follow the released handover From Admin / Tool Requests / Follow the released handover BE Open request with a linked transfer ID Read Handover code; choose Open transfer Navigate to transfer with linked record ID; refresh visible movement snapshot Transfer still accessible? Show unavailable or lost-access feedback Refresh movement list 1 1 Inspect handover status, receiver, tools, inspections and follow-up history Continue at Admin Transfer monitoring flow; receipt changes are owned by the named operational receiver. No Yes XX"
+      }
+    ]
+  },
+  {
+    "name": "05_Transfer",
+    "pageCount": 6,
+    "pages": [
+      {
+        "number": 1,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 7.897499951377474,
+        "text": "SITETRACE (MCPA) - Admin Equipment Transfers Page 1 of 6 | Action selection - 1 From Admin / Equipment Transfers Continue: action pages Continue: action pages Continue: action pages Use workspace navigation to return To ADMIN MAIN / P2 To ADMIN TRANSFER / P2 To ADMIN TRANSFER / P5 To ADMIN TRANSFER / P6 F Load, filter and inspect equipment transfers? BO Inspect and share a handover code? BP Monitor a pending, refused or completed handover? BQ A Yes No Yes No Yes No"
+      },
+      {
+        "number": 2,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Equipment Transfers Page 2 of 6 | Load, filter and inspect equipment transfers - 1 / 3 From Admin / Equipment Transfers / Load, filter and inspect equipment transfers Continue on next page To ADMIN TRANSFER / P3 BO Open equipment transfers; load authenticated movement records Call mcpa_movement_snapshot; use role-scoped records and current equipment data Snapshot valid and available? Show unavailable/setup/access message Retry connection or await automatic reconnect 1 1 Enter search text and/or choose a status filter Match ID, tool, person or project; sort saved records; calculate summary Any matching records? Show empty/no-match state Change search or status filters 2 2 BR No Yes No Yes"
+      },
+      {
+        "number": 3,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 2.8729850642922843,
+        "medianFontPt": 9.337201458949924,
+        "text": "SITETRACE (MCPA) - Admin Equipment Transfers Page 3 of 6 | Load, filter and inspect equipment transfers - 2 / 3 From Equipment Transfers / Load, filter and inspect equipment transfers continuation Continue on next page To ADMIN TRANSFER / P4 BR Choose View on a saved record Refresh snapshot; resolve transfer ID within visible records Record still visible to this account? Show record unavailable or access removed Refresh list and choose another record 1 1 Show tools, people, project, notes, status, inspections and available follow-up actions Choose Close after inspection; a dirty follow-up form asks whether to discard unsaved notes No unsaved notes, or discard confirmed? Keep detail and unsaved inputs open Close detail; restore list navigation/focus BS No Yes No Yes XX"
+      },
+      {
+        "number": 4,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 9.337201458949924,
+        "text": "SITETRACE (MCPA) - Admin Equipment Transfers Page 4 of 6 | Load, filter and inspect equipment transfers - 3 / 3 From Equipment Transfers / Load, filter and inspect equipment transfers continuation BS Close detail and return to the filtered record list; no write occurs. XX"
+      },
+      {
+        "number": 5,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Equipment Transfers Page 5 of 6 | Inspect and share a handover code From Admin / Equipment Transfers / Inspect and share a handover code BP Open transfer detail from Transfer history or its linked Request Read sender, named receiver, destination, source tools, status and inspection/history fields Render manual handover code; attempt local QR rendering when QRCode library is available Choose Copy handover code Call navigator.clipboard.writeText for transfer code Clipboard write succeeded? Show Copy this transfer code with the code Manually select and share displayed code Display Transfer code copied Share code with the named receiver; reading/copying/scanning the code alone does not move custody. No Yes XX XX"
+      },
+      {
+        "number": 6,
+        "widthPt": 594.95996,
+        "heightPt": 841.91998,
+        "minFontPt": 6.464216394657639,
+        "medianFontPt": 10.773693991096065,
+        "text": "SITETRACE (MCPA) - Admin Equipment Transfers Page 6 of 6 | Monitor a pending, refused or completed handover From Admin / Equipment Transfers / Monitor a pending, refused or completed handover BQ Open saved handover Read status, received/refused/canceled/reopened history and recorded tool inspections Transfer pending? Display saved refusal, cancellation or receipt outcome For refusal, custody/reservations remain held until accountable follow-up Show waiting for the named receiver to inspect and confirm Background refresh updates saved records after authorized actor action Admin monitors result; receipt/refusal/cancel/reopen controls are not provided to Admin. No Yes XX XX"
+      }
+    ]
+  }
+]

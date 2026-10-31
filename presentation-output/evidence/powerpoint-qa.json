@@ -1,0 +1,96 @@
+﻿{
+    "date":  "2026-10-24",
+    "application":  "Microsoft PowerPoint",
+    "version":  "16.0",
+    "reopenedSuccessfully":  true,
+    "slideCount":  10,
+    "widthPoints":  960,
+    "heightPoints":  540,
+    "slides":  [
+                   {
+                       "slide":  1,
+                       "editableTextBoxes":  11,
+                       "editableShapes":  13,
+                       "images":  1,
+                       "speakerNoteCharacters":  1572,
+                       "title":  "MCPA / SiteTrace"
+                   },
+                   {
+                       "slide":  2,
+                       "editableTextBoxes":  24,
+                       "editableShapes":  30,
+                       "images":  0,
+                       "speakerNoteCharacters":  1496,
+                       "title":  "The Challenge of Equipment Accountability"
+                   },
+                   {
+                       "slide":  3,
+                       "editableTextBoxes":  17,
+                       "editableShapes":  22,
+                       "images":  1,
+                       "speakerNoteCharacters":  1829,
+                       "title":  "Centralized Operational Visibility"
+                   },
+                   {
+                       "slide":  4,
+                       "editableTextBoxes":  12,
+                       "editableShapes":  14,
+                       "images":  2,
+                       "speakerNoteCharacters":  2233,
+                       "title":  "Knowing What Equipment Exists and Who Is Responsible"
+                   },
+                   {
+                       "slide":  5,
+                       "editableTextBoxes":  31,
+                       "editableShapes":  45,
+                       "images":  0,
+                       "speakerNoteCharacters":  5394,
+                       "title":  "From Equipment Request to Accountable Handover"
+                   },
+                   {
+                       "slide":  6,
+                       "editableTextBoxes":  12,
+                       "editableShapes":  13,
+                       "images":  2,
+                       "speakerNoteCharacters":  2182,
+                       "title":  "Connecting Equipment to Construction Projects"
+                   },
+                   {
+                       "slide":  7,
+                       "editableTextBoxes":  12,
+                       "editableShapes":  13,
+                       "images":  1,
+                       "speakerNoteCharacters":  1903,
+                       "title":  "Managing Materials and Consumable Stock"
+                   },
+                   {
+                       "slide":  8,
+                       "editableTextBoxes":  11,
+                       "editableShapes":  13,
+                       "images":  3,
+                       "speakerNoteCharacters":  2590,
+                       "title":  "Records That Support Operational Traceability"
+                   },
+                   {
+                       "slide":  9,
+                       "editableTextBoxes":  13,
+                       "editableShapes":  17,
+                       "images":  3,
+                       "speakerNoteCharacters":  3773,
+                       "title":  "A Practical Equipment Request Scenario"
+                   },
+                   {
+                       "slide":  10,
+                       "editableTextBoxes":  12,
+                       "editableShapes":  19,
+                       "images":  0,
+                       "speakerNoteCharacters":  1885,
+                       "title":  "Building Accountability Into Construction Operations"
+                   }
+               ],
+    "potentialTextOverflow":  [
+
+                              ],
+    "nativeRenders":  10,
+    "pdfCreated":  true
+}

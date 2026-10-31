@@ -1,0 +1,50 @@
+﻿{
+    "preparedDate":  "2026-10-12",
+    "trackedSourceFilesCompared":  933,
+    "applicationSourceUnchanged":  true,
+    "verifiedCapturePngs":  43,
+    "browserBusinessWrites":  0,
+    "uncaughtBrowserErrors":  0,
+    "wordVisualRenderingAvailable":  false,
+    "pdfRenderer":  "Windows.Data.Pdf",
+    "documents":  [
+                      {
+                          "stem":  "SiteTrace_Admin_User_Manual",
+                          "xmlPartsValidated":  9,
+                          "embeddedPngs":  23,
+                          "heading1Count":  9,
+                          "contentsAnchorsValid":  true,
+                          "pageFieldsPresent":  true,
+                          "docxBytes":  2606878,
+                          "pdfPageCount":  41,
+                          "pdfPreviewPages":  [
+                                                  1,
+                                                  2,
+                                                  3,
+                                                  5,
+                                                  11,
+                                                  21,
+                                                  41
+                                              ]
+                      },
+                      {
+                          "stem":  "SiteTrace_Engineer_Architect_User_Manual",
+                          "xmlPartsValidated":  9,
+                          "embeddedPngs":  19,
+                          "heading1Count":  12,
+                          "contentsAnchorsValid":  true,
+                          "pageFieldsPresent":  true,
+                          "docxBytes":  2644334,
+                          "pdfPageCount":  36,
+                          "pdfPreviewPages":  [
+                                                  1,
+                                                  2,
+                                                  3,
+                                                  5,
+                                                  11,
+                                                  21,
+                                                  36
+                                              ]
+                      }
+                  ]
+}

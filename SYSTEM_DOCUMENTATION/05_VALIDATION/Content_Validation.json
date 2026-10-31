@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-20",
+  "featureRows": 83,
+  "featureEvidenceReferencesValid": true,
+  "roleRows": 21,
+  "supportedRoles": [
+    "admin",
+    "engineer",
+    "architect",
+    "secretary",
+    "tool_handler"
+  ],
+  "engineerArchitectEquivalent": true,
+  "technicalSections": 19,
+  "troubleshootingCases": 28,
+  "allCaseFieldsPresent": true,
+  "sensitiveLiteralScan": "No keys, JWTs, private-key blocks or email-address literals found",
+  "visualReview": "Representative PDF body/table pages, workflow, use-case, architecture and ERD views inspected; native Office editor layout NEEDS VERIFICATION",
+  "failures": []
+}

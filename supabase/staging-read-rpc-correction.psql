@@ -1,0 +1,59 @@
+-- MCPA Staging ONLY. Uses the reviewed route and hosted definition fingerprints.
+-- The current task authorizes this targeted correction; no account/fixture bootstrap.
+-- Connect with sslmode=verify-full, reviewed CA, and no PGHOSTADDR/service overrides.
+\set ON_ERROR_STOP on
+\if :{?staging_fix_approval}
+\else
+select 1/0;
+\endif
+select :'staging_fix_approval'='MCPA Staging read-only RPC fix approved'
+ and :'HOST'='aws-0-ap-northeast-1.pooler.supabase.com'
+ and :'USER'='postgres.blqlwfoserguserzmggo' and :'PORT'='5432' and :'DBNAME'='postgres'
+ as mcpa_read_fix_destination_ok \gset
+\if :mcpa_read_fix_destination_ok
+\conninfo
+\else
+select 1/0;
+\endif
+begin read only;
+set local lock_timeout='5s';
+set local statement_timeout='30s';
+do $$ begin
+ if current_user<>'postgres' or to_regprocedure('mcpa_auth_private.wa_read_actor(text[])') is not null then
+  raise exception 'Unexpected deploy role or existing read helper. STOP and inspect.';
+ end if;
+ if md5(pg_get_functiondef('mcpa_auth_private.wa_actor(text[])'::regprocedure))<>'b038fed64243dad48d5f26e3b1c46ee2' then
+  raise exception 'Locking mutation helper differs from reviewed version. STOP.';
+ end if;
+ if md5(pg_get_functiondef('public.mcpa_wa_equipment_catalog()'::regprocedure))<>'cf165f4e60fdb8249998f5cf98b197bd'
+  or (select provolatile from pg_proc where oid='public.mcpa_wa_equipment_catalog()'::regprocedure)<>'s' then
+  raise exception 'Reader mcpa_wa_equipment_catalog differs from reviewed hosted fingerprint. STOP.';
+ end if;
+ if md5(pg_get_functiondef('public.mcpa_wa_equipment_requests()'::regprocedure))<>'c5008bd25ca05d9df21703b2ffd7d85b'
+  or (select provolatile from pg_proc where oid='public.mcpa_wa_equipment_requests()'::regprocedure)<>'s' then
+  raise exception 'Reader mcpa_wa_equipment_requests differs from reviewed hosted fingerprint. STOP.';
+ end if;
+ if md5(pg_get_functiondef('public.mcpa_wa_suggest_equipment(uuid)'::regprocedure))<>'f02204e7982621baa3a75dd2897ec3c0'
+  or (select provolatile from pg_proc where oid='public.mcpa_wa_suggest_equipment(uuid)'::regprocedure)<>'s' then
+  raise exception 'Reader mcpa_wa_suggest_equipment differs from reviewed hosted fingerprint. STOP.';
+ end if;
+ if md5(pg_get_functiondef('public.mcpa_wa_consumables_catalog()'::regprocedure))<>'0bc91515915972c99a3978c9a33039a2'
+  or (select provolatile from pg_proc where oid='public.mcpa_wa_consumables_catalog()'::regprocedure)<>'s' then
+  raise exception 'Reader mcpa_wa_consumables_catalog differs from reviewed hosted fingerprint. STOP.';
+ end if;
+ if md5(pg_get_functiondef('public.mcpa_wa_consumables_snapshot()'::regprocedure))<>'15ec878e7392e780aedc90e59e400d9e'
+  or (select provolatile from pg_proc where oid='public.mcpa_wa_consumables_snapshot()'::regprocedure)<>'s' then
+  raise exception 'Reader mcpa_wa_consumables_snapshot differs from reviewed hosted fingerprint. STOP.';
+ end if;
+ if md5(pg_get_functiondef('public.mcpa_wa_consumables_analytics(timestamp with time zone,timestamp with time zone)'::regprocedure))<>'efb0d658adcfdf93d4d6593f99b8d64a'
+  or (select provolatile from pg_proc where oid='public.mcpa_wa_consumables_analytics(timestamp with time zone,timestamp with time zone)'::regprocedure)<>'s' then
+  raise exception 'Reader mcpa_wa_consumables_analytics differs from reviewed hosted fingerprint. STOP.';
+ end if;
+ if md5(pg_get_functiondef('public.mcpa_import_equipment_v2_receipt(uuid)'::regprocedure))<>'8937cd21263fd25e8bb99524ed33458e'
+  or (select provolatile from pg_proc where oid='public.mcpa_import_equipment_v2_receipt(uuid)'::regprocedure)<>'s' then
+  raise exception 'Reader mcpa_import_equipment_v2_receipt differs from reviewed hosted fingerprint. STOP.';
+ end if;
+end $$;
+
+rollback;
+\ir migrations/202610250004_read_rpc_authorization.sql

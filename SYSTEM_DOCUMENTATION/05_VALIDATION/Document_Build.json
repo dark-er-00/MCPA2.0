@@ -1,0 +1,20 @@
+{
+  "inventory": {
+    "features": 83,
+    "worksheets": 5
+  },
+  "documents": [
+    {
+      "stem": "03_TECHNICAL_DOCUMENTATION/SiteTrace_Technical_Documentation",
+      "sections": 19,
+      "words": 6806,
+      "embeddedDiagrams": 1
+    },
+    {
+      "stem": "04_TROUBLESHOOTING/SiteTrace_Troubleshooting_Guide",
+      "sections": 7,
+      "words": 5200,
+      "embeddedDiagrams": 0
+    }
+  ]
+}

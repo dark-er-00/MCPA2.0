@@ -1,0 +1,36 @@
+{
+  "localOnly": true,
+  "outboundHttpBlocked": true,
+  "applicationOrDatabaseCalls": 0,
+  "profile": "Fresh temporary Chrome profile",
+  "stats": [
+    {
+      "file": "03_TECHNICAL_DOCUMENTATION/SiteTrace_Technical_Documentation.pdf",
+      "pages": 29,
+      "bytes": 486245,
+      "decodedImages": 1
+    },
+    {
+      "file": "04_TROUBLESHOOTING/SiteTrace_Troubleshooting_Guide.pdf",
+      "pages": 19,
+      "bytes": 196440,
+      "decodedImages": 0
+    }
+  ],
+  "layout": [
+    {
+      "stem": "03_TECHNICAL_DOCUMENTATION/SiteTrace_Technical_Documentation",
+      "horizontalOverflow": false,
+      "bodyTextLength": 55773,
+      "tables": 8,
+      "images": 1
+    },
+    {
+      "stem": "04_TROUBLESHOOTING/SiteTrace_Troubleshooting_Guide",
+      "horizontalOverflow": false,
+      "bodyTextLength": 42646,
+      "tables": 1,
+      "images": 0
+    }
+  ]
+}

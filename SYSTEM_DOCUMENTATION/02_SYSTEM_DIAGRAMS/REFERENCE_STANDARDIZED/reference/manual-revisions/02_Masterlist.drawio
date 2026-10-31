@@ -1,0 +1,1090 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="5S3bJkfHkMAoblcO_3If">
+    <mxGraphModel dx="858" dy="615" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-1" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="35.31989194175367" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-2" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="35.31989194175367" y="30.41731175228712" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-3" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 1 of 14 | Action selection - 1" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="35.31989194175367" y="72.7832336382829" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-5" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Admin / Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="269.04197140409815" y="111.57612596762841" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-6" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Continue: action pages" vertex="1">
+          <mxGeometry height="19.804792399718504" width="189.89918956315478" x="561.1945707320283" y="214.68355031667838" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-7" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Continue: action pages" vertex="1">
+          <mxGeometry height="19.804792399718504" width="189.89918956315478" x="561.1945707320283" y="387.7938669950738" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-8" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Continue: action pages" vertex="1">
+          <mxGeometry height="19.804792399718504" width="189.89918956315478" x="561.1945707320283" y="552.7941836734694" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-9" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Continue: action pages" vertex="1">
+          <mxGeometry height="19.804792399718504" width="189.89918956315478" x="561.1945707320283" y="716.7945003518649" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-10" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="More choices on next page" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="269.04197140409815" y="848.064521463758" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-11" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P3" vertex="1">
+          <mxGeometry height="16.74219563687544" width="191.3599525597944" x="559.7338077353888" y="241.22605559465168" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-12" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P5" vertex="1">
+          <mxGeometry height="16.74219563687544" width="191.3599525597944" x="559.7338077353888" y="414.33637227304706" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-13" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P8" vertex="1">
+          <mxGeometry height="16.74219563687544" width="191.3599525597944" x="559.7338077353888" y="579.3366889514427" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-14" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P11" vertex="1">
+          <mxGeometry height="16.74219563687544" width="191.3599525597944" x="559.7338077353888" y="743.3370056298382" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-15" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P2" vertex="1">
+          <mxGeometry height="16.74219563687544" width="483.5125518877249" x="267.58120840745846" y="873.5861611541168" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-16" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="C" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="208.17684654411278" y="107.492663617171" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-17" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Load, search, filter and&#xa;paginate inventory?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="66.9697568689462" y="175.89065798733284" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-18" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AJ" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="500.3294458720429" y="212.64181914144967" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-19" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Add inventory item?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="66.9697568689462" y="349.00097466572834" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-20" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AK" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="500.3294458720429" y="385.75213581984514" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-21" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Edit inventory metadata?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="66.9697568689462" y="514.0012913441238" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-22" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AL" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="500.3294458720429" y="550.7524524982406" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-23" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Validate and stage optional&#xa;equipment photo?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="66.9697568689462" y="678.0016080225195" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-24" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AM" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="500.3294458720429" y="714.7527691766362" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-25" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AP" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="208.17684654411278" y="845.001924700915" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-26" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-17" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-27" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-18" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-28" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-19" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-29" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-20" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-30" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-21" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-31" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-22" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-32" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-23" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-33" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-24" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-34" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-25" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-35" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="19.998365948474294" y="1181.0025299085153" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-36" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="19.998365948474294" y="1201.4198416608024" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-37" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 2 of 14 | Action selection - 2" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="19.998365948474294" y="1243.785763546798" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-39" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Tools and Equipment Masterlist / Action selection next choices" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="253.72044541081877" y="1282.5786558761438" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-40" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Continue: action pages" vertex="1">
+          <mxGeometry height="19.804792399718504" width="189.89918956315478" x="545.8730447387494" y="1392.0664901477835" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-41" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Continue: action pages" vertex="1">
+          <mxGeometry height="19.804792399718504" width="189.89918956315478" x="545.8730447387494" y="1575.1776266713582" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-42" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Use workspace navigation to return" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="253.72044541081877" y="1715.058057705841" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-43" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MAIN / P2" vertex="1">
+          <mxGeometry height="16.74219563687544" width="483.5125518877249" x="252.25968241417908" y="1740.5796973962001" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-44" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P13" vertex="1">
+          <mxGeometry height="16.74219563687544" width="191.3599525597944" x="544.4122817421099" y="1418.6089954257566" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-45" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P14" vertex="1">
+          <mxGeometry height="16.74219563687544" width="191.3599525597944" x="544.4122817421099" y="1601.7201319493317" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-46" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AP" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="192.85532055083317" y="1278.495193525686" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-47" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Select rows and open&#xa;controlled movement&#xa;review?" vertex="1">
+          <mxGeometry height="130.16036242083038" width="331.1062792383211" x="51.64823087566683" y="1346.893187895848" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-48" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AN" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="485.007919878764" y="1390.024758972555" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-49" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Export the filtered&#xa;masterlist through browser&#xa;print?" vertex="1">
+          <mxGeometry height="130.16036242083038" width="331.1062792383211" x="51.64823087566683" y="1530.0043244194233" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-50" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AO" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="485.007919878764" y="1573.1358954961295" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-51" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="A" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="192.85532055083317" y="1711.9954609429979" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-52" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-47" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-53" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-48" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-54" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-49" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-55" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-50" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-56" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-51" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-57" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="52.849047901429465" y="2356.997315270936" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-58" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="52.849047901429465" y="2377.414627023223" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-59" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 3 of 14 | Load, search, filter and paginate inventory - 1 / 2" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="52.849047901429465" y="2419.780548909219" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-61" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Admin / Tools and Equipment Masterlist / Load, search, filter and paginate&#xa;inventory" vertex="1">
+          <mxGeometry height="34.50525686136523" width="482.0517888910852" x="286.571127363774" y="2458.573441238564" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-62" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Continue on next page" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="286.571127363774" y="3351.9915376495433" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-63" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P4" vertex="1">
+          <mxGeometry height="16.74219563687544" width="483.5125518877249" x="285.1103643671343" y="3377.513177339901" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-64" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AJ" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="225.70600250378854" y="2454.489978888107" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-65" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Open Masterlist" vertex="1">
+          <mxGeometry height="53.59544334975369" width="340.84469921591887" x="79.62970283982351" y="2550.9979732582688" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-66" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Read equipment, sites and holder names;&#xa;refresh movement reservations" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="79.62970283982351" y="2629.0941907107667" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-67" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Equipment and site reads&#xa;succeeded?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="84.49891282862201" y="2709.742572132301" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-68" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Show sync/load failure&#xa;Retry automatically on&#xa;focus, reconnect or polling" vertex="1">
+          <mxGeometry height="74.52318789584798" width="238.59128945114315" x="493.5125518877249" y="2731.180749472203" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-363" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="249.3333740234375" y="2517.255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-69" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="34.51" width="34.51" x="131" y="2500" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-70" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="34.51" width="34.51" x="595.5500000000001" y="2840" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-71" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Map IDs to names and normalize status;&#xa;calculate request availability" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="79.62970283982351" y="2887.3731843772" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-72" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Enter asset/name/brand/serial/project/holder&#xa;search; select category, status or project" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="79.62970283982351" y="3010.0015657987333" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-73" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Filter equipment; reset page to 1; show ten&#xa;records per page" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="79.62970283982351" y="3090.649947220268" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-74" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Any records match?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="84.49891282862201" y="3171.2983286418016" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-75" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Display empty state; hide&#xa;pagination&#xa;Change search or filters" vertex="1">
+          <mxGeometry height="74.52318789584798" width="238.59128945114315" x="493.5125518877249" y="3192.7365059817034" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-364" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="251.60003662109375" y="2979" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-76" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="2" vertex="1">
+          <mxGeometry height="38" width="38" x="119" y="2960" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-77" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="2" vertex="1">
+          <mxGeometry height="28.98362007891214" width="28.98362007891214" x="597.2267246491401" y="3291.7604679802953" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-78" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AQ" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="225.70600250378854" y="3348.9289408867" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-79" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-65" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-80" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-66" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-81" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-67" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-82" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.073;entryY=0.522;exitPerimeter=1;entryPerimeter=0;entryDx=0;entryDy=0;" target="Co-M2_GDS-Nr0UHrg7fh-68" value="No">
+          <mxGeometry relative="1" x="-0.1953" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-84" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-70" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-85" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-71" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-86" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-72" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-87" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-73" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-88" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-74" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-89" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.074;entryY=0.511;exitPerimeter=1;entryPerimeter=0;entryDx=0;entryDy=0;" target="Co-M2_GDS-Nr0UHrg7fh-75" value="No">
+          <mxGeometry relative="1" x="-0.1907" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-91" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-77" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-92" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-78" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-93" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="34.832970942874" y="3524.9973399014775" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-94" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="34.832970942874" y="3545.4146516537644" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-95" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 4 of 14 | Load, search, filter and paginate inventory - 2 / 2" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="34.832970942874" y="3587.7805735397606" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-97" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Tools and Equipment Masterlist / Load, search, filter and paginate inventory&#xa;continuation" vertex="1">
+          <mxGeometry height="34.50525686136523" width="482.0517888910852" x="268.55505040521825" y="3626.5734658691063" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-98" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AQ" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="207.68992554523265" y="3622.4900035186492" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-99" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Read status, condition and current custody;&#xa;choose page, Prev or Next" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="61.61362588126758" y="3690.887997888811" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-100" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Display selected page; background sync&#xa;refreshes inventory. Unverified movement&#xa;stock is labeled unavailable/unverified." vertex="1">
+          <mxGeometry height="74.52318789584798" width="340.84469921591887" x="61.61362588126758" y="3771.536379310345" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-102" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-99" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-103" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-100" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-104" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="232.035975" y="3870.5603410000003" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-105" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="45.35065493839358" y="4691.001646727656" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-106" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="45.35065493839358" y="4711.418958479943" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-107" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 5 of 14 | Add inventory item - 1 / 3" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="45.35065493839358" y="4753.78488036594" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-109" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Admin / Tools and Equipment Masterlist / Add inventory item" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="279.07273440073783" y="4792.577772695285" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-110" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Continue on next page" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="279.07273440073783" y="5418.1606790992255" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-111" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P6" vertex="1">
+          <mxGeometry height="16.74219563687544" width="483.5125518877249" x="277.61197140409814" y="5443.682318789585" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-112" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AK" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="218.20760954075223" y="4788.494310344828" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-113" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Choose Add New Item; enter name,&#xa;category, condition and tracking type" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="72.13130987678716" y="4856.892304714989" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-114" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Optionally enter brand/model/serial/details;&#xa;Bulk quantity/unit; optional photo" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="72.13130987678716" y="4970.000686136525" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-115" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Required form values and&#xa;numeric constraints valid?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="77.00051986558611" y="5050.649067558057" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-116" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Browser shows&#xa;invalid/missing field&#xa;Correct form values" vertex="1">
+          <mxGeometry height="74.52318789584798" width="238.59128945114315" x="486.0141589246885" y="5072.08724489796" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-728" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-117" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="241.53846153846155" y="4941.265" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-117" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="34.53" width="34.53" x="107" y="4924" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-118" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="34.53" width="34.53" x="588.04" y="5174.46" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-119" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Live Admin session active&#xa;and photo check finished?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="77.00051986558611" y="5228.279679802956" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-120" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Display Admin/session or&#xa;wait-for-photo feedback&#xa;Keep form; sign in or finish&#xa;validation" vertex="1">
+          <mxGeometry height="92.8987684729064" width="238.59128945114315" x="486.0141589246885" y="5240.530066854329" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-121" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="34.53" width="34.53" x="588.04" y="5364.46" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-122" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AR" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="218.20760954075223" y="5415.098082336383" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-123" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-112" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-113" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-124" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-113" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-114" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-125" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-114" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-115" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-126" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-115" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.078;entryY=0.496;exitPerimeter=1;entryPerimeter=0;entryDx=0;entryDy=0;" target="Co-M2_GDS-Nr0UHrg7fh-116" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-128" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-116" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-118" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-129" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-115" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-119" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-130" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-119" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.069;entryY=0.504;exitPerimeter=1;entryPerimeter=0;entryDx=0;entryDy=0;" target="Co-M2_GDS-Nr0UHrg7fh-120" value="No">
+          <mxGeometry relative="1" x="-0.006" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-131" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-121" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-132" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-119" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-122" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-133" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="38.73218093167273" y="5857.002491203378" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-134" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="38.73218093167273" y="5877.4198029556665" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-135" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 6 of 14 | Add inventory item - 2 / 3" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="38.73218093167273" y="5919.78572484166" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-137" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Tools and Equipment Masterlist / Add inventory item continuation" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="272.45426039401696" y="5958.578617171007" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-138" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Continue on next page" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="272.45426039401696" y="6621.479222378606" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-139" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P7" vertex="1">
+          <mxGeometry height="16.74219563687544" width="483.5125518877249" x="270.99349739737727" y="6647.000862068964" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-140" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AR" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="211.5891355340316" y="5954.495154820549" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-141" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Continue with current screen / retained form;&#xa;retry as directed by the displayed feedback." vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="65.51283587006631" y="6060.003149190711" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-142" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Generate asset ID and record UUID; resolve&#xa;configured Office via mcpa_inventory_office" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="65.51283587006631" y="6140.651530612246" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-143" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Office verified and optional&#xa;photo prepared?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="70.38204585886527" y="6221.299912033778" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-144" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Show Office or upload&#xa;failure; item has not been&#xa;saved&#xa;Keep inputs and&#xa;selected/staged photo for&#xa;retry" vertex="1">
+          <mxGeometry height="129.6499296270232" width="238.59128945114315" x="479.39568491796786" y="6215.174718508093" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-730" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-145" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="234.76487801436062" y="6023.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-145" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="41" width="41" x="102.21000000000001" y="6003" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-146" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="32.78" width="32.78" x="582.3000000000001" y="6369.33" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-147" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Same screen and&#xa;authenticated account?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="70.38204585886527" y="6426.493895144264" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-148" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Abort save; reopen item&#xa;after screen/account&#xa;changed" vertex="1">
+          <mxGeometry height="74.52318789584798" width="238.59128945114315" x="479.39568491796786" y="6447.9320724841655" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-150" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AS" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="211.5891355340316" y="6618.416625615763" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-151" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-140" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-141" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-152" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-141" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-142" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-153" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-142" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-143" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-154" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-143" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.073;entryY=0.506;exitPerimeter=1;entryPerimeter=0;entryDx=0;entryDy=0;" target="Co-M2_GDS-Nr0UHrg7fh-144" value="No">
+          <mxGeometry relative="1" x="-0.1886" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-156" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-144" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-146" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-157" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-143" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-147" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-158" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-147" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.073;entryY=0.506;exitPerimeter=1;entryPerimeter=0;entryDx=0;entryDy=0;" target="Co-M2_GDS-Nr0UHrg7fh-148" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-159" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-148" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="598.6913300000001" y="6546.956034" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-160" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-147" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-150" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-161" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="47.348338933912935" y="7033.001171710063" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-162" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="47.348338933912935" y="7053.418483462351" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-163" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 7 of 14 | Add inventory item - 3 / 3" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="47.348338933912935" y="7095.784405348348" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-165" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Tools and Equipment Masterlist / Add inventory item continuation" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="281.0704183962572" y="7134.577297677692" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-166" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AS" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="220.20529353627182" y="7130.4938353272355" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-167" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Continue with current screen / retained form;&#xa;retry as directed by the displayed feedback." vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="73.99899387230676" y="7230.001829697395" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-168" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Insert equipment metadata, ID, optional photo&#xa;reference, AVAILABLE status and Office site ID" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="73.99899387230676" y="7310.65021111893" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-169" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Write returned the&#xa;expected asset ID and&#xa;Office?" vertex="1">
+          <mxGeometry height="130.16036242083038" width="331.1062792383211" x="78.86820386110526" y="7391.298592540462" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-170" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Show save/verification error;&#xa;retain form&#xa;If verification is uncertain,&#xa;refresh inventory before&#xa;retry" vertex="1">
+          <mxGeometry height="111.27434904996483" width="238.59128945114315" x="487.88184292020765" y="7400.741599225897" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-731" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-171" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="246.1560764202493" y="7195.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-171" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="37" width="37" x="123" y="7177" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-172" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="37.48" width="37.48" x="588.44" y="7542" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-173" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Close/reset modal; show Item saved; reload&#xa;inventory" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="73.99899387230676" y="7593.685195285009" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-174" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Inventory reload&#xa;succeeded?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="78.86820386110526" y="7674.333576706545" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-175" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Item is saved; show&#xa;refresh-failed message&#xa;Reload inventory to see&#xa;committed changes" vertex="1">
+          <mxGeometry height="92.8987684729064" width="238.59128945114315" x="487.88184292020765" y="7686.5839637579165" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-177" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="New Office inventory item displayed;&#xa;automatically generated asset ID can be&#xa;viewed as a QR tag." vertex="1">
+          <mxGeometry height="74.52318789584798" width="340.84469921591887" x="73.99899387230676" y="7875.444097466573" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-179" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-166" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-167" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-180" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-167" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-168" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-181" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-168" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-169" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-182" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-169" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.073;entryY=0.499;exitPerimeter=1;entryPerimeter=0;entryDx=0;entryDy=0;" target="Co-M2_GDS-Nr0UHrg7fh-170" value="No">
+          <mxGeometry relative="1" x="-0.1826" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-184" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-170" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-172" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-185" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-169" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-173" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-186" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-173" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-174" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-187" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-174" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.074;entryY=0.496;exitPerimeter=1;entryPerimeter=0;entryDx=0;entryDy=0;" target="Co-M2_GDS-Nr0UHrg7fh-175" value="No">
+          <mxGeometry relative="1" x="-0.1863" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-188" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-175" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="607.177488" y="7803.9835060000005" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-189" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-174" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-177" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-190" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-177" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="244.42134299999998" y="7974.468058999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-191" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="39.3460499439941" y="8199.999373680506" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-192" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="39.3460499439941" y="8220.416685432792" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-193" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 8 of 14 | Edit inventory metadata - 1 / 3" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="39.3460499439941" y="8262.782607318788" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-195" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Admin / Tools and Equipment Masterlist / Edit inventory metadata" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="273.0681294063386" y="8301.575499648134" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-196" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Continue on next page" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="273.0681294063386" y="9037.540204081633" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-197" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P9" vertex="1">
+          <mxGeometry height="16.74219563687544" width="483.5125518877249" x="271.6073664096989" y="9063.061843771991" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-198" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AL" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="212.203004546353" y="8297.492037297678" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-199" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Choose Edit from inventory or tool profile" vertex="1">
+          <mxGeometry height="53.59544334975369" width="340.84469921591887" x="66.12670488238791" y="8365.89003166784" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-200" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Find current asset; populate metadata and hide&#xa;initial-location field" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="66.12670488238791" y="8443.986249120337" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-201" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Change name/ category/ brand/ model/&#xa;serial/ condition/ tracking/ details; optionally&#xa;replace photo" vertex="1">
+          <mxGeometry height="74.52318789584798" width="340.84469921591887" x="66.12670488238791" y="8571.004630541873" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-202" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Form constraints valid and&#xa;photo check finished?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="70.99591487118641" y="8670.028592540464" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-203" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Show invalid field or&#xa;photo-check feedback&#xa;Correct fields or choose&#xa;valid photo" vertex="1">
+          <mxGeometry height="92.8987684729064" width="238.59128945114315" x="480.00955393028926" y="8682.278979591838" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-734" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-204" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="237.26668294270837" y="8532.22" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-204" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="38.44" width="38.44" x="110" y="8513" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-205" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="41.32" width="41.32" x="578.65" y="8802" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-206" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Live Admin session and&#xa;same screen/account?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="70.99591487118641" y="8856.84699507389" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-207" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Show access/ session/&#xa;screen- changed feedback&#xa;Sign in and reopen item" vertex="1">
+          <mxGeometry height="74.52318789584798" width="238.59128945114315" x="480.00955393028926" y="8878.285172413793" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-208" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="43.9" width="43.9" x="672.36" y="8954.44" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-209" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AT" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="212.203004546353" y="9034.47760731879" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-210" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-198" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-199" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-211" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-199" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-200" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-212" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-200" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-201" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-213" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-201" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-202" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-214" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-202" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-203" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-216" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-203" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-205" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-217" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-202" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-206" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-218" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-206" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-207" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-219" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-207" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-208" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-220" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-206" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-209" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-221" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="30.999864927192313" y="9371.998486981" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-222" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="30.999864927192313" y="9392.415798733287" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-223" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 9 of 14 | Edit inventory metadata - 2 / 3" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="30.999864927192313" y="9434.781720619283" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-225" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Tools and Equipment Masterlist / Edit inventory metadata continuation" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="264.72194438953676" y="9473.574612948627" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-226" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Continue on next page" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="264.72194438953676" y="10192.024100985223" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-227" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P10" vertex="1">
+          <mxGeometry height="16.74219563687544" width="483.5125518877249" x="263.26118139289684" y="10217.545740675581" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-228" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AT" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="203.8568195295512" y="9469.49115059817" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-229" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Continue with current screen / retained form;&#xa;retry as directed by the displayed feedback." vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="57.78051986558613" y="9566.999144968333" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-230" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Prepare optional immutable photo upload;&#xa;retain old photo if no replacement selected" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="57.78051986558613" y="9647.647526389868" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-231" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Optional photo upload&#xa;ready?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="62.64972985438463" y="9728.2959078114" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-232" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Show upload failure; keep&#xa;form and old saved photo&#xa;Retry upload" vertex="1">
+          <mxGeometry height="74.52318789584798" width="238.59128945114315" x="471.66336891348743" y="9749.734085151304" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-735" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-233" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="229.09" y="9531.89" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-233" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="37" width="37" x="92.65" y="9513.39" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-234" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="40.24" width="40.24" x="570.84" y="9854" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-235" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Update equipment metadata/photo by asset_id;&#xa;do not submit custody or status changes" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="57.78051986558613" y="9905.926520056299" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-236" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Write succeeded and&#xa;returned expected asset&#xa;ID?" vertex="1">
+          <mxGeometry height="130.16036242083038" width="331.1062792383211" x="62.64972985438463" y="9986.574901477834" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-237" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Show save or&#xa;unverifiable-result feedback&#xa;Retain inputs; refresh before&#xa;retry if save cannot be&#xa;verified" vertex="1">
+          <mxGeometry height="111.27434904996483" width="238.59128945114315" x="471.66336891348743" y="9996.017908163265" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-238" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="40.24" width="40.24" x="570.84" y="10139" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-239" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AU" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="203.8568195295512" y="10188.96150422238" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-240" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-228" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-229" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-241" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-229" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-230" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-242" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-230" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-231" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-243" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-231" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-232" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-245" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-232" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-234" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-246" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-231" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-235" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-247" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-235" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-236" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-248" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-236" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-237" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-249" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-237" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-238" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-250" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-236" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-239" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-251" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="40.67602292943275" y="10551.998465869106" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-252" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="40.67602292943275" y="10572.415777621392" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-253" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 10 of 14 | Edit inventory metadata - 3 / 3" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="40.67602292943275" y="10614.781699507388" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-255" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Tools and Equipment Masterlist / Edit inventory metadata continuation" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="274.398102391777" y="10653.574591836732" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-256" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AU" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="213.5329775317914" y="10649.491129486278" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-257" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Close/reset form; show Item updated; reload&#xa;inventory/profile" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="67.45667786782633" y="10717.88912385644" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-258" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Reload succeeded?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="72.32588785662506" y="10798.537505277971" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-259" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Item is saved; show&#xa;inventory-refresh failure&#xa;Reload to inspect committed&#xa;update" vertex="1">
+          <mxGeometry height="92.8987684729064" width="238.59128945114315" x="481.3395269157277" y="10810.787892329343" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-261" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Updated metadata displayed; existing&#xa;location, holder and movement status are&#xa;preserved by this payload." vertex="1">
+          <mxGeometry height="74.52318789584798" width="340.84469921591887" x="67.45667786782633" y="10999.648026038001" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-263" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-256" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-257" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-264" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-257" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-258" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-265" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-258" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.071;entryY=0.515;exitPerimeter=1;entryPerimeter=0;entryDx=0;entryDy=0;" target="Co-M2_GDS-Nr0UHrg7fh-259" value="No">
+          <mxGeometry relative="1" x="-0.1895" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-266" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-259" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600.6351720000002" y="10928.187435000002" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-267" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-258" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-261" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-268" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-261" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="237.87902699999995" y="11098.671987999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-269" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="52.85294392831242" y="11722.996713581982" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-270" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="52.85294392831242" y="11743.414025334272" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-271" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 11 of 14 | Validate and stage optional equipment photo - 1 / 2" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="52.85294392831242" y="11785.779947220264" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-273" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Admin / Tools and Equipment Masterlist / Validate and stage optional&#xa;equipment photo" vertex="1">
+          <mxGeometry height="34.50525686136523" width="482.0517888910852" x="286.5750233906569" y="11824.572839549613" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-274" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="Continue on next page" vertex="1">
+          <mxGeometry height="19.804792399718504" width="482.0517888910852" x="286.5750233906569" y="12608.482918719214" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-275" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=4;fontColor=#000000;spacing=0;" value="To ADMIN MASTERLIST / P12" vertex="1">
+          <mxGeometry height="16.74219563687544" width="483.5125518877249" x="285.114260394017" y="12634.004558409573" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-276" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AM" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="225.70989853067127" y="11820.489377199154" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-277" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Select JPEG, PNG or WebP photo in&#xa;Add/Edit form" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="79.63359886670601" y="11911.99737156932" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-278" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Clear prior unsaved photo selection; read MIME&#xa;type, size and file signature" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="79.63359886670601" y="11992.645752990851" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-279" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Supported image, valid&#xa;signature and 1 byte to 5&#xa;MB?" vertex="1">
+          <mxGeometry height="130.16036242083038" width="331.1062792383211" x="84.50280885550497" y="12073.294134412386" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-280" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Clear invalid selection; show&#xa;specific photo validation&#xa;error&#xa;Choose another image" vertex="1">
+          <mxGeometry height="92.8987684729064" width="238.59128945114315" x="493.51644791460734" y="12091.924931386346" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-738" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-281" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="249.53334554036462" y="11881.644999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-281" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="34.51" width="34.51" x="135" y="11864.39" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-282" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="35.68" width="35.68" x="594.97" y="12223" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-283" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Create temporary object URL and load preview&#xa;image" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="79.63359886670601" y="12266.492946868404" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-284" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Preview image opened?" vertex="1">
+          <mxGeometry height="117.39954257565095" width="331.1062792383211" x="84.50280885550497" y="12347.14132828994" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-285" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Reset unsaved photo; show&#xa;image-could-not-open error&#xa;Choose another image" vertex="1">
+          <mxGeometry height="74.52318789584798" width="238.59128945114315" x="493.51644791460734" y="12368.579505629836" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-286" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="35.68" width="35.68" x="594.97" y="12478" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-287" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Preview selection; choose Clear selected&#xa;photo / Keep current photo or save item" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="79.63359886670601" y="12524.771940534836" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-288" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AV" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="225.70989853067127" y="12605.420321956371" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-289" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-276" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-277" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-290" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-277" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-278" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-291" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-278" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-279" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-292" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-279" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.072;entryY=0.497;exitPerimeter=1;entryPerimeter=0;entryDx=0;entryDy=0;" target="Co-M2_GDS-Nr0UHrg7fh-280" value="No">
+          <mxGeometry relative="1" x="-0.1819" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-294" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-280" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-282" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-295" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-279" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-283" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-296" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-283" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-284" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-297" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-284" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0.072;entryY=0.496;exitPerimeter=1;entryPerimeter=0;entryDx=0;entryDy=0;" target="Co-M2_GDS-Nr0UHrg7fh-285" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-298" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-285" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-286" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-299" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-284" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-287" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-300" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-287" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-288" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-301" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="40.00449693615315" y="12881.99621393385" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-302" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="40.00449693615315" y="12902.413525686134" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-303" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 12 of 14 | Validate and stage optional equipment photo - 2 / 2" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="40.00449693615315" y="12944.779447572131" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-305" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Tools and Equipment Masterlist / Validate and stage optional equipment photo&#xa;continuation" vertex="1">
+          <mxGeometry height="34.50525686136523" width="482.0517888910852" x="273.7265763984974" y="12983.572339901479" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-306" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AV" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="212.86145153851203" y="12979.488877551019" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-307" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Continue with current screen / retained form;&#xa;retry as directed by the displayed feedback." vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="66.78515187454673" y="13099.996871921181" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-308" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="On save: require active Admin; upload unique&#xa;private equipment-photos object without&#xa;overwrite" vertex="1">
+          <mxGeometry height="74.52318789584798" width="340.84469921591887" x="66.78515187454673" y="13180.645253342716" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-309" parent="1" style="rhombus;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Upload and&#xa;account-identity&#xa;verification succeeded?" vertex="1">
+          <mxGeometry height="130.16036242083038" width="331.1062792383211" x="71.65436186334546" y="13279.669215341308" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-310" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Show upload/account error;&#xa;do not write equipment&#xa;metadata&#xa;Keep form and retry if&#xa;account remains valid" vertex="1">
+          <mxGeometry height="111.27434904996483" width="238.59128945114315" x="480.6680009224483" y="13289.112222026744" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-740" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-311" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="236.76" y="13062.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-311" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="41" width="41" x="110.88" y="13042" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-312" parent="1" style="ellipse;aspect=fixed;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="1" vertex="1">
+          <mxGeometry height="28.98362007891214" width="28.98362007891214" x="584.3821736838636" y="13424.88734517945" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-313" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Stage storage reference for&#xa;equipment.image_url; reuse staged object on&#xa;matching metadata retry" vertex="1">
+          <mxGeometry height="74.52318789584798" width="340.84469921591887" x="66.78515187454673" y="13482.055818085852" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-314" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Continue Add/Edit save with staged photo;&#xa;clearing selection before save keeps the&#xa;existing stored photo." vertex="1">
+          <mxGeometry height="74.52318789584798" width="340.84469921591887" x="66.78515187454673" y="13581.079780084447" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-316" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-306" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-307" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-317" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-307" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-308" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-318" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-308" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-309" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-319" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-309" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-310" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-321" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-310" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-312" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-322" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-309" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-313" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-323" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-313" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-314" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-324" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-314" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="237.20750148250636" y="13680.103742083042" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-325" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="23.002943928312416" y="14062.99623856439" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-326" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="23.002943928312416" y="14083.413550316678" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-327" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 13 of 14 | Select rows and open controlled movement review" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="23.002943928312416" y="14125.779472202676" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-329" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Admin / Tools and Equipment Masterlist / Select rows and open controlled&#xa;movement review" vertex="1">
+          <mxGeometry height="34.50525686136523" width="482.0517888910852" x="256.7250233906569" y="14164.572364532016" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-330" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AN" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="195.8598985306713" y="14160.488902181562" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-331" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Select individual rows or Select All on the&#xa;current page" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="49.783598866706" y="14228.886896551725" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-332" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Maintain selected asset IDs; display selection&#xa;count and action bar" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="49.783598866706" y="14309.535277973258" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-333" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Choose Review repairs, Review transfers, or&#xa;Clear selection" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="49.783598866706" y="14390.18365939479" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-334" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Review repairs opens Repair; Review transfers&#xa;opens Transfer; Clear unchecks selected rows" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="49.783598866706" y="14470.832040816325" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-335" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Continue at the selected movement module.&#xa;These buttons do not perform a bulk&#xa;inventory update." vertex="1">
+          <mxGeometry height="74.52318789584798" width="340.84469921591887" x="49.783598866706" y="14551.48042223786" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-337" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-330" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-331" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-338" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-331" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-332" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-339" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-332" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-333" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-340" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-333" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-334" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-341" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-334" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-335" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-342" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-335" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220.20594800000026" y="14650.504384" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-727" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="XX" vertex="1">
+          <mxGeometry height="43.9" width="48.69" x="207.69" y="3871" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-729" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="XX" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="574.35" y="6547.11" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-732" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="XX" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="582.83" y="7804" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-733" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AS" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="220.08" y="7976" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-736" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="XX" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="576.29" y="10928" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-737" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="XX" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="213.53" y="11100" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-741" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="XX" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="212.86" y="13681" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-742" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="XX" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="195.86" y="14652" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-743" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;spacing=0;" value="SITETRACE (MCPA) - Admin" vertex="1">
+          <mxGeometry height="21.029831104855738" width="715.7738683534295" x="27" y="15219" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-744" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=21;fontColor=#000000;spacing=0;" value="Tools and Equipment Masterlist" vertex="1">
+          <mxGeometry height="27.15502463054187" width="715.7738683534295" x="27" y="15239.417311752291" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-745" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=10;fontColor=#000000;spacing=0;" value="Page 14 of 14 | Export the filtered masterlist through browser print" vertex="1">
+          <mxGeometry height="20.417311752287123" width="715.7738683534295" x="27" y="15281.783233638285" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-746" parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=9;fontColor=#000000;spacing=0;" value="From Admin / Tools and Equipment Masterlist / Export the filtered masterlist through&#xa;browser print" vertex="1">
+          <mxGeometry height="34.50525686136523" width="482.0517888910852" x="260.72207946234425" y="15320.576125967633" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-747" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="AO" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="199.85695460235888" y="15316.492663617173" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-748" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Set inventory filters and choose Export" vertex="1">
+          <mxGeometry height="53.59544334975369" width="340.84469921591887" x="53.78065493839358" y="15384.890657987333" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-749" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Collect every filtered record across pages; build&#xa;dated inventory receipt" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="53.78065493839358" y="15462.98687543983" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-750" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Open popup with asset ID, name, category,&#xa;location, holder and recorded status" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="53.78065493839358" y="15543.635256861366" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-751" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Browser print dialog: choose printer or Save&#xa;as PDF, or cancel" vertex="1">
+          <mxGeometry height="56.14760731878958" width="340.84469921591887" x="53.78065493839358" y="15624.283638282901" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-752" parent="1" style="rounded=0;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="Close the export window after print is invoked" vertex="1">
+          <mxGeometry height="53.59544334975369" width="340.84469921591887" x="53.78065493839358" y="15704.93201970444" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-753" parent="1" style="shape=parallelogram;fixedSize=1;size=38;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="User controls browser print output; no&#xa;database write. Popup/print failure has no&#xa;explicit application recovery handler." vertex="1">
+          <mxGeometry height="74.52318789584798" width="340.84469921591887" x="53.78065493839358" y="15783.028237156934" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-755" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-747" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-748" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-756" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-748" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-749" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-757" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-749" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-750" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-758" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-750" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-751" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-759" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-751" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-752" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-760" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-752" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" target="Co-M2_GDS-Nr0UHrg7fh-753" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-761" edge="1" parent="1" source="Co-M2_GDS-Nr0UHrg7fh-753" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeWidth=2.5;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontColor=#000000;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=1;entryPerimeter=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="224.2030050000003" y="15882.052198999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Co-M2_GDS-Nr0UHrg7fh-762" parent="1" style="shape=offPageConnector;size=0.326;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;spacing=0;spacingBottom=18;fontFamily=Arial;fontSize=13;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;strokeWidth=2.5;" value="XX" vertex="1">
+          <mxGeometry height="43.89722026741731" width="48.692099887988405" x="199.86" y="15882" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

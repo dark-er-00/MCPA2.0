@@ -1,0 +1,13 @@
+{
+  "passed": 52,
+  "failed": 0,
+  "widths": [
+    320,
+    375,
+    390,
+    393,
+    430,
+    768
+  ],
+  "qrProvider": "local QR substitute; displayed pixels decoded; real external provider availability unverified"
+}

@@ -1,0 +1,985 @@
+TAP version 13
+# Subtest: invitations preserve identities, restrict privileges, reconcile retries and audit changes
+ok 1 - invitations preserve identities, restrict privileges, reconcile retries and audit changes
+  ---
+  duration_ms: 5633.7158
+  type: 'test'
+  ...
+# Subtest: duplicate-name recipients use UUIDs and preserve all receipt safeguards
+ok 2 - duplicate-name recipients use UUIDs and preserve all receipt safeguards
+  ---
+  duration_ms: 4088.9631
+  type: 'test'
+  ...
+# Subtest: Edge endpoint requires verified active Admin before invoking privileged operations
+ok 3 - Edge endpoint requires verified active Admin before invoking privileged operations
+  ---
+  duration_ms: 33.4453
+  type: 'test'
+  ...
+# Subtest: invitation sends only server-configured redirect and finishes the durable job
+ok 4 - invitation sends only server-configured redirect and finishes the durable job
+  ---
+  duration_ms: 2.6007
+  type: 'test'
+  ...
+# Subtest: mail/link failures release the lease; confirmed retry reconciles without another email
+ok 5 - mail/link failures release the lease; confirmed retry reconciles without another email
+  ---
+  duration_ms: 3.3525
+  type: 'test'
+  ...
+# Subtest: handler and PostgreSQL reconcile an accepted invitation after interrupted profile linking
+ok 6 - handler and PostgreSQL reconcile an accepted invitation after interrupted profile linking
+  ---
+  duration_ms: 4043.4337
+  type: 'test'
+  ...
+# Subtest: status route accepts only existing masterlist statuses
+ok 7 - status route accepts only existing masterlist statuses
+  ---
+  duration_ms: 5.012
+  type: 'test'
+  ...
+# Subtest: Admin dashboard shortcuts carry statuses while other roles keep existing targets
+not ok 8 - Admin dashboard shortcuts carry statuses while other roles keep existing targets
+  ---
+  duration_ms: 6.1167
+  type: 'test'
+  location: 'C:\\Practice Files\\SAD\\MCPA\\tests\\admin-equipment-summary.test.cjs:11:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'status')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    evalmachine.<anonymous>:33:76
+    evalmachine.<anonymous>:189:3
+    Script.runInContext (node:vm:149:12)
+    Object.runInContext (node:vm:301:6)
+    TestContext.<anonymous> (C:\Practice Files\SAD\MCPA\tests\admin-equipment-summary.test.cjs:13:80)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+  ...
+# Subtest: metadata edits preserve every existing operational status, archive state and history meaning; creation uses RPC default
+ok 9 - metadata edits preserve every existing operational status, archive state and history meaning; creation uses RPC default
+  ---
+  duration_ms: 3299.2515
+  type: 'test'
+  ...
+# Subtest: archive migration preserves assignments/history, denies deletes, restores and reruns safely
+ok 10 - archive migration preserves assignments/history, denies deletes, restores and reruns safely
+  ---
+  duration_ms: 2516.8975
+  type: 'test'
+  ...
+# Subtest: authenticated grants, scoped records and movement custody survive role hardening
+ok 11 - authenticated grants, scoped records and movement custody survive role hardening
+  ---
+  duration_ms: 5591.9189
+  type: 'test'
+  ...
+# Subtest: guarded sample archival retains 24/120, UUID and all four movements; rerun is unchanged; seed imports 126 healthy active SKUs
+ok 12 - guarded sample archival retains 24/120, UUID and all four movements; rerun is unchanged; seed imports 126 healthy active SKUs
+  ---
+  duration_ms: 10915.4459
+  type: 'test'
+  ...
+# Subtest: guarded archive fails closed on identity, balance, reference or movement-count drift
+ok 13 - guarded archive fails closed on identity, balance, reference or movement-count drift
+  ---
+  duration_ms: 4896.6123
+  type: 'test'
+  ...
+# Subtest: archived stock cannot be used, restocked, corrected, edited or newly requested; authorized history stays readable
+ok 14 - archived stock cannot be used, restocked, corrected, edited or newly requested; authorized history stays readable
+  ---
+  duration_ms: 4490.9725
+  type: 'test'
+  ...
+# Subtest: restoration requires explicit Admin identity, reason and version, writes lifecycle audit and preserves stock history
+ok 15 - restoration requires explicit Admin identity, reason and version, writes lifecycle audit and preserves stock history
+  ---
+  duration_ms: 5153.4862
+  type: 'test'
+  ...
+# Subtest: active duplicate detection remains strict; an archived equivalent is neither matched nor silently restored by seed
+ok 16 - active duplicate detection remains strict; an archived equivalent is neither matched nor silently restored by seed
+  ---
+  duration_ms: 6821.7641
+  type: 'test'
+  ...
+# Subtest: archived items do not affect active filters, counts or low-stock warnings
+ok 17 - archived items do not affect active filters, counts or low-stock warnings
+  ---
+  duration_ms: 2.7329
+  type: 'test'
+  ...
+# Subtest: open requests prevent archival; historical purchase links remain, but new links to archived items fail
+ok 18 - open requests prevent archival; historical purchase links remain, but new links to archived items fail
+  ---
+  duration_ms: 4602.5337
+  type: 'test'
+  ...
+# Subtest: catalog contains exactly 12 ordered categories, 60 families and 126 explicit distinct variants
+ok 19 - catalog contains exactly 12 ordered categories, 60 families and 126 explicit distinct variants
+  ---
+  duration_ms: 2.8166
+  type: 'test'
+  ...
+# Subtest: all category filters, combined name/code/spec/category/unit search, result counts and empty matches preserve data
+ok 20 - all category filters, combined name/code/spec/category/unit search, result counts and empty matches preserve data
+  ---
+  duration_ms: 2.6875
+  type: 'test'
+  ...
+# Subtest: migration and seed create 126 healthy SKU balances and opening ledger entries; re-run is unchanged
+ok 21 - migration and seed create 126 healthy SKU balances and opening ledger entries; re-run is unchanged
+  ---
+  duration_ms: 8919.5811
+  type: 'test'
+  ...
+# Subtest: normalized existing exact matches retain IDs, stock, thresholds, requests and history; code collisions allocate safely
+ok 22 - normalized existing exact matches retain IDs, stock, thresholds, requests and history; code collisions allocate safely
+  ---
+  duration_ms: 11271.268
+  type: 'test'
+  ...
+# Subtest: ambiguous legacy Cutting Disc stops import and rolls all earlier inserts back without rewriting data
+ok 23 - ambiguous legacy Cutting Disc stops import and rolls all earlier inserts back without rewriting data
+  ---
+  duration_ms: 3980.8474
+  type: 'test'
+  ...
+# Subtest: legacy embedded sizes or incomplete source descriptions require explicit specification reconciliation
+ok 24 - legacy embedded sizes or incomplete source descriptions require explicit specification reconciliation
+  ---
+  duration_ms: 3977.8243
+  type: 'test'
+  ...
+# Subtest: historically invalid stock stops schema changes and reports rather than repairing balances
+ok 25 - historically invalid stock stops schema changes and reports rather than repairing balances
+  ---
+  duration_ms: 3748.0161
+  type: 'test'
+  ...
+# Subtest: authorized SKU save requires a valid category, permits variants, protects immutable units and idempotent retries
+ok 26 - authorized SKU save requires a valid category, permits variants, protects immutable units and idempotent retries
+  ---
+  duration_ms: 4071.237
+  type: 'test'
+  ...
+# Subtest: zero and three decimals are supported; negative, NaN, Infinity, excessive precision and overflow are rejected
+ok 27 - zero and three decimals are supported; negative, NaN, Infinity, excessive precision and overflow are rejected
+  ---
+  duration_ms: 4190.5348
+  type: 'test'
+  ...
+# Subtest: conflicting deduction submissions commit one adjustment only, with actor and previous/new balances
+ok 28 - conflicting deduction submissions commit one adjustment only, with actor and previous/new balances
+  ---
+  duration_ms: 4772.78
+  type: 'test'
+  ...
+# Subtest: RLS, role wrappers and immutable history block unauthorized stock writes and audit modification
+ok 29 - RLS, role wrappers and immutable history block unauthorized stock writes and audit modification
+  ---
+  duration_ms: 4959.2741
+  type: 'test'
+  ...
+# Subtest: purchase requests snapshot correct SKU, receipts preserve links and atomically audit stock, failed receipt rolls back
+ok 30 - purchase requests snapshot correct SKU, receipts preserve links and atomically audit stock, failed receipt rolls back
+  ---
+  duration_ms: 6283.6871
+  type: 'test'
+  ...
+# Subtest: development endpoint fails closed, authenticates Admins, bounds roles and isolates origins
+ok 31 - development endpoint fails closed, authenticates Admins, bounds roles and isolates origins
+  ---
+  duration_ms: 5076.4252
+  type: 'test'
+  ...
+# Subtest: development SQL preserves data, denies browser access, and refuses spoofed or conflicting identities
+ok 32 - development SQL preserves data, denies browser access, and refuses spoofed or conflicting identities
+  ---
+  duration_ms: 4640.723
+  type: 'test'
+  ...
+# Subtest: interrupted Auth creation retries safely, exposes pending jobs and never resets an existing password
+ok 33 - interrupted Auth creation retries safely, exposes pending jobs and never resets an existing password
+  ---
+  duration_ms: 4763.2259
+  type: 'test'
+  ...
+# Subtest: two created Engineers use authenticated UUID custody transfer and inspected receipt; Architect creation works
+ok 34 - two created Engineers use authenticated UUID custody transfer and inspected receipt; Architect creation works
+  ---
+  duration_ms: 5342.5905
+  type: 'test'
+  ...
+# Subtest: Optional purpose preserves authenticated assignment, validation, history, review and receipt
+ok 35 - Optional purpose preserves authenticated assignment, validation, history, review and receipt
+  ---
+  duration_ms: 5813.1879
+  type: 'test'
+  ...
+# Subtest: new authenticated inventory defaults to canonical Office with TEXT and enum status; repeat deployment is safe
+ok 36 - new authenticated inventory defaults to canonical Office with TEXT and enum status; repeat deployment is safe
+  ---
+  duration_ms: 9803.55
+  type: 'test'
+  ...
+# Subtest: forged project, custody and status insert payloads fail; Engineer/Architect/Secretary/anonymous cannot insert
+ok 37 - forged project, custody and status insert payloads fail; Engineer/Architect/Secretary/anonymous cannot insert
+  ---
+  duration_ms: 8919.902
+  type: 'test'
+  ...
+# Subtest: existing locations, assignments, custody, quantities and historical ledgers survive migration and metadata edits
+ok 38 - existing locations, assignments, custody, quantities and historical ledgers survive migration and metadata edits
+  ---
+  duration_ms: 4420.0079
+  type: 'test'
+  ...
+# Subtest: trusted imports preserve explicit project and active or missing custody instead of defaulting it
+ok 39 - trusted imports preserve explicit project and active or missing custody instead of defaulting it
+  ---
+  duration_ms: 4331.4348
+  type: 'test'
+  ...
+# Subtest: missing/inactive Office fails closed; unknown policies cannot be replaced
+ok 40 - missing/inactive Office fails closed; unknown policies cannot be replaced
+  ---
+  duration_ms: 4029.5308
+  type: 'test'
+  ...
+# Subtest: confirmed correction changes only T-8862 current site; quantity, custody and all history remain intact; retries are safe
+ok 41 - confirmed correction changes only T-8862 current site; quantity, custody and all history remain intact; retries are safe
+  ---
+  duration_ms: 4237.4897
+  type: 'test'
+  ...
+# Subtest: confirmed correction refuses changed project, holder, status, zero quantity and pending reservations
+ok 42 - confirmed correction refuses changed project, holder, status, zero quantity and pending reservations
+  ---
+  duration_ms: 3846.8984
+  type: 'test'
+  ...
+# Subtest: new Office Bulk asset completes request approval, notification, tested receipt, receiving QR transfer and inspected return without changing quantity
+ok 43 - new Office Bulk asset completes request approval, notification, tested receipt, receiving QR transfer and inspected return without changing quantity
+  ---
+  duration_ms: 4274.9167
+  type: 'test'
+  ...
+# Subtest: equipment-only setup is repeatable, retains data, and scopes authorized cleanup to unlinked photos
+ok 44 - equipment-only setup is repeatable, retains data, and scopes authorized cleanup to unlinked photos
+  ---
+  duration_ms: 3121.2024
+  type: 'test'
+  ...
+# Subtest: equipment-only upgrade accepts the reviewed existing photo feature and preserves purchase storage
+ok 45 - equipment-only upgrade accepts the reviewed existing photo feature and preserves purchase storage
+  ---
+  duration_ms: 4262.0296
+  type: 'test'
+  ...
+# Subtest: alternate photo fields and public buckets abort atomically without schema or policy changes
+ok 46 - alternate photo fields and public buckets abort atomically without schema or policy changes
+  ---
+  duration_ms: 3570.3695
+  type: 'test'
+  ...
+# Subtest: theme buttons and legacy click events synchronize existing preference and all controls
+ok 47 - theme buttons and legacy click events synchronize existing preference and all controls
+  ---
+  duration_ms: 4.5312
+  type: 'test'
+  ...
+# Subtest: theme supports reduced motion and failed view transitions without exceptions
+ok 48 - theme supports reduced motion and failed view transitions without exceptions
+  ---
+  duration_ms: 2.3646
+  type: 'test'
+  ...
+# Subtest: photo validation enforces MIME, signatures, non-empty files and 5 MB boundary
+ok 49 - photo validation enforces MIME, signatures, non-empty files and 5 MB boundary
+  ---
+  duration_ms: 3.3696
+  type: 'test'
+  ...
+# Subtest: immutable photo staging retries without another upload and rejects non-admin accounts
+ok 50 - immutable photo staging retries without another upload and rejects non-admin accounts
+  ---
+  duration_ms: 3.092
+  type: 'test'
+  ...
+# Subtest: photo upload errors never return a reference and selected file can retry safely
+ok 51 - photo upload errors never return a reference and selected file can retry safely
+  ---
+  duration_ms: 1.5269
+  type: 'test'
+  ...
+# Subtest: legacy equipment IDs with spaces or punctuation use a safe storage folder
+ok 52 - legacy equipment IDs with spaces or punctuation use a safe storage folder
+  ---
+  duration_ms: 2.4741
+  type: 'test'
+  ...
+# Subtest: private display URLs are signed once per account, and unsafe references are ignored
+ok 53 - private display URLs are signed once per account, and unsafe references are ignored
+  ---
+  duration_ms: 1.781
+  type: 'test'
+  ...
+# Subtest: search matches all six mapped inventory fields case-insensitively and handles missing values
+ok 54 - search matches all six mapped inventory fields case-insensitively and handles missing values
+  ---
+  duration_ms: 2.6726
+  type: 'test'
+  ...
+# Subtest: expanded inventory search continues to intersect category, status and project filters
+ok 55 - expanded inventory search continues to intersect category, status and project filters
+  ---
+  duration_ms: 1.4249
+  type: 'test'
+  ...
+# Subtest: editing equipment without selecting a photo preserves its existing association
+ok 56 - editing equipment without selecting a photo preserves its existing association
+  ---
+  duration_ms: 2.172
+  type: 'test'
+  ...
+# Subtest: upload failure prevents metadata writes and keeps the form and old photo
+ok 57 - upload failure prevents metadata writes and keeps the form and old photo
+  ---
+  duration_ms: 1.8392
+  type: 'test'
+  ...
+# Subtest: failed metadata replacement retains staged upload, old reference and safe retry
+ok 58 - failed metadata replacement retains staged upload, old reference and safe retry
+  ---
+  duration_ms: 1.3168
+  type: 'test'
+  ...
+# Subtest: non-admin inventory save is rejected before any database or storage write
+ok 59 - non-admin inventory save is rejected before any database or storage write
+  ---
+  duration_ms: 0.9914
+  type: 'test'
+  ...
+# Subtest: new item photo uses stable unique record and asset IDs across a failed-save retry
+ok 60 - new item photo uses stable unique record and asset IDs across a failed-save retry
+  ---
+  duration_ms: 1.338
+  type: 'test'
+  ...
+# Subtest: unavailable Office prevents creation and upload while preserving form and selected photo
+ok 61 - unavailable Office prevents creation and upload while preserving form and selected photo
+  ---
+  duration_ms: 1.1547
+  type: 'test'
+  ...
+# Subtest: new item without a photo never references the optional image column
+ok 62 - new item without a photo never references the optional image column
+  ---
+  duration_ms: 1.095
+  type: 'test'
+  ...
+# Subtest: duplicate Save clicks share one in-flight insert
+ok 63 - duplicate Save clicks share one in-flight insert
+  ---
+  duration_ms: 1.0752
+  type: 'test'
+  ...
+# Subtest: missing photo schema fails before upload and preserves the selection
+ok 64 - missing photo schema fails before upload and preserves the selection
+  ---
+  duration_ms: 1.0568
+  type: 'test'
+  ...
+# Subtest: lost successful insert response is reconciled without a second insert
+ok 65 - lost successful insert response is reconciled without a second insert
+  ---
+  duration_ms: 1.7177
+  type: 'test'
+  ...
+# Subtest: unverifiable previous insert stops retry instead of creating duplicates
+ok 66 - unverifiable previous insert stops retry instead of creating duplicates
+  ---
+  duration_ms: 1.4364
+  type: 'test'
+  ...
+# Subtest: uncertain upload response retains the exact path and reconciles it without a second upload
+ok 67 - uncertain upload response retains the exact path and reconciles it without a second upload
+  ---
+  duration_ms: 1.2168
+  type: 'test'
+  ...
+# Subtest: failed upload retry reuses its original path when the object is absent
+ok 68 - failed upload retry reuses its original path when the object is absent
+  ---
+  duration_ms: 0.9901
+  type: 'test'
+  ...
+# Subtest: discard removes only the staged path and reports cleanup failures for retry
+ok 69 - discard removes only the staged path and reports cleanup failures for retry
+  ---
+  duration_ms: 1.1625
+  type: 'test'
+  ...
+# Subtest: Private attachment policies preserve records, scope photos by actual custody and retain immutable files
+ok 70 - Private attachment policies preserve records, scope photos by actual custody and retain immutable files
+  ---
+  duration_ms: 2536.7469
+  type: 'test'
+  ...
+# Subtest: Storage setup refuses existing bucket conflicts and unknown browser policies without weakening them
+ok 71 - Storage setup refuses existing bucket conflicts and unknown browser policies without weakening them
+  ---
+  duration_ms: 3184.135
+  type: 'test'
+  ...
+# Subtest: Storage migration requires the real service schema rather than inventing an insecure substitute
+ok 72 - Storage migration requires the real service schema rather than inventing an insecure substitute
+  ---
+  duration_ms: 3503.7685
+  type: 'test'
+  ...
+# Subtest: read-only availability metadata closes the hidden-reservation gap without exposing private movements or rewriting records
+ok 73 - read-only availability metadata closes the hidden-reservation gap without exposing private movements or rewriting records
+  ---
+  duration_ms: 2317.9122
+  type: 'test'
+  ...
+# Subtest: legacy lockdown preserves constrained identities/history and current receipt workflow; repeatable
+ok 74 - legacy lockdown preserves constrained identities/history and current receipt workflow; repeatable
+  ---
+  duration_ms: 2273.2567
+  type: 'test'
+  ...
+# Subtest: unexpected inherited legacy access aborts the whole lockdown
+ok 75 - unexpected inherited legacy access aborts the whole lockdown
+  ---
+  duration_ms: 2707.9382
+  type: 'test'
+  ...
+# Subtest: equipment shortcuts apply only the latest status after a pending module script loads and retain it on retry
+ok 76 - equipment shortcuts apply only the latest status after a pending module script loads and retain it on retry
+  ---
+  duration_ms: 21.7321
+  type: 'test'
+  ...
+# Subtest: same pending module fetch serves the latest requested record after its script is ready
+ok 77 - same pending module fetch serves the latest requested record after its script is ready
+  ---
+  duration_ms: 11.6771
+  type: 'test'
+  ...
+# Subtest: requesting another target while a module script loads replaces its activation callback
+ok 78 - requesting another target while a module script loads replaces its activation callback
+  ---
+  duration_ms: 7.9739
+  type: 'test'
+  ...
+# Subtest: returning to a loaded module cancels an intervening load without disposing its working controls
+ok 79 - returning to a loaded module cancels an intervening load without disposing its working controls
+  ---
+  duration_ms: 7.3352
+  type: 'test'
+  ...
+# Subtest: retrying a failed notification module load preserves the complete stable record route
+ok 80 - retrying a failed notification module load preserves the complete stable record route
+  ---
+  duration_ms: 10.9522
+  type: 'test'
+  ...
+# Subtest: plain navigation to the same module cancels an outstanding record focus
+ok 81 - plain navigation to the same module cancels an outstanding record focus
+  ---
+  duration_ms: 3.4445
+  type: 'test'
+  ...
+# Subtest: a failed module script retries the latest target without activating incomplete markup
+ok 82 - a failed module script retries the latest target without activating incomplete markup
+  ---
+  duration_ms: 6.1679
+  type: 'test'
+  ...
+# Subtest: an obsolete module script callback cannot activate its record after another module wins
+ok 83 - an obsolete module script callback cannot activate its record after another module wins
+  ---
+  duration_ms: 4.4182
+  type: 'test'
+  ...
+# Subtest: a failed replacement disposes the previous screen before displaying the error
+ok 84 - a failed replacement disposes the previous screen before displaying the error
+  ---
+  duration_ms: 10.5307
+  type: 'test'
+  ...
+# Subtest: Monitoring generates scoped overdue notices, immutable prospective snapshots and own-only read state without altering pending requests
+ok 85 - Monitoring generates scoped overdue notices, immutable prospective snapshots and own-only read state without altering pending requests
+  ---
+  duration_ms: 6872.2537
+  type: 'test'
+  ...
+# Subtest: Monitoring date parser ignores malformed legacy dates instead of failing all notices
+ok 86 - Monitoring date parser ignores malformed legacy dates instead of failing all notices
+  ---
+  duration_ms: 4869.8786
+  type: 'test'
+  ...
+# Subtest: Only future movement operations notify stable affected recipients; cancellation/refusal retries do not duplicate notices
+ok 87 - Only future movement operations notify stable affected recipients; cancellation/refusal retries do not duplicate notices
+  ---
+  duration_ms: 4776.0705
+  type: 'test'
+  ...
+# Subtest: An old received request never becomes overdue again after return and reacquisition; zero inventory and unrelated receipts are excluded
+ok 88 - An old received request never becomes overdue again after return and reacquisition; zero inventory and unrelated receipts are excluded
+  ---
+  duration_ms: 5822.541
+  type: 'test'
+  ...
+# Subtest: Cancellation migration is repeatable and preserves every existing record and activity event
+ok 89 - Cancellation migration is repeatable and preserves every existing record and activity event
+  ---
+  duration_ms: 4297.7935
+  type: 'test'
+  ...
+# Subtest: Cancellation audit refuses edits/deletion/truncation and has no direct browser write access
+ok 90 - Cancellation audit refuses edits/deletion/truncation and has no direct browser write access
+  ---
+  duration_ms: 4276.4102
+  type: 'test'
+  ...
+# Subtest: Cloud cancellation binds retries to the same operation and preserves permission checks
+ok 91 - Cloud cancellation binds retries to the same operation and preserves permission checks
+  ---
+  duration_ms: 14.7213
+  type: 'test'
+  ...
+# Subtest: Field request owners can withdraw/cancel; Admin and other roles cannot interrupt
+ok 92 - Field request owners can withdraw/cancel; Admin and other roles cannot interrupt
+  ---
+  duration_ms: 4804.7463
+  type: 'test'
+  ...
+# Subtest: Requester can cancel an unreceived initial release and preserves both histories and custody
+ok 93 - Requester can cancel an unreceived initial release and preserves both histories and custody
+  ---
+  duration_ms: 5374.2195
+  type: 'test'
+  ...
+# Subtest: Named receiver refusal holds custody and locks; only original field sender reopens or cancels
+ok 94 - Named receiver refusal holds custody and locks; only original field sender reopens or cancels
+  ---
+  duration_ms: 4931.6293
+  type: 'test'
+  ...
+# Subtest: Demo cancellation and refusal preserve custody, locks, audit and failed-write atomicity
+ok 95 - Demo cancellation and refusal preserve custody, locks, audit and failed-write atomicity
+  ---
+  duration_ms: 36.5771
+  type: 'test'
+  ...
+# PASS Repeatable setup preserves existing inventory, adds no mock data, and reads complete snapshot
+# PASS Invalid identities, roles, names, dates, asset selections, quantities and custody fail without writes
+# PASS Request → Admin approval → release → receiver inspection is atomic, reserved, custody-safe and retry-safe
+# PASS Damage creates linked repair; Admin start/completion updates inventory with legacy enum compatibility
+# PASS Lost receipt retains original custody; damaged recovery opens a linked repair atomically
+# PASS Returns inspect every asset, retain damage/loss accountability, and direct reports enforce custody
+# PASS Receipt rejects external custody changes and stable destination IDs survive site rename
+# PASS RPC-only writes, inaccessible internal helper, preserved equipment policies, complete audit, repeatable migration
+# PASS All 8 isolated movement database scenarios; no live database writes.
+# Subtest: tests\\movement-database.test.cjs
+ok 19 - tests\\movement-database.test.cjs
+  ---
+  duration_ms: 13081.9276
+  type: 'test'
+  ...
+# Subtest: activity links resolve each saved entity type by exact ID, never summary text
+ok 97 - activity links resolve each saved entity type by exact ID, never summary text
+  ---
+  duration_ms: 3.2781
+  type: 'test'
+  ...
+# Subtest: live and demo actions provide safe missing-record routes, including releases to transfers
+ok 98 - live and demo actions provide safe missing-record routes, including releases to transfers
+  ---
+  duration_ms: 0.6296
+  type: 'test'
+  ...
+# Subtest: target identifiers round-trip without introducing another route or query field
+ok 99 - target identifiers round-trip without introducing another route or query field
+  ---
+  duration_ms: 2.3054
+  type: 'test'
+  ...
+# Subtest: a save waits for an older background read and then fetches the committed snapshot
+ok 100 - a save waits for an older background read and then fetches the committed snapshot
+  ---
+  duration_ms: 32.8083
+  type: 'test'
+  ...
+# Subtest: failed inventory refresh invalidates cached availability and recovery publishes a fresh verification
+ok 101 - failed inventory refresh invalidates cached availability and recovery publishes a fresh verification
+  ---
+  duration_ms: 12.1744
+  type: 'test'
+  ...
+# Subtest: Office returns preserve optional purpose with already-installed live patch
+ok 102 - Office returns preserve optional purpose with already-installed live patch
+  ---
+  duration_ms: 17298.5649
+  type: 'test'
+  ...
+# Subtest: Office returns preserve optional purpose with chronological migrations
+ok 103 - Office returns preserve optional purpose with chronological migrations
+  ---
+  duration_ms: 7673.0684
+  type: 'test'
+  ...
+# Subtest: unconfigured Office refuses installation without creating a location or rewriting existing data
+ok 104 - unconfigured Office refuses installation without creating a location or rewriting existing data
+  ---
+  duration_ms: 9257.2686
+  type: 'test'
+  ...
+# Subtest: manual Office location configuration requires a real address and creates no duplicate or person assignment
+ok 105 - manual Office location configuration requires a real address and creates no duplicate or person assignment
+  ---
+  duration_ms: 4996.3054
+  type: 'test'
+  ...
+# Subtest: sky inspected returns send actual equipment to the pinned Office and preserve missing-item accountability
+ok 106 - sky inspected returns send actual equipment to the pinned Office and preserve missing-item accountability
+  ---
+  duration_ms: 4960.1985
+  type: 'test'
+  ...
+# Subtest: architect inspected returns send actual equipment to the pinned Office and preserve missing-item accountability
+ok 107 - architect inspected returns send actual equipment to the pinned Office and preserve missing-item accountability
+  ---
+  duration_ms: 4434.5184
+  type: 'test'
+  ...
+# Subtest: project, forged ID, invalid inspections and wrong-custody returns are rejected atomically; private APIs remain denied
+ok 108 - project, forged ID, invalid inspections and wrong-custody returns are rejected atomically; private APIs remain denied
+  ---
+  duration_ms: 4564.4509
+  type: 'test'
+  ...
+# Subtest: migration preserves historical returns/retries; new retries survive Office rename without duplicate actions
+ok 109 - migration preserves historical returns/retries; new retries survive Office rename without duplicate actions
+  ---
+  duration_ms: 4658.8223
+  type: 'test'
+  ...
+# Subtest: returns remain transactional and existing receiving QR/project transfers still use their authorized destinations
+ok 110 - returns remain transactional and existing receiving QR/project transfers still use their authorized destinations
+  ---
+  duration_ms: 5378.1167
+  type: 'test'
+  ...
+# Subtest: identity migration preserves existing records and authorizes independent profile IDs through Auth linkage
+ok 111 - identity migration preserves existing records and authorizes independent profile IDs through Auth linkage
+  ---
+  duration_ms: 5889.6576
+  type: 'test'
+  ...
+# Subtest: identity migration refuses missing lockdown and mismatched constraint definitions
+ok 112 - identity migration refuses missing lockdown and mismatched constraint definitions
+  ---
+  duration_ms: 4453.8595
+  type: 'test'
+  ...
+# Subtest: Project creation rejects is_active=true without persisting data or consuming the retry key
+ok 113 - Project creation rejects is_active=true without persisting data or consuming the retry key
+  ---
+  duration_ms: 3969.8172
+  type: 'test'
+  ...
+# Subtest: Project creation rejects is_active=false without persisting data or consuming the retry key
+ok 114 - Project creation rejects is_active=false without persisting data or consuming the retry key
+  ---
+  duration_ms: 4729.6532
+  type: 'test'
+  ...
+# Subtest: Additive migration preserves legacy rows, history, policies, assignments and equipment; rerun fails safely
+ok 115 - Additive migration preserves legacy rows, history, policies, assignments and equipment; rerun fails safely
+  ---
+  duration_ms: 4270.402
+  type: 'test'
+  ...
+# Subtest: Weighted formula, two-decimal rounding, N/A redistribution and per-project weights
+ok 116 - Weighted formula, two-decimal rounding, N/A redistribution and per-project weights
+  ---
+  duration_ms: 5012.2225
+  type: 'test'
+  ...
+# Subtest: Invalid progress, names, stages and untrusted fields rejected atomically
+ok 117 - Invalid progress, names, stages and untrusted fields rejected atomically
+  ---
+  duration_ms: 11798.9294
+  type: 'test'
+  ...
+# Subtest: Project creation, all meaningful changes, actors, notes, archive/restore and ordered immutable history
+ok 118 - Project creation, all meaningful changes, actors, notes, archive/restore and ordered immutable history
+  ---
+  duration_ms: 12257.499
+  type: 'test'
+  ...
+# Subtest: Retries deduplicate creates, updates, site notes and corrections; stale competing edits cannot overwrite
+ok 119 - Retries deduplicate creates, updates, site notes and corrections; stale competing edits cannot overwrite
+  ---
+  duration_ms: 10453.346
+  type: 'test'
+  ...
+# Subtest: Role boundaries, RLS, direct audit writes and privileged mutations/truncation denied
+ok 120 - Role boundaries, RLS, direct audit writes and privileged mutations/truncation denied
+  ---
+  duration_ms: 7403.0035
+  type: 'test'
+  ...
+# Subtest: Read-only deployment scripts compare unchanged legacy fingerprints and verify effective security
+ok 121 - Read-only deployment scripts compare unchanged legacy fingerprints and verify effective security
+  ---
+  duration_ms: 5528.3154
+  type: 'test'
+  ...
+# Subtest: Every stage/work area persists independently; legacy writers remain audited; no-op saves produce no duplicate audit
+ok 122 - Every stage/work area persists independently; legacy writers remain audited; no-op saves produce no duplicate audit
+  ---
+  duration_ms: 8217.2671
+  type: 'test'
+  ...
+# Subtest: Projects coexists with deployed consumable SKU/archive and receipt/purchase upgrades without touching stock, policy or custody
+ok 123 - Projects coexists with deployed consumable SKU/archive and receipt/purchase upgrades without touching stock, policy or custody
+  ---
+  duration_ms: 6590.5953
+  type: 'test'
+  ...
+# Subtest: Read-only dependency review distinguishes missing history from missing RPC and finds renamed history
+ok 124 - Read-only dependency review distinguishes missing history from missing RPC and finds renamed history
+  ---
+  duration_ms: 4681.4813
+  type: 'test'
+  ...
+# Subtest: Reviewed missing-history repair preserves records and RPC, restores scoped reads and authenticated immutable audit
+ok 125 - Reviewed missing-history repair preserves records and RPC, restores scoped reads and authenticated immutable audit
+  ---
+  duration_ms: 5116.0291
+  type: 'test'
+  ...
+# Subtest: Repair refuses an alternative history store and rolls back without creating duplicate history
+ok 126 - Repair refuses an alternative history store and rolls back without creating duplicate history
+  ---
+  duration_ms: 4605.7647
+  type: 'test'
+  ...
+# Subtest: Ledger maintains receipts and immutable history, deduplicates retries, and never changes material stock or protected movements
+ok 127 - Ledger maintains receipts and immutable history, deduplicates retries, and never changes material stock or protected movements
+  ---
+  duration_ms: 2819.0295
+  type: 'test'
+  ...
+# Subtest: Ledger rejects unauthorized roles, duplicates, invalid money/quantities and foreign purchase receipts
+ok 128 - Ledger rejects unauthorized roles, duplicates, invalid money/quantities and foreign purchase receipts
+  ---
+  duration_ms: 4604.4306
+  type: 'test'
+  ...
+# Subtest: receipt-only migration preserves complete equipment baseline and all stored records, including cleanup and helper OIDs
+ok 129 - receipt-only migration preserves complete equipment baseline and all stored records, including cleanup and helper OIDs
+  ---
+  duration_ms: 3407.538
+  type: 'test'
+  ...
+# Subtest: Admin/Secretary receipt INSERT/SELECT, strict paths and immutable objects follow current role and identity rules
+ok 130 - Admin/Secretary receipt INSERT/SELECT, strict paths and immutable objects follow current role and identity rules
+  ---
+  duration_ms: 4972.8638
+  type: 'test'
+  ...
+# Subtest: new storage satisfies existing purchase ledger before SKU/archive; snapshots, receipts and historical links remain compatible
+ok 131 - new storage satisfies existing purchase ledger before SKU/archive; snapshots, receipts and historical links remain compatible
+  ---
+  duration_ms: 4317.9857
+  type: 'test'
+  ...
+# Subtest: unsafe PUBLIC/inherited policies or changed equipment predicate abort without replacing any existing access
+ok 132 - unsafe PUBLIC/inherited policies or changed equipment predicate abort without replacing any existing access
+  ---
+  duration_ms: 4139.6406
+  type: 'test'
+  ...
+# Subtest: existing receipt helpers/overloads/policies/buckets and objects fail closed; migration never overwrites reviewed or unknown artifacts
+ok 133 - existing receipt helpers/overloads/policies/buckets and objects fail closed; migration never overwrites reviewed or unknown artifacts
+  ---
+  duration_ms: 4360.6744
+  type: 'test'
+  ...
+# Subtest: missing service/auth prerequisites and disabled RLS abort without granting or inventing service tables
+ok 134 - missing service/auth prerequisites and disabled RLS abort without granting or inventing service tables
+  ---
+  duration_ms: 7949.7333
+  type: 'test'
+  ...
+# Subtest: modified authentication helper definitions stop installation without rewriting authentication
+ok 135 - modified authentication helper definitions stop installation without rewriting authentication
+  ---
+  duration_ms: 4088.1092
+  type: 'test'
+  ...
+# Subtest: read-only diagnostics classify Office over portal and preserve working movements
+ok 136 - read-only diagnostics classify Office over portal and preserve working movements
+  ---
+  duration_ms: 4112.6771
+  type: 'test'
+  ...
+# Subtest: read-only diagnostics classify Office over cancellation and preserve working movements
+ok 137 - read-only diagnostics classify Office over cancellation and preserve working movements
+  ---
+  duration_ms: 4576.1029
+  type: 'test'
+  ...
+# Subtest: diagnostics distinguish absence, wrong signature and a broken Office delegate without calling movements
+ok 138 - diagnostics distinguish absence, wrong signature and a broken Office delegate without calling movements
+  ---
+  duration_ms: 5990.8377
+  type: 'test'
+  ...
+# Subtest: diagnostics expose changed helpers, grants and invalid Office designation
+ok 139 - diagnostics expose changed helpers, grants and invalid Office designation
+  ---
+  duration_ms: 5357.7498
+  type: 'test'
+  ...
+# Subtest: existing deployed portal gateway authorizes request projects by permanent profile ID, never Auth UUID/name or forged receiver
+ok 140 - existing deployed portal gateway authorizes request projects by permanent profile ID, never Auth UUID/name or forged receiver
+  ---
+  duration_ms: 4346.3352
+  type: 'test'
+  ...
+# Subtest: existing Office/cancellation gateway authorizes request projects by permanent profile ID, never Auth UUID/name or forged receiver
+ok 141 - existing Office/cancellation gateway authorizes request projects by permanent profile ID, never Auth UUID/name or forged receiver
+  ---
+  duration_ms: 4941.6497
+  type: 'test'
+  ...
+# Subtest: no-assignment, archived and name-only project links cannot authorize requests; Architect uses the same checks
+ok 142 - no-assignment, archived and name-only project links cannot authorize requests; Architect uses the same checks
+  ---
+  duration_ms: 4729.9453
+  type: 'test'
+  ...
+# Subtest: assigned request approval/release/notification/tested receipt preserve existing history and project assignments
+ok 143 - assigned request approval/release/notification/tested receipt preserve existing history and project assignments
+  ---
+  duration_ms: 4827.058
+  type: 'test'
+  ...
+# Subtest: existing release notifications already use company profile IDs; copy migration preserves all existing records and deduplicates future releases
+ok 144 - existing release notifications already use company profile IDs; copy migration preserves all existing records and deduplicates future releases
+  ---
+  duration_ms: 4907.3588
+  type: 'test'
+  ...
+# Subtest: release notices roll back with transactions and Architect receipt retains the same safeguards
+ok 145 - release notices roll back with transactions and Architect receipt retains the same safeguards
+  ---
+  duration_ms: 3967.0385
+  type: 'test'
+  ...
+# Subtest: turnover migration refuses missing monitoring instead of installing tables or widening permissions
+ok 146 - turnover migration refuses missing monitoring instead of installing tables or widening permissions
+  ---
+  duration_ms: 3481.1517
+  type: 'test'
+  ...
+# Subtest: verified catalog installs over legacy scoped reader without record changes and is retry safe
+not ok 147 - verified catalog installs over legacy scoped reader without record changes and is retry safe
+  ---
+  duration_ms: 3166.3443
+  type: 'test'
+  location: 'C:\\Practice Files\\SAD\\MCPA\\tests\\verified-request-inventory.database.test.cjs:24:39'
+  failureType: 'testCodeFailure'
+  error: 'The request lifecycle differs from the reviewed implementation. Stop and inspect it.'
+  code: 'P0001'
+  name: 'error'
+  stack: |-
+    Ie.la (C:\Practice Files\SAD\MCPA\tests\node_modules\@electric-sql\pglite\dist\index.cjs:4:22506)
+    Ie.Qa (C:\Practice Files\SAD\MCPA\tests\node_modules\@electric-sql\pglite\dist\index.cjs:4:19876)
+    Ie.parse (C:\Practice Files\SAD\MCPA\tests\node_modules\@electric-sql\pglite\dist\index.cjs:4:18520)
+    _e.Ia (C:\Practice Files\SAD\MCPA\tests\node_modules\@electric-sql\pglite\dist\index.cjs:15:1788)
+    C:\Practice Files\SAD\MCPA\tests\node_modules\@electric-sql\pglite\dist\index.cjs:15:1161
+    wasm://wasm/0267bb86:wasm-function[10930]:0x5a5ccf
+    wasm://wasm/0267bb86:wasm-function[3585]:0x27eaeb
+    wasm://wasm/0267bb86:wasm-function[3627]:0x2869d1
+    wasm://wasm/0267bb86:wasm-function[3637]:0x286c2d
+    wasm://wasm/0267bb86:wasm-function[9914]:0x54fd4d
+  ...
+# Subtest: verified catalog installs over v1 metadata without record changes and is retry safe
+not ok 148 - verified catalog installs over v1 metadata without record changes and is retry safe
+  ---
+  duration_ms: 3994.306
+  type: 'test'
+  location: 'C:\\Practice Files\\SAD\\MCPA\\tests\\verified-request-inventory.database.test.cjs:24:39'
+  failureType: 'testCodeFailure'
+  error: 'The request lifecycle differs from the reviewed implementation. Stop and inspect it.'
+  code: 'P0001'
+  name: 'error'
+  stack: |-
+    Ie.la (C:\Practice Files\SAD\MCPA\tests\node_modules\@electric-sql\pglite\dist\index.cjs:4:22506)
+    Ie.Qa (C:\Practice Files\SAD\MCPA\tests\node_modules\@electric-sql\pglite\dist\index.cjs:4:19876)
+    Ie.parse (C:\Practice Files\SAD\MCPA\tests\node_modules\@electric-sql\pglite\dist\index.cjs:4:18520)
+    _e.Ia (C:\Practice Files\SAD\MCPA\tests\node_modules\@electric-sql\pglite\dist\index.cjs:15:1788)
+    C:\Practice Files\SAD\MCPA\tests\node_modules\@electric-sql\pglite\dist\index.cjs:15:1161
+    wasm://wasm/0267bb86:wasm-function[10930]:0x5a5ccf
+    wasm://wasm/0267bb86:wasm-function[3585]:0x27eaeb
+    wasm://wasm/0267bb86:wasm-function[3627]:0x2869d1
+    wasm://wasm/0267bb86:wasm-function[3637]:0x286c2d
+    wasm://wasm/0267bb86:wasm-function[9914]:0x54fd4d
+  ...
+# Subtest: Office stock is discoverable for Engineers and Architects; restricted project custody and private movement details stay scoped
+ok 149 - Office stock is discoverable for Engineers and Architects; restricted project custody and private movement details stay scoped
+  ---
+  duration_ms: 3951.0491
+  type: 'test'
+  ...
+# Subtest: T-8862 / REQ-00013 release retains AVAILABLE, unknown site and reservations until tested authorized receipt; history and retry identity survive
+ok 150 - T-8862 / REQ-00013 release retains AVAILABLE, unknown site and reservations until tested authorized receipt; history and retry identity survive
+  ---
+  duration_ms: 3740.2093
+  type: 'test'
+  ...
+# Subtest: orphaned active handovers and stale reservation rows fail closed without being deleted; damaged stock cannot be requested
+ok 151 - orphaned active handovers and stale reservation rows fail closed without being deleted; damaged stock cannot be requested
+  ---
+  duration_ms: 3916.3904
+  type: 'test'
+  ...
+# Subtest: read-only preflight preserves records; unreviewed snapshot drift aborts migration without replacing authorization
+ok 152 - read-only preflight preserves records; unreviewed snapshot drift aborts migration without replacing authorization
+  ---
+  duration_ms: 3831.7643
+  type: 'test'
+  ...
+# Subtest: authorized cancellation resolves an unreceived release through immutable audit; request retries replay safely while reserved
+ok 153 - authorized cancellation resolves an unreceived release through immutable audit; request retries replay safely while reserved
+  ---
+  duration_ms: 4006.4794
+  type: 'test'
+  ...
+1..153
+# tests 153
+# suites 0
+# pass 150
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 569280.0476

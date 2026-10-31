@@ -1,0 +1,201 @@
+{
+  "date": "2026-10-25",
+  "branch": "integration/quantity-custody-v2",
+  "protectedRefs": {
+    "HEAD": "7e1af39e9d3be4d358dc966859bfa065b516b57f",
+    "MERGE_HEAD": "efc6b07054d9701c07165c21e0d21389dcdb6ce2",
+    "Updated-MCPARole": "251940a832a4c69e5402420e71a396feeaf025c5",
+    "feature/quantity-material-requests": "7e1af39e9d3be4d358dc966859bfa065b516b57f",
+    "origin/feature/quantity-material-requests": "7e1af39e9d3be4d358dc966859bfa065b516b57f",
+    "origin/feature/custody-lifecycle": "efc6b07054d9701c07165c21e0d21389dcdb6ce2"
+  },
+  "stagedOriginalB": [
+    {
+      "path": "1-admin/modules/asset-retirement-v2/asset-retirement.mjs",
+      "blob": "c11124f5022aaf6430816636e1d4a51cab7117a4"
+    },
+    {
+      "path": "1-admin/modules/return-inspection-v2/return-inspection.mjs",
+      "blob": "2d4371ebd004c828781bdb4578f67975c9f90f3a"
+    },
+    {
+      "path": "2-engr/modules/qr-movements-v2/qr-movements.mjs",
+      "blob": "c9d7b4760aa22211fffda5da0166c3f431cc66d0"
+    },
+    {
+      "path": "2-engr/modules/retired-equipment-v2/retired-equipment.mjs",
+      "blob": "e88523f322391ca2528f8db5545534ab5dd6adfe"
+    },
+    {
+      "path": "2-engr/modules/return-inspection-v2/return-submission.mjs",
+      "blob": "c9ed0b9ee4ac81ce2eb78ec711dfcb370f3bbba0"
+    },
+    {
+      "path": "documentation/workstream-b/ARCHITECTURE.md",
+      "blob": "c08db1f3999889d84f682dc62efbc528207ff9be"
+    },
+    {
+      "path": "documentation/workstream-b/DEPLOYMENT-PREFLIGHT.sql",
+      "blob": "6cefbf99fc543ff554b5570c842568f8c86f00c0"
+    },
+    {
+      "path": "documentation/workstream-b/IMPLEMENTATION-REPORT.md",
+      "blob": "38b091fb20c410ff674dcae3eb074563b5616552"
+    },
+    {
+      "path": "documentation/workstream-b/INTEGRATION.md",
+      "blob": "b421c53c48f8a36c3637fbdd340f977ba607dd50"
+    },
+    {
+      "path": "documentation/workstream-b/MIGRATION-REQUIREMENTS.md",
+      "blob": "ba52e7ab0ec4d294036f4f375bc79478a7468b55"
+    },
+    {
+      "path": "documentation/workstream-b/UI-REVIEW.md",
+      "blob": "b63a101562ad173bd0fc0626f46d899a82f0d1b3"
+    },
+    {
+      "path": "js/upgrades/custody-lifecycle/api.mjs",
+      "blob": "1bd2b2cb417f68d7e175f9d52bb2838267f7bb50"
+    },
+    {
+      "path": "js/upgrades/custody-lifecycle/composer.mjs",
+      "blob": "1c28ff17c066c8dcb9c84b614f79ecde0bb77beb"
+    },
+    {
+      "path": "js/upgrades/custody-lifecycle/module.css",
+      "blob": "245fb553976b474af34224b40859e84c011786ed"
+    },
+    {
+      "path": "js/upgrades/custody-lifecycle/ui.mjs",
+      "blob": "6911f2ad766ee76d39a515c191bc22de7e3a93d2"
+    },
+    {
+      "path": "js/upgrades/equipment-qr/scanner.mjs",
+      "blob": "526eb6100fbdf2f5575aaa418a8f7df847de755a"
+    },
+    {
+      "path": "js/upgrades/equipment-retirement/retirement.mjs",
+      "blob": "ac8ec0a05523f171b5c80e96eea4dc5f15ad1f07"
+    },
+    {
+      "path": "js/upgrades/movement-evidence/evidence.mjs",
+      "blob": "4886d79a713354065f3732c66d6a33ec8953259a"
+    },
+    {
+      "path": "supabase/migrations/202610250002_custody_lifecycle.sql",
+      "blob": "f7ee483ba4a941761a7fad57f939bd4291e360af"
+    },
+    {
+      "path": "tests/custody-lifecycle-v2/browser.cjs",
+      "blob": "ef17ebb1c1183f564e791df34183cbabe3a951f7"
+    },
+    {
+      "path": "tests/custody-lifecycle-v2/fixture.cjs",
+      "blob": "974d2a8506f34eb47c00f29894f78b363f99c32f"
+    },
+    {
+      "path": "tests/custody-lifecycle-v2/harness.html",
+      "blob": "2b59b318c61345312a0efce511831b50d4c39687"
+    },
+    {
+      "path": "tests/custody-lifecycle-v2/returns.test.cjs",
+      "blob": "e15ce4b76cb93cd785d49fce8c1a60607357c4d0"
+    },
+    {
+      "path": "tests/custody-lifecycle-v2/run-tests.cjs",
+      "blob": "de721ae836884694ec3f7cae9315fe8316d5a9b1"
+    },
+    {
+      "path": "tests/custody-lifecycle-v2/security.test.cjs",
+      "blob": "fa22f0553bad98c5c2f185ddcfe48fa9ee7668ff"
+    },
+    {
+      "path": "tests/equipment-retirement-v2/retirement.test.cjs",
+      "blob": "876b89ea3dc4cb9b9eaa072b5a87e12d724c5650"
+    },
+    {
+      "path": "tests/movement-evidence-v2/evidence.test.cjs",
+      "blob": "e0185884e2dbc3d1572e2dfe79a44a2ad3cd411e"
+    },
+    {
+      "path": "tests/qr-movement-v2/camera.test.cjs",
+      "blob": "01c6fc71993e4edfd8857d15fb90eec304e0b5fc"
+    },
+    {
+      "path": "tests/qr-movement-v2/qr-transfer.test.cjs",
+      "blob": "95381438884dcb44d9b5f9b4236caf9529559df7"
+    }
+  ],
+  "all29BlobsMatchMergeHead": true,
+  "unmergedEntries": 0,
+  "pendingMergePreserved": true,
+  "unchangedPreviouslyManifestedFiles": [
+    "1-admin/modules/masterlist/masterlist.js",
+    "1-admin/modules/reports/reports.js",
+    "1-admin/modules/requests/requests.html",
+    "2-engr/index.html",
+    "2-engr/modules/requests/requests.html",
+    "2-engr/modules/transfers/transfers.html",
+    "index.html",
+    "js/app.js",
+    "js/auth.js",
+    "js/display.js",
+    "js/equipment-tracking.js",
+    "js/monitoring.js",
+    "js/movement-ui.js",
+    "js/navigation.js",
+    "js/permissions.js",
+    "js/upgrades/custody-lifecycle/api.mjs",
+    "js/upgrades/quantity-requests/view.js",
+    "tests/individual-import-expansion-v2/postgres-concurrency.cjs",
+    "tests/verified-request-inventory.database.test.cjs",
+    "css/integration.css",
+    "supabase/migrations/202610250003_quantity_custody_integration.sql",
+    "tests/integration-quantity-custody-v2/browser-checks.cjs",
+    "tests/integration-quantity-custody-v2/client.test.cjs",
+    "tests/integration-quantity-custody-v2/database.test.cjs",
+    "tests/integration-quantity-custody-v2/fixture.cjs",
+    "tests/integration-quantity-custody-v2/native-cases.cjs",
+    "tests/integration-quantity-custody-v2/review-fixes.browser-checks.cjs"
+  ],
+  "earlierEvidenceHashesPreserved": true,
+  "sqlUnchanged": true,
+  "whitespaceCheckPassed": true,
+  "syntaxFiles": [
+    "1-admin/modules/masterlist/masterlist.js",
+    "1-admin/modules/reports/reports.js",
+    "js/app.js",
+    "js/auth.js",
+    "js/display.js",
+    "js/equipment-import.js",
+    "js/equipment-tracking.js",
+    "js/monitoring.js",
+    "js/movement-ui.js",
+    "js/navigation.js",
+    "js/permissions.js",
+    "js/upgrades/custody-lifecycle/api.mjs",
+    "js/upgrades/equipment-retirement/retirement.mjs",
+    "js/upgrades/individual-import-expansion/controller.js",
+    "js/upgrades/quantity-requests/view.js",
+    "tests/auth.browser.cjs",
+    "tests/individual-import-expansion-v2/controller.test.cjs",
+    "tests/individual-import-expansion-v2/postgres-concurrency.cjs",
+    "tests/verified-request-inventory.database.test.cjs",
+    "js/integration.js",
+    "tests/integration-quantity-custody-v2/browser-checks.cjs",
+    "tests/integration-quantity-custody-v2/client.test.cjs",
+    "tests/integration-quantity-custody-v2/database.test.cjs",
+    "tests/integration-quantity-custody-v2/final-races.browser-checks.cjs",
+    "tests/integration-quantity-custody-v2/final-races.test.cjs",
+    "tests/integration-quantity-custody-v2/fixture.cjs",
+    "tests/integration-quantity-custody-v2/native-cases.cjs",
+    "tests/integration-quantity-custody-v2/review-fixes.browser-checks.cjs"
+  ],
+  "productionChangesThisRepair": [
+    "js/upgrades/individual-import-expansion/controller.js",
+    "js/equipment-import.js",
+    "js/integration.js",
+    "js/upgrades/equipment-retirement/retirement.mjs"
+  ]
+}

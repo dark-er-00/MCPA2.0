@@ -1,0 +1,93 @@
+{
+  "localOnly": true,
+  "outboundHttpBlocked": true,
+  "applicationOrDatabaseCalls": 0,
+  "profile": "Fresh temporary Chrome profile",
+  "stats": [
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Use_Case_Diagram/Use_Case.pdf",
+      "pages": 1,
+      "bytes": 128722,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication.pdf",
+      "pages": 1,
+      "bytes": 88115,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration.pdf",
+      "pages": 1,
+      "bytes": 118499,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Request_Approval_Release.pdf",
+      "pages": 1,
+      "bytes": 111947,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_QR_Transfer_Receiving.pdf",
+      "pages": 1,
+      "bytes": 93746,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_Office_Return.pdf",
+      "pages": 1,
+      "bytes": 111974,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Repair.pdf",
+      "pages": 1,
+      "bytes": 90418,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Missing_Recovery.pdf",
+      "pages": 1,
+      "bytes": 89513,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Consumables_Procurement.pdf",
+      "pages": 1,
+      "bytes": 91699,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/System_Architecture_Diagram/System_Architecture.pdf",
+      "pages": 1,
+      "bytes": 250118,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_01_Core.pdf",
+      "pages": 1,
+      "bytes": 208941,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_02_Movements.pdf",
+      "pages": 1,
+      "bytes": 208835,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_03_Materials.pdf",
+      "pages": 1,
+      "bytes": 182884,
+      "png": true
+    },
+    {
+      "file": "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_04_Support.pdf",
+      "pages": 1,
+      "bytes": 168411,
+      "png": true
+    }
+  ],
+  "layout": []
+}

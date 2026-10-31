@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-18T13:09:20.588Z",
+  "title": "Design System: MCPA Login",
+  "extensions": {
+    "colorMeta": {
+      "login-gold": {
+        "role": "primary",
+        "displayName": "Login Gold",
+        "tonalRamp": [
+          "oklch(15% 0.1698 83.98)",
+          "oklch(26% 0.1698 83.98)",
+          "oklch(38% 0.1698 83.98)",
+          "oklch(49% 0.1698 83.98)",
+          "oklch(61% 0.1698 83.98)",
+          "oklch(72% 0.1698 83.98)",
+          "oklch(84% 0.1698 83.98)",
+          "oklch(95% 0.1698 83.98)"
+        ]
+      },
+      "login-gold-hover": {
+        "role": "primary",
+        "displayName": "Login Gold Hover",
+        "tonalRamp": [
+          "oklch(15% 0.1544 88.97)",
+          "oklch(26% 0.1544 88.97)",
+          "oklch(38% 0.1544 88.97)",
+          "oklch(49% 0.1544 88.97)",
+          "oklch(61% 0.1544 88.97)",
+          "oklch(72% 0.1544 88.97)",
+          "oklch(84% 0.1544 88.97)",
+          "oklch(95% 0.1544 88.97)"
+        ]
+      },
+      "login-ink": {
+        "role": "neutral",
+        "displayName": "Login Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0038 164.60)",
+          "oklch(26% 0.0038 164.60)",
+          "oklch(38% 0.0038 164.60)",
+          "oklch(49% 0.0038 164.60)",
+          "oklch(61% 0.0038 164.60)",
+          "oklch(72% 0.0038 164.60)",
+          "oklch(84% 0.0038 164.60)",
+          "oklch(95% 0.0038 164.60)"
+        ]
+      },
+      "login-panel": {
+        "role": "neutral",
+        "displayName": "Login Panel",
+        "tonalRamp": [
+          "oklch(15% 0.0074 164.08)",
+          "oklch(26% 0.0074 164.08)",
+          "oklch(38% 0.0074 164.08)",
+          "oklch(49% 0.0074 164.08)",
+          "oklch(61% 0.0074 164.08)",
+          "oklch(72% 0.0074 164.08)",
+          "oklch(84% 0.0074 164.08)",
+          "oklch(95% 0.0074 164.08)"
+        ]
+      },
+      "login-gallery": {
+        "role": "neutral",
+        "displayName": "Login Gallery",
+        "tonalRamp": [
+          "oklch(15% 0.0103 151.39)",
+          "oklch(26% 0.0103 151.39)",
+          "oklch(38% 0.0103 151.39)",
+          "oklch(49% 0.0103 151.39)",
+          "oklch(61% 0.0103 151.39)",
+          "oklch(72% 0.0103 151.39)",
+          "oklch(84% 0.0103 151.39)",
+          "oklch(95% 0.0103 151.39)"
+        ]
+      },
+      "login-field": {
+        "role": "neutral",
+        "displayName": "Login Field",
+        "tonalRamp": [
+          "oklch(15% 0.0117 156.20)",
+          "oklch(26% 0.0117 156.20)",
+          "oklch(38% 0.0117 156.20)",
+          "oklch(49% 0.0117 156.20)",
+          "oklch(61% 0.0117 156.20)",
+          "oklch(72% 0.0117 156.20)",
+          "oklch(84% 0.0117 156.20)",
+          "oklch(95% 0.0117 156.20)"
+        ]
+      },
+      "login-text": {
+        "role": "neutral",
+        "displayName": "Login Text",
+        "tonalRamp": [
+          "oklch(15% 0.0082 91.48)",
+          "oklch(26% 0.0082 91.48)",
+          "oklch(38% 0.0082 91.48)",
+          "oklch(49% 0.0082 91.48)",
+          "oklch(61% 0.0082 91.48)",
+          "oklch(72% 0.0082 91.48)",
+          "oklch(84% 0.0082 91.48)",
+          "oklch(95% 0.0082 91.48)"
+        ]
+      },
+      "login-muted": {
+        "role": "neutral",
+        "displayName": "Login Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0089 145.49)",
+          "oklch(26% 0.0089 145.49)",
+          "oklch(38% 0.0089 145.49)",
+          "oklch(49% 0.0089 145.49)",
+          "oklch(61% 0.0089 145.49)",
+          "oklch(72% 0.0089 145.49)",
+          "oklch(84% 0.0089 145.49)",
+          "oklch(95% 0.0089 145.49)"
+        ]
+      },
+      "login-border": {
+        "role": "neutral",
+        "displayName": "Login Border",
+        "tonalRamp": [
+          "oklch(15% 0.0139 153.35)",
+          "oklch(26% 0.0139 153.35)",
+          "oklch(38% 0.0139 153.35)",
+          "oklch(49% 0.0139 153.35)",
+          "oklch(61% 0.0139 153.35)",
+          "oklch(72% 0.0139 153.35)",
+          "oklch(84% 0.0139 153.35)",
+          "oklch(95% 0.0139 153.35)"
+        ]
+      },
+      "login-secondary-hover": {
+        "role": "neutral",
+        "displayName": "Login Secondary Hover",
+        "tonalRamp": [
+          "oklch(15% 0.0155 152.92)",
+          "oklch(26% 0.0155 152.92)",
+          "oklch(38% 0.0155 152.92)",
+          "oklch(49% 0.0155 152.92)",
+          "oklch(61% 0.0155 152.92)",
+          "oklch(72% 0.0155 152.92)",
+          "oklch(84% 0.0155 152.92)",
+          "oklch(95% 0.0155 152.92)"
+        ]
+      },
+      "login-glass": {
+        "role": "neutral",
+        "displayName": "Login Glass",
+        "tonalRamp": [
+          "oklch(15% 0.0033 196.81)",
+          "oklch(26% 0.0033 196.81)",
+          "oklch(38% 0.0033 196.81)",
+          "oklch(49% 0.0033 196.81)",
+          "oklch(61% 0.0033 196.81)",
+          "oklch(72% 0.0033 196.81)",
+          "oklch(84% 0.0033 196.81)",
+          "oklch(95% 0.0033 196.81)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "login-heading": {
+        "displayName": "Login Heading",
+        "purpose": "The authentication heading; compact screens use the compact variant."
+      },
+      "login-heading-compact": {
+        "displayName": "Compact Login Heading",
+        "purpose": "Authentication heading at 900px and below."
+      },
+      "gallery-title": {
+        "displayName": "Gallery Title",
+        "purpose": "Caption beneath desktop project photography."
+      },
+      "login-body": {
+        "displayName": "Login Body",
+        "purpose": "Supporting authentication copy."
+      },
+      "login-label": {
+        "displayName": "Login Label",
+        "purpose": "Visible form labels."
+      },
+      "login-button": {
+        "displayName": "Primary Login Button",
+        "purpose": "Gold primary authentication actions."
+      }
+    },
+    "shadows": [
+      {
+        "name": "login-compact-card",
+        "value": "0 20px 56px rgba(0, 0, 0, .2)",
+        "purpose": "Compact login glass only; desktop login has no card shadow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "login-control-transition",
+        "value": "background-color .15s ease, border-color .15s ease",
+        "purpose": "Login action feedback; disabled by reduced-motion preference."
+      },
+      {
+        "name": "login-gallery-interval",
+        "value": "5500ms",
+        "purpose": "Desktop slideshow interval; suspended on Pause, hidden page, hidden login and reduced motion."
+      },
+      {
+        "name": "login-gallery-crossfade",
+        "value": "1350ms",
+        "purpose": "Desktop photograph crossfade only; compact login keeps a static image."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "login-compact-max-width",
+        "value": "900px"
+      },
+      {
+        "name": "login-compact-short-max-height",
+        "value": "600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Login Primary Action",
+      "kind": "button",
+      "refersTo": "login-button-primary",
+      "description": "The gold authentication action, scoped to login.",
+      "html": "<div class=\"ds-login-preview\"><button type=\"button\" class=\"ds-login-button ds-login-primary\">Sign In</button></div>",
+      "css": ".ds-login-preview{padding:24px;background:#111513;color:#f5f3ed;font-family:var(--font-body, 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif)}.ds-login-button{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 18px;border:1px solid transparent;border-radius:6px;font-family:var(--font-body, 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif);font-size:13.5px;cursor:pointer;transition:background-color .15s ease,border-color .15s ease}.ds-login-button:focus-visible{outline:2px solid #fabb00;outline-offset:4px}.ds-login-button:disabled{opacity:.6;cursor:wait}@media(prefers-reduced-motion:reduce){.ds-login-button{transition:none}}.ds-login-primary{background:#fabb00;color:#111312;font-weight:700}.ds-login-primary:hover{background:#ffd04a}"
+    },
+    {
+      "name": "Login Secondary Action",
+      "kind": "button",
+      "refersTo": "login-button-secondary",
+      "description": "The outlined secondary authentication action.",
+      "html": "<div class=\"ds-login-preview\"><button type=\"button\" class=\"ds-login-button ds-login-secondary\">Try offline demo</button></div>",
+      "css": ".ds-login-preview{padding:24px;background:#111513;color:#f5f3ed;font-family:var(--font-body, 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif)}.ds-login-button{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 18px;border:1px solid transparent;border-radius:6px;font-family:var(--font-body, 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif);font-size:13.5px;cursor:pointer;transition:background-color .15s ease,border-color .15s ease}.ds-login-button:focus-visible{outline:2px solid #fabb00;outline-offset:4px}.ds-login-button:disabled{opacity:.6;cursor:wait}@media(prefers-reduced-motion:reduce){.ds-login-button{transition:none}}.ds-login-secondary{background:transparent;color:#f5f3ed;border-color:#525a54;font-weight:600}.ds-login-secondary:hover{background:#252d27;border-color:#b9beb9}"
+    },
+    {
+      "name": "Login Email Field",
+      "kind": "input",
+      "refersTo": "login-input",
+      "description": "A visible label and outlined login field with gold focus feedback.",
+      "html": "<div class=\"ds-login-preview\"><label class=\"ds-login-label\" for=\"ds-login-email\">Email</label><input class=\"ds-login-input\" id=\"ds-login-email\" type=\"email\" autocomplete=\"username\" required></div>",
+      "css": ".ds-login-preview{padding:24px;background:#111513;color:#f5f3ed;font-family:var(--font-body, 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif)}.ds-login-label{display:block;margin-bottom:8px;color:#f5f3ed;font-size:12px;font-weight:600}.ds-login-input{width:100%;min-height:50px;padding:11px 13px;border:1px solid #525a54;border-radius:6px;background:#191f1b;color:#f5f3ed;font-family:var(--font-body, 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif);font-size:14px;caret-color:#fabb00;transition:border-color .15s ease}.ds-login-input::placeholder{color:#b9beb9;opacity:1}.ds-login-input:focus{border-color:#fabb00}.ds-login-input:focus-visible{outline:2px solid #fabb00;outline-offset:2px}@media(max-width:900px){.ds-login-input{font-size:16px}}@media(prefers-reduced-motion:reduce){.ds-login-input{transition:none}}"
+    },
+    {
+      "name": "Compact Login Card",
+      "kind": "card",
+      "refersTo": "login-card-compact",
+      "description": "The compact authentication container; the preview isolates the glass treatment from the photographic backdrop.",
+      "html": "<div class=\"ds-login-preview\"><div class=\"ds-login-glass\"><h1 class=\"ds-login-heading\">Welcome back</h1><p class=\"ds-login-copy\">Construction Asset Management<br>and Accountability System</p></div></div>",
+      "css": ".ds-login-preview{padding:24px;background:#111513;color:#f5f3ed;font-family:var(--font-body, 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif)}.ds-login-glass{max-width:400px;padding:30px 26px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(10,12,12,.68);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 20px 56px rgba(0,0,0,.2)}.ds-login-heading{font-family:var(--font-display,'Fraunces',serif);font-size:34px;font-weight:480;line-height:1.15;letter-spacing:-.03em;margin:0 0 10px}.ds-login-copy{font-size:13px;line-height:1.7;color:#b9beb9;margin:0 0 20px}@supports not ((backdrop-filter:blur(14px)) or (-webkit-backdrop-filter:blur(14px))){.ds-login-glass{background:#111513}}"
+    },
+    {
+      "name": "Gallery Motion Control",
+      "kind": "button",
+      "description": "Desktop Pause/Play treatment. The documentation preview shows the Pause state without a slideshow runtime.",
+      "html": "<div class=\"ds-login-preview\"><button class=\"ds-login-motion\" type=\"button\" aria-label=\"Pause slideshow\"><svg viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M2 1h3v10H2zm5 0h3v10H7z\"/></svg><span>Pause</span></button></div>",
+      "css": ".ds-login-preview{padding:24px;background:#111513;color:#f5f3ed;font-family:var(--font-body, 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif)}.ds-login-motion{display:inline-flex;align-items:center;justify-content:flex-end;gap:9px;min-width:72px;min-height:44px;padding:8px 0 8px 8px;border:0;background:transparent;color:#f0eee6;font:500 12px var(--font-body, 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif);cursor:pointer}.ds-login-motion svg{width:12px;height:12px;fill:currentColor}.ds-login-motion:hover{color:#fabb00}.ds-login-motion:focus-visible{outline:2px solid #fabb00;outline-offset:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "MCPA's completed-project gallery",
+    "overview": "The login combines real project photography with a quiet charcoal and gold sign-in surface. The established Fraunces and Public Sans pairing connects the gallery to the existing product identity; the original MCPA mark and photographic watermarks remain intact.\n\nThis document records only the authentication surface in `index.html` and `2-engr/index.html`. Its dark palette is local to login. The workspace continues to use its existing bright default and optional dark mode from `css/global.css` and `css/theme.css`; these login rules do not redefine workspace components.",
+    "keyCharacteristics": [
+      "Full photographic compositions beside a restrained desktop form.",
+      "Gold actions and focus indicators on charcoal login surfaces.",
+      "A static blurred photograph and glass form container on compact screens.",
+      "Existing brand typography with naturally scrolling forms."
+    ],
+    "rules": [
+      {
+        "name": "The Local Palette Rule",
+        "body": "Apply the charcoal login palette only within authentication; preserve the workspace's existing light default and optional dark mode.",
+        "section": "colors"
+      },
+      {
+        "name": "The Compact Glass Rule",
+        "body": "Keep the glass treatment within compact login; the desktop authentication form remains flat.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do scope login colors and component rules to authentication.",
+      "Do retain Fraunces, Public Sans, the MCPA mark and the supplied image watermarks.",
+      "Do keep the complete photograph visible on desktop and a stable photographic background on compact screens.",
+      "Do preserve visible focus, readable fields, reduced motion and natural form scrolling."
+    ],
+    "donts": [
+      "Don't replace the workspace's existing light default or optional dark mode with the login palette.",
+      "Don't extend compact login glass to the desktop form or unrelated workspace surfaces.",
+      "Don't stretch, synthesize detail into or additionally crop the desktop source photographs."
+    ]
+  }
+}

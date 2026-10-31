@@ -1,0 +1,15 @@
+{
+  "jspdf": "4.2.1",
+  "autotable": "5.0.8",
+  "notoRevision": "ffebf8c1ee449e544955a7e813c54f9b73848eac",
+  "sha256": {
+    "jspdf.umd.min.js": "e6551fcdc32f09d6853b2c5126d18d01d9447e0da618a41a11ebeee0f6c20d54",
+    "LICENSE-jspdf.txt": "dc388ec35ff463288cdde3588a36fd4ed12a45deff053243b37309acc9ef583b",
+    "jspdf.plugin.autotable.min.js": "a65dff2c6a8296b16aff24e69f7683cd7dbaed4a4ec26b507d6840ee27d54649",
+    "LICENSE-autotable.txt": "99a374e0385cf714d2faae5f6e02ec79217c6bcecec39bdb9e102091471b960a",
+    "NotoSans-Regular.ttf": "b85c38ecea8a7cfb39c24e395a4007474fa5a4fc864f6ee33309eb4948d232d5",
+    "NotoSans-Bold.ttf": "c976e4b1b99edc88775377fcc21692ca4bfa46b6d6ca6522bfda505b28ff9d6a",
+    "noto-sans.js": "c0a08880cc8b202e720d1132707f083e2530c81c89817bf947f2d40baddbb689",
+    "LICENSE-NotoSans.txt": "0dab92d0544f7b233403f14b84a663bdbfa746982eda629e7f4f9ffe1b036feb"
+  }
+}

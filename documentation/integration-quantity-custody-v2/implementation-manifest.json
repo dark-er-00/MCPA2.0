@@ -1,0 +1,274 @@
+{
+  "date": "2026-10-25",
+  "timezone": "Asia/Manila",
+  "branch": "integration/quantity-custody-v2",
+  "head": "7e1af39e9d3be4d358dc966859bfa065b516b57f",
+  "mergeHead": "efc6b07054d9701c07165c21e0d21389dcdb6ce2",
+  "productionHead": "251940a832a4c69e5402420e71a396feeaf025c5",
+  "originalAHead": "7e1af39e9d3be4d358dc966859bfa065b516b57f",
+  "originalBRemoteRef": "efc6b07054d9701c07165c21e0d21389dcdb6ce2",
+  "stagedOriginalB": 29,
+  "stagedBlobsPreserved": true,
+  "unmergedEntries": 0,
+  "syntaxChecked": 28,
+  "files": [
+    {
+      "path": "1-admin/modules/masterlist/masterlist.js",
+      "sha256": "b80da9decf290bd9784be8964820f82c349447953c60f5e17dddf71ade2f5b69"
+    },
+    {
+      "path": "1-admin/modules/reports/reports.js",
+      "sha256": "17f0be12c73aa2733979616c2363b5e464691004a6ff333abe9f9642307006ed"
+    },
+    {
+      "path": "1-admin/modules/requests/requests.html",
+      "sha256": "b6f973abb9f74fc36a4af352022a1f4eefb29276b5564cf534c6518f85b4eb90"
+    },
+    {
+      "path": "2-engr/index.html",
+      "sha256": "c552fff18dc3b6cd82717214b6d0e8c4a9eb8b71702c5396b4dfb7b987f41dcb"
+    },
+    {
+      "path": "2-engr/modules/requests/requests.html",
+      "sha256": "b6f973abb9f74fc36a4af352022a1f4eefb29276b5564cf534c6518f85b4eb90"
+    },
+    {
+      "path": "2-engr/modules/transfers/transfers.html",
+      "sha256": "f3c7eab7a033e78b63603da4660cf43876fb8a1b69d0e6abe9280faaa7d961a6"
+    },
+    {
+      "path": "index.html",
+      "sha256": "6d9187824b5409a164601360f2a952e5d060ab3739ec89cb22f230209944ad02"
+    },
+    {
+      "path": "js/app.js",
+      "sha256": "509d88f96d28f0190143d0b5be086a4373a47e0705bc93439c5b4e819f3e454f"
+    },
+    {
+      "path": "js/auth.js",
+      "sha256": "0d615b3dd7303b3ed42b79a69bdcbb81c1239cf5855807f3b8ce1d8316a8c08e"
+    },
+    {
+      "path": "js/display.js",
+      "sha256": "c185ff90eec33c0987387a55c291932d4550b4b3af773ad3dfaed85063f0f0f0"
+    },
+    {
+      "path": "js/equipment-import.js",
+      "sha256": "28830f84004b492b6c4510b0e15f7a232059892e0739d623e26c7cf525076dc1"
+    },
+    {
+      "path": "js/equipment-tracking.js",
+      "sha256": "15bcb8c0ed3916046650a24e7979826fb2faffe024c808f9a938c67314eaee46"
+    },
+    {
+      "path": "js/monitoring.js",
+      "sha256": "a7951426bf64016595686770d9a13736df9796cc91045c833bfa63eb4f8b9406"
+    },
+    {
+      "path": "js/movement-ui.js",
+      "sha256": "67904a4c9dbaa2a0f326d0679d9b19fc6ded5d65f3ca6b03b647a282da80d23c"
+    },
+    {
+      "path": "js/navigation.js",
+      "sha256": "1e6c24247408d7bdf0128eb137e6c2858d2b0bcedbcdff3affcc1d82aeff11ba"
+    },
+    {
+      "path": "js/permissions.js",
+      "sha256": "197200019c014649489686cba29936412508f23d952b7942780fa39a95cf6b4f"
+    },
+    {
+      "path": "js/upgrades/custody-lifecycle/api.mjs",
+      "sha256": "b264623dca23d7b6f4e8662ae567692eb31552f20b710783d212cce65162639a"
+    },
+    {
+      "path": "js/upgrades/quantity-requests/view.js",
+      "sha256": "e59224f8a195f93a13fca7740ea5360b44e3943f7f4741cde43073b317b4ee24"
+    },
+    {
+      "path": "tests/auth.browser.cjs",
+      "sha256": "0742a46d75ec221dfc8b8e14d08fb45c2226f24e562ab8722c820afa82517fde"
+    },
+    {
+      "path": "tests/individual-import-expansion-v2/postgres-concurrency.cjs",
+      "sha256": "eb08e32e8922d88bc8ada7622a78a7e97fe132697f818e8ae25c45c8ac698070"
+    },
+    {
+      "path": "tests/package.json",
+      "sha256": "002cbb43efa28788c7b28dff8a817990e5e9360dda261a1ef4b6ce8a03685181"
+    },
+    {
+      "path": "tests/verified-request-inventory.database.test.cjs",
+      "sha256": "65c226390272faa6925d4afb0caeaab8c1d7fc068a88c6aa101702d92c41f868"
+    },
+    {
+      "path": "css/integration.css",
+      "sha256": "589a50c94aff21e415126e822dfbde82898fb1f83c1cde197f03a5e0fd3a6053"
+    },
+    {
+      "path": "documentation/integration-quantity-custody-v2/IMPLEMENTATION-REPORT.md",
+      "sha256": "80b01fb54f753cc478d8762468f527f26b826e00457161c61a84c594081013d3"
+    },
+    {
+      "path": "js/integration.js",
+      "sha256": "1abb875d314d1a6fcdfd3ca43d445b581980fe6c025ffa89b79830d6339b37ce"
+    },
+    {
+      "path": "supabase/migrations/202610250003_quantity_custody_integration.sql",
+      "sha256": "f5866cf68a24861de9c2aa482687b116e639a844a843ea66cff2702ab769ff8c"
+    },
+    {
+      "path": "tests/integration-quantity-custody-v2/browser-checks.cjs",
+      "sha256": "fe03a87a97b66e42dfec83491533244e892488df1fa112d82269f098dd2c878b"
+    },
+    {
+      "path": "tests/integration-quantity-custody-v2/client.test.cjs",
+      "sha256": "d8160ef433f6dcad99f0fc44cfa39333085dfdd6c5d6de6c748cfaecfa18e5a2"
+    },
+    {
+      "path": "tests/integration-quantity-custody-v2/database.test.cjs",
+      "sha256": "ac9fc72fd8b17c273fd70036f796989c57dc0afeab907489d275e0a7331f5cf5"
+    },
+    {
+      "path": "tests/integration-quantity-custody-v2/fixture.cjs",
+      "sha256": "4f3e1d8b2aeb001b6261fea982ff89e60e69743e4ae1a8f647240bcfd5222069"
+    },
+    {
+      "path": "tests/integration-quantity-custody-v2/native-cases.cjs",
+      "sha256": "04acf75e48717906de9dab97c2249af0f533ad2cec8dbc4ff5c3bf64d2c52482"
+    },
+    {
+      "path": "js/upgrades/equipment-retirement/retirement.mjs",
+      "sha256": "f09ec688353625b7bac9fa49ae7dcb02926c77f592910abc0c92762e515b8997"
+    },
+    {
+      "path": "tests/integration-quantity-custody-v2/review-fixes.browser-checks.cjs",
+      "sha256": "d65b45971db48e75df00b3d31dc4333131c9657f38ee02d095486246b4e1e8be"
+    },
+    {
+      "path": "documentation/integration-quantity-custody-v2/FOUR-ISSUE-FIX-REPORT.md",
+      "sha256": "edf0af75c509e97076611a963a497b7298bfc7ce680eeae2c04be5d4f38e3796"
+    },
+    {
+      "path": "js/upgrades/individual-import-expansion/controller.js",
+      "sha256": "5221a513ad770b9885155f8dfeda2635916935bff67fa7ffba738c9d54d8f2d6"
+    },
+    {
+      "path": "tests/individual-import-expansion-v2/controller.test.cjs",
+      "sha256": "6e102f8957770ce67d8905df7dfaa50c57127515b06f75d2be36e0ed08d740d3"
+    },
+    {
+      "path": "tests/integration-quantity-custody-v2/final-races.test.cjs",
+      "sha256": "bbf05a4851b534a7ba138d0c12f5bda8805296cb8652998977cab81652cee138"
+    },
+    {
+      "path": "tests/integration-quantity-custody-v2/final-races.browser-checks.cjs",
+      "sha256": "81f08493647c184fe59cc34978d08c6866888cd768f8221074e083eba4a37190"
+    }
+  ],
+  "followUp": {
+    "report": "documentation/integration-quantity-custody-v2/FOUR-ISSUE-FIX-REPORT.md",
+    "issuesFixed": 4,
+    "focusedClientTests": 6,
+    "focusedBrowserScenarioGroups": 4,
+    "combinedTests": 11,
+    "importTests": 26,
+    "requestTests": 36,
+    "custodyTests": 25,
+    "defaultTests": 69,
+    "movementScenarios": 8,
+    "syntaxFiles": 24,
+    "nativePostgresRerun": false,
+    "liveSupabaseVerified": false,
+    "evidence": [
+      {
+        "path": "documentation/integration-quantity-custody-v2/four-fixes-regressions.log",
+        "sha256": "ca98d9d41805d3dd0d31746c0c133fded6a805ae3d12fabfe782a89fb29cecc4"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/four-fixes-combined-tests.log",
+        "sha256": "8f667984e152233abab17fa0543ca368d8e286f8712ea722f0b577184484a312"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/four-fixes-import-tests.log",
+        "sha256": "0f33625626090d6f1396622e9e2c76660fc56c5439cc70f04711f2ce97d70817"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/four-fixes-request-tests.log",
+        "sha256": "5934918d7a74891d3688bc80e6917b6ee021edd50c4e089f78ac4b1d11f27997"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/four-fixes-custody-tests.log",
+        "sha256": "b199befbcb1e115060443dfdb6200b14c3dc4713209b1db051c4db278e9b0a61"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/four-fixes-default-tests.log",
+        "sha256": "70fd4c8b37311362f45fb0cc1dc675a6bb3a08980844100730961eebd70caab7"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/screenshots/review-rejected-import-desktop.png",
+        "sha256": "bf623a79e944ea8209913b57b5567e6d5adb487bc03681e0a8f1cecca1cf9af9"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/screenshots/review-rejected-import-mobile.png",
+        "sha256": "380e16f1c312082f81654809d48898a1bdc36014a73627a7680dd0a2a67a5990"
+      }
+    ]
+  },
+  "finalRaceFixes": {
+    "report": "documentation/integration-quantity-custody-v2/FOUR-ISSUE-FIX-REPORT.md",
+    "originalDefectsReproduced": 2,
+    "independentReviewStatus": "FAIL findings repaired locally; independent re-review pending",
+    "localStatus": "pass",
+    "focusedTests": 17,
+    "focusedBrowserScenarioGroups": 6,
+    "earlierFocusedTests": 6,
+    "earlierFocusedBrowserScenarioGroups": 4,
+    "combinedTests": 12,
+    "workstreamATests": 68,
+    "workstreamBTests": 25,
+    "defaultTests": 69,
+    "movementScenarios": 8,
+    "syntaxFiles": 28,
+    "liveSupabaseVerified": false,
+    "nativePostgresRerun": false,
+    "crossTabJournalCoordination": false,
+    "evidence": [
+      {
+        "path": "documentation/integration-quantity-custody-v2/final-races-import-before.log",
+        "sha256": "4f6cb71e554a3831b886dff40f0a54f720cccb710b3aa9a444a4ad38dacb9094"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/final-races-refresh-before.log",
+        "sha256": "b84269b3bd776c416ddf8c6283725c5e997f2c52a1b00e643f2c17290dc5f847"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/final-races-after.log",
+        "sha256": "95691fa382f322653af2efbadcb8bcb5555d9fbc89960caf886eff57bc209f71"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/final-races-prior-focused.log",
+        "sha256": "a5ca39c69ba907f79bbcdf6fcb0ddf6016f56efed437e812b2178f145c9d2294"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/final-races-combined.log",
+        "sha256": "f830a519abac8012fa835ea9533e98c630a966736abc3e728268602258da4e49"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/final-races-workstream-a.log",
+        "sha256": "dd61d9c26426449d942bac4df613659c18c6e855a795b3d591e7fb952cc052c6"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/final-races-workstream-b.log",
+        "sha256": "cdc8ea3401893b2236ca0e3896c23df14e0eab56e34b88bcb9f3e890dd9d1b74"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/final-races-default.log",
+        "sha256": "debc1aac0088415b8e7b48a00f6360eb6102638bce475b63dced41914638a2ff"
+      },
+      {
+        "path": "documentation/integration-quantity-custody-v2/final-races-integrity.json",
+        "sha256": "2bc2d4f553c33495a43862b08c3f7f7b3d47e677795ac4ffcd1cbcf326c11e80"
+      }
+    ]
+  }
+}

@@ -1,0 +1,506 @@
+{
+  "date": "2026-10-23",
+  "paper": "A4 portrait",
+  "pageWidth": 827,
+  "pageHeight": 1169,
+  "logicBaseline": "validation/Model.json",
+  "flows": [
+    {
+      "id": "ADMIN_MAIN",
+      "folder": "ADMIN/00_MAIN",
+      "role": "Admin",
+      "title": "Main role flowchart",
+      "pages": 6,
+      "xxCount": 1,
+      "nodes": 62,
+      "edges": 56,
+      "pdf": "A4_REVISED/ADMIN/00_MAIN/ADMIN_MAIN.pdf"
+    },
+    {
+      "id": "ADMIN_AUTHENTICATION",
+      "folder": "ADMIN/01_authentication",
+      "role": "Admin",
+      "title": "Authentication and session",
+      "pages": 12,
+      "xxCount": 14,
+      "nodes": 126,
+      "edges": 114,
+      "pdf": "A4_REVISED/ADMIN/01_authentication/ADMIN_AUTHENTICATION.pdf"
+    },
+    {
+      "id": "ADMIN_MASTERLIST",
+      "folder": "ADMIN/02_masterlist",
+      "role": "Admin",
+      "title": "Tools and Equipment Masterlist",
+      "pages": 14,
+      "xxCount": 9,
+      "nodes": 139,
+      "edges": 125,
+      "pdf": "A4_REVISED/ADMIN/02_masterlist/ADMIN_MASTERLIST.pdf"
+    },
+    {
+      "id": "ADMIN_TOOL_PROFILE",
+      "folder": "ADMIN/03_tool-profile",
+      "role": "Admin",
+      "title": "Tool Profile",
+      "pages": 5,
+      "xxCount": 5,
+      "nodes": 45,
+      "edges": 40,
+      "pdf": "A4_REVISED/ADMIN/03_tool-profile/ADMIN_TOOL_PROFILE.pdf"
+    },
+    {
+      "id": "ADMIN_REQUEST",
+      "folder": "ADMIN/04_request",
+      "role": "Admin",
+      "title": "Tool Requests",
+      "pages": 15,
+      "xxCount": 9,
+      "nodes": 151,
+      "edges": 136,
+      "pdf": "A4_REVISED/ADMIN/04_request/ADMIN_REQUEST.pdf"
+    },
+    {
+      "id": "ADMIN_TRANSFER",
+      "folder": "ADMIN/05_transfer",
+      "role": "Admin",
+      "title": "Equipment Transfers",
+      "pages": 6,
+      "xxCount": 6,
+      "nodes": 61,
+      "edges": 55,
+      "pdf": "A4_REVISED/ADMIN/05_transfer/ADMIN_TRANSFER.pdf"
+    },
+    {
+      "id": "ADMIN_RETURN",
+      "folder": "ADMIN/06_return",
+      "role": "Admin",
+      "title": "Equipment Returns",
+      "pages": 5,
+      "xxCount": 4,
+      "nodes": 48,
+      "edges": 43,
+      "pdf": "A4_REVISED/ADMIN/06_return/ADMIN_RETURN.pdf"
+    },
+    {
+      "id": "ADMIN_REPAIR",
+      "folder": "ADMIN/07_repair",
+      "role": "Admin",
+      "title": "Repair Management",
+      "pages": 10,
+      "xxCount": 6,
+      "nodes": 100,
+      "edges": 90,
+      "pdf": "A4_REVISED/ADMIN/07_repair/ADMIN_REPAIR.pdf"
+    },
+    {
+      "id": "ADMIN_MISSING",
+      "folder": "ADMIN/08_missing",
+      "role": "Admin",
+      "title": "Missing Equipment",
+      "pages": 10,
+      "xxCount": 6,
+      "nodes": 105,
+      "edges": 95,
+      "pdf": "A4_REVISED/ADMIN/08_missing/ADMIN_MISSING.pdf"
+    },
+    {
+      "id": "ADMIN_DASHBOARD",
+      "folder": "ADMIN/09_dashboard",
+      "role": "Admin",
+      "title": "Dashboard / Movement Overview",
+      "pages": 4,
+      "xxCount": 4,
+      "nodes": 39,
+      "edges": 35,
+      "pdf": "A4_REVISED/ADMIN/09_dashboard/ADMIN_DASHBOARD.pdf"
+    },
+    {
+      "id": "ADMIN_SITES",
+      "folder": "ADMIN/10_sites",
+      "role": "Admin",
+      "title": "Projects / Site List",
+      "pages": 5,
+      "xxCount": 2,
+      "nodes": 43,
+      "edges": 38,
+      "pdf": "A4_REVISED/ADMIN/10_sites/ADMIN_SITES.pdf"
+    },
+    {
+      "id": "ADMIN_SITE_DETAIL",
+      "folder": "ADMIN/11_site-detail",
+      "role": "Admin",
+      "title": "Project Details / Accountability and History",
+      "pages": 9,
+      "xxCount": 7,
+      "nodes": 92,
+      "edges": 83,
+      "pdf": "A4_REVISED/ADMIN/11_site-detail/ADMIN_SITE_DETAIL.pdf"
+    },
+    {
+      "id": "ADMIN_CONSUMABLES",
+      "folder": "ADMIN/12_consumables",
+      "role": "Admin",
+      "title": "Material Requests / Consumables Procurement",
+      "pages": 22,
+      "xxCount": 20,
+      "nodes": 216,
+      "edges": 194,
+      "pdf": "A4_REVISED/ADMIN/12_consumables/ADMIN_CONSUMABLES.pdf"
+    },
+    {
+      "id": "ADMIN_PURCHASE",
+      "folder": "ADMIN/13_purchase",
+      "role": "Admin",
+      "title": "Purchases / Recorded Purchase Ledger",
+      "pages": 11,
+      "xxCount": 10,
+      "nodes": 109,
+      "edges": 98,
+      "pdf": "A4_REVISED/ADMIN/13_purchase/ADMIN_PURCHASE.pdf"
+    },
+    {
+      "id": "ADMIN_REPORTS",
+      "folder": "ADMIN/14_reports",
+      "role": "Admin",
+      "title": "Reports / Current and Historical Monitoring",
+      "pages": 9,
+      "xxCount": 6,
+      "nodes": 75,
+      "edges": 66,
+      "pdf": "A4_REVISED/ADMIN/14_reports/ADMIN_REPORTS.pdf"
+    },
+    {
+      "id": "ADMIN_ACTIVITY",
+      "folder": "ADMIN/15_activity",
+      "role": "Admin",
+      "title": "Activity Logs / Saved Movement Audit",
+      "pages": 5,
+      "xxCount": 6,
+      "nodes": 48,
+      "edges": 43,
+      "pdf": "A4_REVISED/ADMIN/15_activity/ADMIN_ACTIVITY.pdf"
+    },
+    {
+      "id": "ADMIN_USERS",
+      "folder": "ADMIN/16_users",
+      "role": "Admin",
+      "title": "People and Accountability / Account Management",
+      "pages": 16,
+      "xxCount": 11,
+      "nodes": 147,
+      "edges": 131,
+      "pdf": "A4_REVISED/ADMIN/16_users/ADMIN_USERS.pdf"
+    },
+    {
+      "id": "ADMIN_SETTINGS",
+      "folder": "ADMIN/17_settings",
+      "role": "Admin",
+      "title": "My Account / Display Preferences and Sign Out",
+      "pages": 3,
+      "xxCount": 3,
+      "nodes": 22,
+      "edges": 19,
+      "pdf": "A4_REVISED/ADMIN/17_settings/ADMIN_SETTINGS.pdf"
+    },
+    {
+      "id": "ADMIN_GLOBAL_SEARCH",
+      "folder": "ADMIN/18_global-search",
+      "role": "Admin",
+      "title": "Global Search / Authorized Record Discovery",
+      "pages": 5,
+      "xxCount": 5,
+      "nodes": 44,
+      "edges": 39,
+      "pdf": "A4_REVISED/ADMIN/18_global-search/ADMIN_GLOBAL_SEARCH.pdf"
+    },
+    {
+      "id": "ADMIN_NOTIFICATIONS",
+      "folder": "ADMIN/19_notifications",
+      "role": "Admin",
+      "title": "Notifications / Own-Recipient Monitoring",
+      "pages": 6,
+      "xxCount": 6,
+      "nodes": 58,
+      "edges": 52,
+      "pdf": "A4_REVISED/ADMIN/19_notifications/ADMIN_NOTIFICATIONS.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_MAIN",
+      "folder": "ENGINEER_ARCHITECT/00_MAIN",
+      "role": "Engineer / Architect",
+      "title": "Main role flowchart",
+      "pages": 5,
+      "xxCount": 1,
+      "nodes": 52,
+      "edges": 47,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/00_MAIN/ENGINEER_ARCHITECT_MAIN.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_AUTHENTICATION",
+      "folder": "ENGINEER_ARCHITECT/01_authentication",
+      "role": "Engineer / Architect",
+      "title": "Authentication and session",
+      "pages": 12,
+      "xxCount": 14,
+      "nodes": 126,
+      "edges": 114,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/01_authentication/ENGINEER_ARCHITECT_AUTHENTICATION.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_MASTERLIST",
+      "folder": "ENGINEER_ARCHITECT/02_masterlist",
+      "role": "Engineer / Architect",
+      "title": "Equipment Tracking / Personal Masterlist",
+      "pages": 4,
+      "xxCount": 2,
+      "nodes": 33,
+      "edges": 29,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/02_masterlist/ENGINEER_ARCHITECT_MASTERLIST.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_TOOL_PROFILE",
+      "folder": "ENGINEER_ARCHITECT/03_tool-profile",
+      "role": "Engineer / Architect",
+      "title": "Tool Profile / Equipment Details",
+      "pages": 3,
+      "xxCount": 1,
+      "nodes": 20,
+      "edges": 17,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/03_tool-profile/ENGINEER_ARCHITECT_TOOL_PROFILE.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_REQUEST",
+      "folder": "ENGINEER_ARCHITECT/04_request",
+      "role": "Engineer / Architect",
+      "title": "Requests",
+      "pages": 18,
+      "xxCount": 8,
+      "nodes": 173,
+      "edges": 155,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/04_request/ENGINEER_ARCHITECT_REQUEST.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_TRANSFER",
+      "folder": "ENGINEER_ARCHITECT/05_transfer",
+      "role": "Engineer / Architect",
+      "title": "Transfers",
+      "pages": 45,
+      "xxCount": 21,
+      "nodes": 484,
+      "edges": 439,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/05_transfer/ENGINEER_ARCHITECT_TRANSFER.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_RETURN",
+      "folder": "ENGINEER_ARCHITECT/06_return",
+      "role": "Engineer / Architect",
+      "title": "Returns to Office",
+      "pages": 18,
+      "xxCount": 7,
+      "nodes": 185,
+      "edges": 167,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/06_return/ENGINEER_ARCHITECT_RETURN.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_REPAIR",
+      "folder": "ENGINEER_ARCHITECT/07_repair",
+      "role": "Engineer / Architect",
+      "title": "Repairs / Damage Reports",
+      "pages": 8,
+      "xxCount": 4,
+      "nodes": 79,
+      "edges": 71,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/07_repair/ENGINEER_ARCHITECT_REPAIR.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_MISSING",
+      "folder": "ENGINEER_ARCHITECT/08_missing",
+      "role": "Engineer / Architect",
+      "title": "Missing Tools",
+      "pages": 9,
+      "xxCount": 4,
+      "nodes": 83,
+      "edges": 74,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/08_missing/ENGINEER_ARCHITECT_MISSING.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_DASHBOARD",
+      "folder": "ENGINEER_ARCHITECT/09_dashboard",
+      "role": "Engineer / Architect",
+      "title": "Dashboard / Movement Overview",
+      "pages": 5,
+      "xxCount": 6,
+      "nodes": 50,
+      "edges": 45,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/09_dashboard/ENGINEER_ARCHITECT_DASHBOARD.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_SITES",
+      "folder": "ENGINEER_ARCHITECT/10_sites",
+      "role": "Engineer / Architect",
+      "title": "Projects / Site List",
+      "pages": 2,
+      "xxCount": 1,
+      "nodes": 19,
+      "edges": 17,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/10_sites/ENGINEER_ARCHITECT_SITES.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_SITE_DETAIL",
+      "folder": "ENGINEER_ARCHITECT/11_site-detail",
+      "role": "Engineer / Architect",
+      "title": "Project Details / Accountability and History",
+      "pages": 5,
+      "xxCount": 4,
+      "nodes": 53,
+      "edges": 48,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/11_site-detail/ENGINEER_ARCHITECT_SITE_DETAIL.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_ACTIVITY",
+      "folder": "ENGINEER_ARCHITECT/12_activity",
+      "role": "Engineer / Architect",
+      "title": "Activity Logs / Saved Movement Audit",
+      "pages": 5,
+      "xxCount": 6,
+      "nodes": 48,
+      "edges": 43,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/12_activity/ENGINEER_ARCHITECT_ACTIVITY.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_SETTINGS",
+      "folder": "ENGINEER_ARCHITECT/13_settings",
+      "role": "Engineer / Architect",
+      "title": "My Account / Display Preferences and Sign Out",
+      "pages": 3,
+      "xxCount": 3,
+      "nodes": 22,
+      "edges": 19,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/13_settings/ENGINEER_ARCHITECT_SETTINGS.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_GLOBAL_SEARCH",
+      "folder": "ENGINEER_ARCHITECT/14_global-search",
+      "role": "Engineer / Architect",
+      "title": "Global Search / Authorized Record Discovery",
+      "pages": 5,
+      "xxCount": 5,
+      "nodes": 44,
+      "edges": 39,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/14_global-search/ENGINEER_ARCHITECT_GLOBAL_SEARCH.pdf"
+    },
+    {
+      "id": "ENGINEER_ARCHITECT_NOTIFICATIONS",
+      "folder": "ENGINEER_ARCHITECT/15_notifications",
+      "role": "Engineer / Architect",
+      "title": "Notifications / Own-Recipient Monitoring",
+      "pages": 6,
+      "xxCount": 6,
+      "nodes": 58,
+      "edges": 52,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/15_notifications/ENGINEER_ARCHITECT_NOTIFICATIONS.pdf"
+    }
+  ],
+  "atlases": [
+    {
+      "id": "SiteTrace_ADMIN_Complete_Atlas",
+      "folder": "ADMIN",
+      "pages": 178,
+      "pdf": "A4_REVISED/ADMIN/SiteTrace_ADMIN_Complete_Atlas.pdf"
+    },
+    {
+      "id": "SiteTrace_ENGINEER_ARCHITECT_Complete_Atlas",
+      "folder": "ENGINEER_ARCHITECT",
+      "pages": 153,
+      "pdf": "A4_REVISED/ENGINEER_ARCHITECT/SiteTrace_ENGINEER_ARCHITECT_Complete_Atlas.pdf"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "ADMIN_MAIN",
+      "source": "C:\\Practice Files\\DOCUMENTATION\\FINAL\\00_Main.drawio",
+      "sha256": "4d28116bb7476182772bb632e05147d5cd8ce0b2058daf92bbef9672052c27ba",
+      "corrections": [
+        {
+          "page": 1,
+          "from": "END",
+          "to": "XX"
+        },
+        {
+          "page": 1,
+          "removedVisualSamples": [
+            "XX"
+          ],
+          "removedRedundantArrows": 1
+        }
+      ]
+    },
+    {
+      "id": "ADMIN_AUTHENTICATION",
+      "source": "C:\\Practice Files\\DOCUMENTATION\\FINAL\\01_Authentication.drawio",
+      "sha256": "c0675dd388e82d8738eb855109d4e3694238e389960af6675799bc39e69dd2b4",
+      "corrections": []
+    },
+    {
+      "id": "ADMIN_MASTERLIST",
+      "source": "C:\\Practice Files\\DOCUMENTATION\\FINAL\\02_Masterlist.drawio",
+      "sha256": "5f11ddec49a68477caa4f8a566b385811ee85f608726b87caa585c6f256322e9",
+      "corrections": [
+        {
+          "page": 7,
+          "from": "AS",
+          "to": "XX"
+        },
+        {
+          "page": 8,
+          "centeredOutgoingCircle": "Co-M2_GDS-Nr0UHrg7fh-208"
+        }
+      ]
+    },
+    {
+      "id": "ADMIN_TOOL_PROFILE",
+      "source": "C:\\Practice Files\\DOCUMENTATION\\FINAL\\03_Tool Profile.drawio",
+      "sha256": "83c91b2925e7745663a0bef52af872c5e4c737a4d8482cef8271222fa934ad50",
+      "corrections": [
+        {
+          "page": 5,
+          "from": "END",
+          "to": "XX"
+        }
+      ]
+    },
+    {
+      "id": "ADMIN_REQUEST",
+      "source": "C:\\Practice Files\\DOCUMENTATION\\FINAL\\04_Request.drawio",
+      "sha256": "48897525e93bde50a2757fff038e4c709a0957b9ea6d14f8242676a53f99c82b",
+      "corrections": [
+        {
+          "page": 6,
+          "removedVisualSamples": [],
+          "removedRedundantArrows": 1
+        }
+      ]
+    },
+    {
+      "id": "ADMIN_TRANSFER",
+      "source": "C:\\Practice Files\\DOCUMENTATION\\FINAL\\05_Transfer.drawio",
+      "sha256": "9060dca359b8b56ea3d2dd804e0e0693e1beceda6351b011a82709bbfd3ad7e4",
+      "corrections": []
+    },
+    {
+      "id": "ADMIN_RETURN",
+      "source": "C:\\Practice Files\\DOCUMENTATION\\FINAL\\06_Returns.drawio",
+      "sha256": "fdee586bf9a959d580657eb588d39107895e493b343087b2a716e5c7cfb93f24",
+      "corrections": []
+    }
+  ],
+  "totals": {
+    "flows": 36,
+    "pages": 331,
+    "nodes": 3259,
+    "edges": 2928,
+    "xx": 233
+  },
+  "passed": true
+}

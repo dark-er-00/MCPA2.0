@@ -1,0 +1,178 @@
+﻿{
+    "passed":  true,
+    "date":  "2026-10-20",
+    "revision":  "071ae16832dba4b58bc09e4572fd044cba9ddfc2",
+    "originalTrackedFilesCompared":  1273,
+    "allOriginalTrackedFilesUnchanged":  true,
+    "changesRestrictedTo":  "SYSTEM_DOCUMENTATION/",
+    "structure":  {
+                      "passed":  true,
+                      "workflows":  14,
+                      "pages":  37,
+                      "nodes":  377,
+                      "decisions":  70,
+                      "arrows":  337,
+                      "onPagePairs":  11,
+                      "offPagePairs":  25,
+                      "checks":  [
+                                     "Correctly labeled two-way decision branches",
+                                     "Reachable from Start and able to reach End",
+                                     "Paired same-page circles and actual cross-page pentagons",
+                                     "Orthogonal forward arrows; retries use explicitly paired connectors",
+                                     "No overlapping shapes, arrow/shape intersections or crossing arrows",
+                                     "All cited source files exist"
+                                 ]
+                  },
+    "renderTextFitPassed":  true,
+    "nativeExportValidation":  [
+                                   {
+                                       "stem":  "01_Authentication_Revised",
+                                       "editablePages":  2,
+                                       "pngPages":  2,
+                                       "pdfPages":  2,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "02_Equipment_Registration_Revised",
+                                       "editablePages":  3,
+                                       "pngPages":  3,
+                                       "pdfPages":  3,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "03_Equipment_Request_Approval_Revised",
+                                       "editablePages":  3,
+                                       "pngPages":  3,
+                                       "pdfPages":  3,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "04_Equipment_Release_Assignment_Revised",
+                                       "editablePages":  2,
+                                       "pngPages":  2,
+                                       "pdfPages":  2,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "05_QR_Equipment_Transfer_Revised",
+                                       "editablePages":  2,
+                                       "pngPages":  2,
+                                       "pdfPages":  2,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "06_Transfer_Receipt_Revised",
+                                       "editablePages":  4,
+                                       "pngPages":  4,
+                                       "pdfPages":  4,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "07_Office_Return_Receiving_Revised",
+                                       "editablePages":  4,
+                                       "pngPages":  4,
+                                       "pdfPages":  4,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "08_Equipment_Repair_Revised",
+                                       "editablePages":  3,
+                                       "pngPages":  3,
+                                       "pdfPages":  3,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "09_Missing_Recovery_Revised",
+                                       "editablePages":  3,
+                                       "pngPages":  3,
+                                       "pdfPages":  3,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "10_Consumables_Procurement_Revised",
+                                       "editablePages":  3,
+                                       "pngPages":  3,
+                                       "pdfPages":  3,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "11_Cancellation_Refusal_Revised",
+                                       "editablePages":  4,
+                                       "pngPages":  4,
+                                       "pdfPages":  4,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "12_Password_Recovery_Setup_Revised",
+                                       "editablePages":  2,
+                                       "pngPages":  2,
+                                       "pdfPages":  2,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "13_Purchase_Ledger_Revised",
+                                       "editablePages":  1,
+                                       "pngPages":  1,
+                                       "pdfPages":  1,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   },
+                                   {
+                                       "stem":  "14_Offline_Demo_Revised",
+                                       "editablePages":  1,
+                                       "pngPages":  1,
+                                       "pdfPages":  1,
+                                       "nativePdfOpened":  true,
+                                       "allPdfPagesRendered":  true,
+                                       "paper":  "A4 portrait",
+                                       "originalsPreserved":  true
+                                   }
+                               ],
+    "applicationFilesModified":  0,
+    "databaseCalls":  0,
+    "productionWrites":  0,
+    "commitsCreated":  0,
+    "deployments":  0,
+    "productionInstallation":  "Not accessed; source-verified workflows, deployment needs verification",
+    "drawio":  "Uncompressed multi-page XML parsed; every editable node label and edge matches the validated model",
+    "png":  "All 37 page images decoded at 2250 x 3270",
+    "pdf":  "All 14 PDFs opened with Windows.Data.Pdf; every page rendered at 1050 px width"
+}

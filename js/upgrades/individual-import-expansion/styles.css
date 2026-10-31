@@ -1,0 +1,27 @@
+/* Optional read-only preview styles; all selectors stay inside the owned mount. */
+.wa-import-preview{--wa-i-text:var(--text-primary,#171914);--wa-i-muted:var(--text-secondary,#60635c);--wa-i-line:var(--border,#ddded7);--wa-i-error:var(--critical,#a72d28);--wa-i-focus:var(--gold-dim,#806400);color:var(--wa-i-text);font:400 .875rem/1.55 var(--font-body,'Public Sans',system-ui,sans-serif);min-width:0;overflow-wrap:anywhere}
+body.dark .wa-import-preview{--wa-i-text:var(--text-primary,#f2f1ea);--wa-i-muted:var(--text-secondary,#aaa9a1);--wa-i-line:var(--border,#2e2e28);--wa-i-error:var(--critical,#ea8279);--wa-i-focus:var(--gold-dim,#d2b74d);color-scheme:dark}
+.wa-import-preview *{box-sizing:border-box}
+.wa-import-preview h3{font-family:inherit;font-size:1.125rem;font-weight:700;line-height:1.4;margin:0 0 8px;letter-spacing:-.015em}
+.wa-import-preview p{max-width:75ch;margin:8px 0 16px}
+.wa-import-preview .wa-import-summary{font-size:1rem;margin-bottom:8px}
+.wa-import-preview .wa-import-counts{display:flex;gap:18px 32px;flex-wrap:wrap;margin:18px 0 22px;font-variant-numeric:tabular-nums}
+.wa-import-preview dt{color:var(--wa-i-muted);font-size:.75rem}
+.wa-import-preview dd{font-weight:700;margin:0}
+.wa-import-preview .wa-import-errors{color:var(--wa-i-error);margin:20px 0}
+.wa-import-preview ul{margin:6px 0 0;padding-left:20px}
+.wa-import-preview li+li{margin-top:4px}
+.wa-import-preview .wa-import-scroll{max-width:100%;overflow:auto;scrollbar-color:var(--wa-i-line) transparent;scrollbar-width:thin;border-block:1px solid var(--wa-i-line)}
+.wa-import-preview .wa-import-scroll:focus-visible{outline:2px solid var(--wa-i-focus);outline-offset:3px}
+.wa-import-preview table{border-collapse:collapse;width:100%;min-width:680px;text-align:left;font-variant-numeric:tabular-nums}
+.wa-import-preview caption{text-align:left;font-weight:600;padding:12px 10px}
+.wa-import-preview th,.wa-import-preview td{padding:12px 10px;vertical-align:top;border-top:1px solid var(--wa-i-line)}
+.wa-import-preview thead th{font-size:.75rem;font-weight:600;color:var(--wa-i-muted)}
+.wa-import-preview tbody th{font-weight:500}
+.wa-import-preview td:nth-child(2){min-width:140px}
+.wa-import-preview td:last-child{min-width:190px;max-width:50ch}
+.wa-import-preview .wa-import-error{color:var(--wa-i-error)}
+.wa-import-preview .wa-import-decision{margin-top:20px;font-weight:600}
+.wa-import-preview .wa-import-limits{color:var(--wa-i-muted);font-size:.75rem;margin-bottom:0}
+.wa-import-preview ::selection{background:var(--brand-subtle,#f7f0d6);color:var(--wa-i-text)}
+@media(max-width:560px){.wa-import-preview .wa-import-counts{gap:12px 24px}.wa-import-preview .wa-import-summary strong{display:inline}}

@@ -1,0 +1,195 @@
+[
+  {
+    "folder": "Use_Case_Diagram",
+    "stem": "Use_Case",
+    "title": "Use case diagram — effective application permissions",
+    "subtitle": "System boundary: SiteTrace / MCPA · all actors authenticate with an active company profile",
+    "width": 1600,
+    "height": 1190,
+    "notes": [
+      "All roles: authenticate/recover password; Settings/theme/logout. Equipment roles: own notices where permitted.",
+      "* Engineer/Architect interruptions require installed cancellation gateway, exact ownership/state and server allowedActions.",
+      "Tool Handler equipment UI is read-only; base DB metadata privileges are broader. Admin is not a named-receiver substitute."
+    ],
+    "nodeCount": 31,
+    "edgeCount": 25
+  },
+  {
+    "folder": "Activity_Workflow_Diagrams",
+    "stem": "01_Authentication",
+    "title": "Authentication and company-profile verification",
+    "subtitle": "Actor is shown in each activity · decisions rechecked server-side · one asset record moves as a whole",
+    "width": 1290,
+    "height": 1130,
+    "notes": [
+      "Invite/recovery callback uses valid session → password setup (minimum 12 characters) → save → sign out.",
+      "Backend identity/RLS independently rechecks active authorization on protected operations."
+    ],
+    "nodeCount": 9,
+    "edgeCount": 8
+  },
+  {
+    "folder": "Activity_Workflow_Diagrams",
+    "stem": "02_Equipment_Registration",
+    "title": "Equipment registration and Office default",
+    "subtitle": "Actor is shown in each activity · decisions rechecked server-side · one asset record moves as a whole",
+    "width": 1290,
+    "height": 1241,
+    "notes": [
+      "No photo selected follows the main path; selected image must be JPEG/PNG/WebP with matching signature.",
+      "Office default is prospective; no historical equipment location correction is part of registration."
+    ],
+    "nodeCount": 10,
+    "edgeCount": 9
+  },
+  {
+    "folder": "Activity_Workflow_Diagrams",
+    "stem": "03_Request_Approval_Release",
+    "title": "Equipment request, approval and release",
+    "subtitle": "Actor is shown in each activity · decisions rechecked server-side · one asset record moves as a whole",
+    "width": 1290,
+    "height": 1241,
+    "notes": [
+      "* Optional cancellation gateway: requester may withdraw Pending or cancel Approved/unreleased with reason.",
+      "Approval reserves; release creates a handover. Physical custody changes only after committed inspection/receipt."
+    ],
+    "nodeCount": 10,
+    "edgeCount": 9
+  },
+  {
+    "folder": "Activity_Workflow_Diagrams",
+    "stem": "04_QR_Transfer_Receiving",
+    "title": "QR transfer and named-receiver confirmation",
+    "subtitle": "Actor is shown in each activity · decisions rechecked server-side · one asset record moves as a whole",
+    "width": 1290,
+    "height": 1241,
+    "notes": [
+      "Receiving QR expires in 15 minutes; token hash stored privately; resolving a QR does not transfer custody.",
+      "* Refused handover keeps equipment/custody and reservation; eligible original field sender reopens/cancels."
+    ],
+    "nodeCount": 10,
+    "edgeCount": 9
+  },
+  {
+    "folder": "Activity_Workflow_Diagrams",
+    "stem": "05_Office_Return",
+    "title": "Office return and inspected receiving",
+    "subtitle": "Actor is shown in each activity · decisions rechecked server-side · one asset record moves as a whole",
+    "width": 1290,
+    "height": 1241,
+    "notes": [
+      "Good/damaged branches represent physically returned records; Office wrapper clears damaged-return holder.",
+      "Missing records do not physically arrive at Office. All outcome branches commit within the same return transaction."
+    ],
+    "nodeCount": 10,
+    "edgeCount": 10
+  },
+  {
+    "folder": "Activity_Workflow_Diagrams",
+    "stem": "06_Repair",
+    "title": "Repair reporting and Admin resolution",
+    "subtitle": "Actor is shown in each activity · decisions rechecked server-side · one asset record moves as a whole",
+    "width": 1290,
+    "height": 1241,
+    "notes": [
+      "Receipt/return/recovery of damaged equipment can create a repair report through linked inspection outcomes.",
+      "No verified preventive schedule, technician/cost ledger or repair-photo work-order form is implied."
+    ],
+    "nodeCount": 10,
+    "edgeCount": 9
+  },
+  {
+    "folder": "Activity_Workflow_Diagrams",
+    "stem": "07_Missing_Recovery",
+    "title": "Missing reporting and recovery",
+    "subtitle": "Actor is shown in each activity · decisions rechecked server-side · one asset record moves as a whole",
+    "width": 1290,
+    "height": 1241,
+    "notes": [
+      "The main path through repair creation applies only to damaged recovery; good recovery skips that activity.",
+      "Physical recovery is recorded by Admin; field users do not receive a recovery action."
+    ],
+    "nodeCount": 10,
+    "edgeCount": 10
+  },
+  {
+    "folder": "Activity_Workflow_Diagrams",
+    "stem": "08_Consumables_Procurement",
+    "title": "Consumable requests, stock receipts and ledger",
+    "subtitle": "Actor is shown in each activity · decisions rechecked server-side · one asset record moves as a whole",
+    "width": 1290,
+    "height": 1241,
+    "notes": [
+      "Purchases ledger is separate: saving it never increments stock. Material requests have no approval stage.",
+      "Non-cancellation path proceeds to optional independent ledger recording; no ledger entry is required to receive stock."
+    ],
+    "nodeCount": 10,
+    "edgeCount": 10
+  },
+  {
+    "folder": "System_Architecture_Diagram",
+    "stem": "System_Architecture",
+    "title": "System architecture and data movement",
+    "subtitle": "Static browser application with managed Supabase services · no custom application server",
+    "width": 1510,
+    "height": 1100,
+    "notes": [
+      "Pages settings, live policies, external scheduler, Auth/email/Storage/Realtime installation: NEEDS VERIFICATION."
+    ],
+    "nodeCount": 10,
+    "edgeCount": 12
+  },
+  {
+    "folder": "Entity_Relationship_Diagram",
+    "stem": "ERD_01_Core",
+    "title": "ERD 1 / 4 — identity, projects and equipment",
+    "subtitle": "Solid: declared FK (parent 1 → child many; labels give nullability) · dashed: association, FK unverified",
+    "width": 1380,
+    "height": 1080,
+    "notes": [
+      "Auth linkage and equipment reservation are at most one per parent; nullable/unique fields are labeled."
+    ],
+    "nodeCount": 6,
+    "edgeCount": 6
+  },
+  {
+    "folder": "Entity_Relationship_Diagram",
+    "stem": "ERD_02_Movements",
+    "title": "ERD 2 / 4 — movements, allocation and interruption audit",
+    "subtitle": "All solid connectors are declared foreign keys · *_id labels identify the child column",
+    "width": 1600,
+    "height": 1280,
+    "notes": [
+      "Cancellation/refusal actor FKs are named in their boxes to keep the view readable; see full FK catalog for every edge."
+    ],
+    "nodeCount": 10,
+    "edgeCount": 12
+  },
+  {
+    "folder": "Entity_Relationship_Diagram",
+    "stem": "ERD_03_Materials",
+    "title": "ERD 3 / 4 — consumable stock and procurement",
+    "subtitle": "Solid: declared foreign key · purchase ledger records never increment consumable stock",
+    "width": 1500,
+    "height": 1080,
+    "notes": [
+      "Receipt and image paths are semantic Storage references, not declared FKs. Stock receipts use request and item row locks."
+    ],
+    "nodeCount": 6,
+    "edgeCount": 7
+  },
+  {
+    "folder": "Entity_Relationship_Diagram",
+    "stem": "ERD_04_Support",
+    "title": "ERD 4 / 4 — account jobs, notifications and receiving context",
+    "subtitle": "Solid parent-to-child connectors: repository-declared FKs · managed Storage schema omitted",
+    "width": 1550,
+    "height": 1160,
+    "notes": [
+      "* Notification entity_id is a semantic text reference without a declared FK. Unique profile FKs are at most one.",
+      "Private return_office configuration is in ERD 1; immutable cancellation/refusal audit is in ERD 2."
+    ],
+    "nodeCount": 8,
+    "edgeCount": 6
+  }
+]

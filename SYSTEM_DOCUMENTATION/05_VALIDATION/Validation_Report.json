@@ -1,0 +1,298 @@
+﻿{
+    "date":  "2026-10-20",
+    "timezone":  "Asia/Manila",
+    "revision":  "a5d51b38108b9e18a8081e44609960f9d81014df",
+    "trackedFilesCompared":  1098,
+    "preExistingTrackedFilesUnchanged":  true,
+    "changesRestrictedTo":  "SYSTEM_DOCUMENTATION/",
+    "packages":  [
+                     {
+                         "file":  "01_FEATURE_INVENTORY/SiteTrace_Feature_Inventory.xlsx",
+                         "bytes":  27875,
+                         "xmlParts":  10,
+                         "relationshipsValid":  true,
+                         "worksheets":  5,
+                         "featureRows":  83,
+                         "columns":  11,
+                         "frozenPane":  "frozen"
+                     },
+                     {
+                         "file":  "03_TECHNICAL_DOCUMENTATION/SiteTrace_Technical_Documentation.docx",
+                         "bytes":  310495,
+                         "xmlParts":  7,
+                         "relationshipsValid":  true,
+                         "embeddedImages":  1,
+                         "wordNativeVisualCheck":  "NEEDS VERIFICATION; OOXML structure and matching PDF rendered"
+                     },
+                     {
+                         "file":  "04_TROUBLESHOOTING/SiteTrace_Troubleshooting_Guide.docx",
+                         "bytes":  18086,
+                         "xmlParts":  7,
+                         "relationshipsValid":  true,
+                         "embeddedImages":  0,
+                         "wordNativeVisualCheck":  "NEEDS VERIFICATION; OOXML structure and matching PDF rendered"
+                     }
+                 ],
+    "diagrams":  [
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication.drawio",
+                         "width":  1935,
+                         "height":  1695,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration.drawio",
+                         "width":  1935,
+                         "height":  1862,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Request_Approval_Release.drawio",
+                         "width":  1935,
+                         "height":  1862,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_QR_Transfer_Receiving.drawio",
+                         "width":  1935,
+                         "height":  1862,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_Office_Return.drawio",
+                         "width":  1935,
+                         "height":  1862,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Repair.drawio",
+                         "width":  1935,
+                         "height":  1862,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Missing_Recovery.drawio",
+                         "width":  1935,
+                         "height":  1862,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Consumables_Procurement.drawio",
+                         "width":  1935,
+                         "height":  1862,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_01_Core.drawio",
+                         "width":  2070,
+                         "height":  1620,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_02_Movements.drawio",
+                         "width":  2400,
+                         "height":  1920,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_03_Materials.drawio",
+                         "width":  2250,
+                         "height":  1620,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_04_Support.drawio",
+                         "width":  2325,
+                         "height":  1740,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/System_Architecture_Diagram/System_Architecture.drawio",
+                         "width":  2265,
+                         "height":  1650,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     },
+                     {
+                         "file":  "02_SYSTEM_DIAGRAMS/Use_Case_Diagram/Use_Case.drawio",
+                         "width":  2400,
+                         "height":  1785,
+                         "editableXml":  true,
+                         "svgXml":  true,
+                         "pngDecoded":  true
+                     }
+                 ],
+    "pdfs":  [
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/01_Authentication.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/02_Equipment_Registration.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/03_Request_Approval_Release.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/04_QR_Transfer_Receiving.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/05_Office_Return.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/06_Repair.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/07_Missing_Recovery.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Activity_Workflow_Diagrams/08_Consumables_Procurement.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_01_Core.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_02_Movements.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_03_Materials.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Entity_Relationship_Diagram/ERD_04_Support.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/System_Architecture_Diagram/System_Architecture.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "02_SYSTEM_DIAGRAMS/Use_Case_Diagram/Use_Case.pdf",
+                     "pages":  1,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1
+                                              ]
+                 },
+                 {
+                     "file":  "03_TECHNICAL_DOCUMENTATION/SiteTrace_Technical_Documentation.pdf",
+                     "pages":  29,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1,
+                                                  2,
+                                                  5,
+                                                  15,
+                                                  29
+                                              ]
+                 },
+                 {
+                     "file":  "04_TROUBLESHOOTING/SiteTrace_Troubleshooting_Guide.pdf",
+                     "pages":  19,
+                     "nativeReaderOpened":  true,
+                     "renderedPreviewPages":  [
+                                                  1,
+                                                  2,
+                                                  5,
+                                                  10,
+                                                  19
+                                              ]
+                 }
+             ],
+    "liveApplicationVerified":  false,
+    "currentDatabaseAccessed":  false,
+    "productionWrites":  0,
+    "deployments":  0,
+    "newLiveScreenshots":  0,
+    "nativeOfficeVisualCheck":  "NEEDS VERIFICATION",
+    "wordAndExcelPackages":  "All XML parts and internal relationships parsed; matching document PDFs rendered",
+    "missingRequestedFormats":  [
+
+                                ]
+}

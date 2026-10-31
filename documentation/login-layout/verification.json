@@ -1,0 +1,1904 @@
+{
+  "environment": "Isolated local Chrome + PGlite fixture; external HTTPS blocked",
+  "date": "2026-10-20",
+  "viewports": [
+    {
+      "width": 375,
+      "height": 812,
+      "overflow": false,
+      "compact": true,
+      "card": {
+        "x": 20,
+        "width": 335,
+        "bottom": 735.828125
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 812,
+        "right": 375
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 812
+      },
+      "photograph": {
+        "width": 608.2926829268292,
+        "height": 812
+      },
+      "controls": {
+        "x": 0,
+        "y": 0,
+        "bottom": 0
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "blur(16px)",
+      "mobileFit": "cover",
+      "glass": "blur(14px)",
+      "firstImage": [
+        {
+          "duration": 15,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 393,
+      "height": 852,
+      "overflow": false,
+      "compact": true,
+      "card": {
+        "x": 20,
+        "width": 353,
+        "bottom": 755.828125
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 393,
+        "height": 852,
+        "right": 393
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 393,
+        "height": 852
+      },
+      "photograph": {
+        "width": 638.2578397212544,
+        "height": 852
+      },
+      "controls": {
+        "x": 0,
+        "y": 0,
+        "bottom": 0
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "blur(16px)",
+      "mobileFit": "cover",
+      "glass": "blur(14px)",
+      "firstImage": [
+        {
+          "duration": 13.299999997019768,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "overflow": false,
+      "compact": true,
+      "card": {
+        "x": 20,
+        "width": 390,
+        "bottom": 795.828125
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 932,
+        "right": 430
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 932
+      },
+      "photograph": {
+        "width": 698.1881533101046,
+        "height": 932
+      },
+      "controls": {
+        "x": 0,
+        "y": 0,
+        "bottom": 0
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "blur(16px)",
+      "mobileFit": "cover",
+      "glass": "blur(14px)",
+      "firstImage": [
+        {
+          "duration": 11.799999997019768,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "compact": true,
+      "card": {
+        "x": 184,
+        "width": 400,
+        "bottom": 841.828125
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 1024,
+        "right": 768
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 1024
+      },
+      "photograph": {
+        "width": 768,
+        "height": 1025.1906976744185
+      },
+      "controls": {
+        "x": 0,
+        "y": 0,
+        "bottom": 0
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "blur(16px)",
+      "mobileFit": "cover",
+      "glass": "blur(14px)",
+      "firstImage": [
+        {
+          "duration": 10.799999997019768,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 900,
+      "height": 900,
+      "overflow": false,
+      "compact": true,
+      "card": {
+        "x": 250,
+        "width": 400,
+        "bottom": 779.828125
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 900,
+        "height": 900,
+        "right": 900
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 900,
+        "height": 900
+      },
+      "photograph": {
+        "width": 900.0000000000001,
+        "height": 1201.3953488372094
+      },
+      "controls": {
+        "x": 0,
+        "y": 0,
+        "bottom": 0
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "blur(16px)",
+      "mobileFit": "cover",
+      "glass": "blur(14px)",
+      "firstImage": [
+        {
+          "duration": 21.400000005960464,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 901,
+      "height": 900,
+      "overflow": false,
+      "compact": true,
+      "card": {
+        "x": 250.5,
+        "width": 400,
+        "bottom": 779.828125
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 901,
+        "height": 900,
+        "right": 901
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 901,
+        "height": 900
+      },
+      "photograph": {
+        "width": 901,
+        "height": 1202.7302325581395
+      },
+      "controls": {
+        "x": 0,
+        "y": 0,
+        "bottom": 0
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "blur(16px)",
+      "mobileFit": "cover",
+      "glass": "blur(14px)",
+      "firstImage": [
+        {
+          "duration": 19.600000008940697,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 1366,
+      "overflow": false,
+      "compact": true,
+      "card": {
+        "x": 312,
+        "width": 400,
+        "bottom": 1012.828125
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 1366,
+        "right": 1024
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 1366
+      },
+      "photograph": {
+        "width": 1024,
+        "height": 1366.920930232558
+      },
+      "controls": {
+        "x": 0,
+        "y": 0,
+        "bottom": 0
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "blur(16px)",
+      "mobileFit": "cover",
+      "glass": "blur(14px)",
+      "firstImage": [
+        {
+          "duration": 18.100000008940697,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "overflow": false,
+      "compact": true,
+      "card": {
+        "x": 312,
+        "width": 400,
+        "bottom": 713.828125
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768,
+        "right": 1024
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "photograph": {
+        "width": 1024,
+        "height": 1366.920930232558
+      },
+      "controls": {
+        "x": 0,
+        "y": 0,
+        "bottom": 0
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "blur(16px)",
+      "mobileFit": "cover",
+      "glass": "blur(14px)",
+      "firstImage": [
+        {
+          "duration": 22.599999994039536,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 1200,
+      "height": 800,
+      "overflow": false,
+      "compact": true,
+      "card": {
+        "x": 400,
+        "width": 400,
+        "bottom": 729.828125
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 800,
+        "right": 1200
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 800
+      },
+      "photograph": {
+        "width": 1200,
+        "height": 1601.860465116279
+      },
+      "controls": {
+        "x": 0,
+        "y": 0,
+        "bottom": 0
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "blur(16px)",
+      "mobileFit": "cover",
+      "glass": "blur(14px)",
+      "firstImage": [
+        {
+          "duration": 15.5,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 1201,
+      "height": 800,
+      "overflow": false,
+      "compact": false,
+      "card": {
+        "x": 720.5,
+        "width": 360,
+        "bottom": 716.421875
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 600,
+        "height": 800,
+        "right": 600
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 600,
+        "height": 800
+      },
+      "photograph": {
+        "width": 600,
+        "height": 800.9302325581396
+      },
+      "controls": {
+        "x": 600,
+        "y": 744,
+        "bottom": 788
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "none",
+      "mobileFit": "fill",
+      "glass": "none",
+      "firstImage": [
+        {
+          "duration": 11.800000011920929,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "overflow": false,
+      "compact": false,
+      "card": {
+        "x": 803.515625,
+        "width": 360,
+        "bottom": 700.421875
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 601.03125,
+        "height": 768,
+        "right": 601.03125
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 601.03125,
+        "height": 768
+      },
+      "photograph": {
+        "width": 601.03125,
+        "height": 802.3068313953488
+      },
+      "controls": {
+        "x": 601.03125,
+        "y": 712,
+        "bottom": 756
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "none",
+      "mobileFit": "fill",
+      "glass": "none",
+      "firstImage": [
+        {
+          "duration": 11.200000002980232,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "compact": false,
+      "card": {
+        "x": 877.5,
+        "width": 360,
+        "bottom": 766.421875
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 675,
+        "height": 900,
+        "right": 675
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 675,
+        "height": 900
+      },
+      "photograph": {
+        "width": 675,
+        "height": 901.046511627907
+      },
+      "controls": {
+        "x": 675,
+        "y": 844,
+        "bottom": 888
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "none",
+      "mobileFit": "fill",
+      "glass": "none",
+      "firstImage": [
+        {
+          "duration": 17,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "compact": false,
+      "card": {
+        "x": 1202.390625,
+        "width": 360,
+        "bottom": 856.421875
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 844.796875,
+        "height": 1080,
+        "right": 844.796875
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 844.796875,
+        "height": 1080
+      },
+      "photograph": {
+        "width": 844.796875,
+        "height": 1127.7055959302324
+      },
+      "controls": {
+        "x": 844.796875,
+        "y": 1024,
+        "bottom": 1068
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "none",
+      "mobileFit": "fill",
+      "glass": "none",
+      "firstImage": [
+        {
+          "duration": 9.599999994039536,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 2560,
+      "height": 1440,
+      "overflow": false,
+      "compact": false,
+      "card": {
+        "x": 1663.1875,
+        "width": 360,
+        "bottom": 1036.421875
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 1126.390625,
+        "height": 1440,
+        "right": 1126.390625
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 1126.390625,
+        "height": 1440
+      },
+      "photograph": {
+        "width": 1126.390625,
+        "height": 1503.60050872093
+      },
+      "controls": {
+        "x": 1126.390625,
+        "y": 1384,
+        "bottom": 1428
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "none",
+      "mobileFit": "fill",
+      "glass": "none",
+      "firstImage": [
+        {
+          "duration": 8.799999997019768,
+          "bytes": 38916
+        }
+      ]
+    },
+    {
+      "width": 2560,
+      "height": 1080,
+      "overflow": false,
+      "compact": false,
+      "card": {
+        "x": 1532,
+        "width": 360,
+        "bottom": 856.421875
+      },
+      "gallery": {
+        "x": 0,
+        "y": 0,
+        "width": 864,
+        "height": 1080,
+        "right": 864
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 864,
+        "height": 1080
+      },
+      "photograph": {
+        "width": 864.0000000000001,
+        "height": 1153.339534883721
+      },
+      "controls": {
+        "x": 864,
+        "y": 1024,
+        "bottom": 1068
+      },
+      "interactive": true,
+      "filters": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "photos": [
+        "cover",
+        "cover"
+      ],
+      "mobileFilter": "none",
+      "mobileFit": "fill",
+      "glass": "none",
+      "firstImage": [
+        {
+          "duration": 13.700000002980232,
+          "bytes": 38916
+        }
+      ]
+    }
+  ],
+  "photographs": [
+    {
+      "capture": "login-1366x768-project-1",
+      "x": 0,
+      "y": 0,
+      "width": 601.03125,
+      "height": 768,
+      "naturalWidth": 430,
+      "naturalHeight": 574,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9572397615813848,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "1",
+      "viewportWidth": 1366,
+      "viewportHeight": 768,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1440x900-project-1",
+      "x": 0,
+      "y": 0,
+      "width": 675,
+      "height": 900,
+      "naturalWidth": 430,
+      "naturalHeight": 574,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9988385598141696,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "1",
+      "viewportWidth": 1440,
+      "viewportHeight": 900,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1440-project-1",
+      "x": 0,
+      "y": 0,
+      "width": 1126.390625,
+      "height": 1440,
+      "naturalWidth": 430,
+      "naturalHeight": 574,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9577011923366312,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "1",
+      "viewportWidth": 2560,
+      "viewportHeight": 1440,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1080-project-1",
+      "x": 0,
+      "y": 0,
+      "width": 864,
+      "height": 1080,
+      "naturalWidth": 430,
+      "naturalHeight": 574,
+      "retainedWidth": 0.9999999999999999,
+      "retainedHeight": 0.936411149825784,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "1",
+      "viewportWidth": 2560,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1920x1080-project-1",
+      "x": 0,
+      "y": 0,
+      "width": 844.796875,
+      "height": 1080,
+      "naturalWidth": 430,
+      "naturalHeight": 574,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9576967640291962,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "1",
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1366x768-project-2",
+      "x": 0,
+      "y": 0,
+      "width": 601.03125,
+      "height": 768,
+      "naturalWidth": 560,
+      "naturalHeight": 747,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9579251858993192,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "2",
+      "viewportWidth": 1366,
+      "viewportHeight": 768,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1440x900-project-2",
+      "x": 0,
+      "y": 0,
+      "width": 675,
+      "height": 900,
+      "naturalWidth": 560,
+      "naturalHeight": 747,
+      "retainedWidth": 1,
+      "retainedHeight": 0.999553770638108,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "2",
+      "viewportWidth": 1440,
+      "viewportHeight": 900,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1440-project-2",
+      "x": 0,
+      "y": 0,
+      "width": 1126.390625,
+      "height": 1440,
+      "naturalWidth": 560,
+      "naturalHeight": 747,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9583869470585806,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "2",
+      "viewportWidth": 2560,
+      "viewportHeight": 1440,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1080-project-2",
+      "x": 0,
+      "y": 0,
+      "width": 864,
+      "height": 1080,
+      "naturalWidth": 560,
+      "naturalHeight": 747,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9370816599732262,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "2",
+      "viewportWidth": 2560,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1920x1080-project-2",
+      "x": 0,
+      "y": 0,
+      "width": 844.796875,
+      "height": 1080,
+      "naturalWidth": 560,
+      "naturalHeight": 747,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9583825155802895,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "2",
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1366x768-project-3",
+      "x": 0,
+      "y": 0,
+      "width": 601.03125,
+      "height": 768,
+      "naturalWidth": 559,
+      "naturalHeight": 745,
+      "retainedWidth": 1,
+      "retainedHeight": 0.958781624284603,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "3",
+      "viewportWidth": 1366,
+      "viewportHeight": 768,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1440x900-project-3",
+      "x": 0,
+      "y": 0,
+      "width": 675,
+      "height": 900,
+      "naturalWidth": 559,
+      "naturalHeight": 745,
+      "retainedWidth": 0.9995527728085867,
+      "retainedHeight": 1,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "3",
+      "viewportWidth": 1440,
+      "viewportHeight": 900,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1440-project-3",
+      "x": 0,
+      "y": 0,
+      "width": 1126.390625,
+      "height": 1440,
+      "naturalWidth": 559,
+      "naturalHeight": 745,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9592437982840191,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "3",
+      "viewportWidth": 2560,
+      "viewportHeight": 1440,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1080-project-3",
+      "x": 0,
+      "y": 0,
+      "width": 864,
+      "height": 1080,
+      "naturalWidth": 559,
+      "naturalHeight": 745,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9379194630872484,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "3",
+      "viewportWidth": 2560,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1920x1080-project-3",
+      "x": 0,
+      "y": 0,
+      "width": 844.796875,
+      "height": 1080,
+      "naturalWidth": 559,
+      "naturalHeight": 745,
+      "retainedWidth": 0.9999999999999999,
+      "retainedHeight": 0.9592393628437398,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "3",
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1366x768-project-4",
+      "x": 0,
+      "y": 0,
+      "width": 601.03125,
+      "height": 768,
+      "naturalWidth": 476,
+      "naturalHeight": 635,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9578497587193272,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "4",
+      "viewportWidth": 1366,
+      "viewportHeight": 768,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1440x900-project-4",
+      "x": 0,
+      "y": 0,
+      "width": 675,
+      "height": 900,
+      "naturalWidth": 476,
+      "naturalHeight": 635,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9994750656167978,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "4",
+      "viewportWidth": 1440,
+      "viewportHeight": 900,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1440-project-4",
+      "x": 0,
+      "y": 0,
+      "width": 1126.390625,
+      "height": 1440,
+      "naturalWidth": 476,
+      "naturalHeight": 635,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9583114835194424,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "4",
+      "viewportWidth": 2560,
+      "viewportHeight": 1440,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1080-project-4",
+      "x": 0,
+      "y": 0,
+      "width": 864,
+      "height": 1080,
+      "naturalWidth": 476,
+      "naturalHeight": 635,
+      "retainedWidth": 1,
+      "retainedHeight": 0.937007874015748,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "4",
+      "viewportWidth": 2560,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1920x1080-project-4",
+      "x": 0,
+      "y": 0,
+      "width": 844.796875,
+      "height": 1080,
+      "naturalWidth": 476,
+      "naturalHeight": 635,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9583070523900865,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "4",
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1366x768-project-5",
+      "x": 0,
+      "y": 0,
+      "width": 601.03125,
+      "height": 768,
+      "naturalWidth": 306,
+      "naturalHeight": 408,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9583528310715957,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "5",
+      "viewportWidth": 1366,
+      "viewportHeight": 768,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1440x900-project-5",
+      "x": 0,
+      "y": 0,
+      "width": 675,
+      "height": 900,
+      "naturalWidth": 306,
+      "naturalHeight": 408,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9999999999999999,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "5",
+      "viewportWidth": 1440,
+      "viewportHeight": 900,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1440-project-5",
+      "x": 0,
+      "y": 0,
+      "width": 1126.390625,
+      "height": 1440,
+      "naturalWidth": 306,
+      "naturalHeight": 408,
+      "retainedWidth": 1,
+      "retainedHeight": 0.958814798374232,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "5",
+      "viewportWidth": 2560,
+      "viewportHeight": 1440,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1080-project-5",
+      "x": 0,
+      "y": 0,
+      "width": 864,
+      "height": 1080,
+      "naturalWidth": 306,
+      "naturalHeight": 408,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9375,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "5",
+      "viewportWidth": 2560,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1920x1080-project-5",
+      "x": 0,
+      "y": 0,
+      "width": 844.796875,
+      "height": 1080,
+      "naturalWidth": 306,
+      "naturalHeight": 408,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9588103649176023,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "5",
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1366x768-project-6",
+      "x": 0,
+      "y": 0,
+      "width": 601.03125,
+      "height": 768,
+      "naturalWidth": 307,
+      "naturalHeight": 409,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9591338847236508,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "6",
+      "viewportWidth": 1366,
+      "viewportHeight": 768,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1440x900-project-6",
+      "x": 0,
+      "y": 0,
+      "width": 675,
+      "height": 900,
+      "naturalWidth": 307,
+      "naturalHeight": 409,
+      "retainedWidth": 0.999185667752443,
+      "retainedHeight": 0.9999999999999999,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "6",
+      "viewportWidth": 1440,
+      "viewportHeight": 900,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1440-project-6",
+      "x": 0,
+      "y": 0,
+      "width": 1126.390625,
+      "height": 1440,
+      "naturalWidth": 307,
+      "naturalHeight": 409,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9595962285277562,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "6",
+      "viewportWidth": 2560,
+      "viewportHeight": 1440,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1080-project-6",
+      "x": 0,
+      "y": 0,
+      "width": 864,
+      "height": 1080,
+      "naturalWidth": 307,
+      "naturalHeight": 409,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9382640586797065,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "6",
+      "viewportWidth": 2560,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1920x1080-project-6",
+      "x": 0,
+      "y": 0,
+      "width": 844.796875,
+      "height": 1080,
+      "naturalWidth": 307,
+      "naturalHeight": 409,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9595917914578773,
+      "position": "50% 0%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "6",
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1366x768-project-7",
+      "x": 0,
+      "y": 0,
+      "width": 601.03125,
+      "height": 768,
+      "naturalWidth": 502,
+      "naturalHeight": 670,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9573992461650567,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "7",
+      "viewportWidth": 1366,
+      "viewportHeight": 768,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1440x900-project-7",
+      "x": 0,
+      "y": 0,
+      "width": 675,
+      "height": 900,
+      "naturalWidth": 502,
+      "naturalHeight": 670,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9990049751243781,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "7",
+      "viewportWidth": 1440,
+      "viewportHeight": 900,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1440-project-7",
+      "x": 0,
+      "y": 0,
+      "width": 1126.390625,
+      "height": 1440,
+      "naturalWidth": 502,
+      "naturalHeight": 670,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9578607537987351,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "7",
+      "viewportWidth": 2560,
+      "viewportHeight": 1440,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1080-project-7",
+      "x": 0,
+      "y": 0,
+      "width": 864,
+      "height": 1080,
+      "naturalWidth": 502,
+      "naturalHeight": 670,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9365671641791045,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "7",
+      "viewportWidth": 2560,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1920x1080-project-7",
+      "x": 0,
+      "y": 0,
+      "width": 844.796875,
+      "height": 1080,
+      "naturalWidth": 502,
+      "naturalHeight": 670,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9578563247535052,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "7",
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1366x768-project-8",
+      "x": 0,
+      "y": 0,
+      "width": 601.03125,
+      "height": 768,
+      "naturalWidth": 335,
+      "naturalHeight": 446,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9597853465141543,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "8",
+      "viewportWidth": 1366,
+      "viewportHeight": 768,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1440x900-project-8",
+      "x": 0,
+      "y": 0,
+      "width": 675,
+      "height": 900,
+      "naturalWidth": 335,
+      "naturalHeight": 446,
+      "retainedWidth": 0.9985074626865671,
+      "retainedHeight": 1,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "8",
+      "viewportWidth": 1440,
+      "viewportHeight": 900,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1440-project-8",
+      "x": 0,
+      "y": 0,
+      "width": 1126.390625,
+      "height": 1440,
+      "naturalWidth": 335,
+      "naturalHeight": 446,
+      "retainedWidth": 1,
+      "retainedHeight": 0.960248004350875,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "8",
+      "viewportWidth": 2560,
+      "viewportHeight": 1440,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1080-project-8",
+      "x": 0,
+      "y": 0,
+      "width": 864,
+      "height": 1080,
+      "naturalWidth": 335,
+      "naturalHeight": 446,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9389013452914797,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "8",
+      "viewportWidth": 2560,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1920x1080-project-8",
+      "x": 0,
+      "y": 0,
+      "width": 844.796875,
+      "height": 1080,
+      "naturalWidth": 335,
+      "naturalHeight": 446,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9602435642672549,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "8",
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1366x768-project-9",
+      "x": 0,
+      "y": 0,
+      "width": 601.03125,
+      "height": 768,
+      "naturalWidth": 498,
+      "naturalHeight": 664,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9583528310715957,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "9",
+      "viewportWidth": 1366,
+      "viewportHeight": 768,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1440x900-project-9",
+      "x": 0,
+      "y": 0,
+      "width": 675,
+      "height": 900,
+      "naturalWidth": 498,
+      "naturalHeight": 664,
+      "retainedWidth": 1,
+      "retainedHeight": 1,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "9",
+      "viewportWidth": 1440,
+      "viewportHeight": 900,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1440-project-9",
+      "x": 0,
+      "y": 0,
+      "width": 1126.390625,
+      "height": 1440,
+      "naturalWidth": 498,
+      "naturalHeight": 664,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9588147983742318,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "9",
+      "viewportWidth": 2560,
+      "viewportHeight": 1440,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-2560x1080-project-9",
+      "x": 0,
+      "y": 0,
+      "width": 864,
+      "height": 1080,
+      "naturalWidth": 498,
+      "naturalHeight": 664,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9375,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "9",
+      "viewportWidth": 2560,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-1920x1080-project-9",
+      "x": 0,
+      "y": 0,
+      "width": 844.796875,
+      "height": 1080,
+      "naturalWidth": 498,
+      "naturalHeight": 664,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9588103649176023,
+      "position": "50% 100%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "9",
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    },
+    {
+      "capture": "login-resumed-settled-slide",
+      "x": 0,
+      "y": 0,
+      "width": 844.796875,
+      "height": 1080,
+      "naturalWidth": 430,
+      "naturalHeight": 574,
+      "retainedWidth": 1,
+      "retainedHeight": 0.9576967640291962,
+      "position": "50% 50%",
+      "fit": "cover",
+      "transform": "none",
+      "project": "1",
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "opacity": "1"
+    }
+  ],
+  "cycle": [
+    {
+      "project": 1,
+      "time": 1792481484029
+    },
+    {
+      "project": 2,
+      "time": 1792481489510
+    },
+    {
+      "project": 3,
+      "time": 1792481495029
+    },
+    {
+      "project": 4,
+      "time": 1792481500576
+    },
+    {
+      "project": 5,
+      "time": 1792481506071
+    },
+    {
+      "project": 6,
+      "time": 1792481511571
+    },
+    {
+      "project": 7,
+      "time": 1792481517062
+    },
+    {
+      "project": 8,
+      "time": 1792481522593
+    },
+    {
+      "project": 9,
+      "time": 1792481528048
+    },
+    {
+      "project": 1,
+      "time": 1792481533602
+    }
+  ],
+  "checks": [
+    "Manual pause freezes both timing and animations; resume advances",
+    "Real browser visibility changes pause and resume the slideshow",
+    "Reduced motion uses a still photo with no animation or automatic slide changes",
+    "First image is visible from HTML even before slideshow JavaScript runs",
+    "Sign in, restored session, password visibility, reset, demo and logout retain correct slideshow lifecycle",
+    "Root, engineer and /MCPA/ GitHub Pages paths load the actual images",
+    "Login appearance stays consistent with either saved application theme",
+    "Mobile background remains static across typing, recovery, login and logout; all form controls remain reachable at 393x420",
+    "Missing WebP falls back to PNG; a missing photo skips without a blank frame",
+    "All images unavailable: readable charcoal fallback and successful sign in"
+  ],
+  "protectedFiles": [
+    {
+      "file": "js/auth.js",
+      "unchanged": true
+    },
+    {
+      "file": "index.html",
+      "unchanged": true
+    },
+    {
+      "file": "2-engr/index.html",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/manifest.json",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-1.png",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-1.webp",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-2.png",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-2.webp",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-3.png",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-3.webp",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-4.png",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-4.webp",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-5.png",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-5.webp",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-6.png",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-6.webp",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-7.png",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-7.webp",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-8.png",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-8.webp",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-9.png",
+      "unchanged": true
+    },
+    {
+      "file": "images/login-slideshow/project-9.webp",
+      "unchanged": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "screenshots/desktop-1366x768.png",
+      "kind": "Full local browser screenshot",
+      "source": "tests/artifacts/login-portfolio/login-1366x768-project-1.png",
+      "sha256": "403007949bb267aaedac91a46d9db43749d366453d197819004fd6ee2132213e"
+    },
+    {
+      "file": "screenshots/desktop-1440x900.png",
+      "kind": "Full local browser screenshot",
+      "source": "tests/artifacts/login-portfolio/login-1440x900-project-1.png",
+      "sha256": "1aad55b9217640b26ca7ce58fc79f75cdbf620eefbc354e7926f904f36018da1"
+    },
+    {
+      "file": "screenshots/desktop-1920x1080.png",
+      "kind": "Full local browser screenshot",
+      "source": "tests/artifacts/login-portfolio/login-1920x1080-project-1.png",
+      "sha256": "29adc66efbd2f60c9dd94aae66a66d3e223514116f88a9de5e3df2c768b4f4b1"
+    },
+    {
+      "file": "screenshots/desktop-2560x1440.png",
+      "kind": "Full local browser screenshot",
+      "source": "tests/artifacts/login-portfolio/login-2560x1440-project-1.png",
+      "sha256": "3b33dba5c5f4cb03efcd772b41ebd7f1f4e92eba65b2437720781d64689920d5"
+    },
+    {
+      "file": "screenshots/desktop-2560x1080-roof.png",
+      "kind": "Full local browser screenshot",
+      "source": "tests/artifacts/login-portfolio/login-2560x1080-project-6.png",
+      "sha256": "5869a85996d18f01bcbba5bec7eb3a86653576e67426d8bb5b705358e3260fc3"
+    },
+    {
+      "file": "screenshots/mobile-393x852.png",
+      "kind": "Full local browser screenshot",
+      "source": "tests/artifacts/login-portfolio/login-393-early.png",
+      "sha256": "dba5d8b34a0dc4a8b4cad96326c43e97b203f6292e3d7ab57236499a323f5979"
+    },
+    {
+      "file": "screenshots/tablet-768x1024.png",
+      "kind": "Full local browser screenshot",
+      "source": "tests/artifacts/login-portfolio/login-768-early.png",
+      "sha256": "1a6231e43e0f3c903251bf08d760a19032d5526cc6aaa2ad6027f41e7fc368db"
+    },
+    {
+      "file": "screenshots/all-nine-1366x768.png",
+      "kind": "Contact sheet of actual gallery screenshots; uniformly reduced for review",
+      "sha256": "a725c3366bb82effa5e7f7fe153631771beacf856fdc1088c3feb9c81cadfaed"
+    },
+    {
+      "file": "screenshots/all-nine-1440x900.png",
+      "kind": "Contact sheet of actual gallery screenshots; uniformly reduced for review",
+      "sha256": "1b89a886f28ff070eeca38689a1f16571df8063b713768385f55e5f21f21c47b"
+    },
+    {
+      "file": "screenshots/all-nine-1920x1080.png",
+      "kind": "Contact sheet of actual gallery screenshots; uniformly reduced for review",
+      "sha256": "55b0f04cf69f8260cb93f97e7486ec33cca9d6341b79478710bbd93dedb5699d"
+    },
+    {
+      "file": "screenshots/all-nine-2560x1440.png",
+      "kind": "Contact sheet of actual gallery screenshots; uniformly reduced for review",
+      "sha256": "6ba2740712c9e4828abf797c66a531e5dd9fb5bc5126c59ea3fc1f0f7444ef95"
+    },
+    {
+      "file": "screenshots/all-nine-2560x1080.png",
+      "kind": "Contact sheet of actual gallery screenshots; uniformly reduced for review",
+      "sha256": "cbb3dde807414c165567a874142de13a9320f11986d3db8a766246634179b42d"
+    }
+  ],
+  "note": "Original full desktop frames remain in ignored tests/artifacts/login-portfolio. Contact sheets crop screenshots to the actual measured gallery, then reduce uniformly; application photos are unchanged.",
+  "regressions": {
+    "slideshow": "PASS",
+    "viewportCombinations": 15,
+    "desktopFrameCombinations": 45,
+    "resumedFrameChecks": 1,
+    "authenticationDatabaseEdge": {
+      "passed": 15,
+      "failed": 0
+    },
+    "authenticationBrowser": "PASS; all five roles, sessions, recovery, invitation, demo and included workspace checks",
+    "javascriptSyntax": "PASS",
+    "gitDiffCheck": "PASS",
+    "layoutDetector": []
+  },
+  "sourceFingerprints": [
+    {
+      "file": "css/login-slideshow.css",
+      "sha256": "de2adb99e37ca74c496d82b53ed2503bcec61678e70ae812dd484844f0c5975c"
+    },
+    {
+      "file": "js/login-slideshow.js",
+      "sha256": "063f72d7ff1adcdb682b863fa6b74ea18c21a7241b3bfad630ffa60b2d909e1e"
+    },
+    {
+      "file": "tests/login-slideshow.browser-checks.cjs",
+      "sha256": "102ac42cfb540ace8cf7f7aa264e52ed318c6616ce52165ea5001fae24605127"
+    }
+  ],
+  "visualReview": "All five nine-photo desktop sheets and full desktop/mobile/tablet views inspected; independent read-only review accepted normal/ultrawide sheets, roof frame and mobile without fixes."
+}

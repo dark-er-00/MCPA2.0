@@ -1,0 +1,10 @@
+{
+  "name": "mcpa-sites-tests",
+  "private": true,
+  "scripts": {
+    "test": "node sites.database.cjs && node sites.browser.cjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8"
+  }
+}

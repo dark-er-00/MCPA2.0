@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "localDocumentsOnly": true,
+  "outboundHttpBlocked": true,
+  "appPagesOpened": 0,
+  "databaseCalls": 0,
+  "pdfPages": 4,
+  "paper": "A3 portrait",
+  "pagePngPixels": [
+    3150,
+    4455
+  ],
+  "overviewPixels": [
+    4800,
+    1890
+  ],
+  "textFitViolations": []
+}

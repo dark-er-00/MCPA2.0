@@ -1,0 +1,2399 @@
+{
+  "width": 960,
+  "height": 540,
+  "font": "Aptos",
+  "palette": {
+    "navy": "142235",
+    "charcoal": "242B33",
+    "white": "FFFFFF",
+    "gray": "F3F5F7",
+    "gold": "C4A15A",
+    "muted": "66717D",
+    "line": "D8DEE5",
+    "darkline": "3A495C"
+  },
+  "slides": [
+    {
+      "title": "MCPA / SiteTrace",
+      "section": "System presentation",
+      "keyMessage": "Centralized equipment, project and inventory operations.",
+      "bg": "142235",
+      "shapes": [
+        {
+          "type": "text",
+          "text": "SYSTEM PRESENTATION",
+          "x": 46,
+          "y": 25,
+          "w": 800,
+          "h": 17,
+          "size": 10.5,
+          "color": "C4A15A",
+          "bold": true,
+          "tracking": 1.5
+        },
+        {
+          "type": "line",
+          "x": 46,
+          "y": 509,
+          "x2": 914,
+          "y2": 509,
+          "color": "3A495C",
+          "width": 0.7,
+          "arrow": false
+        },
+        {
+          "type": "text",
+          "text": "MCPA / SITETRACE",
+          "x": 46,
+          "y": 518,
+          "w": 185,
+          "h": 14,
+          "size": 9.5,
+          "color": "C4CDD7",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Code + isolated application evidence · 24 October 2026",
+          "x": 270,
+          "y": 518,
+          "w": 555,
+          "h": 14,
+          "size": 9.5,
+          "color": "C4CDD7",
+          "bold": false,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "01",
+          "x": 867,
+          "y": 516,
+          "w": 47,
+          "h": 17,
+          "size": 11,
+          "color": "C4A15A",
+          "bold": true,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "MCPA /\nSiteTrace",
+          "x": 46,
+          "y": 95,
+          "w": 650,
+          "h": 150,
+          "size": 58,
+          "color": "FFFFFF",
+          "bold": true
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 269,
+          "w": 64,
+          "h": 4,
+          "fill": "C4A15A",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Construction Equipment Accountability\nand Inventory Management System",
+          "x": 46,
+          "y": 295,
+          "w": 810,
+          "h": 68,
+          "size": 26,
+          "color": "FFFFFF",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "A centralized platform supporting organized equipment,\nproject, and inventory operations.",
+          "x": 46,
+          "y": 387,
+          "w": 800,
+          "h": 50,
+          "size": 19,
+          "color": "C4CDD7",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Equipment",
+          "x": 46,
+          "y": 461,
+          "w": 200,
+          "h": 20,
+          "size": 13.5,
+          "color": "FFFFFF",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Movement",
+          "x": 264,
+          "y": 461,
+          "w": 200,
+          "h": 20,
+          "size": 13.5,
+          "color": "C4A15A",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Projects",
+          "x": 482,
+          "y": 461,
+          "w": 200,
+          "h": 20,
+          "size": 13.5,
+          "color": "FFFFFF",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Consumables",
+          "x": 700,
+          "y": 461,
+          "w": 200,
+          "h": 20,
+          "size": 13.5,
+          "color": "FFFFFF",
+          "bold": false
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\favicon-actual.png",
+          "x": 812,
+          "y": 89,
+          "w": 102,
+          "h": 102
+        }
+      ],
+      "notes": "Introduce MCPA / SiteTrace as the existing construction equipment accountability and inventory application reviewed in this repository. The audience includes management, system evaluators, administrators and field personnel. The central operational question is which equipment exists, where it is assigned, who holds it and which recorded action moved it.\n\nThe implemented architecture is a plain HTML, CSS and JavaScript frontend with Supabase Auth, PostgreSQL functions, row-level policies and optional private Storage. Both portals use shared movement code. This presentation draws on source inspection, fresh isolated database tests and genuine running-application captures. It does not certify a live production installation. All application values and names shown later come from disposable local test records, with Auth and Storage transport modeled by the repository harness. External HTTPS was blocked. No production account, inventory or transaction was used.\n\nUse the four editable labels at the bottom to frame the system. Spend the greatest attention on Movement. The top-right MCPA mark is the actual repository favicon (images/favicon.svg), rasterized unchanged for PowerPoint compatibility. The system title is editable text; no invented logo or construction photograph is used.\n\nEvidence: index.html; 1-admin/index.html; 2-engr/index.html; js/auth.js; js/movement-cloud.js; supabase/migrations/202610040001_authenticated_access.sql. PRODUCT.md and the old movement README contain historical prototype statements, so current executable code takes priority.",
+      "screens": []
+    },
+    {
+      "title": "The Challenge of Equipment Accountability",
+      "section": "Operational need",
+      "keyMessage": "Structured records connect operational questions to recorded actions.",
+      "bg": "FFFFFF",
+      "shapes": [
+        {
+          "type": "text",
+          "text": "OPERATIONAL NEED",
+          "x": 46,
+          "y": 25,
+          "w": 800,
+          "h": 17,
+          "size": 10.5,
+          "color": "C4A15A",
+          "bold": true,
+          "tracking": 1.5
+        },
+        {
+          "type": "text",
+          "text": "The Challenge of Equipment Accountability",
+          "x": 46,
+          "y": 55,
+          "w": 868,
+          "h": 72,
+          "size": 30,
+          "color": "142235",
+          "bold": true,
+          "name": "Slide title"
+        },
+        {
+          "type": "line",
+          "x": 46,
+          "y": 509,
+          "x2": 914,
+          "y2": 509,
+          "color": "D8DEE5",
+          "width": 0.7,
+          "arrow": false
+        },
+        {
+          "type": "text",
+          "text": "MCPA / SITETRACE",
+          "x": 46,
+          "y": 518,
+          "w": 185,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Code + isolated application evidence · 24 October 2026",
+          "x": 270,
+          "y": 518,
+          "w": 555,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": false,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "02",
+          "x": 867,
+          "y": 516,
+          "w": 47,
+          "h": 17,
+          "size": 11,
+          "color": "142235",
+          "bold": true,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "OPERATIONAL CHALLENGE",
+          "x": 46,
+          "y": 139,
+          "w": 249,
+          "h": 20,
+          "size": 11,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "IMPLEMENTED CAPABILITY",
+          "x": 336,
+          "y": 139,
+          "w": 300,
+          "h": 20,
+          "size": 11,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "SUPPORTED VALUE",
+          "x": 665,
+          "y": 139,
+          "w": 249,
+          "h": 20,
+          "size": 11,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 174,
+          "w": 868,
+          "h": 49,
+          "fill": "F3F5F7",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Fragmented equipment records",
+          "x": 54,
+          "y": 185,
+          "w": 241,
+          "h": 32,
+          "size": 15,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Shared equipment inventory",
+          "x": 344,
+          "y": 185,
+          "w": 298,
+          "h": 32,
+          "size": 15,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "One reference for asset information",
+          "x": 673,
+          "y": 185,
+          "w": 241,
+          "h": 32,
+          "size": 15,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 231,
+          "w": 868,
+          "h": 49,
+          "fill": "FFFFFF",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Unclear responsibility",
+          "x": 54,
+          "y": 242,
+          "w": 241,
+          "h": 32,
+          "size": 15,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Named holder + inspected receipt",
+          "x": 344,
+          "y": 242,
+          "w": 298,
+          "h": 32,
+          "size": 15,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Visible recorded custody",
+          "x": 673,
+          "y": 242,
+          "w": 241,
+          "h": 32,
+          "size": 15,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 288,
+          "w": 868,
+          "h": 49,
+          "fill": "F3F5F7",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Hard-to-trace movements",
+          "x": 54,
+          "y": 299,
+          "w": 241,
+          "h": 32,
+          "size": 15,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Linked requests, transfers and activity",
+          "x": 344,
+          "y": 299,
+          "w": 298,
+          "h": 32,
+          "size": 15,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Reviewable movement sequence",
+          "x": 673,
+          "y": 299,
+          "w": 241,
+          "h": 32,
+          "size": 15,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 345,
+          "w": 868,
+          "h": 49,
+          "fill": "FFFFFF",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Limited project visibility",
+          "x": 54,
+          "y": 356,
+          "w": 241,
+          "h": 32,
+          "size": 15,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Equipment linked to project records",
+          "x": 344,
+          "y": 356,
+          "w": 298,
+          "h": 32,
+          "size": 15,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Visible deployment context",
+          "x": 673,
+          "y": 356,
+          "w": 241,
+          "h": 32,
+          "size": 15,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 402,
+          "w": 868,
+          "h": 49,
+          "fill": "F3F5F7",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Consumable stock uncertainty",
+          "x": 54,
+          "y": 413,
+          "w": 241,
+          "h": 32,
+          "size": 15,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "SKU balances + low-stock thresholds",
+          "x": 344,
+          "y": 413,
+          "w": 298,
+          "h": 32,
+          "size": 15,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Structured stock review",
+          "x": 673,
+          "y": 413,
+          "w": 241,
+          "h": 32,
+          "size": 15,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "These are supported capabilities. Time savings, cost reductions and business impact have not been measured.",
+          "x": 46,
+          "y": 476,
+          "w": 868,
+          "h": 20,
+          "size": 11.5,
+          "color": "66717D",
+          "bold": false
+        }
+      ],
+      "notes": "Describe these as common operational questions in construction, rather than claiming an observed failure at a specific company. Walk across each row from a question to an implemented capability and then its practical use. The application maintains shared equipment records, profile/project references, movement records and consumable balances. The benefits are supported ways of working, not quantified outcomes.\n\nFor custody, emphasize that a pending handover is different from confirmed receipt. The named Engineer or Architect must record an inspection and physical-test confirmation. The same stored movement records feed the equipment detail and activity views. Project links provide recorded deployment visibility; they do not supply GPS or automatically establish physical location. Consumable thresholds produce low-stock labels from the saved balance and minimum.\n\nThe capability mapping is backed by the current frontend, movement SQL, project modules and consumable modules, with local execution evidence. Do not infer financial savings, productivity gains, reduced losses or complete coverage of historical records. No before/after business measurements were available.\n\nPresenter action: trace the unclear-responsibility row, then preview the custody-change point on Slide 5. Evidence: js/movement-ui.js; js/movement-overview.js; 1-admin/modules/movements/setup.sql; 1-admin/modules/sites/sites.js; 1-admin/modules/consumables/consumables.js; evidence/demonstration-transaction.json.",
+      "screens": []
+    },
+    {
+      "title": "Centralized Operational Visibility",
+      "section": "Dashboard & access",
+      "keyMessage": "A shared operational view is scoped by the signed-in role.",
+      "bg": "FFFFFF",
+      "shapes": [
+        {
+          "type": "text",
+          "text": "DASHBOARD & ACCESS",
+          "x": 46,
+          "y": 25,
+          "w": 800,
+          "h": 17,
+          "size": 10.5,
+          "color": "C4A15A",
+          "bold": true,
+          "tracking": 1.5
+        },
+        {
+          "type": "text",
+          "text": "Centralized Operational Visibility",
+          "x": 46,
+          "y": 55,
+          "w": 868,
+          "h": 72,
+          "size": 30,
+          "color": "142235",
+          "bold": true,
+          "name": "Slide title"
+        },
+        {
+          "type": "line",
+          "x": 46,
+          "y": 509,
+          "x2": 914,
+          "y2": 509,
+          "color": "D8DEE5",
+          "width": 0.7,
+          "arrow": false
+        },
+        {
+          "type": "text",
+          "text": "MCPA / SITETRACE",
+          "x": 46,
+          "y": 518,
+          "w": 185,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Code + isolated application evidence · 24 October 2026",
+          "x": 270,
+          "y": 518,
+          "w": 555,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": false,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "03",
+          "x": 867,
+          "y": 516,
+          "w": 47,
+          "h": 17,
+          "size": 11,
+          "color": "142235",
+          "bold": true,
+          "align": "right"
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 142,
+          "w": 601,
+          "h": 321,
+          "fill": "F3F5F7",
+          "stroke": null
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\dashboard-focus.png",
+          "x": 52,
+          "y": 148,
+          "w": 589,
+          "h": 308
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 119,
+          "w": 181,
+          "h": 22,
+          "fill": "F3F5F7",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Inventory & availability",
+          "x": 54,
+          "y": 123,
+          "w": 165,
+          "h": 15,
+          "size": 10.5,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "rect",
+          "x": 241,
+          "y": 119,
+          "w": 155,
+          "h": 22,
+          "fill": "F3F5F7",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Project allocation",
+          "x": 249,
+          "y": 123,
+          "w": 139,
+          "h": 15,
+          "size": 10.5,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "rect",
+          "x": 410,
+          "y": 119,
+          "w": 135,
+          "h": 22,
+          "fill": "F3F5F7",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Review queues",
+          "x": 418,
+          "y": 123,
+          "w": 119,
+          "h": 15,
+          "size": 10.5,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Admin",
+          "x": 676,
+          "y": 141,
+          "w": 238,
+          "h": 24,
+          "size": 16.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Company overview; request review\nand equipment release.",
+          "x": 676,
+          "y": 169,
+          "w": 238,
+          "h": 42,
+          "size": 14.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Engineer · Architect",
+          "x": 676,
+          "y": 224,
+          "w": 238,
+          "h": 24,
+          "size": 16.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Own custody and assigned projects;\nrequests, transfers and receipt.",
+          "x": 676,
+          "y": 252,
+          "w": 238,
+          "h": 42,
+          "size": 14.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Tool Handler",
+          "x": 676,
+          "y": 307,
+          "w": 238,
+          "h": 24,
+          "size": 16.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Inventory monitoring; dispatch\nof available, unheld equipment.",
+          "x": 676,
+          "y": 335,
+          "w": 238,
+          "h": 42,
+          "size": 14.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Secretary",
+          "x": 676,
+          "y": 390,
+          "w": 238,
+          "h": 24,
+          "size": 16.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Consumables and purchasing;\nequipment routes are restricted.",
+          "x": 676,
+          "y": 418,
+          "w": 238,
+          "h": 42,
+          "size": 14.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "ACTUAL APPLICATION · LOCAL TEST ENVIRONMENT · SYNTHETIC DATA",
+          "x": 46,
+          "y": 482,
+          "w": 868,
+          "h": 16,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        }
+      ],
+      "notes": "Reference the actual Admin Movement overview on the left. Its saved-record summaries include total equipment quantity, available equipment, deployed equipment, active projects and low-stock consumables. Review queues include tool requests, transfers in progress, repair cases and missing cases. The charts shown are genuine application components using synthetic fixture values. They are not production metrics or invented presentation graphics.\n\nExplain the five roles exactly as found in permissions.js and the authenticated migrations: Admin, Engineer, Architect, Secretary and Tool Handler. Engineer and Architect share operational permissions, but remain separate roles. Admin reviews and releases requests and resolves repairs/recovery. Field users request equipment for assigned active projects and receive only a handover naming their stable profile ID. The Tool Handler monitors company equipment and can dispatch eligible unheld stock; the current holder must transfer equipment already in custody. Secretary navigation is limited to consumables, purchases and settings.\n\nUI route checks mirror the database; they are not the only access control. Current SQL resolves the actor from the authenticated profile and tests cover unauthorized actions and row scope. Older prototype documentation is superseded for this description. These protections were verified locally with modeled Auth transport; deployed Auth configuration and all live policy fingerprints were not inspected.\n\nPresenter action: point to summary cards, project allocation and review queues, then compare the four role groups on the right. Screenshot: evidence/dashboard.png, cropped without altering content. Evidence: js/permissions.js; js/auth.js; 202610040001_authenticated_access.sql; 202610100001_engineer_portal.sql; tests/auth-database.test.cjs.",
+      "screens": [
+        "dashboard.png"
+      ]
+    },
+    {
+      "title": "Knowing What Equipment Exists and Who Is Responsible",
+      "section": "Equipment accountability",
+      "keyMessage": "Asset identity, current holder and project are visible together.",
+      "bg": "FFFFFF",
+      "shapes": [
+        {
+          "type": "text",
+          "text": "EQUIPMENT ACCOUNTABILITY",
+          "x": 46,
+          "y": 25,
+          "w": 800,
+          "h": 17,
+          "size": 10.5,
+          "color": "C4A15A",
+          "bold": true,
+          "tracking": 1.5
+        },
+        {
+          "type": "text",
+          "text": "Knowing What Equipment Exists and Who Is Responsible",
+          "x": 46,
+          "y": 55,
+          "w": 868,
+          "h": 72,
+          "size": 30,
+          "color": "142235",
+          "bold": true,
+          "name": "Slide title"
+        },
+        {
+          "type": "line",
+          "x": 46,
+          "y": 509,
+          "x2": 914,
+          "y2": 509,
+          "color": "D8DEE5",
+          "width": 0.7,
+          "arrow": false
+        },
+        {
+          "type": "text",
+          "text": "MCPA / SITETRACE",
+          "x": 46,
+          "y": 518,
+          "w": 185,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Code + isolated application evidence · 24 October 2026",
+          "x": 270,
+          "y": 518,
+          "w": 555,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": false,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "04",
+          "x": 867,
+          "y": 516,
+          "w": 47,
+          "h": 17,
+          "size": 11,
+          "color": "142235",
+          "bold": true,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "EQUIPMENT REGISTER",
+          "x": 46,
+          "y": 132,
+          "w": 500,
+          "h": 19,
+          "size": 11,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "RECORDED CUSTODY",
+          "x": 643,
+          "y": 132,
+          "w": 271,
+          "h": 19,
+          "size": 11,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 157,
+          "w": 562,
+          "h": 306,
+          "fill": "F3F5F7",
+          "stroke": null
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\equipment-focus.png",
+          "x": 52,
+          "y": 163,
+          "w": 550,
+          "h": 299
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\custody-focus.png",
+          "x": 643,
+          "y": 157,
+          "w": 271,
+          "h": 114
+        },
+        {
+          "type": "text",
+          "text": "Identify the asset",
+          "x": 643,
+          "y": 291,
+          "w": 271,
+          "h": 24,
+          "size": 16.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Asset ID, name and registration\nspecifications.",
+          "x": 643,
+          "y": 319,
+          "w": 271,
+          "h": 42,
+          "size": 14.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Review responsibility",
+          "x": 643,
+          "y": 378,
+          "w": 271,
+          "h": 24,
+          "size": 16.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Saved holder and project;\nstatus and request availability.",
+          "x": 643,
+          "y": 406,
+          "w": 271,
+          "h": 42,
+          "size": 14.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "ACTUAL APPLICATION · LOCAL TEST ENVIRONMENT · SYNTHETIC DATA",
+          "x": 46,
+          "y": 482,
+          "w": 868,
+          "h": 16,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        }
+      ],
+      "notes": "The left screenshot is the Admin Equipment Tracking register. It includes asset identity, quantity, project, holder, recorded status and new-request availability. The right screenshot is the top of the same demonstration equipment's detail after a completed local receipt. Point to DEMO-EQ-001, Demo Engineer and Demonstration Project A. These values were written by the tested receipt, not manually painted onto a screen.\n\nRegistration supports identifiers and descriptive fields including category, brand, model, serial number, tracking type, unit, quantity and recorded condition. The equipment page has add/edit behavior, and local tests cover the configured Office default for new records. Office configuration must be installed and verified in the target environment.\n\nSeparate three concepts: registration condition metadata, operational status and request eligibility. Movement receipts save per-item inspection outcomes and update operational status/custody. The movement routine does not prove that the free-text equipment.condition field is continuously synchronized with every inspection. Do not call it a live condition sensor or automatically maintained physical condition. Project/site is a recorded database association; it is not GPS.\n\nReservations and in-use status can prevent a new request even if a viewer sees the item in an inventory list. The current holder must transfer or return a held asset. Movement history is retained under the authorized detail view; the full after-receipt history appears on Slide 9.\n\nTwo fresh legacy availability-installation tests failed because the migration guard rejected the legacy-scoped-reader and v1-metadata lifecycle fingerprints. Other modern request/custody cases and the displayed transaction passed. Legacy installation compatibility therefore remains unresolved; do not claim every upgrade path works.\n\nPresenter action: point first to asset identity, then current holder/project, then availability. Evidence: js/equipment-tracking.js; 1-admin/modules/masterlist/masterlist.js; js/movement-ui.js; 202610120004_equipment_office_default.sql; 202610150001_inventory_availability.sql; 202610200001_verified_request_inventory.sql; evidence/demonstration-transaction.json.",
+      "screens": [
+        "equipment-list.png",
+        "received-detail.png"
+      ]
+    },
+    {
+      "title": "From Equipment Request to Accountable Handover",
+      "section": "Core workflow",
+      "keyMessage": "Custody changes on tested receipt, after approval and release.",
+      "bg": "142235",
+      "shapes": [
+        {
+          "type": "text",
+          "text": "CORE WORKFLOW",
+          "x": 46,
+          "y": 25,
+          "w": 800,
+          "h": 17,
+          "size": 10.5,
+          "color": "C4A15A",
+          "bold": true,
+          "tracking": 1.5
+        },
+        {
+          "type": "text",
+          "text": "From Equipment Request to Accountable Handover",
+          "x": 46,
+          "y": 55,
+          "w": 868,
+          "h": 72,
+          "size": 30,
+          "color": "FFFFFF",
+          "bold": true,
+          "name": "Slide title"
+        },
+        {
+          "type": "line",
+          "x": 46,
+          "y": 509,
+          "x2": 914,
+          "y2": 509,
+          "color": "3A495C",
+          "width": 0.7,
+          "arrow": false
+        },
+        {
+          "type": "text",
+          "text": "MCPA / SITETRACE",
+          "x": 46,
+          "y": 518,
+          "w": 185,
+          "h": 14,
+          "size": 9.5,
+          "color": "C4CDD7",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Code + isolated application evidence · 24 October 2026",
+          "x": 270,
+          "y": 518,
+          "w": 555,
+          "h": 14,
+          "size": 9.5,
+          "color": "C4CDD7",
+          "bold": false,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "05",
+          "x": 867,
+          "y": 516,
+          "w": 47,
+          "h": 17,
+          "size": 11,
+          "color": "C4A15A",
+          "bold": true,
+          "align": "right"
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 143,
+          "w": 202,
+          "h": 210,
+          "fill": "3A495C",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "01",
+          "x": 60,
+          "y": 154,
+          "w": 170,
+          "h": 24,
+          "size": 19,
+          "color": "C4A15A",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "REQUEST",
+          "x": 60,
+          "y": 185,
+          "w": 178,
+          "h": 23,
+          "size": 18,
+          "color": "FFFFFF",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Engineer / Architect",
+          "x": 60,
+          "y": 217,
+          "w": 177,
+          "h": 32,
+          "size": 12.5,
+          "color": "D5DCE5",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "request: pending",
+          "x": 60,
+          "y": 255,
+          "w": 177,
+          "h": 37,
+          "size": 12.5,
+          "color": "C4A15A",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Select eligible equipment\nand an assigned project.\nCustody stays unchanged.",
+          "x": 60,
+          "y": 300,
+          "w": 177,
+          "h": 48,
+          "size": 12,
+          "color": "FFFFFF",
+          "bold": false
+        },
+        {
+          "type": "line",
+          "x": 251,
+          "y": 247,
+          "x2": 264,
+          "y2": 247,
+          "color": "C4A15A",
+          "width": 1.5,
+          "arrow": true
+        },
+        {
+          "type": "rect",
+          "x": 268,
+          "y": 143,
+          "w": 202,
+          "h": 210,
+          "fill": "3A495C",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "02",
+          "x": 282,
+          "y": 154,
+          "w": 170,
+          "h": 24,
+          "size": 19,
+          "color": "C4A15A",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "REVIEW",
+          "x": 282,
+          "y": 185,
+          "w": 178,
+          "h": 23,
+          "size": 18,
+          "color": "FFFFFF",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Admin",
+          "x": 282,
+          "y": 217,
+          "w": 177,
+          "h": 32,
+          "size": 12.5,
+          "color": "D5DCE5",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "request: approved",
+          "x": 282,
+          "y": 255,
+          "w": 177,
+          "h": 37,
+          "size": 12.5,
+          "color": "C4A15A",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Approve to reserve tools.\nReject with a recorded reason.\nRejected requests stop here.",
+          "x": 282,
+          "y": 300,
+          "w": 177,
+          "h": 48,
+          "size": 12,
+          "color": "FFFFFF",
+          "bold": false
+        },
+        {
+          "type": "line",
+          "x": 473,
+          "y": 247,
+          "x2": 486,
+          "y2": 247,
+          "color": "C4A15A",
+          "width": 1.5,
+          "arrow": true
+        },
+        {
+          "type": "rect",
+          "x": 490,
+          "y": 143,
+          "w": 202,
+          "h": 210,
+          "fill": "3A495C",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "03",
+          "x": 504,
+          "y": 154,
+          "w": 170,
+          "h": 24,
+          "size": 19,
+          "color": "C4A15A",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "RELEASE",
+          "x": 504,
+          "y": 185,
+          "w": 178,
+          "h": 23,
+          "size": 18,
+          "color": "FFFFFF",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Admin",
+          "x": 504,
+          "y": 217,
+          "w": 177,
+          "h": 32,
+          "size": 12.5,
+          "color": "D5DCE5",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "request: released\ntransfer: pending",
+          "x": 504,
+          "y": 255,
+          "w": 177,
+          "h": 37,
+          "size": 12.5,
+          "color": "C4A15A",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Create the named handover\nand retain a source snapshot.\nCustody stays unchanged.",
+          "x": 504,
+          "y": 300,
+          "w": 177,
+          "h": 48,
+          "size": 12,
+          "color": "FFFFFF",
+          "bold": false
+        },
+        {
+          "type": "line",
+          "x": 695,
+          "y": 247,
+          "x2": 708,
+          "y2": 247,
+          "color": "C4A15A",
+          "width": 1.5,
+          "arrow": true
+        },
+        {
+          "type": "rect",
+          "x": 712,
+          "y": 143,
+          "w": 202,
+          "h": 210,
+          "fill": "C4A15A",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "04",
+          "x": 726,
+          "y": 154,
+          "w": 170,
+          "h": 24,
+          "size": 19,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "INSPECT + RECEIVE",
+          "x": 726,
+          "y": 185,
+          "w": 178,
+          "h": 23,
+          "size": 14.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Named Engineer / Architect",
+          "x": 726,
+          "y": 217,
+          "w": 177,
+          "h": 32,
+          "size": 12.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "request + transfer: received",
+          "x": 726,
+          "y": 255,
+          "w": 177,
+          "h": 37,
+          "size": 12.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Record every item’s condition\nand confirm physical testing.\nAccepted items change custody.",
+          "x": 726,
+          "y": 300,
+          "w": 177,
+          "h": 48,
+          "size": 12,
+          "color": "142235",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "CUSTODY CHANGES HERE",
+          "x": 710,
+          "y": 121,
+          "w": 202,
+          "h": 18,
+          "size": 10.5,
+          "color": "C4A15A",
+          "bold": true
+        },
+        {
+          "type": "line",
+          "x": 812,
+          "y": 356,
+          "x2": 812,
+          "y2": 369,
+          "color": "C4A15A",
+          "width": 1.4,
+          "arrow": false
+        },
+        {
+          "type": "line",
+          "x": 257,
+          "y": 369,
+          "x2": 812,
+          "y2": 369,
+          "color": "C4A15A",
+          "width": 1.4,
+          "arrow": false
+        },
+        {
+          "type": "line",
+          "x": 257,
+          "y": 369,
+          "x2": 257,
+          "y2": 379,
+          "color": "C4A15A",
+          "width": 1.4,
+          "arrow": true
+        },
+        {
+          "type": "line",
+          "x": 812,
+          "y": 369,
+          "x2": 812,
+          "y2": 379,
+          "color": "C4A15A",
+          "width": 1.4,
+          "arrow": true
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 382,
+          "w": 422,
+          "h": 77,
+          "fill": "3A495C",
+          "stroke": null
+        },
+        {
+          "type": "rect",
+          "x": 490,
+          "y": 382,
+          "w": 424,
+          "h": 77,
+          "fill": "3A495C",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "TRANSFER TO ANOTHER PROJECT",
+          "x": 60,
+          "y": 394,
+          "w": 392,
+          "h": 22,
+          "size": 13.5,
+          "color": "FFFFFF",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Engineer / Architect sends → named receiver inspects.",
+          "x": 60,
+          "y": 423,
+          "w": 392,
+          "h": 23,
+          "size": 12.5,
+          "color": "D5DCE5",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "RETURN TO CONFIGURED OFFICE",
+          "x": 504,
+          "y": 394,
+          "w": 392,
+          "h": 22,
+          "size": 13.5,
+          "color": "FFFFFF",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Engineer / Architect; good / damaged clear custody.",
+          "x": 504,
+          "y": 423,
+          "w": 392,
+          "h": 23,
+          "size": 12.5,
+          "color": "D5DCE5",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Exceptions: accepted damage → repair case; missing item → prior holder and last recorded site retained.",
+          "x": 46,
+          "y": 479,
+          "w": 868,
+          "h": 19,
+          "size": 11.5,
+          "color": "D5DCE5",
+          "bold": false
+        }
+      ],
+      "notes": "This is the primary workflow slide. Allow about three minutes. All stage boxes and connectors are editable PowerPoint shapes. They represent the implemented authenticated workflow, verified in disposable local PostgreSQL and through a running UI transaction. They are not proof that the same migrations are installed in production.\n\n1. REQUEST — The signed-in Engineer or Architect selects one or more eligible whole equipment records and an active project assigned to that profile. Purpose is optional under migration 202610120003; a supplied purpose is bounded. Needed-until is optional and must be a valid nonpast Manila date when provided. Request creation saves the requester, named receiver profile ID, asset IDs, destination, purpose, due date and timestamps in a mcpa_movements request record, with linked asset/site references. The status is pending. No equipment custody is changed. Eligibility is checked server-side; a visible asset button alone does not prove it can be requested.\n\n2. REVIEW — Only Admin can approve or reject. Approval requires a pending request and eligible unassigned stock. It changes request status to approved and inserts mcpa_movement_reservations, preventing competing allocations. It does not set current_holder_id or site_id. Rejection changes status to rejected and requires a recorded reason. The reviewed actor and timestamp are retained. A requester's own withdrawal/cancellation controls are separate branches supported by migration 202610100004; they are not additional approval stages.\n\n3. RELEASE — Admin releases an approved request. The transaction checks the reservation and active receiving account. It creates a transfer record with status pending, a TRF reference/manual handover code, sender, named receiver, destination and a per-asset source snapshot of holder, site, recorded status and quantity. The request becomes released and links to that transfer. Reservation ownership moves to the transfer. Equipment remains in its prior recorded custody/location until receipt. No transport carrier, departure time or signature is invented. Notification creation, when its migration is installed, does not itself receive equipment.\n\n4. INSPECT AND RECEIVE — Only the named active Engineer or Architect can confirm the transfer. A caller-supplied name or receiver ID cannot impersonate that person. The server rechecks the original holder, site, status and whole-record quantity to catch stale dispatches. Every asset requires an inspection. Nonmissing items require tested:true; accepted damage requires an explicit accepted disposition and notes. On success the transfer and linked request both become received, inspection evidence is retained and reservations are cleared. Good items set current_holder_id to the receiver, site_id to the destination and status to IN_USE. Accepted damaged items take the same receiver/destination, become REPAIR and open a linked repair case. A missing/lost item becomes MISSING, opens a missing case and retains the prior holder and last recorded site. A received transfer therefore does not imply that every included item physically arrived.\n\nThis tested receipt is the explicit custody-change point for accepted incoming equipment. The local scenario asserts custody is null after request, approval and release, then equals the receiver's stable profile ID only after good tested receipt. mcpa_movements, mcpa_movement_assets, mcpa_movement_sites, reservations and immutable mcpa_movement_operations capture the transaction and activity. Writes are atomic, and operation IDs protect retries. This supports recorded traceability; it is not a guarantee that every legacy or out-of-system action is audited.\n\n5. TRANSFER OR RETURN — These are later alternatives, not mandatory sequential stages. A current Engineer/Architect holder can directly transfer in-use equipment, creating another pending transfer. The recipient must repeat the inspection/receipt step before custody changes. Tool Handler can dispatch available unheld stock but cannot take over another person's held tools. Admin has initial request release, not general field-transfer/receipt authority in current authenticated permissions. A field holder can instead submit an inspected return to the pinned company Office. The current Office wrapper clears personal custody for good returns (AVAILABLE) and physically returned damaged items (REPAIR). Missing items keep prior accountability. Return creates a return record immediately; there is no verified second Office receiving-approval stage. Do not draw one.\n\nDamage refusal holds an eligible pending handover as refused without custody change. Only the named receiver may refuse with required evidence; sender/requester cancellation eligibility and sender reopening are state/ownership checked. Admin and Tool Handler do not gain those field interruption controls. Whole set/bulk records move together; partial equipment splitting is unsupported.\n\nEvidence: 1-admin/modules/movements/setup.sql (base transaction engine); 202610040001_authenticated_access.sql (authenticated actor, role and tested receipt); 202610060002_recipient_identity.sql (stable IDs); 202610100004_movement_cancellation.sql; 202610120002_office_returns.sql; js/permissions.js; js/movement-ui.js; tests/request-turnover.database.test.cjs; tests/office-return.database.test.cjs; evidence/demonstration-transaction.json.",
+      "screens": []
+    },
+    {
+      "title": "Connecting Equipment to Construction Projects",
+      "section": "Project management",
+      "keyMessage": "Project records connect assignments, equipment and recorded progress.",
+      "bg": "FFFFFF",
+      "shapes": [
+        {
+          "type": "text",
+          "text": "PROJECT MANAGEMENT",
+          "x": 46,
+          "y": 25,
+          "w": 800,
+          "h": 17,
+          "size": 10.5,
+          "color": "C4A15A",
+          "bold": true,
+          "tracking": 1.5
+        },
+        {
+          "type": "text",
+          "text": "Connecting Equipment to Construction Projects",
+          "x": 46,
+          "y": 55,
+          "w": 868,
+          "h": 72,
+          "size": 30,
+          "color": "142235",
+          "bold": true,
+          "name": "Slide title"
+        },
+        {
+          "type": "line",
+          "x": 46,
+          "y": 509,
+          "x2": 914,
+          "y2": 509,
+          "color": "D8DEE5",
+          "width": 0.7,
+          "arrow": false
+        },
+        {
+          "type": "text",
+          "text": "MCPA / SITETRACE",
+          "x": 46,
+          "y": 518,
+          "w": 185,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Code + isolated application evidence · 24 October 2026",
+          "x": 270,
+          "y": 518,
+          "w": 555,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": false,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "06",
+          "x": 867,
+          "y": 516,
+          "w": 47,
+          "h": 17,
+          "size": 11,
+          "color": "142235",
+          "bold": true,
+          "align": "right"
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\project-detail.png",
+          "x": 46,
+          "y": 145,
+          "w": 526,
+          "h": 350
+        },
+        {
+          "type": "text",
+          "text": "Assigned responsibility",
+          "x": 604,
+          "y": 145,
+          "w": 310,
+          "h": 24,
+          "size": 16.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Project information links to an\nEngineer / Architect profile.",
+          "x": 604,
+          "y": 173,
+          "w": 310,
+          "h": 42,
+          "size": 14.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Deployment visibility",
+          "x": 604,
+          "y": 225,
+          "w": 310,
+          "h": 24,
+          "size": 16.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Review linked equipment, saved\nholders and recorded statuses.",
+          "x": 604,
+          "y": 253,
+          "w": 310,
+          "h": 42,
+          "size": 14.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "WEIGHTED COMPLETION",
+          "x": 604,
+          "y": 312,
+          "w": 310,
+          "h": 20,
+          "size": 11,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\project-progress-focus.png",
+          "x": 604,
+          "y": 339,
+          "w": 310,
+          "h": 77
+        },
+        {
+          "type": "text",
+          "text": "Calculated from configured work-area\nweights. Locally verified upgrade;\nproduction installation unconfirmed.",
+          "x": 604,
+          "y": 430,
+          "w": 310,
+          "h": 54,
+          "size": 13.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "ACTUAL APPLICATION · LOCAL TEST ENVIRONMENT · SYNTHETIC DATA",
+          "x": 46,
+          "y": 490,
+          "w": 526,
+          "h": 16,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        }
+      ],
+      "notes": "Reference the actual Demonstration Project A detail at left. It shows the accountable Engineer/Architect, equipment at the project, recorded inventory-check and last-movement information, and the equipment table. Project identity, location, assignments and archive state are managed by Admin. Engineer/Architect views are scoped to assigned projects; Tool Handler retains monitoring visibility. Editing project metadata does not move equipment or change custody.\n\nThe small lower-right capture is the real project editor's Construction Completion component. The current repository implements a six-area construction model: Structural, Mechanical, Electrical, Plumbing, Fire Safety and Architectural / Finishing Stage. Each configured area has completion, weight, applicability and notes. Applicable weights must total exactly 100%; an N/A area must have zero weight. The server computes round(sum(completion × weight / 100), 2). The fixture shown uses completions 100,40,60,0,0,0 and weights 30,15,15,10,10,20, producing 45%. This is a synthetic calculation example, not a real project percentage. Fresh database tests cover the formula, rounding, invalid configurations and per-project weights.\n\nProject stage and current work area are distinct. Stage options are Planning/Designing, Permitting, Groundbreaking, Construction Phase and Turnover. Weighted completion does not automatically change stage. Legacy progress/phase values remain preserved and are not silently converted. Project History records future old/new values, actors when available, reasons, updates and linked corrections; it cannot reconstruct missing past history. There is no automatic schedule forecasting claim.\n\nThe October 23 construction upgrade is documented as prepared locally and not applied to production. Its local calculation is demonstrably working, so it is included with that explicit limitation. Presenter action: point from accountable profile to linked equipment, then explain the local weighted example briefly. Evidence: 1-admin/modules/sites/sites.js; 1-admin/modules/sites/README.md; 202610230002_project_construction.sql; tests/project-construction.test.cjs; evidence/project-editor.png.",
+      "screens": [
+        "project-detail.png",
+        "project-editor.png"
+      ]
+    },
+    {
+      "title": "Managing Materials and Consumable Stock",
+      "section": "Consumables inventory",
+      "keyMessage": "SKU specifications and ledger-backed balances support stock review.",
+      "bg": "FFFFFF",
+      "shapes": [
+        {
+          "type": "text",
+          "text": "CONSUMABLES INVENTORY",
+          "x": 46,
+          "y": 25,
+          "w": 800,
+          "h": 17,
+          "size": 10.5,
+          "color": "C4A15A",
+          "bold": true,
+          "tracking": 1.5
+        },
+        {
+          "type": "text",
+          "text": "Managing Materials and Consumable Stock",
+          "x": 46,
+          "y": 55,
+          "w": 868,
+          "h": 72,
+          "size": 30,
+          "color": "142235",
+          "bold": true,
+          "name": "Slide title"
+        },
+        {
+          "type": "line",
+          "x": 46,
+          "y": 509,
+          "x2": 914,
+          "y2": 509,
+          "color": "D8DEE5",
+          "width": 0.7,
+          "arrow": false
+        },
+        {
+          "type": "text",
+          "text": "MCPA / SITETRACE",
+          "x": 46,
+          "y": 518,
+          "w": 185,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Code + isolated application evidence · 24 October 2026",
+          "x": 270,
+          "y": 518,
+          "w": 555,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": false,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "07",
+          "x": 867,
+          "y": 516,
+          "w": 47,
+          "h": 17,
+          "size": 11,
+          "color": "142235",
+          "bold": true,
+          "align": "right"
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\consumables-focus.png",
+          "x": 46,
+          "y": 145,
+          "w": 600,
+          "h": 332
+        },
+        {
+          "type": "text",
+          "text": "Organized catalog",
+          "x": 677,
+          "y": 145,
+          "w": 237,
+          "h": 24,
+          "size": 16.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Item codes, categories, variants\nand specifications.",
+          "x": 677,
+          "y": 173,
+          "w": 237,
+          "h": 42,
+          "size": 14.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Stock visibility",
+          "x": 677,
+          "y": 243,
+          "w": 237,
+          "h": 24,
+          "size": 16.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Saved quantity, minimum level\nand low-stock indicators.",
+          "x": 677,
+          "y": 271,
+          "w": 237,
+          "h": 42,
+          "size": 14.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "Controlled movements",
+          "x": 677,
+          "y": 341,
+          "w": 237,
+          "h": 24,
+          "size": 16.5,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Restock, usage and adjustments;\nrequest receipt updates stock.",
+          "x": 677,
+          "y": 369,
+          "w": 237,
+          "h": 42,
+          "size": 14.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "ACTUAL APPLICATION · LOCAL TEST ENVIRONMENT · SYNTHETIC DATA",
+          "x": 46,
+          "y": 482,
+          "w": 868,
+          "h": 16,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        }
+      ],
+      "notes": "The screenshot shows the actual consumables screen with three explicitly synthetic SKU records. Point to code/specification, current stock, minimum level and low-stock label. The red panel is a legitimate restocking alert, not a database error. The three on-screen records are local fixture values and must not be described as the organization's catalog size.\n\nThe current implementation supports categories, distinct SKU specifications, item codes, search, category/status filtering, stock quantities, threshold-derived status, opening balances, restock, usage and adjustments. Database RPCs validate quantities, version checks and operation IDs and preserve stock-movement history. Admin and Secretary manage this module. Purchase requests can be created and received partially or fully; confirmed receipt updates the balance and retains a movement record. Purchase-ledger entry alone does not increase stock. Archived SKUs retain historical references.\n\nThe code library and local seed tests contain 126 variants across 12 categories, but no current authoritative live application data was queried. Those provisional global figures are intentionally omitted from the slides. They can appear only after a stakeholder provides an authoritative current production catalog query and clarifies active versus archived counts. Do not treat a seed script or a passing seed test as proof of production totals.\n\nPresenter action: compare an OK record with a low-stock record, then describe Update Stock and History as implemented actions supported by local SQL tests. They were not executed as a business demonstration in this presentation capture. Evidence: js/consumables-catalog.js; 1-admin/modules/consumables/consumables.js; 202610220000_consumable_categories.sql; 202610220001_consumables_skus.sql; 202610220002_consumables_archive.sql; tests/consumables-upgrade.test.cjs; tests/purchase-ledger.test.cjs.",
+      "screens": [
+        "consumables.png"
+      ]
+    },
+    {
+      "title": "Records That Support Operational Traceability",
+      "section": "Purchasing, reporting & controls",
+      "keyMessage": "Recorded transactions can be reviewed with role-appropriate access.",
+      "bg": "FFFFFF",
+      "shapes": [
+        {
+          "type": "text",
+          "text": "PURCHASING, REPORTING & CONTROLS",
+          "x": 46,
+          "y": 25,
+          "w": 800,
+          "h": 17,
+          "size": 10.5,
+          "color": "C4A15A",
+          "bold": true,
+          "tracking": 1.5
+        },
+        {
+          "type": "text",
+          "text": "Records That Support Operational Traceability",
+          "x": 46,
+          "y": 55,
+          "w": 868,
+          "h": 72,
+          "size": 30,
+          "color": "142235",
+          "bold": true,
+          "name": "Slide title"
+        },
+        {
+          "type": "line",
+          "x": 46,
+          "y": 509,
+          "x2": 914,
+          "y2": 509,
+          "color": "D8DEE5",
+          "width": 0.7,
+          "arrow": false
+        },
+        {
+          "type": "text",
+          "text": "MCPA / SITETRACE",
+          "x": 46,
+          "y": 518,
+          "w": 185,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Code + isolated application evidence · 24 October 2026",
+          "x": 270,
+          "y": 518,
+          "w": 555,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": false,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "08",
+          "x": 867,
+          "y": 516,
+          "w": 47,
+          "h": 17,
+          "size": 11,
+          "color": "142235",
+          "bold": true,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "PURCHASING LEDGER",
+          "x": 46,
+          "y": 132,
+          "w": 410,
+          "h": 18,
+          "size": 11,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\purchases.png",
+          "x": 46,
+          "y": 157,
+          "w": 420,
+          "h": 155
+        },
+        {
+          "type": "text",
+          "text": "CURRENT INVENTORY REPORT",
+          "x": 46,
+          "y": 330,
+          "w": 420,
+          "h": 18,
+          "size": 11,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\report-focus.png",
+          "x": 46,
+          "y": 354,
+          "w": 420,
+          "h": 132
+        },
+        {
+          "type": "text",
+          "text": "MOVEMENT ACTIVITY",
+          "x": 500,
+          "y": 132,
+          "w": 414,
+          "h": 18,
+          "size": 11,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\activity.png",
+          "x": 500,
+          "y": 157,
+          "w": 414,
+          "h": 161
+        },
+        {
+          "type": "rect",
+          "x": 500,
+          "y": 340,
+          "w": 414,
+          "h": 134,
+          "fill": "F3F5F7",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Retained evidence",
+          "x": 516,
+          "y": 354,
+          "w": 381,
+          "h": 23,
+          "size": 17,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Purchase history and private receipt files\nMovement actors, timestamps and references\nServer-side role and record checks",
+          "x": 516,
+          "y": 388,
+          "w": 381,
+          "h": 73,
+          "size": 15,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "ACTUAL APPLICATION · LOCAL TEST ENVIRONMENT · SYNTHETIC DATA",
+          "x": 46,
+          "y": 490,
+          "w": 868,
+          "h": 16,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        }
+      ],
+      "notes": "Use the three real UI captures: purchasing ledger at upper left, current inventory report below it, and recorded movement activity at upper right. All data is synthetic. The activity log includes the locally executed createRequest, approveRequest, releaseRequest and receiveTransfer events. It supports inspection of linked records rather than proving universal coverage of every application action.\n\nPurchases are available to Admin and Secretary. Records include supplier/reference/date, line items, server-calculated totals, optional linked material request and private receipt reference. History preserves before/after records and actor data; optimistic versions and retry IDs prevent silent stale overwrites and duplicate retries. Private receipt upload/read policies and signed URLs are implemented and locally tested with modeled Storage. No actual external Storage upload, email or live file-access test was performed here. The displayed synthetic purchase has no attached receipt, so do not imply that this screenshot demonstrates an attachment opening.\n\nReports include current inventory, dated movement activity and captured inventory snapshots, with export support. The captured screen is Current inventory. A historical snapshot is a saved observation at its actual capture time, not a reconstructed past inventory. A backend scheduler for regular captures/reminders is not deployed by this repository task. The deck therefore makes no claim that automated historical collection or email/push reminders are operational. CSV and PDF capabilities have source/local test evidence; the screenshots were not used to claim every export path was executed in this session.\n\nAccess is enforced in current SQL through authenticated profile identity, role checks, scoped reads and row-level policies. These controls were tested locally. They do not by themselves certify production security. Managed equipment photos, purchasing history and recorded movement operations have specific enforcement; unrelated metadata edits and all legacy history are not assumed to share complete audit coverage.\n\nPresenter action: connect the movement reference to the actor/time evidence. Explain what is retained and the limits of the claim. Evidence: 1-admin/modules/purchases/purchases.js; 1-admin/modules/reports/reports.js; js/movement-ui.js; 202610100005_purchase_ledger.sql; 202610100006_monitoring.sql; 202610230001_purchase_receipts_compatibility.sql; tests/purchase-ledger.test.cjs; tests/purchase-receipts-compatibility.test.cjs; tests/monitoring-database.test.cjs; tests/pdf-reports.test.cjs.",
+      "screens": [
+        "purchases.png",
+        "reports.png",
+        "activity.png"
+      ]
+    },
+    {
+      "title": "A Practical Equipment Request Scenario",
+      "section": "Executed local demonstration",
+      "keyMessage": "The same equipment record moves from unassigned to named custody.",
+      "bg": "FFFFFF",
+      "shapes": [
+        {
+          "type": "text",
+          "text": "EXECUTED LOCAL DEMONSTRATION",
+          "x": 46,
+          "y": 25,
+          "w": 800,
+          "h": 17,
+          "size": 10.5,
+          "color": "C4A15A",
+          "bold": true,
+          "tracking": 1.5
+        },
+        {
+          "type": "text",
+          "text": "A Practical Equipment Request Scenario",
+          "x": 46,
+          "y": 55,
+          "w": 868,
+          "h": 72,
+          "size": 30,
+          "color": "142235",
+          "bold": true,
+          "name": "Slide title"
+        },
+        {
+          "type": "line",
+          "x": 46,
+          "y": 509,
+          "x2": 914,
+          "y2": 509,
+          "color": "D8DEE5",
+          "width": 0.7,
+          "arrow": false
+        },
+        {
+          "type": "text",
+          "text": "MCPA / SITETRACE",
+          "x": 46,
+          "y": 518,
+          "w": 185,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Code + isolated application evidence · 24 October 2026",
+          "x": 270,
+          "y": 518,
+          "w": 555,
+          "h": 14,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": false,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "09",
+          "x": 867,
+          "y": 516,
+          "w": 47,
+          "h": 17,
+          "size": 11,
+          "color": "142235",
+          "bold": true,
+          "align": "right"
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 127,
+          "w": 431,
+          "h": 22,
+          "fill": "F3F5F7",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "DEMO-EQ-001 · Training concrete vibrator",
+          "x": 54,
+          "y": 131,
+          "w": 415,
+          "h": 15,
+          "size": 10.5,
+          "color": "66717D",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Executed in the local test application; no production transaction.",
+          "x": 500,
+          "y": 130,
+          "w": 414,
+          "h": 30,
+          "size": 12.5,
+          "color": "66717D",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "01  REQUEST + REVIEW",
+          "x": 46,
+          "y": 176,
+          "w": 278,
+          "h": 20,
+          "size": 12,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "02  RELEASE + INSPECTION",
+          "x": 341,
+          "y": 176,
+          "w": 278,
+          "h": 20,
+          "size": 12,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "03  UPDATED CUSTODY",
+          "x": 636,
+          "y": 176,
+          "w": 278,
+          "h": 20,
+          "size": 12,
+          "color": "142235",
+          "bold": true
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\approval.png",
+          "x": 46,
+          "y": 207,
+          "w": 278,
+          "h": 219
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\inspection-focus.png",
+          "x": 341,
+          "y": 207,
+          "w": 278,
+          "h": 219
+        },
+        {
+          "type": "image",
+          "file": "C:\\Practice Files\\SAD\\MCPA\\presentation-output\\evidence\\received-detail.png",
+          "x": 636,
+          "y": 207,
+          "w": 278,
+          "h": 260
+        },
+        {
+          "type": "line",
+          "x": 325,
+          "y": 314,
+          "x2": 338,
+          "y2": 314,
+          "color": "C4A15A",
+          "width": 1.6,
+          "arrow": true
+        },
+        {
+          "type": "line",
+          "x": 620,
+          "y": 314,
+          "x2": 633,
+          "y2": 314,
+          "color": "C4A15A",
+          "width": 1.6,
+          "arrow": true
+        },
+        {
+          "type": "text",
+          "text": "pending → approved\nHolder remains unassigned.",
+          "x": 46,
+          "y": 440,
+          "w": 278,
+          "h": 37,
+          "size": 14,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "released → received\nTest + condition required.",
+          "x": 341,
+          "y": 440,
+          "w": 278,
+          "h": 37,
+          "size": 14,
+          "color": "242B33",
+          "bold": false
+        },
+        {
+          "type": "text",
+          "text": "ACTUAL APPLICATION · LOCAL TEST ENVIRONMENT · SYNTHETIC DATA",
+          "x": 46,
+          "y": 490,
+          "w": 868,
+          "h": 16,
+          "size": 9.5,
+          "color": "66717D",
+          "bold": true
+        }
+      ],
+      "notes": "Narrate this as an executed local demonstration, not an illustrative transaction or a production record. The presentation capture runner served the unmodified repository UI with disposable PGlite SQL and modeled Auth/Storage transport, while external HTTPS was blocked. The runner used actual application controls to submit, approve, release, inspect and confirm receipt. It queried the local SQL snapshot between stages and asserted request/transfer statuses and stable custody IDs. Evidence is saved in demonstration-transaction.json and capture.log. The local record uses REQ-00001 and TRF-00002; these IDs belong only to the disposable fixture and must not be confused with any protected live record bearing the same label.\n\nBEFORE — Training concrete vibrator, asset DEMO-EQ-001, is AVAILABLE at the configured local Main Office with no holder. Demo Engineer has an active Engineer profile assigned to Demonstration Project A. On Request tools the user selects the eligible asset and that assigned project and enters the demonstration purpose. Submission creates a pending request. Point to the left screenshot, which is the actual Admin review of this same pending request. The saved receiver is Demo Engineer. Admin can approve or reject; the demonstration approves. The request becomes approved, a reservation is created, and current_holder_id remains null.\n\nACTION — Admin chooses Release tools & create transfer. The request becomes released and transfer TRF-00002 becomes pending. Its source snapshot retains the prior Office/null-holder/AVAILABLE state. A manual code identifies the handover. The capture runner asserts that release still has not assigned custody. Demo Engineer signs in, opens Receive Transfer, enters the transfer code and inspects the equipment. Point to the center capture: the actual lower receipt form shows Good, the physical-test confirmation and the receipt action. The good condition and tested:true are submitted through the UI. Do not say a barcode scan, a physical signature or transport event was demonstrated.\n\nAFTER — Both the request and transfer become received. DEMO-EQ-001 now has current_holder_id equal to Demo Engineer's stable profile ID, site_id equal to Demonstration Project A and recorded database status IN_USE. Its reservation is removed. Point to the right capture: the same equipment detail now shows the named holder/project and the recorded sequence receiveTransfer, releaseRequest, approveRequest and createRequest, with actors, timestamps and references. These are saved application records, not presentation annotations pretending to be a transaction. The detailed screenshot remains embedded at full source resolution and is also supplied separately for zooming.\n\nThe return form was captured later but not submitted in this demonstration, so do not claim this same asset was returned. Separate passing database tests establish Office return, damage, missing-item, rollback, unauthorized-recipient and retry behavior. Accepted damage would create repair accountability; a lost item would retain its prior holder/site. Those are verified alternative paths, not outcomes of the displayed good receipt.\n\nPresenter actions: compare the unassigned pre-release state in the transaction evidence with the named holder at right; pause on the required physical-test checkbox; finish by following the linked history references. This explains how movement controls add accountability beyond basic record editing. The broader existing --flows-only browser suite failed a later synchronization watcher-count assertion (workspace-ui-checks.cjs:214, 1 versus expected 2); it must not be described as a complete browser regression pass. The dedicated capture/transaction sequence completed with no uncaught browser errors.",
+      "screens": [
+        "approval.png",
+        "inspection-confirm.png",
+        "received-detail.png"
+      ]
+    },
+    {
+      "title": "Building Accountability Into Construction Operations",
+      "section": "Conclusion",
+      "keyMessage": "Accountability is built through structured records and explicit handovers.",
+      "bg": "142235",
+      "shapes": [
+        {
+          "type": "text",
+          "text": "CONCLUSION",
+          "x": 46,
+          "y": 25,
+          "w": 800,
+          "h": 17,
+          "size": 10.5,
+          "color": "C4A15A",
+          "bold": true,
+          "tracking": 1.5
+        },
+        {
+          "type": "text",
+          "text": "Building Accountability Into Construction Operations",
+          "x": 46,
+          "y": 55,
+          "w": 868,
+          "h": 72,
+          "size": 30,
+          "color": "FFFFFF",
+          "bold": true,
+          "name": "Slide title"
+        },
+        {
+          "type": "line",
+          "x": 46,
+          "y": 509,
+          "x2": 914,
+          "y2": 509,
+          "color": "3A495C",
+          "width": 0.7,
+          "arrow": false
+        },
+        {
+          "type": "text",
+          "text": "MCPA / SITETRACE",
+          "x": 46,
+          "y": 518,
+          "w": 185,
+          "h": 14,
+          "size": 9.5,
+          "color": "C4CDD7",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "Code + isolated application evidence · 24 October 2026",
+          "x": 270,
+          "y": 518,
+          "w": 555,
+          "h": 14,
+          "size": 9.5,
+          "color": "C4CDD7",
+          "bold": false,
+          "align": "right"
+        },
+        {
+          "type": "text",
+          "text": "10",
+          "x": 867,
+          "y": 516,
+          "w": 47,
+          "h": 17,
+          "size": 11,
+          "color": "C4A15A",
+          "bold": true,
+          "align": "right"
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 157,
+          "w": 7,
+          "h": 7,
+          "fill": "C4A15A",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Centralized equipment information",
+          "x": 70,
+          "y": 151,
+          "w": 820,
+          "h": 30,
+          "size": 22,
+          "color": "FFFFFF",
+          "bold": false
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 204,
+          "w": 7,
+          "h": 7,
+          "fill": "C4A15A",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Clearer recorded responsibility",
+          "x": 70,
+          "y": 198,
+          "w": 820,
+          "h": 30,
+          "size": 22,
+          "color": "FFFFFF",
+          "bold": false
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 251,
+          "w": 7,
+          "h": 7,
+          "fill": "C4A15A",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Traceable saved equipment movements",
+          "x": 70,
+          "y": 245,
+          "w": 820,
+          "h": 30,
+          "size": 22,
+          "color": "FFFFFF",
+          "bold": true
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 298,
+          "w": 7,
+          "h": 7,
+          "fill": "C4A15A",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Visible project deployments",
+          "x": 70,
+          "y": 292,
+          "w": 820,
+          "h": 30,
+          "size": 22,
+          "color": "FFFFFF",
+          "bold": false
+        },
+        {
+          "type": "rect",
+          "x": 46,
+          "y": 345,
+          "w": 7,
+          "h": 7,
+          "fill": "C4A15A",
+          "stroke": null
+        },
+        {
+          "type": "text",
+          "text": "Organized consumable stock records",
+          "x": 70,
+          "y": 339,
+          "w": 820,
+          "h": 30,
+          "size": 22,
+          "color": "FFFFFF",
+          "bold": false
+        },
+        {
+          "type": "line",
+          "x": 46,
+          "y": 408,
+          "x2": 914,
+          "y2": 408,
+          "color": "3A495C",
+          "width": 1,
+          "arrow": false
+        },
+        {
+          "type": "text",
+          "text": "MCPA / SiteTrace — Every Asset Accounted For.\nEvery Movement Traceable.",
+          "x": 46,
+          "y": 430,
+          "w": 868,
+          "h": 55,
+          "size": 22,
+          "color": "C4A15A",
+          "bold": true
+        },
+        {
+          "type": "text",
+          "text": "SYSTEM VISION · supported capabilities, not measured business outcomes",
+          "x": 46,
+          "y": 489,
+          "w": 868,
+          "h": 14,
+          "size": 9.5,
+          "color": "C4CDD7",
+          "bold": false
+        }
+      ],
+      "notes": "Close on the five supported capabilities. Equipment identity and descriptive records are centralized. Named holders and projects expose recorded responsibility. Requests, reservations, releases, tested receipts, onward transfers and Office returns provide a reviewable sequence when users perform them through the implemented workflow. Consumable stock has distinct SKU identities, thresholds and movement history. These are capabilities verified in source and local execution, not claims of measured cost savings or complete real-world asset coverage.\n\nRepeat the most important operational boundary: approval and release do not themselves transfer custody. The named receiver's successful tested inspection changes accountability for accepted equipment. Missing-item and damage exceptions retain evidence and route into follow-up cases. Project metadata changes do not bypass the movement process.\n\nRead the closing statement as a system vision. It is not a certification that every asset is registered, every historic movement has been backfilled or every edit is audited. Production migration/configuration, real Auth/Storage behavior and the remaining browser synchronization check need final review. The October 23 construction tracking upgrade is locally validated but not established in production. Live consumable counts remain unconfirmed. No screenshot placeholders are needed because genuine local application captures were available.\n\nPresenter action: finish by returning to the four-stage workflow and the demonstration history if asked for evidence. Use SITETRACE_FEATURE_VERIFICATION.md for per-feature sources and limitations and SITETRACE_PRESENTATION_CHECKLIST.md for stakeholder review. Do not promise GPS, predictive analytics, automated logistics, email/push delivery, financial improvement or blanket database security; none is established by this presentation.",
+      "screens": []
+    }
+  ]
+}

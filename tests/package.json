@@ -1,0 +1,42 @@
+{
+  "name": "mcpa-movement-tests",
+  "private": true,
+  "scripts": {
+    "test:functionality-audit": "node --test --test-concurrency=1 functionality-audit-v2/client.test.cjs functionality-audit-v2/database.test.cjs consumables-requests-v2/frontend.test.cjs accounts-edge.test.mjs accounts-database.test.cjs development-accounts.test.mjs auth-database.test.cjs inventory.test.cjs admin-equipment-summary.test.cjs && node auth.browser.cjs --functionality-audit && node auth.browser.cjs --combined-integration && node auth.browser.cjs --consumables-upgrade",
+    "test:engineer-consumables": "node --test --test-concurrency=1 consumables-requests-v2/frontend.test.cjs consumables-requests-v2/inventory.test.cjs consumables-requests-v2/inventory.database.test.cjs consumables-requests-v2/database.test.cjs integration-quantity-custody-v2/database.test.cjs integration-quantity-custody-v2/read-rpc.test.cjs && node auth.browser.cjs --engineer-consumables && node auth.browser.cjs --combined-integration",
+    "test:terminology": "node --test --test-concurrency=1 display.test.cjs dashboard-view.test.cjs global-search.test.cjs inventory.test.cjs movement-store.test.cjs pdf-reports.test.cjs && node auth.browser.cjs --terminology",
+    "test:equipment-import": "node --test --test-concurrency=1 equipment-import.test.cjs equipment-import.database.test.cjs && node auth.browser.cjs --combined-integration",
+    "test:admin-equipment-summary": "node --test --test-concurrency=1 admin-equipment-summary.test.cjs dashboard-view.test.cjs inventory.test.cjs module-navigation.test.cjs movement-navigation.test.cjs && node auth.browser.cjs --admin-equipment-summary",
+    "test:project-construction": "node --test --test-concurrency=1 project-construction.test.cjs project-history-dependency.test.cjs project-history-repair.test.cjs && node auth.browser.cjs --project-construction",
+    "test:purchase-receipts": "node --test --test-concurrency=1 purchase-receipts-compatibility.test.cjs purchase-ledger.test.cjs consumables-archive.test.cjs && node auth.browser.cjs --feature-completion && node auth.browser.cjs --consumables-upgrade",
+    "test:consumables-upgrade": "node --test --test-concurrency=1 consumables-upgrade.test.cjs consumables-archive.test.cjs dashboard-view.test.cjs && node auth.browser.cjs --consumables-upgrade",
+    "test:equipment-office": "node --test equipment-office.database.test.cjs && node auth.browser.cjs --asset-interface",
+    "test:login-slideshow": "node auth.browser.cjs --login-slideshow",
+    "test:header-notifications": "node auth.browser.cjs --header-notifications",
+    "test:request-projects": "node --test --test-concurrency=1 request-projects.database.test.cjs engineer-portal.database.cjs movement-sync.test.cjs movement-navigation.test.cjs && node auth.browser.cjs --request-projects",
+    "test:office-returns": "node --test --test-concurrency=1 office-return.database.test.cjs release-compatibility.test.cjs movement-store.test.cjs && node auth.browser.cjs --combined-integration",
+    "test:turnover": "node --test --test-concurrency=1 request-turnover.database.test.cjs dashboard-view.test.cjs movement-sync.test.cjs movement-navigation.test.cjs && node auth.browser.cjs --turnover-sync",
+    "test:features": "node --test --test-concurrency=1 feature-frontend.test.cjs feature-storage.test.cjs purchase-ledger.test.cjs movement-cancellation.test.cjs monitoring-database.test.cjs && node auth.browser.cjs --feature-completion",
+    "test:transfer-history": "node auth.browser.cjs --transfer-history",
+    "test:projects": "node --test project-history-dependency.test.cjs project-history-repair.test.cjs && node auth.browser.cjs --projects-errors",
+    "test:portal": "node --test engineer-portal.database.cjs && node auth.browser.cjs --combined-integration",
+    "test": "node --test --test-concurrency=1 movement-store.test.cjs movement-sync.test.cjs movement-navigation.test.cjs module-navigation.test.cjs inventory.test.cjs dashboard-view.test.cjs archive-database.test.cjs auth-database.test.cjs accounts-database.test.cjs accounts-edge.test.mjs development-accounts.test.mjs legacy-handover-lockdown.test.cjs profile-identity.test.cjs && node movement-database.test.cjs && node auth.browser.cjs",
+    "test:auth": "node --test auth-database.test.cjs accounts-database.test.cjs accounts-edge.test.mjs development-accounts.test.mjs legacy-handover-lockdown.test.cjs profile-identity.test.cjs && node auth.browser.cjs",
+    "test:inventory": "node --test inventory.test.cjs archive-database.test.cjs && node inventory.browser.cjs",
+    "test:inventory-availability": "node --test inventory.test.cjs inventory-availability.database.test.cjs verified-request-inventory.database.test.cjs dashboard-view.test.cjs && node auth.browser.cjs --inventory-availability",
+    "test:navigation": "node --test dashboard-view.test.cjs module-navigation.test.cjs movement-navigation.test.cjs && node auth.browser.cjs --navigation",
+    "test:pdf": "node --test pdf-reports.test.cjs monitoring-database.test.cjs && node auth.browser.cjs --pdf-reports",
+    "test:global-search": "node --test global-search.test.cjs && node auth.browser.cjs --global-search",
+    "test:equipment-fixes": "node --test feature-frontend.test.cjs equipment-photos-compatibility.test.cjs && node auth.browser.cjs --equipment-fixes",
+    "test:combined": "node --test --test-concurrency=1 integration-quantity-custody-v2/database.test.cjs integration-quantity-custody-v2/client.test.cjs integration-quantity-custody-v2/final-races.test.cjs && node auth.browser.cjs --combined-integration && node auth.browser.cjs --final-races",
+    "test:review-fixes": "node --test integration-quantity-custody-v2/client.test.cjs && node auth.browser.cjs --review-fixes",
+    "test:final-races": "node --test --test-concurrency=1 integration-quantity-custody-v2/final-races.test.cjs individual-import-expansion-v2/controller.test.cjs && node auth.browser.cjs --final-races"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "@napi-rs/canvas": "0.1.80",
+    "jsqr": "1.4.0",
+    "pdfjs-dist": "5.4.624",
+    "qrcode": "1.5.4"
+  }
+}

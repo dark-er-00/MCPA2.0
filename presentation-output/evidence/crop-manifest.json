@@ -1,0 +1,74 @@
+[
+  {
+    "name": "dashboard-focus",
+    "source": "dashboard",
+    "x": 0,
+    "y": 0,
+    "w": 1491,
+    "h": 780
+  },
+  {
+    "name": "equipment-focus",
+    "source": "equipment-list",
+    "x": 0,
+    "y": 0,
+    "w": 1491,
+    "h": 810
+  },
+  {
+    "name": "custody-focus",
+    "source": "received-detail",
+    "x": 0,
+    "y": 0,
+    "w": 1140,
+    "h": 480
+  },
+  {
+    "name": "project-progress-focus",
+    "source": "project-editor",
+    "x": 18,
+    "y": 919,
+    "w": 1410,
+    "h": 351
+  },
+  {
+    "name": "consumables-focus",
+    "source": "consumables",
+    "x": 0,
+    "y": 0,
+    "w": 1491,
+    "h": 800
+  },
+  {
+    "name": "report-focus",
+    "source": "reports",
+    "x": 0,
+    "y": 0,
+    "w": 1491,
+    "h": 470
+  },
+  {
+    "name": "inspection-focus",
+    "source": "inspection-confirm",
+    "x": 36,
+    "y": 314,
+    "w": 1070,
+    "h": 548
+  },
+  {
+    "name": "release-focus",
+    "source": "release",
+    "x": 12,
+    "y": 0,
+    "w": 1430,
+    "h": 935
+  },
+  {
+    "name": "request-focus",
+    "source": "request-form",
+    "x": 0,
+    "y": 0,
+    "w": 740,
+    "h": 1170
+  }
+]

@@ -1,0 +1,299 @@
+{
+  "roles": [
+    "Admin",
+    "Engineer / Architect"
+  ],
+  "permissionRoutes": {
+    "admin": [
+      "dashboard",
+      "masterlist",
+      "tool-profile",
+      "sites",
+      "site-detail",
+      "request",
+      "transfer",
+      "return",
+      "repair",
+      "missing",
+      "consumables",
+      "purchase",
+      "reports",
+      "activity",
+      "users",
+      "settings"
+    ],
+    "engineer": [
+      "dashboard",
+      "masterlist",
+      "tool-profile",
+      "sites",
+      "site-detail",
+      "request",
+      "transfer",
+      "return",
+      "repair",
+      "missing",
+      "activity",
+      "settings"
+    ]
+  },
+  "modules": [
+    {
+      "role": "Admin",
+      "module": "main",
+      "actions": 0,
+      "pages": 6,
+      "folder": "ADMIN/00_MAIN"
+    },
+    {
+      "role": "Admin",
+      "module": "authentication",
+      "actions": 7,
+      "pages": 12,
+      "folder": "ADMIN/01_authentication"
+    },
+    {
+      "role": "Admin",
+      "module": "masterlist",
+      "actions": 6,
+      "pages": 14,
+      "folder": "ADMIN/02_masterlist"
+    },
+    {
+      "role": "Admin",
+      "module": "tool-profile",
+      "actions": 3,
+      "pages": 5,
+      "folder": "ADMIN/03_tool-profile"
+    },
+    {
+      "role": "Admin",
+      "module": "request",
+      "actions": 5,
+      "pages": 15,
+      "folder": "ADMIN/04_request"
+    },
+    {
+      "role": "Admin",
+      "module": "transfer",
+      "actions": 3,
+      "pages": 6,
+      "folder": "ADMIN/05_transfer"
+    },
+    {
+      "role": "Admin",
+      "module": "return",
+      "actions": 2,
+      "pages": 5,
+      "folder": "ADMIN/06_return"
+    },
+    {
+      "role": "Admin",
+      "module": "repair",
+      "actions": 3,
+      "pages": 10,
+      "folder": "ADMIN/07_repair"
+    },
+    {
+      "role": "Admin",
+      "module": "missing",
+      "actions": 3,
+      "pages": 10,
+      "folder": "ADMIN/08_missing"
+    },
+    {
+      "role": "Admin",
+      "module": "dashboard",
+      "actions": 3,
+      "pages": 4,
+      "folder": "ADMIN/09_dashboard"
+    },
+    {
+      "role": "Admin",
+      "module": "sites",
+      "actions": 2,
+      "pages": 5,
+      "folder": "ADMIN/10_sites"
+    },
+    {
+      "role": "Admin",
+      "module": "site-detail",
+      "actions": 6,
+      "pages": 9,
+      "folder": "ADMIN/11_site-detail"
+    },
+    {
+      "role": "Admin",
+      "module": "consumables",
+      "actions": 11,
+      "pages": 22,
+      "folder": "ADMIN/12_consumables"
+    },
+    {
+      "role": "Admin",
+      "module": "purchase",
+      "actions": 6,
+      "pages": 11,
+      "folder": "ADMIN/13_purchase"
+    },
+    {
+      "role": "Admin",
+      "module": "reports",
+      "actions": 5,
+      "pages": 9,
+      "folder": "ADMIN/14_reports"
+    },
+    {
+      "role": "Admin",
+      "module": "activity",
+      "actions": 3,
+      "pages": 5,
+      "folder": "ADMIN/15_activity"
+    },
+    {
+      "role": "Admin",
+      "module": "users",
+      "actions": 8,
+      "pages": 16,
+      "folder": "ADMIN/16_users"
+    },
+    {
+      "role": "Admin",
+      "module": "settings",
+      "actions": 2,
+      "pages": 3,
+      "folder": "ADMIN/17_settings"
+    },
+    {
+      "role": "Admin",
+      "module": "global-search",
+      "actions": 3,
+      "pages": 5,
+      "folder": "ADMIN/18_global-search"
+    },
+    {
+      "role": "Admin",
+      "module": "notifications",
+      "actions": 4,
+      "pages": 6,
+      "folder": "ADMIN/19_notifications"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "main",
+      "actions": 0,
+      "pages": 5,
+      "folder": "ENGINEER_ARCHITECT/00_MAIN"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "authentication",
+      "actions": 7,
+      "pages": 12,
+      "folder": "ENGINEER_ARCHITECT/01_authentication"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "masterlist",
+      "actions": 2,
+      "pages": 4,
+      "folder": "ENGINEER_ARCHITECT/02_masterlist"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "tool-profile",
+      "actions": 1,
+      "pages": 3,
+      "folder": "ENGINEER_ARCHITECT/03_tool-profile"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "request",
+      "actions": 5,
+      "pages": 18,
+      "folder": "ENGINEER_ARCHITECT/04_request"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "transfer",
+      "actions": 12,
+      "pages": 45,
+      "folder": "ENGINEER_ARCHITECT/05_transfer"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "return",
+      "actions": 4,
+      "pages": 18,
+      "folder": "ENGINEER_ARCHITECT/06_return"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "repair",
+      "actions": 3,
+      "pages": 8,
+      "folder": "ENGINEER_ARCHITECT/07_repair"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "missing",
+      "actions": 3,
+      "pages": 9,
+      "folder": "ENGINEER_ARCHITECT/08_missing"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "dashboard",
+      "actions": 4,
+      "pages": 5,
+      "folder": "ENGINEER_ARCHITECT/09_dashboard"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "sites",
+      "actions": 1,
+      "pages": 2,
+      "folder": "ENGINEER_ARCHITECT/10_sites"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "site-detail",
+      "actions": 4,
+      "pages": 5,
+      "folder": "ENGINEER_ARCHITECT/11_site-detail"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "activity",
+      "actions": 3,
+      "pages": 5,
+      "folder": "ENGINEER_ARCHITECT/12_activity"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "settings",
+      "actions": 2,
+      "pages": 3,
+      "folder": "ENGINEER_ARCHITECT/13_settings"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "global-search",
+      "actions": 3,
+      "pages": 5,
+      "folder": "ENGINEER_ARCHITECT/14_global-search"
+    },
+    {
+      "role": "Engineer / Architect",
+      "module": "notifications",
+      "actions": 4,
+      "pages": 6,
+      "folder": "ENGINEER_ARCHITECT/15_notifications"
+    }
+  ],
+  "sourceRolesOutsideUserScope": [
+    "secretary",
+    "tool_handler"
+  ],
+  "engineerArchitectSamePermissions": true
+}

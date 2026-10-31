@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "pages": 4,
+  "nodes": 75,
+  "decisions": 9,
+  "arrows": 70,
+  "onPagePairs": 5,
+  "actualOffPagePairs": 4,
+  "plannedModuleExits": 13,
+  "allAdminRoutesCovered": 16,
+  "sharedChoiceBus": "Intentional single-route dispatch, drawn once in SVG; not parallel execution",
+  "stage2": "13 named planned exits; no Stage 2 module flowcharts created"
+}

@@ -1,0 +1,259 @@
+{
+  "environment": "Executed local synthetic transaction, not a production transaction",
+  "requestId": "REQ-00001",
+  "transferId": "TRF-00002",
+  "stages": [
+    {
+      "stage": "request_submitted",
+      "request": {
+        "id": "REQ-00001",
+        "status": "pending",
+        "purpose": "Concrete preparation — isolated presentation demonstration.",
+        "toolIds": [
+          "DEMO-EQ-001"
+        ],
+        "receiver": "Demo Engineer",
+        "createdAt": "2026-10-23T18:10:46.985Z",
+        "requester": "Demo Engineer",
+        "updatedAt": "2026-10-23T18:10:46.985Z",
+        "receiverId": "231f4542-27b1-462b-88af-b05437919ad5",
+        "destination": "Demonstration Project A",
+        "neededUntil": "",
+        "requesterId": "231f4542-27b1-462b-88af-b05437919ad5",
+        "destinationId": "9c535abb-6c8d-4df0-88c0-2ae0b014ab29",
+        "allowedActions": []
+      },
+      "tool": {
+        "id": "DEMO-EQ-001",
+        "cat": "Power Tools",
+        "qty": 1,
+        "dbId": "3a02b140-f241-4360-8ddb-eab6b57c19b8",
+        "name": "Training concrete vibrator",
+        "site": "Main Office",
+        "unit": "Pieces",
+        "brand": "Training brand",
+        "color": null,
+        "model": "Demonstration model",
+        "holder": "",
+        "serial": "SYNTHETIC-001",
+        "siteId": "cade6c19-3960-48df-86b5-e4ee3aaca66b",
+        "status": "available",
+        "holderId": null,
+        "condition": "Good",
+        "image_url": null,
+        "photo_url": null,
+        "movementLock": null,
+        "trackingType": "Individual",
+        "recordedStatus": "AVAILABLE"
+      }
+    },
+    {
+      "stage": "approved",
+      "request": {
+        "id": "REQ-00001",
+        "status": "approved",
+        "purpose": "Concrete preparation — isolated presentation demonstration.",
+        "toolIds": [
+          "DEMO-EQ-001"
+        ],
+        "receiver": "Demo Engineer",
+        "createdAt": "2026-10-23T18:10:46.985Z",
+        "requester": "Demo Engineer",
+        "updatedAt": "2026-10-23T18:10:49.000Z",
+        "receiverId": "231f4542-27b1-462b-88af-b05437919ad5",
+        "reviewedBy": "Demo Admin",
+        "destination": "Demonstration Project A",
+        "neededUntil": "",
+        "requesterId": "231f4542-27b1-462b-88af-b05437919ad5",
+        "destinationId": "9c535abb-6c8d-4df0-88c0-2ae0b014ab29",
+        "allowedActions": []
+      },
+      "tool": {
+        "id": "DEMO-EQ-001",
+        "cat": "Power Tools",
+        "qty": 1,
+        "dbId": "3a02b140-f241-4360-8ddb-eab6b57c19b8",
+        "name": "Training concrete vibrator",
+        "site": "Main Office",
+        "unit": "Pieces",
+        "brand": "Training brand",
+        "color": null,
+        "model": "Demonstration model",
+        "holder": "",
+        "serial": "SYNTHETIC-001",
+        "siteId": "cade6c19-3960-48df-86b5-e4ee3aaca66b",
+        "status": "available",
+        "holderId": null,
+        "condition": "Good",
+        "image_url": null,
+        "photo_url": null,
+        "movementLock": "request",
+        "trackingType": "Individual",
+        "recordedStatus": "AVAILABLE"
+      }
+    },
+    {
+      "stage": "released",
+      "request": {
+        "id": "REQ-00001",
+        "status": "released",
+        "purpose": "Concrete preparation — isolated presentation demonstration.",
+        "toolIds": [
+          "DEMO-EQ-001"
+        ],
+        "receiver": "Demo Engineer",
+        "createdAt": "2026-10-23T18:10:46.985Z",
+        "requester": "Demo Engineer",
+        "updatedAt": "2026-10-23T18:10:50.246Z",
+        "receiverId": "231f4542-27b1-462b-88af-b05437919ad5",
+        "reviewedBy": "Demo Admin",
+        "transferId": "TRF-00002",
+        "destination": "Demonstration Project A",
+        "neededUntil": "",
+        "requesterId": "231f4542-27b1-462b-88af-b05437919ad5",
+        "destinationId": "9c535abb-6c8d-4df0-88c0-2ae0b014ab29",
+        "allowedActions": []
+      },
+      "transfer": {
+        "id": "TRF-00002",
+        "code": "TRF-00002",
+        "notes": "Concrete preparation — isolated presentation demonstration.",
+        "sender": "Demo Admin",
+        "source": [
+          {
+            "qty": 1,
+            "site": "Main Office",
+            "holder": "—",
+            "siteId": "cade6c19-3960-48df-86b5-e4ee3aaca66b",
+            "status": "available",
+            "toolId": "DEMO-EQ-001",
+            "dbStatus": "AVAILABLE",
+            "holderId": null
+          }
+        ],
+        "status": "pending",
+        "toolIds": [
+          "DEMO-EQ-001"
+        ],
+        "receiver": "Demo Engineer",
+        "senderId": "f2b4f921-4bde-429a-8284-a51a8d5ed362",
+        "createdAt": "2026-10-23T18:10:50.246Z",
+        "requestId": "REQ-00001",
+        "receiverId": "231f4542-27b1-462b-88af-b05437919ad5",
+        "destination": "Demonstration Project A",
+        "destinationId": "9c535abb-6c8d-4df0-88c0-2ae0b014ab29",
+        "allowedActions": []
+      },
+      "tool": {
+        "id": "DEMO-EQ-001",
+        "cat": "Power Tools",
+        "qty": 1,
+        "dbId": "3a02b140-f241-4360-8ddb-eab6b57c19b8",
+        "name": "Training concrete vibrator",
+        "site": "Main Office",
+        "unit": "Pieces",
+        "brand": "Training brand",
+        "color": null,
+        "model": "Demonstration model",
+        "holder": "",
+        "serial": "SYNTHETIC-001",
+        "siteId": "cade6c19-3960-48df-86b5-e4ee3aaca66b",
+        "status": "available",
+        "holderId": null,
+        "condition": "Good",
+        "image_url": null,
+        "photo_url": null,
+        "movementLock": "transfer",
+        "trackingType": "Individual",
+        "recordedStatus": "AVAILABLE"
+      }
+    },
+    {
+      "stage": "received",
+      "request": {
+        "id": "REQ-00001",
+        "status": "received",
+        "purpose": "Concrete preparation — isolated presentation demonstration.",
+        "toolIds": [
+          "DEMO-EQ-001"
+        ],
+        "receiver": "Demo Engineer",
+        "createdAt": "2026-10-23T18:10:46.985Z",
+        "requester": "Demo Engineer",
+        "updatedAt": "2026-10-23T18:10:54.782Z",
+        "receiverId": "231f4542-27b1-462b-88af-b05437919ad5",
+        "reviewedBy": "Demo Admin",
+        "transferId": "TRF-00002",
+        "destination": "Demonstration Project A",
+        "neededUntil": "",
+        "requesterId": "231f4542-27b1-462b-88af-b05437919ad5",
+        "destinationId": "9c535abb-6c8d-4df0-88c0-2ae0b014ab29",
+        "allowedActions": []
+      },
+      "transfer": {
+        "id": "TRF-00002",
+        "code": "TRF-00002",
+        "notes": "Concrete preparation — isolated presentation demonstration.",
+        "sender": "Demo Admin",
+        "source": [
+          {
+            "qty": 1,
+            "site": "Main Office",
+            "holder": "—",
+            "siteId": "cade6c19-3960-48df-86b5-e4ee3aaca66b",
+            "status": "available",
+            "toolId": "DEMO-EQ-001",
+            "dbStatus": "AVAILABLE",
+            "holderId": null
+          }
+        ],
+        "status": "received",
+        "toolIds": [
+          "DEMO-EQ-001"
+        ],
+        "receiver": "Demo Engineer",
+        "senderId": "f2b4f921-4bde-429a-8284-a51a8d5ed362",
+        "createdAt": "2026-10-23T18:10:50.246Z",
+        "requestId": "REQ-00001",
+        "receivedAt": "2026-10-23T18:10:54.782Z",
+        "receivedBy": "Demo Engineer",
+        "receiverId": "231f4542-27b1-462b-88af-b05437919ad5",
+        "destination": "Demonstration Project A",
+        "inspections": [
+          {
+            "notes": "",
+            "tested": true,
+            "toolId": "DEMO-EQ-001",
+            "condition": "good",
+            "disposition": "accepted"
+          }
+        ],
+        "destinationId": "9c535abb-6c8d-4df0-88c0-2ae0b014ab29",
+        "allowedActions": []
+      },
+      "tool": {
+        "id": "DEMO-EQ-001",
+        "cat": "Power Tools",
+        "qty": 1,
+        "dbId": "3a02b140-f241-4360-8ddb-eab6b57c19b8",
+        "name": "Training concrete vibrator",
+        "site": "Demonstration Project A",
+        "unit": "Pieces",
+        "brand": "Training brand",
+        "color": null,
+        "model": "Demonstration model",
+        "holder": "Demo Engineer",
+        "serial": "SYNTHETIC-001",
+        "siteId": "9c535abb-6c8d-4df0-88c0-2ae0b014ab29",
+        "status": "inuse",
+        "holderId": "231f4542-27b1-462b-88af-b05437919ad5",
+        "condition": "Good",
+        "image_url": null,
+        "photo_url": null,
+        "movementLock": null,
+        "trackingType": "Individual",
+        "recordedStatus": "IN_USE"
+      }
+    }
+  ]
+}

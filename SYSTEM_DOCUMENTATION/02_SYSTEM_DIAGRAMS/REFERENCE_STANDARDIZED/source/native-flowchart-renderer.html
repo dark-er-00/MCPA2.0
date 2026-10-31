@@ -1,0 +1,66 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Local Draw.io documentation renderer</title>
+<style>html,body{margin:0;background:white}#graph{width:827px;height:1169px;overflow:hidden;position:relative}</style>
+<script>var mxLoadResources=false,mxLoadStylesheets=false,mxBasePath='vendor';</script>
+<script src="vendor/mxClient.min.js"></script>
+<script src="vendor/drawio-custom-shapes.js"></script>
+<div id="graph"></div>
+<script>
+'use strict';
+let graph;
+window.renderDiagram=function(xml,depth=0){
+ if(graph)graph.destroy();
+ const container=document.getElementById('graph');container.replaceChildren();
+ graph=new mxGraph(container);graph.setEnabled(false);graph.setHtmlLabels(false);graph.gridEnabled=false;
+ const sheet=graph.getStylesheet();
+ sheet.putCellStyle('text',{shape:'rectangle',fillColor:'none',strokeColor:'none',fontColor:'#000000',fontFamily:'Arial',fontSize:11,align:'left',verticalAlign:'top',spacing:0});
+ sheet.putCellStyle('ellipse',{shape:'ellipse',perimeter:mxPerimeter.EllipsePerimeter});
+ sheet.putCellStyle('rhombus',{shape:'rhombus',perimeter:mxPerimeter.RhombusPerimeter});
+ Object.assign(sheet.getDefaultVertexStyle(),{fillColor:'#ffffff',strokeColor:'#000000',fontColor:'#000000',fontFamily:'Arial',spacing:0});
+ Object.assign(sheet.getDefaultEdgeStyle(),{strokeColor:'#000000',fontColor:'#000000',fontFamily:'Arial',endArrow:'classic',fontSize:11});
+ const documentXml=mxUtils.parseXml(xml),decoder=new mxCodec(documentXml);decoder.decode(documentXml.documentElement,graph.getModel());
+ graph.getView().validate();
+ const violations=[],text=[],edges=[],shapeTextWarnings=[];
+ for(const cell of Object.values(graph.getModel().cells)){
+  const state=graph.view.getState(cell);if(!state)continue;
+  if(state.text&&state.text.boundingBox){
+   const b=state.text.boundingBox;
+   text.push({id:cell.id,label:cell.value,bounds:{x:b.x,y:b.y,width:b.width,height:b.height}});
+   if(b.x < -0.5||b.y < -0.5||b.x+b.width > 827.5||b.y+b.height>1169.5)violations.push({id:cell.id,label:cell.value,reason:'Text outside A4',bounds:b});
+   if(cell.vertex&&['parallelogram','rhombus','rectangle','ellipse'].includes(state.style.shape)&&state.style.strokeColor!=='none'){
+    for(const t of state.text.node.querySelectorAll('text')){
+     const r=t.getBBox(),matrix=t.getCTM(),corners=[[r.x,r.y],[r.x+r.width,r.y],[r.x,r.y+r.height],[r.x+r.width,r.y+r.height]].map(([x,y])=>({x:matrix.a*x+matrix.c*y+matrix.e,y:matrix.b*x+matrix.d*y+matrix.f}));
+     const within=p=>{
+      const x=p.x-state.x,y=p.y-state.y,w=state.width,h=state.height,slant=38;
+      if(state.style.shape==='parallelogram')return x>=slant*(1-y/h)-1&&x<=w-slant*y/h+1&&y>=-1&&y<=h+1;
+      if(state.style.shape==='rhombus')return Math.abs(x-w/2)/(w/2)+Math.abs(y-h/2)/(h/2)<=1.025;
+      if(state.style.shape==='ellipse')return (x-w/2)**2/(w/2)**2+(y-h/2)**2/(h/2)**2<=1.025;
+      return x>=-1&&x<=w+1&&y>=-1&&y<=h+1;
+     };
+     if(corners.some(p=>!within(p)))shapeTextWarnings.push({id:cell.id,label:cell.value,line:t.textContent,shape:state.style.shape,fontSize:state.style.fontSize});
+    }
+   }
+  }
+  if(cell.edge){
+   edges.push({id:cell.id,source:cell.source?.id,target:cell.target?.id,points:state.absolutePoints?.filter(Boolean).map(p=>({x:p.x,y:p.y}))});
+  }
+ }
+ const fontAdjustments={};
+ if(shapeTextWarnings.length&&depth<8){
+  for(const id of new Set(shapeTextWarnings.map(w=>w.id))){
+   const cell=graph.model.getCell(id),state=graph.view.getState(cell),font=+state.style.fontSize;
+   if(font>12){const next=Math.max(12,font-0.5);fontAdjustments[id]=next;graph.model.setStyle(cell,cell.style.replace(/fontSize=[^;]+/,'fontSize='+next));}
+  }
+  if(Object.keys(fontAdjustments).length){
+   const xmlModel=new mxCodec().encode(graph.model),updated=new XMLSerializer().serializeToString(xmlModel);
+   const result=window.renderDiagram(updated,depth+1);result.fontAdjustments={...fontAdjustments,...result.fontAdjustments};return result;
+  }
+ }
+ const svg=container.querySelector('svg').cloneNode(true);
+ svg.setAttribute('xmlns','http://www.w3.org/2000/svg');svg.setAttribute('width','827');svg.setAttribute('height','1169');svg.setAttribute('viewBox','0 0 827 1169');svg.removeAttribute('style');
+ // Interaction overlays and invisible hit regions are unnecessary in print.
+ for(const group of [...svg.children])if(group.getAttribute('style')?.includes('visibility: hidden'))group.remove();
+ return{svg:new XMLSerializer().serializeToString(svg),violations,text,edges,shapeTextWarnings,fontAdjustments};
+};
+</script>

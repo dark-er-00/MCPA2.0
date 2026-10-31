@@ -1,0 +1,79 @@
+# Changed files
+
+All files remain uncommitted and unpushed. SQL is manual review only. Receipt dependency plan: documentation/purchase-receipts-2026-10-23/DEPLOYMENT.md.
+
+## Modified
+
+- `1-admin/modules/consumables/README.md`
+- `1-admin/modules/consumables/consumables.css`
+- `1-admin/modules/consumables/consumables.html`
+- `1-admin/modules/consumables/consumables.js`
+- `1-admin/modules/purchases/purchases.js`
+- `2-engr/index.html`
+- `css/movement-overview.css`
+- `index.html`
+- `js/dashboard-view.js`
+- `js/global-search.js`
+- `js/movement-overview.js`
+- `tests/auth-test-db.cjs`
+- `tests/auth.browser.cjs`
+- `tests/dashboard-view.test.cjs`
+- `tests/global-search.test.cjs`
+- `tests/package.json`
+- `tests/purchase-ledger.test.cjs`
+
+## New
+
+- `documentation/consumables-upgrade-2026-10-22/01-preflight.sql`
+- `documentation/consumables-upgrade-2026-10-22/02-archive-sample.sql`
+- `documentation/consumables-upgrade-2026-10-22/03-catalog-seed.sql`
+- `documentation/consumables-upgrade-2026-10-22/04-verification.sql`
+- `documentation/consumables-upgrade-2026-10-22/05-existing-stock-review.sql`
+- `documentation/consumables-upgrade-2026-10-22/ARCHIVE-COMPATIBILITY.md`
+- `documentation/consumables-upgrade-2026-10-22/CATALOG.md`
+- `documentation/consumables-upgrade-2026-10-22/DEPLOYMENT.md`
+- `documentation/consumables-upgrade-2026-10-22/FILES.md`
+- `documentation/consumables-upgrade-2026-10-22/REPORT.md`
+- `documentation/consumables-upgrade-2026-10-22/STOCK-VALIDATION.md`
+- `documentation/consumables-upgrade-2026-10-22/archive-browser-tests.log`
+- `documentation/consumables-upgrade-2026-10-22/archive-final-sql-tests.log`
+- `documentation/consumables-upgrade-2026-10-22/archive-main-tests.log`
+- `documentation/consumables-upgrade-2026-10-22/archive-regression-tests.log`
+- `documentation/consumables-upgrade-2026-10-22/archive-tests.log`
+- `documentation/consumables-upgrade-2026-10-22/browser-tests-final.log`
+- `documentation/consumables-upgrade-2026-10-22/browser-tests.log`
+- `documentation/consumables-upgrade-2026-10-22/equipment-browser-tests.log`
+- `documentation/consumables-upgrade-2026-10-22/feature-browser-tests.log`
+- `documentation/consumables-upgrade-2026-10-22/feature-tests.log`
+- `documentation/consumables-upgrade-2026-10-22/legacy-consumables-tests.log`
+- `documentation/consumables-upgrade-2026-10-22/main-browser-tests.log`
+- `documentation/consumables-upgrade-2026-10-22/main-tests.log`
+- `documentation/consumables-upgrade-2026-10-22/screenshots/consumables-dark-1440.png`
+- `documentation/consumables-upgrade-2026-10-22/screenshots/consumables-dark-393.png`
+- `documentation/consumables-upgrade-2026-10-22/screenshots/consumables-light-1440.png`
+- `documentation/consumables-upgrade-2026-10-22/screenshots/consumables-light-393.png`
+- `documentation/consumables-upgrade-2026-10-22/screenshots/dashboard-dark.png`
+- `documentation/consumables-upgrade-2026-10-22/screenshots/dashboard-light.png`
+- `documentation/consumables-upgrade-2026-10-22/upgrade-tests.log`
+- `documentation/purchase-receipts-2026-10-23/DEPLOYMENT.md`
+- `documentation/purchase-receipts-2026-10-23/REPORT.md`
+- `documentation/purchase-receipts-2026-10-23/browser-tests.log`
+- `documentation/purchase-receipts-2026-10-23/consumables-browser-tests.log`
+- `documentation/purchase-receipts-2026-10-23/database-tests.log`
+- `documentation/purchase-receipts-2026-10-23/equipment-regression-tests.log`
+- `documentation/purchase-receipts-2026-10-23/final-storage-tests.log`
+- `js/consumables-catalog.js`
+- `scripts/generate-consumables.cjs`
+- `supabase/migrations/202610220000_consumable_categories.sql`
+- `supabase/migrations/202610220001_consumables_skus.sql`
+- `supabase/migrations/202610220002_consumables_archive.sql`
+- `supabase/migrations/202610230001_purchase_receipts_compatibility.sql`
+- `supabase/migrations/README.md`
+- `supabase/purchase-receipts-preflight.sql`
+- `supabase/purchase-receipts-verification.sql`
+- `tests/consumables-archive.test.cjs`
+- `tests/consumables-upgrade-fixture.cjs`
+- `tests/consumables-upgrade.browser-checks.cjs`
+- `tests/consumables-upgrade.test.cjs`
+- `tests/purchase-receipts-compatibility.test.cjs`
+- `tests/purchase-receipts-fixture.cjs`

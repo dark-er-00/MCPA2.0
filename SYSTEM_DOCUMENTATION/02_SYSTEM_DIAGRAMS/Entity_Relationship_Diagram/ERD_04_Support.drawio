@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><mxfile host="app.diagrams.net" version="24.0.0"><diagram id="ERD_04_Support" name="ERD 4 / 4 — account jobs, notifications and receiving context"><mxGraphModel dx="1550" dy="1160" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1550" pageHeight="1160"><root><mxCell id="0"/><mxCell id="1" parent="0"/><mxCell id="title" value="ERD 4 / 4 — account jobs, notifications and receiving context
+Solid parent-to-child connectors: repository-declared FKs · managed Storage schema omitted" style="text;html=0;fontSize=24;fontStyle=1;align=left;verticalAlign=top;" vertex="1" parent="1"><mxGeometry x="35" y="25" width="1480" height="65" as="geometry"/></mxCell><mxCell id="p" value="profiles [context]
+PK id uuid (migration assertion)
+Permanent company person identity" style="rounded=1;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=17;fontFamily=Arial;fontColor=#203344;strokeColor=#607d90;fillColor=#f1f6fa;spacing=10;rounded=0;" vertex="1" parent="1"><mxGeometry x="590" y="145" width="410" height="125" as="geometry"/></mxCell><mxCell id="iv" value="mcpa_account_invitations
+PK id uuid
+FK profile_id NOT NULL UNIQUE
+FK created_by NOT NULL
+email UNIQUE; role; state
+lease_id/lease_until; attempts" style="rounded=1;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=17;fontFamily=Arial;fontColor=#203344;strokeColor=#607d90;fillColor=#f1f6fa;spacing=10;rounded=0;" vertex="1" parent="1"><mxGeometry x="45" y="390" width="445" height="225" as="geometry"/></mxCell><mxCell id="au" value="mcpa_account_audit
+PK id uuid
+FK actor_id NOT NULL
+FK profile_id NOT NULL
+event; details jsonb; created_at" style="rounded=1;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=17;fontFamily=Arial;fontColor=#203344;strokeColor=#607d90;fillColor=#f1f6fa;spacing=10;rounded=0;" vertex="1" parent="1"><mxGeometry x="570" y="390" width="445" height="200" as="geometry"/></mxCell><mxCell id="de" value="mcpa_development_accounts
+PK id uuid; email UNIQUE
+FK profile_id nullable UNIQUE
+FK created_by NOT NULL
+role engineer/architect; state
+lease fields; completed_at" style="rounded=1;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=17;fontFamily=Arial;fontColor=#203344;strokeColor=#607d90;fillColor=#f1f6fa;spacing=10;rounded=0;" vertex="1" parent="1"><mxGeometry x="1060" y="390" width="445" height="225" as="geometry"/></mxCell><mxCell id="no" value="mcpa_notifications
+PK id uuid
+FK recipient_id NOT NULL
+kind; entity_id text*; data jsonb
+UNIQUE recipient_id + dedupe_key
+created_at; read_at" style="rounded=1;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=17;fontFamily=Arial;fontColor=#203344;strokeColor=#607d90;fillColor=#f1f6fa;spacing=10;rounded=0;" vertex="1" parent="1"><mxGeometry x="45" y="780" width="445" height="225" as="geometry"/></mxCell><mxCell id="qr" value="mcpa_auth_private.receiving_qr
+PK token_hash text
+FK receiver_id NOT NULL → profiles
+FK site_id NOT NULL → sites
+created_at; expires_at; revoked_at" style="rounded=1;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=17;fontFamily=Arial;fontColor=#203344;strokeColor=#607d90;fillColor=#f1f6fa;spacing=10;rounded=0;" vertex="1" parent="1"><mxGeometry x="570" y="780" width="445" height="200" as="geometry"/></mxCell><mxCell id="sn" value="mcpa_inventory_snapshots
+PK id uuid
+week_start date UNIQUE / Monday
+local_date; captured_at; tools jsonb
+No declared profile/movement FK" style="rounded=1;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=17;fontFamily=Arial;fontColor=#203344;strokeColor=#607d90;fillColor=#f1f6fa;spacing=10;rounded=0;" vertex="1" parent="1"><mxGeometry x="1060" y="780" width="445" height="200" as="geometry"/></mxCell><mxCell id="si" value="sites [context]
+PK id uuid" style="rounded=1;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=17;fontFamily=Arial;fontColor=#203344;strokeColor=#607d90;fillColor=#f1f6fa;spacing=10;rounded=0;" vertex="1" parent="1"><mxGeometry x="595" y="645" width="400" height="85" as="geometry"/></mxCell><mxCell id="edge0" value="profile_id UNIQUE / created_by" style="edgeStyle=orthogonalEdgeStyle;html=0;fontSize=14;strokeColor=#526b7c;startArrow=ERone;endArrow=ERmany;" edge="1" parent="1" source="p" target="iv"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="260" y="310"/></Array></mxGeometry></mxCell><mxCell id="edge1" value="actor_id / profile_id" style="edgeStyle=orthogonalEdgeStyle;html=0;fontSize=14;strokeColor=#526b7c;startArrow=ERone;endArrow=ERmany;" edge="1" parent="1" source="p" target="au"><mxGeometry relative="1" as="geometry"></mxGeometry></mxCell><mxCell id="edge2" value="profile_id UNIQUE / created_by" style="edgeStyle=orthogonalEdgeStyle;html=0;fontSize=14;strokeColor=#526b7c;startArrow=ERone;endArrow=ERmany;" edge="1" parent="1" source="p" target="de"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1280" y="310"/></Array></mxGeometry></mxCell><mxCell id="edge3" value="recipient_id" style="edgeStyle=orthogonalEdgeStyle;html=0;fontSize=14;strokeColor=#526b7c;startArrow=ERone;endArrow=ERmany;" edge="1" parent="1" source="p" target="no"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="25" y="300"/><mxPoint x="25" y="890"/></Array></mxGeometry></mxCell><mxCell id="edge4" value="receiver_id" style="edgeStyle=orthogonalEdgeStyle;html=0;fontSize=14;strokeColor=#526b7c;startArrow=ERone;endArrow=ERmany;" edge="1" parent="1" source="p" target="qr"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1030" y="300"/><mxPoint x="1030" y="745"/><mxPoint x="800" y="745"/></Array></mxGeometry></mxCell><mxCell id="edge5" value="site_id" style="edgeStyle=orthogonalEdgeStyle;html=0;fontSize=14;strokeColor=#526b7c;startArrow=ERone;endArrow=ERmany;" edge="1" parent="1" source="si" target="qr"><mxGeometry relative="1" as="geometry"></mxGeometry></mxCell><mxCell id="notes" value="* Notification entity_id is a semantic text reference without a declared FK. Unique profile FKs are at most one.
+Private return_office configuration is in ERD 1; immutable cancellation/refusal audit is in ERD 2.
+Source verified; production NEEDS VERIFICATION. Review 20 October 2026." style="text;html=0;fontSize=15;align=left;" vertex="1" parent="1"><mxGeometry x="40" y="1050" width="1470" height="95" as="geometry"/></mxCell></root></mxGraphModel></diagram></mxfile>

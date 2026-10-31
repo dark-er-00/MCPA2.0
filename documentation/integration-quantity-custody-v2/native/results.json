@@ -1,0 +1,218 @@
+{
+  "status": "PASS",
+  "startedAt": "2026-10-24T18:41:35.190Z",
+  "environment": {
+    "platform": "win32",
+    "os": "10.0.26200",
+    "arch": "x64",
+    "node": "v24.21.0",
+    "bin": "C:\\Users\\maeko\\AppData\\Local\\Temp\\mcpa-pg-concurrency-2ae20d323cf847828f89cb28069954e0\\pgsql\\bin",
+    "work": "C:\\Users\\maeko\\AppData\\Local\\Temp\\mcpa-native-pg-gqoUgw",
+    "dbname": "mcpa_import_disposable_9fe45189f8e84af7a2f4d96b6ac01b6b",
+    "port": 50031,
+    "server": {
+      "address": "127.0.0.1",
+      "version": "PostgreSQL 17.11 on x86_64-windows, compiled by msvc-19.44.35228, 64-bit",
+      "isolation": "read committed",
+      "dataDirectory": "C:/Users/maeko/AppData/Local/Temp/mcpa-native-pg-gqoUgw/data"
+    }
+  },
+  "cases": [
+    {
+      "name": "additive migration installs without altering existing equipment, custody, photos or legacy movements",
+      "status": "PASS",
+      "ms": 2375
+    },
+    {
+      "name": "simultaneous Individual expansion retries commit one physical set and one pair of immutable receipts",
+      "status": "PASS",
+      "ms": 1033,
+      "waits": [
+        {
+          "pid": 900,
+          "wait": "advisory",
+          "blockers": [
+            4952
+          ]
+        },
+        {
+          "pid": 15808,
+          "wait": "advisory",
+          "blockers": [
+            4952,
+            900
+          ]
+        },
+        {
+          "pid": 18596,
+          "wait": "advisory",
+          "blockers": [
+            4952,
+            900,
+            15808
+          ]
+        }
+      ],
+      "independentBackends": [
+        900,
+        15808,
+        18596
+      ],
+      "created": 21
+    },
+    {
+      "name": "two quantity requests competing for the same physical assets have one allocation winner",
+      "status": "PASS",
+      "ms": 2629,
+      "waits": [
+        {
+          "pid": 19436,
+          "wait": "advisory",
+          "blockers": [
+            21360
+          ]
+        }
+      ],
+      "reservedPhysicalAssets": 2
+    },
+    {
+      "name": "legacy and quantity approvals share the same authoritative reservation lock",
+      "status": "PASS",
+      "ms": 2441,
+      "waits": [
+        {
+          "pid": 6700,
+          "wait": "advisory",
+          "blockers": [
+            3044
+          ]
+        }
+      ],
+      "reservedPhysicalAssets": 2
+    },
+    {
+      "name": "simultaneous same-operation material issuance deducts stock exactly once",
+      "status": "PASS",
+      "ms": 2786,
+      "waits": [
+        {
+          "pid": 13596,
+          "wait": "advisory",
+          "blockers": [
+            14732
+          ]
+        },
+        {
+          "pid": 18848,
+          "wait": "advisory",
+          "blockers": [
+            14732,
+            13596
+          ]
+        },
+        {
+          "pid": 13284,
+          "wait": "advisory",
+          "blockers": [
+            14732,
+            13596,
+            18848
+          ]
+        }
+      ],
+      "issues": 1,
+      "stock": 4
+    },
+    {
+      "name": "independent approved material requests cannot overspend one stock record",
+      "status": "PASS",
+      "ms": 2503,
+      "waits": [
+        {
+          "pid": 12684,
+          "wait": "transactionid",
+          "blockers": [
+            12012
+          ]
+        }
+      ],
+      "issues": 1,
+      "stock": 1
+    },
+    {
+      "name": "combined independent return submissions and Admin inspections admit one winner each",
+      "status": "PASS",
+      "ms": 1718,
+      "waits": [
+        {
+          "pid": 12588,
+          "wait": "advisory",
+          "blockers": [
+            17916
+          ]
+        }
+      ],
+      "inspectionWaits": [
+        {
+          "pid": 17696,
+          "wait": "advisory",
+          "blockers": [
+            8128
+          ]
+        }
+      ]
+    },
+    {
+      "name": "combined retirement approval loses to a concurrent quantity allocation",
+      "status": "PASS",
+      "ms": 1061,
+      "waits": [
+        {
+          "pid": 16820,
+          "wait": "advisory",
+          "blockers": [
+            3600
+          ]
+        }
+      ]
+    },
+    {
+      "name": "combined evidence attachment blocks an independent privileged deletion and keeps the object",
+      "status": "PASS",
+      "ms": 1151,
+      "waits": [
+        {
+          "pid": 2812,
+          "wait": "transactionid",
+          "blockers": [
+            15548
+          ]
+        }
+      ]
+    },
+    {
+      "name": "final integrity preserves baseline data and all receipts reference authoritative equipment and stock movements",
+      "status": "PASS",
+      "ms": 346,
+      "equipment": 31,
+      "distinctTags": 31,
+      "waitingLocks": 0,
+      "negativeStock": 0,
+      "badIssueReferences": 0,
+      "badImportReferences": 0
+    }
+  ],
+  "observations": {
+    "integrity": {
+      "equipment": 31,
+      "distinctTags": 31,
+      "waitingLocks": 0,
+      "negativeStock": 0,
+      "badIssueReferences": 0,
+      "badImportReferences": 0
+    }
+  },
+  "migrationSHA256": "0252682084f351deed506b5fbfd6e33617861131e4194e55782ca91cb3981458",
+  "stopped": true,
+  "finishedAt": "2026-10-24T18:42:39.337Z"
+}

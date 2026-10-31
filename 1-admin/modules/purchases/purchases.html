@@ -1,0 +1,8 @@
+<section class="screen" id="screen-purchase" aria-labelledby="purchases-heading">
+ <div class="page-head"><div><h1 class="display" id="purchases-heading">Purchases</h1><p class="sub">Supplier records, costs and private receipts</p></div><button type="button" class="btn btn-primary" data-purchase-new disabled>Record purchase</button></div>
+ <p class="purchase-note">Record purchases here. Confirm deliveries and update stock in Material Requests.</p>
+ <div id="purchase-feedback" role="status"></div>
+ <div class="purchase-filters"><label class="field">Search purchases<input id="purchase-search" type="search" placeholder="Supplier, reference, item or request"></label><label class="field">From<input id="purchase-from" type="date"></label><label class="field">Until<input id="purchase-until" type="date"></label><button type="button" class="btn btn-secondary" data-purchase-refresh>Refresh</button></div>
+ <div class="card table-wrap" id="purchase-results" aria-busy="true"><p class="empty-state" role="status">Loading purchase records…</p></div>
+ <dialog id="purchase-dialog" aria-labelledby="purchase-dialog-heading"><div class="purchase-dialog-head"><h2 id="purchase-dialog-heading"></h2><button type="button" class="btn btn-secondary" data-purchase-close>Close</button></div><div id="purchase-dialog-body"></div></dialog>
+</section>

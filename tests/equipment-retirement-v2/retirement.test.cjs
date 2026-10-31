@@ -1,0 +1,34 @@
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const {fixture,randomUUID}=require('../custody-lifecycle-v2/fixture.cjs');
+const proposal=()=>({assetId:'TOOL-001',disposition:'sold',reason:'Beyond economical service life',effectiveDate:'2026-10-01'});
+test('retirement requires different Admin approval and preserves permanent IDs',async t=>{
+  const f=await fixture(t),a=f.actors;
+  await f.db.query("insert into mcpa_movements(id,kind,data,actor_id) values('HIST','transfer','{\"id\":\"HIST\",\"status\":\"received\"}',$1)",[a.sky.id]);
+  await f.db.query("insert into mcpa_movement_assets values('HIST',$1)",[f.tools['TOOL-001']]);
+  for(const actor of [a.sky,a.architect,a.secretary,a.handler,null])await assert.rejects(f.action(actor,'proposeRetirement',proposal()));
+  const r=await f.action(a.admin,'proposeRetirement',proposal());
+  await assert.rejects(f.action(a.admin,'approveRetirement',{id:r.id}),/different/);
+  await assert.rejects(f.action(a.sky,'approveRetirement',{id:r.id}),/Admin/);
+  const op=randomUUID(),result=await f.action(a.admin2,'approveRetirement',{id:r.id,notes:'Verified sale approval'},op);
+  assert.equal(result.status,'approved');assert.equal(result.disposition,'sold');assert.equal(result.approved_by,a.admin2.id);
+  assert.equal((await f.tool('TOOL-001')).status,'DISPOSED');assert.equal((await f.tool('TOOL-001')).asset_id,'TOOL-001');
+  assert.deepEqual(await f.action(a.admin2,'approveRetirement',{id:r.id,notes:'Verified sale approval'},op),result);
+  await assert.rejects(f.db.query("update equipment set status='AVAILABLE' where asset_id='TOOL-001'"),/Retired/);
+  await assert.rejects(f.rpc(a.sky,'mcpa_movement_action',{p_action:'createRequest',p_payload:{toolIds:['TOOL-001'],destination:'Casa Buena',purpose:'Invalid'},p_operation_id:randomUUID()}),/unavailable/);
+  assert.equal((await f.snapshot(a.sky)).retirements[0].id,r.id);assert.equal((await f.snapshot(a.pau)).retirements.length,0);
+  await f.action(a.sky,'reportRetirementIssue',{id:r.id,notes:'Sale reference needs review'});
+  assert.ok((await f.db.query("select 1 from mcpa_notifications where recipient_id=$1 and title='Retirement issue reported'",[a.admin.id])).rows.length);
+  await assert.rejects(f.action(a.pau,'reportRetirementIssue',{id:r.id,notes:'Unauthorized'}));
+  await assert.rejects(f.db.query("update mcpa_b_retirements set reason='rewritten' where id=$1",[r.id]),/immutable/);
+});
+test('retirement rejects custody and unresolved movements, rechecking before approval',async t=>{
+  const f=await fixture(t),a=f.actors;
+  await assert.rejects(f.action(a.admin,'proposeRetirement',{...proposal(),assetId:'TOOL-002'}),/unheld/);
+  await f.submit(['TOOL-002']);await assert.rejects(f.action(a.admin,'proposeRetirement',{...proposal(),assetId:'TOOL-002'}));
+  const r=await f.action(a.admin,'proposeRetirement',proposal());
+  await f.rpc(a.sky,'mcpa_movement_action',{p_action:'createRequest',p_payload:{toolIds:['TOOL-001'],destination:'Casa Buena',purpose:'New request after retirement proposal'},p_operation_id:randomUUID()});
+  await assert.rejects(f.action(a.admin2,'approveRetirement',{id:r.id}),/unresolved/);
+  assert.equal((await f.tool('TOOL-001')).status,'AVAILABLE');
+  await f.action(a.admin2,'rejectRetirement',{id:r.id,notes:'Pending request must be resolved'});
+  assert.equal((await f.snapshot(a.admin)).retirements[0].status,'rejected');
+});

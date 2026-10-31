@@ -1,0 +1,17 @@
+﻿ M 1-admin/modules/masterlist/masterlist.css
+ M 1-admin/modules/masterlist/masterlist.html
+ M 1-admin/modules/masterlist/masterlist.js
+ M 2-engr/index.html
+ M index.html
+ M js/equipment-photos.js
+ M tests/auth.browser.cjs
+ M tests/feature-frontend.test.cjs
+ M tests/package-lock.json
+ M tests/package.json
+?? documentation/equipment-fixes-2026-10-21/
+?? images/favicon.svg
+?? supabase/equipment-photos-preflight.sql
+?? supabase/equipment-photos-verification.sql
+?? supabase/migrations/202610210001_equipment_photo_compatibility.sql
+?? tests/equipment-fixes.browser-checks.cjs
+?? tests/equipment-photos-compatibility.test.cjs

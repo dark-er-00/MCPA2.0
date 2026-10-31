@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "errors": [],
+  "requestedRoles": [
+    "Admin",
+    "Engineer / Architect"
+  ],
+  "actualSourceRoutes": {
+    "admin": [
+      "dashboard",
+      "masterlist",
+      "tool-profile",
+      "sites",
+      "site-detail",
+      "request",
+      "transfer",
+      "return",
+      "repair",
+      "missing",
+      "consumables",
+      "purchase",
+      "reports",
+      "activity",
+      "users",
+      "settings"
+    ],
+    "engineer": [
+      "dashboard",
+      "masterlist",
+      "tool-profile",
+      "sites",
+      "site-detail",
+      "request",
+      "transfer",
+      "return",
+      "repair",
+      "missing",
+      "activity",
+      "settings"
+    ],
+    "architect": [
+      "dashboard",
+      "masterlist",
+      "tool-profile",
+      "sites",
+      "site-detail",
+      "request",
+      "transfer",
+      "return",
+      "repair",
+      "missing",
+      "activity",
+      "settings"
+    ],
+    "secretary": [
+      "consumables",
+      "purchase",
+      "settings"
+    ],
+    "tool_handler": [
+      "dashboard",
+      "masterlist",
+      "tool-profile",
+      "sites",
+      "site-detail",
+      "transfer",
+      "return",
+      "repair",
+      "missing",
+      "activity",
+      "settings"
+    ]
+  },
+  "actualSourceActions": {
+    "admin": [
+      "approveRequest",
+      "rejectRequest",
+      "releaseRequest",
+      "startRepair",
+      "completeRepair",
+      "recoverMissing"
+    ],
+    "engineer": [
+      "createRequest",
+      "createTransfer",
+      "receiveTransfer",
+      "createReturn",
+      "reportRepair",
+      "reportMissing",
+      "withdrawRequest",
+      "cancelReservation",
+      "cancelTransfer",
+      "refuseTransfer",
+      "reopenTransfer"
+    ],
+    "architect": [
+      "createRequest",
+      "createTransfer",
+      "receiveTransfer",
+      "createReturn",
+      "reportRepair",
+      "reportMissing",
+      "withdrawRequest",
+      "cancelReservation",
+      "cancelTransfer",
+      "refuseTransfer",
+      "reopenTransfer"
+    ],
+    "secretary": [],
+    "tool_handler": [
+      "createTransfer"
+    ]
+  },
+  "engineerArchitectIdentical": true,
+  "deliveredSourceRoutes": {
+    "admin": 16,
+    "engineerArchitect": 12
+  },
+  "outsideScopeSourceRoles": [
+    "secretary",
+    "tool_handler"
+  ],
+  "referenceSha256": "0563e84c0020dbae0571521f010f1c5e35fe40fb3d23ce045890b31bd9b5a978",
+  "referenceCopyMatchesOriginal": true,
+  "evidenceReferencesChecked": 271,
+  "applicationCodeExecuted": false
+}

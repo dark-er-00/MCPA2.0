@@ -1,0 +1,53 @@
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const {fixture,randomUUID}=require('../custody-lifecycle-v2/fixture.cjs');
+test('QR server resolves only actual current individual custody',async t=>{
+  const f=await fixture(t);
+  assert.equal((await f.lookup(f.actors.sky,'mcpa:asset:TOOL-002')).id,'TOOL-002');
+  for(const actor of [f.actors.pau,f.actors.admin,f.actors.secretary,null,f.actors.inactive])await assert.rejects(f.lookup(actor,'TOOL-002'));
+  await assert.rejects(f.lookup(f.actors.sky,'UNKNOWN'));
+  await f.db.query("update equipment set quantity=8 where asset_id='TOOL-002'");
+  await assert.rejects(f.lookup(f.actors.sky,'TOOL-002'),/individual/);
+  await assert.rejects(f.rpc(f.actors.sky,'mcpa_movement_action',{p_action:'createTransfer',p_payload:{toolIds:['TOOL-002'],destination:'Main Warehouse',receiverId:f.actors.pau.id},p_operation_id:randomUUID()}),/individual Asset IDs/);
+  await f.db.exec('alter table public.equipment alter column quantity drop not null');
+  await f.db.query("update equipment set quantity=null where asset_id='TOOL-002'");
+  await assert.rejects(f.lookup(f.actors.sky,'TOOL-002'),/individual/);
+  await assert.rejects(f.submit(['TOOL-003','TOOL-003']),/distinct/);
+  await f.submit(['TOOL-003']);await assert.rejects(f.lookup(f.actors.sky,'TOOL-003','transfer'),/unavailable/);
+});
+test('exact assets transfer only after named recipient physically accepts',async t=>{
+  const f=await fixture(t),a=f.actors;
+  const payload={assetIds:['TOOL-002','TOOL-003'],destinationId:f.sites.main,receiverId:a.pau.id,notes:'Two physical units'};
+  const op=randomUUID(),transfer=await f.action(a.sky,'createTransfer',payload,op);
+  assert.equal(transfer.status,'pending');assert.equal((await f.tool('TOOL-002')).current_holder_id,a.sky.id);
+  assert.deepEqual(await f.action(a.sky,'createTransfer',payload,op),transfer);
+  await assert.rejects(f.submit(['TOOL-002']),/unavailable/);
+  const checks=payload.assetIds.map(toolId=>({toolId,condition:'good',tested:true,physicallyReceived:true}));
+  await assert.rejects(f.action(a.sky,'receiveTransfer',{id:transfer.id,inspections:checks}));
+  await assert.rejects(f.action(a.pau,'receiveTransfer',{id:transfer.id,inspections:[checks[0]]}));
+  await assert.rejects(f.action(a.pau,'receiveTransfer',{id:transfer.id,inspections:[{...checks[0],physicallyReceived:false},checks[1]]}),/Physically/);
+  checks[1]={...checks[1],condition:'damaged',disposition:'accepted',notes:'Guard dented; custody accepted'};
+  const receiveOp=randomUUID();const received=await f.action(a.pau,'receiveTransfer',{id:transfer.id,inspections:checks},receiveOp);
+  assert.equal(received.status,'received');assert.equal((await f.tool('TOOL-002')).current_holder_id,a.pau.id);
+  assert.equal((await f.tool('TOOL-003')).status,'REPAIR');assert.equal((await f.tool('TOOL-003')).current_holder_id,a.pau.id);
+  assert.deepEqual(await f.action(a.pau,'receiveTransfer',{id:transfer.id,inspections:checks},receiveOp),received);
+  await assert.rejects(f.action(a.pau,'receiveTransfer',{id:transfer.id,inspections:checks}));
+  assert.ok((await f.db.query('select 1 from mcpa_movement_operations where id=$1',[receiveOp])).rows.length);
+});
+test('transfer refuses self, unavailable assets and recipients outside project assignment',async t=>{
+  const f=await fixture(t),payload={assetIds:['TOOL-002'],destinationId:f.sites.main,receiverId:f.actors.pau.id};
+  await assert.rejects(f.action(f.actors.sky,'createTransfer',{...payload,receiverId:f.actors.sky.id}),/another/);
+  await assert.rejects(f.action(f.actors.sky,'createTransfer',{...payload,receiverId:f.actors.architect.id}),/assigned/);
+  await assert.rejects(f.action(f.actors.pau,'createTransfer',payload),/custody/);
+  await f.db.query("update equipment set condition='Damaged' where asset_id='TOOL-002'");
+  await assert.rejects(f.action(f.actors.sky,'createTransfer',payload),/unavailable/);
+});
+test('batch deduplicates scans, supports manual IDs and cancels pending resolution',async()=>{
+  const {AssetBatch,parseAssetReference}=await import('../../js/upgrades/equipment-qr/scanner.mjs');
+  let calls=0;const batch=new AssetBatch({resolve:async id=>{calls++;return {id,name:'Tool'};}});
+  const results=await Promise.all([batch.add('mcpa:asset:A-1'),batch.add('A-1')]);
+  assert.equal(batch.items.length,1);assert.equal(calls,1);assert.ok(results.some(r=>r.duplicate));
+  await batch.add('Manual-2');assert.equal(batch.items.length,2);batch.remove('A-1');assert.equal(batch.items.length,1);
+  for(const invalid of ['https://host/?token=secret','javascript:alert(1)','{"access_token":"secret"}','',"bad\nID"])assert.throws(()=>parseAssetReference(invalid));
+  let resolve;const pending=new AssetBatch({resolve:id=>new Promise(r=>resolve=()=>r({id}))});
+  const run=pending.add('A-1');pending.clear();resolve();assert.ok((await run).cancelled);assert.equal(pending.items.length,0);
+});
