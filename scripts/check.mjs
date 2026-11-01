@@ -8,6 +8,12 @@ const publicDirectory = path.join(root, 'public');
 const files = readdirSync(publicDirectory, {recursive:true})
   .filter(file => statSync(path.join(publicDirectory, file)).isFile());
 const failures = [];
+const phpFiles = ['server', 'public'].flatMap(directory => readdirSync(path.join(root, directory), {recursive:true})
+  .filter(file => file.endsWith('.php')).map(file => path.join(root, directory, file)));
+for (const file of phpFiles) {
+  const result = spawnSync(process.env.PHP_BINARY || 'php', ['-l', file], {encoding:'utf8', windowsHide:true});
+  if (result.status !== 0) failures.push(result.stderr || result.error?.message || `PHP syntax error: ${file}`);
+}
 function resource(owner, reference, fromRoot = false) {
   if (/^(?:[a-z]+:|#|\/\/)/i.test(reference) || reference.includes('${')) return;
   const name = reference.split(/[?#]/)[0];
@@ -36,4 +42,4 @@ const screenModules = [...new Set([...loader.slice(0, loader.indexOf('let curren
 for (const name of screenModules) for (const extension of ['html','css','js']) resource(path.join(publicDirectory,'index.html'), `app/portals/admin/${name}/${name}.${extension}`, true);
 for (const name of screenModules.filter(name => !['sites','consumables','users','settings','reports','purchases'].includes(name))) for (const extension of ['html','css','js']) resource(path.join(publicDirectory,'index.html'), `app/portals/engineer/${name}/${name}.${extension}`, true);
 if (failures.length) { console.error(failures.join('\n')); process.exitCode = 1; }
-else console.log(`Checked ${files.length} public files, script syntax, imports, assets and portal modules.`);
+else console.log(`Checked ${files.length} public files, ${phpFiles.length} PHP files, script syntax, imports, assets and portal modules.`);

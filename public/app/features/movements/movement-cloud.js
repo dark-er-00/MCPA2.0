@@ -11,7 +11,10 @@
   function client() {
     if (!window.supabaseClient) {
       if (!window.supabase?.createClient) throw new Error('The database connection could not load. Check your connection and refresh, or explicitly open demo data.');
-      window.supabaseClient = window.supabase.createClient('https://zpqxlmiqwevhlstjirei.supabase.co', 'sb_publishable_RgF8h8rkushKhKIm6iGJ4g_HH02YW58');
+      if (window.EquipmentTracking) return window.EquipmentTracking.client();
+      const config = window.MCPA_CONFIG;
+      if (!config?.supabaseUrl || !config?.supabasePublishableKey) throw new Error('The database connection is not configured.');
+      window.supabaseClient = window.supabase.createClient(config.supabaseUrl, config.supabasePublishableKey, window.MCPAServer?.options);
     }
     return window.supabaseClient;
   }

@@ -1,0 +1,13 @@
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule (^|/)\. - [F,L]
+    RewriteRule ^index\.html$ index.php [END]
+    RewriteRule ^app/core/config\.js$ app/core/config.php [END]
+</IfModule>
+
+<FilesMatch "^(?:\.env.*|.*\.(?:sql|log|md))$">
+    Require all denied
+</FilesMatch>

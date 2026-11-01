@@ -34,8 +34,6 @@ export function createStaticServer() {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
-  const server = createStaticServer();
-  server.listen(Number(process.env.PORT || 4173), '127.0.0.1', () => {
-    console.log(`MCPA: http://127.0.0.1:${server.address().port}`);
-  });
+  // Retain the static helper for isolated fixtures; actual hosting executes PHP.
+  await import('./start.mjs');
 }

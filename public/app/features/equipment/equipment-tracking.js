@@ -7,7 +7,7 @@
       if (!window.supabase?.createClient) throw new Error('The database connection could not load. Please try again.');
       const config = window.MCPA_CONFIG;
       if (!config?.supabaseUrl || !config?.supabasePublishableKey) throw new Error('The database connection is not configured.');
-      window.supabaseClient = window.supabase.createClient(config.supabaseUrl, config.supabasePublishableKey);
+      window.supabaseClient = window.supabase.createClient(config.supabaseUrl, config.supabasePublishableKey, window.MCPAServer?.options);
     }
     return window.supabaseClient;
   }

@@ -22,7 +22,7 @@ test('existing release notifications already use company profile IDs; copy migra
   const before={};for(const table of ['equipment','profiles','sites','mcpa_movements','mcpa_movement_operations','mcpa_notifications'])before[table]=(await db.query('select * from '+table+' order by id')).rows;
   await db.exec(change);
   for(const table of Object.keys(before))assert.deepEqual((await db.query('select * from '+table+' order by id')).rows,before[table],'Migration preserves '+table);
-  const preflight=(await db.query(read('request-turnover-preflight.sql'))).rows[0].request_turnover_preflight;
+  const preflight=(await db.query(read('checks/request-turnover-preflight.sql'))).rows[0].request_turnover_preflight;
   assert.equal(preflight.recipient_turnover_copy,true);assert.equal(preflight.notification_trigger_enabled,true);assert.equal(preflight.notification_rls,true);assert.equal(preflight.anonymous_movement_execute,false);
   assert.ok((await f.rpc(a.sky,'mcpa_movement_snapshot')).transfers.some(t=>t.id===oldTransfer.id&&t.status==='pending'),'Existing pending turnover visible without notification backfill');
   await addTool(f,'RELEASE-A');await addTool(f,'RELEASE-B',3);
@@ -85,7 +85,7 @@ test('turnover migration refuses missing monitoring instead of installing tables
  const f=await authDatabase({engineerPortal:true});
  try{
   const before=(await f.db.query('select * from profiles order by id')).rows;
-  const result=(await f.db.query(read('request-turnover-preflight.sql'))).rows[0].request_turnover_preflight;
+  const result=(await f.db.query(read('checks/request-turnover-preflight.sql'))).rows[0].request_turnover_preflight;
   assert.equal(result.notification_table,false);assert.equal(result.monitoring_snapshot_rpc,false);
   await assert.rejects(f.db.exec(change),/Existing authenticated monitoring setup is required/);await f.db.exec('rollback');
   assert.equal((await f.db.query("select to_regclass('public.mcpa_notifications') as relation")).rows[0].relation,null);
