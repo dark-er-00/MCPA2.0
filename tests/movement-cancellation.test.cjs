@@ -64,7 +64,7 @@ test('Cloud cancellation binds retries to the same operation and preserves permi
     if(failure)return {error:{code:'NETWORK'}};
     return {data:{id:args.p_payload.id,status:'withdrawn'}};
   }};
-  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../js/movement-cloud.js'),'utf8'),{window,TOOLS:[],crypto:webcrypto,CustomEvent});
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../public/app/features/movements/movement-cloud.js'),'utf8'),{window,TOOLS:[],crypto:webcrypto,CustomEvent});
   const store=window.MovementStore,values={reason:'Duplicate fixture request',confirmed:true};
   await assert.rejects(store.withdrawRequest('REQ-MOCK',values));
   failure=false;await store.withdrawRequest('REQ-MOCK',values);
@@ -209,7 +209,7 @@ test('Demo cancellation and refusal preserve custody, locks, audit and failed-wr
     {id:'DEMO-HELD',name:'Fixture held',site:'Origin',holder:'Engr Sky',status:'inuse',qty:1},
     {id:'DEMO-RECEIVER',name:'Other receiver fixture',site:'Destination',holder:'Engineer Receiver',status:'inuse',qty:1}];
   const sandbox=vm.createContext({window,console,TOOLS:tools});
-  vm.runInContext(fs.readFileSync(path.join(__dirname,'../js/movement-store.js'),'utf8'),sandbox);
+  vm.runInContext(fs.readFileSync(path.join(__dirname,'../public/app/features/movements/movement-store.js'),'utf8'),sandbox);
   const store=window.MovementDemoStore;store.activate();
   const setUser=(role,name)=>{window.MCPAAuth.profile={role,name};};
   const change={reason:'Schedule changed',confirmed:true};

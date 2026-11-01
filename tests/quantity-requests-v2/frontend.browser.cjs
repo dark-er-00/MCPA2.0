@@ -4,14 +4,14 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs'), path = require('node:path'), os = require('node:os'), http = require('node:http');
 const { spawn } = require('node:child_process'), { once } = require('node:events');
 const root = path.resolve(__dirname, '../..'), profile = fs.mkdtempSync(path.join(os.tmpdir(), 'mcpa-wa-browser-'));
-const screenshots = path.join(root, 'documentation/workstream-a/screenshots');
+const screenshots = path.join(root, 'tests/artifacts/workstream-a/screenshots');
 const scripts = [
-  '/js/upgrades/quantity-requests/client.js', '/js/upgrades/quantity-requests/view.js',
-  '/2-engr/modules/quantity-requests-v2/index.js', '/1-admin/modules/quantity-allocation-v2/index.js',
-  '/js/upgrades/consumables-requests/core.js', '/js/upgrades/consumables-requests/analytics.js',
-  '/2-engr/modules/consumables-requests-v2/consumables-requests.js', '/1-admin/modules/consumables-usage-v2/consumables-usage.js'
+  '/app/features/quantity-requests/client.js', '/app/features/quantity-requests/view.js',
+  '/app/portals/engineer/quantity-requests/index.js', '/app/portals/admin/quantity-allocation/index.js',
+  '/app/features/consumables-requests/core.js', '/app/features/consumables-requests/analytics.js',
+  '/app/portals/engineer/consumables-requests/consumables-requests.js', '/app/portals/admin/consumables-usage/consumables-usage.js'
 ];
-const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Workstream A isolated mount verification</title><link rel="stylesheet" href="/css/global.css"><link rel="stylesheet" href="/css/theme.css"><link rel="stylesheet" href="/js/upgrades/quantity-requests/styles.css"><link rel="stylesheet" href="/js/upgrades/consumables-requests/styles.css"><style>main{padding:24px;max-width:1320px;margin:auto}@media(max-width:480px){main{padding:16px}}</style></head><body><main id="mount"></main>${scripts.map(src => `<script src="${src}"></script>`).join('')}<script>
+const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Workstream A isolated mount verification</title><link rel="stylesheet" href="/assets/styles/global.css"><link rel="stylesheet" href="/assets/styles/theme.css"><link rel="stylesheet" href="/app/features/quantity-requests/styles.css"><link rel="stylesheet" href="/app/features/consumables-requests/styles.css"><style>main{padding:24px;max-width:1320px;margin:auto}@media(max-width:480px){main{padding:16px}}</style></head><body><main id="mount"></main>${scripts.map(src => `<script src="${src}"></script>`).join('')}<script>
 window.__rpcCalls=[];window.__controller=null;
 window.__client={async rpc(name,args={}){__rpcCalls.push({name,args});const result=await fetch('/__rpc',{method:'POST',headers:{'Content-Type':'application/json','X-Fixture-Actor':__actor},body:JSON.stringify({name,args})}).then(response=>response.json());if(window.__dropResponseOnce===name&&!result.error){window.__dropResponseOnce=null;throw Error('Isolated response lost after database commit. Retry the interrupted action.');}return result;}};
 window.__mount=async(mode,actor)=>{__controller?.destroy();__actor=actor;const root=document.getElementById('mount');if(mode==='quantity-engineer'){__controller=MCPAQuantityEngineer.mount({root,supabase:__client});await __controller.ready;}if(mode==='quantity-admin'){__controller=MCPAQuantityAdmin.mount({root,supabase:__client});await __controller.ready;}if(mode==='consumables-engineer')__controller=await MCPAConsumablesRequesterV2.mount({root,client:__client});if(mode==='consumables-admin')__controller=await MCPAConsumablesUsageV2.mount({root,client:__client});return true;};
@@ -40,7 +40,7 @@ const errors = [], calls = [], pause = ms => new Promise(resolve => setTimeout(r
       } catch (error) { response.setHeader('Content-Type', 'application/json'); response.end(JSON.stringify({ data: null, error: { code: error.code, message: error.message } })); }
       return;
     }
-    const file = path.resolve(root, '.' + new URL(request.url, 'http://localhost').pathname);
+    const file = path.resolve(root, 'public', '.' + new URL(request.url, 'http://localhost').pathname);
     if (!file.startsWith(root + path.sep) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) { response.writeHead(404); response.end(); return; }
     response.setHeader('Content-Type', path.extname(file) === '.css' ? 'text/css' : 'text/javascript'); response.end(fs.readFileSync(file));
   });

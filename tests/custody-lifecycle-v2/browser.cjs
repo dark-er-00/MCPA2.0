@@ -5,7 +5,7 @@ const {spawn}=require('node:child_process'),{once}=require('node:events');
 const {fixture,root}=require('./fixture.cjs');
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const profile=fs.mkdtempSync(path.join(os.tmpdir(),'mcpa-b-browser-'));
-const output=path.join(root,'documentation/workstream-b/test-results');fs.mkdirSync(output,{recursive:true});
+const output=path.join(root,'tests/artifacts/workstream-b/test-results');fs.mkdirSync(output,{recursive:true});
 const shots=path.join(output,'screenshots');fs.mkdirSync(shots,{recursive:true});
 const checks=[],exceptions=[];let f,chrome,socket;
 const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aB9sAAAAASUVORK5CYII=','base64');
@@ -35,8 +35,9 @@ const server=http.createServer(async(req,res)=>{
       res.setHeader('Content-Type','application/json');res.end(JSON.stringify({data,error}));return;
     }
     if(req.url==='/__photo.png'){res.setHeader('Content-Type','image/png');res.end(png);return;}
-    const file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));
-    const allowed=['tests/custody-lifecycle-v2/','js/upgrades/','1-admin/modules/return-inspection-v2/','1-admin/modules/asset-retirement-v2/','2-engr/modules/return-inspection-v2/','2-engr/modules/qr-movements-v2/','2-engr/modules/retired-equipment-v2/','css/','vendor/'];
+    const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
+    const file=path.resolve(root, pathname.startsWith('/tests/') ? '.'+pathname : 'public/.'+pathname);
+    const allowed=['tests/custody-lifecycle-v2/','public/app/features/','public/app/portals/admin/return-inspection/','public/app/portals/admin/asset-retirement/','public/app/portals/engineer/return-inspection/','public/app/portals/engineer/qr-movements/','public/app/portals/engineer/retired-equipment/','public/assets/styles/','public/assets/vendor/'];
     const relative=path.relative(root,file).replaceAll('\\','/');
     if(!allowed.some(prefix=>relative.startsWith(prefix))||!fs.existsSync(file)||fs.statSync(file).isDirectory()){res.writeHead(404);res.end();return;}
     res.setHeader('Content-Type',({'.mjs':'text/javascript','.js':'text/javascript','.html':'text/html','.css':'text/css','.woff2':'font/woff2'})[path.extname(file)]||'application/octet-stream');res.end(fs.readFileSync(file));

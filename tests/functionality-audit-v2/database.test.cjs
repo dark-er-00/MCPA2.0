@@ -1,5 +1,5 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),{randomUUID:id}=require('node:crypto');
-const {fixture,upgrade}=require('./fixture.cjs'),C=require('../../js/upgrades/consumables-requests/core.js');
+const {fixture,upgrade}=require('./fixture.cjs'),C=require('../../public/app/features/consumables-requests/core.js');
 const rpc=async(f,actor,name,args={})=>(await f.query(actor,`select public.${name}(${Object.keys(args).map((k,i)=>k+' => $'+(i+1)).join(',')}) value`,Object.values(args))).rows[0].value;
 const profile=(f,actor)=>rpc(f,actor,'mcpa_my_profile');
 const seed=(f,unit='pcs')=>f.call(f.actors.admin,'consumables_save_item',{p_id:id(),p_version:null,p_name:'Audit '+unit,p_unit:unit,p_minimum:2,p_opening:200,p_category:'Cutting',p_specification:'',p_item_code:null});
@@ -7,8 +7,8 @@ const submit=(f,item,quantity)=>f.call(f.actors.sky,'mcpa_wa_submit_consumables'
 test('all active roles edit only their own permitted profile fields; handles are case-insensitively unique and persist',async t=>{
  const f=await fixture(t),a=f.actors;
  const fs=require('node:fs'),path=require('node:path');
- await f.db.exec(fs.readFileSync(path.join(__dirname,'../../supabase/functionality-audit-preflight.sql'),'utf8'));
- const checks=await f.db.exec(fs.readFileSync(path.join(__dirname,'../../supabase/functionality-audit-verify.sql'),'utf8'));
+ await f.db.exec(fs.readFileSync(path.join(__dirname,'../../supabase/checks/functionality-audit-preflight.sql'),'utf8'));
+ const checks=await f.db.exec(fs.readFileSync(path.join(__dirname,'../../supabase/checks/functionality-audit-verify.sql'),'utf8'));
  const verified=checks[0].rows[0].functionality_audit_verification;
  assert.equal(verified.quantity_guards,4);for(const [key,value]of Object.entries(verified))if(key!=='quantity_guards')assert.equal(value,true,key);
  const protectedRows=(await f.db.query('select id,auth_user_id,role,account_status from profiles order by id')).rows;
@@ -27,7 +27,7 @@ test('all active roles edit only their own permitted profile fields; handles are
 });
 test('count-unit requests, approvals, receipts and stock usage reject fractions at the real RPC boundary; measured quantities survive',async t=>{
  const f=await fixture(t),a=f.actors,item=await seed(f),measured=await seed(f,'kg');
- const units=require('../../js/consumables-catalog.js'),unitCases=['pcs','PCS.','pieces','bags','boxes','rolls','sets','lengths','pair','kg','liters','m','custom measurement'];
+ const units=require('../../public/app/features/consumables/consumables-catalog.js'),unitCases=['pcs','PCS.','pieces','bags','boxes','rolls','sets','lengths','pair','kg','liters','m','custom measurement'];
  for(const row of (await f.db.query('select value unit,mcpa_auth_private.consumable_whole_unit(value) whole from jsonb_array_elements_text($1::jsonb)',[JSON.stringify(unitCases)])).rows)assert.equal(row.whole,units.isWholeUnit(row.unit),row.unit);
  for(const value of [0,-2,0.002,1.5,'abc','',null])await assert.rejects(submit(f,item,value));
  for(const quantity of [1,5,100])assert.equal((await submit(f,item,quantity)).items[0].requested_quantity,quantity);

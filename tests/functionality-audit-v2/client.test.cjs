@@ -1,5 +1,5 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-const C=require('../../js/upgrades/consumables-requests/core.js'),units=require('../../js/consumables-catalog.js');
+const C=require('../../public/app/features/consumables-requests/core.js'),units=require('../../public/app/features/consumables/consumables-catalog.js');
 test('count units reject the reported manual/pasted values without rounding; measured units retain three decimals',()=>{
  for(const unit of ['pcs','pieces','PCS.','bag','bags','boxes','sets','roll','bottles','length','pair']){
   assert.equal(units.isWholeUnit(unit),true);assert.equal(units.quantityRules(unit).step,1);assert.equal(units.quantityRules(unit).min,1);
@@ -19,7 +19,7 @@ test('request validation applies the actual SKU unit and preserves legitimate me
 });
 test('Sold/Disposed filters use retirement metadata without changing availability or duplicating equipment',()=>{
  const window={MCPADisplay:{status:value=>value}},document=new EventTarget();
- vm.runInNewContext(fs.readFileSync(require.resolve('../../js/equipment-tracking.js'),'utf8'),{window,document});
+ vm.runInNewContext(fs.readFileSync(require.resolve('../../public/app/features/equipment/equipment-tracking.js'),'utf8'),{window,document});
  const api=window.EquipmentTracking,sold={status:'disposed',retirementDisposition:'sold',quantity:1},disposed={status:'disposed',retirementDisposition:'disposed',quantity:1};
  assert.equal(api.matchesStatus(sold,'Sold'),true);assert.equal(api.matchesStatus(sold,'Disposed'),false);assert.equal(api.matchesStatus(disposed,'Disposed'),true);assert.equal(api.matchesStatus(disposed,'Sold'),false);
  assert.equal(api.availability(sold),'Unavailable');assert.equal(api.availability(disposed),'Unavailable');assert.equal(api.matchesStatus({status:'UNDER_REPAIR'},'For Repair'),true);

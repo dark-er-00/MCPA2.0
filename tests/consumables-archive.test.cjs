@@ -2,8 +2,8 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),{randomUUID}=require('node:crypto');
 const {authDatabase}=require('./auth-test-db.cjs');
 const {fixture,upgrade,seed,rpc,read}=require('./consumables-upgrade-fixture.cjs');
-const catalog=require('../js/consumables-catalog.js');
-const archiveSql=read('documentation/consumables-upgrade-2026-10-22/02-archive-sample.sql');
+const catalog=require('../public/app/features/consumables/consumables-catalog.js');
+const archiveSql=read('supabase/operations/consumables/02-archive-sample.sql');
 const sampleId='c3f58442-dc99-4466-8590-16642abdb7bc';
 const save=(f,extra={})=>rpc(f,f.actors.admin,'consumables_save_item',{p_id:randomUUID(),p_version:null,p_name:'Archive fixture',p_unit:'pcs',p_minimum:20,p_opening:100,p_category:'Cutting',p_specification:'4"',p_item_code:null,...extra});
 const adjust=(f,item,extra={})=>rpc(f,f.actors.admin,'consumables_adjust_stock',{p_operation_id:randomUUID(),p_item_id:item.id,p_version:item.version,p_kind:'usage',p_quantity:1,p_note:'Isolated archive test',...extra});
@@ -19,7 +19,7 @@ const archive=async(f,id)=>f.db.query("update consumables set archived_at=clock_
 test('guarded sample archival retains 24/120, UUID and all four movements; rerun is unchanged; seed imports 126 healthy active SKUs',async()=>{
  const f=await sampleFixture();try{
   const before=(await rows(f,'consumables'))[0],history=await rows(f,'consumable_stock_movements');
-  const preflight=async()=> (await f.db.exec(read('documentation/consumables-upgrade-2026-10-22/01-preflight.sql'))).find(result=>result.rows?.[0]?.total_source_skus!==undefined).rows[0];
+  const preflight=async()=> (await f.db.exec(read('supabase/operations/consumables/01-preflight.sql'))).find(result=>result.rows?.[0]?.total_source_skus!==undefined).rows[0];
   assert.deepEqual(await preflight(),{total_source_skus:126,exact_existing_matches:0,proposed_inserts_before_review:126,skus_needing_manual_review:2});
   await f.db.exec(archiveSql);
   const after=(await rows(f,'consumables'))[0];assert.ok(after.archived_at);assert.equal(after.current_stock,'24.000');assert.equal(after.minimum_stock,'120.000');assert.equal(after.id,sampleId);
@@ -34,8 +34,8 @@ test('guarded sample archival retains 24/120, UUID and all four movements; rerun
   assert.deepEqual(await rows(f,'consumable_stock_movements',` where consumable_id='${sampleId}'`),history);
   const seeded=await rows(f,'consumables');await f.db.exec(seed);assert.deepEqual(await rows(f,'consumables'),seeded);
   assert.deepEqual(await preflight(),{total_source_skus:126,exact_existing_matches:126,proposed_inserts_before_review:0,skus_needing_manual_review:0});
-  await f.db.exec(read('documentation/consumables-upgrade-2026-10-22/01-preflight.sql'));
-  await f.db.exec(read('documentation/consumables-upgrade-2026-10-22/04-verification.sql'));
+  await f.db.exec(read('supabase/operations/consumables/01-preflight.sql'));
+  await f.db.exec(read('supabase/operations/consumables/04-verification.sql'));
  }finally{await f.close();}
 });
 test('guarded archive fails closed on identity, balance, reference or movement-count drift',async()=>{

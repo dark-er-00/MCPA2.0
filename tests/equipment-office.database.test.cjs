@@ -1,7 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{randomUUID}=require('node:crypto');
 const {authDatabase}=require('./auth-test-db.cjs');
 const migration=fs.readFileSync(path.join(__dirname,'../supabase/migrations/202610120004_equipment_office_default.sql'),'utf8');
-const correction=fs.readFileSync(path.join(__dirname,'../supabase/equipment-office-confirmed-correction.sql'),'utf8');
+const correction=fs.readFileSync(path.join(__dirname,'../supabase/operations/equipment-office-confirmed-correction.sql'),'utf8');
 async function setup(t,{textStatus=false,install=true}={}){
   const f=await authDatabase({engineerPortal:true});t.after(()=>f.close());
   await require('./office-return-fixture.cjs').configure(f);

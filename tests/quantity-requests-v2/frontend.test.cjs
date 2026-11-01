@@ -1,7 +1,7 @@
 'use strict';
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const Q = require('../../js/upgrades/quantity-requests/client.js');
+const Q = require('../../public/app/features/quantity-requests/client.js');
 const site = '11111111-1111-4111-8111-111111111111';
 const requestId = '22222222-2222-4222-8222-222222222222';
 const assets = [1, 2, 3].map(index => ({ id: `33333333-3333-4333-8333-${String(index).padStart(12, '0')}`, asset_id: `TOOL-${index}`, name: 'Shovel (Pala, Lapad)' }));

@@ -1,7 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const {webcrypto}=require('node:crypto');
-const C=require('../../js/upgrades/individual-import-expansion/core.js');
-const {create,RPC,RECEIPT_RPC}=require('../../js/upgrades/individual-import-expansion/controller.js');
+const C=require('../../public/app/features/individual-import-expansion/core.js');
+const {create,RPC,RECEIPT_RPC}=require('../../public/app/features/individual-import-expansion/controller.js');
 const {fixture}=require('./fixture.cjs');
 const deferred=()=>{let resolve;const promise=new Promise(r=>{resolve=r;});return {promise,resolve};};
 

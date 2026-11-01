@@ -42,7 +42,7 @@ test('transfer refuses self, unavailable assets and recipients outside project a
   await assert.rejects(f.action(f.actors.sky,'createTransfer',payload),/unavailable/);
 });
 test('batch deduplicates scans, supports manual IDs and cancels pending resolution',async()=>{
-  const {AssetBatch,parseAssetReference}=await import('../../js/upgrades/equipment-qr/scanner.mjs');
+  const {AssetBatch,parseAssetReference}=await import('../../public/app/features/equipment-qr/scanner.mjs');
   let calls=0;const batch=new AssetBatch({resolve:async id=>{calls++;return {id,name:'Tool'};}});
   const results=await Promise.all([batch.add('mcpa:asset:A-1'),batch.add('A-1')]);
   assert.equal(batch.items.length,1);assert.equal(calls,1);assert.ok(results.some(r=>r.duplicate));

@@ -43,7 +43,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  assert.equal(await evaluate(`document.querySelector(${JSON.stringify(pcApproval)}).step`),'1');assert.equal(await evaluate(`document.querySelector(${JSON.stringify(kgApproval)}).step`),'0.001');
  await fill(pcApproval,'1.5');await evaluate('document.querySelector("[data-review]").dispatchEvent(new SubmitEvent("submit",{bubbles:true,cancelable:true,submitter:document.querySelector("[data-decision=approve]")}))');
  await wait('document.querySelector(".wa-message").textContent.includes("whole number")');
- await fill(pcApproval,'5');await click('[data-decision=approve]');await wait('document.querySelector("[data-decision=issue]")');await fill(pcApproval,'5');await fill(kgApproval,'0.125');await click('[data-decision=issue]');await wait('document.querySelector(".wa-message").textContent.includes("Issuance recorded")');
+ await fill(pcApproval,'5');await click('[data-decision=approve]');await wait('document.querySelector("[data-decision=issue]:not(:disabled)")');await fill(pcApproval,'5');await fill(kgApproval,'0.125');await click('[data-decision=issue]');await wait('document.querySelector(".wa-message").textContent.includes("Issuance recorded")');
  assert.equal(Number((await f.db.query('select current_stock from consumables where id=$1',[pcs.id])).rows[0].current_stock),25);
  const rejected=await f.call(a.sky,'mcpa_wa_submit_consumables',{p_operation_id:id(),p_site_id:f.sites.casa,p_purpose:'',p_items:[{consumable_id:pcs.id,unit:'pcs',quantity:5}]});
  await click('[data-action=refresh]');await wait(`document.querySelector('[data-open="${rejected.id}"]')`);await click(`[data-open="${rejected.id}"]`);

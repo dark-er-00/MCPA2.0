@@ -1,5 +1,5 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
-const C=require('../../js/upgrades/consumables-requests/core.js');
+const C=require('../../public/app/features/consumables-requests/core.js');
 function snapshot(){return {profile:{id:'engineer',role:'engineer'},catalog:[{id:'cement',name:'Cement',category:'Masonry',unit:'bags',minimum_stock:2}],requests:[{
  id:'request',request_number:1,requester_id:'engineer',status:'partial',site_id:'casa',site_name:'Casa',updated_at:'2026-10-26T09:00:00Z',
  items:[{id:'line',consumable_id:'cement',item_name:'Cement',category:'Masonry',unit:'bags',issued_quantity:999,confirmed_consumed_quantity:null}],

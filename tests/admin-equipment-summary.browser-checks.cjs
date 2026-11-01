@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{randomUUID}=require('node:crypto');
 exports.verify=async({fixture:f,evaluate,command,wait,click,fill,go,login,logout,shot,artifactDirectory,base})=>{
- const output=path.join(__dirname,'../documentation/admin-projects-equipment-2026-10-23/screenshots');fs.mkdirSync(output,{recursive:true});
+ const output=path.join(__dirname,'./artifacts/admin-projects-equipment-2026-10-23/screenshots');fs.mkdirSync(output,{recursive:true});
  const screenshot=async name=>{await shot(name,true);const file=path.join(artifactDirectory,name+'.png');if(fs.existsSync(file))fs.copyFileSync(file,path.join(output,name+'.png'));};
  // Optional archive metadata is present in some deployments. Exercise both
  // fields locally without applying any migration or contacting Supabase.

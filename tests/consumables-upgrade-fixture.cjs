@@ -3,7 +3,7 @@ const {authDatabase}=require('./auth-test-db.cjs');
 const root=path.resolve(__dirname,'..');
 const read=file=>fs.readFileSync(path.join(root,file),'utf8');
 const migrations=['202610220000_consumable_categories.sql','202610220001_consumables_skus.sql','202610220002_consumables_archive.sql'];
-const seed=read('documentation/consumables-upgrade-2026-10-22/03-catalog-seed.sql');
+const seed=read('supabase/operations/consumables/03-catalog-seed.sql');
 async function createSample(f){
  const actor=f.actors.admin;
  let item=await rpc(f,actor,'consumables_save_item',{p_id:'c3f58442-dc99-4466-8590-16642abdb7bc',p_version:null,p_name:'Cutting Disc',p_unit:'pieces',p_minimum:120,p_opening:30});

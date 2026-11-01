@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Workstream B · Local module fixture</title>
-<link rel="stylesheet" href="/css/global.css"><link rel="stylesheet" href="/css/theme.css"><link rel="stylesheet" href="/js/upgrades/custody-lifecycle/module.css">
+<link rel="stylesheet" href="/assets/styles/global.css"><link rel="stylesheet" href="/assets/styles/theme.css"><link rel="stylesheet" href="/app/features/custody-lifecycle/module.css">
 <style>body{margin:0;background:var(--background)}.fixture-nav{display:flex;gap:12px;flex-wrap:wrap;padding:16px 24px;background:var(--surface);border-bottom:1px solid var(--border);font:14px system-ui}.fixture-nav label{display:grid;gap:4px}.fixture-nav select,.fixture-nav button{min-height:44px;padding:8px;font:inherit}.fixture-note{font:13px system-ui;padding:12px 24px;color:var(--text-secondary);margin:0}</style></head>
 <body><nav class="fixture-nav" aria-label="Local test fixture"><label>Test identity<select id="actor"><option>sky</option><option>pau</option><option>admin</option><option>admin2</option><option>architect</option></select></label><label>Module<select id="view"><option value="return">Return submission</option><option value="transfer">Transfer submission</option><option value="inbox">Recipient acceptance</option><option value="inspection">Admin return inspection</option><option value="retirement">Retirement</option></select></label><button id="theme" type="button">Toggle theme</button></nav>
 <p class="fixture-note">Disposable local fixture · synthetic equipment and accounts · no deployed application connection</p><main id="module"></main>
 <script type="module">
-import {createCustodyApi} from '/js/upgrades/custody-lifecycle/api.mjs';
-import {mountReturnSubmission} from '/2-engr/modules/return-inspection-v2/return-submission.mjs';
-import {mountTransferSubmission,mountTransferInbox} from '/2-engr/modules/qr-movements-v2/qr-movements.mjs';
-import {mountReturnInspection} from '/1-admin/modules/return-inspection-v2/return-inspection.mjs';
-import {mountRetirement} from '/js/upgrades/equipment-retirement/retirement.mjs';
+import {createCustodyApi} from '/app/features/custody-lifecycle/api.mjs';
+import {mountReturnSubmission} from '/app/portals/engineer/return-inspection/return-submission.mjs';
+import {mountTransferSubmission,mountTransferInbox} from '/app/portals/engineer/qr-movements/qr-movements.mjs';
+import {mountReturnInspection} from '/app/portals/admin/return-inspection/return-inspection.mjs';
+import {mountRetirement} from '/app/features/equipment-retirement/retirement.mjs';
 const request=async body=>{const response=await fetch('/__rpc',{method:'POST',headers:{'Content-Type':'application/json','X-Fixture-Actor':document.querySelector('#actor').value},body:JSON.stringify(body)});return response.json();};
 const client={rpc:(name,args)=>request({name,args}),storage:{from:bucket=>({
   upload:async(name,file,options)=>request({storage:'upload',bucket,name,mimeType:file.type,size:file.size,options}),

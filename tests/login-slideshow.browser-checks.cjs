@@ -10,16 +10,16 @@ exports.verify=async({evaluate,command,wait,click,fill,login,logout,base})=>{
   const settled=`(()=>{const stage=document.querySelector('#login-slideshow');if(!stage)return false;const slide=stage.querySelector('.login-slide[data-project="'+stage.dataset.project+'"]');return slide?.querySelector('img').naturalWidth>0&&getComputedStyle(slide).opacity==='1'&&slide.getAnimations().length===0;})()`;
   await command('Page.addScriptToEvaluateOnNewDocument',{source:`
     window.__loginTimers=new Set();const timeout=window.setTimeout,clear=window.clearTimeout;
-    window.setTimeout=(fn,ms,...args)=>{const gallery=new Error().stack.includes('/js/login-slideshow.js');const id=timeout(()=>{__loginTimers.delete(id);fn(...args)},ms);if(gallery)__loginTimers.add(id);return id};
+    window.setTimeout=(fn,ms,...args)=>{const gallery=new Error().stack.includes('/app/features/login/login-slideshow.js');const id=timeout(()=>{__loginTimers.delete(id);fn(...args)},ms);if(gallery)__loginTimers.add(id);return id};
     window.clearTimeout=id=>{__loginTimers.delete(id);clear(id)};
   `});
   const navigate=async(route='/MCPA/index.html')=>{await command('Page.navigate',{url:base+route});await wait("document.querySelector('#auth-email') && !document.querySelector('[data-login-step=\"1\"]').hidden");await wait(settled);};
   const compactNavigate=async()=>{await command('Page.navigate',{url:base+'/MCPA/index.html'});await wait("document.querySelector('#auth-email') && document.querySelector('.login-mobile-photo').dataset.project==='10'");};
   const step=async(direction,project)=>{await click(`[data-login-step="${direction}"]`);await wait(`${current}==='${project}'`);await wait(settled);};
-  const manifest=JSON.parse(fs.readFileSync(path.join(__dirname,'../images/login-slideshow/manifest.json')));
+  const manifest=JSON.parse(fs.readFileSync(path.join(__dirname,'../public/assets/images/login-slideshow/manifest.json')));
   assert.equal(manifest.assets.length,10);assert.equal(new Set(manifest.assets.map(a=>a.sourceSha256)).size,10);
-  for(const asset of manifest.assets){const bytes=fs.readFileSync(path.join(__dirname,'../images/login-slideshow',asset.source));assert.equal(createHash('sha256').update(bytes).digest('hex'),asset.sourceSha256);}
-  const originals=fs.readdirSync(path.join(__dirname,'../images/login-slideshow')).filter(name=>/^project-\d+\.(png|jpg)$/.test(name));assert.equal(originals.length,10);
+  for(const asset of manifest.assets){const bytes=fs.readFileSync(path.join(__dirname,'../public/assets/images/login-slideshow',asset.source));assert.equal(createHash('sha256').update(bytes).digest('hex'),asset.sourceSha256);}
+  const originals=fs.readdirSync(path.join(__dirname,'../public/assets/images/login-slideshow')).filter(name=>/^project-\d+\.(png|jpg)$/.test(name));assert.equal(originals.length,10);
   check('Exactly ten unique registered photographs; every original hash is preserved');
   for(const [width,height]of [[375,812],[393,852],[430,932],[768,1024],[900,900],[901,900],[1024,1366],[1024,768],[1200,800],[1201,800],[1366,768],[1440,900],[1920,1080],[2560,1440],[2560,1080]]){
     await command('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<768});

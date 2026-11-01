@@ -4,7 +4,7 @@ const vm=require('node:vm');
 const fs=require('node:fs');
 const path=require('node:path');
 const context=vm.createContext({window:{},URLSearchParams});
-vm.runInContext(fs.readFileSync(path.join(__dirname,'../js/navigation.js'),'utf8'),context);
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../public/app/core/navigation.js'),'utf8'),context);
 const links=context.window.MCPAMovementLinks;
 
 test('activity links resolve each saved entity type by exact ID, never summary text',()=>{

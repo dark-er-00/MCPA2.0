@@ -15,7 +15,7 @@ function themeHarness({animated=false,reduced=false,fail=false}={}) {
   const document={body:{classList:classes(['dark'])},documentElement:{classList:classes(),style:{setProperty:(k,v)=>properties.set(k,v),removeProperty:k=>properties.delete(k)}},querySelector:()=>top,querySelectorAll:()=>[account,menu],getElementById:id=>id==='theme-label'?label:id==='theme-icon'?icon:null};
   if(animated)document.startViewTransition=update=>{if(fail)throw new Error('Fixture unsupported');update();return {ready:Promise.resolve(),updateCallbackDone:Promise.resolve(),finished:Promise.resolve(),skipTransition(){}};};
   const context={document,localStorage:{setItem:(k,v)=>prefs.set(k,v)},ICONS:{sun:'sun',moon:'moon'},matchMedia:()=>({matches:reduced,addEventListener(){},removeEventListener(){}}),innerWidth:393,innerHeight:852,window:{addEventListener(){},removeEventListener(){}}};
-  const app=source('js/app.js'),start=app.indexOf('let themeTransitionRunning'),end=app.indexOf('let searchTimer;');
+  const app=source('public/app/core/app.js'),start=app.indexOf('let themeTransitionRunning'),end=app.indexOf('let searchTimer;');
   vm.runInNewContext(app.slice(start,end),context);
   return {...context,prefs,top,account,menu,properties};
 }
@@ -41,7 +41,7 @@ function photoHarness() {
   let user={id:'admin-1',role:'admin'},uploadError=null,signError=null;const uploads=[],signs=[],removes=[];
   const storage={async remove(paths){removes.push(paths);return {error:storage.removeError};},async upload(...args){uploads.push(args);if(storage.throwUpload)throw Error('Response lost');return {error:uploadError};},async createSignedUrl(path,seconds){signs.push({path,seconds,user:user.id});return {data:{signedUrl:'https://fixture.example/'+path},error:signError};}};
   const window={MCPAAuth:{requireLive(){if(!user)throw new Error('Sign in');return user;}},EquipmentTracking:{client:()=>({storage:{from(bucket){assert.equal(bucket,'equipment-photos');return storage;}}})},addEventListener(){}};
-  vm.runInNewContext(source('js/equipment-photos.js'),{window,document:{},crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},Uint8Array,Date,setInterval(){return 1;},clearInterval(){}});
+  vm.runInNewContext(source('public/app/features/equipment/equipment-photos.js'),{window,document:{},crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},Uint8Array,Date,setInterval(){return 1;},clearInterval(){}});
   return {api:window.EquipmentPhotos,uploads,signs,removes,storage,setUser:value=>{user=value;},failUpload:value=>{uploadError=value;},failSign:value=>{signError=value;}};
 }
 test('photo validation enforces MIME, signatures, non-empty files and 5 MB boundary',async()=>{
@@ -83,7 +83,7 @@ function masterlistHarness() {
   let prepareCount=0;
   const window={MCPAAuth:{requireLive:()=>user},EquipmentTracking:{async inventoryOffice(){if(window.officeError)throw new Error(window.officeError);return {id:"office-fixture",label:"Office"};},client:()=>db,matchesStatus:(item,status)=>!status||item.dbStatus===status},EquipmentPhotos:{async prepare(file,assetId,previous){if(window.uploadError)throw new Error('Photo upload failed');prepareCount++;return previous||{reference:'storage://equipment-photos/'+assetId+'/11111111-1111-4111-8111-111111111111.png',file,assetId};}}};
   const context={window,document,supabaseClient:db,URL:{revokeObjectURL(){}},crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},console};
-  const text=source('1-admin/modules/masterlist/masterlist.js');vm.runInNewContext(text.slice(0,text.lastIndexOf('(function () {')),context);
+  const text=source('public/app/portals/admin/masterlist/masterlist.js');vm.runInNewContext(text.slice(0,text.lastIndexOf('(function () {')),context);
   context.initMasterlist=async()=>{};context.currentEditId='TOOL-001';context.setupMasterlistListeners();
   return {context,nodes,writes,saved,window,db,get prepareCount(){return prepareCount;},async save(){await nodes.equipmentForm.onsubmit({preventDefault(){}});}};
 }

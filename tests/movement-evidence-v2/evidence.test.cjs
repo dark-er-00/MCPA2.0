@@ -64,7 +64,7 @@ test('proposal evidence is private and retained after retirement approval',async
   assert.equal((await f.snapshot(a.sky)).evidence.length,0);
 });
 test('client validates image signatures and does not mutate custody after an upload failure',async()=>{
-  const {validatePhoto,createEvidenceUploader}=await import('../../js/upgrades/movement-evidence/evidence.mjs');
+  const {validatePhoto,createEvidenceUploader}=await import('../../public/app/features/movement-evidence/evidence.mjs');
   const file=new Blob([new Uint8Array([137,80,78,71,13,10,26,10])],{type:'image/png'});await validatePhoto(file);
   await assert.rejects(validatePhoto(new Blob(['<svg/>'],{type:'image/png'})),/contents/);
   await assert.rejects(validatePhoto(new Blob(['x'],{type:'image/svg+xml'})),/JPEG/);
@@ -74,7 +74,7 @@ test('client validates image signatures and does not mutate custody after an upl
   assert.ok(calls.every(name=>name==='mcpa_b_evidence_action'));
 });
 test('photo tickets survive a retry after a successful movement response is lost',async()=>{
-  const {createEvidenceUploader}=await import('../../js/upgrades/movement-evidence/evidence.mjs');
+  const {createEvidenceUploader}=await import('../../public/app/features/movement-evidence/evidence.mjs');
   const file=new Blob([new Uint8Array([137,80,78,71,13,10,26,10])],{type:'image/png'});
   let requests=0,uploads=0;
   const api={rpc:async()=>{requests++;return {objectName:'private/photo.png'};},client:{storage:{from:()=>({upload:async()=>{uploads++;return {};}})}}};

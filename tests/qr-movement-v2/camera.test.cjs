@@ -1,6 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
 test('injected camera decoder delivers an Asset ID and stops all tracks',async()=>{
-  const {CameraScanner}=await import('../../js/upgrades/equipment-qr/scanner.mjs');
+  const {CameraScanner}=await import('../../public/app/features/equipment-qr/scanner.mjs');
   const previous=globalThis.isSecureContext;globalThis.isSecureContext=true;
   let stopped=0;const scans=[];
   try{
@@ -12,7 +12,7 @@ test('injected camera decoder delivers an Asset ID and stops all tracks',async()
   }finally{globalThis.isSecureContext=previous;}
 });
 test('camera releases late streams on unmount and unsupported browsers keep manual fallback',async()=>{
-  const {CameraScanner}=await import('../../js/upgrades/equipment-qr/scanner.mjs');
+  const {CameraScanner}=await import('../../public/app/features/equipment-qr/scanner.mjs');
   const previous=globalThis.isSecureContext;globalThis.isSecureContext=true;
   try{
     let deliver,stopped=0;const errors=[];

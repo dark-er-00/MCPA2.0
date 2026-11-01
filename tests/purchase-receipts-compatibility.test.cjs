@@ -14,12 +14,12 @@ test('receipt-only migration preserves complete equipment baseline and all store
   await upload(f,f.actors.admin,linked,'equipment-photos');await upload(f,f.actors.admin,pending,'equipment-photos');
   await f.query(f.actors.admin,'update equipment set image_url=$1 where asset_id=$2',['storage://equipment-photos/'+linked,'TOOL-001']);
   await f.db.exec("insert into storage.buckets(id,name,public) values('unrelated-private','unrelated-private',false);insert into storage.objects(bucket_id,name) values('unrelated-private','preserved-file');create policy unrelated_service_only on storage.objects for select to service_role using(true)");
-  const before=await baseline(f,'supabase/purchase-receipts-preflight.sql');
+  const before=await baseline(f,'supabase/checks/purchase-receipts-preflight.sql');
   const allObjects=(await f.db.query('select * from storage.objects order by id')).rows;
   const oldPolicies=(await f.db.query("select * from pg_policies where schemaname='storage' order by policyname")).rows;
   const preserved={};for(const table of ['equipment','consumables','consumable_requests','consumable_stock_movements','mcpa_movements','mcpa_movement_operations','profiles'])preserved[table]=(await f.db.query('select * from '+table+' order by 1')).rows;
   await f.db.exec(receipt);
-  assert.deepEqual(await baseline(f,'supabase/purchase-receipts-verification.sql'),before);
+  assert.deepEqual(await baseline(f,'supabase/checks/purchase-receipts-verification.sql'),before);
   assert.deepEqual((await f.db.query('select * from storage.objects order by id')).rows,allObjects);
   assert.deepEqual((await f.db.query("select * from pg_policies where schemaname='storage' and policyname not like 'mcpa_purchase_receipts_%' order by policyname")).rows,oldPolicies);
   for(const [table,rows]of Object.entries(preserved))assert.deepEqual((await f.db.query('select * from '+table+' order by 1')).rows,rows,table);
@@ -109,9 +109,9 @@ test('existing receipt helpers/overloads/policies/buckets and objects fail close
    ["insert into storage.buckets values('other-id','purchase-receipts',false,10485760,array['application/pdf','image/jpeg','image/png','image/webp'])",/incompatible settings/]
   ];
   for(const [setup,error]of setups){
-   await f.db.exec(setup);const before=await baseline(f,'supabase/purchase-receipts-preflight.sql');
+   await f.db.exec(setup);const before=await baseline(f,'supabase/checks/purchase-receipts-preflight.sql');
    await assert.rejects(f.db.exec(receipt),error);await rollback(f);
-   assert.deepEqual(await baseline(f,'supabase/purchase-receipts-preflight.sql'),before);
+   assert.deepEqual(await baseline(f,'supabase/checks/purchase-receipts-preflight.sql'),before);
    // Clean up only isolated fixture artifacts to exercise the next conflict.
    if(setup.startsWith('create function'))await f.db.exec('drop function public.mcpa_can_access_purchase_receipt('+ (setup.includes('(integer)')?'integer':'text') +')');
    else if(setup.startsWith('create policy'))await f.db.exec('drop policy mcpa_purchase_receipts_read on storage.objects');

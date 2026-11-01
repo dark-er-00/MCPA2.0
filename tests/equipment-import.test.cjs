@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict');
-const C=require('../js/equipment-import-core.js'),X=require('../vendor/sheetjs/xlsx.full.min.js');
+const C=require('../public/app/features/equipment-import/equipment-import-core.js'),X=require('../public/assets/vendor/sheetjs/xlsx.full.min.js');
 const base='Item Name,Category,Brand,Tracking Type,Quantity,Unit\r\nElectric Drill,Power Tools,Bosch,Individual,1,\r\nElectric Drill,Power Tools,Bosch,Individual,1,';
 test('CSV quotes, BOM, multiline fields, empty lines and source references',()=>{
   const sheet=C.csv('\uFEFFItem Name,Category,Tracking Type\r\n"Drill, heavy",Power Tools,Individual\r\n\r\n"Multi\nline",Hand Tools,Bulk');

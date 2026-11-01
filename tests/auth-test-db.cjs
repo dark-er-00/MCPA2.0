@@ -8,7 +8,7 @@ async function authDatabase({accountManagement=true,engineerPortal=false,missing
   await db.exec(`create role service_role nologin; grant usage on schema public to service_role;
     create schema auth;create table auth.users(id uuid primary key,email text,invited_at timestamptz,email_confirmed_at timestamptz,raw_user_meta_data jsonb default '{}'::jsonb,raw_app_meta_data jsonb default '{}'::jsonb);
     create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;`);
-  await db.exec(fs.readFileSync(path.join(__dirname,'../1-admin/modules/consumables/setup.sql'),'utf8'));
+  await db.exec(fs.readFileSync(path.join(__dirname,'../supabase/bootstrap/consumables.sql'),'utf8'));
   await db.exec(migration);
   for(const [key,role] of [['architect','architect'],['secretary','secretary'],['handler','tool_handler'],['inactive','engineer']]){
     actors[key]={id:randomUUID(),name:'Test '+key,role};

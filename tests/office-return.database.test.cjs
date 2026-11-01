@@ -20,9 +20,9 @@ for(const optionalFirst of [true,false])test('Office returns preserve optional p
   assert.equal(await definition(),before,'Office installation never replaces the private lifecycle');
   if(!optionalFirst)await f.db.exec(optional);
   const patched=await definition(),baseline=await snapshot(f);
-  const preflight=(await f.db.query(fs.readFileSync(path.join(__dirname,'../supabase/office-return-preflight.sql'),'utf8'))).rows[0].office_return_preflight;
+  const preflight=(await f.db.query(fs.readFileSync(path.join(__dirname,'../supabase/checks/office-return-preflight.sql'),'utf8'))).rows[0].office_return_preflight;
   assert.equal(preflight.reviewed_lifecycle_compatible,true);assert.equal(preflight.optional_purpose_installed,true);assert.equal(preflight.stable_recipient_preserved,true);
-  const verification=(await f.db.query(fs.readFileSync(path.join(__dirname,'../supabase/merge-integration-verification.sql'),'utf8'))).rows[0].merge_integration_verification;
+  const verification=(await f.db.query(fs.readFileSync(path.join(__dirname,'../supabase/checks/merge-integration-verification.sql'),'utf8'))).rows[0].merge_integration_verification;
   for(const [key,value]of Object.entries(verification))assert.equal(value,!key.endsWith('_execute'),key);
   await f.db.exec(withOfficeId(f.sites.office));
   assert.equal(await definition(),patched,'Reapplying Office preserves optional purpose');assert.deepEqual(await snapshot(f),baseline);
@@ -46,7 +46,7 @@ test('unconfigured Office refuses installation without creating a location or re
   await assert.rejects(f.db.exec(withOfficeId(null)),/verified existing Office UUID/);await f.db.exec('rollback');
   assert.deepEqual(await snapshot(f),before);
   assert.equal((await f.db.query("select to_regclass('mcpa_auth_private.return_office') as relation")).rows[0].relation,null);
-  const preflight=(await f.db.query(fs.readFileSync(path.join(__dirname,'../supabase/office-return-preflight.sql'),'utf8'))).rows[0].office_return_preflight;
+  const preflight=(await f.db.query(fs.readFileSync(path.join(__dirname,'../supabase/checks/office-return-preflight.sql'),'utf8'))).rows[0].office_return_preflight;
   assert.equal(preflight.movement_gateway_source_md5,'582ea68af753d0fdd81461c537dbf9ab');
   assert.equal(preflight.return_implementation_source_md5,'5b94b3b5642f26981a80382a2b1b6be7');
   assert.equal(preflight.office_return_installed,false);assert.equal(preflight.anonymous_movement_execute,false);
@@ -56,7 +56,7 @@ test('unconfigured Office refuses installation without creating a location or re
 test('manual Office location configuration requires a real address and creates no duplicate or person assignment',async()=>{
  const f=await authDatabase({engineerPortal:true,missingProjectHistory:true});
  try{
-  const configuration=fs.readFileSync(path.join(__dirname,'../supabase/office-location-configuration.sql'),'utf8')
+  const configuration=fs.readFileSync(path.join(__dirname,'../supabase/operations/office-location-configuration.sql'),'utf8')
     .replace(/verified_office_address constant text := [^\r\n]*; -- ACTUAL_OFFICE_ADDRESS/,'verified_office_address constant text := null; -- ACTUAL_OFFICE_ADDRESS'),before=await snapshot(f);
   await assert.rejects(f.db.exec(configuration),/actual company equipment-receiving Office address/);await f.db.exec('rollback');assert.deepEqual(await snapshot(f),before);
   const supplied=configuration.replace('null; -- ACTUAL_OFFICE_ADDRESS',"'Local receiving Office fixture'; -- ACTUAL_OFFICE_ADDRESS");

@@ -2,11 +2,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { randomUUID } = require('node:crypto');
-let PGlite;
-for (const location of ['@electric-sql/pglite', '../modules/sites/tests/node_modules/@electric-sql/pglite', '../modules/consumables/tests/node_modules/@electric-sql/pglite']) {
-  try { ({ PGlite } = require(location)); break; } catch (error) { if (error.code !== 'MODULE_NOT_FOUND') throw error; }
-}
-const setup = fs.readFileSync(path.join(__dirname, '../1-admin/modules/movements/setup.sql'), 'utf8');
+const { PGlite } = require('@electric-sql/pglite');
+const setup = fs.readFileSync(path.join(__dirname, '../supabase/bootstrap/movements.sql'), 'utf8');
 async function database() {
   if (!PGlite) throw new Error('Install @electric-sql/pglite to run isolated database checks.');
   const db = new PGlite();
@@ -28,7 +25,7 @@ async function database() {
       current_holder_id uuid references profiles(id),created_at timestamptz not null default now());
   `);
   for (const actor of Object.values(actors)) await db.query('insert into profiles values($1,$2)', [actor.id,actor.name]);
-  await db.exec(fs.readFileSync(path.join(__dirname, '../1-admin/modules/sites/setup.sql'), 'utf8'));
+  await db.exec(fs.readFileSync(path.join(__dirname, '../supabase/bootstrap/sites.sql'), 'utf8'));
   await db.query("insert into sites(id,name,location,assigned_engineer) values($1,'Main Warehouse','Batangas','Engr Sky'),($2,'Casa Buena','Batangas','Engr Pau')", [sites.main,sites.casa]);
   for (const [assetId,id] of Object.entries(tools)) {
     const held = !['TOOL-001','ZERO'].includes(assetId);

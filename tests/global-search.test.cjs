@@ -1,8 +1,8 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const context={window:{}};vm.createContext(context);
-for(const name of ['display','permissions','project-scope'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../js/'+name+'.js'),'utf8'),context);
+for(const name of ['shared/display','core/permissions','features/projects/project-scope'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../public/app/'+name+'.js'),'utf8'),context);
 context.MCPAPermissions=context.window.MCPAPermissions;context.MCPAProjectScope=context.window.MCPAProjectScope;
-const source=fs.readFileSync(path.join(__dirname,'../js/global-search.js'),'utf8');
+const source=fs.readFileSync(path.join(__dirname,'../public/app/features/search/global-search.js'),'utf8');
 vm.runInContext(source.slice(0,source.indexOf('  let generation ='))+'window.searchTest={index,match};})();',context);
 const {index,match}=context.window.searchTest;
 const user=role=>({id:'person-a',name:'Same Name',role});

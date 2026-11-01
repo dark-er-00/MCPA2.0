@@ -1,5 +1,5 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
-const model=()=>import('../js/upgrades/equipment-requests/model.mjs');
+const model=()=>import('../public/app/features/equipment-requests/model.mjs');
 test('combines both request types once and resolves receipt from the linked handover',async()=>{
   const {requests}=await model();
   const snapshot={tools:[{id:'A-1',name:'Drill'}],requests:[{id:'REQ-1',status:'approved',toolIds:['A-1']},{id:'REQ-2',status:'released',toolIds:['A-2']}],transfers:[{id:'TRF-2',requestId:'REQ-2',status:'pending',receiverId:'engineer'}]};

@@ -2,7 +2,7 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const {authDatabase}=require('./auth-test-db.cjs');
-const preflight=fs.readFileSync(path.join(__dirname,'../supabase/project-history-preflight.sql'),'utf8');
+const preflight=fs.readFileSync(path.join(__dirname,'../supabase/checks/project-history-preflight.sql'),'utf8');
 const portal=fs.readFileSync(path.join(__dirname,'../supabase/migrations/202610100001_engineer_portal.sql'),'utf8');
 
 test('Read-only dependency review distinguishes missing history from missing RPC and finds renamed history',async()=>{

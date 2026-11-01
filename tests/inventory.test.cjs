@@ -3,11 +3,11 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
-const source = fs.readFileSync(path.join(__dirname, '../js/equipment-tracking.js'), 'utf8');
+const source = fs.readFileSync(path.join(__dirname, '../public/app/features/equipment/equipment-tracking.js'), 'utf8');
 function harness(db = {}) {
   const window = new EventTarget(), document = new EventTarget();
   window.supabaseClient = db;
-  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../js/display.js'),'utf8'), {window});
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../public/app/shared/display.js'),'utf8'), {window});
   const timers = new Map(), intervals = new Map(); let id = 0;
   vm.runInNewContext(source, {window, document,
     setTimeout(fn) {timers.set(++id,fn); return id;}, clearTimeout(id) {timers.delete(id);},

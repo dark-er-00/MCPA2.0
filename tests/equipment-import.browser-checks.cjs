@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
-const X=require('../vendor/sheetjs/xlsx.full.min.js');
+const X=require('../public/assets/vendor/sheetjs/xlsx.full.min.js');
 exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login,logout,shot,artifactDirectory})=>{
-  const output=path.join(__dirname,'../documentation/equipment-import-2026-10-24/screenshots');fs.mkdirSync(output,{recursive:true});
+  const output=path.join(__dirname,'./artifacts/equipment-import-2026-10-24/screenshots');fs.mkdirSync(output,{recursive:true});
   const screenshot=async name=>{await shot(name,true);const file=path.join(artifactDirectory,name+'.png');if(fs.existsSync(file))fs.copyFileSync(file,path.join(output,name+'.png'));};
   const n=async()=>Number((await f.db.query('select count(*) as n from equipment')).rows[0].n);
   const receiptCount=async()=>Number((await f.db.query('select count(*) as n from mcpa_equipment_imports')).rows[0].n);

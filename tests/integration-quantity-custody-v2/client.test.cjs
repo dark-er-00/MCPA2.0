@@ -1,6 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
 test('custody operations coalesce concurrent clicks, retain uncertain UUIDs across remount, and renew successful UUIDs',async()=>{
-  const {createCustodyApi}=await import('../../js/upgrades/custody-lifecycle/api.mjs');
+  const {createCustodyApi}=await import('../../public/app/features/custody-lifecycle/api.mjs');
   const data=new Map(),storage={getItem:k=>data.get(k),setItem:(k,v)=>data.set(k,v)};
   const calls=[];let lose=true;
   const client={storage:{},async rpc(name,args){
@@ -16,7 +16,7 @@ test('custody operations coalesce concurrent clicks, retain uncertain UUIDs acro
   await api.mutate('submitReturn',payload);assert.notEqual(calls[1],calls[2]);api.dispose();
 });
 test('an empty response or later rejection cannot discard an earlier uncertain operation',async()=>{
-  const {createCustodyApi}=await import('../../js/upgrades/custody-lifecycle/api.mjs');let rejection=false;
+  const {createCustodyApi}=await import('../../public/app/features/custody-lifecycle/api.mjs');let rejection=false;
   const client={storage:{},async rpc(){return rejection?{error:{code:'42501',message:'Account changed'}}:{data:null};}};
   const api=createCustodyApi(client,{storage:{getItem(){},setItem(){}}});
   await assert.rejects(api.mutate('submitReturn',{assetIds:['T-1']}),/could not be verified/);const original=api.pending()[0].id;
@@ -33,7 +33,7 @@ function recoveryHarness(){
   return {storage,client,requests,stored:()=>JSON.parse(data.get('mcpa.custody.pending.v3.recovery-actor')||'[]').map(([,op])=>op)};
 }
 test('late success after disposal removes only its own operation and preserves another uncertain UUID',async()=>{
-  const {createCustodyApi}=await import('../../js/upgrades/custody-lifecycle/api.mjs'),h=recoveryHarness();
+  const {createCustodyApi}=await import('../../public/app/features/custody-lifecycle/api.mjs'),h=recoveryHarness();
   const api=createCustodyApi(h.client,{storage:h.storage});await api.snapshot();
   const first=api.mutate('reportRetirementIssue',{id:'first',notes:'one'},'issue:first');
   const second=api.mutate('reportRetirementIssue',{id:'second',notes:'two'},'issue:second');
@@ -46,7 +46,7 @@ test('late success after disposal removes only its own operation and preserves a
   h.requests[2].resolve({data:{id:'second'}});await retry;assert.equal(remounted.pending().length,0);remounted.dispose();
 });
 test('a disposed instance cannot erase operations added by a remounted instance',async()=>{
-  const {createCustodyApi}=await import('../../js/upgrades/custody-lifecycle/api.mjs'),h=recoveryHarness();
+  const {createCustodyApi}=await import('../../public/app/features/custody-lifecycle/api.mjs'),h=recoveryHarness();
   const old=createCustodyApi(h.client,{storage:h.storage});await old.snapshot();
   const first=old.mutate('reportRetirementIssue',{id:'first'},'first');old.dispose();
   const current=createCustodyApi(h.client,{storage:h.storage});await current.snapshot();
@@ -57,7 +57,7 @@ test('a disposed instance cannot erase operations added by a remounted instance'
   assert.deepEqual(h.stored().map(op=>op.id),[secondId]);
 });
 test('a late replay response cannot delete a newer deliberate operation with the same payload',async()=>{
-  const {createCustodyApi}=await import('../../js/upgrades/custody-lifecycle/api.mjs'),h=recoveryHarness();
+  const {createCustodyApi}=await import('../../public/app/features/custody-lifecycle/api.mjs'),h=recoveryHarness();
   const old=createCustodyApi(h.client,{storage:h.storage});await old.snapshot();
   const first=old.mutate('reportRetirementIssue',{id:'asset'},'issue');old.dispose();
   const current=createCustodyApi(h.client,{storage:h.storage});await current.snapshot();const replay=current.retryPending();
@@ -69,7 +69,7 @@ test('a late replay response cannot delete a newer deliberate operation with the
   h.requests[2].resolve({data:{id:'asset'}});await next;current.dispose();newer.dispose();
 });
 test('an old definitive rejection cannot erase a newer uncertain retry of the same UUID',async()=>{
-  const {createCustodyApi}=await import('../../js/upgrades/custody-lifecycle/api.mjs'),h=recoveryHarness();
+  const {createCustodyApi}=await import('../../public/app/features/custody-lifecycle/api.mjs'),h=recoveryHarness();
   const old=createCustodyApi(h.client,{storage:h.storage});await old.snapshot();
   const first=old.mutate('reportRetirementIssue',{id:'asset'},'issue'),firstResult=Promise.allSettled([first]);old.dispose();
   const current=createCustodyApi(h.client,{storage:h.storage});await current.snapshot();const retry=current.retryPending(),retryResult=Promise.allSettled([retry]);

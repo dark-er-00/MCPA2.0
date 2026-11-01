@@ -5,9 +5,9 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 
-const appSource = fs.readFileSync(path.join(__dirname, '../js/app.js'), 'utf8');
+const appSource = fs.readFileSync(path.join(__dirname, '../public/app/core/app.js'), 'utf8');
 const loaderSource = appSource.slice(0, appSource.indexOf('function ensureModuleCSS('));
-const navigationSource = fs.readFileSync(path.join(__dirname, '../js/navigation.js'), 'utf8');
+const navigationSource = fs.readFileSync(path.join(__dirname, '../public/app/core/navigation.js'), 'utf8');
 const flush = () => new Promise(resolve => setImmediate(resolve));
 
 function harness() {
@@ -50,6 +50,7 @@ function harness() {
     }
   };
   const window = {
+    MCPAPaths: {module: (portal, name) => 'app/portals/' + portal + '/' + name + '/' + name},
     MCPAAuth: {canRoute: () => true, profile: {role: 'admin'}, deny() {}},
     MovementUI: movementUI,
     MCPANavigation: {

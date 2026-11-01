@@ -7,7 +7,7 @@ test('archive migration preserves assignments/history, denies deletes, restores 
   const fixture = await database();
   try {
     const {db, sites, asRole} = fixture;
-    const migration = fs.readFileSync(path.join(__dirname,'../1-admin/modules/sites/realtime-archive.sql'),'utf8');
+    const migration = fs.readFileSync(path.join(__dirname,'../supabase/bootstrap/sites-realtime.sql'),'utf8');
     await db.exec(migration);
     const before = (await db.query('select id, site_id from equipment order by id')).rows;
     await asRole('anon', 'update sites set is_active=false where id=$1',[sites.casa]);

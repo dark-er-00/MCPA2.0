@@ -2,8 +2,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { createHash } = require('node:crypto');
-const { createCanvas, loadImage } = require('../tests/node_modules/@napi-rs/canvas');
-const directory = path.resolve(__dirname, '../images/login-slideshow');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const directory = path.resolve(__dirname, '../public/assets/images/login-slideshow');
 (async () => {
   let originals = 0, optimized = 0;
   const assets = [];

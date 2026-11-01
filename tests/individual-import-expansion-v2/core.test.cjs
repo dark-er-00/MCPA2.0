@@ -1,6 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict');
-const C=require('../../js/upgrades/individual-import-expansion/core.js'),legacy=require('../../js/equipment-import-core.js');
-const X=require('../../vendor/sheetjs/xlsx.full.min.js');
+const C=require('../../public/app/features/individual-import-expansion/core.js'),legacy=require('../../public/app/features/equipment-import/equipment-import-core.js');
+const X=require('../../public/assets/vendor/sheetjs/xlsx.full.min.js');
 const csv='Item Name,Category,Tracking Type,Quantity,Condition,Serial Number,Unit\nShovel (Pala Lapad),Hand Tools,Individual,20,Not Assessed,,\nGI Pipes,Construction Materials,Bulk,225,Fair,,Pieces';
 const parse=text=>C.parse(Buffer.from(text),'csv')[0];
 const check=text=>{const s=parse(text);return C.validate(s,C.autoMap(s.headers));};
@@ -56,7 +56,7 @@ test('isolated worker routes approved CSV/XLSX parsing and returns bounded error
   const vm=require('node:vm'),fs=require('node:fs'),path=require('node:path'),messages=[],imports=[];
   const context={self:null,Uint8Array,ArrayBuffer,TextDecoder,importScripts(...urls){imports.push(...urls);context.MCPAIndividualImport=C;if(urls.some(u=>u.includes('xlsx')))context.XLSX=X;},postMessage:value=>messages.push(value)};
   context.self=context;vm.createContext(context);
-  vm.runInContext(fs.readFileSync(path.join(__dirname,'../../js/upgrades/individual-import-expansion/worker.js'),'utf8'),context);
+  vm.runInContext(fs.readFileSync(path.join(__dirname,'../../public/app/features/individual-import-expansion/worker.js'),'utf8'),context);
   context.onmessage({data:{extension:'csv',buffer:Buffer.from(csv)}});assert.equal(messages[0].sheets[0].rows.length,2);assert.equal(imports.some(u=>u.includes('xlsx')),false);
   const buffer=X.write(C.templateWorkbook(X),{bookType:'xlsx',type:'buffer'});
   context.onmessage({data:{extension:'xlsx',buffer}});assert.equal(messages[1].sheets.length,3);assert.equal(imports.filter(u=>u.includes('xlsx')).length,1);

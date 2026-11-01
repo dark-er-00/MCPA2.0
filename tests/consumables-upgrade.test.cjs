@@ -1,7 +1,7 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),{randomUUID}=require('node:crypto');
 const {fixture,upgrade,seed,rpc,read}=require('./consumables-upgrade-fixture.cjs');
 const {authDatabase}=require('./auth-test-db.cjs');
-const catalog=require('../js/consumables-catalog.js');
+const catalog=require('../public/app/features/consumables/consumables-catalog.js');
 const create=(overrides={})=>({p_id:randomUUID(),p_version:null,p_name:'Fixture stock',p_unit:'pcs',p_minimum:20,p_opening:100,p_category:'Cutting',p_specification:'4"',p_item_code:null,...overrides});
 const save=(f,input,actor=f.actors.admin)=>rpc(f,actor,'consumables_save_item',input);
 const stock=(f,item,overrides={},actor=f.actors.admin)=>rpc(f,actor,'consumables_adjust_stock',{p_operation_id:randomUUID(),p_item_id:item.id,p_version:item.version,p_kind:'usage',p_quantity:1,p_note:'Isolated regression test',...overrides});
@@ -31,7 +31,7 @@ test('migration and seed create 126 healthy SKU balances and opening ledger entr
   const history=(await f.db.query('select * from consumable_stock_movements order by id')).rows;assert.equal(history.length,126);assert.ok(history.every(m=>m.actor_name==='Database maintenance / catalog import'&&m.balance_before==='0.000'));
   await f.db.exec(seed);assert.deepEqual((await f.db.query('select * from consumables order by item_code')).rows,rows);assert.deepEqual((await f.db.query('select * from consumable_stock_movements order by id')).rows,history);
   assert.deepEqual((await f.db.query('select * from equipment order by id')).rows,before);
-  await f.db.exec(read('documentation/consumables-upgrade-2026-10-22/04-verification.sql'));
+  await f.db.exec(read('supabase/operations/consumables/04-verification.sql'));
  }finally{await f.close();}
 });
 test('normalized existing exact matches retain IDs, stock, thresholds, requests and history; code collisions allocate safely',async()=>{
@@ -57,7 +57,7 @@ test('ambiguous legacy Cutting Disc stops import and rolls all earlier inserts b
  const f=await authDatabase();try{
   await f.db.query("insert into consumables(id,name,unit,current_stock) values($1,'Cutting Disc','pcs',8)",[randomUUID()]);
   // Preflight runs before new columns exist.
-  await f.db.exec(read('documentation/consumables-upgrade-2026-10-22/01-preflight.sql'));
+  await f.db.exec(read('supabase/operations/consumables/01-preflight.sql'));
   await upgrade(f);const before=(await f.db.query('select * from consumables')).rows;
   await assert.rejects(f.db.exec(seed),/Reconcile existing/);await f.db.exec('rollback');
   assert.deepEqual((await f.db.query('select * from consumables')).rows,before);assert.equal((await f.db.query('select count(*) from consumable_stock_movements')).rows[0].count,0);
@@ -110,7 +110,7 @@ test('conflicting deduction submissions commit one adjustment only, with actor a
   const current=(await f.db.query('select * from consumables where id=$1',[item.id])).rows[0];assert.equal(current.current_stock,'3.000');
   const history=(await f.db.query("select * from consumable_stock_movements where consumable_id=$1 and kind='usage'",[item.id])).rows;assert.equal(history.length,1);assert.equal(history[0].balance_before,'10.000');assert.equal(history[0].balance_after,'3.000');assert.equal(history[0].actor_id,f.actors.admin.id);
   await assert.rejects(stock(f,{...item,version:2},{p_quantity:6}),{code:'22023'});
-  assert.match(read('1-admin/modules/consumables/setup.sql'),/where id=p_item_id for update/);
+  assert.match(read('supabase/bootstrap/consumables.sql'),/where id=p_item_id for update/);
  }finally{await f.close();}
 });
 test('RLS, role wrappers and immutable history block unauthorized stock writes and audit modification',async()=>{

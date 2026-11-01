@@ -1,7 +1,7 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const sandbox=vm.createContext({window:{}});
-vm.runInContext(fs.readFileSync(path.join(__dirname,'../js/display.js'),'utf8'),sandbox);
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../public/app/shared/display.js'),'utf8'),sandbox);
 const display=sandbox.window.MCPADisplay;
 
 test('action descriptions preserve approval, receipt discrepancies and custody facts',()=>{

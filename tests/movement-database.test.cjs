@@ -3,14 +3,10 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { randomUUID } = require('node:crypto');
-let PGlite;
-for (const location of ['@electric-sql/pglite', '../modules/sites/tests/node_modules/@electric-sql/pglite', '../modules/consumables/tests/node_modules/@electric-sql/pglite']) {
-  try { ({ PGlite } = require(location)); break; } catch (error) { if (error.code !== 'MODULE_NOT_FOUND') throw error; }
-}
-if (!PGlite) throw new Error('Install @electric-sql/pglite to run the isolated database checks.');
+const { PGlite } = require('@electric-sql/pglite');
 const db = new PGlite();
-const setup = fs.readFileSync(path.join(__dirname, '../1-admin/modules/movements/setup.sql'), 'utf8');
-const sitesSetup = fs.readFileSync(path.join(__dirname, '../1-admin/modules/sites/setup.sql'), 'utf8');
+const setup = fs.readFileSync(path.join(__dirname, '../supabase/bootstrap/movements.sql'), 'utf8');
+const sitesSetup = fs.readFileSync(path.join(__dirname, '../supabase/bootstrap/sites.sql'), 'utf8');
 const admin = { id: randomUUID(), name: 'Admin Test', role: 'admin' };
 const alice = { id: randomUUID(), name: 'Engineer Alice', role: 'engineer' };
 const bob = { id: randomUUID(), name: 'Engineer Bob', role: 'engineer' };

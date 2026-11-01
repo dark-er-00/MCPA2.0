@@ -2,7 +2,7 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),{randomUUID}=require('node:crypto');
 const {authDatabase}=require('./auth-test-db.cjs'),{configure}=require('./office-return-fixture.cjs');
-const read=file=>fs.readFileSync(path.join(__dirname,'../supabase',file),'utf8');
+const read=file=>fs.readFileSync(path.join(__dirname,'../supabase',file.startsWith('migrations/')?file:'checks/'+file),'utf8');
 async function diagnostics(f){
  await f.db.exec('begin read only');
  try{return {

@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
-const catalog=require('../js/consumables-catalog.js');
+const catalog=require('../public/app/features/consumables/consumables-catalog.js');
 exports.verify=async({fixture,evaluate,command,wait,click,fill,submit,go,shot,artifactDirectory})=>{
- const report=path.resolve(__dirname,'../documentation/consumables-upgrade-2026-10-22/screenshots');fs.mkdirSync(report,{recursive:true});
+ const report=path.resolve(__dirname,'./artifacts/consumables-upgrade-2026-10-22/screenshots');fs.mkdirSync(report,{recursive:true});
  const capture=async name=>{await shot(name,true);const file=path.join(artifactDirectory,name+'.png');if(fs.existsSync(file))fs.copyFileSync(file,path.join(report,name+'.png'));};
  const key=async(selector,value='Enter',code=13)=>{await evaluate(`document.querySelector(${JSON.stringify(selector)}).focus()`);await command('Input.dispatchKeyEvent',{type:'keyDown',key:value,code:value===' '?'Space':value,windowsVirtualKeyCode:code,text:value==='Enter'?'\r':' '});await command('Input.dispatchKeyEvent',{type:'keyUp',key:value,code:value===' '?'Space':value,windowsVirtualKeyCode:code});};
  await wait('document.querySelector(".consumables-shortcut") && !MCPANavigation.restoring');

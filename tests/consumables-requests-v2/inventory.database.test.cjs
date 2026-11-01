@@ -1,7 +1,7 @@
 // Local PostgreSQL only. Exercises the existing RPC, RLS and immutable ledger.
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const {fixture,randomUUID:id}=require('../integration-quantity-custody-v2/fixture.cjs');
-const {inventory}=require('../../js/upgrades/consumables-requests/core.js');
+const {inventory}=require('../../public/app/features/consumables-requests/core.js');
 const seed=f=>f.call(f.actors.admin,'consumables_save_item',{p_id:id(),p_version:null,p_name:'Personal cement',p_unit:'bags',p_minimum:2,p_opening:30,p_category:'Masonry & Carpentry',p_specification:'40 kg',p_item_code:null});
 const submit=(f,item,actor=f.actors.sky,site=f.sites.casa)=>f.call(actor,'mcpa_wa_submit_consumables',{p_operation_id:id(),p_site_id:site,p_purpose:'',p_items:[{consumable_id:item.id,quantity:5,unit:item.unit}]});
 const review=(f,r,decision='approve')=>f.call(f.actors.admin,'mcpa_wa_review_consumables',{p_operation_id:id(),p_request_id:r.id,p_decision:decision,p_items:decision==='reject'?[]:[{item_id:r.items[0].id,quantity:5}],p_note:decision==='reject'?'Not needed':''});

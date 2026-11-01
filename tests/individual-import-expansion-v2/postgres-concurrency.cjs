@@ -4,7 +4,7 @@
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),net=require('node:net'),cp=require('node:child_process');
 const assert=require('node:assert/strict'),{randomUUID,randomBytes,createHash}=require('node:crypto');
 const combined=process.argv.includes('--combined');
-const root=path.resolve(__dirname,'../..'),output=path.join(root,combined?'documentation/integration-quantity-custody-v2/native':'documentation/workstream-a/postgres-concurrency');
+const root=path.resolve(__dirname,'../..'),output=path.join(root,combined?'tests/artifacts/integration-quantity-custody-v2/native':'tests/artifacts/workstream-a/postgres-concurrency');
 const bin=process.argv[2]&&path.resolve(process.argv[2]),exe=name=>path.join(bin,name+(process.platform==='win32'?'.exe':''));
 if(!bin||!['initdb','pg_ctl','psql','postgres'].every(n=>fs.existsSync(exe(n)))){console.error('BLOCKED: native PostgreSQL binaries unavailable; no concurrency pass is claimed.');process.exit(2);}
 fs.mkdirSync(output,{recursive:true});
@@ -69,12 +69,12 @@ async function fixture(){
     create table equipment(id uuid primary key,asset_id text unique not null,name text not null,category text,brand text,model text,serial_number text,condition text,tracking_type text,unit text,details text,
       quantity integer not null default 1,status equipment_status not null default 'AVAILABLE',current_holder_id uuid references profiles(id),created_at timestamptz not null default now());`);
   for(const key of ['admin','sky'])await execute(`insert into profiles values(${lit(actors[key].id)},${lit('Native '+key)})`);
-  await execute(sql('1-admin/modules/sites/setup.sql'));
+  await execute(sql('supabase/bootstrap/sites.sql'));
   await execute(`insert into sites(id,name,location,assigned_engineer) values(${lit(sites.main)},'Main Warehouse','Isolated local fixture','Native sky'),(${lit(sites.casa)},'Casa Buena','Isolated local fixture','Native sky')`);
-  await execute(sql('1-admin/modules/movements/setup.sql'));
+  await execute(sql('supabase/bootstrap/movements.sql'));
   await execute(`create schema auth;create table auth.users(id uuid primary key,email text,invited_at timestamptz,email_confirmed_at timestamptz,raw_user_meta_data jsonb default '{}',raw_app_meta_data jsonb default '{}');
     create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;`);
-  await execute(sql('1-admin/modules/consumables/setup.sql'));
+  await execute(sql('supabase/bootstrap/consumables.sql'));
   await execute(sql('supabase/migrations/202610040001_authenticated_access.sql'));
   for(const key of ['architect','handler','secretary','inactive'])await execute(`insert into profiles(id,name) values(${lit(actors[key].id)},${lit('Native '+key)})`);
   for(const [key,a]of Object.entries(actors))await execute(`insert into auth.users(id,email,email_confirmed_at) values(${lit(a.auth)},${lit(key+'@native.invalid')},now());update profiles set auth_user_id=${lit(a.auth)},role=${lit(a.role)},account_status=${lit(key==='inactive'?'inactive':'active')} where id=${lit(a.id)}`);

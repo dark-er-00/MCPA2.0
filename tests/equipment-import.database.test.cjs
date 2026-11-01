@@ -97,7 +97,7 @@ test('RPC explicitly rejects a NULL canonical Office and missing real Office con
   assert.deepEqual(await counts(f),committed);
 });
 test('serial numbers remain literal metadata: duplicates warn unless a real schema identifier constraint rejects them',async t=>{
-  const f=await setup(t),C=require('../js/equipment-import-core.js');
+  const f=await setup(t),C=require('../public/app/features/equipment-import/equipment-import-core.js');
   const rows=[row({serial_number:'000042'}),row({source_row:3,serial_number:'000042'}),row({source_row:4,serial_number:''}),row({source_row:5})];
   const sheet=C.csv('Item Name,Category,Tracking Type,Serial Number\nElectric Drill,Power Tools,Individual,000042\nElectric Drill,Power Tools,Individual,000042');
   const preview=C.validate(sheet,C.autoMap(sheet.headers));
@@ -116,7 +116,7 @@ test('serial numbers remain literal metadata: duplicates warn unless a real sche
   assert.deepEqual(await counts(f),before,'Existing-inventory identifier conflict rolls back every row');
 });
 test('actual generated XLSX template and its CSV export map only to accepted RPC fields and register valid examples',async t=>{
-  const f=await setup(t),C=require('../js/equipment-import-core.js'),X=require('../vendor/sheetjs/xlsx.full.min.js');
+  const f=await setup(t),C=require('../public/app/features/equipment-import/equipment-import-core.js'),X=require('../public/assets/vendor/sheetjs/xlsx.full.min.js');
   const template=await require('./equipment-import-fixture.cjs').generatedTemplate();
   assert.equal(template.name,'MCPA-equipment-template.xlsx');
   assert.equal(template.type,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

@@ -78,7 +78,7 @@ test('T-8862 / REQ-00013 release retains AVAILABLE, unknown site and reservation
   await assert.rejects(action(f,f.actors.sky,'createRequest',{toolIds:['T-8862'],destination:'Casa Buena'}),/reserved, pending receipt/);
   await assert.rejects(action(f,f.actors.pau,'receiveTransfer',{id:transfer.id,inspections:[{toolId:'T-8862',condition:'good',tested:true}]}));
   await assert.rejects(action(f,f.actors.sky,'receiveTransfer',{id:transfer.id,inspections:[{toolId:'T-8862',condition:'good',tested:false}]}));
-  await assert.rejects(f.db.exec(fs.readFileSync(path.join(__dirname,'../supabase/equipment-office-confirmed-correction.sql'),'utf8')),/active custody\/workflow/);await f.db.exec('rollback');
+  await assert.rejects(f.db.exec(fs.readFileSync(path.join(__dirname,'../supabase/operations/equipment-office-confirmed-correction.sql'),'utf8')),/active custody\/workflow/);await f.db.exec('rollback');
   assert.deepEqual(await records(f),released,'Failed requests, receipts and Office correction preserve every record');
   const op=randomUUID(),payload={id:transfer.id,inspections:[{toolId:'T-8862',condition:'good',tested:true}]};
   await action(f,f.actors.sky,'receiveTransfer',payload,op);const received=await records(f);
@@ -105,7 +105,7 @@ test('orphaned active handovers and stale reservation rows fail closed without b
 
 test('read-only preflight preserves records; unreviewed snapshot drift aborts migration without replacing authorization',async t=>{
   const f=await setup(t),before=await records(f);
-  await f.db.exec(fs.readFileSync(path.join(__dirname,'../supabase/inventory-movement-preflight.sql'),'utf8'));
+  await f.db.exec(fs.readFileSync(path.join(__dirname,'../supabase/checks/inventory-movement-preflight.sql'),'utf8'));
   assert.deepEqual(await records(f),before);
   const definition=(await f.db.query("select pg_get_functiondef('public.mcpa_movement_snapshot()'::regprocedure) as value")).rows[0].value;
   await f.db.exec(definition.replace('begin','begin /* unreviewed fixture change */'));

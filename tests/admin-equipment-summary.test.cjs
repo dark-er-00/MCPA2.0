@@ -3,14 +3,14 @@ const {randomUUID}=require('node:crypto'),{authDatabase}=require('./auth-test-db
 const read=file=>fs.readFileSync(path.join(__dirname,'..',file),'utf8');
 
 test('status route accepts only existing masterlist statuses',()=>{
- const c=vm.createContext({window:{},URLSearchParams});vm.runInContext(read('js/navigation.js'),c);
+ const c=vm.createContext({window:{},URLSearchParams});vm.runInContext(read('public/app/core/navigation.js'),c);
  for(const status of ['all','available','inuse','repair','missing','sold','disposed'])assert.equal(c.window.MCPAMovementLinks.parse('#masterlist?status='+status).status,status);
  for(const route of ['#users?status=available','#masterlist?status=deployed','#masterlist?status=<script>','#masterlist'])assert.equal(c.window.MCPAMovementLinks.parse(route).status,undefined);
 });
 
 test('Admin dashboard shortcuts carry statuses while other roles keep existing targets',()=>{
  const c=vm.createContext({window:{},icon:()=>'<svg></svg>'});
- for(const file of ['display','equipment-tracking','project-scope','dashboard-view']){vm.runInContext(read('js/'+file+'.js'),c);c.EquipmentTracking=c.window.EquipmentTracking;}
+ for(const file of ['shared/display','features/equipment/equipment-tracking','features/projects/project-scope','features/dashboard/dashboard-view']){vm.runInContext(read('public/app/'+file+'.js'),c);c.EquipmentTracking=c.window.EquipmentTracking;}
  const data={tools:[],sites:[],activity:[],transfers:[],requests:[],repairs:[],missing:[]},state={query:'',status:'',site:'',condition:''};
  const render=role=>c.window.DashboardView.render(data,{role},state,()=>'',()=>'',x=>x);
  for(const key of ['all','available','inuse'])assert.match(render('admin'),new RegExp('data-go="masterlist\\?status='+key+'"'));

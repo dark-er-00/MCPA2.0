@@ -1,6 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict'),{randomUUID,webcrypto}=require('node:crypto');
 const {fixture}=require('../quantity-requests-v2/database-fixture.cjs');
-const C=require('../../js/upgrades/individual-import-expansion/core.js'),{create}=require('../../js/upgrades/individual-import-expansion/controller.js');
+const C=require('../../public/app/features/individual-import-expansion/core.js'),{create}=require('../../public/app/features/individual-import-expansion/controller.js');
 const row=(patch={})=>({source_row:2,name:'Shovel (Pala, Lapad)',category:'Hand Tools',brand:'',model:'',serial_number:'',condition:'Not Assessed',tracking_type:'Individual',quantity:20,...patch});
 const imports=(f,actor,rows,operation=randomUUID())=>f.wa(actor,'mcpa_import_equipment_v2',{p_operation_id:operation,p_rows:JSON.stringify(rows)});
 const counts=async f=>(await f.db.query('select (select count(*) from equipment) as equipment,(select count(*) from mcpa_equipment_imports) as imports,(select count(*) from mcpa_wa_import_operations) as expansions')).rows[0];

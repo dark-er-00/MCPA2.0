@@ -36,7 +36,7 @@ test('frontend and SQL source remain inside the reserved paths and share movemen
   assert.doesNotMatch(migration,/create or replace function public\.mcpa_movement_action/);
   assert.doesNotMatch(migration,/drop policy|disable row level security|alter function public\.mcpa_movement_action/i);
   for(const file of ['api.mjs','composer.mjs','ui.mjs']){
-    const source=fs.readFileSync(path.join(root,'js/upgrades/custody-lifecycle',file),'utf8');
+    const source=fs.readFileSync(path.join(root,'public/app/features/custody-lifecycle',file),'utf8');
     assert.doesNotMatch(source,/service_role|sb_secret_|supabase\.co|localStorage/);
   }
 });

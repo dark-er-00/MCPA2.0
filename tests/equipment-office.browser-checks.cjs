@@ -12,7 +12,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
   await go('masterlist');await wait('document.querySelector("#equipmentTableBody")?.textContent.includes("T-8862")');
   assert.equal(await evaluate('equipmentList.find(t=>t.assetId==="T-8862").site'),'Unassigned');
   const oldEquipment=(await f.db.query('select * from equipment order by asset_id')).rows;
-  await f.db.exec(fs.readFileSync(path.join(__dirname,'../supabase/equipment-office-confirmed-correction.sql'),'utf8'));
+  await f.db.exec(fs.readFileSync(path.join(__dirname,'../supabase/operations/equipment-office-confirmed-correction.sql'),'utf8'));
   await evaluate('__tickSync()');await wait('equipmentList.find(t=>t.assetId==="T-8862").site==="Main Office"');
   assert.deepEqual((await f.db.query('select * from equipment order by asset_id')).rows,oldEquipment.map(row=>row.asset_id==='T-8862'?{...row,site_id:f.sites.office}:row));
   assert.deepEqual((await f.db.query('select * from mcpa_movements order by id')).rows,history);

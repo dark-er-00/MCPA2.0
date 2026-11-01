@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {areas,labels}=require('./project-construction-fixture.cjs');
 exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login,logout,shot,artifactDirectory,base})=>{
- const output=path.join(__dirname,'../documentation/project-construction-2026-10-23/screenshots');fs.mkdirSync(output,{recursive:true});
+ const output=path.join(__dirname,'./artifacts/project-construction-2026-10-23/screenshots');fs.mkdirSync(output,{recursive:true});
  const screenshot=async name=>{await shot(name,true);const file=path.join(artifactDirectory,name+'.png');if(fs.existsSync(file))fs.copyFileSync(file,path.join(output,name+'.png'));};
  const protectedRows=async()=>(await f.db.query("select jsonb_build_object('equipment',(select jsonb_agg(to_jsonb(e) order by id) from equipment e),'movements',(select jsonb_agg(to_jsonb(m) order by id) from mcpa_movements m),'profiles',(select jsonb_agg(to_jsonb(p) order by id) from profiles p)) as value")).rows[0].value;
  const before=await protectedRows();

@@ -6,7 +6,7 @@ const path=require('node:path');
 const {webcrypto}=require('node:crypto');
 
 test('a save waits for an older background read and then fetches the committed snapshot',async()=>{
- const source=fs.readFileSync(path.join(__dirname,'../js/movement-cloud.js'),'utf8');
+ const source=fs.readFileSync(path.join(__dirname,'../public/app/features/movements/movement-cloud.js'),'utf8');
  const window=new EventTarget();
  const person={id:'fixture-person',name:'Fixture Engineer',role:'engineer'};
  window.MCPAAuth={profile:person,canAction:()=>true,requireLive:()=>person};
@@ -35,7 +35,7 @@ test('a save waits for an older background read and then fetches the committed s
 });
 
 test('failed inventory refresh invalidates cached availability and recovery publishes a fresh verification',async()=>{
- const source=fs.readFileSync(path.join(__dirname,'../js/movement-cloud.js'),'utf8');
+ const source=fs.readFileSync(path.join(__dirname,'../public/app/features/movements/movement-cloud.js'),'utf8');
  const window=new EventTarget(),person={id:'engineer',role:'engineer'};
  window.MCPAAuth={profile:person,requireLive:()=>person};
  window.MovementDemoStore={deactivate(){}};

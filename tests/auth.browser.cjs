@@ -94,9 +94,9 @@ const server=http.createServer(async(req,res)=>{
  }
  // Also exercise GitHub Pages' project subpath using the same local fixture.
  const pathname=new URL(req.url,'http://localhost').pathname.replace(/^\/MCPA\//,'/');
- const file=path.resolve(root,'.'+pathname);
+ const file=path.resolve(root,'public','.'+pathname);
  if(!file.startsWith(root+path.sep)||!fs.existsSync(file)||fs.statSync(file).isDirectory()){res.writeHead(404);res.end();return;}
- let content=fs.readFileSync(file);if(file.endsWith('index.html'))content=content.toString().replace(/<script src="https:[^"]+"[^>]*><\/script>/g,'').replace('</head>','<script src="/__sdk.js"></script></head>');
+ let content=fs.readFileSync(file);if(file.endsWith(path.join('public','index.html')))content=content.toString().replace(/<script src="https:[^"]+"[^>]*><\/script>/g,'').replace('</head>','<script src="/__sdk.js"></script></head>');
  if(process.argv.includes('--equipment-fixes')&&file.endsWith('masterlist.js'))content=content.toString().replaceAll('https://api.qrserver.com/v1/create-qr-code/','/__qr');
  res.setHeader('Content-Type',({'.mjs':'text/javascript','.js':'text/javascript','.html':'text/html','.css':'text/css','.png':'image/png','.webp':'image/webp'})[path.extname(file)]||'text/plain');res.end(content);
 });
@@ -135,7 +135,7 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
  if(process.argv.includes('--consumables-upgrade')){
   await require('./consumables-upgrade-fixture.cjs').createSample(fixture);
   await require('./consumables-upgrade-fixture.cjs').upgrade(fixture);
-  await fixture.db.exec(require('./consumables-upgrade-fixture.cjs').read('documentation/consumables-upgrade-2026-10-22/02-archive-sample.sql'));
+  await fixture.db.exec(require('./consumables-upgrade-fixture.cjs').read('supabase/operations/consumables/02-archive-sample.sql'));
   await fixture.db.exec(require('./consumables-upgrade-fixture.cjs').seed);
  }
  await fixture.db.query("insert into sites(id,name,location,assigned_engineer,assigned_engineer_id) values($1,'MCPA Development Transfer Test','Local fixture only','Engr Sky',$2)",[require('node:crypto').randomUUID(),fixture.actors.sky.id]);

@@ -5,8 +5,8 @@ const vm=require('node:vm');
 const path=require('node:path');
 function setup(){
   const context=vm.createContext({window:{},icon:()=>'<svg></svg>'});
-  for(const file of ['display.js','equipment-tracking.js','project-scope.js','dashboard-view.js']){
-    vm.runInContext(fs.readFileSync(path.join(__dirname,'../js',file),'utf8'),context);
+  for(const file of ['shared/display.js','features/equipment/equipment-tracking.js','features/projects/project-scope.js','features/dashboard/dashboard-view.js']){
+    vm.runInContext(fs.readFileSync(path.join(__dirname,'../public/app',file),'utf8'),context);
     context.EquipmentTracking=context.window.EquipmentTracking;
   }
   const data={tools:[

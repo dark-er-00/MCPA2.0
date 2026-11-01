@@ -1,6 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict');
-const C=require('../../js/upgrades/consumables-requests/core.js');
-const A=require('../../js/upgrades/consumables-requests/analytics.js');
+const C=require('../../public/app/features/consumables-requests/core.js');
+const A=require('../../public/app/features/consumables-requests/analytics.js');
 const id=n=>'00000000-0000-4000-8000-'+String(n).padStart(12,'0');
 const catalog=[{id:id(1),name:'Disc',unit:'pieces',current_stock:1,minimum_stock:2},{id:id(2),name:'Disc',unit:'box',current_stock:20,minimum_stock:5},{id:id(3),name:'Old stock',unit:'kg',current_stock:0,minimum_stock:1,archived_at:'2026-01-01'}];
 const sites=[{id:id(9),name:'Project'}];

@@ -5,8 +5,8 @@ const vm = require('node:vm');
 const { test } = require('node:test');
 
 const root = path.join(__dirname, '..');
-const dataScript = fs.readFileSync(path.join(root, 'js/data.js'), 'utf8');
-const storeScript = fs.readFileSync(path.join(root, 'js/movement-store.js'), 'utf8');
+const dataScript = fs.readFileSync(path.join(root, 'public/app/shared/data.js'), 'utf8');
+const storeScript = fs.readFileSync(path.join(root, 'public/app/features/movements/movement-store.js'), 'utf8');
 const plain = value => JSON.parse(JSON.stringify(value));
 
 function browser(options = {}) {
@@ -27,7 +27,7 @@ function browser(options = {}) {
     CustomEvent: class { constructor(type, options) { this.type = type; this.detail = options.detail; } },
   };
   const sandbox = vm.createContext({ window, console });
-  vm.runInContext(fs.readFileSync(path.join(root,'js/display.js'),'utf8'), sandbox);
+  vm.runInContext(fs.readFileSync(path.join(root,'public/app/shared/display.js'),'utf8'), sandbox);
   vm.runInContext(dataScript, sandbox);
   const tools = vm.runInContext('TOOLS', sandbox);
   vm.runInContext(storeScript, sandbox);

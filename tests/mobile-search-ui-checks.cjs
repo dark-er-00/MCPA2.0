@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 exports.verify = async ({evaluate, command, wait, click, fill, go, login, logout}) => {
-  for (const entry of ['index.html', '2-engr/index.html']) {
+  for (const entry of ['public/index.html', '2-engr/index.html']) {
     const html = fs.readFileSync(path.resolve(__dirname, '..', entry), 'utf8');
     assert.match(html, /id="mobile-search-toggle"[^>]*aria-label="Search"/);
     assert.match(html, /class="[^"]*mobile-search-close[^"]*"[^>]*aria-label="Close search"/);

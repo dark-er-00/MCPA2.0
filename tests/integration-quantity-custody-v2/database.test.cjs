@@ -60,7 +60,7 @@ test('outward issuance, analytics, archive obligations, roles and stock replay',
   assert.deepEqual(await f.call(a.admin,'mcpa_wa_issue_consumables',issue),saved);
   assert.equal(Number((await f.db.query('select current_stock from consumables where id=$1',[item.id])).rows[0].current_stock),16);
   const snapshot=await f.call(a.admin,'mcpa_wa_consumables_snapshot');
-  const report=require('../../js/upgrades/consumables-requests/analytics.js').report(snapshot);
+  const report=require('../../public/app/features/consumables-requests/analytics.js').report(snapshot);
   assert.equal(report.summary.find(v=>v.consumable_id===item.id).issued,4);
   await assert.rejects(f.call(a.secretary,'mcpa_wa_consumables_snapshot'));
 });

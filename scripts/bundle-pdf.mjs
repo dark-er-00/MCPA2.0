@@ -1,7 +1,7 @@
-// Run after npm ci in scripts/. Only development needs external downloads.
+// Run after npm ci at the project root. Only development needs external downloads.
 import fs from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-const target = new URL('../vendor/pdf/', import.meta.url);
+const target = new URL('../public/assets/vendor/pdf/', import.meta.url);
 const revision = 'ffebf8c1ee449e544955a7e813c54f9b73848eac';
 const fontSource = `https://raw.githubusercontent.com/notofonts/noto-fonts/${revision}/`;
 await fs.mkdir(target, {recursive:true});
@@ -15,7 +15,7 @@ for (const [source,destination] of [
   ['jspdf/LICENSE','LICENSE-jspdf.txt'],
   ['jspdf-autotable/dist/jspdf.plugin.autotable.min.js','jspdf.plugin.autotable.min.js'],
   ['jspdf-autotable/LICENSE.txt','LICENSE-autotable.txt']
-]) await save(destination,await fs.readFile(new URL('node_modules/'+source,import.meta.url)));
+]) await save(destination,await fs.readFile(new URL('../node_modules/'+source,import.meta.url)));
 const fonts = {};
 for (const [style,file] of [['normal','NotoSans-Regular.ttf'],['bold','NotoSans-Bold.ttf']]) {
   const response = await fetch(fontSource+'hinted/ttf/NotoSans/'+file);

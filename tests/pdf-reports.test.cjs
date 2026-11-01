@@ -3,23 +3,24 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),{cre
 const {parse,assertLayout,render,compact}=require('./pdf-test-utils.cjs');
 const root=path.resolve(__dirname,'..'),artifacts=path.join(__dirname,'artifacts/pdf-reports');
 function exporter(){
- const sandbox={URL,Blob,atob,btoa,console,TextEncoder,TextDecoder,setTimeout,clearTimeout,navigator:{userAgent:'Node'},document:{currentScript:{src:'https://example.test/project/js/pdf-reports.js'}}};
+ const sandbox={URL,Blob,atob,btoa,console,TextEncoder,TextDecoder,setTimeout,clearTimeout,navigator:{userAgent:'Node'},document:{currentScript:{src:'https://example.test/project/app/features/reports/pdf-reports.js'}}};
  sandbox.window=sandbox;sandbox.self=sandbox;
  const context=vm.createContext(sandbox);
- for(const file of ['vendor/pdf/jspdf.umd.min.js','vendor/pdf/jspdf.plugin.autotable.min.js','vendor/pdf/noto-sans.js','js/display.js','js/pdf-reports.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context,{filename:file});
+ for(const file of ['public/assets/vendor/pdf/jspdf.umd.min.js','public/assets/vendor/pdf/jspdf.plugin.autotable.min.js','public/assets/vendor/pdf/noto-sans.js','public/app/shared/display.js','public/app/features/reports/pdf-reports.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context,{filename:file});
  return context.SiteTracePDF;
 }
-test('Pinned local assets are intact; report exports use PDF in both portal entry points',()=>{
- const manifest=JSON.parse(fs.readFileSync(path.join(root,'vendor/pdf/manifest.json')));
- for(const [file,hash]of Object.entries(manifest.sha256).filter(([file])=>!file.endsWith('.ttf')))assert.equal(createHash('sha256').update(fs.readFileSync(path.join(root,'vendor/pdf',file))).digest('hex'),hash);
- for(const dir of ['js','1-admin/modules','2-engr/modules'])for(const entry of fs.readdirSync(path.join(root,dir),{recursive:true})){
+test('Pinned local assets are intact; reports load from the canonical application shell',()=>{
+ const manifest=JSON.parse(fs.readFileSync(path.join(root,'public/assets/vendor/pdf/manifest.json')));
+ for(const [file,hash]of Object.entries(manifest.sha256).filter(([file])=>!file.endsWith('.ttf')))assert.equal(createHash('sha256').update(fs.readFileSync(path.join(root,'public/assets/vendor/pdf',file))).digest('hex'),hash);
+ for(const dir of ['public/app'])for(const entry of fs.readdirSync(path.join(root,dir),{recursive:true})){
   if(!/\.(js|html)$/.test(entry)||entry.includes('node_modules'))continue;
-  // Import receipts are a machine-readable row/Asset-ID reconciliation file,
-  // explicitly separate from existing PDF report controls.
-  if(dir==='js'&&entry==='equipment-import.js')continue;
+  // Import receipts and consumables analytics intentionally provide machine-readable CSV.
+  // Report screens continue to use PDF.
+  if(['features/equipment-import/equipment-import.js','portals/admin/consumables-usage/consumables-usage.js'].includes(entry.replaceAll('\\','/')))continue;
   assert.doesNotMatch(fs.readFileSync(path.join(root,dir,entry),'utf8'),/Export CSV|Download CSV|text\/csv|\.csv['"`]|Export Excel/i,entry);
  }
- for(const file of ['index.html','2-engr/index.html'])assert.match(fs.readFileSync(path.join(root,file),'utf8'),/src="(?:\.\.\/)?js\/pdf-reports.js"/);
+ assert.match(fs.readFileSync(path.join(root,'public/index.html'),'utf8'),/src="app\/features\/reports\/pdf-reports.js"/);
+ assert.match(fs.readFileSync(path.join(root,'public/2-engr/index.html'),'utf8'),/location.replace/);
 });
 test('Hundreds of full activity rows survive pagination, long cells and Unicode; A4 layout renders',async()=>{
  const api=exporter();

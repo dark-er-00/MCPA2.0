@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict'),{webcrypto,randomUUID}=require('node:crypto');
-const C=require('../../js/upgrades/individual-import-expansion/core.js'),{create,RPC,RECEIPT_RPC}=require('../../js/upgrades/individual-import-expansion/controller.js');
+const C=require('../../public/app/features/individual-import-expansion/core.js'),{create,RPC,RECEIPT_RPC}=require('../../public/app/features/individual-import-expansion/controller.js');
 const actor={id:'11111111-1111-4111-8111-111111111111',role:'admin'};
 const sheet=C.parse(Buffer.from('Item Name,Category,Tracking Type,Quantity,Condition\nShovel,Hand Tools,Individual,2,Good\nPipe,Construction Materials,Bulk,225,Fair'),'csv')[0];
 const input={sheet,mapping:C.autoMap(sheet.headers)};

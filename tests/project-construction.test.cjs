@@ -131,10 +131,10 @@ test('Role boundaries, RLS, direct audit writes and privileged mutations/truncat
 
 test('Read-only deployment scripts compare unchanged legacy fingerprints and verify effective security',async()=>{
  const f=await authDatabase({engineerPortal:true});try{
-  const before=await f.db.exec(read('supabase/project-construction-preflight.sql'));
+  const before=await f.db.exec(read('supabase/checks/project-construction-preflight.sql'));
   const fingerprints=before.find(r=>r.rows?.[0]?.legacy_fingerprint).rows;
   await upgrade(f);
-  const after=await f.db.exec(read('supabase/project-construction-verify.sql'));
+  const after=await f.db.exec(read('supabase/checks/project-construction-verify.sql'));
   assert.deepEqual(after.find(r=>r.rows?.[0]?.legacy_fingerprint).rows,fingerprints);
   const access=after.find(r=>r.rows?.[0]?.role).rows;
   for(const row of access){assert.equal(row.forbidden_history_write,false);assert.equal(row.forbidden_operations_access,false);assert.equal(row.forbidden_trigger_execute,false);assert.equal(row.save_rpc,row.role==='authenticated');assert.equal(row.site_update_rpc,row.role==='authenticated');}
