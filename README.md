@@ -14,6 +14,10 @@ Requirements: PHP 8.2 or later with cURL, JSON, fileinfo, mbstring and sessions;
 
 On Windows PowerShell installations that block npm's script shim, use `npm.cmd` instead of `npm`. `PORT` changes the development port; `PHP_BINARY` can specify the PHP executable path.
 
+`npm start` checks PHP extensions and application configuration before serving. Open the URL it prints; an HTML/Live Server preview cannot execute the PHP API.
+
+Run `npm run doctor` to check the PHP runtime, configuration and a read-only Supabase Auth connection without signing in or changing data. On Windows, the PHP client uses the native certificate store with HTTPS certificate and hostname verification enabled. Other hosts use their PHP/cURL CA configuration. If diagnostics report a certificate error, configure a trusted CA bundle using `curl.cainfo` in the PHP runtime's loaded `php.ini`, then restart PHP. Never disable certificate verification.
+
 PHP serves the public connection configuration at `app/core/config.js` from the environment. `npm run configure` also regenerates the checked-in JavaScript configuration for isolated existing test fixtures. Public configuration includes only the Supabase origin and publishable key.
 
 ## Deployment
@@ -36,6 +40,7 @@ No production database migration, data import or account creation is performed b
 npm run check
 npm test
 npm run test:browser
+npm run test:auth
 ```
 
 The PHP tests are included in `npm test`; use `npm run test:php` for a focused run. They use a local upstream fixture and never contact the live Supabase project. The existing database suite checks the same transactional rules using an isolated PostgreSQL-compatible test database. The browser suite uses Chrome and isolated records; set `CHROME_PATH` if necessary. In environments where Chrome's sandbox prevents headless startup, the existing `MCPA_CHROME_NO_SANDBOX=1` test option is available.

@@ -25,7 +25,16 @@
         options.body = normalized;
       } else options.body = await request.arrayBuffer();
     }
-    return nativeFetch(url, options);
+    const response = await nativeFetch(url, options);
+    // Static preview servers can return HTML or raw PHP instead of running it.
+    // Keep an actionable error inside the SDK's normal JSON response contract.
+    if (response.headers.get('x-mcpa-backend') !== 'php' &&
+        ([404,405].includes(response.status) || /(?:text\/html|(?:x-httpd-|x-)php)/i.test(response.headers.get('content-type') || ''))) {
+      return new Response(JSON.stringify({code:'MCPA_HOSTING', error_code:'MCPA_HOSTING',
+        message:'Open the application through its PHP server. For local use, run npm start and open http://127.0.0.1:4173.'}),
+      {status:500, headers:{'content-type':'application/json'}});
+    }
+    return response;
   }
   window.MCPAServer = Object.freeze({fetch:serverFetch, options:Object.freeze({global:Object.freeze({fetch:serverFetch})})});
 })();

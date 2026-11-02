@@ -4,8 +4,13 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 exports.verify = async ({evaluate, command, wait, click, fill, go, login, logout}) => {
-  for (const entry of ['public/index.html', '2-engr/index.html']) {
-    const html = fs.readFileSync(path.resolve(__dirname, '..', entry), 'utf8');
+  for (const entry of ['public/index.html', 'public/2-engr/index.html']) {
+    const file = path.resolve(__dirname, '..', entry);
+    let html = fs.readFileSync(file, 'utf8');
+    if (entry === 'public/2-engr/index.html') {
+      assert.match(html, /location\.replace\(new URL\(['"]\.\.\/index\.html['"]/);
+      html = fs.readFileSync(path.resolve(path.dirname(file), '../index.html'), 'utf8');
+    }
     assert.match(html, /id="mobile-search-toggle"[^>]*aria-label="Search"/);
     assert.match(html, /class="[^"]*mobile-search-close[^"]*"[^>]*aria-label="Close search"/);
     assert.match(html, /id="global-search-input"[^>]*aria-label="[^"]+"[^>]*oninput="globalSearch\(this\.value\)"/);

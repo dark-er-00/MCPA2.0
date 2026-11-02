@@ -6,13 +6,15 @@
   "scripts": {
     "start": "node scripts/start.mjs",
     "configure": "node scripts/configure.mjs",
+    "doctor": "node scripts/configure.mjs doctor",
     "check": "node scripts/check.mjs",
     "test": "node scripts/test.mjs",
     "test:browser": "node tests/auth.browser.cjs",
-    "test:php": "node --test --test-concurrency=1 tests/php-backend.test.mjs",
+    "test:auth": "node tests/auth.browser.cjs --auth",
+    "test:php": "node --test --test-concurrency=1 tests/php-backend.test.mjs tests/php-connection.test.mjs",
     "bundle:pdf": "node scripts/bundle-pdf.mjs",
     "generate:consumables": "node scripts/generate-consumables.cjs",
-    "verify": "npm run check && npm test && npm run test:browser"
+    "verify": "npm run check && npm test && npm run test:browser && npm run test:auth"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",

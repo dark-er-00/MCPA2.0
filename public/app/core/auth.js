@@ -57,6 +57,11 @@
     host.querySelectorAll('[data-demo-role]').forEach(b=>b.addEventListener('click',()=>startDemo(b.dataset.demoRole)));
   }
   function feedback(message) { const el=document.getElementById('auth-feedback');if(el) {el.textContent=message;el.setAttribute('role','alert');} }
+  function connectionFeedback(error) {
+    if(error?.code==='MCPA_HOSTING')return 'Open the application through its PHP server. For local use, run npm start and open http://127.0.0.1:4173.';
+    if(error?.status>=500)return 'The sign-in server could not connect to the data service. Try again later or contact your administrator.';
+    return '';
+  }
   // One delegated dismissal pair for every account/header rerender.
   window.MCPAAccountMenu?.dispose();
   const accountEvents = new AbortController();
@@ -128,13 +133,13 @@
       const {data,error}=await client().auth.signInWithPassword({email:document.getElementById('auth-email').value.trim(),password:document.getElementById('auth-password').value});
       if(error)throw error;
       const passwordInput=document.getElementById('auth-password');if(passwordInput)passwordInput.value='';await restore(data.session);
-    } catch(error){feedback(recovering?'Password could not be saved. Use at least 12 characters, check your connection, and try again. If the link expired, request a new password reset.':error?.code==='invalid_credentials'?'Incorrect email or password.':error?.code==='email_not_confirmed'?'Your email is not confirmed. Contact your administrator.':'Sign in could not be completed. Check your connection and try again.');}
+    } catch(error){feedback(connectionFeedback(error)||(recovering?'Password could not be saved. Use at least 12 characters, check your connection, and try again. If the link expired, request a new password reset.':error?.code==='invalid_credentials'?'Incorrect email or password.':error?.code==='email_not_confirmed'?'Your email is not confirmed. Contact your administrator.':'Sign in could not be completed. Check your connection and try again.'));}
     finally {busy=false;if(button?.isConnected)button.disabled=false;}
   }
   async function resetPassword() {
     const input=document.getElementById('auth-email');if(!input?.reportValidity())return;
     try{const {error}=await client().auth.resetPasswordForEmail(input.value.trim(),{redirectTo:rootUrl()});if(error)throw error;feedback('If an account exists for this email, a password reset link has been sent.');}
-    catch(_){feedback('Unable to request a password reset. Check your connection and try again.');}
+    catch(error){feedback(connectionFeedback(error)||'Unable to request a password reset. Check your connection and try again.');}
   }
   async function startDemo(role, restoring = false) {
     if(!['admin','engineer','architect'].includes(role))return;

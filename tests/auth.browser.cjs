@@ -4,6 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 // The default application smoke test follows the integrated production routes.
 // Historical fixture-specific modes remain explicit flags below.
 if(process.argv.length===2)process.argv.push('--combined-integration');
+if(process.argv.includes('--auth'))process.argv.push('--combined-integration');
 if(process.argv.includes('--review-fixes')||process.argv.includes('--final-races')||process.argv.includes('--unified-requests')||process.argv.includes('--engineer-consumables')||process.argv.includes('--functionality-audit'))process.argv.push('--combined-integration');
 const {spawn}=require('node:child_process'),{once}=require('node:events'),{authDatabase}=require('./auth-test-db.cjs');
 const root=path.resolve(__dirname,'..'),profile=fs.mkdtempSync(path.join(os.tmpdir(),'mcpa-auth-'));
@@ -162,6 +163,14 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
  console.log('Local Chrome ready; external HTTPS blocked');
  const base=`http://127.0.0.1:${server.address().port}`;
  if(accountServiceRun)fixture.authModel=(await import('./functionality-audit-v2/account-service.mjs')).accountService(fixture,{base});
+ if(process.argv.includes('--combined-integration') || process.argv.includes('--php-connection')){
+  await require('./php-connection.browser-checks.cjs').verify({evaluate,command,wait,click,login,base,calls});
+  if(process.argv.includes('--php-connection')){assert.deepEqual(errors,[],'No uncaught browser errors');return;}
+ }
+ if(process.argv.includes('--auth')){
+  await require('./auth-flows.browser-checks.cjs').verify({evaluate,command,wait,click,fill,submit,login,logout,base,calls});
+  assert.deepEqual(errors,[],'No uncaught browser errors');return;
+ }
  if(process.argv.includes('--combined-integration')){
   await require(process.argv.includes('--functionality-audit')?'./functionality-audit-v2/browser-checks.cjs':process.argv.includes('--engineer-consumables')?'./consumables-requests-v2/inventory.browser-checks.cjs':process.argv.includes('--unified-requests')?'./unified-requests.browser-checks.cjs':process.argv.includes('--final-races')?'./integration-quantity-custody-v2/final-races.browser-checks.cjs':process.argv.includes('--review-fixes')?'./integration-quantity-custody-v2/review-fixes.browser-checks.cjs':'./integration-quantity-custody-v2/browser-checks.cjs').verify({fixture,evaluate,command,wait,click,fill,submit,go,login,logout,base,calls,shot});
   assert.deepEqual(errors,[],'No uncaught browser errors');return;
@@ -445,7 +454,7 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
  await enter('.asset-timeline a[data-movement-link]');
  await wait("document.querySelector('[data-detail]:not([hidden])')?.textContent.includes('Pending Review')");
  await evaluate("location.hash='#request?record=does-not-exist'");
- await wait("document.querySelector('[data-notice]')?.textContent.includes('unavailable')");
+ await wait("document.querySelector('[data-equipment-notice]')?.textContent.includes('unavailable')");
  assert.ok(await evaluate("!document.querySelector('[data-detail]').open"));
  await evaluate("location.hash="+JSON.stringify('#request?record='+request.id));
  await wait("document.querySelector('[data-detail]:not([hidden])')?.textContent.includes('Pending Review')");

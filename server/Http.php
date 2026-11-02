@@ -35,6 +35,7 @@ final class Response
         http_response_code($this->status);
         header('Cache-Control: no-store');
         header('X-Content-Type-Options: nosniff');
+        header('X-MCPA-Backend: php');
         foreach ($this->headers as $key => $value) header($key . ': ' . $value);
         if (!$head && $this->status !== 204) echo $this->body;
     }
@@ -83,10 +84,23 @@ final class Upstream
                 return strlen($line);
             },
         ]);
+        // Windows PHP builds commonly use OpenSSL without a bundled CA file.
+        // Use the OS trust store while retaining peer and hostname verification.
+        if (PHP_OS_FAMILY === 'Windows' && defined('CURLSSLOPT_NATIVE_CA')) {
+            curl_setopt($curl, CURLOPT_SSL_OPTIONS, CURLSSLOPT_NATIVE_CA);
+        }
         if ($body !== null && !in_array($method, ['GET', 'HEAD'], true)) curl_setopt($curl, CURLOPT_POSTFIELDS, $body);
         $result = curl_exec($curl);
         $status = (int) curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
-        if ($result === false || $status === 0) throw new RequestError('The data service is unavailable. Check your connection and retry the same request.', 503, 'MCPA_UPSTREAM');
+        if ($result === false || $status === 0) {
+            $code = curl_errno($curl);
+            // Do not log request bodies, tokens, API keys or signed URL queries.
+            error_log('MCPA upstream connection failed (cURL error ' . $code . ').');
+            if (in_array($code, [CURLE_SSL_PEER_CERTIFICATE, CURLE_SSL_CACERT_BADFILE], true)) {
+                throw new RequestError('The server could not verify the data service certificate. Ask your administrator to check the PHP certificate configuration.', 503, 'MCPA_TLS');
+            }
+            throw new RequestError('The server could not reach the data service. Try again later or contact your administrator. Retry the same operation if its result is uncertain.', 503, 'MCPA_UPSTREAM');
+        }
         if ($status >= 300 && $status < 400) throw new RequestError('The data service returned an unexpected redirect.', 502, 'MCPA_UPSTREAM');
         return new Response($status, $result, $responseHeaders);
     }

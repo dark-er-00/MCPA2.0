@@ -46,7 +46,7 @@ function adapter(prefix = '/') {
     MCPAPaths:{url:relative => new URL(relative, base + prefix)},
     MCPA_CONFIG:{supabaseUrl:upstreamUrl}, fetch,
   };
-  vm.runInNewContext(readFileSync(path.join(root, 'public/app/core/server-api.js'), 'utf8'), {window, Request, Headers, URL, FormData});
+  vm.runInNewContext(readFileSync(path.join(root, 'public/app/core/server-api.js'), 'utf8'), {window, Request, Response, Headers, URL, FormData});
   return window.MCPAServer;
 }
 
@@ -73,6 +73,7 @@ before(async () => {
       if (url.pathname === '/auth/v1/user') return actor ? reply(res, {id:actor.authId, email:actorKey+'@example.test'}) : reply(res, {message:'Invalid session'}, 401);
       if (url.pathname === '/auth/v1/logout') { res.writeHead(204); return res.end(); }
       if (url.pathname === '/auth/v1/recover') return reply(res, {});
+      if (url.pathname === '/auth/v1/settings') return reply(res, {disable_signup:true});
       if (url.pathname === '/auth/v1/admin/users') {
         assert.equal(req.headers.apikey, secret);
         assert.equal(req.headers.authorization, undefined, 'A modern secret key is not sent as a JWT');
@@ -94,6 +95,7 @@ before(async () => {
         }
         assert.equal(req.headers.apikey, publishable);
         if (!actor) return reply(res, {code:'PGRST301',message:'Invalid JWT'}, 401);
+        if (name === 'mcpa_php_transport_fixture') return req.socket.destroy();
         if (name === 'mcpa_php_conflict_fixture') return reply(res, {code:'40001',message:'Retry the same operation',details:null,hint:null}, 409, {'retry-after':'1'});
         const result = await database.rpc(actor, name, input);
         return reply(res, result);
@@ -278,6 +280,19 @@ test('private attachments survive multipart and binary transport; PHP rejects mi
   assert.equal(big.status,400);
   const receipt=await request('/storage/v1/object/purchase-receipts/fixture.pdf',{raw:true,headers:{'content-type':'application/pdf'},body:'%PDF-1.7\nfixture\n%%EOF'});
   assert.equal(receipt.status,200);
+});
+
+test('a lost upstream connection returns safe JSON without replaying an uncertain operation', async () => {
+  const start = requests.length;
+  const response = await request('/rest/v1/rpc/mcpa_php_transport_fixture', {body:{p_operation_id:randomUUID()}});
+  assert.equal(response.status, 503);
+  assert.equal(response.headers.get('x-mcpa-backend'), 'php');
+  const body = await response.json();
+  assert.equal(body.code, 'MCPA_UPSTREAM');
+  assert.match(body.message, /server could not reach/);
+  assert.equal(requests.length, start + 1, 'Uncertain mutations are never automatically replayed by PHP');
+  assert.ok(!JSON.stringify(body).includes(secret));
+  assert.ok(!JSON.stringify(body).includes(publishable));
 });
 
 test('the PHP account service uses verified identities and rejects forbidden actors and input before privileged effects', async () => {
