@@ -63,7 +63,7 @@
         path='app/portals/engineer/qr-movements/qr-movements.mjs';fn=screen==='asset-transfer'?'mountTransferSubmission':'mountTransferInbox';
         options.recordId=record;
       }else if(screen==='asset-retirement-v2'){
-        path='app/portals/admin/asset-retirement/asset-retirement.mjs';fn='mountAssetRetirement';options.recordId=record;
+        path='app/portals/admin/asset-retirement/asset-retirement.mjs';fn='mountAssetRetirement';options.recordId=record;options.historyOnly=view==='history';
       }else{path='app/portals/engineer/retired-equipment/retired-equipment.mjs';fn='mountRetiredEquipment';}
       const module=await import(new URL(path,base));if(!alive())return;
       await add(module[fn](host,options));

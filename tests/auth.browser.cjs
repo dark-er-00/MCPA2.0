@@ -6,6 +6,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 if(process.argv.length===2)process.argv.push('--combined-integration');
 if(process.argv.includes('--auth')||process.argv.includes('--recipient-ux'))process.argv.push('--combined-integration');
 if(process.argv.includes('--review-fixes')||process.argv.includes('--final-races')||process.argv.includes('--unified-requests')||process.argv.includes('--engineer-consumables')||process.argv.includes('--functionality-audit'))process.argv.push('--combined-integration');
+const uiReview=process.argv.includes('--ui-review'),uiPreview=process.argv.includes('--ui-preview');
+if(uiReview||uiPreview||process.argv.includes('--inventory-availability'))process.argv.push('--combined-integration');
 const {spawn}=require('node:child_process'),{once}=require('node:events'),{authDatabase}=require('./auth-test-db.cjs');
 const root=path.resolve(__dirname,'..'),profile=fs.mkdtempSync(path.join(os.tmpdir(),'mcpa-auth-'));
 let fixture,chrome,socket,passwordLogged=false;const errors=[],calls=[];
@@ -21,11 +23,13 @@ window.supabase={createClient(){let listener;const session=()=>{const key=localS
  rpc(name,args){return request({rpc:name,args})},from(table){const q={table,columns:'*',filters:[]};return {select(cols='*'){q.columns=cols;return this},insert(values){q.write='insert';q.values=values;return this},update(values){q.write='update';q.values=values;return this},single(){q.single=true;return this},order(){return this},limit(n){q.end=n-1;return this},range(start,end){q.start=start;q.end=end;return this},eq(key,value){q.filters.push([key,value]);return this},then(resolve,reject){return request(q).then(resolve,reject)}}}
 }}};`;
 const server=http.createServer(async(req,res)=>{
+ res.setHeader('Cache-Control','no-store');
+ if(uiPreview)res.setHeader('Content-Security-Policy',"default-src 'self' data: blob:; connect-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:");
  if(process.argv.includes('--equipment-fixes')&&req.url.startsWith('/__qr?')){
   const asset=new URL(req.url,'http://localhost').searchParams.get('data');
   res.setHeader('Content-Type','image/png');res.end(await require('qrcode').toBuffer(asset,{width:120,margin:0}));return;
  }
- if(req.url==='/__sdk.js'){res.setHeader('Content-Type','text/javascript');res.end(sdk+(accountServiceRun?'window.__auditTransport=true;':'')+(turnoverRun?`
+ if(req.url==='/__sdk.js'){res.setHeader('Content-Type','text/javascript');res.end(sdk+(uiPreview?"localStorage.setItem('fixture.account','admin');document.addEventListener('DOMContentLoaded',()=>{document.title='MCPA - Isolated feature preview';});":'')+(accountServiceRun?'window.__auditTransport=true;':'')+(turnoverRun?`
   const originalFixtureClient=window.supabase.createClient;
   window.supabase.createClient=(...args)=>{const client=originalFixtureClient(...args);let stream=null;const channel=client.channel.bind(client),remove=client.removeChannel.bind(client);
     client.channel=(...values)=>{const current=channel(...values),subscribe=current.subscribe.bind(current);current.subscribe=(...subscriptions)=>{if(!stream){stream=new EventSource('/__events?account='+encodeURIComponent(localStorage.getItem('fixture.account')||''));stream.onopen=()=>window.__fixtureRealtimeReady=true;stream.onmessage=event=>{if(window.__fixtureRealtime===false)return;const notice=JSON.parse(event.data);for(const c of __channels)if(c.tables.includes(notice.table))c.notify?.({eventType:'INSERT'});};}return subscribe(...subscriptions);};return current;};
@@ -106,7 +110,7 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
 (async()=>{
  fixture=process.argv.includes('--combined-integration')?await require('./integration-quantity-custody-v2/fixture.cjs').fixture():await authDatabase({engineerPortal:true,missingProjectHistory:process.argv.includes('--projects-errors')});fixture.actors.missing={authId:require('node:crypto').randomUUID()};
  if(process.argv.includes('--combined-integration'))await fixture.db.exec(fs.readFileSync(path.join(root,'supabase/migrations/202611030001_transfer_recipient_acceptance.sql'),'utf8'));
- if(process.argv.includes('--recipient-ux'))await require('./project-construction-fixture.cjs').upgrade(fixture);
+ if(process.argv.includes('--recipient-ux')||uiReview||uiPreview)await require('./project-construction-fixture.cjs').upgrade(fixture);
  if(process.argv.includes('--functionality-audit'))await require('./functionality-audit-v2/fixture.cjs').upgrade(fixture);
  if(!process.argv.includes('--combined-integration')){
  if(process.argv.includes('--project-construction') || process.argv.includes('--admin-equipment-summary'))await require('./project-construction-fixture.cjs').upgrade(fixture);
@@ -147,7 +151,8 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
  }
  if(process.argv.includes('--combined-integration')){const original=fixture.rpc;fixture.rpc=(actor,name,args)=>/^(mcpa_(wa_|b_|import_equipment_v2))/.test(name)?fixture.call(actor,name,args):original(actor,name,args);}
  if(process.argv.includes('--functionality-audit')){const original=fixture.rpc;fixture.rpc=(actor,name,args)=>name==='mcpa_update_my_profile'?fixture.query(actor,'select public.mcpa_update_my_profile($1,$2) value',[args.p_name,args.p_username]).then(r=>r.rows[0].value):original(actor,name,args);}
- server.listen(0,'127.0.0.1');await once(server,'listening');
+ server.listen(uiPreview?4183:0,'127.0.0.1');await once(server,'listening');
+ if(uiPreview){console.log('ISOLATED FEATURE PREVIEW http://127.0.0.1:4183/index.html - auto-signed-in synthetic Admin; no live services.');await new Promise(()=>{});}
  chrome=spawn(process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',['--headless=new',...(process.env.MCPA_CHROME_NO_SANDBOX==='1'?['--no-sandbox','--disable-gpu','--disable-gpu-sandbox']:[]),'--no-first-run','--no-default-browser-check','--disable-background-networking','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{windowsHide:true,stdio:'ignore'});
  let port;for(let i=0;i<100;i++){const p=path.join(profile,'DevToolsActivePort');if(fs.existsSync(p)){port=fs.readFileSync(p,'utf8').split('\n')[0];break;}await pause(100);}assert.ok(port);
  const targets=await(await fetch(`http://127.0.0.1:${port}/json/list`)).json();socket=new WebSocket(targets.find(t=>t.type==='page').webSocketDebuggerUrl);await once(socket,'open');
@@ -173,6 +178,8 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
  }
  console.log('Local Chrome ready; external HTTPS blocked');
  const base=`http://127.0.0.1:${server.address().port}`;
+ if(process.argv.includes('--inventory-availability')){await command('Page.navigate',{url:base+'/index.html'});await login('admin');await wait("MCPAAuth.profile?.role==='admin'");await require('./inventory-availability.browser-checks.cjs').verify({fixture,evaluate,command,wait,click,fill,go,login,logout,shot});assert.deepEqual(errors,[],'No uncaught browser errors');return;}
+ if(uiReview){await require('./ui-review.browser-checks.cjs').verify({fixture,evaluate,command,wait,click,fill,submit,go,login,logout,base,calls,shot,artifactDirectory:profile});assert.deepEqual(errors,[],'No uncaught browser errors');return;}
  if(accountServiceRun)fixture.authModel=(await import('./functionality-audit-v2/account-service.mjs')).accountService(fixture,{base});
  if(process.argv.includes('--recipient-ux')){await require('./recipient-ux.browser-checks.cjs').verify({fixture,evaluate,command,wait,click,fill,submit,go,login,logout,base,calls,shot});assert.deepEqual(errors,[],'No uncaught browser errors');return;}
  if(process.argv.includes('--combined-integration') || process.argv.includes('--php-connection')){
@@ -259,11 +266,6 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
   await require('./pdf-reports.browser-checks.cjs').verify({fixture,evaluate,command,wait,click,fill,go,login,logout,calls,shot,enter,artifactDirectory:profile,base});
   assert.deepEqual(errors,[],'No uncaught browser errors');
   console.log('PASS PDF exports: all authorized roles, account isolation, filters, downloads, desktop/mobile, errors, empty and multipage reports; isolated fixture only');return;
- }
- if(process.argv.includes('--inventory-availability')){
-  await require('./inventory-availability.browser-checks.cjs').verify({fixture,evaluate,command,wait,click,fill,go,login,logout,shot});
-  assert.deepEqual(errors,[],'No uncaught browser errors');
-  console.log('PASS Inventory availability and mobile rendering; isolated fixture only');return;
  }
  if(process.argv.includes('--navigation')){
   await require('./navigation-history.browser-checks.cjs').verify({fixture,evaluate,command,wait,click,fill,go,login,logout,calls,shot,base});

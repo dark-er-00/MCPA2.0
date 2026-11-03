@@ -84,3 +84,18 @@ body.dark #sites-module{color-scheme:dark;}
   #sites-module .sites-dialog-actions .btn{flex:1;}
   #sites-module .sites-summary{gap:12px;}
 }
+
+/* Essential fields first; optional project information stays in native disclosures. */
+#sites-module .sites-dialog[data-view=edit]{width:min(700px,calc(100% - 32px));}
+#sites-module #sites-form>.project-section{margin-top:0;border-top:0;padding-top:0;}
+#sites-module #sites-form>.project-section>legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);}
+#sites-module .project-options{border-top:1px solid var(--line);padding-block:4px;margin-top:20px;}
+#sites-module .project-options>summary{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;font-size:14px;min-height:48px;}
+#sites-module .project-options>summary::before{content:'';width:7px;height:7px;flex:none;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);margin-right:4px;}
+#sites-module .project-options[open]>summary::before{transform:rotate(45deg);}
+#sites-module .project-options>summary span{font-size:12px;font-weight:400;color:var(--text-secondary,var(--gray));margin-left:auto;}
+#sites-module .project-options>.form-grid,#sites-module .project-options>.field{padding-block:12px 4px;}
+#sites-module .project-options>p{margin-block:8px 12px;}
+#sites-module #sites-form>.sites-dialog-actions{position:sticky;bottom:-24px;background:var(--white);padding:16px 0 8px;border-top:1px solid var(--line);margin-top:20px;}
+#sites-module #sites-form select:disabled{color:var(--text-secondary);background:var(--off-white);cursor:not-allowed;}
+@media(max-width:600px){#sites-module .project-options>summary span{width:100%;margin-left:23px;}#sites-module #sites-form>.sites-dialog-actions{bottom:-20px;}}

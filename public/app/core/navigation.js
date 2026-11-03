@@ -64,18 +64,20 @@ function buildNav(){
   const liveOnly=['quantity-request','outward-materials','asset-transfer','transfer-inbox','asset-retirement-v2','retired-equipment-v2'];
   const items=source.filter(n=>n.id&&window.MCPAAuth.canRoute(n.id)).filter(n=>!window.MCPAAuth.isDemo||!liveOnly.includes(n.id));
   const groups=[
-    {id:'equipment',label:'Equipment Management',icon:'box',routes:['masterlist','asset-retirement-v2','retired-equipment-v2']},
+    {id:'equipment',label:'Equipment Tracking',icon:'box',routes:['masterlist','asset-retirement-v2','repair','missing','retired-equipment-v2']},
     {id:'projects',label:'Projects',icon:'map',routes:['sites']},
-    {id:'movements',label:'Equipment Movements',icon:'swap',routes:['request','transfer','return','repair','missing']},
+    {id:'movements',label:'Movement',icon:'swap',routes:['request','transfer','return']},
     {id:'materials',label:'Materials',icon:'box',routes:['consumables','outward-materials']},
     {id:'records',label:'Records',icon:'chart',routes:['purchase','reports','activity']},
     {id:'system',label:'System',icon:'cog',routes:['users','settings']}
   ];
   const link=(item,label=item.label,route=item.id)=>'<button type="button" class="nav-item" data-target="'+route+'">'+icon(item.icon)+'<span>'+label+'</span></button>';
   el.innerHTML=items.filter(n=>n.id==='dashboard').map(n=>link(n)).join('')+groups.map(group=>{
-    const children=items.filter(n=>group.routes.includes(n.id));if(!children.length)return '';
-    const links=children.map(n=>link(n,n.id==='masterlist'?'Equipment Inventory':n.id==='asset-retirement-v2'?'Retire Equipment':n.label));
+    const children=group.routes.flatMap(route=>items.filter(n=>n.id===route));if(!children.length)return '';
+    if(group.id==='projects')return children.map(n=>link(n)).join('');
+    const links=children.map(n=>link(n,n.id==='masterlist'?'Equipment Inventory':n.id==='asset-retirement-v2'?'Asset Retirement':n.id==='retired-equipment-v2'?'Retired Equipment History':n.label));
     if(group.id==='equipment'&&role==='admin')links.splice(1,0,link({id:'masterlist',icon:'box'},'Register Equipment','masterlist?mode=register'));
+    if(group.id==='equipment'&&role==='admin'&&children.some(n=>n.id==='asset-retirement-v2'))links.push(link({id:'asset-retirement-v2',icon:'clock'},'Retired Equipment History','asset-retirement-v2?view=history'));
     return '<section class="nav-group" data-nav-group="'+group.id+'"><button type="button" class="nav-item nav-parent" aria-expanded="false" aria-controls="nav-'+group.id+'">'+icon(group.icon)+'<span>'+group.label+'</span><svg class="nav-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="m7 5 5 5-5 5"/></svg></button><div class="nav-children" id="nav-'+group.id+'" hidden>'+links.join('')+'</div></section>';
   }).join('');
   openNavigationGroup=null;
@@ -96,9 +98,10 @@ function toggleNavigationGroup(id){
 function setActiveNav(id){
   const normalized=['asset-transfer','transfer-inbox','transfer-tools'].includes(id)?'transfer':id;
   const route=id==='masterlist'&&new URLSearchParams(location.hash.split('?')[1]||'').get('mode')==='register'?'masterlist?mode=register':normalized;
+  const activeRoute=id==='asset-retirement-v2'&&new URLSearchParams(location.hash.split('?')[1]||'').get('view')==='history'?'asset-retirement-v2?view=history':route;
   let parent=null;
   document.querySelectorAll('.nav-item[data-target]').forEach(n=>{
-    const active=n.dataset.target===route;n.classList.toggle('active',active);
+    const active=n.dataset.target===activeRoute;n.classList.toggle('active',active);
     if(active){n.setAttribute('aria-current','page');parent=n.closest('[data-nav-group]')?.dataset.navGroup||null;}else n.removeAttribute('aria-current');
   });
   toggleNavigationGroup(parent);
@@ -137,6 +140,7 @@ window.MCPAMovementLinks = {
     const result = {screen, record: (Object.hasOwn(this.collections, screen) || ['masterlist','tool-profile','site-detail','activity','purchase','consumables','reports','asset-retirement-v2','quantity-request','transfer-inbox','transfer-tools','outward-materials'].includes(screen)) && record && record.length <= 120 ? record : ''};
     if (screen === 'site-detail' && params.get('tool')?.length <= 120) result.tool = params.get('tool');
     if (screen === 'transfer' && ['send','receive','history'].includes(params.get('view'))) result.view = params.get('view');
+    if (screen === 'asset-retirement-v2' && params.get('view') === 'history') result.view = 'history';
     if (screen === 'masterlist' && params.get('mode') === 'register') result.mode = 'register';
     if (screen === 'masterlist' && ['all','available','inuse','repair','missing','sold','disposed'].includes(params.get('status'))) result.status = params.get('status');
     return result;
@@ -175,7 +179,7 @@ function showScreen(route, afterActivate, options){
       if(afterActivate) await afterActivate();
       if(mode==='register' && window.MCPAAuth.profile.role==='admin') document.getElementById('openAddEquipment')?.click();
       if (ticket && !navigation.isCurrent(ticket)) return;
-      if (view) await window.MovementUI?.showTransferView(view);
+      if (id==='transfer' && view) await window.MovementUI?.showTransferView(view);
       // activate waits for the module's registered data-loading promise.
       if (id === 'masterlist' && status && window.MCPAAuth.profile.role === 'admin') {
         if (window.AdminEquipment && !window.AdminEquipment.disposed) window.AdminEquipment.setStatus(status);

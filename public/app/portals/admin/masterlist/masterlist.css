@@ -121,3 +121,13 @@ html.equipment-modal-open,html.equipment-modal-open body{overflow:hidden}
 .equipment-summary-note{font-size:12px;line-height:1.5;color:var(--text-secondary);margin:10px 0 20px}
 @media(max-width:1000px){.equipment-summary .kpi{padding:14px 12px;gap:10px}.equipment-summary .command-kpi-icon{width:36px;height:42px}}
 @media(max-width:600px){#screen-masterlist .equipment-summary{grid-template-columns:1fr;gap:10px}.equipment-summary .kpi{padding:12px 14px}.equipment-summary .command-kpi-icon{display:flex}.equipment-summary .kpi .num{font-size:26px}}
+
+/* Keep inventory rows scannable; explanations expand without leaving the record. */
+#screen-masterlist .equipment-status-compact{min-width:190px;max-width:240px;gap:5px;}
+#screen-masterlist .equipment-status-compact strong{font-size:12px;font-weight:500;}
+#screen-masterlist .equipment-status-details summary{min-height:32px;display:list-item;cursor:pointer;color:var(--text-secondary);font-size:11.5px;padding-block:8px;}
+#screen-masterlist .equipment-status-details p{margin:0 0 8px;}
+#screen-masterlist .equipment-status-details summary:focus-visible{outline:2px solid var(--gold-dim);outline-offset:2px;}
+#screen-masterlist .table-toolbar input,#screen-masterlist .table-toolbar select,#screen-masterlist .page-head-actions .btn{min-height:44px;}
+#screen-masterlist .equipment-summary .kpi{min-height:88px;}
+@media(pointer:coarse){#screen-masterlist .equipment-status-details summary{min-height:44px;}}

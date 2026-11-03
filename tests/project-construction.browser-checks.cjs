@@ -15,7 +15,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  assert.ok((await evaluate("document.querySelector('#sites-form').textContent")).includes('Unmatched legacy phase'));
  assert.equal(await evaluate("document.querySelector('#project-computed-value').textContent"),'Not configured');
  assert.equal(await evaluate("document.querySelector('#site-progress')"),null);
- await click('#project-progress-enabled');
+ await click('#project-progress-section>summary');await click('#project-progress-enabled');
  const initial=areas();for(let i=0;i<labels.length;i++)await fill('#area-completion-'+i,String(initial[labels[i]].completion));
  assert.equal(await evaluate("document.querySelector('#project-computed-value').textContent"),'45%');
  const decimal=areas([33.33,25.25,99.99,3.33,5.55,77.77],[33.33,16.67,10,10,10,20]);
@@ -93,7 +93,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await go('sites');await wait("!document.querySelector('[data-action=add-site]').disabled");await click('[data-action=add-site]');
  assert.equal(await evaluate("document.querySelector('#site-status, #sites-form [name=status]')"),null);
  assert.equal(await evaluate("document.querySelector('#sites-form').textContent.includes('Operational Status')"),false);
- await fill('#site-name','Browser-created fixture');await fill('#site-location','Isolated local fixture');await fill('#site-engineer',f.actors.architect.id);await fill('#site-stage','Planning/Designing');await submit('#sites-form');await wait("!document.querySelector('#sites-dialog').open");
+ await fill('#site-name','Browser-created fixture');await fill('#site-location','Isolated local fixture');await fill('#site-profession','architect');await fill('#site-engineer',f.actors.architect.id);await fill('#site-stage','Planning/Designing');await submit('#sites-form');await wait("!document.querySelector('#sites-dialog').open");
  const created=(await f.db.query("select * from sites where name='Browser-created fixture'")).rows[0];assert.equal(created.construction_completion,null);assert.equal(created.assigned_engineer_id,f.actors.architect.id);assert.equal(created.status,'planning');
  const creation=(await f.db.query('select * from project_history where project_id=$1',[created.id])).rows;assert.equal(creation.length,1);assert.deepEqual(creation[0].change_types,['created']);
  for(const [account,projectId]of [['sky',f.sites.casa],['architect',created.id],['handler',f.sites.casa]]){

@@ -171,3 +171,19 @@
 .nav-item:focus-visible{outline:2px solid var(--gold-dim);outline-offset:-2px}
 @keyframes nav-reveal{from{opacity:.7;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.nav-children:not([hidden]){animation:none}.nav-parent .nav-chevron{transition:none}}
+
+/* Consistent group alignment, visible active state, and room for long module names. */
+.nav .nav-group{margin-block:4px;}
+.nav .nav-parent{min-height:44px;gap:10px;}
+.nav .nav-parent>span{min-width:0;line-height:1.4;}
+.nav .nav-parent[aria-expanded=true]{background:var(--surface-hover);font-weight:650;}
+.nav .nav-children{padding:4px 0 8px 14px;margin-left:7px;}
+.nav .nav-children .nav-item{min-height:44px;gap:10px;line-height:1.4;padding:10px;}
+.nav .nav-children .nav-item>span{min-width:0;overflow-wrap:anywhere;}
+.nav .nav-children .nav-item.active{font-weight:650;}
+.nav .nav-children .nav-item.active::before{display:none;}
+.nav .nav-item.active{box-shadow:inset 0 0 0 1px var(--gold-dim);}
+.nav{scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent;}
+
+/* Projects is a direct route with the same full-width sidebar hit area. */
+.nav>.nav-item[data-target="sites"]{width:100%;min-height:44px;text-align:left;}

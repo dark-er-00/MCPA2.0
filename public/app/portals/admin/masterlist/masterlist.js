@@ -310,7 +310,7 @@ function renderTable() {
       <td style="padding:12px; border-bottom:1px solid var(--line);">${escapeHTML(item.category)}</td>
       <td style="padding:12px; border-bottom:1px solid var(--line);">${escapeHTML(item.brand)}</td>
       <td style="padding:12px; border-bottom:1px solid var(--line);">${escapeHTML(item.site)}</td>
-      <td style="padding:12px; border-bottom:1px solid var(--line);">${window.EquipmentTracking.statusMarkup(item,item.availabilityData)}</td>
+      <td style="padding:12px; border-bottom:1px solid var(--line);">${window.EquipmentTracking.statusMarkup(item,item.availabilityData,{compact:true})}</td>
       
       <td style="padding:12px; border-bottom:1px solid var(--line);">
         <span style="padding:4px 8px; border-radius:4px; font-size:12px; font-weight:600; ${getConditionColor(item.condition)}">

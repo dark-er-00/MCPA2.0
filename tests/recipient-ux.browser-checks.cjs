@@ -6,11 +6,13 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  assert.equal(await evaluate("document.querySelectorAll('.nav-parent[aria-expanded=true]').length"),0);
  await click('[data-nav-group=equipment] .nav-parent');assert.equal(await evaluate("document.querySelector('[data-nav-group=equipment] .nav-parent').getAttribute('aria-expanded')"),'true');
  assert.ok((await evaluate("document.querySelector('[data-nav-group=equipment]').textContent")).includes('Register Equipment'));
- assert.equal(await evaluate("document.querySelectorAll('#nav-list [data-target=\"asset-retirement-v2\"]').length"),1);
+ assert.equal(await evaluate("document.querySelectorAll('[data-nav-group=equipment] [data-target=\"asset-retirement-v2\"]').length"),1);
+ for(const route of ['repair','missing']){assert.equal(await evaluate(`document.querySelectorAll('[data-nav-group=equipment] [data-target="${route}"]').length`),1);assert.equal(await evaluate(`document.querySelectorAll('[data-nav-group=movements] [data-target="${route}"]').length`),0);}
  await click('[data-nav-group=movements] .nav-parent');assert.equal(await evaluate("document.querySelector('[data-nav-group=equipment] .nav-parent').getAttribute('aria-expanded')"),'false');
  await click('[data-nav-group=movements] .nav-parent');assert.equal(await evaluate("document.querySelectorAll('.nav-parent[aria-expanded=true]').length"),0);
  await go('sites');await wait("document.querySelector('.site-card')");
- assert.equal(await evaluate("document.querySelector('[data-nav-group=projects] .nav-parent').getAttribute('aria-expanded')"),'true');
+ assert.equal(await evaluate("document.querySelectorAll('#nav-list > [data-target=sites][aria-current=page]').length"),1);
+ assert.equal(await evaluate("document.querySelector('[data-nav-group=projects]')"),null);
  await click(`[data-action=open-site][data-id="${f.sites.casa}"]`);await click('[data-action=edit-site]');
  assert.deepEqual(await evaluate("[...document.querySelector('#site-profession').options].filter(o=>!o.hidden).map(o=>o.text)"),['Engr','Architect']);
  assert.equal(await evaluate("document.querySelector('#site-engineer').value"),a.sky.id);

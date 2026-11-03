@@ -7,7 +7,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,go,login,logout
     ['T-8861','Pala','AVAILABLE',null,f.sites.main,'Good',1,'available'],
     ['T-8862','Welding Machine','AVAILABLE',null,null,'Good',1,'transfer'],
     ['T-6254','Metal Tube','AVAILABLE',null,f.sites.office,'Good',1,'available'],
-    ['T-RESERVED','Reserved drill','AVAILABLE',null,f.sites.main,'Good',1,'reserved'],
+    ['T-RESERVED','Reserved drill','AVAILABLE',null,f.sites.casa,'Good',1,'reserved'],
     ['T-HANDOVER','Pending handover','AVAILABLE',null,f.sites.main,'Good',1,'transfer'],
     ['T-ASSIGNED','Recorded available but held','AVAILABLE',f.actors.sky.id,f.sites.casa,'Good',1,'assigned'],
     ['T-MISSING','Missing stock','MISSING',null,null,'Good',1,'missing'],
@@ -16,7 +16,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,go,login,logout
     ['T-ZERO','Zero stock','AVAILABLE',null,null,'Good',0,'empty'],
     ['T-OFFICE','Legacy office stock','IN_OFFICE',null,f.sites.main,'Good',1,'status']
   ];
-  for(const [asset,name,status,holder,site,condition,quantity] of cases)await f.db.query('insert into equipment(id,asset_id,name,status,current_holder_id,site_id,condition,quantity) values($1,$2,$3,$4,$5,$6,$7,$8)',[randomUUID(),asset,name,status,holder,site,condition,quantity]);
+  for(const [asset,name,status,holder,site,condition,quantity] of cases)await f.db.query('insert into equipment(id,asset_id,name,status,current_holder_id,site_id,condition,quantity,tracking_type) values($1,$2,$3,$4,$5,$6,$7,$8,$9)',[randomUUID(),asset,name,status,holder,site,condition,quantity,'Individual']);
   const action=(actor,p_action,p_payload)=>f.rpc(actor,'mcpa_movement_action',{p_action,p_payload,p_operation_id:randomUUID()});
   let weldingRequest;
   for(const asset of ['T-RESERVED','T-HANDOVER','T-8862']){
@@ -29,8 +29,8 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,go,login,logout
   await go('masterlist');await wait('equipmentList.length>=9');
   await evaluate('itemsPerPage=50;renderTable()');
   for(const [asset,,,,,,,code] of cases){
-    const actual=await evaluate(`(()=>{const row=[...document.querySelectorAll('#equipmentTableBody tr')].find(row=>row.querySelector('.tool-id-chip')?.textContent===${q(asset)});return {code:row?.querySelector('[data-requestability]')?.dataset.requestability,text:row?.textContent};})()`);
-    assert.equal(actual.code,code,asset);assert.match(actual.text,/Recorded status/);assert.match(actual.text,/New requests/);
+    const actual=await evaluate(`(()=>{const row=[...document.querySelectorAll('#equipmentTableBody tr')].find(row=>row.querySelector('.tool-id-chip')?.textContent===${q(asset)});return {code:row?.querySelector('[data-requestability]')?.dataset.requestability,text:row?.textContent,recordedLabel:row?.querySelector('.badge')?.getAttribute('aria-label'),requestLabel:row?.querySelector('[data-requestability]')?.getAttribute('aria-label')};})()`);
+    assert.equal(actual.code,code,asset);assert.match(actual.recordedLabel,/^Recorded status: /);assert.match(actual.requestLabel,/^New requests: /);
   }
   for(const width of [375,393,430,768,1440])for(const dark of [false,true]){
     await command('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width<1000});
@@ -50,6 +50,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,go,login,logout
 
   await logout();await login('pau');await wait("MCPAAuth.profile?.id==="+q(f.actors.pau.id));await go('request');
   await wait("document.querySelector('[data-form=create]')");
+  await evaluate('MovementStore.refresh()');
   assert.ok(!(await evaluate('MovementStore.getState().requests')).some(r=>r.toolIds.includes('T-RESERVED')),'Another engineer cannot see the private reservation');
   for(const asset of ['T-8861','T-6254'])assert.ok((await picker()).includes(asset));
   for(const [asset,,,,,,,code] of cases.filter(row=>row[7]!=='available'))assert.ok(!(await picker()).includes(asset),asset+' excluded: '+code);

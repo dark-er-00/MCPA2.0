@@ -106,7 +106,9 @@
     accountUI(); buildNav();
     window.MCPAMonitoring?.initialize();
     const requested=window.MCPANavigation?.initialRoute(location.hash.slice(1)) ?? location.hash.slice(1);
-    showScreen(window.MCPAMovementLinks.parse(requested).screen in SCREEN_MODULE ? requested : MCPAPermissions.home(profile.role), null, {history:'initial'});
+    const requestedScreen=window.MCPAMovementLinks.parse(requested).screen;
+    const knownRoute=requestedScreen in SCREEN_MODULE || (canRoute(requestedScreen) && window.MCPAIntegration?.handles(requestedScreen));
+    showScreen(knownRoute ? requested : MCPAPermissions.home(profile.role), null, {history:'initial'});
   }
   async function restore(session) {
     if(demo || recovering) return;

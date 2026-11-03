@@ -366,25 +366,26 @@
     state.dirty = false;
     openDialog(site ? 'Edit Project' : 'Add Project', `
       <form id="sites-form" data-id="${value('id')}">
-        <p class="sites-dialog-description">Required fields are marked *. Assignment changes are recorded in Project History.</p>
+        <p class="sites-dialog-description">Required fields are marked *.</p>
         <div id="sites-form-error" class="sites-form-error hidden" role="alert" tabindex="-1"></div>
         <fieldset class="project-section"><legend>Project Information</legend><div class="form-grid">
           <div class="field full"><label for="site-name">Project Name *</label><input id="site-name" name="name" value="${value('name')}" maxlength="120" required autofocus autocomplete="off"></div>
           <div class="field full"><label for="site-location">Location *</label><input id="site-location" name="location" value="${value('location')}" maxlength="240" required></div>
-          <div class="field"><label for="site-profession">Profession</label><select id="site-profession"><option value="" disabled hidden${!selectedRole?' selected':''}>${legacy?'Not recorded':'Choose profession'}</option><option value="engineer"${selectedRole==='engineer'?' selected':''}>Engr</option><option value="architect"${selectedRole==='architect'?' selected':''}>Architect</option></select></div><div class="field"><label for="site-engineer">Accountable person *</label><select id="site-engineer" name="assigned_engineer_id" required><option value="">Select an existing profile</option>${legacy ? `<option value="legacy" selected>${value('assigned_engineer')} (existing assignment)</option>` : ''}${state.profiles.map(profile => `<option data-profession="${escape(profile.role)}" value="${escape(profile.id)}"${profile.id === site?.assigned_engineer_id ? ' selected' : ''}>${escape(profile.name)}</option>`).join('')}</select>${!state.profiles.length ? '<small class="sites-muted">No accessible profiles. An Admin must add or make the actual Engineer / Architect profiles available before assigning a new project.</small>' : ''}</div>
-          <div class="field"><label for="site-check">Last Inventory Check</label><input id="site-check" name="last_inventory_check" type="date" value="${value('last_inventory_check')}" max="${today()}"></div>
+          <div class="field"><label for="site-profession">Profession${legacy ? '' : ' *'}</label><select id="site-profession"${legacy ? '' : ' required'}><option value="" disabled hidden${!selectedRole?' selected':''}>${legacy?'Not recorded':'Choose profession'}</option><option value="engineer"${selectedRole==='engineer'?' selected':''}>Engr</option><option value="architect"${selectedRole==='architect'?' selected':''}>Architect</option></select></div><div class="field"><label for="site-engineer">Assign Personnel *</label><select id="site-engineer" name="assigned_engineer_id" required><option value="">Choose personnel</option>${legacy ? `<option value="legacy" selected>${value('assigned_engineer')} (existing assignment)</option>` : ''}${state.profiles.map(profile => `<option data-profession="${escape(profile.role)}" value="${escape(profile.id)}"${profile.id === site?.assigned_engineer_id ? ' selected' : ''}>${escape(profile.name)}</option>`).join('')}</select>${!state.profiles.length ? '<small class="sites-muted">No eligible personnel available. Ask an Admin to review profile access.</small>' : ''}</div>
         </div></fieldset>
-        <fieldset class="project-section"><legend>Construction Lifecycle</legend><div class="form-grid">
+        <details id="project-details" class="project-options"><summary>Project details <span>Stage, work area &amp; inventory check</span></summary><div class="form-grid">
+          <div class="field"><label for="site-check">Last Inventory Check</label><input id="site-check" name="last_inventory_check" type="date" value="${value('last_inventory_check')}" max="${today()}"></div>
+
           <div class="field"><label for="site-stage">Project Stage</label><select id="site-stage" name="project_stage">${options(projectStages, site?.project_stage)}</select></div>
           <div class="field"><label for="site-phase">Current Work Area</label><select id="site-phase" name="current_work_area">${options(workAreas, site?.current_work_area, 'Select when known')}</select></div>
-        </div>${site?.phase ? `<p class="sites-muted project-legacy">Original phase retained: <strong>${value('phase')}</strong>. ${workAreas.some(area => area.toLowerCase() === site.phase.trim().toLowerCase()) ? 'Select its matching area when ready.' : 'Review this legacy value before choosing a work area.'}</p>` : ''}<p class="sites-muted">Work areas may overlap. Construction completion does not change the project stage.</p></fieldset>
-        <fieldset class="project-section"><legend>Construction Progress</legend>
-          <p class="sites-muted">${site ? `Legacy completion: ${percent(site.progress)} (preserved). ` : ''}Enable measured tracking after reviewing the scope and measurements.</p>
+        </div>${site?.phase ? `<p class="sites-muted project-legacy">Original phase retained: <strong>${value('phase')}</strong>. ${workAreas.some(area => area.toLowerCase() === site.phase.trim().toLowerCase()) ? 'Select its matching area when ready.' : 'Review this legacy value before choosing a work area.'}</p>` : ''}</details>
+        <details id="project-progress-section" class="project-options"><summary>Construction progress <span id="project-progress-summary">Not configured</span></summary>
+          <p class="sites-muted">${site ? `Legacy completion: ${percent(site.progress)} (preserved). ` : ''}Track completion from measured work areas.</p>
           <label class="project-enable"><input type="checkbox" id="project-progress-enabled"${site?.construction_work_areas ? ' checked disabled' : ''}> Use work-area measurements</label>
           <div class="project-computed"><span>Construction Completion</span><output id="project-computed-value" aria-live="polite">Not configured</output></div>
           <progress id="project-progress-bar" max="100" value="0" aria-label="Construction Completion"></progress>
           <details id="project-progress-editor"${site?.construction_work_areas ? ' open' : ''}><summary>Manage Work Area Progress</summary>
-            <p class="sites-muted">Starting weights are illustrative, not construction standards. Adjust them to this project's quantities, effort or budget. N/A requires zero weight; redistribute applicable weights to total 100%.</p>
+            <p class="sites-muted">Review the suggested weights against project scope. Applicable weights must total 100%; N/A areas need zero weight.</p>
             <div class="project-area-list">${workAreas.map((label, i) => {
               const area = site?.construction_work_areas?.[label] || {completion: 0, weight: defaultWeights[i], applicable: true, note: ''};
               return `<fieldset class="project-area" data-area="${escape(label)}"><legend>${escape(label)}</legend>
@@ -396,17 +397,22 @@
             <p id="project-weight-total" class="project-weight-total" aria-live="polite"></p>
             <p id="project-progress-error" class="sites-form-error hidden" role="alert"></p>
           </details>
-        </fieldset>
-        <fieldset class="project-section"><legend>Project Update</legend><div class="field"><label for="site-reason">Reason / Progress Note (optional)</label><textarea id="site-reason" name="reason" rows="3" maxlength="4000" placeholder="Explain the change for Project History"></textarea></div></fieldset>
+        </details>
+        <details id="project-note" class="project-options"><summary>Project update <span>Optional note for history</span></summary><div class="field"><label for="site-reason">Reason / Progress Note (optional)</label><textarea id="site-reason" name="reason" rows="3" maxlength="4000" placeholder="Add context for Project History"></textarea></div></details>
         <div class="sites-dialog-actions"><button type="button" class="btn btn-secondary" data-action="close-dialog">Cancel</button><button type="submit" class="btn btn-primary">${site ? 'Save Changes' : 'Create Project'}</button></div>
       </form>`, true, 'edit');
     state.editOriginal = site ? structuredClone(site) : null;
     const profession=root.querySelector('#site-profession'),person=root.querySelector('#site-engineer');
     const filterPeople=reset=>{
       if(reset)person.value='';
+      person.disabled=!profession.value&&!legacy;
+      person.options[0].textContent=profession.value?'Choose personnel':'Choose profession first';
       for(const option of person.options){const mismatch=option.value==='legacy'?!!profession.value:!!option.dataset.profession&&option.dataset.profession!==profession.value;option.hidden=mismatch;option.disabled=mismatch;}
     };
     profession.addEventListener('change',()=>{filterPeople(true);state.dirty=true;});filterPeople(false);
+    root.querySelector('#sites-form').addEventListener('invalid',event=>{
+      for(let section=event.target.closest('details');section;section=section.parentElement.closest('details'))section.open=true;
+    },true);
     updateProgressPreview();
   }
 
@@ -438,8 +444,8 @@
     let total = 0;
     editor.querySelectorAll('[data-area]').forEach(row => { if (row.querySelector('[data-progress="applicable"]').checked) total += Math.round(Number(row.querySelector('[data-progress="weight"]').value) * 100) || 0; });
     root.querySelector('#project-weight-total').textContent = 'Applicable scope weight: ' + percent(total / 100) + ' / 100%';
-    try { const data = readProgress(); result.textContent = data.completion == null ? 'Not configured' : percent(data.completion); bar.value = data.completion || 0; error.classList.add('hidden'); }
-    catch (e) { result.textContent = 'Check weights and values'; bar.value = 0; error.textContent = e.message; error.classList.remove('hidden'); }
+    try { const data = readProgress(); result.textContent = data.completion == null ? 'Not configured' : percent(data.completion); root.querySelector('#project-progress-summary').textContent=result.textContent; bar.value = data.completion || 0; error.classList.add('hidden'); }
+    catch (e) { result.textContent = 'Check weights and values'; root.querySelector('#project-progress-summary').textContent='Needs review'; bar.value = 0; error.textContent = e.message; error.classList.remove('hidden'); }
   }
 
   function operationFor(form, payload) {
@@ -457,7 +463,7 @@
     if (values.assigned_engineer_id === 'legacy' && original && !form.querySelector('#site-profession').value) {
       values.assigned_engineer_id = original.assigned_engineer_id || null;
     } else if (profile && profile.role===form.querySelector('#site-profession').value) { /* Database snapshots the selected profile's name. */ }
-    else { formError('Select an existing Engineer / Architect profile.'); return; }
+    else { formError('Choose a profession and matching personnel.'); return; }
     for (const field of ['name', 'location']) {
       values[field] = normalizeName(values[field]);
       if (!values[field]) { formError('Please complete all required fields. Blank spaces are not valid values.'); return; }
@@ -468,10 +474,10 @@
     values.project_stage ||= null;
     values.current_work_area ||= null;
     try { const progress = readProgress(); if (progress.areas) values.construction_work_areas = progress.areas; }
-    catch (error) { formError(error.message); root.querySelector('#project-progress-editor').open = true; return; }
+    catch (error) { formError(error.message); root.querySelector('#project-progress-section').open = true; root.querySelector('#project-progress-editor').open = true; return; }
     // The RPC defaults new projects to planning and retains existing status.
     // Operational status is intentionally absent from this metadata patch.
-    if (values.last_inventory_check > today()) { formError('The inventory check cannot be in the future.'); return; }
+    if (values.last_inventory_check > today()) { root.querySelector('#project-details').open = true; formError('The inventory check cannot be in the future.'); return; }
     values.last_inventory_check ||= null;
     formError('');
     setSaving(true);
@@ -706,7 +712,7 @@
   });
   root.addEventListener('change', event => {
     if (event.target.id === 'project-history-type') filterHistory();
-    if (event.target.id === 'project-progress-enabled') { updateProgressPreview(); if (event.target.checked) root.querySelector('#project-progress-editor').open = true; }
+    if (event.target.id === 'project-progress-enabled') { updateProgressPreview(); if (event.target.checked) { root.querySelector('#project-progress-section').open = true; root.querySelector('#project-progress-editor').open = true; } }
     if (event.target.id === 'sites-tool-status') filterTools();
     if (event.target.id === 'projects-scope' && !readOnly) { state.scope = event.target.value; render(); }
     if (event.target.id === 'projects-archived') { state.includeArchived = event.target.checked; render(); }

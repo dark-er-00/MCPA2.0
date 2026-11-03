@@ -72,10 +72,16 @@
     if (normalized(tool.recordedStatus ?? tool.dbStatus ?? tool.status) === 'inuse') return 'Deployed';
     return 'Unavailable';
   }
-  function statusMarkup(tool, data) {
+  function statusMarkup(tool, data, {compact = false} = {}) {
     const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const status = normalized(tool.recordedStatus ?? tool.dbStatus ?? tool.status), result = requestability(tool, data);
     const tone = ['available','inuse','repair','underrepair','missing'].includes(status) ? status : 'pending';
+    if (compact) {
+      const recorded = tool.retirementDisposition==='sold'?'Sold':tool.retirementDisposition==='disposed'?'Disposed':window.MCPADisplay.status(status);
+      const requestLabel = result.code==='deployed'?'Transfer or return':result.label;
+      const warning = ['unknown','aggregate','inspection'].includes(result.code);
+      return `<div class="equipment-status equipment-status-compact"><span class="badge badge-${tone}" aria-label="Recorded status: ${escape(recorded)}">${escape(recorded)}</span><span class="equipment-request-state" data-requestability="${result.code}" aria-label="New requests: ${escape(requestLabel)}"><strong>${escape(requestLabel)}</strong></span>${warning?`<span class="equipment-status-reason" role="note">${escape(result.reason)}</span>`:`<details class="equipment-status-details"><summary>Availability details</summary><p class="equipment-status-reason">${escape(result.reason)}</p></details>`}</div>`;
+    }
     return `<div class="equipment-status"><span class="equipment-status-caption">Recorded status</span><span class="badge badge-${tone}">${escape(tool.retirementDisposition==='sold'?'Sold':tool.retirementDisposition==='disposed'?'Disposed':window.MCPADisplay.status(status))}</span><span class="equipment-request-state" data-requestability="${result.code}"><span class="equipment-status-caption">New requests</span><strong>${escape(result.label)}</strong></span><span class="equipment-status-reason">${escape(result.reason)}</span></div>`;
   }
   function tally(tools, data, {assetsOnly = false} = {}) {
