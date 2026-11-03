@@ -22,6 +22,8 @@ PHP serves the public connection configuration at `app/core/config.js` from the 
 
 ## Deployment
 
+For a Docker Web Service on Render's Free plan, follow the [Staging deployment guide](docs/render-deployment.md). It covers runtime environment variables, HTTPS handling, local container validation and the exact Render settings. Deployment still requires explicit approval.
+
 Use PHP hosting with **`public/` as the document root**. Keep `server/`, `.env`, `supabase/`, test sources and Node dependencies outside that root. With Apache, enable `mod_rewrite` and `.htaccess` overrides; the supplied configuration preserves `index.html`, `index.php` and the existing engineer entry. For Nginx, pass only `index.php`, `api/index.php` and `app/core/config.php` to PHP-FPM, map `/index.html` to `/index.php`, map `/app/core/config.js` to `/app/core/config.php`, and serve existing assets normally. Block dotfiles and directory listings.
 
 Set `MCPA_APP_URL` to the public login URL. The application and its PHP API must share an origin. On HTTPS, PHP sessions use Secure, HttpOnly, SameSite=Lax cookies. Terminate TLS where PHP can correctly observe HTTPS, or configure the web server to set its HTTPS variable through a trusted proxy. PHP session metadata complements the existing SDK sessions; it does not replace bearer-token verification or authorize database operations.

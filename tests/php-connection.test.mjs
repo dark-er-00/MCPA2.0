@@ -63,7 +63,7 @@ after(async () => {
   rmSync(resolved, {recursive:true, force:true});
 });
 
-const caArguments = () => { const ca = path.join(temporary,'ca.pem').split(path.sep).join('/'); return ['-d', 'curl.cainfo=' + ca, '-d', 'openssl.cafile=' + ca]; };
+const caArguments = () => { const ca = path.join(temporary,'ca.pem').split(path.sep).join('/'); return ['-d', 'curl.cainfo="' + ca + '"', '-d', 'openssl.cafile="' + ca + '"']; };
 
 test('PHP diagnostics connect over verified HTTPS with an explicitly trusted local CA', async () => {
   const result = await consoleCommand([...caArguments(), 'server/console.php', 'doctor']);

@@ -6,6 +6,7 @@ DirectoryIndex index.php
     RewriteRule (^|/)\. - [F,L]
     RewriteRule ^index\.html$ index.php [END]
     RewriteRule ^app/core/config\.js$ app/core/config.php [END]
+    RewriteRule ^healthz$ healthz.php [END]
 </IfModule>
 
 <FilesMatch "^(?:\.env.*|.*\.(?:sql|log|md))$">

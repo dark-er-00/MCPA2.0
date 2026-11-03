@@ -8,7 +8,7 @@ if (preg_match('~(?:^|/)\.|[\x00-\x1f\x7f\\\\]~', $path)) {
     http_response_code(404);
     exit('Not found');
 }
-$file = realpath($public . '/' . ltrim($path, '/'));
+$file = realpath($public . '/' . ltrim($path === '/healthz' ? '/healthz.php' : $path, '/'));
 $inside = $file !== false && ($file === $public || str_starts_with($file, $public . DIRECTORY_SEPARATOR));
 if (!$inside) {
     http_response_code(404);
@@ -26,6 +26,10 @@ if ($path === '/api/' || $path === '/api/index.php') {
     // SCRIPT_NAME is the router path for rewritten requests; set the public entry.
     $_SERVER['SCRIPT_NAME'] = '/api/index.php';
     require $public . '/api/index.php';
+    return true;
+}
+if ($path === '/healthz' || $path === '/healthz.php') {
+    require $public . '/healthz.php';
     return true;
 }
 if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'php') {

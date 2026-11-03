@@ -14,6 +14,8 @@
     "test:recipient-db": "node --test --test-concurrency=1 tests/recipient-transfer.database.test.cjs",
     "test:recipient-ui": "node tests/isolation-check.cjs && node tests/auth.browser.cjs --recipient-ux",
     "test:php": "node --test --test-concurrency=1 tests/php-backend.test.mjs tests/php-connection.test.mjs",
+    "test:render": "node --test --test-concurrency=1 tests/render-runtime.test.mjs tests/php-connection.test.mjs",
+    "test:container": "node scripts/test-container.mjs",
     "bundle:pdf": "node scripts/bundle-pdf.mjs",
     "generate:consumables": "node scripts/generate-consumables.cjs",
     "verify": "npm run check && npm test && npm run test:browser && npm run test:auth"
