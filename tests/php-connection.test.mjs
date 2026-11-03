@@ -63,7 +63,7 @@ after(async () => {
   rmSync(resolved, {recursive:true, force:true});
 });
 
-const caArguments = () => ['-d', `curl.cainfo="${path.join(temporary,'ca.pem').replaceAll('\\','/')}"`];
+const caArguments = () => { const ca = path.join(temporary,'ca.pem').split(path.sep).join('/'); return ['-d', 'curl.cainfo=' + ca, '-d', 'openssl.cafile=' + ca]; };
 
 test('PHP diagnostics connect over verified HTTPS with an explicitly trusted local CA', async () => {
   const result = await consoleCommand([...caArguments(), 'server/console.php', 'doctor']);
@@ -73,7 +73,7 @@ test('PHP diagnostics connect over verified HTTPS with an explicitly trusted loc
 });
 
 test('the PHP client continues to reject an untrusted HTTPS certificate with a useful diagnostic', async () => {
-  const result = await consoleCommand(['-d','curl.cainfo=', 'server/console.php','doctor']);
+  const result = await consoleCommand(['-d','curl.cainfo=','-d','openssl.cafile=', 'server/console.php','doctor']);
   assert.equal(result.code, 1);
   assert.match(result.stderr, /certificate configuration/);
   assert.match(result.stderr, /cURL error 60/);

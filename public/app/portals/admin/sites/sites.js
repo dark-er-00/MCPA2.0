@@ -40,6 +40,11 @@
     return `<span class="badge badge-${style}">${escape(label)}</span>`;
   }
   function currentSite() { return state.sites.find(site => site.id === state.selectedId); }
+  function profession(site) {
+    const profile=state.profiles.find(person=>person.id===site.assigned_engineer_id)
+      ||(site.assigned_engineer_id===context().id?context():null);
+    return profile?.role==='engineer'?'Engr':profile?.role==='architect'?'Architect':'';
+  }
   function assignedToMe(site) {
     return window.MCPAProjectScope.assigned(site, context(), demo);
   }
@@ -56,10 +61,7 @@
     if (!window.supabaseClient) {
       if (!window.supabase?.createClient) throw projectError('The project service could not load. Reload the page and try again.');
       // Same public project configuration as Masterlist. Reuse its client when loaded.
-      window.supabaseClient = window.supabase.createClient(
-        'https://zpqxlmiqwevhlstjirei.supabase.co',
-        'sb_publishable_RgF8h8rkushKhKIm6iGJ4g_HH02YW58'
-      );
+      window.supabaseClient = window.EquipmentTracking.client();
     }
     return window.supabaseClient;
   }
@@ -245,10 +247,10 @@
 
   function render() {
     const projects = filteredSites();
-    root.querySelector('#projects-count').textContent = `${projects.length} of ${state.sites.length} projects · ${new Set(state.sites.filter(site => !site.archived_at).map(site => site.assigned_engineer_id || site.assigned_engineer).filter(value => value && value !== 'Unassigned')).size} assigned engineers / architects`;
+    root.querySelector('#projects-count').textContent = `${projects.length} of ${state.sites.length} projects · ${new Set(state.sites.filter(site => !site.archived_at).map(site => site.assigned_engineer_id || site.assigned_engineer).filter(value => value && value !== 'Unassigned')).size} assigned people`;
     const scope=root.querySelector('#projects-scope');
     if(scope){scope.value=state.scope;scope.closest('label').hidden=readOnly;}
-    root.querySelector('#projects-mode-note').textContent = demo ? 'Demo projects are read-only.' : 'Projects and equipment update automatically. Admins manage project details and assignments.';
+    root.querySelector('#projects-mode-note').textContent = demo ? 'Demo projects are read-only.' : 'Project records update automatically.';
     root.querySelector('#sites-list').innerHTML = projects.length ? projects.map(site => {
       const items = visibleEquipment(site);
       const count = (...statuses) => totalQuantity(items.filter(item => statuses.includes(item.status)));
@@ -257,7 +259,7 @@
       if (count('missing')) stats.push(['Missing', count('missing')]);
       if (count('disposed')) stats.push([display.status('disposed'), count('disposed')]);
       return `<button type="button" class="card site-card" data-action="open-site" data-id="${escape(site.id)}" aria-label="View ${escape(site.name)}">
-        <span class="site-card-top"><span><span class="site-card-title">${escape(site.name)}</span><span class="eng">${escape(site.assigned_engineer)} · ${escape(site.current_work_area || site.phase || 'Work area not recorded')}</span><span class="sites-muted">${escape(site.location)}${site.project_stage ? ' · ' + escape(site.project_stage) : ''}</span></span>${site.is_active === false ? '<span class="badge badge-disposed">Archived</span>' : ''}</span>
+        <span class="site-card-top"><span><span class="site-card-title">${escape(site.name)}</span><span class="eng">${escape(site.assigned_engineer)}${profession(site)?` &middot; ${profession(site)}`:''} · ${escape(site.current_work_area || site.phase || 'Work area not recorded')}</span><span class="sites-muted">${escape(site.location)}${site.project_stage ? ' · ' + escape(site.project_stage) : ''}</span></span>${site.is_active === false ? '<span class="badge badge-disposed">Archived</span>' : ''}</span>
         <span class="site-stat-row">${stats.filter(([, number]) => number > 0).map(([label, number]) => `<span class="site-stat"><span class="n">${number}</span><span class="l">${label}</span></span>`).join('')}</span>
       </button>`;
     }).join('') : `<div class="card empty-state sites-full"><p class="t">${state.scope === 'mine' ? 'No projects assigned to you' : 'No matching projects'}</p><p class="d">${state.scope === 'mine' ? 'An Admin can assign your profile to a project.' : 'Adjust the filters or add a project to track its equipment.'}</p><button type="button" class="btn btn-secondary btn-sm" data-action="add-site">+ Add Project</button></div>`;
@@ -298,7 +300,7 @@
         <button type="button" class="btn btn-secondary btn-sm" data-action="review-tools">Review Assigned Tools</button>
       </div></div>
       <div class="grid grid-4 sites-summary">
-        <div class="card card-pad"><span class="k">Accountable Engineer / Architect</span><div class="v">${escape(site.assigned_engineer)}</div>${site.assigned_engineer_id ? '' : '<span class="sites-muted">Profile link not recorded</span>'}</div>
+        <div class="card card-pad"><span class="k">Accountable person</span><div class="v">${escape(site.assigned_engineer)}</div>${profession(site)?`<span class="sites-muted">${profession(site)}</span>`:''}${site.assigned_engineer_id ? '' : '<span class="sites-muted">Profile link not recorded</span>'}</div>
         <div class="card card-pad"><span class="k">Equipment at Project</span><div class="v">${totalQuantity(items)} ${isEngineer()?'assets':'units'}</div></div>
         <div class="card card-pad"><span class="k">Last Inventory Check</span><div class="v">${formatDate(site.last_inventory_check)}</div></div>
         <div class="card card-pad"><span class="k">Last Movement</span><div class="v" data-last-movement>Loading…</div><button type="button" class="sites-text-button" data-action="view-movements">View movement history →</button></div>
@@ -359,15 +361,17 @@
     if (site && site.project_version == null) { feedback('Projects needs a database configuration update. Contact your administrator, then retry.', true); return; }
     const value = (field, fallback = '') => escape(site?.[field] ?? fallback);
     const legacy = site && !state.profiles.some(profile => profile.id === site.assigned_engineer_id);
+    const linkedRole=state.profiles.find(profile=>profile.id===site?.assigned_engineer_id)?.role;
+    const selectedRole=['engineer','architect'].includes(linkedRole)?linkedRole:'';
     state.dirty = false;
     openDialog(site ? 'Edit Project' : 'Add Project', `
       <form id="sites-form" data-id="${value('id')}">
-        <p class="sites-dialog-description">Changes retain the previous and new values in Project History. Select an existing Engineer / Architect profile; one person may handle multiple projects. Required fields are marked *.</p>
+        <p class="sites-dialog-description">Required fields are marked *. Assignment changes are recorded in Project History.</p>
         <div id="sites-form-error" class="sites-form-error hidden" role="alert" tabindex="-1"></div>
         <fieldset class="project-section"><legend>Project Information</legend><div class="form-grid">
           <div class="field full"><label for="site-name">Project Name *</label><input id="site-name" name="name" value="${value('name')}" maxlength="120" required autofocus autocomplete="off"></div>
           <div class="field full"><label for="site-location">Location *</label><input id="site-location" name="location" value="${value('location')}" maxlength="240" required></div>
-          <div class="field"><label for="site-engineer">Engineer / Architect *</label><select id="site-engineer" name="assigned_engineer_id" required><option value="">Select an existing profile</option>${legacy ? `<option value="legacy" selected>${value('assigned_engineer')} (existing assignment)</option>` : ''}${state.profiles.map(profile => `<option value="${escape(profile.id)}"${profile.id === site?.assigned_engineer_id ? ' selected' : ''}>${escape(profile.name)}</option>`).join('')}</select>${!state.profiles.length ? '<small class="sites-muted">No accessible profiles. An Admin must add or make the actual Engineer / Architect profiles available before assigning a new project.</small>' : ''}</div>
+          <div class="field"><label for="site-profession">Profession</label><select id="site-profession"><option value="" disabled hidden${!selectedRole?' selected':''}>${legacy?'Not recorded':'Choose profession'}</option><option value="engineer"${selectedRole==='engineer'?' selected':''}>Engr</option><option value="architect"${selectedRole==='architect'?' selected':''}>Architect</option></select></div><div class="field"><label for="site-engineer">Accountable person *</label><select id="site-engineer" name="assigned_engineer_id" required><option value="">Select an existing profile</option>${legacy ? `<option value="legacy" selected>${value('assigned_engineer')} (existing assignment)</option>` : ''}${state.profiles.map(profile => `<option data-profession="${escape(profile.role)}" value="${escape(profile.id)}"${profile.id === site?.assigned_engineer_id ? ' selected' : ''}>${escape(profile.name)}</option>`).join('')}</select>${!state.profiles.length ? '<small class="sites-muted">No accessible profiles. An Admin must add or make the actual Engineer / Architect profiles available before assigning a new project.</small>' : ''}</div>
           <div class="field"><label for="site-check">Last Inventory Check</label><input id="site-check" name="last_inventory_check" type="date" value="${value('last_inventory_check')}" max="${today()}"></div>
         </div></fieldset>
         <fieldset class="project-section"><legend>Construction Lifecycle</legend><div class="form-grid">
@@ -397,6 +401,12 @@
         <div class="sites-dialog-actions"><button type="button" class="btn btn-secondary" data-action="close-dialog">Cancel</button><button type="submit" class="btn btn-primary">${site ? 'Save Changes' : 'Create Project'}</button></div>
       </form>`, true, 'edit');
     state.editOriginal = site ? structuredClone(site) : null;
+    const profession=root.querySelector('#site-profession'),person=root.querySelector('#site-engineer');
+    const filterPeople=reset=>{
+      if(reset)person.value='';
+      for(const option of person.options){const mismatch=option.value==='legacy'?!!profession.value:!!option.dataset.profession&&option.dataset.profession!==profession.value;option.hidden=mismatch;option.disabled=mismatch;}
+    };
+    profession.addEventListener('change',()=>{filterPeople(true);state.dirty=true;});filterPeople(false);
     updateProgressPreview();
   }
 
@@ -444,9 +454,9 @@
     const values = Object.fromEntries(new FormData(form));
     const reason = values.reason; delete values.reason;
     const profile = state.profiles.find(profile => profile.id === values.assigned_engineer_id);
-    if (values.assigned_engineer_id === 'legacy' && original) {
+    if (values.assigned_engineer_id === 'legacy' && original && !form.querySelector('#site-profession').value) {
       values.assigned_engineer_id = original.assigned_engineer_id || null;
-    } else if (profile) { /* Database snapshots the selected profile's name. */ }
+    } else if (profile && profile.role===form.querySelector('#site-profession').value) { /* Database snapshots the selected profile's name. */ }
     else { formError('Select an existing Engineer / Architect profile.'); return; }
     for (const field of ['name', 'location']) {
       values[field] = normalizeName(values[field]);

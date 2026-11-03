@@ -92,7 +92,13 @@
     // Older demo events share a dispatch identifier. Only use the release
     // wording if an already-authorized related transfer records the request.
     if (record.action === 'transfer_created' && data?.transfers?.some(r => r.id === record.entityId && r.requestId)) key = 'releaseRequest';
-    const entry = actions[key];
+    const recipientActions={
+      createTransfer:['Transfer Pending Acceptance','The named recipient must inspect and accept before custody changes.'],
+      receiveTransfer:['Transfer Accepted','The recipient accepted the handover and its equipment custody.'],
+      refuseTransfer:['Transfer Rejected','The recipient rejected the handover. Custody stayed with the recorded custodian.'],
+      cancelTransfer:['Transfer Canceled','The sender canceled the pending handover. Custody did not change.']
+    };
+    const entry = (record.transferVersion===3 && own(recipientActions,key)) || actions[key];
     const title = entry?.[0] || 'Activity Recorded';
     const summary = safeText(record.summary);
     const detail = boilerplate.has(summary) || summary === record.action ? '' : summary;
@@ -119,7 +125,7 @@
   }
   function notification(notice) {
     if (notice.kind === 'movement' && notice.title !== 'Equipment Pending Turnover') {
-      const entry = activity({action:notice.data?.action, summary:notice.message});
+      const entry = activity({action:notice.data?.action, summary:notice.message,transferVersion:notice.data?.transferVersion});
       return {title:entry.title, message:entry.description};
     }
     return {title:safeText(notice.title, 'Notification'), message:safeText(notice.message, 'Open the related record for details.')};

@@ -157,3 +157,17 @@
   .mobile-back:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
   #topbar:has(.search-wrap.is-open) + .mobile-history{visibility:hidden;}
 }
+
+/* One primary group at a time; children remain keyboard accessible. */
+.nav-parent{width:100%;text-align:left;min-height:44px}
+.nav-parent span{flex:1}
+.nav-parent .nav-chevron{width:14px;height:14px;transition:transform .16s ease-out}
+.nav-parent[aria-expanded="true"]{color:var(--text-primary)}
+.nav-parent[aria-expanded="true"] .nav-chevron{transform:rotate(90deg)}
+.nav-children{padding:2px 0 8px 12px}
+.nav-children[hidden]{display:none}
+.nav-children:not([hidden]){animation:nav-reveal .16s ease-out}
+.nav-children .nav-item{width:100%;min-height:44px;text-align:left;font-size:13px}
+.nav-item:focus-visible{outline:2px solid var(--gold-dim);outline-offset:-2px}
+@keyframes nav-reveal{from{opacity:.7;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.nav-children:not([hidden]){animation:none}.nav-parent .nav-chevron{transition:none}}

@@ -4,6 +4,13 @@ const sandbox=vm.createContext({window:{}});
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../public/app/shared/display.js'),'utf8'),sandbox);
 const display=sandbox.window.MCPADisplay;
 
+test('recipient decisions use accurate versioned wording while legacy damaged refusals retain their meaning',()=>{
+  assert.equal(display.activity({action:'refuseTransfer',transferVersion:3}).title,'Transfer Rejected');
+  assert.equal(display.activity({action:'refuseTransfer'}).title,'Damaged Equipment Refused');
+  const notice=display.notification({kind:'movement',data:{action:'refuseTransfer',transferVersion:3},message:'Recipient rejected transfer; custody unchanged'});
+  assert.equal(notice.title,'Transfer Rejected');assert.ok(notice.message.includes('Custody stayed'));
+});
+
 test('action descriptions preserve approval, receipt discrepancies and custody facts',()=>{
   const records=[
     {action:'createRequest',entityId:'REQ-12',actor:'Engr. Ana',createdAt:'2026-10-24T03:04:05.123456Z'},

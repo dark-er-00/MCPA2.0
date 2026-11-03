@@ -1,7 +1,5 @@
 if (typeof supabaseClient === 'undefined') {
-  const supabaseUrl = 'https://zpqxlmiqwevhlstjirei.supabase.co';
-  const supabaseKey = 'sb_publishable_RgF8h8rkushKhKIm6iGJ4g_HH02YW58';
-  window.supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+  window.supabaseClient = window.EquipmentTracking.client();
 }
 
 var equipmentList = [];

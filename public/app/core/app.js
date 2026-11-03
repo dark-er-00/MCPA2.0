@@ -14,6 +14,7 @@ const SCREEN_MODULE = {
   "consumables":  "consumables",
   "request":      "requests",
   "transfer":     "transfers",
+  "transfer-tools":"transfers",
   "return":       "returns",
   "repair":       "repairs",
   "missing":      "missing",

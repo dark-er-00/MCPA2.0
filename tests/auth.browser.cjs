@@ -4,7 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 // The default application smoke test follows the integrated production routes.
 // Historical fixture-specific modes remain explicit flags below.
 if(process.argv.length===2)process.argv.push('--combined-integration');
-if(process.argv.includes('--auth'))process.argv.push('--combined-integration');
+if(process.argv.includes('--auth')||process.argv.includes('--recipient-ux'))process.argv.push('--combined-integration');
 if(process.argv.includes('--review-fixes')||process.argv.includes('--final-races')||process.argv.includes('--unified-requests')||process.argv.includes('--engineer-consumables')||process.argv.includes('--functionality-audit'))process.argv.push('--combined-integration');
 const {spawn}=require('node:child_process'),{once}=require('node:events'),{authDatabase}=require('./auth-test-db.cjs');
 const root=path.resolve(__dirname,'..'),profile=fs.mkdtempSync(path.join(os.tmpdir(),'mcpa-auth-'));
@@ -95,6 +95,7 @@ const server=http.createServer(async(req,res)=>{
  }
  // Also exercise GitHub Pages' project subpath using the same local fixture.
  const pathname=new URL(req.url,'http://localhost').pathname.replace(/^\/MCPA\//,'/');
+ if(pathname==='/app/core/config.js'){res.setHeader('Content-Type','text/javascript');res.setHeader('Cache-Control','no-store');res.end(fs.readFileSync(path.join(root,'tests/fixtures/offline-config.js')));return;}
  const file=path.resolve(root,'public','.'+pathname);
  if(!file.startsWith(root+path.sep)||!fs.existsSync(file)||fs.statSync(file).isDirectory()){res.writeHead(404);res.end();return;}
  let content=fs.readFileSync(file);if(file.endsWith(path.join('public','index.html')))content=content.toString().replace(/<script src="https:[^"]+"[^>]*><\/script>/g,'').replace('</head>','<script src="/__sdk.js"></script></head>');
@@ -104,6 +105,8 @@ const server=http.createServer(async(req,res)=>{
 const pause=ms=>new Promise(r=>setTimeout(r,ms));
 (async()=>{
  fixture=process.argv.includes('--combined-integration')?await require('./integration-quantity-custody-v2/fixture.cjs').fixture():await authDatabase({engineerPortal:true,missingProjectHistory:process.argv.includes('--projects-errors')});fixture.actors.missing={authId:require('node:crypto').randomUUID()};
+ if(process.argv.includes('--combined-integration'))await fixture.db.exec(fs.readFileSync(path.join(root,'supabase/migrations/202611030001_transfer_recipient_acceptance.sql'),'utf8'));
+ if(process.argv.includes('--recipient-ux'))await require('./project-construction-fixture.cjs').upgrade(fixture);
  if(process.argv.includes('--functionality-audit'))await require('./functionality-audit-v2/fixture.cjs').upgrade(fixture);
  if(!process.argv.includes('--combined-integration')){
  if(process.argv.includes('--project-construction') || process.argv.includes('--admin-equipment-summary'))await require('./project-construction-fixture.cjs').upgrade(fixture);
@@ -160,9 +163,18 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
  const logout=async()=>{await evaluate('MCPAAuth.logout()');await wait("document.querySelector('#auth-email')");};
  const shot=async (name,viewport=false)=>{if(process.env.MCPA_SKIP_SCREENSHOTS==='1')return;await pause(300);const {data}=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:!viewport});fs.writeFileSync(path.join(profile,name+'.png'),Buffer.from(data,'base64'));console.log('SCREENSHOT '+path.join(profile,name+'.png'));};
  await command('Runtime.enable');await command('Network.enable');await command('Network.setBlockedURLs',{urls:['https://*']});await command('Page.enable');await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
+ // Enforce an independent browser allowlist before any application navigation.
+ {
+  socket.addEventListener('message',event=>{const m=JSON.parse(event.data);if(m.method!=='Fetch.requestPaused')return;
+   const url=new URL(m.params.request.url),allowed=url.protocol==='http:'&&url.hostname==='127.0.0.1'&&url.port===String(server.address().port);
+   void command(allowed?'Fetch.continueRequest':'Fetch.failRequest',allowed?{requestId:m.params.requestId}:{requestId:m.params.requestId,errorReason:'BlockedByClient'}).catch(()=>{});
+  });
+  await command('Fetch.enable',{patterns:[{urlPattern:'*'}]});
+ }
  console.log('Local Chrome ready; external HTTPS blocked');
  const base=`http://127.0.0.1:${server.address().port}`;
  if(accountServiceRun)fixture.authModel=(await import('./functionality-audit-v2/account-service.mjs')).accountService(fixture,{base});
+ if(process.argv.includes('--recipient-ux')){await require('./recipient-ux.browser-checks.cjs').verify({fixture,evaluate,command,wait,click,fill,submit,go,login,logout,base,calls,shot});assert.deepEqual(errors,[],'No uncaught browser errors');return;}
  if(process.argv.includes('--combined-integration') || process.argv.includes('--php-connection')){
   await require('./php-connection.browser-checks.cjs').verify({evaluate,command,wait,click,login,base,calls});
   if(process.argv.includes('--php-connection')){assert.deepEqual(errors,[],'No uncaught browser errors');return;}

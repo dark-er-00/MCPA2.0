@@ -47,8 +47,8 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
   await f.action(f.actors.admin2,'approveRetirement',{id:proposal.id});await click('[data-integration-refresh]');
   await wait('document.querySelector("[data-retirement-list]").textContent.includes("Approved")');await shot('combined-admin-retirement');
   await logout();await login('sky');await wait('MCPAAuth.profile?.role==="engineer"');await go('transfer-inbox');
-  await wait('document.querySelector("[data-transfer]")');await fill('[name=condition]','good');await click('[name=received]');await submit('[data-transfer]');
-  await wait('document.querySelector(".b-feedback").textContent.includes("accepted")');
+  await wait('document.querySelector("[data-transfer-decision]")');await click('[data-transfer-record] summary');await fill('[name=condition]','good');await click('[name=tested]');await submit('[data-transfer-decision]');
+  await wait('document.querySelector("[data-transfer-feedback]").textContent.includes("accepted")');
   assert.equal((await f.tool(imported.assets.find(v=>v.id===allocated.assets[0].id).asset_id)).current_holder_id,f.actors.sky.id);
   await go('asset-transfer');await wait('document.querySelector("[data-camera]")');
   await go('retired-equipment-v2');await wait('document.querySelector("[data-retirement-list]")');

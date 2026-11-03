@@ -5,9 +5,9 @@
   const routes=new Set(['quantity-request','outward-materials','asset-transfer','transfer-inbox','asset-retirement-v2','retired-equipment-v2']);
   let current=null,revision=0;
   const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  function handles(screen){return routes.has(screen)||(!window.MCPAAuth?.isDemo&&['request','return'].includes(screen)&&['admin','engineer','architect'].includes(window.MCPAAuth?.profile?.role));}
+  function handles(screen){return (!window.MCPAAuth?.isDemo&&screen==='transfer')||routes.has(screen)||(!window.MCPAAuth?.isDemo&&['request','return'].includes(screen)&&['admin','engineer','architect'].includes(window.MCPAAuth?.profile?.role));}
   function dispose(){++revision;const old=current;current=null;if(!old)return;old.abort.abort();for(const mounted of old.mounts)mounted.destroy();old.api?.dispose();}
-  async function mount(screen,root,{record=''}={}){
+  async function mount(screen,root,{record='',view=''}={}){
     dispose();const person=window.MCPAAuth.requireLive(),version=revision;
     if(!window.MCPAAuth.canRoute(screen))throw Error('This screen is not available to your account.');
     const session=current={root,mounts:[],abort:new AbortController(),api:null,dirty:false,draftVersion:0,refreshVersion:0};let returnSnapshot=null;
@@ -36,7 +36,11 @@
       if(screen==='outward-materials'&&person.role!=='admin'&&!event.target.matches('[data-quantity],[data-field="purpose"],[data-field="site_id"]'))return;
       session.dirty=true;++session.draftVersion;
     },{signal:session.abort.signal});
-    if(screen==='request'||screen==='quantity-request'){
+    if(screen==='transfer'||screen==='transfer-inbox'){
+      ensureModuleCSS('recipient-transfers',new URL('assets/styles/transfers.css',base).href);
+      const {mountTransfers}=await import(new URL('app/features/custody-lifecycle/transfers.mjs',base));
+      await add(mountTransfers(host,{client,record,view,onChanged:changed}));
+    }else if(screen==='request'||screen==='quantity-request'){
       const module=await import(new URL('app/features/equipment-requests/unified.mjs',base));
       if(!alive())return;
       ensureModuleCSS('requests',new URL('app/portals/admin/requests/requests.css',base).href);

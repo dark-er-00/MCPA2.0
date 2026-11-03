@@ -45,7 +45,7 @@ async function authDatabase({accountManagement=true,engineerPortal=false,missing
     const result=queue.then(run);queue=result.catch(()=>{});return result;
   }
   const rpc=async(actor,name,args={})=>{
-    const allowed={mcpa_inventory_office:[],mcpa_return_destination:[],mcpa_my_profile:[],mcpa_movement_snapshot:[],mcpa_personal_equipment_snapshot:[],mcpa_project_snapshot:[],mcpa_create_receiving_qr:['p_site_id'],mcpa_resolve_receiving_qr:['p_token'],mcpa_revoke_receiving_qr:['p_token'],mcpa_accounts:[],mcpa_movement_action:['p_action','p_payload','p_operation_id'],mcpa_save_account:['p_id','p_name','p_role','p_status','p_auth_user_id'],mcpa_purchase_snapshot:[],mcpa_save_purchase:['p_id','p_version','p_operation_id','p_record'],mcpa_monitoring_snapshot:[],mcpa_monitoring_mark_read:['p_id'],mcpa_monitoring_report:['p_start','p_end']};
+    const allowed={mcpa_transfer_snapshot:[],mcpa_inventory_office:[],mcpa_return_destination:[],mcpa_my_profile:[],mcpa_movement_snapshot:[],mcpa_personal_equipment_snapshot:[],mcpa_project_snapshot:[],mcpa_create_receiving_qr:['p_site_id'],mcpa_resolve_receiving_qr:['p_token'],mcpa_revoke_receiving_qr:['p_token'],mcpa_accounts:[],mcpa_movement_action:['p_action','p_payload','p_operation_id'],mcpa_save_account:['p_id','p_name','p_role','p_status','p_auth_user_id'],mcpa_purchase_snapshot:[],mcpa_save_purchase:['p_id','p_version','p_operation_id','p_record'],mcpa_monitoring_snapshot:[],mcpa_monitoring_mark_read:['p_id'],mcpa_monitoring_report:['p_start','p_end']};
     Object.assign(allowed,{
       mcpa_import_equipment:['p_operation_id','p_rows'],
       mcpa_save_project:['p_id','p_version','p_operation_id','p_patch','p_reason'],

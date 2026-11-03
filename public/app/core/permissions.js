@@ -16,6 +16,8 @@
     architect: ['createRequest','createTransfer','receiveTransfer','createReturn','reportRepair','reportMissing','withdrawRequest','cancelReservation','cancelTransfer','refuseTransfer','reopenTransfer'],
     secretary: [], tool_handler: ['createTransfer']
   };
+  for(const role of ['admin','engineer','architect','tool_handler']) routes[role].push('transfer-tools');
+  actions.admin.push('createTransfer','receiveTransfer','refuseTransfer','cancelTransfer');
   routes.admin.push('quantity-request','outward-materials','asset-retirement-v2');
   for(const role of operational)routes[role].push('quantity-request','outward-materials','asset-transfer','transfer-inbox','retired-equipment-v2');
   window.MCPAPermissions = Object.freeze({
