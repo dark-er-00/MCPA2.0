@@ -13,6 +13,7 @@ final class Config
         public readonly string $serverKey = '',
         public readonly bool $developmentEnabled = false,
         public readonly string $appUrl = '',
+        public readonly bool $invitationsEnabled = false,
     ) {
         $parts = parse_url($url);
         $local = in_array($parts['host'] ?? '', ['localhost', '127.0.0.1', '[::1]'], true);
@@ -26,7 +27,7 @@ final class Config
         }
         if ($appUrl !== '') {
             $app = parse_url($appUrl);
-            if (!$app || !isset($app['host']) || isset($app['user']) || isset($app['pass'])
+            if (!$app || !isset($app['host']) || isset($app['user']) || isset($app['pass']) || isset($app['query']) || isset($app['fragment'])
                 || !in_array($app['scheme'] ?? '', ['http', 'https'], true)
                 || ($app['scheme'] !== 'https' && !in_array($app['host'], ['localhost', '127.0.0.1', '[::1]'], true))) {
                 throw new RuntimeException('MCPA_APP_URL must be an HTTPS application URL or a loopback URL.');
@@ -59,6 +60,7 @@ final class Config
             rtrim($get('SUPABASE_URL'), '/'), $get('SUPABASE_PUBLISHABLE_KEY'),
             $get('MCPA_SUPABASE_SECRET_KEY') ?: ($get('SUPABASE_SECRET_KEY') ?: $get('SUPABASE_SERVICE_ROLE_KEY')),
             $get('MCPA_ENABLE_DEVELOPMENT_ACCOUNTS') === 'true', $get('MCPA_APP_URL'),
+            $get('MCPA_ENABLE_REGISTRATION_INVITATIONS') === 'true',
         );
     }
 

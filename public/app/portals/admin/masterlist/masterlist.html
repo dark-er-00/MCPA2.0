@@ -9,7 +9,7 @@
       <span class="inventory-sync" id="inventory-sync" role="status"></span>
       <button class="btn btn-secondary btn-sm" id="exportBtn">Export</button>
       <button type="button" class="btn btn-secondary btn-sm" id="importEquipmentBtn" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 16V3m-5 5 5-5 5 5M4 15v6h16v-6"/></svg> Import Tools</button>
-      <button class="btn btn-accent btn-sm" id="openAddEquipment">+ Add Item</button>
+      <button class="btn btn-accent btn-sm" id="openAddEquipment">+ Add Equipment</button>
     </div>
   </div>
 
@@ -26,8 +26,8 @@
       <span class="command-kpi-icon" data-equipment-icon="swap" aria-hidden="true"></span>
       <span class="command-kpi-copy"><span class="lbl">In Use</span><span class="num" data-equipment-count="deployed">…</span></span>
     </button>
-  </div>
-  <p class="equipment-summary-note" id="equipment-summary-note">Totals cover all projects; filters apply to the records below.</p>
+<button type="button" class="card kpi" data-equipment-status="repair" aria-pressed="false"><span class="command-kpi-icon" data-equipment-icon="wrench" aria-hidden="true"></span><span class="command-kpi-copy"><span class="lbl">Repairs</span><span class="num" data-equipment-count="repair">…</span></span></button><button type="button" class="card kpi" data-equipment-status="missing" aria-pressed="false"><span class="command-kpi-icon" data-equipment-icon="alert" aria-hidden="true"></span><span class="command-kpi-copy"><span class="lbl">Missing</span><span class="num" data-equipment-count="missing">…</span></span></button></div><div data-equipment-issues hidden></div>
+  <div data-equipment-inventory><p class="equipment-summary-note" id="equipment-summary-note">Totals cover all projects; filters apply to the records below.</p>
 
   <!-- UPDATED TOOLBAR -->
 <div class="table-toolbar" style="display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
@@ -93,6 +93,7 @@
       <div id="paginationControls" style="display:flex; gap:4px;"></div>
     </div>
   </div>
+</div>
 </section>
 
 <!-- TOOL PROFILE SCREEN -->

@@ -5,13 +5,14 @@
       <p class="sub">Stock monitoring and purchase alerts for frequently used materials</p>
     </div>
     <div class="page-head-actions">
-      <button type="button" class="btn btn-secondary btn-sm" data-action="add" disabled>+ Add Consumable</button>
-      <button type="button" class="btn btn-accent btn-sm" data-action="request" disabled>+ Purchase Request</button>
+      <button type="button" class="btn btn-secondary btn-sm" data-action="add" disabled>+Add Consumables</button>
+      <button type="button" class="btn btn-accent btn-sm" data-action="request" disabled>+Purchase Request</button>
     </div>
   </div>
 
+  <div class="account-tools" role="group" aria-label="Materials view"><button type="button" class="btn btn-primary" data-cons-tab="stock" aria-pressed="true">Consumables</button><button type="button" class="btn btn-secondary" data-cons-tab="requests" aria-pressed="false">Purchase Request</button></div>
   <div id="consumables-feedback" class="cons-feedback hidden" role="status"></div>
-  <div id="consumables-alert" class="notice cons-alert" role="status" aria-live="polite">
+  <div data-cons-panel="stock"><div id="consumables-alert" class="notice cons-alert" role="status" aria-live="polite">
     <div><div class="t">Checking stock levels…</div><div class="d">Loading your consumables and purchase requests.</div></div>
   </div>
   <div class="table-toolbar cons-toolbar">
@@ -30,7 +31,7 @@
     </div>
   </div>
   <p class="cons-muted cons-note" id="consumables-updated">Stock alerts update after each change and every 30 seconds while this module is open.</p>
-  <div class="section-title"><h2>Purchase Requests</h2><span id="consumables-request-count" class="cons-muted"></span></div>
+  </div><div data-cons-panel="requests" hidden><div class="section-title"><h2>Purchase Requests</h2><span id="consumables-request-count" class="cons-muted"></span></div>
   <div class="table-toolbar cons-toolbar">
     <div class="field"><label for="consumables-request-filter">Request status</label><select id="consumables-request-filter"><option value="open">Open requests</option><option value="">All requests</option><option value="pending">Awaiting Delivery</option><option value="partial">Partially Received</option><option value="received">Received</option><option value="cancelled">Canceled</option></select></div>
   </div>
@@ -39,7 +40,7 @@
     <thead><tr><th scope="col">Request / Item</th><th scope="col">Requested</th><th scope="col">Received</th><th scope="col">Requester / Needed By</th><th scope="col">Status</th><th scope="col">Actions</th></tr></thead>
     <tbody id="consumables-request-rows"><tr><td colspan="6" class="empty-state">Loading requests…</td></tr></tbody>
   </table></div>
-  <dialog id="consumables-dialog" aria-labelledby="consumables-dialog-title">
+  </div><dialog id="consumables-dialog" aria-labelledby="consumables-dialog-title">
     <div class="cons-dialog-head"><h2 class="display" id="consumables-dialog-title"></h2><button type="button" class="icon-btn cons-close" data-action="close" aria-label="Close dialog">×</button></div>
     <div id="consumables-dialog-content"></div>
   </dialog>

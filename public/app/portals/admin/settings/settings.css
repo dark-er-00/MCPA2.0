@@ -9,3 +9,10 @@
 #profile-feedback{margin:16px 0;overflow-wrap:anywhere}
 #profile-feedback[role=alert]{color:var(--danger)}
 @media(max-width:600px){.profile-settings form{grid-template-columns:minmax(0,1fr)}.profile-settings input{font-size:16px}}
+
+#screen-settings>.page-head{max-width:760px;margin-inline:auto}
+#screen-settings .profile-settings{margin-inline:auto}
+#screen-settings [hidden]{display:none!important}
+.profile-picture img{object-fit:cover;border-radius:50%}
+.profile-picture form{display:block}
+.profile-picture form button{margin-top:12px}

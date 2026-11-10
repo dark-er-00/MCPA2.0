@@ -26,7 +26,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
   await wait('document.querySelector("[data-import-next]")');await click('[data-import-next]');await wait('document.querySelector("[data-import-next]")');await click('[data-import-next]');
   await click('[data-import-ack]');await click('[data-import-confirm]');await wait('document.querySelector("[data-import-return]")');
   assert.ok(await evaluate('document.querySelector("#equipmentImportDialog").textContent.includes("3 equipment records created")'));await click('[data-import-return]');
-  await go('quantity-request');await wait('document.querySelector("[data-q-approve]")');await click('[data-q-approve]');
+  await go('quantity-request');await wait('document.querySelector("[data-open-request]")');const pendingReview=(await f.call(f.actors.admin,'mcpa_wa_equipment_requests')).find(r=>r.type_name==='Browser integration drill');await click('[data-open-request="'+pendingReview.id+'"]');await wait('document.querySelector("[data-q-approve]")');await click('[data-q-approve]');
   await wait('document.querySelector("[data-q-feedback]").textContent.includes("reserved")');
   const allocated=(await f.call(f.actors.admin,'mcpa_wa_equipment_requests')).find(r=>r.type_name==='Browser integration drill');
   assert.equal(allocated.status,'approved');await go('request?record='+allocated.movement_id);
@@ -41,10 +41,11 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
   assert.equal(Number((await f.db.query('select current_stock from consumables where id=$1',[item.id])).rows[0].current_stock),16);
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});await evaluate('scrollTo(0,0);document.querySelector("#content").scrollTop=0');await shot('combined-admin-materials');
   await go('asset-retirement-v2');await wait('document.querySelector("[data-proposal]")');
-  await fill('[name=assetId]','TOOL-002');await fill('[name=effectiveDate]','2026-10-01');await fill('[name=reason]','Fixture retirement');await submit('[data-proposal]');
+  await click('[data-equipment-picker] summary');await click('[name=assetId][value="TOOL-002"]');await fill('[name=effectiveDate]','2026-10-01');await fill('[name=reason]','Fixture retirement');await submit('[data-proposal]');
+  await wait('document.querySelector("[data-view-retirement]")');await click('[data-view-retirement]');
   await wait('document.querySelector("[data-retirement]")');const proposal=(await f.snapshot(f.actors.admin)).retirements[0];
-  assert.ok(await evaluate('!document.querySelector("[value=approveRetirement]")'));
-  await f.action(f.actors.admin2,'approveRetirement',{id:proposal.id});await click('[data-integration-refresh]');
+  assert.ok(await evaluate('!document.querySelector("[value=approveRetirement]")'));await click('[data-close-retirement]');
+  await f.action(f.actors.admin2,'approveRetirement',{id:proposal.id});await evaluate("window.dispatchEvent(new Event('focus'))");
   await wait('document.querySelector("[data-retirement-list]").textContent.includes("Approved")');await shot('combined-admin-retirement');
   await logout();await login('sky');await wait('MCPAAuth.profile?.role==="engineer"');await go('transfer-inbox');
   await wait('document.querySelector("[data-transfer-decision]")');await click('[data-transfer-record] summary');await fill('[name=condition]','good');await click('[name=tested]');await submit('[data-transfer-decision]');

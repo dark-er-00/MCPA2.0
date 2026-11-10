@@ -68,6 +68,12 @@ async function authDatabase({accountManagement=true,engineerPortal=false,missing
     };
     const result=queue.then(run);queue=result.catch(()=>{});return result;
   }
-  return {...fixture,query,rpc,serviceRpc,migration};
+  // Server-side Auth fixtures share this single PGlite connection with browser
+  // RPCs; keep privileged fixture work on the same queue to prevent role leaks.
+  function runExclusive(work){
+    const run=async()=>{await db.exec('reset role');try{return await work(db);}finally{await db.exec('reset role');}};
+    const result=queue.then(run);queue=result.catch(()=>{});return result;
+  }
+  return {...fixture,query,rpc,serviceRpc,runExclusive,migration};
 }
 module.exports={authDatabase,migration};
