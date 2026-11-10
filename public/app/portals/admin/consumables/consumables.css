@@ -42,3 +42,6 @@ body.dark #screen-consumables{color-scheme:dark;}
   #screen-consumables .cons-toolbar .field{flex-basis:100%;max-width:none;}
   #screen-consumables .cons-toolbar input,#screen-consumables .cons-toolbar select{font-size:16px;}
 }
+
+#screen-consumables [hidden]{display:none!important}
+#screen-consumables [data-cons-panel]{margin-top:20px}

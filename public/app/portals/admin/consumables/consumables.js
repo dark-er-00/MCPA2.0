@@ -5,6 +5,8 @@
   if (!root) return;
   const $ = selector => root.querySelector(selector);
   const dialog = $('#consumables-dialog');
+  function setTab(tab){root.querySelectorAll('[data-cons-panel]').forEach(el=>el.hidden=el.dataset.consPanel!==tab);root.querySelector('[data-action=add]').hidden=tab!=='stock';root.querySelector('.page-head [data-action=request]').hidden=tab!=='requests';root.querySelectorAll('[data-cons-tab]').forEach(el=>{const active=el.dataset.consTab===tab;el.setAttribute('aria-pressed',String(active));el.classList.toggle('btn-primary',active);el.classList.toggle('btn-secondary',!active);});}
+  root.querySelectorAll('[data-cons-tab]').forEach(el=>el.onclick=()=>setTab(el.dataset.consTab));setTab('stock');
   const catalog = window.ConsumablesCatalog;
   const identity = item => [item.item_code, item.name || item.item_name, item.specification].filter(Boolean).join(' · ');
   const categoryOptions = value => catalog.categories.map(category => `<option value="${escape(category.name)}"${category.name === value ? ' selected' : ''}>${escape(category.name)}</option>`).join('');
@@ -100,7 +102,6 @@
     root.querySelectorAll('button[data-action]').forEach(control => {
       if (dialog.contains(control)) { control.disabled = state.saving; return; }
       control.disabled = state.loading || state.saving || (control.dataset.action !== 'refresh' && !state.ready);
-      if (control.dataset.action === 'request' && !control.dataset.id) control.disabled ||= !state.items.some(item => catalog.isActive(item) && !openRequest(item.id));
     });
     $('#consumables-inventory').setAttribute('aria-busy', String(state.loading || state.saving));
   }
@@ -209,7 +210,10 @@
   function requestForm(item) {
     if (item && openRequest(item.id)) return viewRequest(openRequest(item.id));
     const available = state.items.filter(entry => catalog.isActive(entry) && !openRequest(entry.id));
-    if (!available.length) return feedback('All consumables already have open requests. View a request below.');
+    if (!available.length) {
+      const hasActive = state.items.some(catalog.isActive);
+      return openDialog('Purchase Request', `<p class="cons-description">${hasActive ? 'All active consumables already have open purchase requests. Receive or cancel an existing request before submitting another for the same item.' : 'No active consumables are registered yet. Add a consumable in the Consumables tab before submitting a purchase request.'}</p><div class="cons-dialog-actions">${hasActive ? '' : `<button type="button" class="btn btn-primary" data-action="add">+Add Consumables</button>`}${button('close', 'Close')}</div>`);
+    }
     openDialog('Purchase Request', '<p class="cons-description">Request stock for one consumable. Submitting a request does not change available stock. Required fields are marked *.</p>' + form(
       `<div class="field full"><label for="cons-item">Consumable *</label><select id="cons-item" name="item" required autofocus>${available.map(entry => `<option value="${escape(entry.id)}"${entry.id === item?.id ? ' selected' : ''}>${escape(identity(entry))} (${escape(entry.unit)})</option>`).join('')}</select></div>` +
       '<p id="cons-request-hint" class="cons-muted full"></p>' +
