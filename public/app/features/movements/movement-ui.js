@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   'use strict';
 
   const TITLES = { request: 'Requests', transfer: 'Transfers', return: 'Returns', repair: 'Repairs', missing: 'Missing tools' };
@@ -67,6 +67,10 @@
   function siteField(name, label, required, value) {
     const sites = [...new Set([...(state().sites || []).map(site => typeof site === 'string' ? site : site.name), ...tools().map(tool => tool.site)].filter(Boolean))];
     return `<div class="field"><label for="mv-${esc(name)}">${esc(label)}</label><select id="mv-${esc(name)}" name="${esc(name)}" ${required ? 'required' : ''}><option value="">Choose an existing project</option>${sites.map(site => `<option value="${esc(site)}"${site === value ? ' selected' : ''}>${esc(site)}</option>`).join('')}</select></div>`;
+  }
+  function officeStockSite(record) {
+    const sites = (state().sites || []).map(site => typeof site === 'string' ? site : site?.name).filter(Boolean);
+    return sites.find(name => name.trim().toLowerCase() === 'office') || toolById(record.toolId)?.site;
   }
 
   const noRequestProject = 'No assigned project site. Please contact your administrator.';
@@ -428,8 +432,8 @@
       if (canAdjust(record,'reopenTransfer')) actions += adjustmentForm(record,'reopenTransfer');
     }
     if (kind === 'repair' && admin() && record.status === 'reported') actions = `<div class="mv-action-row">${button('Start repair', 'start-repair', record.id, 'btn-accent')}</div>`;
-    if (kind === 'repair' && admin() && record.status === 'underrepair') actions += `<form data-form="complete-repair" data-id="${esc(record.id)}" class="mv-followup"><h3>Return to service</h3>${siteField('repairDestination', 'Available at project', true, toolById(record.toolId)?.site)}<div class="field"><label for="mv-resolution">Repair completion notes</label><textarea name="notes" id="mv-resolution" required rows="2" maxlength="2000" placeholder="Describe the repair and checks performed"></textarea></div><button class="btn btn-primary" type="submit">Complete repair</button></form>`;
-    if (kind === 'missing' && admin() && record.status === 'missing') actions = `<form data-form="recover" data-id="${esc(record.id)}" class="mv-followup"><h3>Record recovery</h3>${siteField('recoveryDestination', 'Recovered at project', true, toolById(record.toolId)?.site)}<div class="field"><label for="mv-recovered-condition">Recovered condition</label><select name="condition" id="mv-recovered-condition" required><option value="">Select inspected condition</option><option value="good">Good — available for use</option><option value="damaged">Damaged — send for repair</option></select></div><div class="field"><label for="mv-recovery-notes">Recovery details</label><textarea id="mv-recovery-notes" name="notes" required rows="2" maxlength="2000" placeholder="Where and how was the tool recovered?"></textarea></div><button class="btn btn-primary" type="submit">Confirm recovery</button></form>`;
+    if (kind === 'repair' && admin() && record.status === 'underrepair') actions += `<form data-form="complete-repair" data-id="${esc(record.id)}" class="mv-followup"><h3>Return to service</h3>${siteField('repairDestination', 'Return to service location', true, officeStockSite(record))}<div class="field"><label for="mv-resolution">Repair completion notes</label><textarea name="notes" id="mv-resolution" required rows="2" maxlength="2000" placeholder="Describe the repair and checks performed"></textarea></div><button class="btn btn-primary" type="submit">Complete repair</button></form>`;
+    if (kind === 'missing' && admin() && record.status === 'missing') actions = `<form data-form="recover" data-id="${esc(record.id)}" class="mv-followup"><h3>Record recovery</h3>${siteField('recoveryDestination', 'Recovered stock location', true, officeStockSite(record))}<div class="field"><label for="mv-recovered-condition">Recovered condition</label><select name="condition" id="mv-recovered-condition" required><option value="">Select inspected condition</option><option value="good">Good — available for use</option><option value="damaged">Damaged — send for repair</option></select></div><div class="field"><label for="mv-recovery-notes">Recovery details</label><textarea id="mv-recovery-notes" name="notes" required rows="2" maxlength="2000" placeholder="Where and how was the tool recovered?"></textarea></div><button class="btn btn-primary" type="submit">Confirm recovery</button></form>`;
     const inspections = record.inspections || record.refusalInspections || record.conditions || [];
     const presentation=kind==='request'?current.requestPresentation?.(record):null;
     const requestIntro = kind === 'request' ? current.requestIntro?.(record) || '' : '';

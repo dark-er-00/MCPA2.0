@@ -17,15 +17,11 @@ begin
   select coalesce(jsonb_agg(t.value order by t.value->>'id'),'[]'::jsonb) into tools
     from jsonb_array_elements(catalog->'tools') t(value)
     join public.equipment e on e.id::text=t.value->>'dbId'
-    where e.current_holder_id=p.id or (
-      e.current_holder_id is null and e.status::text='AVAILABLE' and e.quantity=1
+    where e.current_holder_id=p.id
       and e.site_id<>office_id
       and exists(select 1 from public.sites assigned_site where assigned_site.id=e.site_id
         and assigned_site.assigned_engineer_id=p.id and assigned_site.is_active=true and assigned_site.archived_at is null)
-      and mcpa_auth_private.b_individual(e) and not mcpa_auth_private.b_retired(e.id)
-      and mcpa_auth_private.inventory_lock(e.id) is null
-      and regexp_replace(lower(coalesce(e.condition,'')),'[ _-]','','g') not in ('damaged','repair','underrepair','missing','lost')
-    );
+      and not mcpa_auth_private.b_retired(e.id);
   select coalesce(jsonb_agg(jsonb_build_object('id',s.id,'name',s.name,
       'is_active',s.is_active,'assigned_engineer_id',s.assigned_engineer_id) order by s.name),'[]'::jsonb)
     into sites from public.sites s where s.is_active=true and s.assigned_engineer_id=p.id

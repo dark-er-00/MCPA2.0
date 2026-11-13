@@ -12,15 +12,19 @@
     // Custody grants equipment visibility, never project access.
     projectSnapshot(data, user, {officeId = data.officeId} = {}) {
       if (!window.MCPAPermissions.operational(user?.role)) return data;
-      const sites = (data.sites || []).filter(site => site.id && site.id !== officeId && assigned(site,user));
+      const sites = (data.sites || []).filter(site => site.id && site.id !== officeId && active(site) && assigned(site,user));
       const ids = new Set(sites.map(site => site.id));
       return {...data,sites,
-        tools:(data.tools || []).filter(tool => ids.has(tool.siteId ?? tool.site_id)),
+        tools:(data.tools || []).filter(tool => {
+          const siteId = tool.siteId ?? tool.site_id;
+          const holderId = tool.holderId ?? tool.current_holder_id;
+          return ids.has(siteId) && Boolean(user?.id) && holderId === user.id;
+        }),
         history:(data.history || []).filter(item => ids.has(item.project_id))};
     },
-    // Engineer Inventory is narrower than the equipment request catalog.
-    // Location, custody and assignment IDs are authoritative; labels never grant access.
-    engineerInventory(data, user, {demo = false, eligible = () => false} = {}) {
+    // Engineer Inventory only shows equipment in the user's confirmed custody
+    // at their active, non-Office assigned projects. Office stock is requested in Requests.
+    engineerInventory(data, user, {demo = false} = {}) {
       const officeId = typeof data.officeId === 'string' ? data.officeId : '';
       const sites = (data.sites || []).filter(site => site.id && site.id !== officeId && active(site,demo) && assigned(site,user,demo));
       const projectIds = new Set(sites.map(site => site.id));
@@ -29,7 +33,7 @@
         const siteId = tool.siteId ?? tool.site_id;
         const own = Boolean(user?.id) && holderId === user.id;
         const demoOwn = !window.MCPAPermissions.operational(user?.role) && demo && !holderId && Boolean(user?.name) && tool.holder === user.name;
-        return own || demoOwn || Boolean(officeId && siteId !== officeId && projectIds.has(siteId) && !holderId && eligible(tool));
+        return Boolean((demo || officeId) && siteId && siteId !== officeId && projectIds.has(siteId) && (own || demoOwn));
       });
       return {...data,tools,sites};
     },

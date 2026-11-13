@@ -7,7 +7,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
   await go('quantity-request');await wait('document.querySelector("[data-q-type]:not(:disabled)")');
   await evaluate('[...document.querySelectorAll(".wa-q-type")].find(n=>n.textContent.includes("Browser integration drill")).querySelector("button").click()');
   await fill('[name=quantity]','1');await fill('[name=siteId]',f.sites.casa);await submit('[data-q-form]');
-  await wait('document.querySelector("[data-q-feedback]").textContent.includes("submitted")||document.querySelector("[data-q-history]").textContent.includes("Browser integration drill")');
+  await wait('document.querySelector("[data-q-success-dialog]")?.open||document.querySelector("[data-q-history]").textContent.includes("Browser integration drill")');
   await go('outward-materials');await wait('document.querySelector("[data-request-form]")');
   await fill('[data-field=site_id]',f.sites.casa);await fill(`[data-quantity="${item.id}"]`,'4');await submit('[data-request-form]');
   await wait('document.querySelector(".wa-message").textContent.includes("saved")');

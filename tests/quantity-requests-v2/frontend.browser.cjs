@@ -76,7 +76,7 @@ const errors = [], calls = [], pause = ms => new Promise(resolve => setTimeout(r
   assert.equal(await withinViewport('[name=quantity]'), true, 'Equipment quantity field fits mobile viewport');
   await viewport(430, true); await shot('quantity-engineer-430-dark');
   await evaluate("document.querySelector('[data-q-form]').requestSubmit()");
-  await wait("document.querySelector('[data-q-feedback]').textContent.includes('Quantity request submitted')");
+  await wait("document.querySelector('[data-q-success-dialog]')?.open&&document.querySelector('[data-q-success-dialog]').textContent.includes('Quantity request submitted')");
   let requests = await fixture.wa(fixture.actors.sky, 'mcpa_wa_equipment_requests');
   assert.equal(requests.length, 1); const request = requests[0]; assert.equal(request.requested_quantity, 2);
   await click('.wa-q-history summary');
@@ -99,13 +99,13 @@ const errors = [], calls = [], pause = ms => new Promise(resolve => setTimeout(r
   const after = (await fixture.wa(fixture.actors.sky, 'mcpa_wa_equipment_catalog')).groups.find(item => item.type_id === group.type_id);
   assert.equal(after.available_quantity, 4); assert.equal(after.reserved_quantity, 2);
   await mount('quantity-engineer', 'sky'); await click(`[data-q-type="${group.type_id}"]`); await evaluate("document.querySelector('[data-q-form]').requestSubmit()");
-  await wait("document.querySelector('[data-q-feedback]').textContent.includes('Quantity request submitted')");
+  await wait("document.querySelector('[data-q-success-dialog]')?.open&&document.querySelector('[data-q-success-dialog]').textContent.includes('Quantity request submitted')");
   const second = (await fixture.wa(fixture.actors.sky, 'mcpa_wa_equipment_requests')).find(item => item.status === 'pending');
   await mount('quantity-admin', 'admin'); await click(`[data-q-request="${second.id}"]`); await fill('[name=reason]', 'Allocation postponed until project schedule is confirmed.');
   await evaluate("document.querySelector('[data-q-reject-form]').requestSubmit()"); await wait("document.querySelector('[data-q-feedback]').textContent.includes('Request rejected')");
   await mount('quantity-engineer', 'sky'); await fill('[data-q-filter]', 'rejected'); await click('.wa-q-history summary');
   assert.match(await evaluate("document.querySelector('[data-q-history]').textContent"), /Allocation postponed/);
-  await mount('quantity-engineer', 'architect'); await click(`[data-q-type="${group.type_id}"]`); await evaluate("document.querySelector('[data-q-form]').requestSubmit()"); await wait("document.querySelector('[data-q-feedback]').textContent.includes('Quantity request submitted')");
+  await mount('quantity-engineer', 'architect'); await click(`[data-q-type="${group.type_id}"]`); await evaluate("document.querySelector('[data-q-form]').requestSubmit()"); await wait("document.querySelector('[data-q-success-dialog]')?.open&&document.querySelector('[data-q-success-dialog]').textContent.includes('Quantity request submitted')");
   assert.equal((await fixture.wa(fixture.actors.architect, 'mcpa_wa_equipment_requests')).length, 1, 'Architect own history');
   await mount('quantity-admin', 'sky'); assert.equal(await evaluate("document.querySelectorAll('[data-q-allocate-form]').length"), 0, 'Engineer gets no Admin controls');
   console.log('PASS quantity mounts: exact variants, Bulk exclusion, quantity entry, roles, assigned site, history escaping, adjusted physical allocation, stock/reservation changes, rejection, Architect scope');

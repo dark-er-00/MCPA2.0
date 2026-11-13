@@ -16,6 +16,9 @@
 .equipment-requests .equipment-specific .mv-workspace,
 .equipment-requests .equipment-quantity-review .wa-q-workspace{display:block}
 .equipment-requests .equipment-history{margin-top:28px}
+.equipment-requests .equipment-history [data-equipment-notice]:empty{display:none}
+.equipment-requests .equipment-history [data-equipment-notice]{margin:14px 0 0;padding:12px 14px;border-radius:6px;background:var(--critical-subtle,#f9eae9);font-size:13px}
+.equipment-requests .equipment-history [data-equipment-retry]{margin-top:12px}
 .equipment-requests .equipment-filters{display:grid;grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}
 .equipment-requests .equipment-filters label{display:grid;gap:6px;font-size:13px;font-weight:600}
 .equipment-requests .equipment-filters .mv-input{width:100%;min-width:0;min-height:44px}

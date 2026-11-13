@@ -15,8 +15,8 @@ exports.seedInventory=async f=>{
  const samples=[
   ['Synthetic Assigned Project Drill',f.sites.casa,null,'AVAILABLE'],
   ['Synthetic Office Drill',f.sites.office,null,'AVAILABLE'],
-  ['Synthetic Other Project Drill',f.sites.main,null,'AVAILABLE'],
-  ['Synthetic Own Custody Drill',f.sites.main,f.actors.sky.id,'IN_USE'],
+  ['Synthetic Other Project Drill',f.sites.main,f.actors.sky.id,'IN_USE'],
+  ['Synthetic Own Custody Drill',f.sites.casa,f.actors.sky.id,'IN_USE'],
   ['Synthetic Other Custodian Drill',f.sites.casa,f.actors.pau.id,'IN_USE'],
   ['Synthetic Unrelated Repair Drill',f.sites.casa,null,'REPAIR']
  ];

@@ -13,35 +13,35 @@ exports.createFixture=()=>{
  const sites={office:site(101,'Office'),casa:site(102,'Casa Buena',actors.pau),sky:site(103,'Sky Assigned Project',actors.sky),unassigned:site(104,'Synthetic Unassigned Project'),architect:site(105,'Architect Assigned Project',actors.architect)};
  const tool=(n,name,place,holder=null,status='available')=>({id:'SYN-'+String(n).padStart(3,'0'),dbId:uuid(200+n),name,siteId:place.id,site:place.name,holderId:holder?.id||null,holder:holder?.name||'Unassigned',status,recordedStatus:status==='inuse'?'IN_USE':status.toUpperCase(),qty:1,cat:'Power Tools',brand:'Synthetic',model:'Fixture drill',condition:'Good',serial:'SYNTHETIC-'+n,trackingType:'Individual',movementLock:null,photo:null,notes:'Synthetic acceptance fixture only'});
  const tools=[
-  tool(1,'Synthetic Assigned Project Drill',sites.sky),
-  tool(2,'Synthetic Casa Available Drill',sites.casa),
+  tool(1,'Synthetic Office Drill 1',sites.office),
+  tool(2,'Synthetic Office Drill 2',sites.office),
   tool(3,'Synthetic Office Drill',sites.office),
-  tool(4,'Synthetic Own Custody Drill',sites.casa,actors.sky,'inuse'),
-  tool(5,'Synthetic Other Custodian Drill',sites.sky,actors.pau,'inuse'),
-  tool(6,'Synthetic Unassigned Project Drill',sites.unassigned),
-  tool(7,'Synthetic Unrelated Repair Drill',sites.sky,null,'repair'),
-  tool(8,'Synthetic No Project Custody Drill',sites.casa,actors.unassigned,'inuse'),
-  tool(9,'Synthetic Architect Project Drill',sites.architect),
-  tool(10,'Synthetic Architect Custody Drill',sites.casa,actors.architect,'inuse'),
-  tool(11,'Synthetic Architect Other Holder Drill',sites.architect,actors.pau,'inuse'),
-  tool(12,'Synthetic Architect Repair Drill',sites.architect,null,'repair')
+  tool(4,'Synthetic Own Custody Drill',sites.sky,actors.sky,'inuse'),
+  tool(5,'Synthetic Other Custodian Drill',sites.casa,actors.pau,'inuse'),
+  tool(6,'Synthetic Office Drill 4',sites.office),
+  tool(7,'Synthetic Unrelated Repair Drill',sites.office,null,'repair'),
+  tool(8,'Synthetic Casa Secondary Custody Drill',sites.casa,actors.pau,'inuse'),
+  tool(9,'Synthetic Office Drill 5',sites.office),
+  tool(10,'Synthetic Architect Custody Drill',sites.architect,actors.architect,'inuse'),
+  tool(11,'Synthetic Casa Third Custody Drill',sites.casa,actors.pau,'inuse'),
+  tool(12,'Synthetic Office Second Repair Drill',sites.office,null,'repair')
  ];
  const history=Object.values(sites).filter(s=>s.id!==sites.office.id).map(s=>({id:randomUUID(),project_id:s.id,action:'created',changed_at:'2026-11-13T01:00:00Z',changed_by:actors.admin.id,changed_by_name:actors.admin.name,reason:'Synthetic project record',changes:{}}));
  const requests=[],quantityRequests=[],transfers=[],returns=[],repairs=[],missing=[],activity=[],operations=new Map(),photos=new Map(),stored=new Map();
  const consumable={id:uuid(401),name:'Synthetic Safety Gloves',item_code:'SYN-GLOVES',category:'Safety',unit:'pair',current_stock:25,minimum_stock:5,specification:'Synthetic acceptance stock',archived_at:null};
  const materialRequests=['sky','architect'].map((key,index)=>{const person=actors[key],place=sites[key],itemId=uuid(420+index);return {id:uuid(410+index),request_number:index+1,site_id:place.id,site_name:place.name,requester_id:person.id,requester_name:person.name,status:'issued',purpose:'Synthetic confirmed issuance',created_at:'2026-11-13T02:00:00Z',items:[{id:itemId,consumable_id:consumable.id,item_name:consumable.name,item_code:consumable.item_code,category:consumable.category,unit:consumable.unit,requested_quantity:5,confirmed_consumed_quantity:null}],issues:[{id:uuid(430+index),stock_movement_id:uuid(440+index),item_id:itemId,quantity:5,issued_at:'2026-11-13T02:00:00Z',issued_by_name:actors.admin.name}]};});
  const activeAssigned=person=>Object.values(sites).filter(s=>s.id!==sites.office.id&&s.assigned_engineer_id===person.id&&s.is_active&&!s.archived_at);
- const stock=t=>t.status==='available'&&t.qty===1&&!t.holderId&&!t.movementLock&&t.condition==='Good';
+ const stock=t=>t.status==='available'&&t.qty===1&&!t.holderId&&!t.movementLock&&t.condition==='Good'&&t.siteId===sites.office.id;
  const field=person=>['engineer','architect'].includes(person.role);
  const related=(person,records)=>records.filter(r=>!field(person)||[r.actorId,r.receiverId,r.requesterId,r.ownerId].includes(person.id));
  const snapshot=person=>({version:1,revision:1,profile:person,tools:clone(tools),sites:clone(Object.values(sites)),users:clone(Object.values(actors)),requests:clone(related(person,requests)),transfers:clone(related(person,transfers).map(t=>({...t,allowedActions:t.status!=='pending'?[]:t.receiverId===person.id?['receiveTransfer','refuseTransfer']:t.actorId===person.id?['cancelTransfer']:[]}))),returns:clone(related(person,returns)),repairs:clone(related(person,repairs)),missing:clone(related(person,missing)),activity:clone(activity.filter(e=>!field(person)||e.actorId===person.id)),inventoryAvailabilityVersion:1,inventoryVerificationRevision:2,integrationVersion:3,officeId:sites.office.id});
  const projectSnapshot=person=>{
   const visible=activeAssigned(person),ids=new Set(visible.map(s=>s.id));
-  return {...snapshot(person),sites:clone(visible),tools:clone(tools.filter(t=>ids.has(t.siteId))),history:clone(history.filter(h=>ids.has(h.project_id)))};
+  return {...snapshot(person),sites:clone(visible),tools:clone(tools.filter(t=>ids.has(t.siteId)&&t.holderId===person.id)),history:clone(history.filter(h=>ids.has(h.project_id)))};
  };
  const inventory=person=>{
   const visible=activeAssigned(person),ids=new Set(visible.map(s=>s.id));
-  return {...snapshot(person),engineerInventoryVersion:2,sites:clone(visible),tools:clone(tools.filter(t=>t.holderId===person.id||t.siteId!==sites.office.id&&ids.has(t.siteId)&&stock(t)))};
+  return {...snapshot(person),engineerInventoryVersion:2,sites:clone(visible),tools:clone(tools.filter(t=>t.holderId===person.id&&t.siteId!==sites.office.id&&ids.has(t.siteId)))};
  };
  const error=(message,code='22023')=>{throw Object.assign(Error(message),{code});};
  const requireProject=(person,id)=>{if(!activeAssigned(person).some(s=>s.id===id))error('Choose an explicitly assigned active project.','42501');};
@@ -63,6 +63,7 @@ exports.createFixture=()=>{
   if(['receiveTransfer','refuseTransfer','cancelTransfer'].includes(action)){
    if(!field(person)||!t||t.status!=='pending'||(action==='cancelTransfer'?t.actorId!==person.id:t.receiverId!==person.id))error('This transfer action is not authorized.','42501');
    if(action==='receiveTransfer'){
+    requireProject(person,t.destinationId);
     const checks=payload.inspections;if(!Array.isArray(checks)||checks.length!==t.toolIds.length||!t.toolIds.every(id=>checks.some(c=>c.toolId===id&&c.tested===true&&['good','damaged'].includes(c.condition))))error('Inspect and test every Asset ID.');
     for(const id of t.toolIds){const tool=tools.find(t=>t.id===id),check=checks.find(c=>c.toolId===id);Object.assign(tool,{holderId:person.id,holder:person.name,siteId:t.destinationId,site:t.destination,status:check.condition==='damaged'?'repair':'inuse',recordedStatus:check.condition==='damaged'?'REPAIR':'IN_USE',movementLock:null});}t.status='received';t.inspections=checks;t.receivedAt=new Date().toISOString();t.receivedBy=person.name;
    }else{if(!payload.reason?.trim())error('Enter a reason.');t.status=action==='cancelTransfer'?'canceled':'refused';t.reason=payload.reason;if(action==='cancelTransfer')t.toolIds.forEach(id=>tools.find(t=>t.id===id).movementLock=null);}

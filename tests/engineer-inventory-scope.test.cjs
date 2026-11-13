@@ -10,22 +10,24 @@ const snapshot={officeId:'office',sites:[
 ],tools:[
  {id:'assigned-stock',siteId:'assigned',status:'available',holderId:null},
  {id:'office-stock',siteId:'office',site:'Same project label',status:'available',holderId:null},
+ {id:'office-custody',siteId:'office',status:'inuse',holderId:'sky'},
  {id:'unrelated-stock',siteId:'other',status:'available',holderId:null},
- {id:'own-custody',siteId:'other',status:'repair',holderId:'sky'},
- {id:'other-custodian',siteId:'assigned',status:'available',holderId:'pau',holder:'Same Name'},
+ {id:'assigned-own-custody',siteId:'assigned',status:'inuse',holderId:'sky'},
+ {id:'other-project-custody',siteId:'other',status:'repair',holderId:'sky'},
+ {id:'other-custodian',siteId:'assigned',status:'inuse',holderId:'pau',holder:'Same Name'},
  {id:'unrelated-repair',siteId:'assigned',status:'repair',holderId:null},
- {id:'archived-stock',siteId:'archived',status:'available',holderId:null},
+ {id:'archived-custody',siteId:'archived',status:'inuse',holderId:'sky'},
  {id:'label-only-stock',site:'Same project label',status:'available',holderId:null}
 ]};
 const scope=data=>context.window.MCPAProjectScope.engineerInventory(data,user,{eligible:tool=>tool.status==='available'});
 const ids=rows=>Array.from(rows,row=>row.id);
-test('Engineer scope admits assigned available stock and own custody, excluding Office and unrelated records by IDs',()=>{
- const before=JSON.stringify(snapshot),result=scope(snapshot);assert.deepEqual(ids(result.tools),['assigned-stock','own-custody']);assert.deepEqual(ids(result.sites),['assigned']);assert.equal(JSON.stringify(snapshot),before);
+test('Engineer scope admits only own custody at active assigned projects, excluding unheld stock, Office and unrelated projects by IDs',()=>{
+ const before=JSON.stringify(snapshot),result=scope(snapshot);assert.deepEqual(ids(result.tools),['assigned-own-custody']);assert.deepEqual(ids(result.sites),['assigned']);assert.equal(JSON.stringify(snapshot),before);
 });
-test('Unknown Office configuration fails closed for stock while preserving confirmed own custody',()=>{
- assert.deepEqual(ids(scope({...snapshot,officeId:undefined}).tools),['own-custody']);
+test('Unknown Office configuration fails closed for project inventory',()=>{
+ assert.deepEqual(ids(scope({...snapshot,officeId:undefined}).tools),[]);
 });
-test('Project reassignment removes available stock immediately but never drops own custody',()=>{
- const data={...snapshot,sites:snapshot.sites.map(s=>s.id==='assigned'?{...s,assigned_engineer_id:'pau'}:s)};assert.deepEqual(ids(scope(data).tools),['own-custody']);assert.deepEqual(ids(scope(data).sites),[]);
+test('Project reassignment removes tools at reassigned projects immediately',()=>{
+ const data={...snapshot,sites:snapshot.sites.map(s=>s.id==='assigned'?{...s,assigned_engineer_id:'pau'}:s)};assert.deepEqual(ids(scope(data).tools),[]);assert.deepEqual(ids(scope(data).sites),[]);
 });
 test('Applying scope repeatedly cannot reintroduce excluded records',()=>{const once=scope(snapshot);assert.deepEqual(ids(scope(once).tools),ids(once.tools));});
