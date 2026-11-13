@@ -1,0 +1,41 @@
+<div id="sites-module">
+  <div id="sites-feedback" class="sites-feedback hidden" role="status" aria-live="polite"></div>
+
+  <section class="screen" id="screen-sites" aria-labelledby="sites-heading">
+    <div class="page-head">
+      <div>
+        <h1 class="display" id="sites-heading">Projects</h1>
+        <p class="sub">Every active project, and the tools currently living there</p>
+      </div>
+      <div class="page-head-actions">
+        <span class="inventory-sync" role="status">Updates automatically</span>
+        <button type="button" class="btn btn-secondary btn-sm" data-action="add-site" disabled>+ Add Project</button>
+      </div>
+    </div>
+    <div class="overview-filters">
+      <label class="field">Search projects<input id="projects-search" type="search" placeholder="Project, engineer or location"></label>
+      <label class="field">Scope<select id="projects-scope"><option value="mine">My projects</option><option value="all">All projects</option></select></label>
+      <label class="checkbox-row"><input id="projects-archived" type="checkbox">Include archived projects</label>
+    </div>
+    <p id="projects-count" class="inventory-sync"></p>
+    <p id="projects-mode-note" class="inventory-sync"></p>
+    <div id="sites-list" class="grid grid-3" aria-live="polite" aria-busy="true">
+      <div class="card empty-state sites-full"><p class="t">Loading projects…</p></div>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-site-detail" aria-labelledby="site-heading">
+    <div id="site-detail-content">
+      <button type="button" class="sites-back eyebrow" data-action="all-sites">← All Projects</button>
+      <div class="card empty-state"><p class="t">Loading project details…</p></div>
+    </div>
+  </section>
+
+  <dialog id="sites-dialog" class="sites-dialog" aria-labelledby="sites-dialog-title">
+    <div class="sites-dialog-head">
+      <h2 class="display" id="sites-dialog-title"></h2>
+      <button type="button" class="icon-btn sites-close" data-action="close-dialog" aria-label="Close dialog">×</button>
+    </div>
+    <div id="sites-dialog-content"></div>
+  </dialog>
+</div>

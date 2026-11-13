@@ -1,0 +1,7 @@
+<section class="screen" id="screen-reports" aria-labelledby="report-heading">
+ <div class="page-head"><div><h1 class="display" id="report-heading">Inventory monitoring</h1><p class="sub">Current records, saved weekly snapshots and dated movement history</p></div><button type="button" class="btn btn-secondary" id="report-export" aria-label="Export selected report as PDF" disabled>Export PDF</button></div>
+ <div class="report-filters"><label class="field">Report<select id="report-kind"><option value="current">Current inventory</option><option value="history">Saved inventory snapshot</option><option value="activity">Movement history</option></select></label><label class="field">From<input id="report-start" type="date" required></label><label class="field">Until<input id="report-end" type="date" required></label><button type="button" class="btn btn-secondary" id="report-refresh">Load report</button></div>
+ <div id="report-feedback" role="status"></div><p id="report-scope" class="account-message"></p>
+ <label class="field" id="report-snapshot-field" hidden>Saved snapshot<select id="report-snapshot"></select></label>
+ <div id="report-results" class="card table-wrap" aria-busy="true"><p class="empty-state">Loading report…</p></div>
+</section>

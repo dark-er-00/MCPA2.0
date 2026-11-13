@@ -1,0 +1,27 @@
+/* Engineer Dashboard Specific Additions */
+
+#screen-dashboard.active {
+  animation: fadein-dashboard 0.25s ease-out forwards;
+}
+
+@keyframes fadein-dashboard {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Ensure focus visibility for interactive elements for accessibility */
+.site-card:focus-visible,
+.icon-btn:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Specific override for the location badge in the table */
+.badge-disposed[style*="--off-white"] svg {
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+/* Keep movement references distinct from actor and timestamp metadata. */
+.engineer-activity-reference{display:block;width:fit-content;max-width:100%;margin-block:8px 4px;padding:2px 6px;border:1px solid var(--line);border-radius:4px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;color:var(--black)}
+.engineer-activity-meta{display:block;overflow-wrap:anywhere}

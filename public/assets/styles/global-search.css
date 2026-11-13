@@ -1,0 +1,18 @@
+.global-search-results{position:absolute;top:calc(100% + 8px);left:0;width:min(640px,calc(100vw - 32px));max-height:min(65vh,620px);overflow:auto;overscroll-behavior:contain;background:var(--surface);color:var(--text-primary);border:1px solid var(--border);border-radius:12px;z-index:90;text-align:left}
+.global-search-results[hidden]{display:none}
+.global-search-status{padding:14px 16px;font-size:13px;color:var(--text-secondary)}
+.global-search-heading{padding:12px 16px 6px;font-weight:700;font-size:12px;color:var(--text-secondary)}
+.global-search-option{display:flex;gap:12px;padding:12px 16px;min-height:60px;cursor:pointer;align-items:center}
+.global-search-option:hover,.global-search-option[aria-selected=true]{background:var(--brand-subtle)}
+.global-search-option>span:last-child{min-width:0;flex:1}
+.global-search-option strong,.global-search-option span>span{display:block;overflow-wrap:anywhere}
+.global-search-option strong{font-size:14px;font-weight:600}
+.global-search-option span>span{font-size:12px;color:var(--text-secondary);margin-top:4px}
+.search-wrap .global-search-icon svg{position:static;transform:none;width:20px;height:20px}
+.global-search-results mark{background:var(--brand-subtle);color:var(--text-primary);font-weight:700}
+.global-search-more{width:100%;min-height:44px;background:var(--surface);color:var(--text-primary);border:0;border-top:1px solid var(--border);cursor:pointer;font:inherit}
+.global-search-clear{position:absolute;right:0;top:0;min-width:44px;min-height:44px;border:0;background:transparent;color:var(--text-secondary);font:inherit;font-size:12px;cursor:pointer}
+#global-search-input{padding-right:52px;min-height:44px}
+#global-search-input::-webkit-search-cancel-button{display:none}
+.global-search-clear:focus-visible,.global-search-more:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
+@media(max-width:900px){#topbar .global-search-results{left:8px;right:8px;width:auto;top:100%;max-height:60dvh}.global-search-clear{right:68px;top:12px}#topbar:has(.global-search-results:not([hidden])){z-index:90}}

@@ -1,0 +1,5 @@
+[functions.manage-accounts]
+# Production uses ES256 user JWTs. The legacy gateway verifier cannot validate
+# these; the handler verifies every bearer with Auth.getUser, then checks the
+# linked active Admin. Privileged SQL independently rechecks that Admin.
+verify_jwt = false

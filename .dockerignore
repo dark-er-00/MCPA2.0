@@ -1,0 +1,35 @@
+# Allow only the runtime source and container configuration into the context.
+**
+!Dockerfile
+!.dockerignore
+!docker/
+!docker/**
+!server/
+!server/**
+!public/
+!public/**
+
+# Never send local configuration, credentials, generated config or editor files.
+**/.*
+!public/.htaccess
+**/.env
+**/.env.*
+**/.git
+**/.aws
+**/.codex
+**/.agents
+**/node_modules
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/*.log
+**/*.sql
+**/*.md
+**/*.bak
+**/*.tmp
+**/*~
+**/.DS_Store
+**/Thumbs.db
+public/app/core/config.js
+server/router.php

@@ -1,0 +1,9 @@
+/* Missing-specific styles.
+   Shared primitives (.kv, .two-col, .badge, etc.) live in
+   css/components.css. */
+
+.confidential{
+  border:1px dashed var(--danger); background:var(--danger-bg); border-radius:var(--radius-sm);
+  padding:14px 16px;
+}
+.confidential .lbl{font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; color:var(--danger); margin-bottom:8px; display:flex; align-items:center; gap:6px;}

@@ -1,0 +1,22 @@
+const assert=require('node:assert/strict');
+exports.verify=async({fixture:f,evaluate,wait,click,fill,submit,go})=>{
+  const original=(await f.db.query('select * from sites where id=$1',[f.sites.casa])).rows[0];
+  await f.db.query('update sites set assigned_engineer_id=null,assigned_engineer=$1 where id=$2',['Legacy assignment (unverified)',f.sites.casa]);
+  await go('dashboard');await go('sites');await wait("document.querySelector('.site-card')");
+  await click(`[data-action=open-site][data-id="${f.sites.casa}"]`);await click('[data-action=edit-site]');
+  assert.equal(await evaluate("document.querySelector('#site-profession').value"),'');
+  assert.equal(await evaluate("document.querySelector('#site-profession').selectedOptions[0].textContent"),'Not recorded');
+  assert.equal(await evaluate("document.querySelector('#site-engineer').value"),'legacy');
+  assert.deepEqual(await evaluate("[...document.querySelector('#site-profession').options].filter(o=>!o.hidden).map(o=>o.textContent)"),['Engr','Architect']);
+  await fill('#site-location',original.location+' local metadata edit');await submit('#sites-form');await wait("!document.querySelector('#sites-dialog').open");
+  const saved=(await f.db.query('select * from sites where id=$1',[f.sites.casa])).rows[0];
+  assert.equal(saved.assigned_engineer_id,null);assert.equal(saved.assigned_engineer,'Legacy assignment (unverified)');
+  await click('[data-action=edit-site]');assert.equal(await evaluate("document.querySelector('#site-profession').value"),'');
+  await fill('#site-profession','architect');assert.equal(await evaluate("document.querySelector('#site-engineer').value"),'');
+  assert.equal(await evaluate("document.querySelector('#site-engineer option[value=legacy]').disabled"),true);
+  await fill('#site-engineer',f.actors.architect.id);await submit('#sites-form');await wait("!document.querySelector('#sites-dialog').open");
+  assert.equal((await f.db.query('select assigned_engineer_id from sites where id=$1',[f.sites.casa])).rows[0].assigned_engineer_id,f.actors.architect.id);
+  await click('[data-action=edit-site]');assert.equal(await evaluate("document.querySelector('#site-profession').value"),'architect');
+  await fill('#site-profession','engineer');await fill('#site-engineer',f.actors.sky.id);await fill('#site-location',original.location);await submit('#sites-form');await wait("!document.querySelector('#sites-dialog').open");
+  console.log('PASS Unknown legacy profession stays unselected; metadata-only saves preserve assignment; deliberate reassignment requires matching actual profile');
+};

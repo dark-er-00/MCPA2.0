@@ -1,0 +1,23 @@
+/* Dashboard-specific styles.
+   Shared primitives (.card, .kpi, .badge, .site-card, .chart-placeholder,
+   .two-col, .section-title, etc.) live in css/components.css. */
+
+/* Alerts */
+.alert-item{
+  display:flex; align-items:center; gap:12px; padding:13px 16px; border:1px solid var(--line);
+  border-radius:var(--radius-sm); background:var(--white); margin-bottom:8px; cursor:pointer;
+}
+.alert-item:hover{border-color:var(--gold);}
+.alert-dot{width:9px; height:9px; border-radius:50%; flex-shrink:0;}
+.alert-item .txt{flex:1; font-size:13px; font-weight:600;}
+.alert-item .cnt{font-family:var(--font-mono); font-size:12px; color:var(--gray);}
+.alert-item svg{width:14px; height:14px; color:var(--gray);}
+
+/* Quick actions */
+.quick-actions{display:flex; gap:10px; flex-wrap:wrap;}
+.qa-btn{
+  display:flex; align-items:center; gap:8px; padding:10px 16px; border:1px solid var(--line);
+  border-radius:9px; font-size:13px; font-weight:600; background:var(--white);
+}
+.qa-btn:hover{border-color:var(--gold); background:#FCF8EC;}
+.qa-btn svg{width:15px; height:15px; color:var(--gold-dim);}

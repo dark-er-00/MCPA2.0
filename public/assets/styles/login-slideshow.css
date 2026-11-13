@@ -1,0 +1,88 @@
+﻿/* Login-only palette and layout. Workspace themes remain independent. */
+#login-screen {
+  --white: #171b19; --black: #f5f3ed; --gray: #b9beb9; --line: #525a54;
+  --text-primary: #f5f3ed; --text-secondary: #b9beb9; --text-muted: #b9beb9;
+  --background: #202622; --brand-primary: #fabb00; --gold-dim: #fabb00;
+  /* Aim for 44/56; bound the gallery near the original 3:4 compositions. */
+  --login-gallery-width: min(clamp(75vh, 44vw, 80vh), calc(100vw - 440px));
+  --login-gallery-width: min(clamp(75svh, 44vw, 80svh), calc(100vw - 440px));
+  position: relative; isolation: isolate; display: grid; grid-template-columns: var(--login-gallery-width) minmax(0, 1fr);
+  align-items: stretch; min-height: 100vh; min-height: 100dvh; padding: 0;
+  background: #111312; color: var(--text-primary); color-scheme: dark;
+}
+#login-screen ::selection { background: #fabb00; color: #111312; }
+#login-screen :focus-visible { outline: 2px solid #fabb00; outline-offset: 4px; }
+.login-gallery {
+  position: sticky; top: 0; min-width: 0; height: 100vh; height: 100svh;
+  padding: 0; overflow: hidden; background: #202521;
+}
+.login-slideshow { position: absolute; inset: 0; width: 100%; overflow: hidden; pointer-events: none; }
+.login-slide { position: absolute; inset: 0; opacity: 0; background: #202521; }
+.login-slide:first-child { opacity: 1; }
+.login-scene { position: absolute; inset: 0; }
+/* Uniform scaling fills the panel; its aspect-ratio bounds limit vertical crop to ~6.4%. */
+.login-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+/* These roofs meet the source's top edge; the other marked photos have footer watermarks. */
+.login-slide:is([data-project="4"], [data-project="5"], [data-project="6"]) .login-photo { object-position: center top; }
+.login-slide:is([data-project="3"], [data-project="7"], [data-project="9"]) .login-photo { object-position: center bottom; }
+.login-mobile-backdrop { display: none; }
+/* Controls belong to the adjacent panel so no photo detail or watermark is covered. */
+.login-gallery-footer { position: absolute; z-index: 2; left: var(--login-gallery-width); right: 0; bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 20px; padding: 0 32px; }
+.login-photo-counter { flex-shrink: 0; color: #b9beb9; font-size: 12px; font-variant-numeric: tabular-nums; letter-spacing: .06em; }
+.login-photo-counter span { color: #f5f3ed; }
+.login-gallery-controls { display: flex; flex: 1; max-width: 280px; align-items: center; gap: 20px; min-height: 44px; }
+.login-gallery-progress { flex: 1; height: 2px; background: #485148; overflow: hidden; }
+.login-gallery-progress span { display: block; width: 100%; height: 100%; background: #fabb00; transform: scaleX(.1); transform-origin: left; }
+.login-photo-step { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 32px; min-height: 44px; padding: 6px; border: 0; border-radius: 4px; background: transparent; color: #b9beb9; cursor: pointer; }
+.login-photo-step[hidden] { display: none; }
+.login-photo-step svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.login-photo-step:hover { color: #fabb00; }
+#login-screen:has(#login-slideshow[data-unavailable="true"]) .login-gallery-footer { visibility: hidden; }
+#login-content { position: relative; z-index: 1; display: grid; place-items: center; min-width: 0; min-height: 100vh; min-height: 100dvh; padding: 64px clamp(32px, 4.5vw, 96px); background: #111513; }
+#login-screen .login-card { width: 100%; max-width: 360px; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+#login-screen .login-mark { width: 48px; height: 48px; margin: 0 0 32px; border-radius: 6px; font: 700 12px var(--font-body); }
+#login-screen .login-card h1 { text-align: left; font: 480 42px/1.15 var(--font-display); letter-spacing: -.03em; margin-bottom: 12px; text-wrap: balance; }
+#login-screen .login-card .sub { text-align: left; font-size: 13px; line-height: 1.7; margin-bottom: 24px; }
+#login-screen #auth-feedback { font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+#login-screen #auth-feedback[role="alert"] { color: #f5d487; }
+#login-screen .field { margin-bottom: 20px; }
+#login-screen .field label { font-size: 12px; margin-bottom: 8px; }
+#login-screen .field input { min-height: 50px; background: #191f1b; border-radius: 6px; caret-color: #fabb00; }
+#login-screen .field input:focus-visible { outline: 2px solid #fabb00; outline-offset: 2px; }
+#login-screen .auth-password-toggle { min-height: 44px; }
+#login-screen .btn { min-height: 48px; border-radius: 6px; transition: background-color .15s ease, border-color .15s ease; }
+#login-screen .btn-primary { background: #fabb00; color: #111312; font-weight: 700; }
+#login-screen .btn-primary:hover { background: #ffd04a; }
+#login-screen .btn:disabled { opacity: .6; cursor: wait; }
+#login-screen .btn-secondary { background: transparent; border-color: #525a54; }
+#login-screen .btn-secondary:hover { background: #252d27; border-color: #b9beb9; }
+#login-screen .login-card > .link-btn { min-height: 44px; margin: 8px 0 0; padding: 8px 0; text-underline-offset: 4px; }
+#login-screen .auth-help { font-size: 12px; line-height: 1.6; margin: 24px 0 14px; }
+@media (max-width: 900px), (max-width: 1200px) and (max-aspect-ratio: 3/2) {
+  #login-screen { grid-template-columns: minmax(0, 1fr); place-items: center; padding: max(28px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left)); }
+  .login-gallery { position: absolute; inset: 0; display: block; height: auto; padding: 0; background: #111312; pointer-events: none; }
+  .login-slideshow { position: fixed; inset: 0; width: auto; }
+  .login-slide, .login-gallery-footer { display: none; }
+  .login-mobile-backdrop { position: absolute; display: block; inset: -32px; }
+  .login-mobile-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; filter: blur(16px); }
+  .login-slideshow::after { content: ''; position: absolute; inset: 0; background: rgba(7, 12, 9, .52); }
+  #login-content { display: block; width: 100%; max-width: 400px; min-height: 0; padding: 0; background: transparent; }
+  #login-screen .login-card { max-width: none; padding: 30px 26px; border: 1px solid rgba(255, 255, 255, .1); border-radius: 16px; background: rgba(10, 12, 12, .68); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 20px 56px rgba(0, 0, 0, .2); }
+  #login-screen .login-mark { margin: 0 0 24px; width: 44px; height: 44px; }
+  #login-screen .login-card h1 { font-size: 34px; margin-bottom: 10px; }
+  #login-screen .login-card .sub { margin-bottom: 20px; }
+  #login-screen .field { margin-bottom: 18px; }
+  #login-screen .field input { font-size: 16px; scroll-margin-block: 24px; }
+  #login-screen .auth-help { margin-top: 20px; }
+  #login-screen .btn { white-space: normal; }
+}
+@media (max-height: 600px) and (max-width: 900px), (max-height: 600px) and (max-width: 1200px) and (max-aspect-ratio: 3/2) {
+  /* The document grows with the form when the software keyboard reduces height. */
+  #login-screen { align-items: start; }
+}
+@supports not ((backdrop-filter: blur(14px)) or (-webkit-backdrop-filter: blur(14px))) {
+  #login-screen .login-card { background: #111513; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #login-screen *, #login-screen *::before, #login-screen *::after { transition: none; }
+}

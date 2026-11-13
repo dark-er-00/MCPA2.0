@@ -1,0 +1,80 @@
+/* ============================================================
+   FIELDMARK — DESIGN TOKENS
+   Signature: brushed-steel tool tags (mono ID chips with a
+   laser-etched edge) + a gold "chain of custody" thread that
+   runs through every movement timeline. Everything else stays
+   quiet: hairline borders, restrained shadow, generous air.
+   ============================================================ */
+:root{
+  --black:#111111;
+  --black-deep:#0A0A0A;
+  --white:#FFFFFF;
+  --off-white:#F7F7F5;
+  --gold:#FABB00;
+  --gold-light:#E8D79A;
+  --gold-dim:#8a7327;
+  --gray:#6B6B6B;
+  --gray-light:#EDEDED;
+  --line:#E4E2DC;
+  --success:#4F7A5E;
+  --success-bg:#EAF1EC;
+  --warning:#B98A2B;
+  --warning-bg:#FBF1DF;
+  --danger:#B3453B;
+  --danger-bg:#FBEAE8;
+  --info:#3E6A8F;
+  --info-bg:#EAF1F7;
+
+  --font-display:'Fraunces', serif;
+  --font-body:'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:'JetBrains Mono', monospace;
+
+  --radius-sm:6px;
+  --radius-md:10px;
+  --radius-lg:14px;
+  --shadow-sm:0 1px 2px rgba(17,17,17,0.04), 0 1px 1px rgba(17,17,17,0.03);
+  --shadow-md:0 4px 16px rgba(17,17,17,0.06);
+  --sidebar-w:256px;
+}
+
+body.dark{
+  --off-white:#0F0F0E;
+  --white:#171715;
+  --black:#F5F3EE;
+  --gray-light:#232320;
+  --line:#2B2B27;
+  --gray:#9C9A93;
+  --success-bg:#16261c;
+  --warning-bg:#2a2110;
+  --danger-bg:#2a1614;
+  --info-bg:#101f2a;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%;}
+body{
+  font-family:var(--font-body);
+  background:var(--off-white);
+  color:var(--black);
+  -webkit-font-smoothing:antialiased;
+  transition:background .25s ease, color .25s ease;
+}
+img{max-width:100%; display:block;}
+button{font-family:inherit; cursor:pointer;}
+input, select, textarea{font-family:inherit;}
+a{color:inherit; text-decoration:none;}
+
+.hidden{display:none !important;}
+
+/* ---------- Type ---------- */
+.display{font-family:var(--font-display); font-weight:480; letter-spacing:-0.01em;}
+.eyebrow{
+  font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gray); font-weight:500;
+}
+.mono{font-family:var(--font-mono);}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar{width:8px; height:8px;}
+::-webkit-scrollbar-thumb{background:var(--line); border-radius:8px;}
+::-webkit-scrollbar-track{background:transparent;}
