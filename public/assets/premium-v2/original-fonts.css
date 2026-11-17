@@ -1,0 +1,4 @@
+/* Original typography, locally hosted to avoid external network dependencies. */
+@font-face{font-family:'Fraunces';src:url('fonts/Fraunces.ttf') format('truetype');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Public Sans';src:url('fonts/PublicSans.ttf') format('truetype');font-weight:100 900;font-display:swap}
+@font-face{font-family:'JetBrains Mono';src:url('fonts/JetBrainsMono.ttf') format('truetype');font-weight:100 800;font-display:swap}
