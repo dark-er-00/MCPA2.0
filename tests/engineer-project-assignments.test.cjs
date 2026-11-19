@@ -17,9 +17,9 @@ test('No assigned projects produces empty sites, tools, history and inventory',(
  for(const key of ['sites','tools','history'])assert.equal(result[key].length,0);
  const inventory=scope.engineerInventory(data,user,{eligible:t=>t.status==='available'});assert.deepEqual(ids(inventory.tools),[]);assert.equal(inventory.sites.length,0);
 });
-test('Name collisions, missing IDs and demo labels never authorize Engineer projects or custody',()=>{
+test('Name collisions and missing IDs never authorize Engineer projects or custody',()=>{
  const {user}=setup(),data={officeId:'office',sites:[{id:'false',name:'Casa Buena',assigned_engineer:user.name,is_active:true},{id:'other',assigned_engineer_id:'other',assigned_engineer:user.name,is_active:true}],tools:[{id:'false',siteId:'false',holder:user.name,status:'available'}],history:[]};
- assert.equal(scope.projects(data.sites,user,true).length,0);assert.equal(scope.projectSnapshot(data,user).tools.length,0);assert.equal(scope.engineerInventory(data,user,{demo:true,eligible:()=>true}).tools.length,0);
+ assert.equal(scope.projects(data.sites,user).length,0);assert.equal(scope.projectSnapshot(data,user).tools.length,0);assert.equal(scope.engineerInventory(data,user,{eligible:()=>true}).tools.length,0);
  assert.equal(scope.projectSnapshot({sites:[{id:'id',assigned_engineer_id:user.id}]},{...user,id:null}).sites.length,0);
 });
 test('Authoritative Office ID excludes renamed Office stock even if a stale response assigns it',()=>{

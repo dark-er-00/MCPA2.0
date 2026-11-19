@@ -61,7 +61,7 @@
     // accepts only recorded AVAILABLE stock. Do not promise an invalid request.
     if (status !== 'available') return result('status', 'Unavailable', status === 'inoffice' ? 'Recorded as In Office. Admin must review its movement status before a request.' : 'The recorded status does not permit a new request.');
     const verified = lock === null || typeof lock === 'string' || data?.inventoryAvailabilityVersion === 1
-      || !window.MCPAAuth || window.MCPAAuth.isDemo === true;
+      || !window.MCPAAuth;
     if (data?.availabilityError) return result('unknown', 'Availability unverified', 'The latest inventory verification failed. Refresh to verify reservations before requesting.');
     if (!verified) return result('unknown', 'Availability unverified', 'The server did not provide reservation verification. Ask your administrator to update inventory availability verification, then refresh.');
     return result('available', 'Available to request', 'No holder or reservation. Admin approval is required.');

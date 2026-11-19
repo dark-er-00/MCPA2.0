@@ -24,9 +24,6 @@ test('Secretary and Tool Handler module restrictions',()=>{
  assert.ok(index(data,user('tool_handler')).every(r=>!['request','purchase','reports','consumables'].includes(r.module)));
  assert.equal(index(data,user('unknown')).length,0);
 });
-test('Demo movements and activity are scoped before counts and snippets',()=>{
- const rows=index(data,user('engineer'),true);assert.equal(rows.filter(r=>['request','transfer','repair','activity','masterlist'].includes(r.module)).length,0);
-});
 test('Large result sets and duplicate names retain stable identities',()=>{
  const rows=index({inventory:Array.from({length:2001},(_,i)=>({id:'asset-'+i,name:'Duplicate'}))},user('admin'));
  assert.equal(match(rows,'Duplicate').length,2001);assert.equal(match(rows,'asset-2000')[0].id,'asset-2000');

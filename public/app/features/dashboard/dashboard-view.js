@@ -1,5 +1,5 @@
 
-/* Presentation only: consumes the existing live/demo snapshot and navigation. */
+/* Presentation only: consumes the live snapshot and navigation. */
 
 (function () {
   'use strict';
@@ -20,11 +20,11 @@
 
   const empty = text => `<p class="command-empty">${text}</p>`;
 
-  const activeSites = (data, user) => window.MCPAProjectScope.projects(data.activeProjects || data.sites, user, window.MCPAAuth?.isDemo === true);
+  const activeSites = (data, user) => window.MCPAProjectScope.projects(data.activeProjects || data.sites, user);
 
   const belongs = (t,p,strict=false) => t.site_id === p.id || t.siteId === p.id || (!strict && t.site === p.name);
 
-  const scoped = (data,user) => data.tools.filter(t => EquipmentTracking.quantity(t)>0 && (['admin','tool_handler'].includes(user.role) || (window.MCPAAuth && !window.MCPAAuth.isDemo ? t.holderId === user.id : !!user.name && t.holder === user.name)));
+  const scoped = (data,user) => data.tools.filter(t => EquipmentTracking.quantity(t)>0 && (['admin','tool_handler'].includes(user.role) || (Boolean(user.id) && t.holderId === user.id)));
 
   const condition = t => ['repair','underrepair'].includes(t.status) ? 'repair' : t.status === 'inuse' ? 'deployed' : t.status === 'inoffice' ? 'available' : ['available','missing'].includes(t.status) ? t.status : 'other';
 
@@ -33,8 +33,6 @@
   const groups = [['available','Available'],['deployed',window.MCPADisplay.status('inuse')],['repair','Repair / under repair'],['missing','Missing'],['other','Other / retired']];
 
   const display = window.MCPADisplay;
-
-  // The live RPC audit uses operation names; demo history uses event names.
 
   const actionKey = action => ({createRequest:'request_created',approveRequest:'request_approved',rejectRequest:'request_rejected',releaseRequest:'transfer_created',createTransfer:'transfer_created',receiveTransfer:'transfer_received',createReturn:'return_created',reportRepair:'repair_reported',startRepair:'repair_started',completeRepair:'repair_completed',reportMissing:'missing_reported',recoverMissing:'missing_recovered'}[display.actionKey(action)] || '');
 
@@ -98,9 +96,7 @@
     return '<div class="admin-review" aria-label="Needs review"><strong>Needs Review</strong>'+items.map(([count,label,target])=>go(label+' <span>'+count+'</span>',target)).join('')+'</div>';
   }
 
-  const addressed = (record,user) => window.MCPAAuth && !window.MCPAAuth.isDemo
-    ? Boolean(user.id) && record.receiverId === user.id
-    : Boolean(user.name) && (record.receiver === user.name || record.requester === user.name);
+  const addressed = (record,user) => Boolean(user.id) && record.receiverId === user.id;
 
   const requestLabels = display.statuses.request;
 
@@ -137,7 +133,7 @@
   function render(data,user,state,header,table,when) {
     const assetsOnly=['engineer','architect'].includes(user.role), admin=['admin','tool_handler'].includes(user.role), tools=scoped(data,user), totals=EquipmentTracking.tally(tools,data,{assetsOnly}), projects=activeSites(data,user);
 
-    const incoming=data.transfers.filter(t=>['pending','refused'].includes(t.status) && (admin || (window.MCPAAuth && !window.MCPAAuth.isDemo ? (t.receiverId===user.id || (t.status==='refused'&&t.senderId===user.id)) : (t.receiver===user.name || (t.status==='refused'&&t.sender===user.name)))));
+    const incoming=data.transfers.filter(t=>['pending','refused'].includes(t.status) && (admin || (Boolean(user.id) && (t.receiverId===user.id || (t.status==='refused'&&t.senderId===user.id)))));
 
     const requests=data.requests.filter(r=>(admin?['pending','approved']:['pending','approved','released']).includes(r.status) && (admin || addressed(r,user)));
 
@@ -182,7 +178,7 @@
       'dashboard-recent'
     );
 
-    return `${fieldRole?'<div class="field-dashboard">':''}${header('Movement overview','Track requests, custody, equipment condition, and movement across project sites.')}<div class="dashboard-toolbar"><p class="dashboard-scope">${admin?'Company equipment':'My assigned equipment'} <span>· ${assetsOnly?'Individual asset records':'Quantities across saved records'}</span></p>${['engineer','architect'].includes(user.role) ? '<div class="overview-actions">'+[['Request Tools','request','inbox'],['Receive / Transfer','transfer','swap'],['Return Tools','return','undo'],['Report an Issue','repair','alert']].map(([label,target,symbol])=>go(glyph(symbol)+label,target)).join('')+'</div>' : user.role==='admin' ? review(data) : go('View inventory','masterlist')}</div><div class="grid grid-4 overview-kpis">${cards.map(([count,label,description,symbol,target])=>`<button class="card kpi" data-go="${target}"><span class="command-kpi-icon">${glyph(symbol)}</span><span class="command-kpi-copy"><span class="lbl">${label}</span><span class="num">${count}</span><span class="kpi-description">${description}</span></span></button>`).join('')}${user.role==='admin' && window.MCPAAuth?.isDemo !== true ? consumablesCard(data.consumablesSummary) : ''}</div>${fieldRole?recentPanel:''}${fieldRole?'<div class="dashboard-workflow">'+turnover(data,user,when)+requestsOverview(data,user)+'</div>':''}<div class="command-analytics">${statusChart(tools,assetsOnly)}${siteChart(projects,tools,assetsOnly,window.MCPAPermissions.operational(user.role))}${movementChart(data)}</div><div class="overview-columns">${panel(admin?'Current inventory':'My assigned tools',`${filters({...data,sites:projects},tools,state,assetsOnly)}<div id="overview-results">${inventory(data,user,state,table)}</div>`,'','inventory-panel')}${panel('Next actions',`<div class="command-tasks">${tasks.filter(t=>user.role!=='tool_handler'||t[4]!=='request').map(([count,label,description,symbol,target])=>`<div class="command-task ${count?'':'is-clear'}"><span class="task-icon">${glyph(symbol)}</span><div><strong>${label} <span>${count}</span></strong><p>${description}</p></div><button class="btn btn-secondary btn-sm" data-go="${target}" aria-label="Open ${label.toLowerCase()}">Open</button></div>`).join('')}</div>`)}</div><div class="command-bottom">${fieldRole?'':panel('Recent asset activity',timeline,go('View all','activity'))}${panel('Active Projects',projectCards,go('View all','sites'),'dashboard-projects')}${panel('Custody overview',custody)}</div>${fieldRole?'</div>':''}`;
+    return `${fieldRole?'<div class="field-dashboard">':''}${header('Movement overview','Track requests, custody, equipment condition, and movement across project sites.')}<div class="dashboard-toolbar"><p class="dashboard-scope">${admin?'Company equipment':'My assigned equipment'} <span>· ${assetsOnly?'Individual asset records':'Quantities across saved records'}</span></p>${['engineer','architect'].includes(user.role) ? '<div class="overview-actions">'+[['Request Tools','request','inbox'],['Receive / Transfer','transfer','swap'],['Return Tools','return','undo'],['Report an Issue','repair','alert']].map(([label,target,symbol])=>go(glyph(symbol)+label,target)).join('')+'</div>' : user.role==='admin' ? review(data) : go('View inventory','masterlist')}</div><div class="grid grid-4 overview-kpis">${cards.map(([count,label,description,symbol,target])=>`<button class="card kpi" data-go="${target}"><span class="command-kpi-icon">${glyph(symbol)}</span><span class="command-kpi-copy"><span class="lbl">${label}</span><span class="num">${count}</span><span class="kpi-description">${description}</span></span></button>`).join('')}${user.role==='admin' ? consumablesCard(data.consumablesSummary) : ''}</div>${fieldRole?recentPanel:''}${fieldRole?'<div class="dashboard-workflow">'+turnover(data,user,when)+requestsOverview(data,user)+'</div>':''}<div class="command-analytics">${statusChart(tools,assetsOnly)}${siteChart(projects,tools,assetsOnly,window.MCPAPermissions.operational(user.role))}${movementChart(data)}</div><div class="overview-columns">${panel(admin?'Current inventory':'My assigned tools',`${filters({...data,sites:projects},tools,state,assetsOnly)}<div id="overview-results">${inventory(data,user,state,table)}</div>`,'','inventory-panel')}${panel('Next actions',`<div class="command-tasks">${tasks.filter(t=>user.role!=='tool_handler'||t[4]!=='request').map(([count,label,description,symbol,target])=>`<div class="command-task ${count?'':'is-clear'}"><span class="task-icon">${glyph(symbol)}</span><div><strong>${label} <span>${count}</span></strong><p>${description}</p></div><button class="btn btn-secondary btn-sm" data-go="${target}" aria-label="Open ${label.toLowerCase()}">Open</button></div>`).join('')}</div>`)}</div><div class="command-bottom">${fieldRole?'':panel('Recent asset activity',timeline,go('View all','activity'))}${panel('Active Projects',projectCards,go('View all','sites'),'dashboard-projects')}${panel('Custody overview',custody)}</div>${fieldRole?'</div>':''}`;
   }
 
   window.DashboardView={render,inventory,consumablesCard};

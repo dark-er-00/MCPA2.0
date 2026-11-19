@@ -110,6 +110,6 @@
     window.addEventListener('pagehide',() => observer.disconnect(),{once:true});
   }
   // Refresh expiring signed images while a details page stays open.
-  const interval = setInterval(() => { if (!document.hidden && window.MCPAAuth?.profile && !window.MCPAAuth.isDemo) hydrate(); },60000);
+  const interval = setInterval(() => { if (!document.hidden && window.MCPAAuth?.profile) hydrate(); },60000);
   window.addEventListener('pagehide',() => clearInterval(interval),{once:true});
 })();

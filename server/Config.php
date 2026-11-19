@@ -11,7 +11,6 @@ final class Config
         public readonly string $url,
         public readonly string $publishableKey,
         public readonly string $serverKey = '',
-        public readonly bool $developmentEnabled = false,
         public readonly string $appUrl = '',
         public readonly bool $invitationsEnabled = false,
     ) {
@@ -59,7 +58,7 @@ final class Config
         return new self(
             rtrim($get('SUPABASE_URL'), '/'), $get('SUPABASE_PUBLISHABLE_KEY'),
             $get('MCPA_SUPABASE_SECRET_KEY') ?: ($get('SUPABASE_SECRET_KEY') ?: $get('SUPABASE_SERVICE_ROLE_KEY')),
-            $get('MCPA_ENABLE_DEVELOPMENT_ACCOUNTS') === 'true', $get('MCPA_APP_URL'),
+            $get('MCPA_APP_URL'),
             $get('MCPA_ENABLE_REGISTRATION_INVITATIONS') === 'true',
         );
     }

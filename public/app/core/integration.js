@@ -5,7 +5,7 @@
   const routes=new Set(['quantity-request','outward-materials','asset-transfer','transfer-inbox','asset-retirement-v2','retired-equipment-v2']);
   let current=null,revision=0;
   const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  function handles(screen){return (!window.MCPAAuth?.isDemo&&screen==='transfer')||routes.has(screen)||(!window.MCPAAuth?.isDemo&&['request','return'].includes(screen)&&['admin','engineer','architect'].includes(window.MCPAAuth?.profile?.role));}
+  function handles(screen){return screen==='transfer'||routes.has(screen)||(['request','return'].includes(screen)&&['admin','engineer','architect'].includes(window.MCPAAuth?.profile?.role));}
   function dispose(){++revision;const old=current;current=null;if(!old)return;old.abort.abort();for(const mounted of old.mounts)mounted.destroy();old.api?.dispose();}
   async function mount(screen,root,{record='',view=''}={}){
     dispose();const person=window.MCPAAuth.requireLive(),version=revision;

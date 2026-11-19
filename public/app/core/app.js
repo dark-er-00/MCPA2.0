@@ -97,7 +97,7 @@ function loadModule(screenId, callback, route = screenId){
   const operational = MCPAPermissions.operational(user.role);
   let portal = operational ? 'engineer' : 'admin';
   if (['sites','consumables','users','settings','reports','purchases'].includes(mod)) portal = 'admin';
-  if (mod === 'masterlist' && (operational || user.role === 'tool_handler' || window.MCPAAuth.isDemo)) portal = 'engineer';
+  if (mod === 'masterlist' && (operational || user.role === 'tool_handler')) portal = 'engineer';
   const base = window.MCPAPaths.module(portal, mod);
   
   document.getElementById('content').setAttribute('aria-busy', 'true');

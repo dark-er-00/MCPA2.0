@@ -113,7 +113,6 @@ html.theme-transition::view-transition-new(root){
 #auth-feedback:empty{display:none}
 .auth-help{font-size:12px;color:var(--text-secondary);line-height:1.6;margin:16px 0}
 .login-card>.link-btn,.login-card [data-auth-back]{display:block;border:0;background:none;margin:16px auto;min-height:36px}
-.auth-demo-choices{display:grid;gap:10px;margin:18px 0}
 .auth-loading{font-size:13px;text-align:center;color:var(--text-secondary)}
 .auth-password-wrap{position:relative}
 .auth-password-wrap input{padding-right:72px;min-height:44px}

@@ -47,6 +47,8 @@
 .equipment-review-dialog .wa-q-workspace{display:block}
 .equipment-requests .equipment-row-status{text-align:right}
 .mv-detail-heading .equipment-row-status{margin-left:auto;align-self:center}
+.mv-detail .equipment-stage{margin:12px 0 4px;font-size:15px;line-height:1.4}
+.mv-detail .equipment-stage+p{margin:0 0 16px;font-size:13px;color:var(--gray);line-height:1.5}
 .equipment-admin-requests [data-specific-pane] [data-create-panel]{display:none}
 .equipment-tool-disclosure ul{max-height:240px;overflow:auto}
 @media(max-width:700px){.equipment-review-dialog{padding:16px}.equipment-review-dialog .equipment-row{grid-template-columns:1fr}.equipment-requests .equipment-row-status{text-align:left}}

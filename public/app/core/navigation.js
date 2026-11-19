@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    NAVIGATION CONFIG
    ============================================================ */
 /* ============================================================
@@ -60,8 +60,7 @@ let openNavigationGroup = null;
 function buildNav(){
   const el=document.getElementById('nav-list'),role=window.MCPAAuth?.profile?.role;
   const source=MCPAPermissions.operational(role)?ENGR_NAV:ADMIN_NAV;
-  const liveOnly=['quantity-request','outward-materials','asset-transfer','transfer-inbox','asset-retirement-v2','retired-equipment-v2'];
-  const items=source.filter(n=>n.id&&window.MCPAAuth.canRoute(n.id)).filter(n=>!window.MCPAAuth.isDemo||!liveOnly.includes(n.id));
+  const items=source.filter(n=>n.id&&window.MCPAAuth.canRoute(n.id));
   const groups=[
     {id:'equipment',label:'Equipment Tracking',icon:'box',routes:['masterlist','asset-retirement-v2','repair','missing','retired-equipment-v2']},
     {id:'projects',label:'Projects',icon:'map',routes:['sites']},

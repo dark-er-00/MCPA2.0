@@ -1,11 +1,11 @@
-﻿/* Own-recipient monitoring; configuration failures pause automatic retries. */
+/* Own-recipient monitoring; configuration failures pause automatic retries. */
 (function () {
   'use strict';
   const empty=()=>({notifications:[],overdue:[],unreadCount:0});
   let state=empty(),owner='',revision=0,loading=null,stop=null,dialog=null,error='',blocked=false,busy=false,loaded=false;
   let writing=false,actionError='',refreshAgain=false;
   const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const active=()=>window.MCPAAuth?.profile&&!window.MCPAAuth.isDemo&&window.MCPAAuth.canRoute('activity');
+  const active=()=>Boolean(window.MCPAAuth?.profile&&window.MCPAAuth.canRoute('activity'));
   const client=()=>window.EquipmentTracking.client();
   const date=window.MCPADisplay.dateTime;
   const configurationError=problem=>['42P01','42883','PGRST202','PGRST205','42501'].includes(problem?.code);
@@ -110,7 +110,7 @@
   }
   async function open(){
     window.MCPAAccountMenu?.close(false);
-    if(window.MCPAAuth?.isDemo){if(window.MCPAAuth.canRoute('activity'))window.showScreen('activity');return;}if(!active())return;
+    if(!active())return;
     if(owner!==window.MCPAAuth.profile.id)initialize();
     if(!dialog){
       dialog=document.createElement('dialog');dialog.id='monitoring-dialog';dialog.className='monitoring-dialog';dialog.setAttribute('aria-labelledby','monitoring-title');document.body.append(dialog);

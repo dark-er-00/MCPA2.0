@@ -16,13 +16,6 @@ test('application paths resolve at the domain root and under a hosted project su
   }
 });
 
-test('the legacy engineer entry preserves the query and route while using the canonical shell', () => {
-  const source = readFileSync(new URL('../public/2-engr/index.html', import.meta.url), 'utf8');
-  let redirected;
-  vm.runInNewContext(source.match(/<script>(.*?)<\/script>/s)[1], {URL, location:{href:'https://example.test/MCPA/2-engr/index.html?reset=1#request', search:'?reset=1', hash:'#request', replace:value => {redirected=value;}}});
-  assert.equal(redirected, 'https://example.test/MCPA/index.html?reset=1#request');
-});
-
 test('the application server serves public assets and excludes private files, SQL and test sources', async t => {
   const server = createStaticServer();
   server.listen(0, '127.0.0.1');

@@ -7,34 +7,28 @@
   const collections = {request:'requests',transfer:'transfers',return:'returns',repair:'repairs',missing:'missing'};
   const text = value => String(value ?? '');
   const join = values => values.filter(value => value != null && value !== '').join(' · ');
-  function index(data, user, demo = false) {
+  function index(data, user) {
     const rows = [], personal = MCPAPermissions.operational(user?.role);
     const allowed = route => MCPAPermissions.route(user?.role, route);
     const add = (module, id, title, context, route, reference = id) => {
       if (!allowed(module) || !id) return;
       rows.push({key:module+':'+id,module,id:text(id),title:text(title),reference:display.reference(reference),context:text(context),route});
     };
-    const sourceTools = data.inventory || data.tools || [];
-    const tools = demo && MCPAPermissions.operational(user.role) ? MCPAProjectScope.engineerInventory({...data,tools:sourceTools},user,{demo:true,eligible:tool=>window.EquipmentTracking?.requestability(tool,data).eligible===true}).tools : sourceTools;
+    const tools = data.inventory || data.tools || [];
     tools.forEach(t => {
-      if (demo && personal && !MCPAPermissions.operational(user.role) && t.holder !== user.name) return;
       add('masterlist',t.id,t.name,join([t.serial || t.serial_number,t.cat || t.category,t.brand,t.site,t.holder,t.status ? display.status(t.status) : '',t.condition ? display.condition(t.condition) : '']),'masterlist?record='+encodeURIComponent(t.id));
     });
     (data.projects || data.sites || []).forEach(s => {
-      if (personal && !MCPAProjectScope.assigned(s,user,demo)) return;
+      if (personal && !MCPAProjectScope.assigned(s,user)) return;
       add('sites',s.id,s.name,join([s.location,s.assigned_engineer || s.engineer]),'site-detail?record='+encodeURIComponent(s.id));
     });
     const names = new Map((data.tools || []).map(t => [t.id,t.name]));
-    const visibleIds = new Set();
     Object.entries(collections).forEach(([module,collection]) => (data[collection] || []).forEach(r => {
-      if (demo && personal && ![r.requester,r.receiver,r.sender,r.returnedBy,r.reportedBy].includes(user.name) && !(r.toolId && tools.find(t => t.id === r.toolId)?.holder === user.name)) return;
       if (!allowed(module)) return;
-      visibleIds.add(r.id);
       const equipment = (r.toolIds || [r.toolId]).filter(Boolean).map(id => join([id,names.get(id)]));
       add(module,r.id,join(equipment) || r.id,join([display.status(r.status || (module === 'return' ? 'returned' : ''), module),r.destination,r.requester,r.sender,r.receiver,r.returnedBy,r.reportedBy]),module+'?record='+encodeURIComponent(r.id));
     }));
     (data.activity || []).forEach(r => {
-      if (demo && personal && r.actor !== user.name && !visibleIds.has(r.entityId)) return;
       const event = display.activity(r, data);
       add('activity',r.id,event.title,join([event.description,event.actor,...(r.toolIds || [])]),'activity?record='+encodeURIComponent(r.id),event.reference);
     });
@@ -61,7 +55,7 @@
   const clear = document.createElement('button'); clear.type='button'; clear.className='global-search-clear'; clear.textContent='Clear'; clear.setAttribute('aria-label','Clear global search'); host.insertBefore(clear,panel);
   input.maxLength=300;
   input.setAttribute('role','combobox'); input.setAttribute('aria-autocomplete','list'); input.setAttribute('aria-controls',list.id); input.setAttribute('aria-expanded','false'); input.setAttribute('autocomplete','off'); input.setAttribute('aria-label','Search accessible records across SiteTrace');
-  const identity = () => { const p=window.MCPAAuth?.profile; return p ? [p.id,p.name,p.role,window.MCPAAuth.isDemo].join('|') : ''; };
+  const identity = () => { const p=window.MCPAAuth?.profile; return p ? [p.id,p.name,p.role].join('|') : ''; };
   const rpc = async name => {const {data,error}=await EquipmentTracking.client().rpc(name); if(error)throw error;return data;};
   const records = (data, key) => {if(!Array.isArray(data?.[key]))throw new Error('Invalid search source');return data[key];};
   async function read() {
@@ -69,7 +63,7 @@
     if (!key) return {rows:[],failed:[]};
     if(cache?.key===key && !cache.failed.length && now-cache.time<30000)return cache;
     if(pending?.key===key)return pending.promise;
-    const user={...MCPAAuth.profile}, demo=MCPAAuth.isDemo;
+    const user={...MCPAAuth.profile};
     const job={key};
     job.promise=(async()=>{
       // A failed personal inventory read must never fall back to the broader
@@ -79,25 +73,37 @@
       const get=(label,fn)=>tasks.push(Promise.resolve().then(fn).catch(()=>failed.push(label)));
       if(MCPAPermissions.route(user.role,'activity'))get('Movements',async()=>Object.assign(data,await MovementStore.initialize()));
       if(MCPAPermissions.route(user.role,'masterlist'))get('Equipment',async()=>{
-        if(demo){await MovementStore.initialize();const snapshot=MovementStore.getState();data.inventory=MCPAPermissions.operational(user.role)?MCPAProjectScope.engineerInventory(snapshot,user,{demo:true,eligible:tool=>EquipmentTracking.requestability(tool,snapshot).eligible}).tools:snapshot.tools;}
-        else if(MCPAPermissions.operational(user.role)){
-          const snapshot=await rpc('mcpa_engineer_equipment_snapshot');
+        if(MCPAPermissions.operational(user.role)){
+          const snapshot=await rpc('mcpa_engineer_equipment_snapshot').catch(async err=>{
+            if(!['PGRST202','42883'].includes(err?.code))throw err;
+            const client=EquipmentTracking.client();
+            const [pers,proj,off]=await Promise.all([
+              client.rpc('mcpa_personal_equipment_snapshot'),
+              client.rpc('mcpa_project_snapshot'),
+              client.rpc('mcpa_inventory_office')
+            ]);
+            if(!pers.error && !proj.error && Array.isArray(pers.data?.tools) && Array.isArray(proj.data?.sites)){
+              const officeId=String(off.data?.id||proj.data.sites.find(s=>String(s.name||'').trim().toLowerCase()==='office')?.id||'__office__');
+              return {...pers.data,tools:pers.data.tools.filter(t=>!t.retirementDisposition),sites:proj.data.sites.filter(s=>s.id!==officeId&&s.is_active===true&&!s.archived_at),officeId,engineerInventoryVersion:2};
+            }
+            const snap=await MovementStore.initialize();
+            const officeId=String(off.data?.id||(snap.sites||[]).find(s=>String(s.name||'').trim().toLowerCase()==='office')?.id||'__office__');
+            return {...snap,tools:(snap.tools||[]).filter(t=>!t.retirementDisposition),sites:(snap.sites||[]).filter(s=>s.id!==officeId&&s.is_active===true&&!s.archived_at),officeId,engineerInventoryVersion:2};
+          });
           if(snapshot?.engineerInventoryVersion!==2||!snapshot.officeId)throw new Error('Engineer inventory authorization needs the approved backend update.');
-          data.inventory=MCPAProjectScope.engineerInventory(snapshot,user,{eligible:tool=>EquipmentTracking.requestability(tool,snapshot).eligible}).tools;
+          data.inventory=MCPAProjectScope.engineerInventory(snapshot,user).tools;
         }
-        else if(MCPAPermissions.operational(user.role))data.inventory=records(await rpc('mcpa_personal_equipment_snapshot'),'tools');
         else data.inventory=records(await EquipmentTracking.snapshot(),'tools');
       });
       if(MCPAPermissions.route(user.role,'sites'))get('Projects',async()=>{
-        if(demo){await MovementStore.initialize();data.projects=MovementStore.getState().sites;}
-        else data.projects=MCPAPermissions.operational(user.role)?records(await rpc('mcpa_project_snapshot'),'sites'):await EquipmentTracking.readAll('sites');
+        data.projects=MCPAPermissions.operational(user.role)?records(await rpc('mcpa_project_snapshot'),'sites'):await EquipmentTracking.readAll('sites');
       });
-      if(!demo && MCPAPermissions.route(user.role,'purchase'))get('Purchases',async()=>{data.purchases=records(await rpc('mcpa_purchase_snapshot'),'purchases');});
-      if(!demo && MCPAPermissions.route(user.role,'consumables'))get('Materials',async()=>{
+      if(MCPAPermissions.route(user.role,'purchase'))get('Purchases',async()=>{data.purchases=records(await rpc('mcpa_purchase_snapshot'),'purchases');});
+      if(MCPAPermissions.route(user.role,'consumables'))get('Materials',async()=>{
         [data.materials,data.materialRequests]=await Promise.all([EquipmentTracking.readAll('consumables'),EquipmentTracking.readAll('consumable_requests')]);
       });
       await Promise.all(tasks);
-      const value={key,time:Date.now(),rows:index(data,user,demo),failed};
+      const value={key,time:Date.now(),rows:index(data,user),failed};
       if(identity()===key && pending===job)cache=value;
       return value;
     })().finally(()=>{if(pending===job)pending=null;});

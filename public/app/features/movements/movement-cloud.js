@@ -1,16 +1,15 @@
-/* Shared live repository. Demo data is used only after an explicit mode change. */
+/* Shared live repository. */
 (function () {
   'use strict';
   const empty = () => ({version: 1, revision: 0, tools: [], sites: [], users: [], requests: [], transfers: [], returns: [], repairs: [], missing: [], activity: []});
   let state = empty(), ready = false, loading = null, saving = false, stale = false, availabilityError = false;
-  let mode = 'live';
   const pending = new Map();
   const clone = value => JSON.parse(JSON.stringify(value));
   let revision = 0;
   const notify = () => window.dispatchEvent(new CustomEvent('mcpa:movement-change'));
   function client() {
     if (!window.supabaseClient) {
-      if (!window.supabase?.createClient) throw new Error('The database connection could not load. Check your connection and refresh, or explicitly open demo data.');
+      if (!window.supabase?.createClient) throw new Error('The database connection could not load. Check your connection and refresh.');
       if (window.EquipmentTracking) return window.EquipmentTracking.client();
       const config = window.MCPA_CONFIG;
       if (!config?.supabaseUrl || !config?.supabasePublishableKey) throw new Error('The database connection is not configured.');
@@ -30,10 +29,6 @@
     return {role:user.role,name:user.name,id:user.id};
   }
   async function refresh() {
-    if (mode === 'demo') {
-      window.MovementDemoStore.activate();
-      return window.MovementDemoStore.refresh();
-    }
     window.MCPAAuth.requireLive();
     const requestRevision = revision;
     if (loading) return loading;
@@ -41,8 +36,7 @@
       const {data, error} = await client().rpc('mcpa_movement_snapshot');
       if (error) throw explain(error);
       if (!data || !Array.isArray(data.tools) || !Array.isArray(data.requests)) throw new Error('The movement database returned an invalid snapshot. Refresh after checking the setup.');
-      // Ignore a live response after the user has switched to demo mode.
-      if (mode !== 'live' || requestRevision !== revision) return clone(state);
+      if (requestRevision !== revision) return clone(state);
       const next = {...empty(), ...data, availabilityLoaded: true};
       const changed = JSON.stringify(next) !== JSON.stringify(state);
       state = next; ready = true; stale = false;
@@ -54,13 +48,12 @@
     })();
     try { return await loading; }
     catch (error) {
-      if (mode === 'live' && requestRevision === revision) { availabilityError = true; notify(); }
+      if (requestRevision === revision) { availabilityError = true; notify(); }
       throw error;
     } finally { if (requestRevision === revision) loading = null; }
   }
   async function mutate(action, payload) {
     if (!window.MCPAAuth?.canAction(action)) throw new Error('This action is not permitted for your account.');
-    if (mode === 'demo') return window.MovementDemoStore[action](...payload.args);
     window.MCPAAuth.requireLive();
     const requestRevision = revision;
     if (saving) throw new Error('A movement is already saving. Please wait.');
@@ -88,11 +81,10 @@
     } finally { if (requestRevision === revision) saving = false; }
   }
   const api = {
-    get mode() { return mode; },
-    getState() { return mode === 'demo' ? window.MovementDemoStore.getState() : {...clone(state), ...(availabilityError ? {availabilityError:true} : {})}; },
+    get mode() { return 'live'; },
+    getState() { return {...clone(state), ...(availabilityError ? {availabilityError:true} : {})}; },
     getContext: context,
     async returnDestination() {
-      if (mode === 'demo') return window.MovementDemoStore.returnDestination();
       window.MCPAAuth.requireLive();
       const {data,error} = await client().rpc('mcpa_return_destination');
       if (error) {
@@ -102,26 +94,18 @@
       if (!data?.id || typeof data.name !== 'string' || !data.name.trim()) throw new Error('The Office destination could not be verified. Contact Admin.');
       return data;
     },
-    async initialize() { if (mode === 'demo') return window.MovementDemoStore.activate(); return ready ? clone(state) : refresh(); },
+    async initialize() { return ready ? clone(state) : refresh(); },
     refresh,
     clear() {
       ++revision; loading = null; ready = false; saving = false; stale = false; availabilityError = false; state = empty(); pending.clear();
-      window.MovementDemoStore.deactivate(); mode='live';
       TOOLS.splice(0,TOOLS.length);
     },
     async useLive() { api.clear(); return clone(state); },
-    async useDemo() { api.clear(); mode='demo'; window.MovementDemoStore.activate(); return api.getState(); },
-    async setMode(value) {
-      if (value !== mode) throw new Error('Exit this workspace before changing between demo and company data.');
-      return refresh();
-    },
     findTransfer(code) {
-      if (mode === 'demo') return window.MovementDemoStore.findTransfer(code);
       const value = String(code || '').trim().toUpperCase();
       return clone(state.transfers.find(t => t.id === value || t.code === value) || null);
     },
     resolveQr(value) {
-      if (mode === 'demo') return window.MovementDemoStore.resolveQr(value);
       const code = String(value || '').trim();
       const actor = context();
       const addressed = transfer => transfer.receiverId === actor.id;

@@ -149,7 +149,7 @@ try {
   for (const [asset, type] of [
     ['app/core/paths.js', /javascript/], ['app/features/custody-lifecycle/api.mjs', /javascript/],
     ['assets/styles/global.css', /text\/css/], ['assets/images/favicon.svg', /image\/svg\+xml/],
-    ['assets/images/login-slideshow/project-10.jpg', /image\/jpeg/], ['2-engr/index.html', /text\/html/],
+    ['assets/images/login-slideshow/project-10.jpg', /image\/jpeg/],
   ]) {
     const response = request('/' + asset);
     assert.equal(response.status, 200, asset);

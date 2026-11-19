@@ -42,14 +42,8 @@
   if(!start||!end||start>end){exportState();feedback('Choose a valid start and end date.',true);return;}
   loading=true;exportState();$('#report-results').setAttribute('aria-busy','true');$('#report-refresh').disabled=true;
   try{
-   if(MCPAAuth.isDemo){
-    await MovementStore.refresh();const demo=MovementStore.getState();
-    data={start,end,generatedAt:new Date().toISOString(),current:demo.tools,transfers:demo.transfers,snapshots:[],historicalAvailableFrom:null,activity:demo.activity.filter(r=>{const key=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Manila',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(r.createdAt));return key>=start&&key<=end;})};
-    feedback('Offline demonstration records. No historical company snapshots are loaded.');
-   }else{
-    const response=await EquipmentTracking.client().rpc('mcpa_monitoring_report',{p_start:start,p_end:end});
-    if(response.error)throw response.error;if(!root.isConnected)return;data=response.data;feedback('');
-   }
+   const response=await EquipmentTracking.client().rpc('mcpa_monitoring_report',{p_start:start,p_end:end});
+   if(response.error)throw response.error;if(!root.isConnected)return;data=response.data;feedback('');
    const previous=$('#report-snapshot').value;
    $('#report-snapshot').innerHTML=data.snapshots.map(s=>'<option value="'+esc(s.id)+'">'+esc(date(s.capturedAt))+' Manila</option>').join('');
    if(data.snapshots.some(s=>s.id===previous))$('#report-snapshot').value=previous;
@@ -72,7 +66,6 @@
   const filters=[$('#report-scope').textContent];
   if(kind!=='current')filters.push('Reporting period: '+data.start+' through '+data.end+' (inclusive, Manila)');
   if(kind==='history'&&snapshot)filters.push('Snapshot captured: '+date(snapshot.capturedAt)+' Manila');
-  if(MCPAAuth.isDemo)filters.push('Offline demonstration records');
   exporting=true;
   try{await SiteTracePDF.download({button:$('#report-export'),feedback:$('#report-feedback'),route:'reports',report:{
    title:titles[kind],filename:titles[kind].replaceAll(' ','_'),filters,

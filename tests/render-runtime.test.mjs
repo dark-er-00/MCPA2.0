@@ -30,7 +30,7 @@ async function start(overrides = {}) {
   ], {cwd: root, windowsHide: true, stdio: ['ignore', 'ignore', 'pipe'], env: {...process.env,
     SUPABASE_URL: upstreamUrl, SUPABASE_PUBLISHABLE_KEY: key,
     MCPA_SUPABASE_SECRET_KEY: secret, SUPABASE_SECRET_KEY: '', SUPABASE_SERVICE_ROLE_KEY: '',
-    MCPA_ENABLE_DEVELOPMENT_ACCOUNTS: 'false', MCPA_APP_URL: url + '/index.html', ...overrides,
+    MCPA_APP_URL: url + '/index.html', ...overrides,
   }});
   children.push(child);
   let errors = '', failure;
@@ -110,7 +110,7 @@ test('PHP entry points, frontend bytes, modules and runtime configuration are pr
     assert.equal(response.status, 200);
     assert.equal(await response.text(), shell);
   }
-  for (const asset of ['app/core/paths.js', 'app/features/custody-lifecycle/api.mjs', '2-engr/index.html']) {
+  for (const asset of ['app/core/paths.js', 'app/features/custody-lifecycle/api.mjs']) {
     const response = await fetch(base + '/' + asset);
     assert.equal(response.status, 200);
     assert.equal(await response.text(), readFileSync(new URL('../public/' + asset, import.meta.url), 'utf8'));

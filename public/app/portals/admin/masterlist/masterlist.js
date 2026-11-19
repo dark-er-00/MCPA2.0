@@ -765,7 +765,7 @@ function printQRTag(assetId) {
     </head>
     <body>
       <div class="label-container">
-        <div class="company-name">BuildRight Corp.</div>
+        <div class="company-name">MCPA Construction and Supply</div>
         <img src="${qrUrl}" alt="QR Code" onload="window.print(); window.close();" />
         <div class="asset-id">${assetId}</div>
       </div>
@@ -810,7 +810,7 @@ function exportMasterlist() {
     </head>
     <body>
       <div class="header">
-        <h1>BuildRight Corp. - Tools & Equipment Receipt</h1>
+        <h1>MCPA Construction and Supply - Tools & Equipment Receipt</h1>
         <p><strong>Status Report Printed On:</strong> ${currentDate}</p>
         <p><strong>Total Items Listed:</strong> ${filtered.length}</p>
       </div>

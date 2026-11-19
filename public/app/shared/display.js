@@ -89,7 +89,7 @@
   function activity(record = {}, data) {
     record = record || {};
     let key = actionKey(record.action);
-    // Older demo events share a dispatch identifier. Only use the release
+    // Older events share a dispatch identifier. Only use the release
     // wording if an already-authorized related transfer records the request.
     if (record.action === 'transfer_created' && data?.transfers?.some(r => r.id === record.entityId && r.requestId)) key = 'releaseRequest';
     const recipientActions={

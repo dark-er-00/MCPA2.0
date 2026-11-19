@@ -41,7 +41,7 @@
   function attach(owner){
     let C=window.MCPAIndividualImport||window.EquipmentImportCore,controller=null,legacy=false,recoveryError='';
     const button=document.getElementById('importEquipmentBtn');
-    if(!button||window.MCPAAuth?.isDemo||window.MCPAAuth?.profile?.role!=='admin')return;
+    if(!button||window.MCPAAuth?.profile?.role!=='admin')return;
     button.hidden=false;
     let dialog=null,worker=null,busy=false,parsing=false,revision=0,step=1,sheets=[],sheet=null,mapping={},preview=null,result=null,pending=null,actor=null;
     const pendingKey=()=>recoveryKey+'.'+actor.id;

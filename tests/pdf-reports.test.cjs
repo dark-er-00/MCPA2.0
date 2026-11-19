@@ -20,7 +20,6 @@ test('Pinned local assets are intact; reports load from the canonical applicatio
   assert.doesNotMatch(fs.readFileSync(path.join(root,dir,entry),'utf8'),/Export CSV|Download CSV|text\/csv|\.csv['"`]|Export Excel/i,entry);
  }
  assert.match(fs.readFileSync(path.join(root,'public/index.html'),'utf8'),/src="app\/features\/reports\/pdf-reports.js"/);
- assert.match(fs.readFileSync(path.join(root,'public/2-engr/index.html'),'utf8'),/location.replace/);
 });
 test('Hundreds of full activity rows survive pagination, long cells and Unicode; A4 layout renders',async()=>{
  const api=exporter();

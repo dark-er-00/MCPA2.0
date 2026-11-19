@@ -5,10 +5,9 @@
   const root = document.getElementById('sites-module');
   window.MCPAProjects?.dispose();
   const dialog = root.querySelector('#sites-dialog');
-  const demo = window.MovementStore?.mode === 'demo';
   const context = () => window.MovementStore?.getContext() || {role:null,name:'',id:null};
   const isEngineer = () => window.MCPAPermissions.operational(context().role);
-  const readOnly = demo || context().role !== 'admin';
+  const readOnly = context().role !== 'admin';
   if(isEngineer())root.querySelector('#screen-sites .sub').textContent='Your assigned projects and their recorded accountability.';
   const display = window.MCPADisplay;
   const workAreas = ['Structural', 'Mechanical', 'Electrical', 'Plumbing', 'Fire Safety', 'Architectural / Finishing Stage'];
@@ -46,10 +45,10 @@
     return profile?.role==='engineer'?'Engr':profile?.role==='architect'?'Architect':'';
   }
   function assignedToMe(site) {
-    return window.MCPAProjectScope.assigned(site, context(), demo);
+    return window.MCPAProjectScope.assigned(site, context());
   }
   function filteredSites() {
-    return state.sites.filter(site => site.id!==officeId && (state.includeArchived || window.MCPAProjectScope.active(site, demo))
+    return state.sites.filter(site => site.id!==officeId && (state.includeArchived || window.MCPAProjectScope.active(site))
       && ((!window.MCPAPermissions.operational(context().role) && state.scope !== 'mine') || assignedToMe(site))
       && (!state.search || [site.name, site.location, site.assigned_engineer, site.phase].some(value => String(value || '').toLowerCase().includes(state.search))));
   }
@@ -106,7 +105,7 @@
   // All database writes concern site metadata. Equipment and movement are read-only here.
   const repository = {
     async load() {
-      if (!demo && window.MCPAPermissions.operational(context().role)) {
+      if (window.MCPAPermissions.operational(context().role)) {
         const {data:snapshot,error}=await client().rpc('mcpa_project_snapshot');
         if(error)throw error;
         if(!Array.isArray(snapshot?.sites)||!Array.isArray(snapshot?.tools)||!Array.isArray(snapshot?.history))throw projectError('Projects returned an unexpected response. Contact your administrator, then retry.');
@@ -120,11 +119,11 @@
         state.history=scoped.history||[];
         return {sites:scoped.sites,profiles:[],equipment:scoped.tools.map(tool=>({...tool,id:tool.dbId,asset_id:tool.id,quantity:tool.qty,category:tool.cat,site_id:tool.siteId,current_holder_id:tool.holderId,holder:tool.holder||'Unassigned'}))};
       }
-      if (demo || !window.MCPAPermissions.fullInventory(context().role)) {
+      if (!window.MCPAPermissions.fullInventory(context().role)) {
         await window.MovementStore.initialize();
         const snapshot = window.MCPAProjectScope.projectSnapshot(window.MovementStore.getState(),context(),{officeId});
         return {
-          sites: snapshot.sites.map(site => ({...site, location: site.location || 'Demo project', assigned_engineer: site.assigned_engineer || site.engineer || 'Unassigned', phase: site.phase || '', status: site.status || 'active', progress: site.progress || 0})),
+          sites: snapshot.sites.map(site => ({...site, location: site.location || '', assigned_engineer: site.assigned_engineer || site.engineer || 'Unassigned', phase: site.phase || '', status: site.status || 'active', progress: site.progress || 0})),
           equipment: snapshot.tools.map(tool => ({...tool, id: tool.id, asset_id: tool.id, quantity: tool.qty, category: tool.cat, site_id: tool.siteId || (!window.MCPAPermissions.operational(context().role) ? snapshot.sites.find(site => site.name === tool.site)?.id : null), current_holder_id: tool.holderId, holder: tool.holder || 'Unassigned'})),
           profiles: snapshot.users || []
         };
@@ -159,7 +158,6 @@
       return data;
     },
     async history(siteId) {
-      if (demo) return [];
       if (window.MCPAPermissions.operational(context().role)) {
         const {data,error}=await client().rpc('mcpa_project_snapshot');
         if(error)throw error;
@@ -260,7 +258,7 @@
     root.querySelector('#projects-count').textContent = `${projects.length} of ${state.sites.filter(s=>s.id!==officeId).length} projects · ${new Set(state.sites.filter(site => site.id!==officeId&&!site.archived_at).map(site => site.assigned_engineer_id || site.assigned_engineer).filter(value => value && value !== 'Unassigned')).size} assigned people`;
     const scope=root.querySelector('#projects-scope');
     if(scope){scope.value=state.scope;scope.closest('label').hidden=readOnly;}
-    root.querySelector('#projects-mode-note').textContent = demo ? 'Demo projects are read-only.' : 'Project records update automatically.';
+    root.querySelector('#projects-mode-note').textContent = 'Project records update automatically.';
     root.querySelector('#sites-list').innerHTML = projects.length ? projects.map(site => {
       const items = visibleEquipment(site);
       const count = (...statuses) => totalQuantity(items.filter(item => statuses.includes(item.status)));
@@ -728,7 +726,7 @@
     if (event.target.id === 'projects-archived') { state.includeArchived = event.target.checked; render(); }
   });
   dialog.addEventListener('cancel', event => { event.preventDefault(); closeDialog(); });
-  const stopWatching = demo ? () => {} : window.EquipmentTracking.watch(() => refresh(true), message => {
+  const stopWatching = window.EquipmentTracking.watch(() => refresh(true), message => {
     const label = root.querySelector('.inventory-sync'); if (label && !state.disposed) label.textContent = message;
   });
   window.MCPAProjects = {

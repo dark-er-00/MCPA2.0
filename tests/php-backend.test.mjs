@@ -128,7 +128,7 @@ before(async () => {
     '-S',`127.0.0.1:${port}`,'-t','public','server/router.php',
   ], {cwd:root, windowsHide:true, stdio:['ignore','ignore','pipe'], env:{...process.env,
     SUPABASE_URL:upstreamUrl, SUPABASE_PUBLISHABLE_KEY:publishable, MCPA_SUPABASE_SECRET_KEY:secret,
-    MCPA_ENABLE_DEVELOPMENT_ACCOUNTS:'true', MCPA_APP_URL:'',
+    MCPA_APP_URL:'',
   }});
   let startError;
   php.on('error', error => { startError=error; });
@@ -167,7 +167,6 @@ test('PHP serves the existing shell unchanged, dynamic public config and safe as
   assert.ok(!config.includes(secret));
   const module = await fetch(base+'/app/features/custody-lifecycle/api.mjs');
   assert.match(module.headers.get('content-type'), /javascript/);
-  assert.equal((await fetch(base+'/2-engr/index.html')).status, 200);
   for (const route of ['/.env','/.git/config','/server/Config.php','/supabase/config.toml','/tests/auth-test-db.cjs','/%2e%2e%5c.env','/api/../../.env']) {
     assert.equal((await fetch(base+route)).status, 404, route);
   }
@@ -303,48 +302,17 @@ test('the PHP account service uses verified identities and rejects forbidden act
     assert.ok([401,403].includes(result.status),actor);
     assert.ok(requests.slice(start).every(call=>call.headers.apikey===publishable));
   }
-  const input={action:'createDevelopmentAccount',id:randomUUID(),name:'PHP Fixture Person',email:'php-fixture@example.test',role:'engineer',password:'Fixture-only-password-2026!'};
-  for (const change of [{action:'invite'},{role:'admin'},{password:'short'},{password:' '.repeat(12)},{password:'a'.repeat(129)},{profile_id:randomUUID()},{email:'invalid'}]) {
+  for (const change of [{action:'createDevelopmentAccount'},{action:'unknown'},{action:'invite',profile_id:'invalid'}]) {
     const start=requests.length;
-    const result=await request(route,{body:{...input,...change}});
+    const result=await request(route,{body:change});
     assert.equal(result.status,400,JSON.stringify(change));
     assert.ok(requests.slice(start).every(call=>call.headers.apikey===publishable));
   }
   const result=await request(route,{body:{action:'capabilities'}});
   assert.equal(result.status,200);
-  assert.equal((await result.json()).development_enabled,true);
-});
-
-test('PHP preserves account creation leases, recovery after a lost finish, and original passwords on retry', async () => {
-  const route='/functions/v1/manage-accounts';
-  const input={action:'createDevelopmentAccount',id:randomUUID(),name:'PHP Retry Engineer',email:'php-retry@example.test',role:'engineer',password:'Fixture-only-password-2026!'};
-  failFinish=true;
-  const first=await request(route,{body:input});
-  assert.equal(first.status,503);
-  const pending=await (await request(route,{body:{action:'capabilities'}})).json();
-  assert.ok(pending.pending_development_accounts.some(job=>job.id===input.id));
-  const start=requests.length;
-  const second=await request(route,{body:{...input,password:'Changed-must-not-be-applied!'}});
-  assert.equal(second.status,200);
-  const result=await second.json();
-  assert.match(result.message,/original creation/);
-  assert.ok(requests.slice(start).every(call=>!call.url.includes('/auth/v1/admin/users')));
-  const record=(await database.db.query('select * from profiles where id=$1',[result.profile_id])).rows[0];
-  assert.equal(record.role,'engineer');
-  assert.equal(record.account_status,'active');
-  const again=await request(route,{body:input});
-  assert.equal(again.status,200);
-  assert.match((await again.json()).message,/already exists/);
-  const privileged=requests.filter(call=>call.headers.apikey===secret && call.url.startsWith('/rest/'));
-  assert.ok(privileged.every(call=>!call.bytes.toString().includes(input.password)),'Passwords never enter database RPC arguments');
-  assert.ok(privileged.every(call=>JSON.parse(call.bytes).p_actor===database.actors.admin.authId),'Browser actor IDs are not trusted');
-  failAuth=true;
-  const rateLimited=await request(route,{body:{...input,id:randomUUID(),name:'PHP Rate Limited',email:'php-rate@example.test'}});
-  failAuth=false;
-  assert.equal(rateLimited.status,503);
-  const failure=await rateLimited.text();
-  assert.match(failure,/rate limited/);
-  assert.ok(!failure.includes(input.password));
+  const body=await result.json();
+  assert.equal(body.invitation_enabled,true);
+  assert.equal(body.development_enabled,undefined);
 });
 
 test('the same transport resolves the PHP endpoint under an existing hosted subpath', async () => {

@@ -25,7 +25,6 @@
  }
  async function load() {
   if (busy || !root.isConnected) return;
-  if (MCPAAuth.isDemo) { feedback('Sign in to the company workspace to manage purchases.'); $('#purchase-results').innerHTML = '<p class="empty-state">Live purchase records are not loaded in offline demo.</p>'; return; }
   $('#purchase-results').setAttribute('aria-busy', 'true');
   try {
    MCPAAuth.requireLive(); const {data, error} = await client().rpc('mcpa_purchase_snapshot'); if (error) throw error;

@@ -4,8 +4,8 @@
   const storageKey = 'mcpa.navigation.v1', mounts = new WeakMap();
   let session, current, revision = 0, restoring = false, frame = 0, layoutObserver;
   const owner = () => {
-    const auth = window.MCPAAuth, user = auth?.profile;
-    return user ? `${auth.isDemo ? 'demo' : 'live'}:${user.id}:${user.role}` : '';
+    const user = window.MCPAAuth?.profile;
+    return user ? `live:${user.id}:${user.role}` : '';
   };
   const uid = () => crypto.randomUUID();
   const read = () => { try { return JSON.parse(sessionStorage.getItem(storageKey)); } catch (_) { return null; } };
