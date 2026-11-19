@@ -8,6 +8,7 @@ export function resolveTransferView(snapshot,recordId,preferredView='receive'){
   if(!recordId)return ['receive','send','history'].includes(preferredView)?preferredView:'receive';
   const record=snapshot.transfers.find(item=>item.id===recordId);
   if(!record)return 'history';
+  if(snapshot.profile.role==='admin'&&record.status&&!['pending','refused'].includes(record.status))return 'history';
   if(record.receiverId===snapshot.profile.id)return 'receive';
   if(record.actorId===snapshot.profile.id)return 'send';
   return 'history';
@@ -15,23 +16,26 @@ export function resolveTransferView(snapshot,recordId,preferredView='receive'){
 
 export async function mountTransfers(root,options={}){
   const client=options.client,controller=new AbortController();
-  let snapshot,disposed=false,busy=false,view=options.view||'receive';
+  const admin=window.MCPAAuth.profile.role==='admin';
+  let snapshot,disposed=false,busy=false,search='',statusFilter='',view=options.view||'receive';
   root.classList.add('transfer-workspace');
   root.innerHTML='<header class="page-head"><div><h1 class="display">Transfers</h1><p class="sub">Custody changes after recipient acceptance.</p></div><button type="button" class="btn btn-secondary" data-transfer-refresh>Refresh</button></header><p data-transfer-feedback role="status" aria-live="polite"></p><div data-transfer-content aria-busy="true">Loading transfers…</div>';
+  if(admin)root.querySelector('[data-transfer-refresh]').remove();
   const content=root.querySelector('[data-transfer-content]'),feedback=root.querySelector('[data-transfer-feedback]');
   const say=(text,error=false)=>{feedback.textContent=text;feedback.setAttribute('role',error?'alert':'status');if(error){feedback.tabIndex=-1;feedback.focus();}};
   async function task(fn){if(busy)return;busy=true;content.setAttribute('aria-busy','true');try{await fn();}catch(e){if(!disposed){say(e.message,true);if(!snapshot)content.textContent='Transfer data is unavailable. Refresh after the connection or configuration is restored.';}}finally{busy=false;if(!disposed)content.setAttribute('aria-busy','false');}}
   const can=(t,action)=>t.allowedActions?.includes(action);
   function render(){
+    const expanded=new Set([...content.querySelectorAll('[data-transfer-record][open]')].map(e=>e.dataset.transferRecord));const focused=document.activeElement?.hasAttribute('data-transfer-search')?'[data-transfer-search]':document.activeElement?.hasAttribute('data-transfer-status')?'[data-transfer-status]':null;
     const incoming=snapshot.transfers.filter(t=>t.receiverId===snapshot.profile.id);
-    const outgoing=snapshot.transfers.filter(t=>t.actorId===snapshot.profile.id);
+    const outgoing=snapshot.transfers.filter(t=>t.actorId===snapshot.profile.id&&(!admin||['pending','refused'].includes(t.status)));
     const records=view==='receive'?incoming:view==='send'?outgoing:snapshot.transfers;
-    content.innerHTML=`<div class="transfer-toolbar"><div class="transfer-views" role="group" aria-label="Transfer view">${[['receive','Incoming'],['send','Outgoing'],['history','All history']].map(([key,label])=>`<button type="button" class="btn ${key===view?'btn-primary':'btn-secondary'}" data-transfer-view="${key}" aria-pressed="${key===view}">${label}${key==='receive'?` (${incoming.filter(t=>t.status==='pending').length})`:''}</button>`).join('')}</div><button type="button" class="btn btn-primary" data-new-transfer>New Transfer</button></div>
+    content.innerHTML=`<div class="transfer-toolbar"><div class="transfer-views" role="group" aria-label="Transfer view">${[['receive','Incoming'],['send','Outgoing'],['history','All history']].map(([key,label])=>`<button type="button" class="btn ${key===view?'btn-primary':'btn-secondary'}" data-transfer-view="${key}" aria-pressed="${key===view}">${label}${key==='receive'?` (${incoming.filter(t=>t.status==='pending').length})`:''}</button>`).join('')}</div>${admin?'':'<button type="button" class="btn btn-primary" data-new-transfer>New Transfer</button>'}</div>
       <div class="transfer-filter"><label>Search transfers<input type="search" data-transfer-search placeholder="Reference, Asset ID, person or project"></label><label>Status<select data-transfer-status><option value="">All statuses</option>${['pending','received','rejected','refused','canceled'].map(s=>`<option value="${s}">${statusLabel(s)}</option>`).join('')}</select></label></div>
       <div data-transfer-list>${records.length?records.map(t=>renderRecord(t)).join(''):'<p class="empty-state">No transfers in this view.</p>'}</div><p data-no-transfer-match hidden>No matching transfers.</p>
-      <details class="transfer-help"><summary>Transfer tools and recorded history</summary><p>Existing transfer documents, QR lookup, inspection records and legacy follow-up remain available.</p><button type="button" class="btn btn-secondary" data-legacy-transfers>Open transfer tools</button>${window.MCPAAuth?.canRoute('asset-transfer')?'<button type="button" class="btn btn-secondary" data-scan-assets>Scan assets for transfer</button>':''}</details>
+      ${!admin||view==='history'?'<section class="transfer-help"><h2>Recorded transfer history</h2><p>Legacy transfer documents and inspection records remain available.</p><button type="button" class="btn btn-secondary" data-legacy-transfers>View legacy history</button></section>':''}
       <dialog data-transfer-dialog aria-labelledby="transfer-dialog-title"></dialog>`;
-    wireFilters();
+    wireFilters();for(const el of content.querySelectorAll('[data-transfer-record]'))if(expanded.has(el.dataset.transferRecord))el.open=true;if(focused)content.querySelector(focused)?.focus({preventScroll:true});
     if(options.record){const target=[...content.querySelectorAll('[data-transfer-record]')].find(el=>el.dataset.transferRecord===options.record);if(target){target.open=true;target.tabIndex=-1;target.focus();}else say('This transfer is unavailable or outside your authorized records.',true);options.record=null;}
   }
   function renderRecord(t){
@@ -47,8 +51,9 @@ export async function mountTransfers(root,options={}){
       <div class="transfer-actions">${can(t,'receiveTransfer')?'<button type="submit" class="btn btn-primary">Accept Transfer</button>':''}${can(t,'refuseTransfer')?'<button type="button" class="btn btn-secondary" data-decision="refuseTransfer">Reject Transfer</button>':''}${can(t,'cancelTransfer')?'<button type="button" class="btn btn-secondary" data-decision="cancelTransfer">Cancel Transfer</button>':''}${can(t,'reopenTransfer')?'<button type="button" class="btn btn-secondary" data-decision="reopenTransfer">Reopen legacy handover</button>':''}</div></form></details>`;
   }
   function wireFilters(){
-    const filter=()=>{const query=content.querySelector('[data-transfer-search]').value.trim().toLowerCase(),status=content.querySelector('[data-transfer-status]').value;let count=0;for(const el of content.querySelectorAll('[data-transfer-record]')){el.hidden=!el.dataset.search.includes(query)||!!status&&el.dataset.status!==status;if(!el.hidden)count++;}content.querySelector('[data-no-transfer-match]').hidden=count>0;};
-    content.querySelector('[data-transfer-search]').oninput=filter;content.querySelector('[data-transfer-status]').onchange=filter;
+    content.querySelector('[data-transfer-search]').value=search;content.querySelector('[data-transfer-status]').value=statusFilter;
+    const filter=()=>{search=content.querySelector('[data-transfer-search]').value;statusFilter=content.querySelector('[data-transfer-status]').value;const query=search.trim().toLowerCase(),status=statusFilter;let count=0;for(const el of content.querySelectorAll('[data-transfer-record]')){el.hidden=!el.dataset.search.includes(query)||!!status&&el.dataset.status!==status;if(!el.hidden)count++;}content.querySelector('[data-no-transfer-match]').hidden=count>0;};
+    content.querySelector('[data-transfer-search]').oninput=filter;content.querySelector('[data-transfer-status]').onchange=filter;filter();
   }
   async function refresh(){
     const {data,error}=await client.rpc('mcpa_transfer_snapshot');
@@ -71,7 +76,7 @@ export async function mountTransfers(root,options={}){
   root.addEventListener('click',event=>{
     const button=event.target.closest('button');if(!button||busy)return;
     if(button.dataset.transferView)window.showScreen('transfer?view='+button.dataset.transferView);
-    else if(button.hasAttribute('data-new-transfer'))newTransfer();
+    else if(!admin&&button.hasAttribute('data-new-transfer'))newTransfer();
     else if(button.hasAttribute('data-close-transfer'))content.querySelector('dialog').close();
     else if(button.hasAttribute('data-transfer-refresh'))void task(refresh);
     else if(button.hasAttribute('data-legacy-transfers'))window.showScreen('transfer-tools');
@@ -87,6 +92,7 @@ export async function mountTransfers(root,options={}){
     const form=event.target;event.preventDefault();if(!form.reportValidity()||busy)return;
     void task(async()=>{
       if(form.hasAttribute('data-transfer-create')){
+        if(admin)throw Error('Use the approved request release workflow.');
         const toolIds=[...form.querySelectorAll('[name=asset]:checked')].map(el=>el.value);
         if(!toolIds.length){form.querySelector('[data-create-error]').textContent='Select at least one Asset ID.';return;}
         await window.MovementStore.createTransfer({toolIds,receiverId:form.elements.recipient.value,destinationId:form.elements.destination.value,notes:form.elements.notes.value});

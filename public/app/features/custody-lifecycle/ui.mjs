@@ -32,8 +32,9 @@ export function wireEvidence(root,ctx){
     const button=event.target.closest('[data-photo]');if(!button)return;
     void ctx.task(async()=>{
       const url=await ctx.uploader.signedUrl(button.dataset.photo);
-      let viewer=root.querySelector('.b-photo-view');
-      if(!viewer){viewer=document.createElement('div');viewer.className='b-photo-view';root.append(viewer);}
+      const container=button.closest('dialog[open]')||root;
+      let viewer=container.querySelector('.b-photo-view');
+      if(!viewer){viewer=document.createElement('div');viewer.className='b-photo-view';container.append(viewer);}
       viewer.replaceChildren();const image=document.createElement('img');image.src=url;image.alt='Movement photo evidence';
       const close=document.createElement('button');close.type='button';close.textContent='Close photo';close.onclick=()=>{viewer.remove();button.focus();};
       viewer.append(close,image);close.focus();

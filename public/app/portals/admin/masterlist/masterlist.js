@@ -80,7 +80,9 @@ function updateEquipmentSummary() {
   const totals = window.AdminEquipment?.loaded ? window.EquipmentTracking.tally(tools, tools[0]?.availabilityData) : null;
   document.querySelectorAll('[data-equipment-count]').forEach(el => { el.textContent = totals ? totals[el.dataset.equipmentCount] : '—'; });
   const status = document.getElementById('statusFilter')?.value || '';
-  const selected = {'':'all',Available:'available','In Use':'inuse'}[status];
+  if(totals) for(const key of ['repair','missing']) totals[key]=tools.filter(t=>EquipmentTracking.matchesStatus(t,key)).reduce((n,t)=>n+EquipmentTracking.quantity(t),0);
+  for(const key of ['repair','missing']){const el=document.querySelector('[data-equipment-count='+key+']');if(el)el.textContent=totals?totals[key]:'—';}
+  const selected = {'':'all',Available:'available','In Use':'inuse','For Repair':'repair',Missing:'missing'}[status];
   document.querySelectorAll('[data-equipment-status]').forEach(el => el.setAttribute('aria-pressed', String(el.dataset.equipmentStatus === selected)));
 }
 
@@ -877,13 +879,18 @@ function formatDate(dateString) {
   document.querySelectorAll('[data-equipment-status]').forEach(el => {
     el.addEventListener('click', () => navigateEquipmentStatus(el.dataset.equipmentStatus));
   });
-  owner.setStatus = key => {
+  let issueKind='';
+  owner.setStatus = async key => {
     if (owner.disposed) return;
     const select = document.getElementById('statusFilter');
     const value = {all:'',available:'Available',inuse:'In Use',repair:'For Repair',missing:'Missing',sold:'Sold',disposed:'Disposed'}[key];
     if (!select || value === undefined) return;
     if (select.value !== value) currentPage = 1;
     select.value = value;
+    const issues=document.querySelector('[data-equipment-issues]');
+    const kind=['repair','missing'].includes(key)?key:'';
+    document.querySelector('[data-equipment-inventory]').hidden=Boolean(kind);issues.hidden=!kind;
+    if(kind!==issueKind){window.MovementUI?.dispose();issueKind=kind;if(kind)await window.MovementUI.mount(kind,{root:issues});else issues.replaceChildren();}
     renderTable();
   };
   owner.capture = () => owner.disposed ? null : ({search:document.getElementById('searchEquipment')?.value || '',category:document.getElementById('typeFilter')?.value || '',site:document.getElementById('siteFilter')?.value || '',page:currentPage});

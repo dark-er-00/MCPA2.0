@@ -7,6 +7,7 @@ export function timeline(r) {
   return `<ol class="equipment-progress" aria-label="Request progress">${[['Submitted',true],['Approved',approved],['Released',released],['Inspected / Received',received]].map(([label,done]) => `<li data-complete="${done}">${escape(label)}<small>${done ? 'Recorded' : 'Not recorded'}</small></li>`).join('')}</ol>`;
 }
 export async function mount(root, {client, record = ''}) {
+  if(window.MCPAAuth.profile.role==='admin')return (await import('./admin.mjs')).mountAdmin(root,{client,record});
   const admin = window.MCPAAuth.profile.role === 'admin', abort = new AbortController();
   const specificDraft = window.movementDraft?.kind === 'request';
   const qClient = window.MCPAQuantityRequests.createClient(client);

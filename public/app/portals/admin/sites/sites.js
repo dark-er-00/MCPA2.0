@@ -19,7 +19,7 @@
   const options = (items, selected, empty = 'Not recorded') => `<option value="">${empty}</option>` + items.map(label => `<option${selected === label ? ' selected' : ''}>${escape(label)}</option>`).join('');
   const toolStatuses = Object.fromEntries(Object.entries(display.statuses.equipment).map(([key,label]) => [key,[label,['available','inuse','repair','underrepair','missing'].includes(key)?key:'disposed']]));
   const state = { sites: [], equipment: [], profiles: [], selectedId: null, loading: false, saving: false, ready: false, dirty: false, disposed: false, scope: isEngineer() ? 'mine' : 'all', search: '', includeArchived: false, review: { search: '', status: '' } };
-  let dialogReturnFocus = null;
+  let dialogReturnFocus = null, officeId=null;
 
   function escape(value) {
     return String(value ?? '').replace(/[&<>"']/g, char => ({
@@ -49,7 +49,7 @@
     return window.MCPAProjectScope.assigned(site, context(), demo);
   }
   function filteredSites() {
-    return state.sites.filter(site => (state.includeArchived || window.MCPAProjectScope.active(site, demo))
+    return state.sites.filter(site => site.id!==officeId && (state.includeArchived || window.MCPAProjectScope.active(site, demo))
       && (state.scope !== 'mine' || assignedToMe(site))
       && (!state.search || [site.name, site.location, site.assigned_engineer, site.phase].some(value => String(value || '').toLowerCase().includes(state.search))));
   }
@@ -122,12 +122,14 @@
           profiles: snapshot.users || []
         };
       }
-      const [sites, equipment, profiles] = await Promise.all([
+      const [sites, equipment, profiles, office] = await Promise.all([
         readAll('sites', '*', 'id'),
         readAll('equipment', '*', 'id'),
         // A restricted profile must not hide otherwise readable equipment.
-        readAll('profiles', 'id,name,role', 'id').catch(() => [])
+        readAll('profiles', 'id,name,role', 'id').catch(() => []),
+        client().rpc('mcpa_inventory_office').then(({data,error})=>{if(error)throw error;return data;})
       ]);
+      officeId=office.id;
       const holders = new Map(profiles.map(profile => [profile.id, profile.name]));
       return {
         sites: sites.map(site=>({...site,assigned_engineer:site.assigned_engineer_id?holders.get(site.assigned_engineer_id)||'Accountable profile unavailable':site.assigned_engineer})).sort((a, b) => a.name.localeCompare(b.name)),
@@ -247,7 +249,7 @@
 
   function render() {
     const projects = filteredSites();
-    root.querySelector('#projects-count').textContent = `${projects.length} of ${state.sites.length} projects · ${new Set(state.sites.filter(site => !site.archived_at).map(site => site.assigned_engineer_id || site.assigned_engineer).filter(value => value && value !== 'Unassigned')).size} assigned people`;
+    root.querySelector('#projects-count').textContent = `${projects.length} of ${state.sites.filter(s=>s.id!==officeId).length} projects · ${new Set(state.sites.filter(site => site.id!==officeId&&!site.archived_at).map(site => site.assigned_engineer_id || site.assigned_engineer).filter(value => value && value !== 'Unassigned')).size} assigned people`;
     const scope=root.querySelector('#projects-scope');
     if(scope){scope.value=state.scope;scope.closest('label').hidden=readOnly;}
     root.querySelector('#projects-mode-note').textContent = demo ? 'Demo projects are read-only.' : 'Project records update automatically.';

@@ -9,7 +9,7 @@ use stdClass;
 final class Gateway
 {
     public const MAX_BODY = 16 * 1024 * 1024;
-    private const BUCKETS = ['equipment-photos', 'purchase-receipts', 'mcpa-movement-evidence-v2'];
+    private const BUCKETS = ['equipment-photos', 'purchase-receipts', 'mcpa-movement-evidence-v2', 'mcpa-profile-photos'];
 
     public function __construct(private readonly Config $config, private readonly Upstream $upstream) {}
 
@@ -34,8 +34,9 @@ final class Gateway
         $storage = preg_match('~^/storage/v1/object/(?!public/|authenticated/)(?:sign/|list/)?([^/]+)(?:/.*)?$~', $decoded, $storageMatch) === 1
             && in_array($storageMatch[1], self::BUCKETS, true);
         $accounts = $path === '/functions/v1/manage-accounts';
-        if (!$auth && !$rest && !$storage && !$accounts) throw new RequestError('Choose a valid application API route.', 404);
-        if (in_array($path, ['/rest/v1/rpc/mcpa_development_account_step', '/rest/v1/rpc/mcpa_invitation_step'], true)) {
+        $registration = $path === '/functions/v1/register-invitation';
+        if (!$auth && !$rest && !$storage && !$accounts && !$registration) throw new RequestError('Choose a valid application API route.', 404);
+        if (str_starts_with($path, '/rest/v1/rpc/mcpa_registration_') || in_array($path, ['/rest/v1/rpc/mcpa_development_account_step', '/rest/v1/rpc/mcpa_invitation_step'], true)) {
             throw new RequestError('This operation is server-only.', 403, '42501');
         }
         foreach (['accept-profile', 'content-profile'] as $header) {
@@ -43,7 +44,7 @@ final class Gateway
         }
         $token = '';
         if (preg_match('/^Bearer (\S+)$/i', $headers['authorization'] ?? '', $match)) $token = $match[1];
-        if (!$auth && ($token === '' || $token === $this->config->publishableKey || Config::isPublishable($token)
+        if (!$auth && !$registration && ($token === '' || $token === $this->config->publishableKey || Config::isPublishable($token)
             || str_starts_with($token, 'sb_secret_') || ($this->config->serverKey !== '' && hash_equals($this->config->serverKey, $token)))) {
             throw new RequestError('Sign in with an active company account.', 401, 'PGRST301');
         }
@@ -54,11 +55,12 @@ final class Gateway
             catch (JsonException) { throw new RequestError('Send a valid JSON request.'); }
             if (!$json instanceof stdClass && !is_array($json)) throw new RequestError('Send a JSON object or array.');
         } elseif ($body !== '' && !$storage) throw new RequestError('Send an application/json request.', 415);
-        if ($accounts) {
+        if ($accounts || $registration) {
             if ($method !== 'POST') throw new RequestError('Use POST.', 405);
             if (strlen($body) > 4096) throw new RequestError('Request is too large.', 413);
             if (!$json instanceof stdClass) throw new RequestError('Send a valid JSON request.');
-            return (new Accounts($this->config, $this->upstream))->handle($json, $token);
+            return $registration ? (new Invitations($this->config, $this->upstream))->register($json)
+                : (new Accounts($this->config, $this->upstream))->handle($json, $token);
         }
         if ($auth) $this->validateAuth($method, $path, $route, $json, $origin);
         if ($rest) {
@@ -73,7 +75,7 @@ final class Gateway
         ]));
         $payload = $body === '' ? null : $body;
         if ($storage && in_array($method, ['POST', 'PUT'], true) && !str_contains($path, '/sign/') && !str_contains($path, '/list/')) {
-            $limit = $storageMatch[1] === 'purchase-receipts' ? 10 * 1024 * 1024 : 5 * 1024 * 1024;
+            $limit = $storageMatch[1] === 'purchase-receipts' ? 10 * 1024 * 1024 : ($storageMatch[1] === 'mcpa-profile-photos' ? 2 * 1024 * 1024 : 5 * 1024 * 1024);
             if (str_starts_with($contentType, 'multipart/form-data')) {
                 if (count($files) !== 1) throw new RequestError('Choose one valid attachment.');
                 $payload = $fields;

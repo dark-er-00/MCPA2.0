@@ -3,3 +3,13 @@
 @media (max-width: 768px) {
   #screen-users #account-panel { scroll-margin-top: 132px; }
 }
+
+#screen-users [hidden]{display:none!important}
+#screen-users .account-modal,#account-lifecycle-dialog{width:min(700px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;border:1px solid var(--line);border-radius:12px;background:var(--white);color:var(--black);padding:24px;position:fixed;inset:0;margin:auto;box-shadow:var(--shadow-md)}
+#screen-users .account-modal::backdrop,#account-lifecycle-dialog::backdrop{background:rgba(0,0,0,.65)}
+#screen-users .account-modal-head,#account-lifecycle-dialog>.account-tools{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+#screen-users .account-modal-head h2,#account-lifecycle-dialog>.account-tools h2{margin:0;min-width:0}
+#screen-users .account-modal-head button,#account-lifecycle-dialog [data-close-lifecycle]{margin-left:auto;flex-shrink:0}
+#account-lifecycle-dialog label{display:grid;gap:8px;margin:16px 0}
+#screen-users .account-modal :is(input,select,textarea),#account-lifecycle-dialog :is(input,select,textarea){width:100%;min-height:44px}
+@media(max-width:600px){#screen-users .account-modal,#account-lifecycle-dialog{padding:18px}}

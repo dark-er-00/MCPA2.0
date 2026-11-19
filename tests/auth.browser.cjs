@@ -7,6 +7,7 @@ if(process.argv.length===2)process.argv.push('--combined-integration');
 if(process.argv.includes('--auth')||process.argv.includes('--recipient-ux'))process.argv.push('--combined-integration');
 if(process.argv.includes('--review-fixes')||process.argv.includes('--final-races')||process.argv.includes('--unified-requests')||process.argv.includes('--engineer-consumables')||process.argv.includes('--functionality-audit'))process.argv.push('--combined-integration');
 const uiReview=process.argv.includes('--ui-review'),uiPreview=process.argv.includes('--ui-preview');
+const adminPdf=process.argv.includes('--admin-pdf');if(adminPdf)process.argv.push('--combined-integration');
 if(uiReview||uiPreview||process.argv.includes('--inventory-availability'))process.argv.push('--combined-integration');
 const {spawn}=require('node:child_process'),{once}=require('node:events'),{authDatabase}=require('./auth-test-db.cjs');
 const root=path.resolve(__dirname,'..'),profile=fs.mkdtempSync(path.join(os.tmpdir(),'mcpa-auth-'));
@@ -18,7 +19,7 @@ const sdk=`window.__syncTimers=new Map();const realInterval=window.setInterval,r
 window.supabase={createClient(){let listener;const session=()=>{const key=localStorage.getItem('fixture.account');return key?{user:{id:key},access_token:key}:null};const request=q=>window.__failReads&&q.rpc==='mcpa_movement_snapshot'?Promise.resolve({error:{code:'TEST'}}):fetch('/__db',{method:'POST',headers:{'Authorization':session()?.access_token||''},body:JSON.stringify(q)}).then(r=>r.json()).then(result=>{if(window.__legacyAvailability&&q.rpc==='mcpa_movement_snapshot'&&result.data){delete result.data.inventoryAvailabilityVersion;delete result.data.inventoryVerificationRevision;for(const tool of result.data.tools){delete tool.movementLock;delete tool.recordedStatus;}}return result;});window.__authEvent=event=>listener?.(event,session());window.__expire=()=>{localStorage.removeItem('fixture.account');listener?.('SIGNED_OUT',null)};return {
  channel(){const c={tables:[],on(_type,filter,fn){this.tables.push(filter.table);this.notify=fn;return this},subscribe(){return this}};__channels.add(c);return c;},removeChannel(c){__channels.delete(c);return Promise.resolve();},
  auth:{getSession:async()=>({data:{session:session()}}),onAuthStateChange(fn){listener=fn;return {data:{subscription:{unsubscribe(){}}}}},async signInWithPassword({email,password}){let key=email.split('@')[0];if(window.__auditTransport){const result=await request({authLogin:{email,password}});if(result.error)return result;key=result.data.key;}else if(!['admin','sky','pau','architect','secretary','handler','inactive','missing'].includes(key)||password!=='test-password')return {error:{code:'invalid_credentials'}};localStorage.setItem('fixture.account',key);listener?.('SIGNED_IN',session());return {data:{session:session()}}},async signOut(){localStorage.removeItem('fixture.account');listener?.('SIGNED_OUT',null);return {error:null}},resetPasswordForEmail:async()=>({error:null}),updateUser:async values=>{if(window.__auditTransport)return request({authUpdate:values});window.__savedPassword=values.password;return {error:null}} },
- functions:{invoke:async(name,{body})=>{if(window.__auditTransport){const result=await request({edge:name,args:body});return result.error?{error:{context:{json:async()=>({error:result.error.message})}}}:result;}if(body.action==='capabilities')return {data:window.__accountCapabilities||{development_enabled:true,pending_development_accounts:[]}};window.__accountRequest={name,body};return window.__developmentFailure?{error:{context:{json:async()=>({error:'Creation interrupted. Retry the same test account.'})}}}:{data:{message:'Test account created.'}};}},
+ functions:{invoke:async(name,{body})=>{if(window.__invitationTransport||name==='register-invitation'){const result=await request({edge:name,args:body});return result.error?{error:{context:{json:async()=>({error:result.error.message})}}}:result;}if(window.__auditTransport){const result=await request({edge:name,args:body});return result.error?{error:{context:{json:async()=>({error:result.error.message})}}}:result;}if(body.action==='capabilities')return {data:window.__accountCapabilities||{development_enabled:true,pending_development_accounts:[]}};window.__accountRequest={name,body};return window.__developmentFailure?{error:{context:{json:async()=>({error:'Creation interrupted. Retry the same test account.'})}}}:{data:{message:'Test account created.'}};}},
  storage:{from(bucket){return {async upload(name,file,options){if(window.__failUpload)return {error:{message:'Isolated upload failure'}};const bytes=new Uint8Array(await file.arrayBuffer());let raw='';for(const value of bytes)raw+=String.fromCharCode(value);return request({storage:'upload',bucket,name,type:file.type,size:file.size,body:btoa(raw),options});},createSignedUrl(name,expires){return request({storage:'sign',bucket,name,expires});},remove(names){return request({storage:'remove',bucket,names});}}}},
  rpc(name,args){return request({rpc:name,args})},from(table){const q={table,columns:'*',filters:[]};return {select(cols='*'){q.columns=cols;return this},insert(values){q.write='insert';q.values=values;return this},update(values){q.write='update';q.values=values;return this},single(){q.single=true;return this},order(){return this},limit(n){q.end=n-1;return this},range(start,end){q.start=start;q.end=end;return this},eq(key,value){q.filters.push([key,value]);return this},then(resolve,reject){return request(q).then(resolve,reject)}}}
 }}};`;
@@ -29,7 +30,7 @@ const server=http.createServer(async(req,res)=>{
   const asset=new URL(req.url,'http://localhost').searchParams.get('data');
   res.setHeader('Content-Type','image/png');res.end(await require('qrcode').toBuffer(asset,{width:120,margin:0}));return;
  }
- if(req.url==='/__sdk.js'){res.setHeader('Content-Type','text/javascript');res.end(sdk+(uiPreview?"localStorage.setItem('fixture.account','admin');document.addEventListener('DOMContentLoaded',()=>{document.title='MCPA - Isolated feature preview';});":'')+(accountServiceRun?'window.__auditTransport=true;':'')+(turnoverRun?`
+ if(req.url==='/__sdk.js'){res.setHeader('Content-Type','text/javascript');res.end(sdk+(uiPreview?"if(!localStorage.getItem('fixture.account'))localStorage.setItem('fixture.account','admin');window.__invitationTransport=true;document.addEventListener('DOMContentLoaded',()=>{document.title='MCPA - Isolated feature preview';});":'')+(accountServiceRun?'window.__auditTransport=true;':'')+(turnoverRun?`
   const originalFixtureClient=window.supabase.createClient;
   window.supabase.createClient=(...args)=>{const client=originalFixtureClient(...args);let stream=null;const channel=client.channel.bind(client),remove=client.removeChannel.bind(client);
     client.channel=(...values)=>{const current=channel(...values),subscribe=current.subscribe.bind(current);current.subscribe=(...subscriptions)=>{if(!stream){stream=new EventSource('/__events?account='+encodeURIComponent(localStorage.getItem('fixture.account')||''));stream.onopen=()=>window.__fixtureRealtimeReady=true;stream.onmessage=event=>{if(window.__fixtureRealtime===false)return;const notice=JSON.parse(event.data);for(const c of __channels)if(c.tables.includes(notice.table))c.notify?.({eventType:'INSERT'});};}return subscribe(...subscriptions);};return current;};
@@ -46,11 +47,28 @@ const server=http.createServer(async(req,res)=>{
   if(!signed||signed.expires<Date.now()){res.writeHead(403);res.end();return;}
   res.setHeader('Content-Type',signed.type);res.end(signed.bytes);return;
  }
+ if(uiPreview&&req.url==='/__fixture'){
+  const people=Object.entries(fixture.actors).filter(([,a])=>a.role).map(([key,a])=>({key,name:a.name,role:a.role}));
+  const inbox=(fixture.invites?.mails||[]).map(m=>({email:m.email,key:fixture.invites.identities?.get(m.email)}));
+  const data=JSON.stringify({people,inbox}).replaceAll('<','\\u003c');
+  res.setHeader('Content-Type','text/html; charset=utf-8');res.end(`<!doctype html><html lang="en"><meta name="viewport" content="width=device-width"><title>MCPA isolated fixture controls</title><style>body{font:16px system-ui;max-width:800px;margin:32px auto;padding:16px;background:#151513;color:#f5f5ef}button{font:inherit;min-height:44px;margin:8px;padding:8px 16px}li{margin:16px 0}a{color:#ffcd00}</style><h1>Isolated fixture controls</h1><p>All records, identities and email messages here are synthetic. Nothing connects to Supabase or sends real email. State resets when this preview server restarts.</p><h2>Preview a role</h2><div id="roles"></div><h2>Synthetic verification inbox</h2><p>After registering through an invite, reload this page to see its verification message.</p><ul id="inbox"></ul><p id="status" role="status"></p><a href="/index.html">Open application</a><script>const data=${data};for(const p of data.people){const b=document.createElement('button');b.textContent=p.name+' · '+p.role;b.onclick=()=>{localStorage.setItem('fixture.account',p.key);location.href='/index.html'};document.getElementById('roles').append(b)}for(const m of data.inbox){const li=document.createElement('li'),b=document.createElement('button');li.textContent=m.email+' ';b.textContent='Confirm synthetic email';b.onclick=async()=>{const r=await fetch('/__fixture-confirm',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:m.email})});const v=await r.json();if(!r.ok){document.getElementById('status').textContent=v.error;return}localStorage.setItem('fixture.account',v.key);location.href='/index.html?registration=verify'};li.append(b);document.getElementById('inbox').append(li)}</script></html>`);return;
+ }
+ if(uiPreview&&req.url==='/__fixture-confirm'&&req.method==='POST'){
+  const origin='http://127.0.0.1:'+server.address().port;
+  if(req.headers['sec-fetch-site']==='cross-site'||(req.headers.origin&&req.headers.origin!==origin)){res.writeHead(403);res.end();return;}
+  let raw='';for await(const part of req){raw+=part;if(raw.length>4096){res.writeHead(413);res.end();return;}}
+  let input;try{input=JSON.parse(raw);}catch{res.writeHead(400);res.end();return;}
+  const key=fixture.invites?.identities?.get(input.email),actor=fixture.actors[key];
+  res.setHeader('Content-Type','application/json');if(!actor){res.writeHead(400);res.end(JSON.stringify({error:'No synthetic registration matches this email.'}));return;}
+  await fixture.runExclusive(db=>db.query('update auth.users set email_confirmed_at=now() where id=$1',[actor.authId]));res.end(JSON.stringify({key}));return;
+ }
  if(req.url==='/__db'){
   let body='';for await(const part of req)body+=part;const q=JSON.parse(body),actor=fixture.actors[req.headers.authorization];calls.push({rpc:q.rpc,table:q.table,actor:req.headers.authorization});
   let data=null,error=null,count=null;
   try{
-   if(q.edge&&fixture.authModel){
+   if(q.edge&&fixture.invites){
+    const result=await fixture.invites.request(q.args,req.headers.authorization||null,q.edge==='register-invitation');const value=await result.json();if(!result.ok)throw Object.assign(Error(value.error),{code:value.code});data=value;
+   }else if(q.edge&&fixture.authModel){
     const result=await fixture.authModel.request(q.args,req.headers.authorization||'invalid');const value=await result.json();if(!result.ok)throw Error(value.error);data=value;
    }else if(q.authLogin&&fixture.authModel){data={key:await fixture.authModel.signIn(q.authLogin.email,q.authLogin.password)};
    }else if(q.authUpdate&&fixture.authModel){await fixture.authModel.setPassword(actor,q.authUpdate.password);data={};
@@ -110,7 +128,7 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
 (async()=>{
  fixture=process.argv.includes('--combined-integration')?await require('./integration-quantity-custody-v2/fixture.cjs').fixture():await authDatabase({engineerPortal:true,missingProjectHistory:process.argv.includes('--projects-errors')});fixture.actors.missing={authId:require('node:crypto').randomUUID()};
  if(process.argv.includes('--combined-integration'))await fixture.db.exec(fs.readFileSync(path.join(root,'supabase/migrations/202611030001_transfer_recipient_acceptance.sql'),'utf8'));
- if(process.argv.includes('--recipient-ux')||uiReview||uiPreview)await require('./project-construction-fixture.cjs').upgrade(fixture);
+ if(process.argv.includes('--recipient-ux')||uiReview||uiPreview||adminPdf)await require('./project-construction-fixture.cjs').upgrade(fixture);
  if(process.argv.includes('--functionality-audit'))await require('./functionality-audit-v2/fixture.cjs').upgrade(fixture);
  if(!process.argv.includes('--combined-integration')){
  if(process.argv.includes('--project-construction') || process.argv.includes('--admin-equipment-summary'))await require('./project-construction-fixture.cjs').upgrade(fixture);
@@ -151,6 +169,13 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
  }
  if(process.argv.includes('--combined-integration')){const original=fixture.rpc;fixture.rpc=(actor,name,args)=>/^(mcpa_(wa_|b_|import_equipment_v2))/.test(name)?fixture.call(actor,name,args):original(actor,name,args);}
  if(process.argv.includes('--functionality-audit')){const original=fixture.rpc;fixture.rpc=(actor,name,args)=>name==='mcpa_update_my_profile'?fixture.query(actor,'select public.mcpa_update_my_profile($1,$2) value',[args.p_name,args.p_username]).then(r=>r.rows[0].value):original(actor,name,args);}
+ if(adminPdf){const original=fixture.rpc;const allowed=new Set(['mcpa_admin_lifecycle_capabilities','mcpa_account_removals','mcpa_request_account_removal','mcpa_decide_account_removal','mcpa_my_profile_picture','mcpa_set_my_profile_picture','mcpa_update_my_profile','mcpa_activate_registration']);fixture.rpc=(actor,name,args={})=>allowed.has(name)?fixture.query(actor,`select public.${name}(${Object.keys(args).map((k,i)=>k+' => $'+(i+1)).join(',')}) value`,Object.values(args)).then(r=>r.rows[0].value):original(actor,name,args);}
+ if(uiPreview&&adminPdf){
+  await require('./functionality-audit-v2/fixture.cjs').upgrade(fixture);
+  for(const name of ['00-self-profile-compatibility.sql','01-account-removal.sql','02-profile-pictures.sql','03-registration-invitations.sql'])await fixture.db.exec(fs.readFileSync(path.join(root,'supabase/drafts/admin-pdf',name),'utf8'));
+  fixture.invites=await require('./admin-pdf-invitation-fixture.cjs').open(fixture,{appUrl:'http://127.0.0.1:4183'});
+  await require('./admin-pdf-fixture.cjs').seed(fixture);
+ }
  server.listen(uiPreview?4183:0,'127.0.0.1');await once(server,'listening');
  if(uiPreview){console.log('ISOLATED FEATURE PREVIEW http://127.0.0.1:4183/index.html - auto-signed-in synthetic Admin; no live services.');await new Promise(()=>{});}
  chrome=spawn(process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',['--headless=new',...(process.env.MCPA_CHROME_NO_SANDBOX==='1'?['--no-sandbox','--disable-gpu','--disable-gpu-sandbox']:[]),'--no-first-run','--no-default-browser-check','--disable-background-networking','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{windowsHide:true,stdio:'ignore'});
@@ -178,6 +203,7 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
  }
  console.log('Local Chrome ready; external HTTPS blocked');
  const base=`http://127.0.0.1:${server.address().port}`;
+ if(adminPdf){await require('./admin-pdf.browser-checks.cjs').verify({fixture,evaluate,command,wait,click,fill,submit,go,login,logout,base,calls,shot,artifactDirectory:profile});assert.deepEqual(errors,[],'No uncaught browser errors');return;}
  if(process.argv.includes('--inventory-availability')){await command('Page.navigate',{url:base+'/index.html'});await login('admin');await wait("MCPAAuth.profile?.role==='admin'");await require('./inventory-availability.browser-checks.cjs').verify({fixture,evaluate,command,wait,click,fill,go,login,logout,shot});assert.deepEqual(errors,[],'No uncaught browser errors');return;}
  if(uiReview){await require('./ui-review.browser-checks.cjs').verify({fixture,evaluate,command,wait,click,fill,submit,go,login,logout,base,calls,shot,artifactDirectory:profile});assert.deepEqual(errors,[],'No uncaught browser errors');return;}
  if(accountServiceRun)fixture.authModel=(await import('./functionality-audit-v2/account-service.mjs')).accountService(fixture,{base});
@@ -511,4 +537,4 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
  await wait("document.querySelector('#auth-feedback')?.textContent.includes('invalid or expired')");
  await login('sky');await wait("MCPAAuth.profile?.role==='engineer'");await logout();
  assert.deepEqual(errors,[],'No uncaught browser errors');console.log('PASS Account access, password recovery, retired setup links, Auth/session, all five roles, direct route guards, review/release/tested receipt/return, damaged demo receipt, theme, mobile, and offline demo isolation');
-})().catch(error=>{console.error(error);console.error(JSON.stringify(errors));process.exitCode=1;}).finally(async()=>{socket?.close();chrome?.kill();server.closeAllConnections();server.close();await fixture?.close();console.log('Browser artifacts: '+profile);});
+})().catch(error=>{console.error(error);console.error(JSON.stringify(errors));process.exitCode=1;}).finally(async()=>{socket?.close();chrome?.kill();server.closeAllConnections();server.close();await fixture?.invites?.close();await fixture?.close();console.log('Browser artifacts: '+profile);});
