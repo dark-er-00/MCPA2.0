@@ -28,6 +28,7 @@ function browser(options = {}) {
   };
   const sandbox = vm.createContext({ window, console });
   vm.runInContext(fs.readFileSync(path.join(root,'public/app/shared/display.js'),'utf8'), sandbox);
+  vm.runInContext(fs.readFileSync(path.join(root,'public/app/core/permissions.js'),'utf8'),sandbox);
   vm.runInContext(dataScript, sandbox);
   const tools = vm.runInContext('TOOLS', sandbox);
   vm.runInContext(storeScript, sandbox);

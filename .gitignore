@@ -4,3 +4,16 @@
 node_modules/
 tests/artifacts/
 .npm-cache/
+
+# Development handoff: never publish local tools, links, credentials or exports.
+.agents/
+.codex/
+supabase/.temp/
+coverage/
+*.log
+*.dump
+*.bak
+*.pem
+*.key
+*.p12
+*.pfx

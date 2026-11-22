@@ -5,14 +5,14 @@ const vm=require('node:vm');
 const path=require('node:path');
 function setup(){
   const context=vm.createContext({window:{},icon:()=>'<svg></svg>'});
-  for(const file of ['shared/display.js','features/equipment/equipment-tracking.js','features/projects/project-scope.js','features/dashboard/dashboard-view.js']){
+  for(const file of ['shared/display.js','core/permissions.js','features/equipment/equipment-tracking.js','features/projects/project-scope.js','features/dashboard/dashboard-view.js']){
     vm.runInContext(fs.readFileSync(path.join(__dirname,'../public/app',file),'utf8'),context);
     context.EquipmentTracking=context.window.EquipmentTracking;
   }
   const data={tools:[
-    {id:'A',name:'Drill',qty:3,status:'inuse',site:'Site One',holder:'Engineer'},
+    {id:'A',name:'Drill',qty:3,status:'inuse',siteId:'s1',site:'Site One',holder:'Engineer',holderId:'eng-1'},
     {id:'B',name:'Grinder',qty:2,status:'available',site:'Unassigned',holder:''},
-    {id:'C',name:'Saw',qty:1,status:'underrepair',site:'Site One',holder:'Engineer'},
+    {id:'C',name:'Saw',qty:1,status:'underrepair',siteId:'s1',site:'Site One',holder:'Engineer',holderId:'eng-1'},
     {id:'D',name:'Hidden zero',qty:0,status:'available'},
   ],sites:[{id:'s1',name:'Site One',is_active:true},{id:'s2',name:'Archived site',is_active:false}],activity:[],requests:[],transfers:[],repairs:[],missing:[]};
   const state={query:'',status:'',site:'',condition:''};
@@ -27,7 +27,7 @@ test('dashboard preserves Admin quantities and counts Engineer assets within cus
   assert.match(html,/No equipment movements recorded in this period/);
   assert.doesNotMatch(html,/Hidden zero/);
   assert.doesNotMatch(html.split('command-panel dashboard-projects')[1],/Archived site/);
-  assert.match(render({role:'engineer',name:'Engineer'}),/<span class="num">2<\/span>/);
+  assert.match(render({id:'eng-1',role:'engineer',name:'Engineer'}),/<span class="num">2<\/span>/);
   assert.match(render({role:'engineer',name:''}),/<span class="num">0<\/span>/);
 });
 test('Consumables navigation shortcut has no large total and only displays current singular/plural stock warnings',()=>{
@@ -125,14 +125,13 @@ test('project KPI, cards and chart share stable assignment rules for seven compa
   assert.equal(count(render({id:'mike',role:'engineer'})),1,'Even precomputed activeProjects must exclude archived/inactive entries');
 });
 
-test('name-only project assignments require explicit demo mode and never override an assigned ID',()=>{
-  const {data,render,context}=setup();
-  data.sites=[{id:'demo',name:'Demo site',assigned_engineer:'Mike'},{id:'wrong',name:'Other site',is_active:true,assigned_engineer:'Mike',assigned_engineer_id:'someone-else'}];
-  const person={id:'demo-mike',name:'Mike',role:'engineer'};
-  assert.doesNotMatch(render(person),/Demo site/);
-  context.window.MCPAAuth={isDemo:true};
+test('Engineer and Architect assignments both require IDs',()=>{
+  const {data,render}=setup();
+  data.sites=[{id:'unassigned',name:'Unassigned site',assigned_engineer:'Mike'},{id:'wrong',name:'Other site',is_active:true,assigned_engineer:'Mike',assigned_engineer_id:'someone-else'}];
+  const person={id:'mike-id',name:'Mike',role:'engineer'};
   const html=render(person);
-  assert.match(html,/1 active project assigned to you/); assert.match(html,/Demo site/); assert.doesNotMatch(html,/Other site/);
+  assert.match(html,/0 active projects assigned to you/); assert.doesNotMatch(html,/Unassigned site|Other site/);
+  assert.doesNotMatch(render({...person,role:'architect'}),/Unassigned site|Other site/);
   data.sites[0].is_active=false;assert.match(render(person),/0 active projects assigned to you/);
 });
 

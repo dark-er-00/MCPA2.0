@@ -4,8 +4,19 @@
   let root, screen, controller, query = '', status = '', mine = false, site = '', inventory = null, stopWatching;
   let loading = false, reloadPending = false;
   let consumablesSummary = null;
-  const viewData = () => ({...store().getState(), ...(inventory || {})});
+  const viewData = () => {
+    const data = {...store().getState(), ...(inventory || {})};
+    return engineerInventory() ? window.MCPAProjectScope.engineerInventory(data,store().getContext()) : data;
+  };
   const store = () => window.MovementStore;
+  const engineerInventory = () => screen === 'masterlist' && store().mode === 'live' && window.MCPAPermissions.operational(store().getContext().role);
+  const own = tool => {
+    const user = store().getContext();
+    return store().mode === 'live' ? !!user.id && (tool.holderId ?? tool.current_holder_id) === user.id
+      : !!user.name && tool.holder === user.name;
+  };
+  const inventoryTools = data => personal() && store().mode === 'demo' ? data.tools.filter(own) : data.tools;
+  const inventorySites = data => engineerInventory() ? window.MCPAProjectScope.projects(data.sites,store().getContext(),store().mode==='demo') : data.sites;
   const personal = () => screen === 'masterlist' && window.MCPAPermissions.operational(store().getContext().role);
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
   const display = window.MCPADisplay;
@@ -46,10 +57,11 @@
     const focused = root.contains(document.activeElement) ? document.activeElement : null;
     const focusId = focused?.id, selectionStart = focused?.selectionStart, selectionEnd = focused?.selectionEnd;
     const data = viewData(), user = store().getContext();
+    if(engineerInventory()&&site&&!data.sites.some(project=>project.id===site))site='';
     contextBar();
     if (screen === 'dashboard') root.innerHTML = dashboard(data,user);
     else if (screen === 'activity') root.innerHTML = `${header('Activity logs', 'A history of saved movement actions and the people who recorded them.')}<div class="overview-filters"><div class="field"><label for="movement-activity-search">Search activity</label><input id="movement-activity-search" data-search value="${escape(query)}" placeholder="Reference, tool ID, person, action…"></div><button type="button" class="btn btn-secondary" data-export aria-label="Export activity logs as PDF">${SiteTracePDF.icon} Export PDF</button></div><div class="card" id="overview-results">${activityTable(visibleActivity(data))}</div>`;
-    else root.innerHTML = `${header('Equipment Tracking', personal() ? 'Equipment in your confirmed custody. Open a tool to see its recorded history.' : 'Current location, condition, and custody. Open a tool to see its recorded history.')}<div class="overview-filters"><div class="field"><label for="movement-inventory-search">Search tools</label><input id="movement-inventory-search" data-search value="${escape(query)}" placeholder="Tool ID, name, brand, holder…"></div><div class="field"><label for="overview-status">Status</label><select id="overview-status"><option value="">All statuses</option>${Object.entries(STATUS_LABEL).map(([key,label]) => `<option value="${key}" ${status === key ? 'selected' : ''}>${label}</option>`).join('')}</select></div><div class="field"><label for="overview-site">Project</label><select id="overview-site"><option value="">All projects</option>${data.sites.map(s => `<option ${site === s.name ? 'selected' : ''}>${escape(s.name)}</option>`).join('')}</select></div>${personal() ? '' : `<label class="checkbox-row"><input type="checkbox" id="overview-mine" ${mine ? 'checked' : ''}>My custody only</label>`}</div><div class="card" id="overview-results"></div>`;
+    else root.innerHTML = `${header('Equipment Tracking', engineerInventory() ? 'Equipment in your confirmed custody across your assigned projects. Open a tool to see its recorded history.' : personal() ? 'Equipment in your confirmed custody. Open a tool to see its recorded history.' : 'Current location, condition, and custody. Open a tool to see its recorded history.')}<div class="overview-filters"><div class="field"><label for="movement-inventory-search">Search tools</label><input id="movement-inventory-search" data-search value="${escape(query)}" placeholder="Tool ID, name, brand, holder…"></div><div class="field"><label for="overview-status">Status</label><select id="overview-status"><option value="">${engineerInventory()?'All custody statuses':'All statuses'}</option>${(engineerInventory() ? [['inuse',STATUS_LABEL.inuse],['repair',STATUS_LABEL.repair],['missing',STATUS_LABEL.missing]] : Object.entries(STATUS_LABEL)).map(([key,label]) => `<option value="${key}" ${status === key ? 'selected' : ''}>${label}</option>`).join('')}</select></div><div class="field"><label for="overview-site">Project</label><select id="overview-site"><option value="" ${!site?'selected':''}>${engineerInventory()?'Filter by my project':'All projects'}</option>${inventorySites(data).map(s => `<option value="${escape(engineerInventory()?s.id:s.name)}" ${site === (engineerInventory()?s.id:s.name) ? 'selected' : ''}>${escape(s.name)}</option>`).join('')}</select></div>${personal() ? '' : `<label class="checkbox-row"><input type="checkbox" id="overview-mine" ${mine ? 'checked' : ''}>My custody only</label>`}</div><div class="card" id="overview-results"></div>`;
     if (screen === 'masterlist') filter();
     if (focusId) {
       const replacement = document.getElementById(focusId);
@@ -63,7 +75,14 @@
     if (!results) return;
     if (screen === 'dashboard') results.innerHTML = window.DashboardView.inventory(data,user,dashboardState(),toolsTable);
     else if (screen === 'activity') results.innerHTML = activityTable(visibleActivity(data));
-    else results.innerHTML = toolsTable(data.tools.filter(t => window.EquipmentTracking.matchesStatus(t, status, data) && (!site || t.site === site) && (!mine || (store().mode === 'live' ? t.holderId === user.id : t.holder === user.name)) && [t.id,t.name,t.brand,t.site,t.holder,t.serial].join(' ').toLowerCase().includes(query.toLowerCase())));
+    else {
+      const authorized = inventoryTools(data);
+      const rows = authorized.filter(t => window.EquipmentTracking.matchesStatus(t,status,data)
+        && (!site || (engineerInventory() ? (t.siteId ?? t.site_id) === site : t.site === site))
+        && (!mine || (store().mode === 'live' ? t.holderId === user.id : t.holder === user.name))
+        && [t.id,t.name,t.brand,t.site,t.holder,t.serial].join(' ').toLowerCase().includes(query.toLowerCase()));
+      results.innerHTML = toolsTable(rows) + (engineerInventory() ? '<p class="cell-sub" role="status" data-engineer-inventory-count>Showing '+rows.length+' of '+authorized.length+' authorized equipment records</p>' : '');
+    }
   }
   function setSearch(value) {
     if (screen !== 'masterlist' || !root?.isConnected) return;
@@ -74,7 +93,7 @@
   }
   const userRole = () => store().getContext().role;
   function detail(id) {
-    const data = viewData(), item = data.tools.find(t => t.id === id);
+    const data = viewData(), item = data.tools.find(t => t.id === id && (!MCPAPermissions.operational(userRole()) || own(t)));
     root.querySelector('dialog')?.remove();
     if (!item) {
       root.querySelector('#overview-feedback').textContent = 'This equipment is unavailable or your account no longer has access.';
@@ -83,7 +102,7 @@
     const dialog = document.createElement('dialog'); dialog.className = 'overview-dialog'; dialog.id = 'equipment-detail';
     dialog.innerHTML = `<div class="page-head"><div><h2>${escape(item.name)}</h2><span class="tool-id-chip">${escape(item.id)}</span></div><button class="btn btn-secondary" data-close>Close</button></div><div class="overview-detail-grid"><div><span>Current holder</span><strong>${escape(item.holder || '—')}</strong></div><div><span>Project</span><strong>${escape(item.site || 'Unassigned')}</strong></div><div>${window.EquipmentTracking.statusMarkup(item,data)}</div>${MCPAPermissions.operational(userRole()) ? '' : `<div><span>Quantity</span><strong>${escape(item.qty)}</strong></div>`}</div><h3>Movement history</h3>${activityTable(visibleActivity({...data,activity:data.activity.filter(r => r.toolIds?.includes(id))}))}<div class="overview-actions">${MCPAPermissions.operational(userRole()) ? button('Request tools','request')+button('Transfer','transfer')+button('Return','return')+button('Report issue','repair') : button('View activity','activity')}</div>`;
     root.appendChild(dialog); dialog.showModal();
-    const close = () => { if (window.MCPANavigation?.canBack()) window.MCPANavigation.back(); else showScreen('masterlist', null, {history:'replace'}); };
+    const close = () => { if (window.MCPANavigation?.canBack()) window.MCPANavigation.back(); else showScreen(screen, null, {history:'replace'}); };
     dialog.querySelector('[data-close]').onclick = close;
     dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
     dialog.addEventListener('close', () => { dialog.remove(); render(); }, {once: true});
@@ -97,9 +116,7 @@
     if (!automatic) owner.innerHTML = '<div class="card card-pad" role="status">Loading saved movement records…</div>';
     try {
       if(personal() && sourceMode==='live'){
-        const {data,error}=await window.EquipmentTracking.client().rpc('mcpa_personal_equipment_snapshot');
-        if(error)throw new Error(['PGRST202','42883'].includes(error.code)?'Personal equipment access is not installed yet. Contact your administrator.':'Your equipment could not load. Please retry.');
-        if(!Array.isArray(data?.tools))throw new Error('Invalid personal equipment response.');
+        const data=await window.MCPAProjectScope.readEngineerInventory(window.EquipmentTracking.client(),store().getContext());
         if(root!==owner||!owner.isConnected||store().mode!==sourceMode)return;
         inventory=data;
         if(!owner.querySelector('dialog[open]'))render();
@@ -136,7 +153,8 @@
     }
     catch(error) {
       if (root !== owner || !owner.isConnected) return;
-      if (automatic && owner.querySelector('#overview-feedback')) {
+      if (engineerInventory()) inventory = {tools: [], sites: []};
+      if (!engineerInventory() && automatic && owner.querySelector('#overview-feedback')) {
         owner.querySelector('#overview-feedback').textContent = 'Updates interrupted. Showing the last loaded records; retrying automatically.';
         return;
       }
@@ -158,7 +176,7 @@
   }
   async function mount(id) {
     const target = document.getElementById('screen-' + id); if (!target) return;
-    dispose(); screen = id; query = id === 'masterlist' ? window.mcpaSearch || '' : ''; status = ''; mine = personal(); site = ''; dashboardCondition = '';
+    dispose(); screen = id; query = id === 'masterlist' ? window.mcpaSearch || '' : ''; status = ''; mine = personal() && !engineerInventory(); site = ''; dashboardCondition = '';
     root = target;
     root.classList.add('movement-overview'); controller = new AbortController(); const signal = controller.signal;
     root.addEventListener('click', async event => {
@@ -166,7 +184,7 @@
       if (el.hasAttribute('data-turnover-inbox')) {showScreen('transfer?view=receive');return;}
       if (el.hasAttribute('data-status')) {status = el.dataset.status; render(); root.querySelector('[data-status="' + status + '"]')?.focus({preventScroll:true}); return;}
       if (el.dataset.go) {showScreen(el.dataset.go); return;}
-      if (el.dataset.tool) {showScreen('masterlist?record=' + encodeURIComponent(el.dataset.tool)); return;}
+      if (el.dataset.tool) {showScreen((screen === 'dashboard' && MCPAPermissions.operational(userRole()) ? 'dashboard' : 'masterlist') + '?record=' + encodeURIComponent(el.dataset.tool)); return;}
       if (el.hasAttribute('data-export')) {
         if (screen !== 'activity' || !window.MCPAAuth?.canRoute('activity')) return;
         const rows = visibleActivity(store().getState());

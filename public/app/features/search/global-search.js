@@ -14,9 +14,9 @@
       if (!allowed(module) || !id) return;
       rows.push({key:module+':'+id,module,id:text(id),title:text(title),reference:display.reference(reference),context:text(context),route});
     };
-    const tools = data.inventory || data.tools || [];
+    const sourceTools = data.inventory || data.tools || [];
+    const tools = demo && personal ? sourceTools.filter(t => !!user.name && t.holder === user.name) : sourceTools;
     tools.forEach(t => {
-      if (demo && personal && t.holder !== user.name) return;
       add('masterlist',t.id,t.name,join([t.serial || t.serial_number,t.cat || t.category,t.brand,t.site,t.holder,t.status ? display.status(t.status) : '',t.condition ? display.condition(t.condition) : '']),'masterlist?record='+encodeURIComponent(t.id));
     });
     (data.projects || data.sites || []).forEach(s => {
@@ -79,7 +79,9 @@
       if(MCPAPermissions.route(user.role,'activity'))get('Movements',async()=>Object.assign(data,await MovementStore.initialize()));
       if(MCPAPermissions.route(user.role,'masterlist'))get('Equipment',async()=>{
         if(demo){await MovementStore.initialize();data.inventory=MovementStore.getState().tools;}
-        else if(MCPAPermissions.operational(user.role))data.inventory=records(await rpc('mcpa_personal_equipment_snapshot'),'tools');
+        else if(MCPAPermissions.operational(user.role)){
+          data.inventory=(await MCPAProjectScope.readEngineerInventory(EquipmentTracking.client(),user)).tools;
+        }
         else data.inventory=records(await EquipmentTracking.snapshot(),'tools');
       });
       if(MCPAPermissions.route(user.role,'sites'))get('Projects',async()=>{

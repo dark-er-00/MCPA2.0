@@ -32,3 +32,8 @@
 .transfer-workspace fieldset{border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
 .transfer-workspace [role=alert]{color:var(--red,#b43c35)}
 @media(max-width:600px){.transfer-filter,.transfer-facts,.transfer-inspection{grid-template-columns:1fr}.transfer-record>summary{align-items:flex-start}.transfer-record .badge{white-space:normal;flex-shrink:0;max-width:46%}.transfer-views{gap:6px}.transfer-workspace input,.transfer-workspace select,.transfer-workspace textarea{font-size:16px}}
+
+/* Engineer composer: override the app's reset while preserving Admin dialogs. */
+.engineer-transfer-workspace dialog{position:fixed;inset:0;margin:auto;box-sizing:border-box;max-width:calc(100vw - 32px);max-height:calc(100dvh - 32px);overflow:auto;overscroll-behavior:contain}
+
+.engineer-transfer-workspace [hidden]{display:none!important}

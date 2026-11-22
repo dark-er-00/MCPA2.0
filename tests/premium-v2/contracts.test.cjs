@@ -5,7 +5,7 @@ const root=path.resolve(__dirname,'../..');
 function setup(){
  // Badge DOM parsing is covered by the real-browser suite. The VM checks data contracts.
  const c=vm.createContext({window:{MCPAAuth:{isDemo:false}},document:{addEventListener(){},createElement(){return {content:{querySelector(){return {outerHTML:'<span class="badge"></span>'}}}}}},icon:()=>'<svg></svg>'});
- for(const name of ['shared/display','core/permissions','features/equipment/equipment-tracking','features/equipment/equipment-visual','features/projects/project-scope','features/dashboard/premium-dashboard']){
+ for(const name of ['shared/display','core/permissions','features/equipment/equipment-tracking','features/equipment/equipment-visual','features/projects/project-scope','features/dashboard/dashboard-view','features/dashboard/premium-dashboard']){
   vm.runInContext(fs.readFileSync(path.join(root,'public/app',name+'.js'),'utf8'),c);
   Object.assign(c,c.window);
  }
@@ -14,8 +14,8 @@ function setup(){
  const render=(user=f.actors.admin,input=data)=>view.render(input,user,state,()=>'',()=>'',v=>String(v||''));
  return {c,f,data,view,state,render};
 }
-test('premium rendering works on main without importing engineerInventory or changing scope helpers',()=>{
- const {c,f,render}=setup();assert.equal(c.window.MCPAProjectScope.engineerInventory,undefined);
+test('premium rendering works on main with the merged project scope',()=>{
+ const {c,f,render}=setup();assert.equal(typeof c.window.MCPAProjectScope.engineerInventory,'function');
  for(const who of ['admin','sky','architect','handler'])assert.match(render(f.actors[who]),/data-pie-chart/);
 });
 test('live field inventory is confirmed custody, never label-only ownership or assigned stock',()=>{

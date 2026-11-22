@@ -88,13 +88,14 @@
     async function rpc(name, args = {}) {
       let response;
       try { response = await supabase.rpc(name, args); }
-      catch (_) { throw new Error('The server could not be reached. Retry the same action to check whether it completed.'); }
+      catch (_) { throw Object.assign(new Error('The server could not be reached. Retry the same action to check whether it completed.'),{outcomeUncertain:true}); }
       if (response?.error) {
         const error = new Error(response.error.message || 'The action could not be completed. Refresh and try again.');
         error.code = response.error.code;
+        error.outcomeUncertain = !error.code || /^(?:NETWORK|FETCH|TIMEOUT|ECONN|5[0-9]{2}$)/i.test(error.code) || /fetch|network|connection|timeout/i.test(error.message);
         throw error;
       }
-      if (!response || response.data === undefined || response.data === null) throw new Error('The server returned no result. Retry the same action to check whether it completed.');
+      if (!response || response.data === undefined || response.data === null) throw Object.assign(new Error('The server returned no result. Retry the same action to check whether it completed.'),{outcomeUncertain:true});
       return response.data;
     }
     function role(allowed) {
@@ -131,6 +132,7 @@
       id(key, 'operation identifier');
       retryKeys.set(fingerprint, key); persist(key);
       const result = await rpc(name, { p_operation_id: key, ...args });
+      if(name===RPC.submit&&!UUID.test(result?.id))throw Object.assign(new Error('The server did not confirm a request identifier. Retry the same action to check whether it completed.'),{outcomeUncertain:true});
       retryKeys.delete(fingerprint); persist(null);
       return result;
     }

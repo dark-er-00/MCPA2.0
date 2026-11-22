@@ -48,3 +48,38 @@
 .mcpa-custody-v2 summary{cursor:pointer;min-height:44px;padding:8px 0}
 @media(max-width:600px){.mcpa-custody-v2 .b-row{align-items:stretch}.mcpa-custody-v2 .b-row>label{flex-basis:100%}.mcpa-custody-v2 input,.mcpa-custody-v2 select,.mcpa-custody-v2 textarea{font-size:16px}.mcpa-custody-v2 .b-asset-head{align-items:start}.mcpa-custody-v2 .b-primary{width:100%}}
 @media(prefers-reduced-motion:reduce){.mcpa-custody-v2 button{transition:none}}
+
+.mcpa-custody-v2 [hidden]{display:none!important}
+.mcpa-custody-v2 .b-equipment-picker{position:relative;min-width:0;flex:2 1 340px;border:0;padding:0;margin:0}
+.mcpa-custody-v2 .b-equipment-picker legend{font-size:14px;font-weight:600;margin-bottom:7px}
+.mcpa-custody-v2 .b-equipment-picker details{position:relative}
+.mcpa-custody-v2 .b-equipment-picker summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:10px 14px;border:1px solid var(--border-strong,var(--line));border-radius:6px;background:var(--input-background,var(--white));color:var(--text-primary,var(--black));font-size:14px;font-weight:500;cursor:pointer;list-style:none;overflow-wrap:anywhere}
+.mcpa-custody-v2 .b-equipment-picker summary::-webkit-details-marker{display:none}
+.mcpa-custody-v2 .b-equipment-picker summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--text-secondary,var(--gray));border-bottom:2px solid var(--text-secondary,var(--gray));transform:rotate(45deg);flex-shrink:0;margin-top:-3px;transition:transform 150ms}
+.mcpa-custody-v2 .b-equipment-picker details[open]>summary{border-color:var(--gold-dim,var(--gold));border-bottom-left-radius:0;border-bottom-right-radius:0}
+.mcpa-custody-v2 .b-equipment-picker details[open]>summary::after{transform:rotate(-135deg);margin-top:3px}
+.mcpa-custody-v2 .b-equipment-options{position:absolute;top:100%;left:0;right:0;z-index:30;max-height:240px;overflow:auto;overscroll-behavior:contain;border:1px solid var(--border-strong,var(--line));border-top:0;border-radius:0 0 8px 8px;background:var(--surface,var(--white));box-shadow:0 14px 32px rgba(0,0,0,.28);padding:6px;display:grid;gap:2px}
+.mcpa-custody-v2 .b-equipment-options label{display:flex;align-items:center;gap:10px;padding:10px 12px;margin:0;min-height:44px;border-radius:6px;font-size:13.5px;font-weight:500;cursor:pointer;overflow-wrap:anywhere;transition:background-color 120ms}
+.mcpa-custody-v2 .b-equipment-options label:hover,.mcpa-custody-v2 .b-equipment-options label:has(input:checked){background:var(--brand-subtle,var(--surface-hover))}
+.mcpa-custody-v2 .b-equipment-options label span{font-size:13.5px;font-weight:500;color:var(--text-primary,var(--black))}
+.mcpa-custody-v2 .b-equipment-options input{width:18px;height:18px;min-height:0;padding:0;margin:0;flex-shrink:0;accent-color:var(--gold-dim,#806400)}
+.mcpa-custody-v2 [data-retirement-tab][aria-pressed=true]{border-color:var(--gold)}
+.mcpa-custody-v2 .b-history{margin-top:24px;display:grid;gap:14px}
+.mcpa-custody-v2 .b-history .b-retirement-card{border:1px solid var(--border,var(--line));border-radius:10px;background:var(--surface,var(--white));padding:18px 20px;box-shadow:var(--shadow-sm,0 1px 2px rgba(0,0,0,.06));transition:border-color 150ms}
+.mcpa-custody-v2 .b-history .b-retirement-card:hover{border-color:var(--border-strong,var(--line))}
+.mcpa-custody-v2 .b-retirement-summary{list-style:none;padding:0;min-height:44px;display:grid;gap:10px}
+.mcpa-custody-v2 .b-retirement-summary::-webkit-details-marker{display:none}
+.mcpa-custody-v2 .b-retirement-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.mcpa-custody-v2 .b-retirement-title{display:block;font-size:16px;font-weight:650;color:var(--text-primary,var(--black));margin-bottom:2px}
+.mcpa-custody-v2 .b-retirement-reason{margin:0;font-size:14px;color:var(--text-primary,var(--black))}
+.mcpa-custody-v2 .b-retirement-meta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding-top:10px;border-top:1px solid var(--border,var(--line));font-size:13px;color:var(--text-secondary,var(--gray))}
+.mcpa-custody-v2 .b-retirement-view{margin-left:auto;min-height:38px;padding:7px 14px;font-size:13px;color:var(--text-primary,var(--black))}
+.mcpa-custody-v2 .b-retirement-body{margin-top:14px;padding-top:14px;border-top:1px solid var(--border,var(--line))}
+
+.mcpa-custody-v2 .b-return-record{padding:20px 0;border-bottom:1px solid var(--line)}
+.mcpa-custody-v2 .b-return-dialog{width:min(850px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;background:var(--white);color:var(--black);border:1px solid var(--line);border-radius:12px;padding:20px;overflow-wrap:anywhere}
+.mcpa-custody-v2 .b-return-dialog>header.b-row{justify-content:space-between;align-items:center;gap:16px;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--border,var(--line))}
+.mcpa-custody-v2 .b-return-dialog>header.b-row h2{margin:0;font-size:clamp(22px,3vw,30px)}
+.mcpa-custody-v2 .b-return-dialog [data-close-return],.mcpa-custody-v2 .b-return-dialog [data-close-retirement]{margin-left:auto;flex-shrink:0}
+.b-return-dialog::backdrop{background:rgba(0,0,0,.65)}
+.mcpa-custody-v2 .b-return-dialog{position:fixed;inset:0;margin:auto}

@@ -2,7 +2,9 @@
   "name": "mcpa",
   "version": "1.0.0",
   "private": true,
-  "engines": {"node": ">=22"},
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "start": "node scripts/start.mjs",
     "configure": "node scripts/configure.mjs",
@@ -18,7 +20,9 @@
     "test:container": "node scripts/test-container.mjs",
     "bundle:pdf": "node scripts/bundle-pdf.mjs",
     "generate:consumables": "node scripts/generate-consumables.cjs",
-    "verify": "npm run check && npm test && npm run test:browser && npm run test:auth"
+    "verify": "npm run check && npm test && npm run test:browser && npm run test:auth",
+    "preview": "node scripts/preview.cjs",
+    "test:frontend": "node --require ./tests/fixtures/frontend-network-guard.cjs --test tests/engineer-project-assignments.test.cjs tests/engineer-inventory-scope.test.cjs tests/global-search.test.cjs tests/dashboard-view.test.cjs tests/engineer-preview-isolation.test.cjs tests/engineer-architect-parity.test.cjs tests/movement-store.test.cjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",

@@ -15,6 +15,9 @@
     const changed=()=>{if(!alive())return;session.dirty=false;++session.draftVersion;void window.MovementStore.refresh().catch(()=>{}).finally(()=>{if(alive())window.dispatchEvent(new CustomEvent('mcpa:movement-change'));});window.dispatchEvent(new CustomEvent('mcpa:materials-change'));};
     const client=window.EquipmentTracking.client();
     root.innerHTML='<div class="integration-toolbar"><button type="button" class="btn btn-secondary" data-integration-refresh>Refresh records</button><span role="status" data-integration-status></span><button type="button" class="btn btn-secondary" data-integration-recover hidden>Recover interrupted action</button></div><div data-integration-mount></div><div data-integration-history></div>';
+    const automaticEngineer=window.MCPAPermissions.operational(person.role)&&screen==='return';
+    const automaticAdmin=person.role==='admin'&&['return','asset-retirement-v2'].includes(screen);
+    if(automaticAdmin||automaticEngineer)root.querySelector('[data-integration-refresh]').hidden=true;
     const host=root.querySelector('[data-integration-mount]');
     const status=root.querySelector('[data-integration-status]');
     const add=async promise=>{const mounted=await promise;if(!alive()){mounted.destroy();return;}session.mounts.push(mounted);if(mounted.ready)await mounted.ready;};
@@ -23,6 +26,20 @@
       const read=name==='mcpa_b_snapshot'||/^mcpa_wa_(equipment_catalog|equipment_requests|suggest_equipment|consumables_catalog|consumables_snapshot|consumables_analytics)$/.test(name);
       const readVersion=(readVersions.get(name)||0)+1;if(read)readVersions.set(name,readVersion);
       const draftVersion=session.draftVersion,result=await client.rpc(name,args);
+      // These lists feed construction-project selectors. Office remains intact
+      // in inventory, transfer destinations, and recorded history snapshots.
+      if(!result.error&&Array.isArray(result.data?.sites)&&(name==='mcpa_wa_equipment_catalog'||name==='mcpa_wa_consumables_snapshot'&&person.role!=='admin')){
+        const office=await client.rpc('mcpa_inventory_office');
+        if(office.error||!office.data?.id)throw Error('The Office location could not be verified. Reopen this view after configuration is restored.');
+        let projectIds=null;
+        if(window.MCPAPermissions.operational(person.role)){
+          const projects=await client.rpc('mcpa_project_snapshot');
+          if(projects.error)throw projects.error;
+          if(!Array.isArray(projects.data?.sites))throw Error('Your assigned projects could not be verified. Reopen this view to retry.');
+          projectIds=new Set(window.MCPAProjectScope.projects(projects.data.sites,person).map(site=>site.id));
+        }
+        result.data={...result.data,sites:result.data.sites.filter(site=>site.id!==office.data.id&&(!projectIds||projectIds.has(site.id)))};
+      }
       if(read&&(!alive()||readVersions.get(name)!==readVersion))
         throw Object.assign(Error('A newer refresh replaced this response.'),{code:'MCPA_STALE_REFRESH'});
       // A read started on a clean form must not replace edits made while it waited.
@@ -34,6 +51,7 @@
       // Browsing Engineer filters is not an unsaved request. Keep background
       // issuance refreshes running while preserving real request drafts.
       if(screen==='outward-materials'&&person.role!=='admin'&&!event.target.matches('[data-quantity],[data-field="purpose"],[data-field="site_id"]'))return;
+      if(!event.target.closest('form'))return;
       session.dirty=true;++session.draftVersion;
     },{signal:session.abort.signal});
     if(screen==='transfer'||screen==='transfer-inbox'){
@@ -64,14 +82,18 @@
         options.recordId=record;
       }else if(screen==='asset-retirement-v2'){
         path='app/portals/admin/asset-retirement/asset-retirement.mjs';fn='mountAssetRetirement';options.recordId=record;options.historyOnly=view==='history';
-      }else{path='app/portals/engineer/retired-equipment/retired-equipment.mjs';fn='mountRetiredEquipment';}
+      }else{path='app/portals/engineer/retired-equipment/retired-equipment.mjs';fn='mountRetiredEquipment';options.historyOnly=true;options.recordId=record;}
       const module=await import(new URL(path,base));if(!alive())return;
       await add(module[fn](host,options));
     }
     if(!alive())return;
     root.querySelector('.integration-toolbar').hidden=!session.api;
     const recover=root.querySelector('[data-integration-recover]');
-    const pending=()=>{recover.hidden=!session.api?.pending().length;};pending();
+    const updateToolbar=()=>{if(automaticAdmin||automaticEngineer)root.querySelector('.integration-toolbar').hidden=recover.hidden&&!status.textContent.trim()&&(!automaticEngineer||root.querySelector('[data-integration-refresh]').hidden);};
+    const setStatus=value=>{status.textContent=value;updateToolbar();};
+    const retry=root.querySelector('[data-integration-refresh]');
+    if(automaticEngineer){retry.textContent='Retry loading returns';const updateRetry=()=>{const error=host.querySelector('.b-error');retry.hidden=!error?.textContent.trim();if(!retry.hidden)root.querySelector('.integration-toolbar').hidden=false;};const observer=new MutationObserver(updateRetry);observer.observe(host,{subtree:true,childList:true,characterData:true});updateRetry();session.abort.signal.addEventListener('abort',()=>observer.disconnect(),{once:true});}
+    const pending=()=>{recover.hidden=!session.api?.pending().length;updateToolbar();};pending();
     async function refresh(){
       if(!alive())return;
       if(session.dirty&&!window.confirm('Discard unsaved changes and refresh these records?'))return;
@@ -83,24 +105,24 @@
         }
       }catch(error){if(!alive()||refreshVersion!==session.refreshVersion||error.code==='MCPA_STALE_REFRESH')return;throw error;}
       if(!alive()||refreshVersion!==session.refreshVersion)return;
-      pending();status.textContent='Records refreshed.';
+      pending();setStatus(automaticAdmin||automaticEngineer?'':'Records refreshed.');
     }
     let scheduled;
     const update=()=>{
       clearTimeout(scheduled);scheduled=setTimeout(()=>{
         if(!alive()||document.hidden)return;
-        if(session.dirty||root.querySelector('[aria-busy="true"]')){status.textContent='Records may have changed. Refresh when your form is ready.';return;}
-        void refresh().catch(error=>{if(alive())status.textContent=error.message;});
+        if(session.dirty||root.querySelector('dialog[open],[aria-busy="true"]')){setStatus('Automatic updates paused to preserve your draft. Finish the action or reopen this view to load current records.');return;}
+        void refresh().catch(error=>{if(alive())setStatus(error.message);});
       },180);
     };
-    for(const event of ['focus','online','mcpa:movement-change','mcpa:materials-change'])window.addEventListener(event,update,{signal:session.abort.signal});
-    const polling=setInterval(update,30000);session.abort.signal.addEventListener('abort',()=>{clearInterval(polling);clearTimeout(scheduled);},{once:true});
-    root.querySelector('[data-integration-refresh]').addEventListener('click',()=>void refresh().catch(error=>{status.textContent=error.message;}),{signal:session.abort.signal});
-    recover.addEventListener('click',async()=>{recover.disabled=true;try{await session.api.retryPending();changed();await refresh();}catch(error){status.textContent=error.message;}finally{if(alive()){recover.disabled=false;pending();}}},{signal:session.abort.signal});
+    for(const event of (['request','quantity-request'].includes(screen)?[]:['mcpa:movement-change','mcpa:materials-change']))window.addEventListener(event,update,{signal:session.abort.signal});
+    const stop=screen==='request'||screen==='quantity-request'?()=>{}:window.EquipmentTracking.watch(update,()=>{}, {tables:['equipment','sites','mcpa_notifications','mcpa_movements','mcpa_b_retirements']});session.abort.signal.addEventListener('abort',()=>{stop();clearTimeout(scheduled);},{once:true});
+    root.querySelector('[data-integration-refresh]').addEventListener('click',()=>void refresh().catch(error=>{setStatus(error.message);}),{signal:session.abort.signal});
+    recover.addEventListener('click',async()=>{recover.disabled=true;try{await session.api.retryPending();changed();await refresh();}catch(error){setStatus(error.message);}finally{if(alive()){recover.disabled=false;pending();}}},{signal:session.abort.signal});
     root.addEventListener('submit',()=>{setTimeout(()=>{if(alive())pending();},0);},{signal:session.abort.signal});
     // Re-evaluate recovery controls after uncertain network outcomes too.
     const timer=setInterval(()=>{if(alive())pending();},1000);session.abort.signal.addEventListener('abort',()=>clearInterval(timer),{once:true});
-    if(screen==='return'){
+    if(screen==='return'&&person.role!=='admin'){
       const snapshot=returnSnapshot||await window.MovementStore.refresh();if(!alive())return;
       const records=(snapshot.returns||[]).filter(v=>!v.custodyVersion&&!v.inspectionBatchId);
       root.querySelector('[data-integration-history]').innerHTML=`<details class="integration-history" ${records.some(v=>v.id===record)?'open':''}><summary>Historical returns (${records.length})</summary>${records.map(v=>`<article><h3>${escape(v.id)}</h3><p>${escape((v.toolIds||[]).join(', '))} · ${escape(v.status)} · ${escape(v.returnedBy)}</p><p>${escape(v.notes)}</p></article>`).join('')||'<p>No historical returns.</p>'}</details>`;

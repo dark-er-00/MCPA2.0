@@ -5,7 +5,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,go,login,logout
   await f.db.exec("alter type equipment_status add value if not exists 'IN_OFFICE'");
   const cases=[
     ['T-8861','Pala','AVAILABLE',null,f.sites.main,'Good',1,'available'],
-    ['T-8862','Welding Machine','AVAILABLE',null,null,'Good',1,'transfer'],
+    ['SYN-OFFICE-REVIEW','Welding Machine','AVAILABLE',null,null,'Good',1,'transfer'],
     ['T-6254','Metal Tube','AVAILABLE',null,f.sites.office,'Good',1,'available'],
     ['T-RESERVED','Reserved drill','AVAILABLE',null,f.sites.casa,'Good',1,'reserved'],
     ['T-HANDOVER','Pending handover','AVAILABLE',null,f.sites.main,'Good',1,'transfer'],
@@ -19,12 +19,12 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,go,login,logout
   for(const [asset,name,status,holder,site,condition,quantity] of cases)await f.db.query('insert into equipment(id,asset_id,name,status,current_holder_id,site_id,condition,quantity,tracking_type) values($1,$2,$3,$4,$5,$6,$7,$8,$9)',[randomUUID(),asset,name,status,holder,site,condition,quantity,'Individual']);
   const action=(actor,p_action,p_payload)=>f.rpc(actor,'mcpa_movement_action',{p_action,p_payload,p_operation_id:randomUUID()});
   let weldingRequest;
-  for(const asset of ['T-RESERVED','T-HANDOVER','T-8862']){
-    if(asset==='T-8862')await f.db.exec("select setval('mcpa_movement_number',12)");
+  for(const asset of ['T-RESERVED','T-HANDOVER','SYN-OFFICE-REVIEW']){
+    if(asset==='SYN-OFFICE-REVIEW')await f.db.exec("select setval('mcpa_movement_number',12)");
     const request=await action(f.actors.sky,'createRequest',{toolIds:[asset],destination:'Casa Buena',purpose:'Private inventory fixture'});
     await action(f.actors.admin,'approveRequest',{id:request.id});
     if(asset!=='T-RESERVED')await action(f.actors.admin,'releaseRequest',{id:request.id});
-    if(asset==='T-8862')weldingRequest=request;
+    if(asset==='SYN-OFFICE-REVIEW')weldingRequest=request;
   }
   await go('masterlist');await wait('equipmentList.length>=9');
   await evaluate('itemsPerPage=50;renderTable()');
@@ -42,7 +42,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,go,login,logout
     await evaluate("document.querySelector('#equipmentTableBody .equipment-status').scrollIntoView({block:'center',inline:'end'})");
     if([375,1440].includes(width))await shot(`inventory-status-${width}-${dark?'dark':'light'}`,true);
   }
-  await fill('#searchEquipment','T-8862');await evaluate('filterAndResetPage()');
+  await fill('#searchEquipment','SYN-OFFICE-REVIEW');await evaluate('filterAndResetPage()');
   await shot('admin-welding-pending-receipt',true);
   await go('tool-profile?record=T-RESERVED');
   assert.equal(await evaluate("document.querySelector('#profileContent [data-requestability]').dataset.requestability"),'reserved');

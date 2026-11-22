@@ -3,7 +3,7 @@
 -- The historical confirmation below is not authorization for the current state.
 -- Obtain fresh physical verification and an authorized decision after resolving
 -- the legitimate movement. Never weaken the active-workflow guards below.
--- User physically confirmed Welding Machine T-8862 at Office on October 12, 2026.
+-- Original asset identifier redacted to SYN-OFFICE-REVIEW; this is not a real asset approval.
 -- Only its current physical site is corrected. No historical record is rewritten.
 begin;
 set local lock_timeout='5s';
@@ -18,7 +18,7 @@ begin
     raise exception 'Install the prospective Office inventory migration first.';
   end if;
   office:=mcpa_auth_private.office_return_site();
-  select * into asset from public.equipment where asset_id='T-8862' for update;
+  select * into asset from public.equipment where asset_id='SYN-OFFICE-REVIEW' for update;
   if not found or asset.name<>'Welding Machine' then
     raise exception 'The physically verified asset no longer matches the reviewed record. Stop and review.';
   end if;
@@ -30,11 +30,11 @@ begin
       where a.equipment_id=asset.id and (m.kind='transfer' and m.data->>'status' in ('pending','refused')
         or m.kind='repair' and m.data->>'status' in ('reported','underrepair')
         or m.kind='missing' and m.data->>'status'='missing')) then
-    raise exception 'T-8862 now has a real location or active custody/workflow. No equipment was changed. Rerun the preflight and verify physically again.';
+    raise exception 'SYN-OFFICE-REVIEW now has a real location or active custody/workflow. No equipment was changed. Rerun the preflight and verify physically again.';
   end if;
   update public.equipment set site_id=office.id where id=asset.id and site_id is null;
 end $$;
 commit;
 
 select e.asset_id,e.name,s.name as location,e.status,e.quantity,e.current_holder_id
-  from public.equipment e left join public.sites s on s.id=e.site_id where e.asset_id='T-8862';
+  from public.equipment e left join public.sites s on s.id=e.site_id where e.asset_id='SYN-OFFICE-REVIEW';

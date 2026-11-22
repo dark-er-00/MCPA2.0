@@ -22,7 +22,7 @@ select e.id,e.asset_id,e.name,e.status,e.quantity,e.condition,e.site_id,s.name a
     where a.equipment_id=e.id) as movements
 from public.equipment e left join public.sites s on s.id=e.site_id
 left join public.profiles h on h.id=e.current_holder_id
-where e.asset_id in ('T-6254','T-5559','T-8861','T-8862') order by e.asset_id;
+where e.asset_id in ('T-6254','T-5559','T-8861','SYN-OFFICE-REVIEW') order by e.asset_id;
 
 -- Include linked handovers even if a historical asset association is missing.
 with related as (
@@ -30,7 +30,7 @@ with related as (
     or m.data->>'requestId'='REQ-00013'
     or m.id=(select data->>'transferId' from public.mcpa_movements where id='REQ-00013')
     or exists(select 1 from public.mcpa_movement_assets a join public.equipment e on e.id=a.equipment_id
-      where a.movement_id=m.id and e.asset_id='T-8862')
+      where a.movement_id=m.id and e.asset_id='SYN-OFFICE-REVIEW')
 )
 select m.*, (select jsonb_agg(to_jsonb(a)) from public.mcpa_movement_assets a where a.movement_id=m.id) as assets,
   (select jsonb_agg(to_jsonb(o) order by o.created_at) from public.mcpa_movement_operations o

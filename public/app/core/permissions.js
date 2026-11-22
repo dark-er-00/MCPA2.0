@@ -3,17 +3,20 @@
   'use strict';
   const operational = ['engineer', 'architect'];
   const monitoring = ['admin', 'tool_handler'];
+  // Engineer and Architect share one accepted operational side.
+  const fieldRoutes = ['dashboard','masterlist','tool-profile','sites','site-detail','request','transfer','return','repair','missing','activity','settings'];
+  const fieldActions = ['createRequest','createTransfer','receiveTransfer','createReturn','reportRepair','reportMissing','withdrawRequest','cancelReservation','cancelTransfer','refuseTransfer','reopenTransfer'];
   const routes = {
     admin: ['dashboard','masterlist','tool-profile','sites','site-detail','request','transfer','return','repair','missing','consumables','purchase','reports','activity','users','settings'],
-    engineer: ['dashboard','masterlist','tool-profile','sites','site-detail','request','transfer','return','repair','missing','activity','settings'],
-    architect: ['dashboard','masterlist','tool-profile','sites','site-detail','request','transfer','return','repair','missing','activity','settings'],
+    engineer: [...fieldRoutes],
+    architect: [...fieldRoutes],
     secretary: ['consumables','purchase','settings'],
     tool_handler: ['dashboard','masterlist','tool-profile','sites','site-detail','transfer','return','repair','missing','activity','settings']
   };
   const actions = {
     admin: ['approveRequest','rejectRequest','releaseRequest','startRepair','completeRepair','recoverMissing'],
-    engineer: ['createRequest','createTransfer','receiveTransfer','createReturn','reportRepair','reportMissing','withdrawRequest','cancelReservation','cancelTransfer','refuseTransfer','reopenTransfer'],
-    architect: ['createRequest','createTransfer','receiveTransfer','createReturn','reportRepair','reportMissing','withdrawRequest','cancelReservation','cancelTransfer','refuseTransfer','reopenTransfer'],
+    engineer: [...fieldActions],
+    architect: [...fieldActions],
     secretary: [], tool_handler: ['createTransfer']
   };
   for(const role of ['admin','engineer','architect','tool_handler']) routes[role].push('transfer-tools');

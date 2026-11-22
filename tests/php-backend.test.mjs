@@ -312,7 +312,9 @@ test('the PHP account service uses verified identities and rejects forbidden act
   }
   const result=await request(route,{body:{action:'capabilities'}});
   assert.equal(result.status,200);
-  assert.equal((await result.json()).development_enabled,true);
+  const capabilities=await result.json();
+  assert.equal(capabilities.development_enabled,true);
+  assert.equal(capabilities.invitation_enabled,false);
 });
 
 test('PHP preserves account creation leases, recovery after a lost finish, and original passwords on retry', async () => {

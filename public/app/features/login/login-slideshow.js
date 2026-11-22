@@ -5,7 +5,7 @@
   const stage = document.getElementById('login-slideshow');
   const buttons = [...(host?.querySelectorAll('[data-login-step]') || [])];
   if (!stage || buttons.length !== 2) return;
-  // Resolve from this script, including /MCPA/ and /MCPA/2-engr/ entry points.
+  // Resolve from this script path regardless of deployment subdirectory.
   const directory = new URL('../../../assets/images/login-slideshow/', document.currentScript.src);
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const compact = matchMedia('(max-width: 900px), (max-width: 1200px) and (max-aspect-ratio: 3/2)');

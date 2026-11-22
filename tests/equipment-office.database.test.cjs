@@ -6,7 +6,7 @@ async function setup(t,{textStatus=false,install=true}={}){
   const f=await authDatabase({engineerPortal:true});t.after(()=>f.close());
   await require('./office-return-fixture.cjs').configure(f);
   if(textStatus)await f.db.exec("drop policy mcpa_equipment_insert on equipment;alter table equipment alter column status drop default;alter table equipment alter column status type text using status::text;alter table equipment alter column status set default 'AVAILABLE';create policy mcpa_equipment_insert on equipment for insert to authenticated with check(mcpa_has_role(array['admin','tool_handler']) and current_holder_id is null and site_id is null and status='AVAILABLE');");
-  await f.db.query("insert into equipment(id,asset_id,name,status) values($1,'T-8862','Welding Machine','AVAILABLE')",[randomUUID()]);
+  await f.db.query("insert into equipment(id,asset_id,name,status) values($1,'SYN-OFFICE-REVIEW','Welding Machine','AVAILABLE')",[randomUUID()]);
   if(install)await f.db.exec(migration);
   return f;
 }
@@ -19,7 +19,7 @@ test('new authenticated inventory defaults to canonical Office with TEXT and enu
       assert.equal(row.site_id,f.sites.office);assert.equal(row.quantity,7);assert.equal(row.current_holder_id,null);assert.equal(row.status,'AVAILABLE');
     }
     const info=await f.rpc(f.actors.admin,'mcpa_inventory_office');assert.equal(info.id,f.sites.office);assert.equal(info.label,'Office');
-    assert.equal((await f.db.query("select site_id from equipment where asset_id='T-8862'")).rows[0].site_id,null,'No automatic backfill');
+    assert.equal((await f.db.query("select site_id from equipment where asset_id='SYN-OFFICE-REVIEW'")).rows[0].site_id,null,'No automatic backfill');
   }
 });
 test('forged project, custody and status insert payloads fail; Engineer/Architect/Secretary/anonymous cannot insert',async t=>{
@@ -58,26 +58,26 @@ test('missing/inactive Office fails closed; unknown policies cannot be replaced'
   await assert.rejects(f.db.exec(migration),/Unexpected equipment insert/);await f.db.exec('rollback');
   assert.equal((await f.db.query("select count(*) as n from equipment where asset_id='NEW-STOCK'")).rows[0].n,0);
 });
-test('confirmed correction changes only T-8862 current site; quantity, custody and all history remain intact; retries are safe',async t=>{
+test('confirmed correction changes only SYN-OFFICE-REVIEW current site; quantity, custody and all history remain intact; retries are safe',async t=>{
   const f=await setup(t);
   const before=(await f.db.query('select * from equipment order by asset_id')).rows;
   const historyBefore=(await f.db.query("select (select jsonb_agg(m) from mcpa_movements m) as moves,(select jsonb_agg(a) from mcpa_movement_assets a) as assets,(select jsonb_agg(p) from project_history p) as projects")).rows;
   await f.db.exec(correction);await f.db.exec(correction);
-  assert.deepEqual((await f.db.query('select * from equipment order by asset_id')).rows,before.map(row=>row.asset_id==='T-8862'?{...row,site_id:f.sites.office}:row));
+  assert.deepEqual((await f.db.query('select * from equipment order by asset_id')).rows,before.map(row=>row.asset_id==='SYN-OFFICE-REVIEW'?{...row,site_id:f.sites.office}:row));
   assert.deepEqual((await f.db.query("select (select jsonb_agg(m) from mcpa_movements m) as moves,(select jsonb_agg(a) from mcpa_movement_assets a) as assets,(select jsonb_agg(p) from project_history p) as projects")).rows,historyBefore);
-  const snapshot=await f.rpc(f.actors.sky,'mcpa_movement_snapshot');assert.equal(snapshot.tools.find(t=>t.id==='T-8862').site,'Main Office');
+  const snapshot=await f.rpc(f.actors.sky,'mcpa_movement_snapshot');assert.equal(snapshot.tools.find(t=>t.id==='SYN-OFFICE-REVIEW').site,'Main Office');
 });
 test('confirmed correction refuses changed project, holder, status, zero quantity and pending reservations',async t=>{
   const f=await setup(t);
   for(const [assignment,values] of [['site_id=$1',[f.sites.casa]],['current_holder_id=$1',[f.actors.sky.id]],["status='MISSING'",[]],['quantity=0',[]]]){
-    await f.db.query(`update equipment set ${assignment} where asset_id='T-8862'`,values);
+    await f.db.query(`update equipment set ${assignment} where asset_id='SYN-OFFICE-REVIEW'`,values);
     await assert.rejects(f.db.exec(correction),/active custody\/workflow/);await f.db.exec('rollback');
-    await f.db.exec("update equipment set site_id=null,current_holder_id=null,status='AVAILABLE',quantity=1 where asset_id='T-8862'");
+    await f.db.exec("update equipment set site_id=null,current_holder_id=null,status='AVAILABLE',quantity=1 where asset_id='SYN-OFFICE-REVIEW'");
   }
-  const request=await f.rpc(f.actors.sky,'mcpa_movement_action',{p_action:'createRequest',p_payload:{toolIds:['T-8862'],destination:'Casa Buena',purpose:'Local reservation test'},p_operation_id:randomUUID()});
+  const request=await f.rpc(f.actors.sky,'mcpa_movement_action',{p_action:'createRequest',p_payload:{toolIds:['SYN-OFFICE-REVIEW'],destination:'Casa Buena',purpose:'Local reservation test'},p_operation_id:randomUUID()});
   await f.rpc(f.actors.admin,'mcpa_movement_action',{p_action:'approveRequest',p_payload:{id:request.id},p_operation_id:randomUUID()});
   await assert.rejects(f.db.exec(correction),/active custody\/workflow/);await f.db.exec('rollback');
-  assert.equal((await f.db.query("select site_id from equipment where asset_id='T-8862'")).rows[0].site_id,null);
+  assert.equal((await f.db.query("select site_id from equipment where asset_id='SYN-OFFICE-REVIEW'")).rows[0].site_id,null);
 });
 test('new Office Bulk asset completes request approval, notification, tested receipt, receiving QR transfer and inspected return without changing quantity',async t=>{
   const f=await setup(t);

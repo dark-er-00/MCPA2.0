@@ -8,7 +8,7 @@ set local statement_timeout='30s';
 lock table public.sites in share row exclusive mode;
 do $$
 declare
-  verified_office_address constant text := '2826 Cagayan Valley Rd., Plaridel, Bulacan'; -- ACTUAL_OFFICE_ADDRESS
+  verified_office_address constant text := ''; -- ACTUAL_OFFICE_ADDRESS
   candidates integer; office public.sites;
 begin
   if verified_office_address is null or char_length(btrim(verified_office_address)) not between 1 and 240 then

@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   'use strict';
 
   const TITLES = { request: 'Requests', transfer: 'Transfers', return: 'Returns', repair: 'Repairs', missing: 'Missing tools' };
@@ -68,11 +68,15 @@
     const sites = [...new Set([...(state().sites || []).map(site => typeof site === 'string' ? site : site.name), ...tools().map(tool => tool.site)].filter(Boolean))];
     return `<div class="field"><label for="mv-${esc(name)}">${esc(label)}</label><select id="mv-${esc(name)}" name="${esc(name)}" ${required ? 'required' : ''}><option value="">Choose an existing project</option>${sites.map(site => `<option value="${esc(site)}"${site === value ? ' selected' : ''}>${esc(site)}</option>`).join('')}</select></div>`;
   }
+  function officeStockSite(record) {
+    const sites = (state().sites || []).map(site => typeof site === 'string' ? site : site?.name).filter(Boolean);
+    return sites.find(name => name.trim().toLowerCase() === 'office') || toolById(record.toolId)?.site;
+  }
 
   const noRequestProject = 'No assigned project site. Please contact your administrator.';
   function requestSites() {
     const person=context().id;
-    return (state().sites||[]).filter(site=>person && site && site.is_active===true &&
+    return (state().sites||[]).filter(site=>person && site && site.id!==current?.officeId && site.is_active===true &&
       site.assigned_engineer_id===person && site.id && typeof site.name==='string' && site.name.trim())
       .sort((a,b)=>a.name.localeCompare(b.name));
   }
@@ -184,6 +188,7 @@
   }
 
   function createForm() {
+    if(current.kind==='transfer'&&admin()&&mode()==='live')return '<p>Use Equipment Requests to release equipment. Recorded transfers remain in history.</p>';
     if(current.kind==='return'&&mode()==='live')return '<p class="mv-help">New returns require individual Admin inspection. Open Returns from navigation to submit physical Asset IDs. Historical returns remain available below.</p>';
     const kind = current.kind;
     if (!operational() && kind !== 'request' && !(handler() && kind === 'transfer')) return '<aside class="card card-pad mv-guide"><h2>Review saved '+TITLES[kind].toLowerCase()+'</h2><p class="mv-help">Open a record to inspect its history and available follow-up actions. The named receiving Engineer or Architect confirms physical custody.</p></aside>';
@@ -336,7 +341,7 @@
     host.innerHTML = current.message ? `<div class="mv-notice ${current.error ? 'mv-notice-error' : 'mv-notice-success'}">${esc(current.message)}${button('Dismiss', 'dismiss')}</div>` : '';
     host.setAttribute('role', current.error ? 'alert' : 'status');
     const modal=current.root.querySelector('[data-detail][open] [data-modal-feedback]');
-    if(modal){modal.textContent=current.message||'';modal.setAttribute('role',current.error?'alert':'status');}
+    if(modal){modal.textContent=current.message||'';modal.className=current.message?`mv-modal-feedback mv-notice ${current.error?'mv-notice-error':'mv-notice-success'}`:'mv-modal-feedback';modal.setAttribute('role',current.error?'alert':'status');}
   }
 
   function notify(message, error) {
@@ -398,7 +403,7 @@
   function adjustmentForm(record, action) {
     const labels = {withdrawRequest:'Withdraw request',cancelReservation:'Cancel reservation',cancelTransfer:'Cancel handover',reopenTransfer:'Reopen for receiver inspection'};
     const help = action === 'withdrawRequest' ? 'Withdraw your pending request. Its original record and history remain available.' : action === 'cancelReservation' ? 'Release the allocation for your unfulfilled request. Its original record and history remain available.' : action === 'reopenTransfer' ? 'Ask the named receiver to inspect this handover again. Custody and reservations remain unchanged.' : record.requestId ? 'Cancel this unreceived handover and close its linked request. Custody stays unchanged. Submit a new request if equipment is still needed.' : 'Cancel this unreceived handover. Custody stays with the original holder and the handover allocation is released.';
-    return `<form data-form="adjust-movement" data-method="${action}" data-id="${esc(record.id)}" class="mv-followup"><h3>${labels[action]}</h3><p class="mv-help">${help}</p><div class="field"><label for="mv-${action}-reason">Reason</label><textarea id="mv-${action}-reason" name="reason" required maxlength="2000" rows="2" placeholder="Explain why this action is needed"></textarea></div><label class="checkbox-row"><input type="checkbox" name="confirmed" value="yes" required> I confirm this action for ${esc(record.id)}.</label><button class="btn ${action === 'reopenTransfer' ? 'btn-secondary' : 'btn-danger'} btn-sm" type="submit">${labels[action]}</button></form>`;
+    return `<form data-form="adjust-movement" data-method="${action}" data-id="${esc(record.id)}" class="mv-followup"><h3>${labels[action]}</h3><p class="mv-help">${help}</p><div class="field"><label for="mv-${action}-reason">Reason</label><textarea id="mv-${action}-reason" name="reason" required maxlength="2000" rows="2" placeholder="Explain why this action is needed"></textarea></div><div class="mv-followup-footer"><label class="checkbox-row"><input type="checkbox" name="confirmed" value="yes" required> I confirm this action for ${esc(record.id)}.</label><button class="btn ${action === 'reopenTransfer' ? 'btn-secondary' : 'btn-danger'} btn-sm" type="submit">${labels[action]}</button></div></form>`;
   }
 
   function renderDetail() {
@@ -427,12 +432,13 @@
       if (canAdjust(record,'reopenTransfer')) actions += adjustmentForm(record,'reopenTransfer');
     }
     if (kind === 'repair' && admin() && record.status === 'reported') actions = `<div class="mv-action-row">${button('Start repair', 'start-repair', record.id, 'btn-accent')}</div>`;
-    if (kind === 'repair' && admin() && record.status === 'underrepair') actions += `<form data-form="complete-repair" data-id="${esc(record.id)}" class="mv-followup"><h3>Return to service</h3>${siteField('repairDestination', 'Available at project', true, toolById(record.toolId)?.site)}<div class="field"><label for="mv-resolution">Repair completion notes</label><textarea name="notes" id="mv-resolution" required rows="2" maxlength="2000" placeholder="Describe the repair and checks performed"></textarea></div><button class="btn btn-primary" type="submit">Complete repair</button></form>`;
-    if (kind === 'missing' && admin() && record.status === 'missing') actions = `<form data-form="recover" data-id="${esc(record.id)}" class="mv-followup"><h3>Record recovery</h3>${siteField('recoveryDestination', 'Recovered at project', true, toolById(record.toolId)?.site)}<div class="field"><label for="mv-recovered-condition">Recovered condition</label><select name="condition" id="mv-recovered-condition" required><option value="">Select inspected condition</option><option value="good">Good — available for use</option><option value="damaged">Damaged — send for repair</option></select></div><div class="field"><label for="mv-recovery-notes">Recovery details</label><textarea id="mv-recovery-notes" name="notes" required rows="2" maxlength="2000" placeholder="Where and how was the tool recovered?"></textarea></div><button class="btn btn-primary" type="submit">Confirm recovery</button></form>`;
+    if (kind === 'repair' && admin() && record.status === 'underrepair') actions += `<form data-form="complete-repair" data-id="${esc(record.id)}" class="mv-followup"><h3>Return to service</h3>${siteField('repairDestination', 'Return to service location', true, officeStockSite(record))}<div class="field"><label for="mv-resolution">Repair completion notes</label><textarea name="notes" id="mv-resolution" required rows="2" maxlength="2000" placeholder="Describe the repair and checks performed"></textarea></div><button class="btn btn-primary" type="submit">Complete repair</button></form>`;
+    if (kind === 'missing' && admin() && record.status === 'missing') actions = `<form data-form="recover" data-id="${esc(record.id)}" class="mv-followup"><h3>Record recovery</h3>${siteField('recoveryDestination', 'Recovered stock location', true, officeStockSite(record))}<div class="field"><label for="mv-recovered-condition">Recovered condition</label><select name="condition" id="mv-recovered-condition" required><option value="">Select inspected condition</option><option value="good">Good — available for use</option><option value="damaged">Damaged — send for repair</option></select></div><div class="field"><label for="mv-recovery-notes">Recovery details</label><textarea id="mv-recovery-notes" name="notes" required rows="2" maxlength="2000" placeholder="Where and how was the tool recovered?"></textarea></div><button class="btn btn-primary" type="submit">Confirm recovery</button></form>`;
     const inspections = record.inspections || record.refusalInspections || record.conditions || [];
+    const presentation=kind==='request'?current.requestPresentation?.(record):null;
     const requestIntro = kind === 'request' ? current.requestIntro?.(record) || '' : '';
 
-    host.innerHTML = `<div class="mv-section-heading mv-detail-heading"><div><h2>${esc(record.id)}</h2></div>${button('Close', 'close-detail')}</div>${badge(recordStatus(record), kind)}${requestIntro}<div class="mv-detail-tools">${ids(record).map(id => `<div><span class="tool-id-chip">${esc(id)}</span> ${esc(toolById(id)?.name || '')}</div>`).join('')}</div>${row('Created', date(record.createdAt))}${row('Requested by', record.requester)}${row('Sent by', record.sender)}${row('Returned by', record.returnedBy)}${row('Reported by', record.reportedBy)}${row('Receiver', record.receiver)}${row('Destination', record.destination)}${row('Needed until', record.neededUntil ? display.date(record.neededUntil) : '')}${row('Purpose', record.purpose)}${row('Notes', record.notes)}${row('Rejection reason', record.reason)}${row('Canceled / withdrawn by', record.canceledBy)}${row('Canceled / withdrawn', record.canceledAt ? date(record.canceledAt) : '')}${row('Cancellation reason', record.cancellationReason)}${row('Refused by', record.refusedBy)}${row('Refused', record.refusedAt ? date(record.refusedAt) : '')}${row('Refusal reason', record.refusalReason)}${row('Reopened by', record.reopenedBy)}${row('Reopened', record.reopenedAt ? date(record.reopenedAt) : '')}${row('Reopening reason', record.reopenReason)}${row('Received', record.receivedAt ? date(record.receivedAt) : '')}${row('Resolution', record.resolutionNotes || record.completionNotes || record.recoveryNotes || record.resolution)}${inspections.length ? `<div class="mv-inspection-results"><h3>Recorded condition</h3>${inspections.map(item => `<div class="kv"><span class="k">${esc(item.toolId)}</span><span class="v">${esc(display.condition(item.condition))}${item.notes ? `<small>${esc(item.notes)}</small>` : ''}</span></div>`).join('')}</div>` : ''}${actions}<p data-modal-feedback role="status"></p>`;
+    host.innerHTML = `<div class="mv-section-heading mv-detail-heading"><div><h2>${esc(presentation?.heading||record.id)}</h2></div>${presentation?'<strong class="equipment-row-status">'+esc(presentation.status)+'</strong>':''}${button('Close', 'close-detail')}</div>${presentation?presentation.summary:badge(recordStatus(record), kind)+requestIntro}<div class="mv-detail-tools" ${presentation?'hidden':''}>${ids(record).map(id => `<div><span class="tool-id-chip">${esc(id)}</span> ${esc(toolById(id)?.name || '')}</div>`).join('')}</div>${row('Created', date(record.createdAt))}${row('Requested by', record.requester)}${row('Sent by', record.sender)}${row('Returned by', record.returnedBy)}${row('Reported by', record.reportedBy)}${row('Receiver', record.receiver)}${row('Destination', record.destination)}${row('Needed until', record.neededUntil ? display.date(record.neededUntil) : '')}${row('Purpose', record.purpose)}${row('Notes', record.notes)}${row('Rejection reason', record.reason)}${row('Canceled / withdrawn by', record.canceledBy)}${row('Canceled / withdrawn', record.canceledAt ? date(record.canceledAt) : '')}${row('Cancellation reason', record.cancellationReason)}${row('Refused by', record.refusedBy)}${row('Refused', record.refusedAt ? date(record.refusedAt) : '')}${row('Refusal reason', record.refusalReason)}${row('Reopened by', record.reopenedBy)}${row('Reopened', record.reopenedAt ? date(record.reopenedAt) : '')}${row('Reopening reason', record.reopenReason)}${row('Received', record.receivedAt ? date(record.receivedAt) : '')}${row('Resolution', record.resolutionNotes || record.completionNotes || record.recoveryNotes || record.resolution)}${inspections.length ? `<div class="mv-inspection-results"><h3>Recorded condition</h3>${inspections.map(item => `<div class="kv"><span class="k">${esc(item.toolId)}</span><span class="v">${esc(display.condition(item.condition))}${item.notes ? `<small>${esc(item.notes)}</small>` : ''}</span></div>`).join('')}</div>` : ''}${actions}<p class="mv-modal-feedback" data-modal-feedback role="status"></p>`;
     if(!dialog.open){current.detailFocus=document.activeElement;dialog.showModal();syncModalLock();host.querySelector('[data-action="close-detail"]').focus({preventScroll:true});}
     if (kind === 'transfer' && window.QRCode) {
       try { new window.QRCode(host.querySelector('[data-transfer-qr]'), { text: record.code || record.id, width: 128, height: 128 }); } catch (_) { /* The manual transfer code remains available. */ }
@@ -713,7 +719,7 @@
     const root = options.root || document.getElementById(`screen-${kind}`);
     if (!root || !TITLES[kind]) return;
     dispose();
-    const active = { kind, root, requestIntro: options.requestIntro, generation: ++generation, search: '', status: '', detailId: '', message: '', busy: false, scanner: null, transferView: operational()||handler()?'send':'history', receivingToken:null, createDirty: false, detailDirty: false };
+    const active = { kind, root, requestIntro: options.requestIntro, requestPresentation: options.requestPresentation, generation: ++generation, search: '', status: '', detailId: '', message: '', busy: false, scanner: null, transferView: operational()||handler()?'send':'history', receivingToken:null, createDirty: false, detailDirty: false };
     let finishMount;
     active.mounted = new Promise(resolve => { finishMount = resolve; });
     current = active;
@@ -730,10 +736,11 @@
       const next=event.key==='Home'?0:event.key==='End'?tabs.length-1:(index+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;
       setTransferView(tabs[next].dataset.transferTab);tabs[next].focus();
     };root.addEventListener('keydown',active.keydown);
-    if (mode() === 'live') active.stopWatching = window.EquipmentTracking.watch(async () => {
+    if (mode() === 'live' && options.watch !== false) active.stopWatching = window.EquipmentTracking.watch(async () => {
       await active.mounted;
       if (current !== active || active.busy) return;
       await store().refresh();
+      if(kind==='request'&&operational()&&mode()==='live')active.officeId=(await window.EquipmentTracking.inventoryOffice()).id;
       if (current !== active) return;
       syncRequestDestination();
       await loadReturnOffice(active);
@@ -748,6 +755,7 @@
     try {
       if (!store()) throw new Error('The movement service has not loaded. Reload the page and try again.');
       await store().refresh();
+      if(kind==='request'&&operational()&&mode()==='live')active.officeId=(await window.EquipmentTracking.inventoryOffice()).id;
       if (current !== active) return;
       await loadReturnOffice(active);
       if (current !== active) return;

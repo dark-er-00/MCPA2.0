@@ -5,9 +5,9 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await go('dashboard');await wait("document.querySelector('[data-nav-group=equipment]')");
  assert.equal(await evaluate("document.querySelectorAll('.nav-parent[aria-expanded=true]').length"),0);
  await click('[data-nav-group=equipment] .nav-parent');assert.equal(await evaluate("document.querySelector('[data-nav-group=equipment] .nav-parent').getAttribute('aria-expanded')"),'true');
- assert.ok((await evaluate("document.querySelector('[data-nav-group=equipment]').textContent")).includes('Register Equipment'));
+ assert.ok((await evaluate("document.querySelector('[data-nav-group=equipment]').textContent")).includes('Equipment Inventory'));
  assert.equal(await evaluate("document.querySelectorAll('[data-nav-group=equipment] [data-target=\"asset-retirement-v2\"]').length"),1);
- for(const route of ['repair','missing']){assert.equal(await evaluate(`document.querySelectorAll('[data-nav-group=equipment] [data-target="${route}"]').length`),1);assert.equal(await evaluate(`document.querySelectorAll('[data-nav-group=movements] [data-target="${route}"]').length`),0);}
+ assert.equal(await evaluate("document.querySelectorAll('#nav-list [data-target=repair],#nav-list [data-target=missing]').length"),0);
  await click('[data-nav-group=movements] .nav-parent');assert.equal(await evaluate("document.querySelector('[data-nav-group=equipment] .nav-parent').getAttribute('aria-expanded')"),'false');
  await click('[data-nav-group=movements] .nav-parent');assert.equal(await evaluate("document.querySelectorAll('.nav-parent[aria-expanded=true]').length"),0);
  await go('sites');await wait("document.querySelector('.site-card')");
@@ -33,21 +33,20 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await require('./legacy-profession.browser-checks.cjs').verify({fixture:f,evaluate,wait,click,fill,submit,go});
  await go('masterlist?mode=register');await wait("document.querySelector('#equipmentModal')?.classList.contains('open') || document.querySelector('#equipmentModal')?.classList.contains('show') || document.querySelector('#equipmentModal')?.style.display==='flex'");
  // Re-navigation closes any equipment dialog through the incumbent module lifecycle.
- await go('transfer');await wait("document.querySelector('[data-new-transfer]')");
- await click('[data-new-transfer]');await fill('[data-transfer-create] [name=recipient]',a.pau.id);await fill('[data-transfer-create] [name=destination]',f.sites.main);
- await click('[data-transfer-create] [name=asset][value="TOOL-001"]');await submit('[data-transfer-create]');
- await wait("document.querySelector('[data-transfer-feedback]').textContent.includes('requested')");
- let records=(await f.db.query("select * from mcpa_movements where kind='transfer' and data @> '{\"transferVersion\":3}' order by created_at desc")).rows;
- const adminTransfer=records[0].id;assert.equal((await f.tool('TOOL-001')).current_holder_id,null);
+ await go('transfer?view=send');await wait("document.querySelector('[data-transfer-view=send]')");
+ assert.equal(await evaluate("document.querySelector('[data-new-transfer]')"),null);
+ // Historical direct Admin transfers must remain receivable after the UI adopts approved request releases.
+ const legacy=await f.rpc(a.admin,'mcpa_movement_action',{p_action:'createTransfer',p_payload:{toolIds:['TOOL-001'],receiverId:a.pau.id,destinationId:f.sites.main},p_operation_id:require('node:crypto').randomUUID()});
+ const adminTransfer=legacy.id;assert.equal((await f.tool('TOOL-001')).current_holder_id,null);
  await logout();await login('pau');await wait("MCPAAuth.profile?.role==='engineer'");await go('transfer');await wait("document.querySelector('[data-transfer-record]')");
  await click(`[data-transfer-record="${adminTransfer}"] summary`);await fill(`[data-transfer-record="${adminTransfer}"] [name=condition]`,'good');await click(`[data-transfer-record="${adminTransfer}"] [name=tested]`);await submit(`[data-transfer-record="${adminTransfer}"] form`);
  await wait("document.querySelector('[data-transfer-feedback]').textContent.includes('accepted')");assert.equal((await f.tool('TOOL-001')).current_holder_id,a.pau.id);
  const tr=await f.rpc(a.sky,'mcpa_movement_action',{p_action:'createTransfer',p_payload:{toolIds:['TOOL-002'],receiverId:a.pau.id,destinationId:f.sites.main,notes:'Recipient review fixture'},p_operation_id:require('node:crypto').randomUUID()});
- await click('[data-transfer-refresh]');await wait(`document.querySelector('[data-transfer-record="${tr.id}"]')`);
+ await evaluate("window.dispatchEvent(new Event('focus'))");await wait(`document.querySelector('[data-transfer-record="${tr.id}"]')`);
  await click(`[data-transfer-record="${tr.id}"] summary`);await click(`[data-transfer-record="${tr.id}"] [data-decision=refuseTransfer]`);await fill('[data-confirm-decision] [name=reason]','Wrong physical item presented');await submit('[data-confirm-decision]');
  await wait("document.querySelector('[data-transfer-feedback]').textContent.includes('Decision recorded')");assert.equal((await f.tool('TOOL-002')).current_holder_id,a.sky.id);
  assert.equal((await f.db.query('select data->>\'status\' status from mcpa_movements where id=$1',[tr.id])).rows[0].status,'rejected');
- console.log('PASS Full browser-to-SQL Admin initiation, named recipient acceptance, recipient rejection and unchanged source custody before decision');
+ console.log('PASS Historical Admin transfer, named recipient acceptance, recipient rejection and unchanged source custody before decision');
  const toAdmin=await f.rpc(a.sky,'mcpa_movement_action',{p_action:'createTransfer',p_payload:{toolIds:['TOOL-002'],receiverId:a.admin.id,destinationId:f.sites.office},p_operation_id:require('node:crypto').randomUUID()});
  await logout();await login('admin');await wait("MCPAAuth.profile?.role==='admin'");await go('transfer');await wait(`document.querySelector('[data-transfer-record="${toAdmin.id}"]')`);
  await click(`[data-transfer-record="${toAdmin.id}"] summary`);await fill(`[data-transfer-record="${toAdmin.id}"] [name=condition]`,'good');await click(`[data-transfer-record="${toAdmin.id}"] [name=tested]`);await submit(`[data-transfer-record="${toAdmin.id}"] form`);

@@ -1,6 +1,6 @@
 -- MANUAL DEPLOYMENT GATE. Inspect office-return-preflight.sql first.
--- Office UUID verified by the user-provided October 12, 2026 preflight.
--- Office: 2826 Cagayan Valley Rd., Plaridel, Bulacan. No Office is created here.
+-- Historical Office binding redacted; fresh authorized preflight is required.
+-- Real Office address excluded from development snapshot. No Office is created here.
 -- No historical accounts, sites, equipment, custody or movements are rewritten.
 begin;
 set local lock_timeout='5s';
@@ -51,7 +51,7 @@ revoke all on mcpa_auth_private.return_office from public,anon,authenticated,ser
 
 do $$
 declare
-  verified_office_id constant uuid := 'ba8bef8c-139a-43b9-ae2b-5857293b7f33'; -- OFFICE_ID_FROM_PREFLIGHT
+  verified_office_id constant uuid := null; -- OFFICE_ID_FROM_PREFLIGHT
   office public.sites;
 begin
   if verified_office_id is null then

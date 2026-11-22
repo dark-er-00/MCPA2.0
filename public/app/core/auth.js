@@ -3,6 +3,10 @@
   'use strict';
   let profile = null, demo = false, revision = 0, sessionUser = null, recovering = false, busy = false;
   const callbackParams = new URLSearchParams(location.hash.slice(1));
+  let registrationToken=callbackParams.get('register');
+  // Pasting an invite into an already-open workspace is a same-document hash
+  // navigation. Restart Auth so registration gets the same gate as a fresh tab.
+  window.addEventListener('hashchange',()=>{if(new URLSearchParams(location.hash.slice(1)).has('register'))location.reload();});
   // Reject retired setup links, including a setup interrupted on an older page.
   let legacySetup=false;
   try{legacySetup=JSON.parse(sessionStorage.getItem('mcpa.password-setup'))?.kind==='invite';}catch(_){}
@@ -116,7 +120,11 @@
     if(!session){window.MCPANavigation?.endSession();profile=null;sessionUser=null;login('Sign in to access your company workspace.');return;}
     if(sessionUser!==session.user.id){profile=null;login('','loading');}
     try {
-      const {data,error}=await client().rpc('mcpa_my_profile');
+      let {data,error}=await client().rpc('mcpa_my_profile');
+      if(!error && data?.account_status==='inactive'){
+        const activation=await client().rpc('mcpa_activate_registration');
+        if(activation.data===true && !activation.error)({data,error}=await client().rpc('mcpa_my_profile'));
+      }
       if(generation!==revision || demo || recovering) return;
       if(error) throw error;
       if(!data || !MCPAPermissions.labels[data.role]) {profile=null;login('Your account is not assigned an authorized company profile. Contact your administrator.');return;}
@@ -167,6 +175,7 @@
   };
   async function boot(){
     login('','loading');
+    if(registrationToken!==null){showRegistration();return;}
     let demoRole;try{demoRole=sessionStorage.getItem('mcpa.demo.role');}catch(_){}
     try{
       client().auth.onAuthStateChange((event,session)=>{
@@ -190,6 +199,25 @@
       if(data.session && pendingSetup(data.session)){setupPassword(data.session);return;}
       await restore(data.session);
     }catch(_){login('The sign-in service could not load. Check your connection and refresh. Offline demo remains available.');}
+  }
+  function showRegistration(){
+    history.replaceState(null,'',location.pathname);sessionStorage.removeItem('mcpa.demo.role');
+    login();
+    document.getElementById('login-content').innerHTML=`<section class="login-card"><div class="login-mark">MCPA</div><h1 class="display">Create your account</h1><p class="auth-help">This link is for the email and role selected by your Admin. You must confirm that email before accessing the workspace.</p><div id="auth-feedback" role="status" aria-live="polite"></div><form id="registration-form"><div class="field"><label for="registration-password">New password</label><input id="registration-password" type="password" required minlength="12" maxlength="128" autocomplete="new-password"></div><div class="field"><label for="registration-confirm">Confirm password</label><input id="registration-confirm" type="password" required minlength="12" maxlength="128" autocomplete="new-password"></div><button class="btn btn-primary btn-block" type="submit">Create account</button></form><p class="auth-help">Already registered, or the email did not arrive? Wait a minute before sending again.</p><button class="btn btn-secondary btn-block" type="button" data-registration-resend>Send verification email</button><button class="link-btn" type="button" data-registration-login>Back to sign in</button></section>`;
+    let sending=false;
+    async function send(action){
+      if(sending)return;const password=document.getElementById('registration-password');
+      if(action==='redeem'&&password.value!==document.getElementById('registration-confirm').value){feedback('Passwords must match.');return;}
+      sending=true;document.querySelectorAll('#login-content button').forEach(b=>b.disabled=true);
+      try{const {data,error}=await client().functions.invoke('register-invitation',{body:{action,token:registrationToken,...(action==='redeem'?{password:password.value}:{})}});
+        if(error){let detail;try{detail=await error.context?.json();}catch(_){}throw new Error(detail?.error||'Registration could not complete. Ask your Admin to review before trying again.');}
+        password.value='';document.getElementById('registration-confirm').value='';document.getElementById('registration-form').hidden=true;feedback(data.message);
+      }catch(error){password.value='';document.getElementById('registration-confirm').value='';feedback(error.message);}
+      finally{sending=false;document.querySelectorAll('#login-content button').forEach(b=>b.disabled=false);}
+    }
+    document.getElementById('registration-form').onsubmit=event=>{event.preventDefault();void send('redeem');};
+    document.querySelector('[data-registration-resend]').onclick=()=>send('resend');
+    document.querySelector('[data-registration-login]').onclick=()=>{registrationToken=null;boot();};
   }
   window.addEventListener('focus',()=>{if(profile&&!demo&&!recovering)MCPAAuth.verify().catch(()=>{});});
   window.addEventListener('storage',event=>{if(event.key?.includes('auth-token')&&!demo)MCPAAuth.verify().catch(()=>{});});

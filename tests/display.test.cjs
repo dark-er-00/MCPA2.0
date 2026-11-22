@@ -94,5 +94,8 @@ test('notifications preserve recipient turnover instructions and normalize other
   const notice=display.notification({kind:'movement',title:'receiveTransfer',message:'Received and inspected transfer',data:{action:'receiveTransfer'}});
   assert.equal(notice.title,'Transfer Received');assert.match(notice.message,/inspection and receipt outcome/);
   assert.equal(display.event('account_deactivated','account').title,'Account Deactivated');
+  assert.equal(display.event('account_removed','account').title,'Account Removed');
+  assert.match(display.event('removal_requested','account').description,/different Admin/);
+  assert.equal(display.event('registration_verified','account').title,'Registration Verified');
   assert.equal(display.event('receipt','stock').title,'Requested Stock Received');
 });

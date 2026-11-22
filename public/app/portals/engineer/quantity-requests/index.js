@@ -7,8 +7,45 @@
     if (!Q || !V) throw new Error('Load the Workstream A quantity client and view helpers first.');
     root = V.shell(root, 'Request equipment by quantity', 'Choose a compatible equipment type and quantity. Admin assigns the individual Asset IDs.');
     if (embedded) root.classList.add('equipment-quantity-create');
+    const engineer = scope.MCPAPermissions.operational(scope.MCPAAuth?.profile?.role);
+    const retryButton = root.querySelector('[data-q-action="refresh"]');
+    if(engineer){retryButton.hidden=true;retryButton.textContent='Retry loading inventory';}
+    const recoverButton=document.createElement('button');recoverButton.type='button';recoverButton.className='wa-q-button';recoverButton.dataset.qRecover='';recoverButton.hidden=true;recoverButton.textContent='Check interrupted submission';root.querySelector('[data-q-feedback]').after(recoverButton);
     const client = Q.createClient(supabase), prefix = 'wa-q-engineer-' + (++instance);
-    const state = { catalog: null, history: [], typeId: '', search: '', siteId: '', quantity: '1', purpose: '', filter: 'all', busy: false, destroyed: false };
+    const state = { catalog: null, history: [], typeId: '', search: '', siteId: '', quantity: '1', purpose: '', filter: 'all', busy: false, destroyed: false, pendingDraft: null, confirmed: '' };
+    // Success confirmation modal. Lives outside [data-q-body] so re-renders never remove it.
+    const dialog = document.createElement('dialog');
+    dialog.className = 'wa-q-dialog'; dialog.dataset.qSuccessDialog = '';
+    dialog.setAttribute('aria-labelledby', prefix + '-dialog-title'); dialog.setAttribute('aria-describedby', prefix + '-dialog-body');
+    dialog.innerHTML = `<div class="wa-q-dialog-icon" aria-hidden="true">✓</div><h3 id="${prefix}-dialog-title">Quantity request submitted</h3><p id="${prefix}-dialog-body">Admin will review availability and allocate the individual Asset IDs. You can follow its progress in My Requests.</p><dl class="wa-q-dialog-summary" data-q-dialog-summary></dl><div class="wa-q-dialog-actions"><button type="button" class="wa-q-button" data-q-dialog-history ${embedded ? 'data-jump-history' : ''}>View My Requests</button><button type="button" class="wa-q-button wa-q-primary" data-q-dialog-close>Done</button></div>`;
+    root.append(dialog);
+    let dialogSkipFocus = false;
+    dialog.addEventListener('close', () => {
+      if (state.destroyed || dialogSkipFocus) { dialogSkipFocus = false; return; }
+      root.querySelector('[data-q-search]')?.focus({ preventScroll: true });
+    });
+    function showConfirmation(saved, draft, group, site) {
+      const rows = [
+        ['Request ID', saved.id],
+        ['Equipment', saved.type_name || (group ? V.title(group) : 'Equipment type')],
+        ['Quantity', (saved.requested_quantity ?? draft.quantity) + ' individual asset(s)'],
+        ['Project / site', saved.site_name || site?.name || 'Assigned project'],
+        ['Status', 'Awaiting Admin review']
+      ];
+      dialog.querySelector('[data-q-dialog-summary]').innerHTML = rows.map(([term, value]) => `<div><dt>${V.escape(term)}</dt><dd>${V.escape(value)}</dd></div>`).join('');
+      dialogSkipFocus = false;
+      if (dialog.open) return;
+      if (typeof dialog.showModal === 'function') dialog.showModal(); else dialog.setAttribute('open', '');
+      dialog.querySelector('[data-q-dialog-close]').focus();
+    }
+    function closeDialog(skipFocus = false) {
+      dialogSkipFocus = skipFocus;
+      if (typeof dialog.close === 'function' && dialog.open) dialog.close(); else { dialog.removeAttribute('open'); dialogSkipFocus = false; }
+    }
+    function resetForm() {
+      state.typeId = ''; state.quantity = '1'; state.purpose = ''; state.search = '';
+      state.siteId = state.catalog?.sites.length === 1 ? state.catalog.sites[0].id : '';
+    }
     const body = () => root.querySelector('[data-q-body]');
     const selected = () => state.catalog?.groups.find(group => group.type_id === state.typeId);
     function renderCatalog() {
@@ -45,7 +82,7 @@
       renderCatalog(); renderForm(); renderHistory();
     }
     async function refresh(message = '') {
-      if (state.busy || state.destroyed) return;
+      if (state.busy || state.destroyed || state.pendingDraft) return;
       state.busy = true; root.setAttribute('aria-busy', 'true');
       root.querySelector('[data-q-action="refresh"]').disabled = true;
       try {
@@ -53,19 +90,23 @@
         if (state.destroyed) return;
         if (!['engineer', 'architect'].includes(catalog.profile.role)) {
           body().innerHTML = '<p class="wa-q-empty">Quantity requesting is available to Engineer and Architect accounts.</p>';
-          V.notice(root, 'Your account cannot submit equipment quantity requests.', true); return;
+          V.notice(root, 'Your account cannot submit equipment quantity requests.', true); return false;
         }
         const records = await client.history();
-        if (state.destroyed) return;
+        if (state.destroyed) return false;
         state.catalog = catalog; state.history = records;
         if (!catalog.groups.some(group => group.type_id === state.typeId)) state.typeId = '';
         if (!catalog.sites.some(site => site.id === state.siteId)) state.siteId = catalog.sites.length === 1 ? catalog.sites[0].id : '';
-        state.busy = false; render(); V.notice(root, message);
+        state.confirmed = '';
+        state.busy = false; render(); V.notice(root, message);if(engineer)retryButton.hidden=true;
+        return true;
       } catch (error) {
         if (!state.destroyed) {
-          if (!state.catalog) body().innerHTML = '<p class="wa-q-empty">Verified inventory is unavailable. Use Refresh to try again.</p>';
-          V.notice(root, error.message, true);
+          if (!state.catalog) body().innerHTML = '<p class="wa-q-empty">Verified inventory is unavailable. Retry loading when the connection is restored.</p>';
+          if(engineer)retryButton.hidden=false;
+          V.notice(root, state.confirmed ? state.confirmed+' Request history or inventory could not reload. Retry loading; do not submit it again.' : error.message, !state.confirmed);
         }
+        return false;
       } finally {
         state.busy = false;
         if (!state.destroyed) { root.removeAttribute('aria-busy'); root.querySelector('[data-q-action="refresh"]').disabled = false; }
@@ -73,7 +114,17 @@
     }
     async function onClick(event) {
       const target = event.target.closest('button');
-      if (!target || !root.contains(target) || state.busy) return;
+      if (!target || !root.contains(target)) return;
+      if (target.hasAttribute('data-q-dialog-close')) { closeDialog(); return; }
+      if (target.hasAttribute('data-q-dialog-history')) {
+        // Embedded: the unified Equipment Requests view handles [data-jump-history] as the click bubbles.
+        closeDialog(true);
+        if (!embedded) { const heading = root.querySelector('.wa-q-history-section h3'); if (heading) { heading.tabIndex = -1; heading.focus({ preventScroll: true }); heading.scrollIntoView({ block: 'start' }); } }
+        return;
+      }
+      if (state.busy) return;
+      if(target.hasAttribute('data-q-recover')){await submitDraft(state.pendingDraft);return;}
+      if(state.pendingDraft)return;
       if (target.dataset.qAction === 'refresh') { await refresh(); return; }
       if (target.dataset.qType) {
         state.typeId = target.dataset.qType; state.quantity = '1';
@@ -87,23 +138,48 @@
       else if (['quantity', 'siteId', 'purpose'].includes(control.name)) { state[control.name] = control.value; updateReview(); }
       else if (control.hasAttribute('data-q-filter')) { state.filter = control.value; renderHistory(); }
     }
+    async function submitDraft(draft) {
+      if(state.busy||!draft)return;
+      state.busy=true;state.confirmed='';root.setAttribute('aria-busy','true');
+      root.querySelectorAll('form fieldset').forEach(node=>node.disabled=true);recoverButton.disabled=true;
+      V.notice(root,'Submitting quantity request…');
+      let saved;
+      try {
+        saved=await client.submit(draft);
+        if(!saved?.id)throw Object.assign(Error('The server did not confirm a request identifier.'),{outcomeUncertain:true});
+        if(state.destroyed)return;
+        state.pendingDraft=null;recoverButton.hidden=true;
+        state.confirmed='Quantity request '+saved.id+' submitted. Admin will review and allocate individual Asset IDs.';
+        const group=state.catalog?.groups.find(item=>item.type_id===draft.typeId), site=state.catalog?.sites.find(item=>item.id===draft.siteId);
+        resetForm();
+        V.notice(root,'');
+        showConfirmation(saved,draft,group,site);
+      } catch(error) {
+        if(state.destroyed)return;
+        if(error.outcomeUncertain){
+          state.pendingDraft={...draft};recoverButton.hidden=false;
+          V.notice(root,'Submission status is uncertain. Your request may already be saved. Check My Requests or use “Check interrupted submission” to verify the same action safely. Do not create a duplicate.',true);
+        }else{state.pendingDraft=null;recoverButton.hidden=true;V.notice(root,error.message,true);}
+      } finally {
+        state.busy=false;
+        if(!state.destroyed){root.removeAttribute('aria-busy');recoverButton.disabled=false;root.querySelectorAll('form fieldset').forEach(node=>node.disabled=!!state.pendingDraft);}
+      }
+      if(saved?.id&&!state.destroyed){
+        // Clear the whole form immediately, then reload verified stock and history.
+        render();
+        const reloaded=await refresh();
+        if(!state.destroyed)root.dispatchEvent(new CustomEvent('mcpa:quantity-request-confirmed',{bubbles:true,detail:{id:saved.id,history:reloaded?state.history:null}}));
+      }
+    }
     async function onSubmit(event) {
       if (!event.target.matches('[data-q-form]')) return;
       event.preventDefault();
-      if (state.busy || !event.target.reportValidity()) return;
-      state.busy = true; root.setAttribute('aria-busy', 'true');
-      const fieldset = event.target.querySelector('fieldset'); fieldset.disabled = true;
-      try {
-        await client.submit({ typeId: state.typeId, siteId: state.siteId, quantity: state.quantity, purpose: state.purpose });
-        if (state.destroyed) return;
-        state.quantity = '1'; state.purpose = ''; state.busy = false;
-        await refresh('Quantity request submitted. Admin will review and allocate individual Asset IDs.');
-      } catch (error) { if (!state.destroyed) V.notice(root, error.message, true); }
-      finally { state.busy = false; if (!state.destroyed) { root.removeAttribute('aria-busy'); fieldset.disabled = false; } }
+      if(state.busy||state.pendingDraft||!event.target.reportValidity())return;
+      await submitDraft({typeId:state.typeId,siteId:state.siteId,quantity:state.quantity,purpose:state.purpose});
     }
     root.addEventListener('click', onClick); root.addEventListener('input', onInput); root.addEventListener('change', onInput); root.addEventListener('submit', onSubmit);
     const ready = refresh();
-    return Object.freeze({ ready, refresh, destroy() { state.destroyed = true; root.removeEventListener('click', onClick); root.removeEventListener('input', onInput); root.removeEventListener('change', onInput); root.removeEventListener('submit', onSubmit); root.removeAttribute('aria-busy'); root.classList.remove('wa-quantity'); root.replaceChildren(); } });
+    return Object.freeze({ ready, refresh, destroy() { state.destroyed = true; if (dialog.open) { if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open'); } root.removeEventListener('click', onClick); root.removeEventListener('input', onInput); root.removeEventListener('change', onInput); root.removeEventListener('submit', onSubmit); root.removeAttribute('aria-busy'); root.classList.remove('wa-quantity'); root.replaceChildren(); } });
   }
   scope.MCPAQuantityEngineer = Object.freeze({ mount });
 })(window);

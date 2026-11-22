@@ -13,9 +13,13 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,go,login,logout,call
     assert.equal(await evaluate(`document.querySelector('[data-transfer-record="${id}"]')?.open`),true);
     assert.equal(await evaluate("document.querySelector('[data-nav-group=movements] .nav-parent').getAttribute('aria-expanded')"),'true');
   };
-  const adminOwned=(await f.db.query("select id,actor_id,receiver_id from mcpa_movements where kind='transfer' and (actor_id=$1 or receiver_id=$1) order by id",[a.admin.id])).rows;
+  const adminOwned=(await f.db.query("select id,actor_id,receiver_id,data->>'status' as status from mcpa_movements where kind='transfer' and (actor_id=$1 or receiver_id=$1) order by id",[a.admin.id])).rows;
+  function adminView(row){
+    if(!['pending','refused'].includes(row.status))return 'history';
+    return row.receiver_id===a.admin.id?'receive':'send';
+  }
   const cases=[['sky','send',record.id],['pau','receive',record.id],['admin','history',record.id],
-    ...adminOwned.map(row=>['admin',row.receiver_id===a.admin.id?'receive':'send',row.id])];
+    ...adminOwned.map(row=>['admin',adminView(row),row.id])];
   for(const [key,view,targetId]of cases){
     await logout();await login(key);await wait(`MCPAAuth.profile?.id===${JSON.stringify(a[key].id)}`);
     await go('dashboard');await evaluate('MCPAMonitoring.open()');

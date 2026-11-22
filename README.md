@@ -20,6 +20,14 @@ Run `npm run doctor` to check the PHP runtime, configuration and a read-only Sup
 
 PHP serves the public connection configuration at `app/core/config.js` from the environment. `npm run configure` also regenerates the checked-in JavaScript configuration for isolated existing test fixtures. Public configuration includes only the Supabase origin and publishable key.
 
+## Isolated role preview
+
+Run `npm run preview` and open `http://127.0.0.1:4183/__fixture` to select a synthetic account. The preview uses local fixtures. Run `npm run test:frontend` to check role parity, project assignments, inventory and search.
+
+The premium dashboard shows confirmed custody. Engineer and architect inventory and search use active assigned projects and exclude Office stock. Both roles can view their authorized retirement history. Administrators manage retirement proposals and decisions.
+
+Registration invitations require `MCPA_ENABLE_REGISTRATION_INVITATIONS=true`, a fixed `MCPA_APP_URL`, the server key and the invitation SQL. The incoming SQL under `supabase/drafts/` is for review. The production development-account shutdown draft is incompatible with environments using test-account creation. Verify the Office binding for the target database before applying Office SQL. See [the incoming development handoff](docs/DEVELOPMENT-HANDOFF.md) for its original review context.
+
 ## Deployment
 
 For a Docker Web Service on Render's Free plan, follow the [Staging deployment guide](docs/render-deployment.md). It covers runtime environment variables, HTTPS handling, local container validation and the exact Render settings. Deployment still requires explicit approval.

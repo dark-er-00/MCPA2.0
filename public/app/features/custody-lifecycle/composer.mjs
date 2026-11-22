@@ -8,17 +8,19 @@ export async function mountMovementComposer(root,options={}){
   let snapshot,camera,busy=false;
   const refresh=async()=>{snapshot=await ctx.api.snapshot();if(ctx.disposed)return;
     if(!['engineer','architect'].includes(snapshot.profile.role))throw new Error('Engineer or Architect custody access required.');
+    if(!root.querySelector('[data-composer]'))render();
+    if(root.querySelector('.b-feedback.b-error'))ctx.say('');
     const suggestions=root.querySelector('[data-suggestions]');
     if(suggestions)suggestions.innerHTML=snapshot.assets.filter(availableForBatch).map(a=>`<option value="${escape(a.id)}">${escape(a.name)}</option>`).join('');
     const history=root.querySelector('[data-history]');if(history)history.innerHTML=renderHistory(snapshot,intent);
   };
   const render=()=>{
-    const returning=intent==='return';
+    const returning=intent==='return',engineer=window.MCPAPermissions.operational(snapshot.profile.role);
     ctx.content.innerHTML=`<h2>${returning?'Return equipment':'Transfer equipment'}</h2><p>${returning?'Submit the actual Asset IDs for Admin inspection. Your custody responsibility continues until each item is physically received.':'Select the exact physical assets. You remain the custodian until the named recipient verifies and accepts the handover.'}</p>
       <form data-composer><fieldset><legend>Select equipment in your custody</legend><div class="b-row"><label>Asset ID or equipment search<input data-reference list="b-assets-${intent}" autocomplete="off" placeholder="Enter the printed Asset ID" maxlength="140"><datalist data-suggestions id="b-assets-${intent}"></datalist></label><button type="button" data-add>Add asset</button><button type="button" data-camera>Scan QR code</button><button type="button" data-stop hidden>Stop camera</button></div>
       <div class="b-camera" hidden><video playsinline muted aria-label="Equipment QR camera preview"></video></div>
       <p class="b-empty" data-no-assets>No assets selected. Scan a code or select an Asset ID.</p><ul class="b-list" data-selected></ul></fieldset>
-      ${returning?`<label>Intended return destination<select name="destination" required>${snapshot.returnDestination?`<option value="${escape(snapshot.returnDestination.id)}">${escape(snapshot.returnDestination.name)} · Office</option>`:'<option value="">Office unavailable · contact Admin</option>'}</select></label>`:
+      ${returning&&engineer?`<div class="b-return-destination"><strong>Return destination</strong><p>Office</p><input type="hidden" name="destination" value="${escape(snapshot.returnDestination?.id||'')}">${snapshot.returnDestination?'':'<p role="alert">Office configuration is unavailable. Contact Admin before returning equipment.</p>'}</div>`:returning?`<label>Intended return destination<select name="destination" required>${snapshot.returnDestination?`<option value="${escape(snapshot.returnDestination.id)}">${escape(snapshot.returnDestination.name)} · Office</option>`:'<option value="">Office unavailable · contact Admin</option>'}</select></label>`:
         `<div class="b-row"><label>Receiving custodian<select name="recipient" required><option value="">Select Engineer or Architect</option>${snapshot.recipients.filter(r=>r.id!==snapshot.profile.id).map(r=>`<option value="${escape(r.id)}">${escape(r.name)}</option>`).join('')}</select></label><label>Destination site / project<select name="destination" required><option value="">Select a destination</option>${snapshot.sites.map(s=>`<option value="${escape(s.id)}" data-recipient="${escape(s.assignedEngineerId)}">${escape(s.name)}</option>`).join('')}</select></label></div>`}
       <label>${returning?'Return':'Transfer'} notes <span>Optional</span><textarea name="notes" maxlength="2000"></textarea></label>
       <button class="b-primary" type="submit">${returning?'Submit for Admin inspection':'Submit transfer for recipient acceptance'}</button></form>
@@ -54,7 +56,8 @@ export async function mountMovementComposer(root,options={}){
         if(!batch.items.length)throw new Error('Select at least one Asset ID.');
         const form=event.target;
         const data=new FormData(form),assetIds=batch.items.map(a=>a.id);
-        const payload={assetIds,destinationId:data.get('destination'),notes:data.get('notes')};
+        if(returning&&!snapshot.returnDestination?.id)throw Error('Office configuration is unavailable. Contact Admin.');
+        const payload={assetIds,destinationId:returning&&engineer?snapshot.returnDestination.id:data.get('destination'),notes:data.get('notes')};
         if(!returning)payload.receiverId=data.get('recipient');
         busy=true;stop();for(const control of form.elements)control.disabled=true;
         try{

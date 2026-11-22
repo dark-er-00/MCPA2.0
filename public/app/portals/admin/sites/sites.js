@@ -19,7 +19,7 @@
   const options = (items, selected, empty = 'Not recorded') => `<option value="">${empty}</option>` + items.map(label => `<option${selected === label ? ' selected' : ''}>${escape(label)}</option>`).join('');
   const toolStatuses = Object.fromEntries(Object.entries(display.statuses.equipment).map(([key,label]) => [key,[label,['available','inuse','repair','underrepair','missing'].includes(key)?key:'disposed']]));
   const state = { sites: [], equipment: [], profiles: [], selectedId: null, loading: false, saving: false, ready: false, dirty: false, disposed: false, scope: isEngineer() ? 'mine' : 'all', search: '', includeArchived: false, review: { search: '', status: '' } };
-  let dialogReturnFocus = null;
+  let dialogReturnFocus = null, officeId=null;
 
   function escape(value) {
     return String(value ?? '').replace(/[&<>"']/g, char => ({
@@ -39,7 +39,7 @@
     const [label, style] = Object.hasOwn(statuses,value) ? statuses[value] : [display.status(value), 'disposed'];
     return `<span class="badge badge-${style}">${escape(label)}</span>`;
   }
-  function currentSite() { return state.sites.find(site => site.id === state.selectedId); }
+  function currentSite() { return state.sites.find(site => site.id === state.selectedId && (!window.MCPAPermissions.operational(context().role) || assignedToMe(site))); }
   function profession(site) {
     const profile=state.profiles.find(person=>person.id===site.assigned_engineer_id)
       ||(site.assigned_engineer_id===context().id?context():null);
@@ -49,8 +49,8 @@
     return window.MCPAProjectScope.assigned(site, context(), demo);
   }
   function filteredSites() {
-    return state.sites.filter(site => (state.includeArchived || window.MCPAProjectScope.active(site, demo))
-      && (state.scope !== 'mine' || assignedToMe(site))
+    return state.sites.filter(site => site.id!==officeId && (state.includeArchived || window.MCPAProjectScope.active(site, demo))
+      && ((!window.MCPAPermissions.operational(context().role) && state.scope !== 'mine') || assignedToMe(site))
       && (!state.search || [site.name, site.location, site.assigned_engineer, site.phase].some(value => String(value || '').toLowerCase().includes(state.search))));
   }
   function siteEquipment(site) { return state.equipment.filter(item => item.site_id === site.id); }
@@ -110,24 +110,33 @@
         const {data:snapshot,error}=await client().rpc('mcpa_project_snapshot');
         if(error)throw error;
         if(!Array.isArray(snapshot?.sites)||!Array.isArray(snapshot?.tools)||!Array.isArray(snapshot?.history))throw projectError('Projects returned an unexpected response. Contact your administrator, then retry.');
-        state.history=snapshot.history||[];
-        return {sites:snapshot.sites,profiles:[],equipment:snapshot.tools.map(tool=>({...tool,id:tool.dbId,asset_id:tool.id,quantity:tool.qty,category:tool.cat,site_id:tool.siteId,current_holder_id:tool.holderId,holder:tool.holder||'Unassigned'}))};
+        if(window.MCPAPermissions.operational(context().role)){
+          const {data:office,error:officeError}=await client().rpc('mcpa_inventory_office');
+          if(officeError)throw officeError;
+          if(!office?.id)throw projectError('The Office location could not be verified. Reopen Projects after configuration is restored.');
+          officeId=office.id;
+        }
+        const scoped=window.MCPAProjectScope.projectSnapshot(snapshot,context(),{officeId});
+        state.history=scoped.history||[];
+        return {sites:scoped.sites,profiles:[],equipment:scoped.tools.map(tool=>({...tool,id:tool.dbId,asset_id:tool.id,quantity:tool.qty,category:tool.cat,site_id:tool.siteId,current_holder_id:tool.holderId,holder:tool.holder||'Unassigned'}))};
       }
       if (demo || !window.MCPAPermissions.fullInventory(context().role)) {
         await window.MovementStore.initialize();
-        const snapshot = window.MovementStore.getState();
+        const snapshot = window.MCPAProjectScope.projectSnapshot(window.MovementStore.getState(),context(),{officeId});
         return {
           sites: snapshot.sites.map(site => ({...site, location: site.location || 'Demo project', assigned_engineer: site.assigned_engineer || site.engineer || 'Unassigned', phase: site.phase || '', status: site.status || 'active', progress: site.progress || 0})),
-          equipment: snapshot.tools.map(tool => ({...tool, id: tool.id, asset_id: tool.id, quantity: tool.qty, category: tool.cat, site_id: tool.siteId || snapshot.sites.find(site => site.name === tool.site)?.id, current_holder_id: tool.holderId, holder: tool.holder || 'Unassigned'})),
+          equipment: snapshot.tools.map(tool => ({...tool, id: tool.id, asset_id: tool.id, quantity: tool.qty, category: tool.cat, site_id: tool.siteId || (!window.MCPAPermissions.operational(context().role) ? snapshot.sites.find(site => site.name === tool.site)?.id : null), current_holder_id: tool.holderId, holder: tool.holder || 'Unassigned'})),
           profiles: snapshot.users || []
         };
       }
-      const [sites, equipment, profiles] = await Promise.all([
+      const [sites, equipment, profiles, office] = await Promise.all([
         readAll('sites', '*', 'id'),
         readAll('equipment', '*', 'id'),
         // A restricted profile must not hide otherwise readable equipment.
-        readAll('profiles', 'id,name,role', 'id').catch(() => [])
+        readAll('profiles', 'id,name,role', 'id').catch(() => []),
+        client().rpc('mcpa_inventory_office').then(({data,error})=>{if(error)throw error;return data;})
       ]);
+      officeId=office.id;
       const holders = new Map(profiles.map(profile => [profile.id, profile.name]));
       return {
         sites: sites.map(site=>({...site,assigned_engineer:site.assigned_engineer_id?holders.get(site.assigned_engineer_id)||'Accountable profile unavailable':site.assigned_engineer})).sort((a, b) => a.name.localeCompare(b.name)),
@@ -155,7 +164,8 @@
         const {data,error}=await client().rpc('mcpa_project_snapshot');
         if(error)throw error;
         if(!Array.isArray(data?.history))throw projectError('Project history returned an unexpected response. Contact your administrator, then retry.');
-        return data.history.filter(item=>item.project_id===siteId);
+        const scoped=window.MCPAProjectScope.projectSnapshot(data,context(),{officeId});
+        return scoped.history.filter(item=>item.project_id===siteId);
       }
       const rows = [];
       for (let offset = 0; ; offset += 500) {
@@ -247,7 +257,7 @@
 
   function render() {
     const projects = filteredSites();
-    root.querySelector('#projects-count').textContent = `${projects.length} of ${state.sites.length} projects · ${new Set(state.sites.filter(site => !site.archived_at).map(site => site.assigned_engineer_id || site.assigned_engineer).filter(value => value && value !== 'Unassigned')).size} assigned people`;
+    root.querySelector('#projects-count').textContent = `${projects.length} of ${state.sites.filter(s=>s.id!==officeId).length} projects · ${new Set(state.sites.filter(site => site.id!==officeId&&!site.archived_at).map(site => site.assigned_engineer_id || site.assigned_engineer).filter(value => value && value !== 'Unassigned')).size} assigned people`;
     const scope=root.querySelector('#projects-scope');
     if(scope){scope.value=state.scope;scope.closest('label').hidden=readOnly;}
     root.querySelector('#projects-mode-note').textContent = demo ? 'Demo projects are read-only.' : 'Project records update automatically.';

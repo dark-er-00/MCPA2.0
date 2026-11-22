@@ -5,6 +5,8 @@
 (function () {
   'use strict';
 
+  const { projectSummary } = window.DashboardView;
+
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[c]));
@@ -139,9 +141,9 @@
   }
 
   // Chart 1: Equipment Status — Filled Pie Chart with Hatch/Stripe Patterns (No Donut, Minimal Legend)
-  function statusChart(tools, assetsOnly, state, data, user, extraStock = []) {
+  function statusChart(tools, assetsOnly, state, data, user) {
     const fieldRole = ['engineer', 'architect'].includes(user.role);
-    const chartTools = fieldRole ? [...tools, ...extraStock] : tools;
+    const chartTools = tools;
     const total = units(chartTools, assetsOnly);
 
     const counts = groups.map(([key, label]) => ({
@@ -483,7 +485,7 @@
   }
 
   const addressed = (record, user) =>
-    window.MCPAAuth && !window.MCPAAuth.isDemo
+    window.MCPAAuth?.isDemo !== true
       ? Boolean(user.id) && record.receiverId === user.id
       : Boolean(user.name) && (record.receiver === user.name || record.requester === user.name);
 
@@ -576,12 +578,11 @@
     const tools = scoped(data, user);
     const totals = window.EquipmentTracking.tally(tools, data, { assetsOnly });
     const constructionProjects = activeConstructionProjects(data, user);
-    const extraProjectStock = []; // Assigned-stock reader is not installed on main.
 
     const incoming = (data.transfers || []).filter(t =>
       ['pending', 'refused'].includes(t.status) &&
-      (admin || (window.MCPAAuth && !window.MCPAAuth.isDemo
-        ? (t.receiverId === user.id || (t.status === 'refused' && t.senderId === user.id))
+      (admin || (window.MCPAAuth?.isDemo !== true
+        ? Boolean(user.id) && (t.receiverId === user.id || (t.status === 'refused' && t.senderId === user.id))
         : (t.receiver === user.name || (t.status === 'refused' && t.sender === user.name))))
     );
 
@@ -604,7 +605,7 @@
             totals.deployed ? `${totals.deployed} active in use` : 'No equipment in custody',
             'box',
             'masterlist',
-            kpiMiniBars(totals.total, Math.max(2, totals.total + extraProjectStock.length), 'amber')
+            kpiMiniBars(totals.total, Math.max(2, totals.total), 'amber')
           ],
           [
             totals.available,
@@ -781,7 +782,7 @@
       </button>`
     ).join('')}${user.role === 'admin' && window.MCPAAuth?.isDemo !== true ? consumablesCard(data.consumablesSummary) : ''}</div>`;
 
-    const analyticsGrid = `<div class="command-analytics">${statusChart(tools, assetsOnly, state, data, user, extraProjectStock)}${siteChart(data, user, assetsOnly, state)}${movementChart(data)}</div>`;
+    const analyticsGrid = `<div class="command-analytics">${statusChart(tools, assetsOnly, state, data, user)}${siteChart(data, user, assetsOnly, state)}${movementChart(data)}</div>`;
 
     return `${fieldRole ? '<div class="field-dashboard">' : ''}${header('Movement overview', 'Track requests, custody, equipment condition, and movement across project sites.')}
       <div class="dashboard-toolbar">
@@ -799,11 +800,13 @@
       </div>
       ${kpiGrid}
       ${analyticsGrid}
+      ${panel('Active projects', projectSummary(data, constructionProjects, tools, assetsOnly), go('All projects', 'sites'), 'dashboard-projects')}
+      ${fieldRole ? recentPanel : ''}
       ${fieldRole ? '<div class="dashboard-workflow">' + turnover(data, user, when) + requestsOverview(data, user) + '</div>' : ''}
       <div class="brand-overview-grid">
         ${inventoryPanel}
         <div class="v2-side-stack">
-          ${recentPanel}
+          ${fieldRole ? '' : recentPanel}
           <div class="v2-side-subgrid">
             ${nextActionsPanel}
             ${custodyPanel}

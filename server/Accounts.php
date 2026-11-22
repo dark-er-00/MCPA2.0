@@ -21,6 +21,10 @@ final class Accounts
         if (!$profile->ok() || ($actor['role'] ?? '') !== 'admin' || ($actor['account_status'] ?? '') !== 'active') {
             throw new RequestError('Active Admin access required.', 403, '42501');
         }
+        $invitations = new Invitations($this->config, $this->upstream);
+        if (in_array($input->action ?? '', ['createInvitation', 'reviewInvitations', 'reconcileInvitation', 'revokeInvitation'], true)) {
+            return $invitations->admin($input, $actor['id']);
+        }
         if (!in_array($input->action ?? '', ['capabilities', 'createDevelopmentAccount'], true)
             || ($input->action !== 'capabilities' && !self::uuid($input->id ?? null))) {
             throw new RequestError('Choose a valid account action and request ID.');
@@ -45,7 +49,8 @@ final class Accounts
                 try { $pending = $step('list', []); }
                 catch (RequestError $error) { if (in_array($error->status, [401, 403], true)) throw $error; $enabled = false; }
             }
-            return Response::json(['development_enabled' => $enabled, 'pending_development_accounts' => $pending]);
+            return Response::json(['development_enabled' => $enabled, 'pending_development_accounts' => $pending,
+                'invitation_enabled' => $invitations->available($actor['id'])]);
         }
         if (!$this->config->developmentEnabled) throw new RequestError('Development account creation is disabled.', 403, '42501');
         if (!is_string($input->name ?? null) || trim($input->name) === '' || mb_strlen(trim($input->name)) > 120

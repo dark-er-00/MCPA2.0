@@ -208,9 +208,19 @@ test('Demo cancellation and refusal preserve custody, locks, audit and failed-wr
   const tools=[{id:'DEMO-STOCK',name:'Fixture stock',site:'Origin',holder:'\u2014',status:'available',qty:1},
     {id:'DEMO-HELD',name:'Fixture held',site:'Origin',holder:'Engr Sky',status:'inuse',qty:1},
     {id:'DEMO-RECEIVER',name:'Other receiver fixture',site:'Destination',holder:'Engineer Receiver',status:'inuse',qty:1}];
-  const sandbox=vm.createContext({window,console,TOOLS:tools});
+  const sandbox=vm.createContext({window,console,TOOLS:[]});
+  for(const name of ['shared/display','core/permissions'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../public/app/'+name+'.js'),'utf8'),sandbox);
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../public/app/features/movements/movement-store.js'),'utf8'),sandbox);
-  const store=window.MovementDemoStore;store.activate();
+  const store=window.MovementDemoStore;
+  // Resume a browser-only fixture with a pending custodian and a second recipient.
+  store.activate();
+  const fixture=store.getState();
+  fixture.tools.push(...tools);
+  fixture.sites.push({id:'origin',name:'Origin'},{id:'destination',name:'Destination'});
+  fixture.users.push({id:'receiver',name:'Engineer Receiver',role:'engineer'});
+  store.deactivate();
+  saved.set(store.storageKey,JSON.stringify(fixture));
+  store.activate();
   const setUser=(role,name)=>{window.MCPAAuth.profile={role,name};};
   const change={reason:'Schedule changed',confirmed:true};
   const request=store.createRequest({toolIds:['DEMO-STOCK'],destination:'Origin',purpose:'Fixture'});

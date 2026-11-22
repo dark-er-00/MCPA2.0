@@ -60,27 +60,27 @@ test('Office stock is discoverable for Engineers and Architects; restricted proj
   await assert.rejects(action(f,f.actors.pau,'createRequest',{toolIds:['TOOL-001'],destination:'Casa Buena'}),e=>e.code==='42501');
 });
 
-test('T-8862 / REQ-00013 release retains AVAILABLE, unknown site and reservations until tested authorized receipt; history and retry identity survive',async t=>{
+test('SYN-OFFICE-REVIEW / REQ-00013 release retains AVAILABLE, unknown site and reservations until tested authorized receipt; history and retry identity survive',async t=>{
   const f=await setup(t);
   // Reproduce the supplied production finding before installing prospective defaults.
-  const id=randomUUID();await f.db.query("insert into equipment(id,asset_id,name,quantity) values($1,'T-8862','Welding Machine',1)",[id]);
+  const id=randomUUID();await f.db.query("insert into equipment(id,asset_id,name,quantity) values($1,'SYN-OFFICE-REVIEW','Welding Machine',1)",[id]);
   await f.db.query('update equipment set site_id=null where id=$1',[id]);
   await f.db.exec("select setval('mcpa_movement_number',12)");
-  const request=await action(f,f.actors.sky,'createRequest',{toolIds:['T-8862'],destination:'Casa Buena'});
+  const request=await action(f,f.actors.sky,'createRequest',{toolIds:['SYN-OFFICE-REVIEW'],destination:'Casa Buena'});
   assert.equal(request.id,'REQ-00013');await action(f,f.actors.admin,'approveRequest',{id:request.id});
   const transfer=await action(f,f.actors.admin,'releaseRequest',{id:request.id});
   const released=await records(f);await f.db.exec(migration);assert.deepEqual(await records(f),released);
   assert.equal(released.equipment.find(e=>e.id===id).status,'AVAILABLE');assert.equal(released.equipment.find(e=>e.id===id).site_id,null);
   assert.equal(released.reservations.find(r=>r.equipment_id===id).movement_id,transfer.id);
   const privateView=await f.rpc(f.actors.pau,'mcpa_movement_snapshot');
-  assert.equal(privateView.tools.find(t=>t.id==='T-8862').movementLock,'transfer');
+  assert.equal(privateView.tools.find(t=>t.id==='SYN-OFFICE-REVIEW').movementLock,'transfer');
   assert.equal(privateView.requests.some(r=>r.id===request.id),false);assert.equal(privateView.transfers.some(r=>r.id===transfer.id),false);
-  await assert.rejects(action(f,f.actors.sky,'createRequest',{toolIds:['T-8862'],destination:'Casa Buena'}),/reserved, pending receipt/);
-  await assert.rejects(action(f,f.actors.pau,'receiveTransfer',{id:transfer.id,inspections:[{toolId:'T-8862',condition:'good',tested:true}]}));
-  await assert.rejects(action(f,f.actors.sky,'receiveTransfer',{id:transfer.id,inspections:[{toolId:'T-8862',condition:'good',tested:false}]}));
+  await assert.rejects(action(f,f.actors.sky,'createRequest',{toolIds:['SYN-OFFICE-REVIEW'],destination:'Casa Buena'}),/reserved, pending receipt/);
+  await assert.rejects(action(f,f.actors.pau,'receiveTransfer',{id:transfer.id,inspections:[{toolId:'SYN-OFFICE-REVIEW',condition:'good',tested:true}]}));
+  await assert.rejects(action(f,f.actors.sky,'receiveTransfer',{id:transfer.id,inspections:[{toolId:'SYN-OFFICE-REVIEW',condition:'good',tested:false}]}));
   await assert.rejects(f.db.exec(fs.readFileSync(path.join(__dirname,'../supabase/operations/equipment-office-confirmed-correction.sql'),'utf8')),/active custody\/workflow/);await f.db.exec('rollback');
   assert.deepEqual(await records(f),released,'Failed requests, receipts and Office correction preserve every record');
-  const op=randomUUID(),payload={id:transfer.id,inspections:[{toolId:'T-8862',condition:'good',tested:true}]};
+  const op=randomUUID(),payload={id:transfer.id,inspections:[{toolId:'SYN-OFFICE-REVIEW',condition:'good',tested:true}]};
   await action(f,f.actors.sky,'receiveTransfer',payload,op);const received=await records(f);
   await action(f,f.actors.sky,'receiveTransfer',payload,op);assert.deepEqual(await records(f),received);
   const tool=received.equipment.find(e=>e.id===id);assert.equal(tool.current_holder_id,f.actors.sky.id);assert.equal(tool.site_id,f.sites.casa);assert.equal(tool.status,'IN_USE');assert.equal(tool.quantity,1);

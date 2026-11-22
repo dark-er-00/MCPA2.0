@@ -120,6 +120,14 @@ html.movement-modal-open,html.movement-modal-open body{overflow:hidden}
 .mv-section-heading .eyebrow { margin-bottom: 6px; }
 .mv-action-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; }
 .mv-followup { border-top: 1px solid var(--line); margin-top: 20px; padding-top: 20px; }
+.mv-followup .field { margin-bottom: 14px; }
+.mv-followup-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-top: 16px; padding-top: 4px; }
+.mv-followup .checkbox-row { margin: 0; color: var(--black); font-size: 13px; line-height: 1.5; cursor: pointer; }
+.mv-followup .checkbox-row input { width: 16px; height: 16px; margin: 0; flex-shrink: 0; }
+.mv-followup [data-refusal-fields] .checkbox-row { margin: 12px 0 16px; }
+.mv-followup > .btn, .mv-followup-footer .btn { min-height: 38px; padding: 8px 16px; }
+.mv-modal-feedback:empty { display: none; }
+.mv-modal-feedback { margin: 18px 0 0; }
 .mv-inspection { background: var(--off-white); border: 1px solid var(--line); padding: 14px; border-radius: 8px; margin: 14px 0; }
 .mv-inspection .field:last-child { margin-bottom: 0; }
 .mv-inspection-title { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 15px; font-size: 13px; }

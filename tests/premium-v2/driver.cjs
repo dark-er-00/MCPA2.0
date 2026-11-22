@@ -45,8 +45,10 @@ exports.open=async({width=1440,height=1050}={})=>{
  const navigate=async(url,app=true)=>{await command('Page.navigate',{url:'http://127.0.0.1:'+PORT+url});if(app){await wait('window.MCPAAuth?.profile?.role');await wait('!MCPANavigation.restoring');await wait('document.querySelector(".screen.active")?.textContent.length>50');}else await wait('document.readyState==="complete"');await evaluate('document.fonts.ready');await pause(300);};
  await command('Runtime.enable');await command('Page.enable');await command('Network.enable');await command('Log.enable');await command('Fetch.enable',{patterns:[{urlPattern:'*'}]});await viewport(width,height);
  return {command,evaluate,wait,click,fill,go,resize,shot,navigate,errors,blocked,network,logs,pause,async close(){
+  const exited=chrome.exitCode===null ? once(chrome,'exit') : Promise.resolve();
   await command('Browser.close').catch(()=>{});socket.close();
-  if(chrome.exitCode===null){chrome.kill();await Promise.race([once(chrome,'exit'),pause(2000)]);}
+  await Promise.race([exited,pause(5000)]);
+  if(chrome.exitCode===null && chrome.signalCode===null){chrome.kill();await exited;}
   const resolved=path.resolve(profile);
   if(path.dirname(resolved)!==path.resolve(os.tmpdir())||!path.basename(resolved).startsWith('mcpa-v2-qa-'))throw Error('Unexpected browser profile cleanup path');
   await fs.promises.rm(resolved,{recursive:true,force:true,maxRetries:8,retryDelay:250});
