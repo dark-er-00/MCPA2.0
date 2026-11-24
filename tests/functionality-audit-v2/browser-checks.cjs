@@ -46,7 +46,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await fill(pcApproval,'5');await click('[data-decision=approve]');await wait('document.querySelector("[data-decision=issue]:not(:disabled)")');await fill(pcApproval,'5');await fill(kgApproval,'0.125');await click('[data-decision=issue]');await wait('document.querySelector(".wa-message").textContent.includes("Issuance recorded")');
  assert.equal(Number((await f.db.query('select current_stock from consumables where id=$1',[pcs.id])).rows[0].current_stock),25);
  const rejected=await f.call(a.sky,'mcpa_wa_submit_consumables',{p_operation_id:id(),p_site_id:f.sites.casa,p_purpose:'',p_items:[{consumable_id:pcs.id,unit:'pcs',quantity:5}]});
- await click('[data-action=refresh]');await wait(`document.querySelector('[data-open="${rejected.id}"]')`);await click(`[data-open="${rejected.id}"]`);
+ await evaluate('window.dispatchEvent(new Event("mcpa:materials-change"))');await wait(`document.querySelector('[data-open="${rejected.id}"]')`);await click(`[data-open="${rejected.id}"]`);
  await fill(`[data-line="${rejected.items[0].id}"]`,'1.5');await fill('[data-note]','No longer needed');await click('[data-decision=reject]');await wait('document.querySelector(".wa-message").textContent.includes("Request rejected")');
  // Both retired dispositions share the existing DISPOSED DB status.
  const imported=await f.call(a.admin,'mcpa_import_equipment_v2',{p_operation_id:id(),p_rows:[{source_row:2,name:'Browser retired audit',category:'Hand Tools',condition:'Good',tracking_type:'Individual',quantity:2}]});

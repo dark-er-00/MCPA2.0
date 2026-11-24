@@ -24,7 +24,7 @@
     if (typeof root === 'string') root = document.querySelector(root);
     if (!root || typeof root.addEventListener !== 'function') throw new Error('Pass a mount root element.');
     root.classList.add('wa-quantity');
-    root.innerHTML = `<header class="wa-q-header"><div><h2>${escape(heading)}</h2><p>${escape(description)}</p></div><button type="button" class="wa-q-button" data-q-action="refresh">Refresh</button></header><div class="wa-q-feedback" role="status" aria-live="polite" aria-atomic="true" data-q-feedback></div><div data-q-body><div class="wa-q-loading" role="status">Loading verified inventory and request history…</div></div>`;
+    root.innerHTML = `<header class="wa-q-header"><div><h2>${escape(heading)}</h2><p>${escape(description)}</p></div></header><div class="wa-q-feedback" role="status" aria-live="polite" aria-atomic="true" data-q-feedback></div><button type="button" class="wa-q-button" data-q-retry hidden>Retry loading records</button><div data-q-body><div class="wa-q-loading" role="status">Loading verified inventory and request history…</div></div>`;
     return root;
   }
   function notice(root, message, error = false) {

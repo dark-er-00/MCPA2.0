@@ -9,6 +9,7 @@
     if (embedded) root.classList.add('equipment-quantity-review');
     const client = Q.createClient(supabase), prefix = 'wa-q-admin-' + (++instance);
     const state = { catalog: null, records: [], requestId: '', suggestion: null, selected: new Set(), reason: '', filter: 'pending', busy: false, destroyed: false };
+    const retryButton = root.querySelector('[data-q-retry]');
     const body = () => root.querySelector('[data-q-body]');
     const record = () => state.records.find(item => item.id === state.requestId);
     function renderQueue() {
@@ -32,7 +33,7 @@
       const header = reviewHeader ? reviewHeader(current) : `<h3>${V.escape(current.type_name || 'Equipment request')}</h3><p class="wa-q-muted">${V.escape(current.requester_name)} · ${V.escape(current.site_name)}</p>${V.status(current.status)}${group ? `<p class="wa-q-muted">${V.escape(V.variant(group))}</p>${V.stock(group)}` : ''}${V.details(current)}`;
       if (current.status !== 'pending' || readOnly?.(current)) { host.innerHTML = `<section class="wa-q-request">${header}</section>`; return; }
       const eligible = state.suggestion?.eligible_assets || [];
-      host.innerHTML = `<section class="wa-q-request">${header}<hr><h4>Proposed individual allocation</h4><p class="wa-q-muted">${eligible.length} eligible assets. Review the suggestion or adjust the Asset IDs below. Availability is checked again atomically when you approve.</p>${!state.suggestion ? '<p class="wa-q-error">Eligible assets could not be verified. Refresh before allocating.</p>' : ''}${eligible.length < Number(current.requested_quantity) ? `<p class="wa-q-error">This request needs ${V.escape(current.requested_quantity)} assets; only ${eligible.length} are eligible now. Refresh after stock becomes available or reject with a reason.</p>` : ''}<form data-q-allocate-form><fieldset ${state.busy ? 'disabled' : ''}><legend class="wa-q-sr-only">Choose individual Asset IDs</legend><div class="wa-q-selection-toolbar"><p class="wa-q-label" aria-live="polite" data-q-selection-count></p><div class="wa-q-actions"><button class="wa-q-button" type="button" data-q-action="suggested" ${!state.suggestion ? 'disabled' : ''}>Use suggestion</button><button class="wa-q-button" type="button" data-q-action="clear">Clear selection</button></div></div><div class="wa-q-asset-options">${eligible.map(asset => `<label class="wa-q-asset-option"><input type="checkbox" name="assetId" value="${V.escape(asset.id)}" ${state.selected.has(asset.id) ? 'checked' : ''}><span><strong>${V.escape(asset.asset_id)}</strong><small>${V.escape(asset.name || current.type_name)}</small></span></label>`).join('') || '<p class="wa-q-empty">No eligible physical Asset IDs are available.</p>'}</div><button class="wa-q-button wa-q-primary" type="submit" data-q-approve>Approve and reserve ${V.escape(current.requested_quantity)} assets</button></fieldset></form><form class="wa-q-rejection" data-q-reject-form><fieldset ${state.busy ? 'disabled' : ''}><legend>Reject request</legend><label for="${prefix}-reason">Reason for rejection</label><textarea id="${prefix}-reason" name="reason" maxlength="2000" rows="2" required placeholder="Explain why this quantity request cannot be approved.">${V.escape(state.reason)}</textarea><button class="wa-q-button wa-q-danger" type="submit">Reject request</button></fieldset></form></section>`;
+      host.innerHTML = `<section class="wa-q-request">${header}<hr><h4>Proposed individual allocation</h4><p class="wa-q-muted">${eligible.length} eligible assets. Review the suggestion or adjust the Asset IDs below. Availability is checked again atomically when you approve.</p>${!state.suggestion ? '<p class="wa-q-error">Eligible assets could not be verified. Reopen this request before allocating.</p>' : ''}${eligible.length < Number(current.requested_quantity) ? `<p class="wa-q-error">This request needs ${V.escape(current.requested_quantity)} assets; only ${eligible.length} are eligible now. Reopen this request after stock becomes available or reject with a reason.</p>` : ''}<form data-q-allocate-form><fieldset ${state.busy ? 'disabled' : ''}><legend class="wa-q-sr-only">Choose individual Asset IDs</legend><div class="wa-q-selection-toolbar"><p class="wa-q-label" aria-live="polite" data-q-selection-count></p><div class="wa-q-actions"><button class="wa-q-button" type="button" data-q-action="suggested" ${!state.suggestion ? 'disabled' : ''}>Use suggestion</button><button class="wa-q-button" type="button" data-q-action="clear">Clear selection</button></div></div><div class="wa-q-asset-options">${eligible.map(asset => `<label class="wa-q-asset-option"><input type="checkbox" name="assetId" value="${V.escape(asset.id)}" ${state.selected.has(asset.id) ? 'checked' : ''}><span><strong>${V.escape(asset.asset_id)}</strong><small>${V.escape(asset.name || current.type_name)}</small></span></label>`).join('') || '<p class="wa-q-empty">No eligible physical Asset IDs are available.</p>'}</div><button class="wa-q-button wa-q-primary" type="submit" data-q-approve>Approve and reserve ${V.escape(current.requested_quantity)} assets</button></fieldset></form><form class="wa-q-rejection" data-q-reject-form><fieldset ${state.busy ? 'disabled' : ''}><legend>Reject request</legend><label for="${prefix}-reason">Reason for rejection</label><textarea id="${prefix}-reason" name="reason" maxlength="2000" rows="2" required placeholder="Explain why this quantity request cannot be approved.">${V.escape(state.reason)}</textarea><button class="wa-q-button wa-q-danger" type="submit">Reject request</button></fieldset></form></section>`;
       updateSelection();
     }
     function render() {
@@ -50,7 +51,7 @@
     }
     async function refresh(message = '') {
       if (state.busy || state.destroyed) return;
-      state.busy = true; root.setAttribute('aria-busy', 'true'); root.querySelector('[data-q-action="refresh"]').disabled = true;
+      state.busy = true; root.setAttribute('aria-busy', 'true'); retryButton.disabled = true;
       try {
         const catalog = await client.catalog();
         if (state.destroyed) return;
@@ -60,19 +61,20 @@
         if (!record()) state.requestId = (state.records.find(item => item.status === 'pending') || state.records[0])?.id || '';
         await readSuggestion();
         if (state.destroyed) return;
-        state.busy = false; render(); V.notice(root, message);
+        state.busy = false; render(); V.notice(root, message); retryButton.hidden = true;
       } catch (error) {
         if (!state.destroyed) {
           state.busy = false;
-          if (state.catalog) render(); else body().innerHTML = '<p class="wa-q-empty">Verified requests are unavailable. Use Refresh to try again.</p>';
+          if (state.catalog) render(); else body().innerHTML = '<p class="wa-q-empty">Verified requests are unavailable.</p>';
+          retryButton.hidden = false;
           V.notice(root, error.message, true);
         }
-      } finally { state.busy = false; if (!state.destroyed) { root.removeAttribute('aria-busy'); root.querySelector('[data-q-action="refresh"]').disabled = false; } }
+      } finally { state.busy = false; if (!state.destroyed) { root.removeAttribute('aria-busy'); retryButton.disabled = false; } }
     }
     async function onClick(event) {
       const target = event.target.closest('button');
       if (!target || !root.contains(target) || state.busy) return;
-      if (target.dataset.qAction === 'refresh') { await refresh(); return; }
+      if (target === retryButton) { await refresh(); return; }
       if (target.dataset.qAction === 'suggested') { selectSuggestion(); renderReview(); return; }
       if (target.dataset.qAction === 'clear') { state.selected.clear(); renderReview(); return; }
       if (target.dataset.qRequest) {
@@ -103,7 +105,7 @@
         if (state.destroyed) return;
         state.reason = ''; state.busy = false;
         await refresh(approve ? `${current.requested_quantity} individual Asset IDs reserved. Release continues in the existing movement workflow.` : 'Request rejected. The requester can review the reason in their history.');
-      } catch (error) { if (!state.destroyed) V.notice(root, error.message + ' Refresh to verify current availability before changing the selection.', true); }
+      } catch (error) { if (!state.destroyed) V.notice(root, error.message + ' Reopen this request to check current availability before changing the selection.', true); }
       finally {
         state.busy = false;
         if (!state.destroyed) { root.removeAttribute('aria-busy'); root.querySelectorAll('fieldset').forEach(fieldset => { fieldset.disabled = false; }); updateSelection(); }

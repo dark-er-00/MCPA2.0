@@ -20,12 +20,11 @@ export async function mountTransfers(root,options={}){
   if(engineer)root.classList.add('engineer-transfer-workspace');
   let snapshot,disposed=false,busy=false,search='',statusFilter='',view=options.view||'receive';
   root.classList.add('transfer-workspace');
-  root.innerHTML='<header class="page-head"><div><h1 class="display">Transfers</h1><p class="sub">Custody changes after recipient acceptance.</p></div><button type="button" class="btn btn-secondary" data-transfer-refresh>Refresh</button></header><p data-transfer-feedback role="status" aria-live="polite"></p><div data-transfer-content aria-busy="true">Loading transfers…</div>';
-  if(admin)root.querySelector('[data-transfer-refresh]').remove();
-  else if(engineer){const retry=root.querySelector('[data-transfer-refresh]');retry.hidden=true;retry.textContent='Retry loading transfers';}
+  root.innerHTML='<header class="page-head"><div><h1 class="display">Transfers</h1><p class="sub">Custody changes after recipient acceptance.</p></div><button type="button" class="btn btn-secondary" data-transfer-retry hidden>Retry loading transfers</button></header><p data-transfer-feedback role="status" aria-live="polite"></p><div data-transfer-content aria-busy="true">Loading transfers…</div>';
+  const retry=root.querySelector('[data-transfer-retry]');
   const content=root.querySelector('[data-transfer-content]'),feedback=root.querySelector('[data-transfer-feedback]');
-  const say=(text,error=false)=>{feedback.textContent=text;feedback.setAttribute('role',error?'alert':'status');if(engineer)root.querySelector('[data-transfer-refresh]').hidden=!error;if(error){feedback.tabIndex=-1;feedback.focus();}};
-  async function task(fn){if(busy)return;busy=true;content.setAttribute('aria-busy','true');try{await fn();}catch(e){if(!disposed){say(e.message,true);if(!snapshot)content.textContent='Transfer data is unavailable. Refresh after the connection or configuration is restored.';}}finally{busy=false;if(!disposed)content.setAttribute('aria-busy','false');}}
+  const say=(text,error=false)=>{feedback.textContent=text;feedback.setAttribute('role',error?'alert':'status');retry.hidden=!error;if(error){feedback.tabIndex=-1;feedback.focus();}};
+  async function task(fn){if(busy)return;busy=true;content.setAttribute('aria-busy','true');try{await fn();}catch(e){if(!disposed){say(e.message,true);if(!snapshot)content.textContent='Transfer data is unavailable. Try again after the connection or configuration is restored.';}}finally{busy=false;if(!disposed)content.setAttribute('aria-busy','false');}}
   const can=(t,action)=>t.allowedActions?.includes(action);
   function render(){
     const expanded=new Set([...content.querySelectorAll('[data-transfer-record][open]')].map(e=>e.dataset.transferRecord));const focused=document.activeElement?.hasAttribute('data-transfer-search')?'[data-transfer-search]':document.activeElement?.hasAttribute('data-transfer-status')?'[data-transfer-status]':null;
@@ -61,7 +60,7 @@ export async function mountTransfers(root,options={}){
     const {data,error}=await client.rpc('mcpa_transfer_snapshot');
     if(error)throw new Error(['PGRST202','42883'].includes(error.code)?'The transfer update needs administrator review and database installation before use.':error.message);
     if(disposed)return;if(data?.transferVersion!==3)throw new Error('Transfer configuration could not be verified.');
-    snapshot=data;view=resolveTransferView(snapshot,options.record,view);if(engineer&&feedback.getAttribute('role')==='alert')say('');render();
+    snapshot=data;view=resolveTransferView(snapshot,options.record,view);if(feedback.getAttribute('role')==='alert')say('');render();
   }
   function newTransfer(){
     const dialog=content.querySelector('dialog');
@@ -80,7 +79,7 @@ export async function mountTransfers(root,options={}){
     if(button.dataset.transferView)window.showScreen('transfer?view='+button.dataset.transferView);
     else if(!admin&&button.hasAttribute('data-new-transfer'))newTransfer();
     else if(button.hasAttribute('data-close-transfer'))content.querySelector('dialog').close();
-    else if(button.hasAttribute('data-transfer-refresh'))void task(refresh);
+    else if(button===retry)void task(refresh);
     else if(button.hasAttribute('data-legacy-transfers'))window.showScreen('transfer-tools');
     else if(button.hasAttribute('data-scan-assets'))window.showScreen('asset-transfer');
     else if(button.dataset.decision){

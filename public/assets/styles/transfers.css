@@ -9,7 +9,7 @@
 .transfer-workspace .btn{min-height:44px}
 .transfer-workspace :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .transfer-record{border-block-end:1px solid var(--line);padding:16px 0}
-.transfer-record[hidden]{display:none}
+.transfer-record[hidden],.transfer-workspace [data-transfer-retry][hidden]{display:none}
 .transfer-record>summary{display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;min-height:44px}
 .transfer-record>summary>span:first-child{display:grid;gap:6px;min-width:0}
 .transfer-people{font-size:13px;overflow-wrap:anywhere}

@@ -7,9 +7,8 @@
     if (!Q || !V) throw new Error('Load the Workstream A quantity client and view helpers first.');
     root = V.shell(root, 'Request equipment by quantity', 'Choose a compatible equipment type and quantity. Admin assigns the individual Asset IDs.');
     if (embedded) root.classList.add('equipment-quantity-create');
-    const engineer = scope.MCPAPermissions.operational(scope.MCPAAuth?.profile?.role);
-    const retryButton = root.querySelector('[data-q-action="refresh"]');
-    if(engineer){retryButton.hidden=true;retryButton.textContent='Retry loading inventory';}
+    const retryButton = root.querySelector('[data-q-retry]');
+    retryButton.textContent = 'Retry loading inventory';
     const recoverButton=document.createElement('button');recoverButton.type='button';recoverButton.className='wa-q-button';recoverButton.dataset.qRecover='';recoverButton.hidden=true;recoverButton.textContent='Check interrupted submission';root.querySelector('[data-q-feedback]').after(recoverButton);
     const client = Q.createClient(supabase), prefix = 'wa-q-engineer-' + (++instance);
     const state = { catalog: null, history: [], typeId: '', search: '', siteId: '', quantity: '1', purpose: '', filter: 'all', busy: false, destroyed: false, pendingDraft: null, confirmed: '' };
@@ -84,7 +83,7 @@
     async function refresh(message = '') {
       if (state.busy || state.destroyed || state.pendingDraft) return;
       state.busy = true; root.setAttribute('aria-busy', 'true');
-      root.querySelector('[data-q-action="refresh"]').disabled = true;
+      retryButton.disabled = true;
       try {
         const catalog = await client.catalog();
         if (state.destroyed) return;
@@ -98,18 +97,18 @@
         if (!catalog.groups.some(group => group.type_id === state.typeId)) state.typeId = '';
         if (!catalog.sites.some(site => site.id === state.siteId)) state.siteId = catalog.sites.length === 1 ? catalog.sites[0].id : '';
         state.confirmed = '';
-        state.busy = false; render(); V.notice(root, message);if(engineer)retryButton.hidden=true;
+        state.busy = false; render(); V.notice(root, message); retryButton.hidden = true;
         return true;
       } catch (error) {
         if (!state.destroyed) {
           if (!state.catalog) body().innerHTML = '<p class="wa-q-empty">Verified inventory is unavailable. Retry loading when the connection is restored.</p>';
-          if(engineer)retryButton.hidden=false;
+          retryButton.hidden = false;
           V.notice(root, state.confirmed ? state.confirmed+' Request history or inventory could not reload. Retry loading; do not submit it again.' : error.message, !state.confirmed);
         }
         return false;
       } finally {
         state.busy = false;
-        if (!state.destroyed) { root.removeAttribute('aria-busy'); root.querySelector('[data-q-action="refresh"]').disabled = false; }
+        if (!state.destroyed) { root.removeAttribute('aria-busy'); retryButton.disabled = false; }
       }
     }
     async function onClick(event) {
@@ -125,7 +124,7 @@
       if (state.busy) return;
       if(target.hasAttribute('data-q-recover')){await submitDraft(state.pendingDraft);return;}
       if(state.pendingDraft)return;
-      if (target.dataset.qAction === 'refresh') { await refresh(); return; }
+      if (target === retryButton) { await refresh(); return; }
       if (target.dataset.qType) {
         state.typeId = target.dataset.qType; state.quantity = '1';
         renderCatalog(); renderForm();

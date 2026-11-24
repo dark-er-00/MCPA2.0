@@ -12,7 +12,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await click('[data-tab=inventory]');assert.ok(await evaluate('document.querySelector("#wa-panel-inventory").textContent.includes("No consumables issued to you yet")'));
  assert.equal(await evaluate('document.querySelector("[data-tab=inventory]").getAttribute("aria-selected")'),'true');
  await click('[data-action=request-materials]');await fill('[data-field=site_id]',f.sites.casa);await fill(`[data-quantity="${item.id}"]`,'5');await click('[data-action=review-request]');await fill('[data-field=purpose]','Keep this draft');await click('[data-action=cancel-request]');
- await click('[data-tab=inventory]');await click('[data-action=refresh]');await wait('document.querySelector(".wa-engineer").getAttribute("aria-busy")==="false"');
+ await click('[data-tab=inventory]');await notify();await wait('document.querySelector("[data-integration-status]").textContent.includes("preserve your draft")');
  await click('[data-tab=available]');await click('[data-action=review-request]');assert.equal(await evaluate('document.querySelector("[data-field=purpose]").value'),'Keep this draft');
  assert.equal(await evaluate(`document.querySelector('[data-quantity="${item.id}"]').value`),'5');
  // Drop a committed submission response; recovery must select its request tab
@@ -61,8 +61,8 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  // Transient failure keeps data visibly stale; retry clears the error state.
  await click('[data-tab=inventory]');
  await evaluate('window.__inventoryRpc=window.supabaseClient.rpc;window.supabaseClient.rpc=async(name,args)=>name==="mcpa_wa_consumables_snapshot"?{data:null,error:{code:"NETWORK",message:"Connection unavailable"}}:window.__inventoryRpc(name,args)');
- await click('[data-action=refresh]');await wait('document.querySelector(".wa-message").textContent.includes("previously loaded")');assert.ok(await evaluate('!!document.querySelector(".wa-inventory-table")'));
- await evaluate('window.supabaseClient.rpc=window.__inventoryRpc');await click('[data-action=refresh]');await wait('!document.querySelector(".wa-message").classList.contains("error") && document.querySelector(".wa-engineer").getAttribute("aria-busy")==="false"');
+ await notify();await wait('document.querySelector(".wa-message").textContent.includes("previously loaded")');assert.ok(await evaluate('!!document.querySelector(".wa-inventory-table")'));
+ await evaluate('window.supabaseClient.rpc=window.__inventoryRpc');await click('[data-action=retry]');await wait('!document.querySelector(".wa-message").classList.contains("error") && document.querySelector(".wa-engineer").getAttribute("aria-busy")==="false"');
  // Reload fetches the same balances rather than browser storage.
  await command('Page.reload');await wait('window.MCPAAuth?.profile?.role==="engineer"');await go('outward-materials');await wait('document.querySelector("[data-tab=inventory]")');await click('[data-tab=inventory]');
  await fill('[data-inventory-filter=search]','Site cement');assert.equal(await evaluate('document.querySelector(".wa-inventory-table [data-label^=Available]").textContent'),'10');

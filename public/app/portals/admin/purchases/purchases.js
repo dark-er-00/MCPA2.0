@@ -83,7 +83,6 @@
  root.addEventListener('click', async event => {
   const button = event.target.closest('button'); if (!button || busy) return;
   if (button.hasAttribute('data-purchase-close')) return close();
-  if (button.hasAttribute('data-purchase-refresh')) return load();
   if (button.hasAttribute('data-purchase-new') && ready) return form();
   if (button.dataset.purchaseEdit) return form(state.purchases.find(p => p.id === button.dataset.purchaseEdit));
   if (button.dataset.purchaseView) return detail(state.purchases.find(p => p.id === button.dataset.purchaseView));

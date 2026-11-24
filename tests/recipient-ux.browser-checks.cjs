@@ -83,7 +83,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await evaluate("window.__savedTransferRpc=EquipmentTracking.client().rpc.bind(EquipmentTracking.client());EquipmentTracking.client().rpc=async(name,args)=>name==='mcpa_transfer_snapshot'?{error:{code:'PGRST202'}}:__savedTransferRpc(name,args)");
  await go('dashboard');await go('transfer');await wait("document.querySelector('[data-transfer-feedback]').textContent.includes('administrator review')");
  assert.equal(await evaluate("document.querySelector('[data-new-transfer]')"),null,'Missing migration fails closed');
- await evaluate('EquipmentTracking.client().rpc=__savedTransferRpc');await click('[data-transfer-refresh]');await wait("document.querySelector('[data-new-transfer]')");
+ await evaluate('EquipmentTracking.client().rpc=__savedTransferRpc');await click('[data-transfer-retry]');await wait("document.querySelector('[data-new-transfer]')");
  console.log('PASS Accordion exclusivity/toggle/keyboard, active and refreshed child routes, role navigation, 393/1440 widths, both themes and 44px actions');
  await require('./transfer-deep-links.browser-checks.cjs').verify({fixture:f,evaluate,command,wait,click,go,login,logout,calls});
 };

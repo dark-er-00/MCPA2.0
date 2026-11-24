@@ -8,7 +8,6 @@ export function timeline(r) {
 }
 export async function mount(root, {client, record = ''}) {
   if(window.MCPAAuth.profile.role==='admin')return (await import('./admin.mjs')).mountAdmin(root,{client,record});
-  const engineer = window.MCPAPermissions.operational(window.MCPAAuth.profile.role);
   const admin = window.MCPAAuth.profile.role === 'admin', abort = new AbortController();
   const specificDraft = window.movementDraft?.kind === 'request';
   const qClient = window.MCPAQuantityRequests.createClient(client);
@@ -16,7 +15,7 @@ export async function mount(root, {client, record = ''}) {
   const historyFailure = error => {notice(confirmedRequest ? 'Request '+confirmedRequest+' was submitted, but My Requests could not reload. Retry loading to see its latest status.' : error.message,true);const retry=root.querySelector('[data-equipment-retry]');if(retry)retry.hidden=false;};
   let destroyed = false, records = [], quantities = [], search = '', status = '', type = '', loading = false, selected = '', quantityMount, historyVersion = 0;
   root.classList.add('equipment-requests');
-  root.innerHTML = `<header class="page-head"><div><h1 class="display">Equipment Requests</h1><p class="sub">${admin ? 'Review both request types, reserve exact Asset IDs, then release a documented handover.' : 'Request equipment, follow its handover, then inspect before accepting custody.'}</p></div><div class="equipment-header-actions"><button type="button" class="btn btn-secondary" data-jump-history>${admin ? "Request queue" : "My Requests"}</button><button type="button" class="btn btn-secondary" data-equipment-refresh ${engineer?'hidden':''}>Refresh requests</button></div></header>
+  root.innerHTML = `<header class="page-head"><div><h1 class="display">Equipment Requests</h1><p class="sub">${admin ? 'Review both request types, reserve exact Asset IDs, then release a documented handover.' : 'Request equipment, follow its handover, then inspect before accepting custody.'}</p></div><div class="equipment-header-actions"><button type="button" class="btn btn-secondary" data-jump-history>${admin ? "Request queue" : "My Requests"}</button></div></header>
     ${admin ? '' : '<div class="equipment-methods" role="group" aria-label="Request method"><button class="btn btn-accent" type="button" data-method="quantity" aria-pressed="true">Request by Quantity</button><button class="btn btn-secondary" type="button" data-method="specific" aria-pressed="false">Request Specific Asset</button></div>'}
     <div data-quantity-pane ${admin ? 'hidden' : ''}></div><div class="equipment-specific" data-specific-pane></div>
     <section class="card card-pad equipment-history" aria-labelledby="equipment-history-title"><h2 id="equipment-history-title">${admin ? 'Request queue' : 'My Requests'}</h2><p role="status" aria-live="polite" data-equipment-notice></p><button type="button" class="btn btn-secondary" data-equipment-retry hidden>Retry loading requests</button><div class="equipment-filters"><label>Search requests<input class="mv-input" type="search" data-equipment-search placeholder="ID, equipment, Asset ID, person or project"></label><label>Stage<select class="mv-input" data-equipment-stage><option value="">All stages</option><option value="pending">Awaiting review</option><option value="approved">Awaiting Admin release</option><option value="inspection">Awaiting inspection</option><option value="received">Inspected / Received</option><option value="follow-up">Needs follow-up</option><option value="rejected">Rejected</option><option value="cancelled">Cancelled</option><option value="withdrawn">Withdrawn</option><option value="unverified">Needs verification</option></select></label><label>Request type<select class="mv-input" data-equipment-type><option value="">Both types</option><option value="quantity">By quantity</option><option value="specific">Specific assets</option></select></label></div><div data-equipment-list></div></section><section data-equipment-review hidden aria-label="Quantity request review"><button class="btn btn-secondary" type="button" data-close-review>Close request review</button><div data-review-stage></div><div data-quantity-review></div></section>`;
@@ -38,10 +37,10 @@ export async function mount(root, {client, record = ''}) {
   }
   async function refresh() {
     if (loading || destroyed) return;
-    loading = true;root.querySelector('[data-equipment-refresh]').disabled = true;
+    loading = true;
     try {await window.MovementStore.refresh();await readHistory();notice('');root.querySelector('[data-equipment-retry]').hidden=true;}
     catch (error) {root.querySelector('[data-equipment-retry]').hidden=false;notice('Request history could not be fully verified. ' + error.message, true);root.querySelector('[data-equipment-list]').innerHTML = '<p>Retry loading to verify both request types before reviewing requests.</p>';}
-    finally {loading = false;if (!destroyed) root.querySelector('[data-equipment-refresh]').disabled = false;}
+    finally {loading = false;}
   }
   const specific = root.querySelector('[data-specific-pane]');
   specific.classList.toggle('equipment-hide-create', !admin);
@@ -76,7 +75,7 @@ export async function mount(root, {client, record = ''}) {
   root.addEventListener('click', event => {
     const button = event.target.closest('button');if (!button) return;
     if (button.hasAttribute('data-jump-history')) {const history = root.querySelector('#equipment-history-title');history.tabIndex = -1;history.focus({preventScroll:true});history.scrollIntoView({block:'start'});}
-    if (button.hasAttribute('data-equipment-refresh')||button.hasAttribute('data-equipment-retry')) {void refresh();void quantityMount.refresh();}
+    if (button.hasAttribute('data-equipment-retry')) {void refresh();void quantityMount.refresh();}
     if (button.dataset.openRequest) void open(button.dataset.openRequest);
     if (button.dataset.releaseRequest) void window.MovementUI.openRecord('request',button.dataset.releaseRequest);
     if (button.hasAttribute('data-close-review')) {root.querySelector('[data-equipment-review]').hidden = true;selected = '';root.querySelector('[data-equipment-search]').focus();}

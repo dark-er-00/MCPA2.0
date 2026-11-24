@@ -57,13 +57,15 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,go,login,base,c
   for(const [i,status]of ['proposed','approved','rejected'].entries()){
     const selector='[data-retirement-record="'+records[i].id+'"]';
     await go('asset-retirement-v2?record='+records[i].id);await wait('document.querySelector('+JSON.stringify(selector)+')');
-    assert.equal(await evaluate('document.querySelector('+JSON.stringify(selector)+').open'),true,status+' deep link expands target');
-    assert.equal(await evaluate('document.querySelectorAll("[data-retirement-record][open]").length'),1,'Only target expands');
-    await click('[data-integration-refresh]');await wait('document.querySelector("[data-integration-status]").textContent==="Records refreshed."');
-    assert.equal(await evaluate('document.querySelector('+JSON.stringify(selector)+').open'),true,status+' target survives refresh');
+    await wait('document.querySelector("[data-retirement-dialog]")?.open');
+    const expectedStatus=await evaluate('document.querySelector('+JSON.stringify(selector+' .b-state')+').textContent');
+    assert.equal(await evaluate('document.querySelector("[data-retirement-dialog] .b-state").textContent'),expectedStatus);
+    await evaluate('window.dispatchEvent(new Event("mcpa:movement-change"))');
+    await wait('document.querySelector("[data-integration-status]").textContent.includes("updates paused")');
+    assert.equal(await evaluate('document.querySelector("[data-retirement-dialog]").open'),true,status+' details stay open during an update');
   }
   await go('asset-retirement-v2?record='+id());await wait('document.querySelector("[data-retirement-record]")');
-  assert.equal(await evaluate('document.querySelectorAll("[data-retirement-record][open]").length'),0);
+  assert.equal(await evaluate('document.querySelector("[data-retirement-dialog]").open'),false);
   console.log('PASS Retirement links: proposed, approved and rejected records expand through load and refresh; unknown ID opens no other record');
 
   await go('asset-retirement-v2');await wait('document.querySelector("[data-proposal]")');
@@ -74,13 +76,10 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,go,login,base,c
   assert.equal(await evaluate('__reviewConfirmCount'),0,'Automatic refresh never asks to discard a draft');
   assert.match(await evaluate('document.querySelector("[data-integration-status]").textContent'),/It has been kept/);
   const snapshots=calls.filter(c=>c.rpc==='mcpa_b_snapshot').length;
-  await evaluate("window.dispatchEvent(new Event('focus'))");await wait('document.querySelector("[data-integration-status]").textContent.includes("Refresh when your form is ready")');
+  await evaluate("window.dispatchEvent(new Event('focus'))");await wait('document.querySelector("[data-integration-status]").textContent.includes("preserve your draft")');
   assert.equal(calls.filter(c=>c.rpc==='mcpa_b_snapshot').length,snapshots,'Dirty form prevents a further automatic read');
   await evaluate('EquipmentTracking.client().rpc=__reviewRpc');
-  await click('[data-integration-refresh]');assert.equal(await evaluate('__reviewConfirmCount'),1);
+  assert.equal(await evaluate('__reviewConfirmCount'),0);
   assert.equal(await evaluate('document.querySelector("[name=reason]").value'),'Preserve this draft while the snapshot is in flight');
-  await evaluate('window.confirm=()=>{++__reviewConfirmCount;return true;}');await click('[data-integration-refresh]');
-  await wait('document.querySelector("[data-integration-status]").textContent==="Records refreshed."');
-  assert.equal(await evaluate('__reviewConfirmCount'),2);assert.equal(await evaluate('document.querySelector("[name=reason]").value'),'');
-  console.log('PASS In-flight automatic refresh: edits survive response and focus skips refresh; explicit refresh respects discard choice');
+  console.log('PASS Edits survive in-flight reads and later automatic updates preserve the draft without prompting');
 };

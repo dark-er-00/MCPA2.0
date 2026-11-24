@@ -117,7 +117,7 @@
     function render(){
       if(destroyed)return;
       root.classList.add('wa-cons','wa-admin');root.setAttribute('aria-busy',String(busy));
-      const links=screen?`<button data-view="" data-focus-card="${E(screen)}">Back to Analytics</button>${screen==='requests'?'<button data-action="refresh">Refresh</button>':''}`:
+      const links=screen?`<button data-view="" data-focus-card="${E(screen)}">Back to Analytics</button>`:
         '<button data-view="requests">Requests</button><button data-view="history">History</button>';
       const head=`<header><div><h1 tabindex="-1" data-view-heading>${titles[screen]||'Consumables usage & accountability'}</h1><p>${screen&&snapshot?context():'Review requests, record material issuance and trace who received each quantity.'}</p></div><div class="wa-nav">${links}</div></header>`;
       const status=()=>`<div class="wa-message ${error?'error':''}" role="status">${E(message)}</div>`;

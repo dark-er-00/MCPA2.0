@@ -21,6 +21,8 @@ exports.verify=async c=>{
  await go('asset-retirement-v2?view=history');assert.ok(await visible('[data-retirement-history]'));
  console.log('PASS Office record preserved/excluded from Projects; retirement downward list, history cards and combined date/search');
  await go('request');await wait("document.querySelector('[data-equipment-record]')");
+ assert.equal(await visible('.screen.active .integration-toolbar'),false);
+ assert.equal(await evaluate("[...document.querySelectorAll('.screen.active button')].some(button=>/^refresh\\b/i.test(button.textContent.trim()))"),false);
  assert.equal(await evaluate("document.querySelectorAll('[data-equipment-record]').length"),3);
  await click(`[data-open-request="${seed.pending}"]`);await wait("document.querySelector('[data-equipment-review][open] [data-q-approve]')");
  assert.ok(await evaluate("document.querySelector('#equipment-review-heading').textContent.includes('Engr Sky | Casa Buena')"));

@@ -14,10 +14,8 @@
     const alive=()=>current===session&&version===revision&&window.MCPAAuth?.profile?.id===person.id&&root.isConnected;
     const changed=()=>{if(!alive())return;session.dirty=false;++session.draftVersion;void window.MovementStore.refresh().catch(()=>{}).finally(()=>{if(alive())window.dispatchEvent(new CustomEvent('mcpa:movement-change'));});window.dispatchEvent(new CustomEvent('mcpa:materials-change'));};
     const client=window.EquipmentTracking.client();
-    root.innerHTML='<div class="integration-toolbar"><button type="button" class="btn btn-secondary" data-integration-refresh>Refresh records</button><span role="status" data-integration-status></span><button type="button" class="btn btn-secondary" data-integration-recover hidden>Recover interrupted action</button></div><div data-integration-mount></div><div data-integration-history></div>';
-    const automaticEngineer=window.MCPAPermissions.operational(person.role)&&screen==='return';
-    const automaticAdmin=person.role==='admin'&&['return','asset-retirement-v2'].includes(screen);
-    if(automaticAdmin||automaticEngineer)root.querySelector('[data-integration-refresh]').hidden=true;
+    const retryReturns=window.MCPAPermissions.operational(person.role)&&screen==='return';
+    root.innerHTML=`<div class="integration-toolbar" hidden>${retryReturns?'<button type="button" class="btn btn-secondary" data-return-retry hidden>Retry loading returns</button>':''}<span role="status" data-integration-status></span><button type="button" class="btn btn-secondary" data-integration-recover hidden>Recover interrupted action</button></div><div data-integration-mount></div><div data-integration-history></div>`;
     const host=root.querySelector('[data-integration-mount]');
     const status=root.querySelector('[data-integration-status]');
     const add=async promise=>{const mounted=await promise;if(!alive()){mounted.destroy();return;}session.mounts.push(mounted);if(mounted.ready)await mounted.ready;};
@@ -88,12 +86,19 @@
       await add(module[fn](host,options));
     }
     if(!alive())return;
-    root.querySelector('.integration-toolbar').hidden=!session.api;
+    const toolbar=root.querySelector('.integration-toolbar');
     const recover=root.querySelector('[data-integration-recover]');
-    const updateToolbar=()=>{if(automaticAdmin||automaticEngineer)root.querySelector('.integration-toolbar').hidden=recover.hidden&&!status.textContent.trim()&&(!automaticEngineer||root.querySelector('[data-integration-refresh]').hidden);};
+    const retry=root.querySelector('[data-return-retry]');
+    const updateToolbar=()=>{toolbar.hidden=recover.hidden&&!status.textContent.trim()&&(!retry||retry.hidden);};
     const setStatus=value=>{status.textContent=value;updateToolbar();};
-    const retry=root.querySelector('[data-integration-refresh]');
-    if(automaticEngineer){retry.textContent='Retry loading returns';const updateRetry=()=>{const error=host.querySelector('.b-error');retry.hidden=!error?.textContent.trim();if(!retry.hidden)root.querySelector('.integration-toolbar').hidden=false;};const observer=new MutationObserver(updateRetry);observer.observe(host,{subtree:true,childList:true,characterData:true});updateRetry();session.abort.signal.addEventListener('abort',()=>observer.disconnect(),{once:true});}
+    if(retry){
+      const updateRetry=()=>{retry.hidden=!host.querySelector('.b-error')?.textContent.trim();updateToolbar();};
+      const observer=new MutationObserver(updateRetry);
+      observer.observe(host,{subtree:true,childList:true,characterData:true});
+      updateRetry();
+      session.abort.signal.addEventListener('abort',()=>observer.disconnect(),{once:true});
+      retry.addEventListener('click',()=>void refresh().catch(error=>{if(alive())setStatus(error.message);}),{signal:session.abort.signal});
+    }
     const pending=()=>{recover.hidden=!session.api?.pending().length;updateToolbar();};pending();
     async function refresh(){
       if(!alive())return;
@@ -106,7 +111,7 @@
         }
       }catch(error){if(!alive()||refreshVersion!==session.refreshVersion||error.code==='MCPA_STALE_REFRESH')return;throw error;}
       if(!alive()||refreshVersion!==session.refreshVersion)return;
-      pending();setStatus(automaticAdmin||automaticEngineer?'':'Records refreshed.');
+      pending();setStatus('');
     }
     let scheduled;
     const update=()=>{
@@ -118,7 +123,6 @@
     };
     for(const event of (['request','quantity-request'].includes(screen)?[]:['mcpa:movement-change','mcpa:materials-change']))window.addEventListener(event,update,{signal:session.abort.signal});
     const stop=screen==='request'||screen==='quantity-request'?()=>{}:window.EquipmentTracking.watch(update,()=>{}, {tables:['equipment','sites','mcpa_notifications','mcpa_movements','mcpa_b_retirements']});session.abort.signal.addEventListener('abort',()=>{stop();clearTimeout(scheduled);},{once:true});
-    root.querySelector('[data-integration-refresh]').addEventListener('click',()=>void refresh().catch(error=>{setStatus(error.message);}),{signal:session.abort.signal});
     recover.addEventListener('click',async()=>{recover.disabled=true;try{await session.api.retryPending();changed();await refresh();}catch(error){setStatus(error.message);}finally{if(alive()){recover.disabled=false;pending();}}},{signal:session.abort.signal});
     root.addEventListener('submit',()=>{setTimeout(()=>{if(alive())pending();},0);},{signal:session.abort.signal});
     // Re-evaluate recovery controls after uncertain network outcomes too.

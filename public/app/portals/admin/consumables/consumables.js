@@ -101,7 +101,7 @@
   function syncControls() {
     root.querySelectorAll('button[data-action]').forEach(control => {
       if (dialog.contains(control)) { control.disabled = state.saving; return; }
-      control.disabled = state.loading || state.saving || (control.dataset.action !== 'refresh' && !state.ready);
+      control.disabled = state.loading || state.saving || !state.ready;
     });
     $('#consumables-inventory').setAttribute('aria-busy', String(state.loading || state.saving));
   }
@@ -119,7 +119,7 @@
       feedback(errorMessage(error) + (state.items.length ? ' Displayed records may be out of date.' : ''), true);
       $('#consumables-alert').className = 'notice cons-alert';
       $('#consumables-alert').innerHTML = '<div><div class="t">Stock levels could not be verified</div><div class="d">Refresh to check the latest stock and purchase requests.</div></div>';
-      if (!state.items.length) $('#consumables-rows').innerHTML = '<tr><td colspan="5" class="empty-state">Unable to load consumables. Use Refresh to try again.</td></tr>';
+      if (!state.items.length) $('#consumables-rows').innerHTML = '<tr><td colspan="5" class="empty-state">Unable to load consumables. Reopen this page to try again.</td></tr>';
       if (!state.requests.length) $('#consumables-request-rows').innerHTML = '<tr><td colspan="6" class="empty-state">Unable to load purchase requests.</td></tr>';
     } finally { state.loading = false; syncControls(); }
   }
@@ -340,7 +340,6 @@
     if (!control || control.disabled || state.saving) return;
     const { action, id } = control.dataset;
     if (action === 'close') return closeDialog();
-    if (action === 'refresh') return refresh();
     if (!state.ready || state.loading) return;
     const item = itemById(id); const request = requestById(id);
     if (item?.archived_at && ['request','edit','stock'].includes(action)) return feedback('This consumable is archived. An Admin must explicitly restore it before changes.', true);

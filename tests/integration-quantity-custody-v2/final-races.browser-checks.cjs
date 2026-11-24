@@ -5,39 +5,42 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,go,login,base})
   await command('Page.navigate',{url:base+'/MCPA/index.html'});await login('admin');await wait('window.MCPAAuth?.profile?.role==="admin"');
   await go('asset-retirement-v2');await wait('document.querySelector("[data-proposal]")');
   await evaluate("window.__raceRpc=EquipmentTracking.client().rpc.bind(EquipmentTracking.client());window.__raceReads=[];window.__raceHold=true;EquipmentTracking.client().rpc=async(name,args)=>{const response=await __raceRpc(name,args);if(name!=='mcpa_b_snapshot'||!__raceHold)return response;return new Promise(resolve=>__raceReads.push({response,resolve}));}");
+  const notify=()=>evaluate('window.dispatchEvent(new Event("mcpa:movement-change"))');
   const held=number=>wait('__raceReads.length==='+number);
   const release=async index=>{await evaluate(`__raceReads[${index}].resolve(__raceReads[${index}].response)`);await evaluate('new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done)))');};
   const visible=record=>evaluate('!!document.querySelector('+JSON.stringify('[data-retirement-record="'+record.id+'"]')+')');
-  await click('[data-integration-refresh]');await held(1); // A captures the old server state.
+  await notify();await held(1); // A captures the old server state.
   const first=await propose(0);
-  await click('[data-integration-refresh]');await held(2); // B captures the new proposal.
+  await notify();await held(2); // B captures the new proposal.
   await release(1);await wait('document.querySelector('+JSON.stringify('[data-retirement-record="'+first.id+'"]')+')');
   await release(0);
   assert.equal(await visible(first),true,'Late refresh A must not erase the proposal already rendered by refresh B');
   console.log('PASS Retirement refresh ordering: B renders new proposal; late A cannot remove it');
 
-  await click('[data-integration-refresh]');await held(3);await click('[data-integration-refresh]');await held(4);
+  await notify();await held(3);await notify();await held(4);
   await fill('[name=reason]','Keep the draft across both overlapping responses');await release(3);await release(2);
   assert.equal(await evaluate('document.querySelector("[name=reason]").value'),'Keep the draft across both overlapping responses');
   assert.equal(await visible(first),true);
   console.log('PASS Overlapping retirement reads preserve edits made while both are pending');
 
-  await evaluate('window.confirm=()=>true');await click('[data-integration-refresh]');await held(5);
+  await go('dashboard');await evaluate('__raceHold=false');await go('asset-retirement-v2');
+  await evaluate('__raceHold=true');await notify();await held(5);
   await go('dashboard');const second=await propose(1);
   await evaluate('void showScreen('+JSON.stringify('asset-retirement-v2?record='+second.id)+')');await held(6);await release(5);
   await wait('document.querySelector('+JSON.stringify('[data-retirement-record="'+second.id+'"]')+')');
   await release(4);assert.equal(await visible(second),true);
-  assert.equal(await evaluate('document.querySelector('+JSON.stringify('[data-retirement-record="'+second.id+'"]')+').open'),true);
+  assert.equal(await evaluate('document.querySelector("[data-retirement-dialog]").open'),true);
+  await click('[data-close-retirement]');
   console.log('PASS Disposed refresh cannot alter remounted retirement content or deep-link expansion');
 
-  await evaluate('__raceHold=false');const third=await propose(2);await click('[data-integration-refresh]');
+  await evaluate('__raceHold=false');const third=await propose(2);await notify();
   await wait('document.querySelector('+JSON.stringify('[data-retirement-record="'+third.id+'"]')+')');
   assert.equal(await visible(second),true);
   await evaluate("EquipmentTracking.client().rpc=(name,args)=>name==='mcpa_b_snapshot'?Promise.resolve({error:{code:'TEST',message:'Final race read failure'}}):__raceRpc(name,args)");
-  await click('[data-integration-refresh]');await wait('document.querySelector("[data-integration-status]").textContent.includes("Final race read failure")');
+  await notify();await wait('document.querySelector("[data-integration-status]").textContent.includes("Final race read failure")');
   assert.equal(await visible(third),true,'Read error preserves rendered records');
-  await evaluate('EquipmentTracking.client().rpc=__raceRpc');await click('[data-integration-refresh]');
-  await wait('document.querySelector("[data-integration-status]").textContent==="Records refreshed."');assert.equal(await visible(third),true);
+  await evaluate('EquipmentTracking.client().rpc=__raceRpc');await notify();
+  await wait('document.querySelector("[data-integration-status]").textContent===""');assert.equal(await visible(third),true);
   console.log('PASS Normal completion and error recovery still refresh retirement data');
 
   // Exercise the retirement module without the host adapter's ordering guard.
@@ -47,7 +50,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,go,login,base})
   const localRelease=async n=>{await evaluate(`__standaloneReads[${n}].resolve(__standaloneReads[${n}].data)`);await evaluate('new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done)))');};
   await localRefresh();await localHeld(1);await f.action(f.actors.admin2,'approveRetirement',{id:first.id});
   await localRefresh();await localHeld(2);await localRelease(1);await localRelease(0);
-  assert.ok(await evaluate('document.querySelector('+JSON.stringify('[data-standalone] [data-retirement-record="'+first.id+'"] summary')+').textContent.includes("Approved")'));
+  assert.ok(await evaluate('document.querySelector('+JSON.stringify('[data-standalone] [data-retirement-record="'+first.id+'"] .b-state')+').textContent.includes("Approved")'));
   await localRefresh();await localHeld(3);await localRefresh();await localHeld(4);
   await fill('[data-standalone] [name=reason]','Standalone draft survives');await localRelease(3);await localRelease(2);
   assert.equal(await evaluate('document.querySelector("[data-standalone] [name=reason]").value'),'Standalone draft survives');
