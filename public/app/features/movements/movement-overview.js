@@ -3,7 +3,14 @@
   'use strict';
   let root, screen, controller, query = '', status = '', mine = false, site = '', inventory = null, stopWatching;
   let loading = false, reloadPending = false;
-  let consumablesSummary = null;
+  let consumablesSummary = null, issueHost=null, issueKind='', issueReady;
+  const equipmentStatuses=[['','Total Equipment','box'],['available','Available','inbox'],['inuse','In Use','swap'],['repair','Repairs','wrench'],['missing','Missing','alert']];
+  function equipmentCards(rows,data){
+    return equipmentStatuses.map(([key,title,symbol])=>{
+      const count=rows.filter(tool=>window.EquipmentTracking.matchesStatus(tool,key,data)).length;
+      return `<button type="button" class="card kpi" data-field-status="${key||'all'}" aria-pressed="${status===key}"><span class="command-kpi-icon" aria-hidden="true">${icon(symbol)}</span><span class="command-kpi-copy"><span class="lbl">${title}</span><span class="num">${count}</span></span></button>`;
+    }).join('');
+  }
   const viewData = () => {
     const data = {...store().getState(), ...(inventory || {})};
     return engineerInventory() ? window.MCPAProjectScope.engineerInventory(data,store().getContext()) : data;
@@ -61,7 +68,7 @@
     contextBar();
     if (screen === 'dashboard') root.innerHTML = dashboard(data,user);
     else if (screen === 'activity') root.innerHTML = `${header('Activity logs', 'A history of saved movement actions and the people who recorded them.')}<div class="overview-filters"><div class="field"><label for="movement-activity-search">Search activity</label><input id="movement-activity-search" data-search value="${escape(query)}" placeholder="Reference, tool ID, person, action…"></div><button type="button" class="btn btn-secondary" data-export aria-label="Export activity logs as PDF">${SiteTracePDF.icon} Export PDF</button></div><div class="card" id="overview-results">${activityTable(visibleActivity(data))}</div>`;
-    else root.innerHTML = `${header('Equipment Tracking', engineerInventory() ? 'Equipment in your confirmed custody across your assigned projects. Open a tool to see its recorded history.' : personal() ? 'Equipment in your confirmed custody. Open a tool to see its recorded history.' : 'Current location, condition, and custody. Open a tool to see its recorded history.')}<div class="overview-filters"><div class="field"><label for="movement-inventory-search">Search tools</label><input id="movement-inventory-search" data-search value="${escape(query)}" placeholder="Tool ID, name, brand, holder…"></div><div class="field"><label for="overview-status">Status</label><select id="overview-status"><option value="">${engineerInventory()?'All custody statuses':'All statuses'}</option>${(engineerInventory() ? [['inuse',STATUS_LABEL.inuse],['repair',STATUS_LABEL.repair],['missing',STATUS_LABEL.missing]] : Object.entries(STATUS_LABEL)).map(([key,label]) => `<option value="${key}" ${status === key ? 'selected' : ''}>${label}</option>`).join('')}</select></div><div class="field"><label for="overview-site">Project</label><select id="overview-site"><option value="" ${!site?'selected':''}>${engineerInventory()?'Filter by my project':'All projects'}</option>${inventorySites(data).map(s => `<option value="${escape(engineerInventory()?s.id:s.name)}" ${site === (engineerInventory()?s.id:s.name) ? 'selected' : ''}>${escape(s.name)}</option>`).join('')}</select></div>${personal() ? '' : `<label class="checkbox-row"><input type="checkbox" id="overview-mine" ${mine ? 'checked' : ''}>My custody only</label>`}</div><div class="card" id="overview-results"></div>`;
+    else root.innerHTML = `${header('Equipment Tracking', engineerInventory() ? 'Equipment in your confirmed custody across your assigned projects. Open a tool to see its recorded history.' : personal() ? 'Equipment in your confirmed custody. Open a tool to see its recorded history.' : 'Current location, condition, and custody. Open a tool to see its recorded history.')}${personal()?'<div class="equipment-summary field-equipment-summary" role="group" aria-label="Equipment inventory filters"></div>':''}<div class="overview-filters"><div class="field"><label for="movement-inventory-search">Search tools</label><input id="movement-inventory-search" data-search value="${escape(query)}" placeholder="Tool ID, name, brand, holder…"></div><div class="field" ${personal()?'hidden':''}><label for="overview-status">Status</label><select id="overview-status"><option value="">${engineerInventory()?'All custody statuses':'All statuses'}</option>${(engineerInventory() ? [['inuse',STATUS_LABEL.inuse],['repair',STATUS_LABEL.repair],['missing',STATUS_LABEL.missing]] : Object.entries(STATUS_LABEL)).map(([key,label]) => `<option value="${key}" ${status === key ? 'selected' : ''}>${label}</option>`).join('')}</select></div><div class="field"><label for="overview-site">Project</label><select id="overview-site"><option value="" ${!site?'selected':''}>${engineerInventory()?'Filter by my project':'All projects'}</option>${inventorySites(data).map(s => `<option value="${escape(engineerInventory()?s.id:s.name)}" ${site === (engineerInventory()?s.id:s.name) ? 'selected' : ''}>${escape(s.name)}</option>`).join('')}</select></div>${personal() ? '' : `<label class="checkbox-row"><input type="checkbox" id="overview-mine" ${mine ? 'checked' : ''}>My custody only</label>`}</div><div class="card" id="overview-results"></div>`;
     if (screen === 'masterlist') filter();
     if (focusId) {
       const replacement = document.getElementById(focusId);
@@ -77,10 +84,12 @@
     else if (screen === 'activity') results.innerHTML = activityTable(visibleActivity(data));
     else {
       const authorized = inventoryTools(data);
-      const rows = authorized.filter(t => window.EquipmentTracking.matchesStatus(t,status,data)
-        && (!site || (engineerInventory() ? (t.siteId ?? t.site_id) === site : t.site === site))
+      const matching = authorized.filter(t => (!site || (engineerInventory() ? (t.siteId ?? t.site_id) === site : t.site === site))
         && (!mine || (store().mode === 'live' ? t.holderId === user.id : t.holder === user.name))
         && [t.id,t.name,t.brand,t.site,t.holder,t.serial].join(' ').toLowerCase().includes(query.toLowerCase()));
+      const rows=matching.filter(t=>window.EquipmentTracking.matchesStatus(t,status,data));
+      const cards=root.querySelector('.field-equipment-summary');
+      if(cards)cards.innerHTML=equipmentCards(matching,data);
       results.innerHTML = toolsTable(rows) + (engineerInventory() ? '<p class="cell-sub" role="status" data-engineer-inventory-count>Showing '+rows.length+' of '+authorized.length+' authorized equipment records</p>' : '');
     }
   }
@@ -167,7 +176,7 @@
       }
     }
   }
-  function dispose() { stopWatching?.(); stopWatching = null; controller?.abort(); controller = null; root = null; inventory = null; consumablesSummary = null; loading = false; reloadPending = false; }
+  function dispose() { if(issueKind)window.MovementUI.dispose();issueKind='';issueHost=null;issueReady=null;stopWatching?.(); stopWatching = null; controller?.abort(); controller = null; root = null; inventory = null; consumablesSummary = null; loading = false; reloadPending = false; }
   function watch() {
     stopWatching?.(); stopWatching = null;
     if (store().mode === 'live') stopWatching = window.EquipmentTracking.watch(() => load(true), message => {
@@ -177,10 +186,15 @@
   async function mount(id) {
     const target = document.getElementById('screen-' + id); if (!target) return;
     dispose(); screen = id; query = id === 'masterlist' ? window.mcpaSearch || '' : ''; status = ''; mine = personal() && !engineerInventory(); site = ''; dashboardCondition = '';
-    root = target;
+    root=target;
+    if(personal()){
+      root=document.createElement('div');issueHost=document.createElement('section');
+      issueHost.hidden=true;issueHost.className='field-issue-workflow';target.replaceChildren(root,issueHost);
+    }
     root.classList.add('movement-overview'); controller = new AbortController(); const signal = controller.signal;
     root.addEventListener('click', async event => {
       const el = event.target.closest('button'); if (!el) return;
+      if(el.dataset.fieldStatus){showScreen('masterlist?status='+el.dataset.fieldStatus);return;}
       if (el.hasAttribute('data-turnover-inbox')) {showScreen('transfer?view=receive');return;}
       if (el.hasAttribute('data-status')) {status = el.dataset.status; render(); root.querySelector('[data-status="' + status + '"]')?.focus({preventScroll:true}); return;}
       if (el.dataset.go) {showScreen(el.dataset.go); return;}
@@ -205,18 +219,29 @@
       if (event.target.id === 'overview-mine') mine=event.target.checked;
       filter();
     }, {signal});
-    window.addEventListener('mcpa:movement-change', () => { if (!loading && root?.querySelector('#overview-feedback') && !root.querySelector('dialog[open]')) render(); }, {signal});
+    window.addEventListener('mcpa:movement-change', () => { if (!loading && root?.querySelector('#overview-feedback') && !root.querySelector('dialog[open]')) {if(engineerInventory())void load(true);else render();} }, {signal});
     watch();
     await load();
   }
   window.addEventListener('mcpa:movement-change', contextBar);
   window.MovementOverview = {
-    mount(id) { const promise = mount(id); window.MCPANavigation?.track(root, promise); return promise; },
+    mount(id) { const promise = mount(id); window.MCPANavigation?.track(document.getElementById('screen-'+id), promise); return promise; },
     dispose, contextBar, escape, setSearch, openRecord: detail,
-    setStatus(value) {
-      if (screen !== 'masterlist' || !root?.isConnected || userRole() !== 'admin') return;
-      status = value === 'all' ? '' : value;
-      render();
+    async setStatus(value) {
+      if (screen !== 'masterlist' || !root?.isConnected) return;
+      if(!personal()&&userRole()!=='admin')return;
+      status=personal()?equipmentStatuses.find(([key])=>key===value)?.[0]||'':value==='all'?'':value;
+      if(!personal()){render();return;}
+      const cardFocused=root.contains(document.activeElement)&&document.activeElement.hasAttribute('data-field-status');
+      filter();
+      if(cardFocused)root.querySelector('[data-field-status][aria-pressed="true"]')?.focus({preventScroll:true});
+      const kind=['repair','missing'].includes(status)?status:'';
+      if(issueKind!==kind){
+        window.MovementUI.dispose();issueKind=kind;
+        issueHost.replaceChildren();issueHost.hidden=!kind;
+        issueReady=kind?window.MovementUI.mount(kind,{root:issueHost,fieldInventory:true}):null;
+      }
+      await issueReady;
     },
     openActivity(id) {
       const record=store().getState().activity.find(r=>r.id===id);

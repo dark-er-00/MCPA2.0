@@ -22,7 +22,7 @@ exports.verify=async(ctx)=>{
  }
  fs.writeFileSync(path.join(out,'served-source-verification.json'),JSON.stringify({base,checkout:path.resolve(__dirname,'..'),files:sourceEvidence},null,2)+'\n');
  console.log('PASS Served application JavaScript matches the isolated feature source; no-store responses');
- const roles={admin:['masterlist','masterlist?mode=register','asset-retirement-v2','repair','missing','asset-retirement-v2?view=history'],sky:['masterlist','repair','missing','retired-equipment-v2'],architect:['masterlist','repair','missing','retired-equipment-v2'],handler:['masterlist','repair','missing'],secretary:[]};
+ const roles={admin:['masterlist','masterlist?mode=register','asset-retirement-v2','repair','missing','asset-retirement-v2?view=history'],sky:['masterlist'],architect:['masterlist'],handler:['masterlist','repair','missing'],secretary:[]};
  for(const [account,expected]of Object.entries(roles)){
   if(account!=='admin'){await logout();await login(account);await wait(`MCPAAuth.profile?.role===${JSON.stringify(f.actors[account].role)}`);}
   assert.deepEqual(await evaluate("[...document.querySelectorAll('[data-nav-group=equipment] [data-target]')].map(e=>e.dataset.target)"),expected,account+' exact equipment modules and RBAC');

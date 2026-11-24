@@ -106,3 +106,23 @@ body.dark .wa-cons{color-scheme:dark}
   .wa-engineer .wa-inventory-table .wa-status{justify-self:start;white-space:normal}
   .wa-engineer .wa-pagination{align-items:start}
 }
+
+.wa-engineer .wa-request-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);border-bottom:1px solid var(--border);padding-bottom:var(--space-3);margin:var(--space-5) 0}
+.wa-engineer .wa-request-toolbar .wa-tabs{margin:0;padding:0;border:0}
+.wa-engineer .wa-request-toolbar button,.wa-engineer .wa-search-box button{transition:background var(--duration-normal),border-color var(--duration-normal)}
+.wa-engineer .wa-catalog-search{flex:1;min-width:min(180px,100%);display:grid;gap:6px}
+@media(max-width:600px){.wa-engineer .wa-catalog-search{flex-basis:100%}}
+.wa-engineer .wa-search-box{display:flex;align-items:stretch}
+.wa-engineer .wa-search-box input{min-width:0;width:100%;border-radius:6px 0 0 6px}
+.wa-engineer .wa-search-box button{display:grid;place-items:center;flex:none;border-left:0;border-radius:0 6px 6px 0}
+.wa-engineer .wa-submit-dialog{width:min(480px,calc(100% - 24px));max-height:calc(100dvh - 32px);overflow:auto;margin:auto;padding:var(--space-5);border:1px solid var(--border-strong);border-radius:var(--radius-lg);background:var(--surface);color:var(--text-primary)}
+.wa-submit-dialog::backdrop{background:var(--overlay)}
+.wa-engineer .wa-submit-dialog h2{margin:0 0 var(--space-3);font-family:var(--font-display)}
+.wa-submit-dialog ul{padding:0;margin:var(--space-4) 0;list-style:none}
+.wa-submit-dialog li{display:flex;justify-content:space-between;gap:var(--space-3);align-items:center;border-top:1px solid var(--border);padding:var(--space-2) 0;overflow-wrap:anywhere}
+.wa-submit-dialog li small{display:block;color:var(--text-secondary)}
+.wa-submit-dialog li strong{flex:none}
+.wa-submit-dialog .wa-actions{justify-content:flex-end}
+.wa-submit-dialog [role=alert]{color:var(--critical)}
+@media(max-width:600px){.wa-engineer .wa-request-toolbar .wa-tabs{width:100%}.wa-engineer .wa-request-toolbar>[data-action]{margin-left:auto}.wa-engineer .wa-submit-dialog .wa-actions{display:grid;grid-template-columns:auto 1fr}}
+@media(prefers-reduced-motion:reduce){.wa-engineer .wa-request-toolbar button,.wa-engineer .wa-search-box button{transition:none}}

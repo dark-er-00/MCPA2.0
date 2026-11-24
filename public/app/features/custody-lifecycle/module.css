@@ -1,3 +1,7 @@
+.b-original-proof{margin-block:var(--space-4,16px)}
+.b-original-proof .b-proof-button{display:inline-flex;align-items:center;gap:var(--space-2,8px);margin:0 var(--space-2,8px) var(--space-1,4px) 0}
+.b-proof-button img{display:block;width:72px;height:48px;object-fit:contain;border-radius:var(--radius-xs,4px)}
+.b-proof-button [data-proof-thumb]:empty{display:none}
 .mcpa-custody-v2{font-family:var(--font-body,'Public Sans',system-ui,sans-serif);color:var(--text-primary,#171914);font-size:15px;line-height:1.55;max-width:1120px;margin-inline:auto;padding:clamp(16px,3vw,36px);box-sizing:border-box}
 .mcpa-custody-v2 *{box-sizing:border-box}
 .mcpa-custody-v2 h2{font-family:var(--font-display,'Fraunces',Georgia,serif);font-size:clamp(28px,4vw,38px);font-weight:500;line-height:1.15;letter-spacing:-.02em;margin:0 0 12px;text-wrap:balance}

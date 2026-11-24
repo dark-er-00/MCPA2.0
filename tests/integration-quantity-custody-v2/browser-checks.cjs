@@ -9,7 +9,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
   await fill('[name=quantity]','1');await fill('[name=siteId]',f.sites.casa);await submit('[data-q-form]');
   await wait('document.querySelector("[data-q-success-dialog]")?.open||document.querySelector("[data-q-history]").textContent.includes("Browser integration drill")');
   await go('outward-materials');await wait('document.querySelector("[data-request-form]")');
-  await fill('[data-field=site_id]',f.sites.casa);await fill(`[data-quantity="${item.id}"]`,'4');await submit('[data-request-form]');
+  await fill('[data-field=site_id]',f.sites.casa);await fill(`[data-quantity="${item.id}"]`,'4');await click('[data-action=review-request]');await submit('[data-confirm-request]');
   await wait('document.querySelector(".wa-message").textContent.includes("saved")');
   await go('return');await wait('document.querySelector("[data-reference]")');
   assert.ok(await evaluate('!document.querySelector("[data-form=create]")'));
@@ -35,7 +35,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
   await go('return?record='+batch.id);await wait('document.querySelector("[data-inspection]")');
   await fill('[name=outcome]','good');await click('[name=received]');await submit('[data-inspection]');await wait('document.querySelector(".b-feedback").textContent.includes("saved")');
   assert.equal((await f.tool('TOOL-002')).current_holder_id,null);
-  await go('outward-materials');await wait('document.querySelector("[data-open]")');await click('[data-open]');
+  await go('outward-materials?view=requests');await wait('document.querySelector("[data-open]")');await click('[data-open]');
   await click('[data-decision=approve]');await wait('document.querySelector("[data-decision=issue]")');
   await fill('[data-kind=issue]','4');await click('[data-decision=issue]');await wait('document.querySelector(".wa-message").textContent.includes("recorded")');
   assert.equal(Number((await f.db.query('select current_stock from consumables where id=$1',[item.id])).rows[0].current_stock),16);
@@ -52,8 +52,8 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
   await wait('document.querySelector("[data-transfer-feedback]").textContent.includes("accepted")');
   assert.equal((await f.tool(imported.assets.find(v=>v.id===allocated.assets[0].id).asset_id)).current_holder_id,f.actors.sky.id);
   await go('asset-transfer');await wait('document.querySelector("[data-camera]")');
-  await go('retired-equipment-v2');await wait('document.querySelector("[data-retirement-list]")');
-  await go('dashboard');await evaluate('history.back()');await wait('document.querySelector("#screen-retired-equipment-v2.active")');
+  await evaluate('showScreen("retired-equipment-v2")');await wait('document.querySelector("#auth-home")');
+  await go('masterlist?status=repair');await go('dashboard');await evaluate('history.back()');await wait('document.querySelector("[data-field-status=repair][aria-pressed=true]")');
   await evaluate('showScreen("return"); MCPAAuth.logout()');await wait('document.querySelector("#auth-email")');
   assert.equal(await evaluate('document.querySelector("#content").children.length'),0);
   console.log('PASS Combined real application shells: project-relative routes, quantity request/allocation/release/receipt, materials issuance, inspected return, retirement, permissions, history, mobile layout and logout cleanup');

@@ -1,0 +1,55 @@
+/* Scoped to the authenticated Admin materials mount. */
+.wa-admin{width:100%;min-width:0;font-variant-numeric:tabular-nums}
+.wa-admin header{align-items:center;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-5)}
+.wa-admin h1{font-family:var(--font-display);font-size:var(--text-title);letter-spacing:-.03em}
+.wa-admin .wa-nav,.wa-admin .wa-pager{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-2)}
+.wa-admin button,.wa-admin input,.wa-admin select{min-height:38px;font-size:var(--text-sm);padding:7px 10px}
+.wa-admin button{transition:background var(--duration-normal),border-color var(--duration-normal)}
+.wa-admin h2{font-family:var(--font-display);font-size:var(--text-lg);margin:var(--space-5) 0 var(--space-3)}
+.wa-admin .wa-lead-grid,.wa-admin .wa-report-grid{display:grid;gap:var(--space-4);align-items:stretch}
+.wa-admin .wa-lead-grid{grid-template-columns:minmax(0,2fr) minmax(220px,1fr)}
+.wa-admin .wa-report-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.wa-admin .wa-chart-card{min-width:0;display:flex;flex-direction:column;padding:var(--space-4);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)}
+.wa-admin .wa-card-head,.wa-admin .wa-stock{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-3)}
+.wa-admin .wa-chart-card h3,.wa-admin .wa-stock h3{margin:0;font:700 var(--text-md)/1.35 var(--font-display);letter-spacing:-.015em}
+.wa-admin .wa-lead-grid h3{font-size:var(--text-xl)}
+.wa-admin .wa-chart-card p,.wa-admin .wa-stock p{margin:4px 0;font-size:var(--text-sm)}
+.wa-admin .wa-period{flex-direction:row;align-items:center;color:var(--text-secondary);font-size:var(--text-xs)}
+.wa-admin .wa-period{flex:none}
+.wa-admin .wa-period select{min-width:9ch}
+.wa-admin .wa-total{font:700 var(--text-stat)/1.15 var(--font-display);margin-top:var(--space-3)}
+.wa-admin .wa-total small{font:500 var(--text-sm) var(--font-body);color:var(--text-secondary)}
+.wa-admin .wa-plot{margin:0;min-width:0}
+.wa-admin .wa-plot-readout,.wa-admin figcaption,.wa-admin .wa-fields label{font-size:var(--text-xs);color:var(--text-secondary)}
+.wa-admin .wa-plot-readout{text-align:right;min-height:18px}
+.wa-admin .wa-plot svg{display:block;width:100%;height:110px;overflow:visible}
+.wa-admin .wa-gridline,.wa-admin .wa-line{fill:none;stroke:var(--chart-grid);vector-effect:non-scaling-stroke}
+.wa-admin .wa-line{stroke:var(--gold-dim);stroke-width:2}
+.wa-admin .wa-area{fill:var(--gold);opacity:.09}
+.wa-admin .wa-dot{fill:var(--gold-dim)}
+.wa-admin .wa-hit{fill:transparent}
+.wa-admin .wa-plot g:is(:hover,:focus-visible) .wa-dot{stroke:var(--text-primary);stroke-width:2}
+.wa-admin figcaption{display:flex;justify-content:space-between;gap:var(--space-2);margin:4px 0}
+.wa-admin .wa-bars{margin:var(--space-4) 0;padding:0;list-style:none;display:grid;gap:var(--space-3)}
+.wa-admin .wa-bars li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:2px 8px;font-size:var(--text-sm);border-radius:2px}
+.wa-admin .wa-bars li span{overflow-wrap:anywhere;line-height:1.35}
+.wa-admin .wa-bars li i{grid-column:1/-1;height:5px;background:var(--chart-track);border-radius:2px;overflow:hidden}
+.wa-admin .wa-bars li i::after{content:'';display:block;height:100%;width:var(--fill);background:var(--chart-neutral);transition:background var(--duration-normal)}
+.wa-admin .wa-bars li:first-child i::after,.wa-admin .wa-bars li:is(:hover,:focus-visible) i::after{background:var(--gold-dim)}
+.wa-admin .wa-chart-card footer{margin-top:auto;padding-top:var(--space-3)}
+.wa-admin .wa-more{min-height:32px;background:transparent;color:var(--gold-dim);border-color:transparent;padding:4px 0}
+.wa-admin .wa-more:hover{text-decoration:underline}
+.wa-admin .wa-chart-empty{flex:1;display:flex;align-items:center;min-height:68px}
+.wa-admin .wa-stock{align-items:center;border-block:1px solid var(--border);padding:var(--space-3) 0;margin-top:var(--space-4)}
+.wa-admin .wa-stock button{flex:none}
+.wa-admin .wa-fields{display:grid;grid-template-columns:repeat(5,minmax(0,1fr)) auto;gap:var(--space-2);margin:0}
+.wa-admin .wa-fields>label{min-width:0}
+.wa-admin .wa-fields :is(input,select){width:100%;min-width:0}
+.wa-admin .wa-pager{margin:var(--space-3) 0;font-size:var(--text-sm)}
+.wa-admin .wa-table{width:100%}
+.wa-admin .wa-table td,.wa-admin .wa-table th{padding:9px 12px;font-size:var(--text-sm)}
+.wa-admin .wa-skeleton{padding:var(--space-5)}
+@media(max-width:1240px){.wa-admin .wa-report-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wa-admin .wa-fields{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){.wa-admin .wa-lead-grid{grid-template-columns:minmax(0,1fr)}.wa-admin .wa-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.wa-admin .wa-period{flex-direction:column;align-items:start;gap:0}}
+@media(max-width:520px){.wa-admin .wa-report-grid{grid-template-columns:minmax(0,1fr)}.wa-admin header{align-items:start}.wa-admin .wa-fields :is(input,select){font-size:16px}.wa-admin .wa-lead-grid h3{font-size:var(--text-lg)}.wa-admin .wa-nav button,.wa-admin .wa-more{min-height:44px}}
+@media(prefers-reduced-motion:reduce){.wa-admin button,.wa-admin .wa-bars li i::after{transition:none}}

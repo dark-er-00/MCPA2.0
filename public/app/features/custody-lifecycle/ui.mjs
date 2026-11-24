@@ -31,7 +31,9 @@ export function wireEvidence(root,ctx){
   root.addEventListener('click',event=>{
     const button=event.target.closest('[data-photo]');if(!button)return;
     void ctx.task(async()=>{
+      const dialog=button.closest('dialog');
       const url=await ctx.uploader.signedUrl(button.dataset.photo);
+      if(ctx.disposed||!button.isConnected||(dialog&&!dialog.open))return;
       const container=button.closest('dialog[open]')||root;
       let viewer=container.querySelector('.b-photo-view');
       if(!viewer){viewer=document.createElement('div');viewer.className='b-photo-view';container.append(viewer);}

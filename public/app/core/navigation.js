@@ -42,12 +42,9 @@ const ENGR_NAV = [
   {sec:"Movement"},
   {id:"request", label:"Equipment Requests", icon:"inbox"},
   {id:"asset-transfer", label:"Scan & transfer equipment", icon:"swap"},
-  {id:"retired-equipment-v2", label:"Retired Equipment History", icon:"list"},
   {id:"transfer-inbox", label:"Accept equipment", icon:"inbox"},
   {id:"transfer", label:"Transfers", icon:"swap"},
   {id:"return", label:"Returns", icon:"undo"},
-  {id:"repair", label:"Repairs", icon:"wrench"},
-  {id:"missing", label:"Missing", icon:"alert"},
   {sec:"Materials"},
   {id:"outward-materials", label:"Consumables", icon:"box"},
   {sec:"Records"},
@@ -139,6 +136,16 @@ window.MCPAMovementLinks = {
     if (screen === 'site-detail' && params.get('tool')?.length <= 120) result.tool = params.get('tool');
     if (screen === 'transfer' && ['send','receive','history'].includes(params.get('view'))) result.view = params.get('view');
     if (screen === 'asset-retirement-v2' && params.get('view') === 'history') result.view = 'history';
+    if (screen === 'outward-materials') {
+      if (['requests','history','request-trend','projects','stock','usage','ranking','sites','daily','transactions'].includes(params.get('view'))) result.view=params.get('view');
+      if(params.get('view')==='inventory'&&window.MCPAPermissions?.operational(window.MCPAAuth?.profile?.role))result.view='inventory';
+      const analytics={};
+      for (const key of ['from','to','requester_id','site_id','consumable_id','period','unit']) {
+        const value=params.get(key);
+        if (value && value.length<=120) analytics[key]=value;
+      }
+      if (Object.keys(analytics).length) result.analytics=analytics;
+    }
     if (screen === 'masterlist' && params.get('mode') === 'register') result.mode = 'register';
     if (screen === 'masterlist' && ['all','available','inuse','repair','missing','sold','disposed'].includes(params.get('status'))) result.status = params.get('status');
     return result;
@@ -147,9 +154,9 @@ window.MCPAMovementLinks = {
 
 function showScreen(route, afterActivate, options){
   const legacy=window.MCPAMovementLinks.parse(route);
-  if(window.MCPAAuth?.profile?.role==='admin'&&['repair','missing'].includes(legacy.screen))
+  if((window.MCPAAuth?.profile?.role==='admin'||window.MCPAPermissions.operational(window.MCPAAuth?.profile?.role))&&['repair','missing'].includes(legacy.screen))
     return showScreen('masterlist?status='+legacy.screen+(legacy.record?'&record='+encodeURIComponent(legacy.record):''),afterActivate,options);
-  const {screen:id, record, tool, view, status, mode} = window.MCPAMovementLinks.parse(route);
+  const {screen:id, record, tool, view, status, mode, analytics} = window.MCPAMovementLinks.parse(route);
   if (!window.MCPAAuth?.profile) return;
   const params = new URLSearchParams();
   if (record) params.set('record', record);
@@ -157,6 +164,7 @@ function showScreen(route, afterActivate, options){
   if (view) params.set('view', view);
   if (status) params.set('status', status);
   if (mode) params.set('mode', mode);
+  for(const [key,value] of Object.entries(analytics||{})) params.set(key,value);
   const normalized = id + (params.size ? '?' + params.toString().replaceAll('+', '%20') : '');
   const navigation = window.MCPANavigation;
   const ticket = navigation?.begin(normalized, options);
@@ -186,10 +194,14 @@ function showScreen(route, afterActivate, options){
         if (window.AdminEquipment && !window.AdminEquipment.disposed) await window.AdminEquipment.setStatus(status||'all');
         else window.MovementOverview?.setStatus?.(status);
       }
+      const fieldInventory=id==='masterlist'&&MCPAPermissions.operational(window.MCPAAuth.profile.role);
+      if(fieldInventory)await window.MovementOverview?.setStatus(status||'all');
+      if(ticket&&!navigation.isCurrent(ticket))return;
       if (id === 'dashboard' && record && MCPAPermissions.operational(window.MCPAAuth.profile.role)) window.MovementOverview?.openRecord(record);
       else if (id === 'site-detail') await window.MCPAProjects?.openRecord(record, tool);
       else if (record && ['masterlist','tool-profile'].includes(id)) {
         if (window.AdminEquipment && !window.AdminEquipment.disposed) if(['repair','missing'].includes(status)) await window.MovementUI.openRecord(status,record); else window.AdminEquipment.openRecord(record);
+        else if(fieldInventory&&['repair','missing'].includes(status))await window.MovementUI.openRecord(status,record);
         else window.MovementOverview?.openRecord(record);
       } else if (record && id === 'purchase') await window.MCPAPurchases?.openRecord(record);
       else if (record && id === 'consumables') await window.MCPAConsumables?.openRecord(record);

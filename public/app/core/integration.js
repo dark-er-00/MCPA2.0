@@ -7,7 +7,7 @@
   const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function handles(screen){return (!window.MCPAAuth?.isDemo&&screen==='transfer')||routes.has(screen)||(!window.MCPAAuth?.isDemo&&['request','return'].includes(screen)&&['admin','engineer','architect'].includes(window.MCPAAuth?.profile?.role));}
   function dispose(){++revision;const old=current;current=null;if(!old)return;old.abort.abort();for(const mounted of old.mounts)mounted.destroy();old.api?.dispose();}
-  async function mount(screen,root,{record='',view=''}={}){
+  async function mount(screen,root,{record='',view='',analytics={}}={}){
     dispose();const person=window.MCPAAuth.requireLive(),version=revision;
     if(!window.MCPAAuth.canRoute(screen))throw Error('This screen is not available to your account.');
     const session=current={root,mounts:[],abort:new AbortController(),api:null,dirty:false,draftVersion:0,refreshVersion:0};let returnSnapshot=null;
@@ -64,8 +64,9 @@
       ensureModuleCSS('requests',new URL('app/portals/admin/requests/requests.css',base).href);
       await add(module.mount(host,{client:wrapper,record}));
     }else if(screen==='outward-materials'){
+      if(person.role==='admin')ensureModuleCSS('admin-consumables-usage',new URL('app/portals/admin/consumables-usage/consumables-usage.css',base).href);
       const module=person.role==='admin'?window.MCPAConsumablesUsageV2:window.MCPAConsumablesRequesterV2;
-      await add(module.mount({root:host,client:wrapper}));
+      await add(module.mount({root:host,client:wrapper,record,view,analytics}));
     }else{
       const {createCustodyApi}=await import(new URL('app/features/custody-lifecycle/api.mjs',base));
       if(!alive())return;
@@ -128,7 +129,7 @@
       root.querySelector('[data-integration-history]').innerHTML=`<details class="integration-history" ${records.some(v=>v.id===record)?'open':''}><summary>Historical returns (${records.length})</summary>${records.map(v=>`<article><h3>${escape(v.id)}</h3><p>${escape((v.toolIds||[]).join(', '))} · ${escape(v.status)} · ${escape(v.returnedBy)}</p><p>${escape(v.notes)}</p></article>`).join('')||'<p>No historical returns.</p>'}</details>`;
     }
     if(record&&screen==='asset-retirement-v2')host.querySelector(`[data-retirement-record="${CSS.escape(record)}"]`)?.setAttribute('open','');
-    if(record&&screen==='outward-materials')host.querySelector(`[data-open="${CSS.escape(record)}"]`)?.click();
+    if(record&&screen==='outward-materials'&&person.role!=='admin')host.querySelector(`[data-open="${CSS.escape(record)}"]`)?.click();
   }
   window.MCPAIntegration={handles,mount,dispose};
 })();
