@@ -22,7 +22,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await fill(p,'5');await fill('[data-field=category]','Welding');assert.equal(await evaluate(`!!document.querySelector(${JSON.stringify(p)})`),false);
  assert.equal(await evaluate(`document.querySelector(${JSON.stringify(k)}).step`),'0.001');await fill(k,'0.125');
  await fill('[data-field=category]','Cutting');assert.equal(await evaluate(`document.querySelector(${JSON.stringify(p)}).value`),'5');
- await shot('audit-engineer-quantities',true);await submit('[data-request-form]');await wait('document.querySelector(".wa-message").textContent.includes("saved")');
+ await shot('audit-engineer-quantities',true);await click('[data-action=review-request]');await submit('[data-confirm-request]');await wait('document.querySelector(".wa-message").textContent.includes("saved")');
  const request=(await f.call(a.sky,'mcpa_wa_consumables_snapshot')).requests[0];assert.equal(request.items.length,2);
  // Own profile: persistence, unique usernames, protected fields and header.
  await go('settings');await wait('document.querySelector("#profile-form")');
@@ -38,7 +38,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await fill('#profile-username','SKY.UPDATED');await submit('#profile-form');await wait('document.querySelector("#profile-feedback").textContent.includes("already in use")');
  // Admin approval/issuance uses each request line's registered unit.
  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
- await go('outward-materials');await wait('document.querySelector("[data-open]")');await click('[data-open]');
+ await go('outward-materials?view=requests');await wait('document.querySelector("[data-open]")');await click('[data-open]');
  const pcsLine=request.items.find(x=>x.consumable_id===pcs.id),kgLine=request.items.find(x=>x.consumable_id===kg.id),pcApproval=`[data-line="${pcsLine.id}"]`,kgApproval=`[data-line="${kgLine.id}"]`;
  assert.equal(await evaluate(`document.querySelector(${JSON.stringify(pcApproval)}).step`),'1');assert.equal(await evaluate(`document.querySelector(${JSON.stringify(kgApproval)}).step`),'0.001');
  await fill(pcApproval,'1.5');await evaluate('document.querySelector("[data-review]").dispatchEvent(new SubmitEvent("submit",{bubbles:true,cancelable:true,submitter:document.querySelector("[data-decision=approve]")}))');

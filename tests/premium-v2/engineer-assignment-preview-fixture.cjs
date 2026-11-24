@@ -1,7 +1,7 @@
 // Isolated UI model. Plain JavaScript only: no SQL, database driver or upstream service.
 const {randomUUID}=require('node:crypto');
 const clone=value=>structuredClone(value);
-exports.createFixture=()=>{
+exports.createFixture=({adminReview=false,fieldReview=false}={})=>{
  const uuid=n=>'10000000-0000-4000-8000-'+String(n).padStart(12,'0');
  const actors=Object.fromEntries([
   ['admin','Synthetic Admin','admin'],['admin2','Synthetic Second Admin','admin'],
@@ -30,6 +30,36 @@ exports.createFixture=()=>{
  const requests=[],quantityRequests=[],transfers=[],returns=[],repairs=[],missing=[],activity=[],operations=new Map(),photos=new Map(),stored=new Map();
  const consumable={id:uuid(401),name:'Synthetic Safety Gloves',item_code:'SYN-GLOVES',category:'Safety',unit:'pair',current_stock:25,minimum_stock:5,specification:'Synthetic acceptance stock',archived_at:null};
  const materialRequests=['sky','architect'].map((key,index)=>{const person=actors[key],place=sites[key],itemId=uuid(420+index);return {id:uuid(410+index),request_number:index+1,site_id:place.id,site_name:place.name,requester_id:person.id,requester_name:person.name,status:'issued',purpose:'Synthetic confirmed issuance',created_at:'2026-11-13T02:00:00Z',items:[{id:itemId,consumable_id:consumable.id,item_name:consumable.name,item_code:consumable.item_code,category:consumable.category,unit:consumable.unit,requested_quantity:5,confirmed_consumed_quantity:null}],issues:[{id:uuid(430+index),stock_movement_id:uuid(440+index),item_id:itemId,quantity:5,issued_at:'2026-11-13T02:00:00Z',issued_by_name:actors.admin.name}]};});
+ const catalog=[consumable],evidence=[];
+ if(fieldReview){
+   const varieties=[['Cutting disc','piece','Abrasives'],['Sealant','tube','Adhesives'],['Sandpaper','sheet','Abrasives'],['Masking tape','roll','Adhesives']];
+   for(let i=0;i<22;i++){
+     const [name,unit,category]=varieties[i%varieties.length];
+     catalog.push({...consumable,id:uuid(510+i),item_code:'SYN-MAT-'+(i+1),name,category,unit,specification:'Synthetic grade '+(i+1),current_stock:12+i});
+   }
+   for(const [n,key] of ['sky','architect'].entries()){
+     for(const [j,name] of ['Rotary drill','Angle grinder','Laser level'].entries()){
+       tools.push(tool(20+10*n+j,'Synthetic '+name,sites[key],actors[key],'inuse'));
+     }
+   }
+ }
+ if(adminReview){
+   const items=[['MIG welding wire','kg','WIR-005'],['Acrylic gap sealant','tube','ADH-007'],['Cutting disc','piece','DSC-012'],['Masking tape','roll','TAP-002']];
+   catalog.push(...items.map(([name,unit,item_code],i)=>({...consumable,id:uuid(501+i),name,unit,item_code,current_stock:i?20:3,minimum_stock:4,specification:'Synthetic review stock'})));
+   materialRequests.length=0;
+   for(let n=0;n<36;n++){
+     const actor=[actors.sky,actors.pau,actors.architect][n%3],place=[sites.sky,sites.casa,sites.architect][n%3];
+     const stock=catalog[(n%7)%catalog.length],qty=1+n%4,status=n<4?'pending':n<6?'approved':'issued';
+     const at=new Date(Date.now()-Math.floor(n*n/48)*86400000-n*60000).toISOString();
+     const item={id:uuid(650+n),consumable_id:stock.id,item_name:stock.name,item_code:stock.item_code,unit:stock.unit,requested_quantity:qty,approved_quantity:status==='pending'?null:qty,issued_quantity:status==='issued'?qty:0};
+     materialRequests.push({id:uuid(550+n),request_number:100+n,requester_id:actor.id,requester_name:actor.name,site_id:place.id,site_name:place.name,status,created_at:at,purpose:'Synthetic site supply request',items:[item],issues:status==='issued'?[{id:uuid(750+n),stock_movement_id:uuid(850+n),item_id:item.id,quantity:qty,issued_at:at,issued_by_name:actors.admin.name}]:[]});
+   }
+   const batch={id:'SYN-RETURN-01',inspectionBatchId:'SYN-RETURN-01',custodyVersion:2,actorId:actors.sky.id,ownerId:actors.sky.id,returnedBy:actors.sky.name,origin:sites.casa.name,destination:'Office',destinationId:sites.office.id,status:'pendingInspection',createdAt:new Date().toISOString(),notes:'Synthetic inspection fixture with a demonstration photo.',toolIds:['SYN-004'],items:[{asset_id:'SYN-004',outcome:'pending',notes:''}]};
+   returns.push(batch);tools.find(t=>t.id==='SYN-004').movementLock='inspection';
+   evidence.push({id:uuid(990),movement_id:batch.id,uploader_id:actors.sky.id,object_name:'synthetic/return.webp',phase:'submit_return'});
+   const bytes=require('node:fs').readFileSync(require('node:path').join(__dirname,'../../public/assets/images/login-slideshow/project-1.webp')).toString('base64');
+   stored.set('mcpa-movement-evidence-v2/synthetic/return.webp',{bytes,type:'image/webp'});
+ }
  const activeAssigned=person=>Object.values(sites).filter(s=>s.id!==sites.office.id&&s.assigned_engineer_id===person.id&&s.is_active&&!s.archived_at);
  const stock=t=>t.status==='available'&&t.qty===1&&!t.holderId&&!t.movementLock&&t.condition==='Good';
  const field=person=>['engineer','architect'].includes(person.role);
@@ -88,6 +118,15 @@ exports.createFixture=()=>{
    case 'mcpa_b_lookup':return assetShape(ownAsset(person,args.p_reference));
    case 'mcpa_b_action':return once(person,args,()=>{
     const payload=args.p_payload||{};
+    if(adminReview&&args.p_action==='inspectReturn'){
+      if(person.role!=='admin')error('Admin inspection required.','42501');
+      const row=returns.find(r=>r.id===payload.id),check=payload.inspections?.[0],item=row?.items.find(i=>i.asset_id===check?.assetId);
+      if(!item||!['pending','missing','disputed'].includes(item.outcome)||!['good','damaged','missing','disputed'].includes(check.outcome)||check.physicallyReceived!==['good','damaged'].includes(check.outcome))error('Invalid receipt.');
+      Object.assign(item,{outcome:check.outcome,notes:check.notes,inspector_id:person.id,inspected_at:new Date().toISOString()});
+      row.unresolvedCount=row.items.filter(i=>['pending','missing','disputed'].includes(i.outcome)).length;row.status=row.unresolvedCount?'partialInspection':'completed';
+      if(check.physicallyReceived)Object.assign(tools.find(t=>t.id===item.asset_id),{holder:null,holderId:null,siteId:sites.office.id,site:sites.office.name,movementLock:null,status:check.outcome==='good'?'available':'repair',recordedStatus:check.outcome==='good'?'AVAILABLE':'REPAIR'});
+      event(person,'inspectReturn',row,row.toolIds);return row;
+    }
     if(args.p_action==='createTransfer')return transfer(person,payload);
     if(args.p_action!=='submitReturn')error('This synthetic custody operation is not modeled.','PGRST202');
     if(payload.destinationId!==sites.office.id)error('Return destination must be Office.');
@@ -102,17 +141,31 @@ exports.createFixture=()=>{
    case 'mcpa_engineer_equipment_snapshot':if(!field(person))error('Engineer or Architect access required.','42501');return inventory(person);
    case 'mcpa_personal_equipment_snapshot':return {...snapshot(person),sites:activeAssigned(person),tools:clone(tools.filter(t=>t.holderId===person.id))};
    case 'mcpa_transfer_snapshot':return {...snapshot(person),transferVersion:3,recipients:Object.values(actors).filter(p=>['admin','engineer','architect'].includes(p.role))};
-   case 'mcpa_b_snapshot':return {profile:person,assets:tools.filter(t=>person.role==='admin'||t.holderId===person.id).map(t=>({...t,equipmentId:t.dbId,individual:true,status:t.recordedStatus,quantity:1})),sites:activeAssigned(person).map(s=>({...s,assignedEngineerId:s.assigned_engineer_id})),recipients:Object.values(actors).filter(p=>['engineer','architect'].includes(p.role)),returnDestination:sites.office,returns:clone(related(person,returns)),transfers:clone(related(person,transfers)),retirements:[],events:[],evidence:[],missing:clone(related(person,missing)),repairs:clone(related(person,repairs))};
+   case 'mcpa_b_snapshot':return {profile:person,assets:tools.filter(t=>person.role==='admin'||t.holderId===person.id).map(t=>({...t,equipmentId:t.dbId,individual:true,status:t.recordedStatus,quantity:1})),sites:activeAssigned(person).map(s=>({...s,assignedEngineerId:s.assigned_engineer_id})),recipients:Object.values(actors).filter(p=>['engineer','architect'].includes(p.role)),returnDestination:sites.office,returns:clone(related(person,returns)),transfers:clone(related(person,transfers)),retirements:[],events:[],evidence:evidence.filter(e=>person.role==='admin'||e.uploader_id===person.id),missing:clone(related(person,missing)),repairs:clone(related(person,repairs))};
    case 'mcpa_wa_equipment_catalog':return {profile:person,groups:groups(),sites:activeAssigned(person).map(({id,name})=>({id,name}))};
    case 'mcpa_wa_equipment_requests':return quantityRequests.filter(r=>person.role==='admin'||r.requester_id===person.id);
    case 'mcpa_wa_submit_equipment':return once(person,args,()=>{
     requireProject(person,args.p_site_id);if(args.p_type_id!==uuid(301)||!Number.isInteger(args.p_quantity)||args.p_quantity<1||args.p_quantity>groups()[0].available_quantity)error('Quantity is not available.');
     const row={id:randomUUID(),requester_id:person.id,requester_name:person.name,type_id:uuid(301),type_name:'Synthetic Fixture Drill',requested_quantity:args.p_quantity,approved_quantity:null,site_id:args.p_site_id,site_name:Object.values(sites).find(s=>s.id===args.p_site_id).name,purpose:args.p_purpose||'',status:'pending',created_at:new Date().toISOString(),assets:[]};quantityRequests.push(row);return row;
    });
-   case 'mcpa_wa_consumables_snapshot':return {profile:person,catalog:[consumable],sites:activeAssigned(person),requests:materialRequests.filter(r=>person.role==='admin'||r.requester_id===person.id)};
+   case 'mcpa_wa_review_consumables':
+   case 'mcpa_wa_issue_consumables':return once(person,args,()=>{
+    if(!adminReview||person.role!=='admin')error('Admin review required.','42501');
+    const row=materialRequests.find(r=>r.id===args.p_request_id);
+    const issuing=name==='mcpa_wa_issue_consumables';
+    if(!row||(issuing?!['approved','partially_fulfilled'].includes(row.status):row.status!=='pending'))error('Request status changed.');
+    const item=row.items[0],stock=catalog.find(c=>c.id===item.consumable_id);
+    if(!issuing&&args.p_decision==='reject'){if(!args.p_note?.trim())error('Enter a reason.');row.status='rejected';row.note=args.p_note;return row;}
+    const line=args.p_items?.[0],qty=line?.quantity;
+    if(line?.item_id!==item.id||!Number.isFinite(qty)||qty<=0||qty>(issuing?Math.min(stock.current_stock,item.approved_quantity-item.issued_quantity):item.requested_quantity))error('Invalid quantity.');
+    if(issuing){stock.current_stock-=qty;item.issued_quantity+=qty;row.status=item.issued_quantity===item.approved_quantity?'issued':'partially_fulfilled';row.issues.push({id:randomUUID(),stock_movement_id:randomUUID(),item_id:item.id,quantity:qty,issued_at:new Date().toISOString(),issued_by_name:person.name});}
+    else{item.approved_quantity=qty;row.status='approved';row.note=args.p_note;}
+    return row;
+   });
+   case 'mcpa_wa_consumables_snapshot':return {profile:person,catalog,sites:adminReview&&person.role==='admin'?Object.values(sites):activeAssigned(person),requests:materialRequests.filter(r=>person.role==='admin'||r.requester_id===person.id)};
    case 'mcpa_wa_submit_consumables':return once(person,args,()=>{
     requireProject(person,args.p_site_id);if(!args.p_items?.length)error('Choose a consumable.');
-    const row={id:randomUUID(),request_number:materialRequests.length+1,site_id:args.p_site_id,site_name:Object.values(sites).find(s=>s.id===args.p_site_id).name,requester_id:person.id,requester_name:person.name,purpose:args.p_purpose||'',status:'pending',created_at:new Date().toISOString(),items:args.p_items.map(i=>({...i,id:randomUUID(),item_name:consumable.name,unit:consumable.unit,requested_quantity:i.quantity,confirmed_consumed_quantity:null})),issues:[]};materialRequests.push(row);return row;
+    const row={id:randomUUID(),request_number:materialRequests.length+1,site_id:args.p_site_id,site_name:Object.values(sites).find(s=>s.id===args.p_site_id).name,requester_id:person.id,requester_name:person.name,purpose:args.p_purpose||'',status:'pending',created_at:new Date().toISOString(),items:args.p_items.map(i=>{const stock=catalog.find(c=>c.id===i.consumable_id);if(!stock||stock.unit!==i.unit||!(i.quantity>0))error('Invalid consumable or quantity.');return {...i,id:randomUUID(),item_name:stock.name,item_code:stock.item_code,unit:stock.unit,requested_quantity:i.quantity,confirmed_consumed_quantity:null};}),issues:[]};materialRequests.push(row);return row;
    });
    case 'mcpa_my_profile_picture':return {version:1,object_name:photos.get(person.id)||null};
    case 'mcpa_set_my_profile_picture':if(!args.p_object_name?.startsWith(person.id+'/'))error('Own profile only.','42501');photos.set(person.id,args.p_object_name);return {version:1,object_name:args.p_object_name};
@@ -121,7 +174,7 @@ exports.createFixture=()=>{
    default:error('This isolated JavaScript preview does not simulate this operation.','PGRST202');
   }
  };
- const tables=()=>({sites:Object.values(sites),profiles:Object.values(actors),equipment:tools.map(t=>({...t,id:t.dbId,asset_id:t.id,site_id:t.siteId,current_holder_id:t.holderId,quantity:t.qty,category:t.cat,status:t.recordedStatus,tracking_type:t.trackingType})),consumables:[consumable],consumable_requests:materialRequests,project_history:history,consumable_stock_movements:[],consumable_restock_orders:[]});
+ const tables=()=>({sites:Object.values(sites),profiles:Object.values(actors),equipment:tools.map(t=>({...t,id:t.dbId,asset_id:t.id,site_id:t.siteId,current_holder_id:t.holderId,quantity:t.qty,category:t.cat,status:t.recordedStatus,tracking_type:t.trackingType})),consumables:catalog,consumable_requests:materialRequests,project_history:history,consumable_stock_movements:[],consumable_restock_orders:[]});
  return {actors,sites,tools,history,activeAssigned,inventory,projectSnapshot,groups,
   handle(key,q){
    const person=actors[key];if(!person||person.account_status!=='active')return {data:null,error:{code:'42501',message:'Choose a synthetic preview identity.'}};
@@ -133,7 +186,7 @@ exports.createFixture=()=>{
      const key=q.bucket+'/'+q.name;
      if(q.storage==='upload'){if(q.bucket!=='mcpa-profile-photos'||!q.name.startsWith(person.id+'/'))error('Own profile only.','42501');stored.set(key,{bytes:q.body,type:q.type});data={path:q.name};}
      else if(q.storage==='sign'){if(!stored.has(key))error('Synthetic object unavailable.');data={signedUrl:'/__stored/'+encodeURIComponent(key)};}
-     else if(q.storage==='remove'){for(const name of q.names||[])stored.delete(q.bucket+'/'+name);data=[];}
+     else if(q.storage==='remove'){if(q.bucket==='mcpa-movement-evidence-v2')error('Submitted proof is read-only.','42501');for(const name of q.names||[])stored.delete(q.bucket+'/'+name);data=[];}
     }else error('Unsupported synthetic operation.');
     return {data:clone(data),error:null,count};
    }catch(e){return {data:null,error:{code:e.code||'22023',message:e.message},count:null};}

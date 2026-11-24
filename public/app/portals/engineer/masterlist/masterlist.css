@@ -17,3 +17,16 @@
 
 /* The shared button display rule must not expose an inactive project reset. */
 #screen-masterlist [data-clear-project][hidden]{display:none}
+
+#screen-masterlist .field-equipment-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-3);margin-bottom:var(--space-5)}
+#screen-masterlist .field-equipment-summary button{text-align:left;color:var(--text-primary);cursor:pointer;min-width:0;transition:border-color var(--duration-normal),background var(--duration-normal)}
+#screen-masterlist .field-equipment-summary button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+#screen-masterlist .overview-filters [hidden]{display:none}
+.field-issue-workflow{margin-top:var(--space-6)}
+.field-issue-workflow [data-summary]{display:none}
+@media(max-width:950px){#screen-masterlist .field-equipment-summary{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){#screen-masterlist .field-equipment-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){#screen-masterlist .field-equipment-summary button{transition:none}}
+
+/* Keep the accessible Actions heading inside the horizontally scrolling report. */
+.field-issue-workflow .table-wrap{position:relative}

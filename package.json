@@ -21,6 +21,8 @@
     "bundle:pdf": "node scripts/bundle-pdf.mjs",
     "generate:consumables": "node scripts/generate-consumables.cjs",
     "verify": "npm run check && npm test && npm run test:browser && npm run test:auth",
+    "preview:field": "node tests/premium-v2/preview.cjs --field-review",
+    "preview:admin": "node tests/premium-v2/preview.cjs --admin-review",
     "preview": "node scripts/preview.cjs",
     "test:frontend": "node --require ./tests/fixtures/frontend-network-guard.cjs --test tests/engineer-project-assignments.test.cjs tests/engineer-inventory-scope.test.cjs tests/global-search.test.cjs tests/dashboard-view.test.cjs tests/engineer-preview-isolation.test.cjs tests/engineer-architect-parity.test.cjs tests/movement-store.test.cjs"
   },

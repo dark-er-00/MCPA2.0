@@ -1,14 +1,16 @@
 /* Mount after core.js; use the existing authenticated Supabase client. */
 (function (scope) {
   'use strict';
-  async function mount({root, client}) {
+  async function mount({root, client, view=''}) {
     if (!root || typeof root.querySelector !== 'function') throw Error('A mount root is required.');
     const engineer=scope.MCPAPermissions.operational(scope.MCPAAuth?.profile?.role);
     const C = scope.MCPAConsumablesRequests, E = C.escape, api = C.createClient(client);
     let snapshot, busy = false, destroyed = false, selected = null;
-    let message = '', error = false, search = '', category = '', status = '', tab = 'available';
+    let message = '', error = false, search = '', category = '', status = '', tab = ['inventory','requests'].includes(view)?view:'available';
     let inventoryRows = [], inventorySelected = null, page = 1;
-    const pageSize = 20, filters = {search:'',category:'',site:'',status:''};
+    let catalogPage=1, searchText='';
+    const invalidInputs=new Set();
+    const pageSize = 10, filters = {search:'',category:'',site:'',status:''};
     let draft = {site_id:'',purpose:'',quantities:{}};
     const date = value => value ? new Date(value).toLocaleString('en-PH', {timeZone:'Asia/Manila',dateStyle:'medium',timeStyle:'short'}) : '—';
     const label = value => ({pending:'Pending',approved:'Approved',rejected:'Rejected',partially_fulfilled:'Partially fulfilled',partial:'Partially fulfilled',issued:'Issued'}[value] || value);
@@ -47,7 +49,12 @@
     }
     function catalogRows() {
       const rows = snapshot.catalog.filter(item => (!category || (item.category || 'Unclassified') === category) && (!search || [item.name,item.category,item.item_code,item.specification].join(' ').toLowerCase().includes(search.trim().toLowerCase())));
-      return rows.length ? `<table><thead><tr><th>Consumable</th><th>Required quantity</th><th>Available stock</th><th>Category</th></tr></thead><tbody>${rows.map(item=>`<tr><td>${E(item.name)}<small>${E(item.item_code)} ${E(item.specification)}</small><small class="wa-mobile-stock">Available: ${C.format(item.current_stock)} ${E(item.unit)}</small></td><td><input data-quantity="${E(item.id)}" aria-label="Required quantity for ${E(item.name)} ${E(item.specification)}" type="number" ${quantityAttributes(item.unit)} value="${E(draft.quantities[item.id] || '')}"><small>${E(item.unit)}</small></td><td>${C.format(item.current_stock)} ${E(item.unit)}</td><td>${E(item.category || 'Unclassified')}</td></tr>`).join('')}</tbody></table>` : '<div class="wa-empty">No consumables match. Try another item or category.</div>';
+      const pages=Math.max(1,Math.ceil(rows.length/pageSize));
+      catalogPage=Math.min(catalogPage,pages);
+      const start=(catalogPage-1)*pageSize;
+      const records=rows.slice(start,start+pageSize);
+      const list=rows.length ? `<table><thead><tr><th>Consumable</th><th>Required quantity</th><th>Available stock</th><th>Category</th></tr></thead><tbody>${records.map(item=>`<tr><td>${E(item.name)}<small>${E(item.item_code)} ${E(item.specification)}</small><small class="wa-mobile-stock">Available: ${C.format(item.current_stock)} ${E(item.unit)}</small></td><td><input data-quantity="${E(item.id)}" aria-label="Required quantity for ${E(item.name)} ${E(item.specification)}" type="number" ${quantityAttributes(item.unit)} value="${E(draft.quantities[item.id] || '')}"><small>${E(item.unit)}</small></td><td>${C.format(item.current_stock)} ${E(item.unit)}</td><td>${E(item.category || 'Unclassified')}</td></tr>`).join('')}</tbody></table>` : '<div class="wa-empty">No consumables match. Try another item or category.</div>';
+      return `<div class="wa-table" data-catalog>${list}</div><div class="wa-pagination"><span role="status">Page ${catalogPage} of ${pages} · ${rows.length} consumables</span><div><button type="button" data-catalog-page="previous" ${catalogPage===1?'disabled':''}>Previous</button><button type="button" data-catalog-page="next" ${catalogPage===pages?'disabled':''}>Next</button></div></div>`;
     }
     function render() {
       if (destroyed) return;
@@ -55,11 +62,11 @@
       root.setAttribute('aria-busy', String(busy));
       if (!snapshot) {root.innerHTML=`<header><div><h1>Consumables</h1>${engineer?'':'<p>Request materials for your project/site.</p>'}</div><button data-action="refresh" ${engineer&&!error?'hidden':''} ${busy?'disabled':''}>${engineer?'Retry loading consumables':'Refresh'}</button></header><div role="status" class="wa-message ${error?'error':''}">${E(message)}</div>${busy?'<div class="wa-skeleton" aria-label="Loading consumables"></div>':''}`;return;}
       const categories = [...new Set(snapshot.catalog.map(item=>item.category || 'Unclassified'))].sort();
-      root.innerHTML = `<header><div><h1>Consumables</h1>${engineer?'':'<p>Request materials and track confirmed issues for your projects.</p>'}</div><button type="button" data-action="refresh" ${engineer&&!error?'hidden':''} ${busy?'disabled':''}>${engineer?'Retry loading consumables':busy?'Refreshing…':'Refresh'}</button></header><div class="wa-message ${error?'error':''}" role="status" aria-live="polite">${E(message)}</div>${api.getPending()?'<div class="wa-actions"><button type="button" data-action="recover">Retry interrupted submission</button></div>':''}<div class="wa-tabs" role="tablist" aria-label="Engineer consumables">${[['available','Available Consumables'],['inventory','My Consumables'],['requests','My Requests']].map(([id,title])=>`<button type="button" role="tab" id="wa-tab-${id}" data-tab="${id}" aria-controls="wa-panel-${id}" aria-selected="${tab===id}" tabindex="${tab===id?'0':'-1'}">${title}</button>`).join('')}</div><section id="wa-panel-available" role="tabpanel" aria-labelledby="wa-tab-available" ${tab==='available'?'':'hidden'}><form data-request-form><fieldset ${busy?'disabled':''} style="border:0;padding:0;margin:0;min-width:0"><h2>New request</h2><div class="wa-fields"><label>Project/site<select required data-field="site_id">${options(snapshot.sites,draft.site_id,'Choose project/site')}</select></label><label>Category<select data-field="category"><option value="">All categories</option>${categories.map(value=>`<option value="${E(value)}" ${value===category?'selected':''}>${E(value)}</option>`).join('')}</select></label><label>Search consumables<input data-field="search" type="search" placeholder="Name, category, code or specification" value="${E(search)}"></label><button type="button" data-action="filter">Apply search</button></div><div class="wa-table" data-catalog>${catalogRows()}</div><p data-selection>${Object.values(draft.quantities).filter(Boolean).length} item(s) selected across all categories.</p><label>Purpose <small>Optional, up to 1,000 characters</small><textarea data-field="purpose" maxlength="1000">${E(draft.purpose)}</textarea></label><div class="wa-actions"><button class="primary" type="submit">${busy?'Saving…':'Submit request'}</button></div>${snapshot.sites.length?'':'<p class="wa-message">No active project/site is assigned to your account. Ask your administrator to assign a project before requesting materials.</p>'}</fieldset></form></section><section id="wa-panel-inventory" role="tabpanel" aria-labelledby="wa-tab-inventory" ${tab==='inventory'?'':'hidden'}>${myInventory()}</section><section id="wa-panel-requests" role="tabpanel" aria-labelledby="wa-tab-requests" ${tab==='requests'?'':'hidden'}><h2>My Requests</h2>${history()}${detail()}</section>`;
+      root.innerHTML = `<header><div><h1>Consumables</h1>${engineer?'':'<p>Request materials and track confirmed issues for your projects.</p>'}</div><button type="button" data-action="refresh" ${engineer&&!error?'hidden':''} ${busy?'disabled':''}>${engineer?'Retry loading consumables':busy?'Refreshing…':'Refresh'}</button></header><div class="wa-message ${error?'error':''}" role="status" aria-live="polite">${E(message)}</div>${api.getPending()?'<div class="wa-actions"><button type="button" data-action="recover">Retry interrupted submission</button></div>':''}<div class="wa-request-toolbar"><div class="wa-tabs" role="tablist" aria-label="Consumables views">${[['available','Available Consumables'],['inventory','My Consumables'],['requests','My Requests']].map(([id,title])=>`<button type="button" role="tab" id="wa-tab-${id}" data-tab="${id}" aria-controls="wa-panel-${id}" aria-selected="${tab===id}" tabindex="${tab===id?'0':'-1'}">${title}</button>`).join('')}</div><button type="button" class="primary" data-action="review-request" ${tab==='available'?'':'hidden'}>Submit Request</button></div><section id="wa-panel-available" role="tabpanel" aria-labelledby="wa-tab-available" ${tab==='available'?'':'hidden'}><form data-request-form novalidate><fieldset ${busy?'disabled':''} style="border:0;padding:0;margin:0;min-width:0"><h2>New request</h2><div class="wa-fields"><label>Project/site<select required data-field="site_id">${options(snapshot.sites,draft.site_id,'Choose project/site')}</select></label><label>Category<select data-field="category"><option value="">All categories</option>${categories.map(value=>`<option value="${E(value)}" ${value===category?'selected':''}>${E(value)}</option>`).join('')}</select></label><div class="wa-catalog-search"><label for="wa-catalog-query">Search consumables</label><span class="wa-search-box"><input id="wa-catalog-query" data-field="search" type="search" value="${E(searchText)}"><button type="button" data-action="filter" aria-label="Search consumables" title="Search consumables"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></svg></button></span></div><button type="button" data-action="clear-search" ${search||searchText?'':'hidden'}>Clear search</button></div>${catalogRows()}<p data-selection>${Object.values(draft.quantities).filter(Boolean).length} item(s) selected across all categories.</p>${snapshot.sites.length?'':'<p class="wa-message">No active project/site is assigned to your account. Ask your administrator to assign a project before requesting materials.</p>'}</fieldset></form></section><section id="wa-panel-inventory" role="tabpanel" aria-labelledby="wa-tab-inventory" ${tab==='inventory'?'':'hidden'}>${myInventory()}</section><section id="wa-panel-requests" role="tabpanel" aria-labelledby="wa-tab-requests" ${tab==='requests'?'':'hidden'}><h2>My Requests</h2>${history()}${detail()}</section>`;
       if (busy) root.querySelectorAll('button,input,select,textarea').forEach(control=>{control.disabled=true;});
     }
     async function refresh() {
-      if (busy || destroyed) return;
+      if (busy || destroyed || root.querySelector('[data-confirm-dialog][open]')) return;
       const focused=root.contains(document.activeElement)?document.activeElement:null;
       const focusField=focused?.dataset.inventoryFilter || focused?.dataset.field;
       const focusKind=focused?.dataset.inventoryFilter?'inventoryFilter':'field';
@@ -92,9 +99,9 @@
         root.querySelector('[data-inventory-results]').innerHTML=inventoryResults();return;
       }
       const field=event.target.dataset.field, item=event.target.dataset.quantity;
-      if (item) {draft.quantities[item]=event.target.value;const count=root.querySelector('[data-selection]');if(count)count.textContent=Object.values(draft.quantities).filter(Boolean).length+' item(s) selected across all categories.';}
+      if (item) {if(event.target.validity.badInput)invalidInputs.add(item);else invalidInputs.delete(item);draft.quantities[item]=event.target.value;const count=root.querySelector('[data-selection]');if(count)count.textContent=Object.values(draft.quantities).filter(Boolean).length+' item(s) selected across all categories.';}
       if (field==='purpose' || field==='site_id') draft[field]=event.target.value;
-      if (field==='search') search=event.target.value;
+      if (field==='search'){searchText=event.target.value;root.querySelector('[data-action="clear-search"]').hidden=!search&&!searchText;}
     }
     function change(event) {
       if (event.target.dataset.inventoryFilter) {
@@ -102,11 +109,11 @@
         root.querySelector('[data-inventory-results]').innerHTML=inventoryResults();return;
       }
       const field=event.target.dataset.field;
-      if (field==='category') {category=event.target.value;render();}
+      if (field==='category') {category=event.target.value;catalogPage=1;render();root.querySelector('[data-field="category"]').focus();}
       if (field==='status') {status=event.target.value;render();}
     }
     function keydown(event) {
-      if(event.key==='Enter'&&event.target.dataset.field==='search'){event.preventDefault();render();root.querySelector('[data-field="search"]')?.focus();}
+      if(event.key==='Enter'&&event.target.dataset.field==='search'){event.preventDefault();applySearch();}
       if (event.target.dataset.tab && ['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) {
         event.preventDefault();const tabs=['available','inventory','requests'], index=tabs.indexOf(tab);
         tab=tabs[event.key==='Home'?0:event.key==='End'?2:(index+(event.key==='ArrowRight'?1:2))%3];render();root.querySelector(`[data-tab="${tab}"]`).focus();
@@ -114,6 +121,14 @@
     }
     async function click(event) {
       const button=event.target.closest('button');if (!button || !root.contains(button) || busy) return;
+      if(button.dataset.catalogPage){
+        catalogPage+=button.dataset.catalogPage==='next'?1:-1;render();
+        const next=root.querySelector('[data-catalog-page="'+button.dataset.catalogPage+'"]:not(:disabled)')||root.querySelector('[data-catalog-page]:not(:disabled)');
+        next?.focus();return;
+      }
+      if(button.dataset.action==='review-request')return review();
+      if(button.dataset.action==='cancel-request')return button.closest('dialog').close();
+      if(button.dataset.action==='clear-search'){searchText='';return applySearch();}
       if (button.dataset.tab) {tab=button.dataset.tab;if(!error)message='';render();root.querySelector(`[data-tab="${tab}"]`).focus();return;}
       if (button.dataset.inventoryOpen) {inventorySelected=button.dataset.inventoryOpen;render();root.querySelector('[data-inventory-details]')?.focus();return;}
       if (button.dataset.action==='close-inventory') {const key=inventorySelected;inventorySelected=null;render();[...root.querySelectorAll('[data-inventory-open]')].find(button=>button.dataset.inventoryOpen===key)?.focus();return;}
@@ -128,20 +143,65 @@
         finally{busy=false;render();}
         if(!error)await refresh();return;
       }
-      if (button.dataset.action==='filter') return render();
+      if (button.dataset.action==='filter') return applySearch();
       if (button.dataset.open) {selected=button.dataset.open;tab='requests';render();const details=root.querySelector('#wa-panel-requests .wa-details');details?.setAttribute('tabindex','-1');details?.focus();}
+    }
+    function applySearch(){
+      search=searchText.trim();catalogPage=1;render();root.querySelector('[data-field="search"]').focus();
+    }
+    function validatedDraft(){
+      if(invalidInputs.size)throw Error('Enter a valid number for '+(snapshot.catalog.find(i=>invalidInputs.has(i.id))?.name||'the selected consumable')+'.');
+      const items=Object.entries(draft.quantities).filter(([,q])=>q!=='').map(([id,q])=>({
+        consumable_id:id,quantity:q,unit:snapshot.catalog.find(i=>i.id===id)?.unit
+      }));
+      return C.validateRequest({...draft,items},snapshot.catalog,snapshot.sites);
+    }
+    function review(){
+      if(!snapshot||busy||root.querySelector('dialog[open]'))return;
+      let payload;
+      try{payload=validatedDraft();}catch(e){
+        message=C.errorText(e);error=true;render();
+        const notice=root.querySelector('.wa-message');notice.tabIndex=-1;notice.focus();return;
+      }
+      if(error){error=false;message='';render();}
+      const dialog=document.createElement('dialog');
+      dialog.className='wa-submit-dialog';dialog.dataset.confirmDialog='';
+      dialog.setAttribute('aria-labelledby','wa-confirm-title');
+      const rows=payload.items.map(line=>{
+        const item=snapshot.catalog.find(i=>i.id===line.consumable_id);
+        return `<li><span>${E(item.name)}<small>${E(item.item_code)} ${E(item.specification)}</small></span><strong>${C.format(line.quantity)} ${E(line.unit)}</strong></li>`;
+      }).join('');
+      dialog.innerHTML=`<form data-confirm-request><h2 id="wa-confirm-title">Submit Consumables Request</h2><p>Project/site · <strong>${E(snapshot.sites.find(s=>s.id===payload.site_id).name)}</strong></p><ul>${rows}</ul><label>Purpose (optional)<textarea data-field="purpose" maxlength="1000">${E(draft.purpose)}</textarea></label><div data-confirm-feedback role="alert"></div><div class="wa-actions"><button type="button" data-action="cancel-request">Cancel</button><button type="submit" class="primary">Confirm Submit Request</button></div></form>`;
+      root.append(dialog);
+      dialog.addEventListener('cancel',event=>{if(busy)event.preventDefault();});
+      dialog.addEventListener('close',()=>{dialog.remove();if(!destroyed&&!root.querySelector('dialog[open]'))root.querySelector('[data-action="review-request"]:not([hidden])')?.focus();},{once:true});
+      dialog.addEventListener('keydown',event=>{
+        if(event.key!=='Tab')return;
+        const stops=[...dialog.querySelectorAll('textarea:not(:disabled),button:not(:disabled)')];
+        const first=stops[0],last=stops.at(-1);
+        if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus();}
+        else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}
+      });
+      dialog.showModal();dialog.querySelector('textarea').focus();
     }
     async function submit(event) {
       event.preventDefault();if(busy || !snapshot)return;
+      if(event.target.matches('[data-request-form]'))return review();
+      const dialog=event.target.closest('[data-confirm-dialog][open]');
+      if(!dialog||!event.target.matches('[data-confirm-request]'))return;
       try {
-        const payload=C.validateRequest({...draft,items:Object.entries(draft.quantities).filter(([,q])=>q!=='').map(([id,q])=>({consumable_id:id,quantity:q,unit:snapshot.catalog.find(item=>item.id===id)?.unit}))},snapshot.catalog,snapshot.sites);
-        busy=true;message='Saving request…';error=false;render();
+        const payload=validatedDraft();
+        busy=true;root.setAttribute('aria-busy','true');error=false;
+        dialog.querySelectorAll('textarea,button').forEach(el=>el.disabled=true);
         const saved=await api.mutate('mcpa_wa_submit_consumables',{p_site_id:payload.site_id,p_purpose:payload.purpose,p_items:payload.items});
         draft={site_id:draft.site_id,purpose:'',quantities:{}};selected=saved.id || saved.request_id || null;tab='requests';
         message='Request saved. Your Admin can now review it.';
-      } catch(e) {message=C.errorText(e);error=true;}
-      finally {busy=false;render();}
-      if(!error) await refresh();
+      } catch(e) {
+        message=C.errorText(e);error=true;
+        if(!destroyed){dialog.querySelector('[data-confirm-feedback]').textContent=message;dialog.querySelectorAll('textarea,button').forEach(el=>el.disabled=false);dialog.querySelector('[type=submit]').focus();}
+      } finally {busy=false;root.setAttribute('aria-busy','false');}
+      if(!error&&!destroyed){dialog.close();render();await refresh();root.querySelector('[data-tab="requests"]')?.focus();}
+      else if(api.getPending()&&!destroyed){dialog.close();render();root.querySelector('[data-action="recover"]')?.focus();}
     }
     root.addEventListener('input',input);root.addEventListener('change',change);root.addEventListener('keydown',keydown);root.addEventListener('click',click);root.addEventListener('submit',submit);
     await refresh();

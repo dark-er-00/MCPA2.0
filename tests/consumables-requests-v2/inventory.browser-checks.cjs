@@ -11,14 +11,14 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await go('outward-materials');await wait('document.querySelector("[data-request-form]")');
  await click('[data-tab=inventory]');assert.ok(await evaluate('document.querySelector("#wa-panel-inventory").textContent.includes("No consumables issued to you yet")'));
  assert.equal(await evaluate('document.querySelector("[data-tab=inventory]").getAttribute("aria-selected")'),'true');
- await click('[data-action=request-materials]');await fill('[data-field=site_id]',f.sites.casa);await fill(`[data-quantity="${item.id}"]`,'5');await fill('[data-field=purpose]','Keep this draft');
+ await click('[data-action=request-materials]');await fill('[data-field=site_id]',f.sites.casa);await fill(`[data-quantity="${item.id}"]`,'5');await click('[data-action=review-request]');await fill('[data-field=purpose]','Keep this draft');await click('[data-action=cancel-request]');
  await click('[data-tab=inventory]');await click('[data-action=refresh]');await wait('document.querySelector(".wa-engineer").getAttribute("aria-busy")==="false"');
- await click('[data-tab=available]');assert.equal(await evaluate('document.querySelector("[data-field=purpose]").value'),'Keep this draft');
+ await click('[data-tab=available]');await click('[data-action=review-request]');assert.equal(await evaluate('document.querySelector("[data-field=purpose]").value'),'Keep this draft');
  assert.equal(await evaluate(`document.querySelector('[data-quantity="${item.id}"]').value`),'5');
  // Drop a committed submission response; recovery must select its request tab
  // and reuse the operation receipt rather than creating a duplicate request.
  await evaluate('window.__submitRpc=window.supabaseClient.rpc;window.supabaseClient.rpc=async(name,args)=>{const result=await window.__submitRpc(name,args);return name==="mcpa_wa_submit_consumables"?{data:null,error:{code:"NETWORK",message:"Response interrupted"}}:result;}');
- await submit('[data-request-form]');await wait('document.querySelector(".wa-message").textContent.includes("Response interrupted")');
+ await submit('[data-confirm-request]');await wait('document.querySelector(".wa-message").textContent.includes("Response interrupted")');
  await evaluate('window.supabaseClient.rpc=window.__submitRpc');await click('[data-action=recover]');await wait('document.querySelector(".wa-message").textContent.includes("recovered")');
  assert.equal((await current()).requests.length,1);
  assert.equal(await evaluate('document.querySelector("[data-tab=requests]").getAttribute("aria-selected")'),'true');
@@ -26,13 +26,13 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await click('[data-tab=inventory]');await notify();await wait('document.querySelector(".wa-engineer").getAttribute("aria-busy")==="false"');
  assert.ok(await evaluate('document.querySelector("[data-inventory-results]").textContent.includes("No consumables issued")'));
  await issue(request);await notify();await wait('document.querySelector(".wa-inventory-table tbody tr")');
- assert.equal(await evaluate('document.querySelector("[data-label^=Available]").textContent'),'5');
- assert.equal(await evaluate('document.querySelector("[data-label$=Used]").textContent'),'Not recorded');
- assert.ok(await evaluate('document.querySelector(".wa-inventory-note").textContent.includes("does not verify physical stock")'));
+ assert.equal(await evaluate('document.querySelector(".wa-inventory-table [data-label^=Available]").textContent'),'5');
+ assert.equal(await evaluate('document.querySelector(".wa-inventory-table [data-label$=Used]").textContent'),'Not recorded');
+ assert.ok(await evaluate('document.querySelector(".wa-inventory-note").textContent.includes("verify physical stock separately")'));
  // Filtering is browsing: an external issuance must still refresh without a prompt.
  await fill('[data-inventory-filter=search]','Masonry');
  const second=await f.call(sky,'mcpa_wa_submit_consumables',{p_operation_id:id(),p_site_id:f.sites.casa,p_purpose:'',p_items:[{consumable_id:item.id,quantity:5,unit:'bags'}]});await approve(second);await issue(second);await notify();
- await wait('document.querySelector("[data-label^=Available]")?.textContent==="10"');
+ await wait('document.querySelector(".wa-inventory-table [data-label^=Available]")?.textContent==="10"');
  assert.equal(await evaluate('document.querySelector("[data-inventory-filter=search]").value'),'Masonry');
  await fill('[data-inventory-filter=search]','No such consumable');assert.ok(await evaluate('document.querySelector("[data-inventory-results]").textContent.includes("No matching consumables")'));
  await click('[data-action=clear-filters]');await fill('[data-inventory-filter=site]',f.sites.casa);await fill('[data-inventory-filter=category]','Masonry & Carpentry');await fill('[data-inventory-filter=status]','Depleted');
@@ -44,8 +44,8 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  const extra=[];for(let i=0;i<20;i++)extra.push(await seed('Additional field material '+String(i).padStart(2,'0'),3));
  const batch=await f.call(sky,'mcpa_wa_submit_consumables',{p_operation_id:id(),p_site_id:f.sites.casa,p_purpose:'',p_items:extra.map(x=>({consumable_id:x.id,quantity:1,unit:x.unit}))});await approve(batch);await issue(batch,1);await notify();
  await wait('document.querySelector(".wa-inventory-summary dd")?.textContent==="21"');
- await click('[data-action=clear-filters]');assert.equal(await evaluate('document.querySelectorAll(".wa-inventory-table tbody tr").length'),20);
- await click('[data-page=next]');assert.equal(await evaluate('document.querySelectorAll(".wa-inventory-table tbody tr").length'),1);await click('[data-page=previous]');
+ await click('[data-action=clear-filters]');assert.equal(await evaluate('document.querySelectorAll(".wa-inventory-table tbody tr").length'),10);
+ await click('[data-page=next]');await click('[data-page=next]');assert.equal(await evaluate('document.querySelectorAll(".wa-inventory-table tbody tr").length'),1);await click('[data-page=previous]');
  await fill('[data-inventory-filter=search]','Site cement');
  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
  assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'));
@@ -65,7 +65,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await evaluate('window.supabaseClient.rpc=window.__inventoryRpc');await click('[data-action=refresh]');await wait('!document.querySelector(".wa-message").classList.contains("error") && document.querySelector(".wa-engineer").getAttribute("aria-busy")==="false"');
  // Reload fetches the same balances rather than browser storage.
  await command('Page.reload');await wait('window.MCPAAuth?.profile?.role==="engineer"');await go('outward-materials');await wait('document.querySelector("[data-tab=inventory]")');await click('[data-tab=inventory]');
- await fill('[data-inventory-filter=search]','Site cement');assert.equal(await evaluate('document.querySelector("[data-label^=Available]").textContent'),'10');
+ await fill('[data-inventory-filter=search]','Site cement');assert.equal(await evaluate('document.querySelector(".wa-inventory-table [data-label^=Available]").textContent'),'10');
  // A second engineer cannot see or deep-link into the first engineer's inventory.
  await logout();await login('pau');await wait('MCPAAuth.profile?.id==='+JSON.stringify(f.actors.pau.id));await go('outward-materials?record='+request.id);await wait('document.querySelector("[data-tab=inventory]")');await click('[data-tab=inventory]');
  assert.ok(await evaluate('document.querySelector("[data-inventory-results]").textContent.includes("No consumables issued to you yet")'));

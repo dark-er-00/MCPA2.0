@@ -109,7 +109,7 @@ html.equipment-modal-open,html.equipment-modal-open body{overflow:hidden}
 }
 
 /* Dashboard summary language, scoped to the Admin equipment masterlist. */
-#screen-masterlist .equipment-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+#screen-masterlist .equipment-summary{--dashboard-gap:var(--space-4,16px);margin-block-end:var(--space-6,24px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .equipment-summary .kpi{flex-direction:row;align-items:center;gap:16px;padding:17px 18px;border-radius:8px;text-align:left;color:var(--black);cursor:pointer;min-width:0;box-shadow:none}
 .equipment-summary .kpi:hover{border-color:var(--gold)}
 .equipment-summary .kpi[aria-pressed="true"]{border-color:var(--gold-dim);background:var(--input-background)}
@@ -118,7 +118,7 @@ html.equipment-modal-open,html.equipment-modal-open body{overflow:hidden}
 .equipment-summary .kpi .lbl{font-size:11px;font-weight:550;color:var(--text-secondary)}
 .equipment-summary .kpi .num{font-family:var(--font-body);font-size:32px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
 .equipment-summary .kpi-description{color:var(--text-secondary)}
-.equipment-summary-note{font-size:12px;line-height:1.5;color:var(--text-secondary);margin:10px 0 20px}
+.equipment-summary-note{font-size:12px;line-height:1.5;color:var(--text-secondary);margin:0 0 var(--space-4,16px)}
 @media(max-width:1000px){.equipment-summary .kpi{padding:14px 12px;gap:10px}.equipment-summary .command-kpi-icon{width:36px;height:42px}}
 @media(max-width:600px){#screen-masterlist .equipment-summary{grid-template-columns:1fr;gap:10px}.equipment-summary .kpi{padding:12px 14px}.equipment-summary .command-kpi-icon{display:flex}.equipment-summary .kpi .num{font-size:26px}}
 

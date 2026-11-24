@@ -6,15 +6,16 @@ const { spawn } = require('node:child_process'), { once } = require('node:events
 const root = path.resolve(__dirname, '../..'), profile = fs.mkdtempSync(path.join(os.tmpdir(), 'mcpa-wa-browser-'));
 const screenshots = path.join(root, 'tests/artifacts/workstream-a/screenshots');
 const scripts = [
+  '/app/shared/display.js', '/app/core/permissions.js', '/app/features/consumables/consumables-catalog.js',
   '/app/features/quantity-requests/client.js', '/app/features/quantity-requests/view.js',
   '/app/portals/engineer/quantity-requests/index.js', '/app/portals/admin/quantity-allocation/index.js',
   '/app/features/consumables-requests/core.js', '/app/features/consumables-requests/analytics.js',
-  '/app/portals/engineer/consumables-requests/consumables-requests.js', '/app/portals/admin/consumables-usage/consumables-usage.js'
+  '/app/portals/admin/consumables-usage/charts.js', '/app/portals/engineer/consumables-requests/consumables-requests.js', '/app/portals/admin/consumables-usage/consumables-usage.js'
 ];
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Workstream A isolated mount verification</title><link rel="stylesheet" href="/assets/styles/global.css"><link rel="stylesheet" href="/assets/styles/theme.css"><link rel="stylesheet" href="/app/features/quantity-requests/styles.css"><link rel="stylesheet" href="/app/features/consumables-requests/styles.css"><style>main{padding:24px;max-width:1320px;margin:auto}@media(max-width:480px){main{padding:16px}}</style></head><body><main id="mount"></main>${scripts.map(src => `<script src="${src}"></script>`).join('')}<script>
 window.__rpcCalls=[];window.__controller=null;
 window.__client={async rpc(name,args={}){__rpcCalls.push({name,args});const result=await fetch('/__rpc',{method:'POST',headers:{'Content-Type':'application/json','X-Fixture-Actor':__actor},body:JSON.stringify({name,args})}).then(response=>response.json());if(window.__dropResponseOnce===name&&!result.error){window.__dropResponseOnce=null;throw Error('Isolated response lost after database commit. Retry the interrupted action.');}return result;}};
-window.__mount=async(mode,actor)=>{__controller?.destroy();__actor=actor;const root=document.getElementById('mount');if(mode==='quantity-engineer'){__controller=MCPAQuantityEngineer.mount({root,supabase:__client});await __controller.ready;}if(mode==='quantity-admin'){__controller=MCPAQuantityAdmin.mount({root,supabase:__client});await __controller.ready;}if(mode==='consumables-engineer')__controller=await MCPAConsumablesRequesterV2.mount({root,client:__client});if(mode==='consumables-admin')__controller=await MCPAConsumablesUsageV2.mount({root,client:__client});return true;};
+window.__mount=async(mode,actor)=>{__controller?.destroy();__actor=actor;const root=document.getElementById('mount');if(mode==='quantity-engineer'){__controller=MCPAQuantityEngineer.mount({root,supabase:__client});await __controller.ready;}if(mode==='quantity-admin'){__controller=MCPAQuantityAdmin.mount({root,supabase:__client});await __controller.ready;}if(mode==='consumables-engineer')__controller=await MCPAConsumablesRequesterV2.mount({root,client:__client});if(mode==='consumables-admin')__controller=await MCPAConsumablesUsageV2.mount({root,client:__client,view:'requests'});return true;};
 </script></body></html>`;
 let fixture, chrome, socket, server;
 const errors = [], calls = [], pause = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -54,7 +55,7 @@ const errors = [], calls = [], pause = ms => new Promise(resolve => setTimeout(r
   let next = 0; const pending = new Map();
   socket.addEventListener('message', event => { const value = JSON.parse(event.data); if (value.method === 'Runtime.exceptionThrown') errors.push(value.params.exceptionDetails); const item = pending.get(value.id); if (item) { pending.delete(value.id); clearTimeout(item.timer); value.error ? item.reject(Error(value.error.message)) : item.resolve(value.result); } });
   const command = (method, params = {}) => new Promise((resolve, reject) => { const id = ++next, timer = setTimeout(() => { pending.delete(id); reject(Error('CDP timeout: ' + method)); }, 15000); pending.set(id, { resolve, reject, timer }); socket.send(JSON.stringify({ id, method, params })); });
-  const evaluate = async expression => { const value = await command('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true }); if (value.exceptionDetails) throw Error(value.result.description); return value.result.value; };
+  const evaluate = async expression => { const value = await command('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true }); if (value.exceptionDetails) throw Error(value.exceptionDetails.exception?.description || value.exceptionDetails.text); return value.result.value; };
   const wait = async expression => { for (let attempt = 0; attempt < 160; attempt++) { if (await evaluate(expression)) return; await pause(50); } throw Error('Timed out: ' + expression + '\n' + await evaluate('document.body.innerText')); };
   const click = selector => evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);
   const fill = (selector, value) => evaluate(`(()=>{const element=document.querySelector(${JSON.stringify(selector)});element.value=${JSON.stringify(value)};element.dispatchEvent(new Event('input',{bubbles:true}));element.dispatchEvent(new Event('change',{bubbles:true}));})()`);
@@ -79,6 +80,7 @@ const errors = [], calls = [], pause = ms => new Promise(resolve => setTimeout(r
   await wait("document.querySelector('[data-q-success-dialog]')?.open&&document.querySelector('[data-q-success-dialog]').textContent.includes('Quantity request submitted')");
   let requests = await fixture.wa(fixture.actors.sky, 'mcpa_wa_equipment_requests');
   assert.equal(requests.length, 1); const request = requests[0]; assert.equal(request.requested_quantity, 2);
+  await click('[data-q-dialog-history]'); await wait("document.querySelector('.wa-q-history summary')");
   await click('.wa-q-history summary');
   await evaluate("document.querySelector('.wa-q-history-detail').insertAdjacentHTML('beforeend',MCPAQuantityView.details({id:'untrusted-display-fixture',requested_quantity:1,status:'pending',approved_quantity:0,purpose:'<img src=x onerror=alert(1)>'}))");
   assert.equal(await evaluate("document.querySelectorAll('#mount img').length"), 0, 'History escapes untrusted purpose');
@@ -111,12 +113,13 @@ const errors = [], calls = [], pause = ms => new Promise(resolve => setTimeout(r
   console.log('PASS quantity mounts: exact variants, Bulk exclusion, quantity entry, roles, assigned site, history escaping, adjusted physical allocation, stock/reservation changes, rejection, Architect scope');
 
   await mount('consumables-engineer', 'sky'); await fill('[data-field=site_id]', fixture.sites.casa);
-  await fill(`[data-quantity="${cement.id}"]`, '12'); await fill(`[data-quantity="${screws.id}"]`, '20'); await fill('[data-field=purpose]', 'Foundation and formwork materials');
+  await fill(`[data-quantity="${cement.id}"]`, '12'); await fill(`[data-quantity="${screws.id}"]`, '20');
   await viewport(393);
   assert.equal(await withinViewport(`[data-quantity="${cement.id}"]`), true, 'Consumables quantity input fits 393px viewport');
   assert.equal(await withinViewport(`[data-quantity="${screws.id}"]`), true, 'Second consumable quantity input fits viewport');
   await shot('consumables-engineer-393-light');
-  await evaluate("__dropResponseOnce='mcpa_wa_submit_consumables';document.querySelector('[data-request-form]').requestSubmit()");
+  await click('[data-action=review-request]');await fill('[data-field=purpose]', 'Foundation and formwork materials');
+  await evaluate("__dropResponseOnce='mcpa_wa_submit_consumables';document.querySelector('[data-confirm-request]').requestSubmit()");
   await wait("document.querySelector('[data-action=recover]') && document.querySelector('.wa-message').textContent.includes('response lost')");
   const submissionOperation = calls.filter(call => call.name === 'mcpa_wa_submit_consumables').at(-1).args.p_operation_id;
   assert.equal((await fixture.wa(fixture.actors.sky, 'mcpa_wa_consumables_snapshot')).requests.length, 1, 'Request committed despite lost response');

@@ -22,7 +22,7 @@
   for(const role of ['admin','engineer','architect','tool_handler']) routes[role].push('transfer-tools');
   actions.admin.push('createTransfer','receiveTransfer','refuseTransfer','cancelTransfer');
   routes.admin.push('quantity-request','outward-materials','asset-retirement-v2');
-  for(const role of operational)routes[role].push('quantity-request','outward-materials','asset-transfer','transfer-inbox','retired-equipment-v2');
+  for(const role of operational)routes[role].push('quantity-request','outward-materials','asset-transfer','transfer-inbox');
   window.MCPAPermissions = Object.freeze({
     labels: window.MCPADisplay.roles,
     route: (role, route) => !!routes[role]?.includes(route),

@@ -46,15 +46,17 @@
     // Manila calendar days, inclusive end date; use half-open timestamps.
     return {from:from ? from + 'T00:00:00+08:00' : null, to:to ? new Date(Date.parse(to + 'T00:00:00+08:00') + 86400000).toISOString() : null};
   }
+  const manilaCalendar = new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Manila', year:'numeric', month:'2-digit', day:'2-digit'});
   const dayInManila = value => {
     const date = new Date(value);
     if (!Number.isFinite(date.getTime())) return '';
-    return new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Manila', year:'numeric', month:'2-digit', day:'2-digit'}).format(date);
+    return manilaCalendar.format(date);
   };
   function aggregate(transactions, by, catalog = []) {
     const groups = new Map();
+    const items = new Map(catalog.map(item => [item.id,item]));
     for (const row of transactions) {
-      const item = catalog.find(item => item.id === row.consumable_id);
+      const item = items.get(row.consumable_id);
       const unit = row.unit || item?.unit || '';
       const value = by === 'day' ? dayInManila(row.issued_at) : row[by + '_id'] || row[by] || 'Unknown';
       // Keep SKUs and units distinct: adding boxes to pieces is meaningless.

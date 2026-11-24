@@ -4,12 +4,20 @@
 const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
 const {createFixture}=require('./engineer-assignment-preview-fixture.cjs');
 const root=path.resolve(__dirname,'../..'),publicRoot=path.join(root,'public'),v2Root=path.join(__dirname,'offline-assets');
-const fixture=createFixture(),port=Number(process.env.PORT||4192);
+const adminReview=process.argv.includes('--admin-review');
+const fieldReview=process.argv.includes('--field-review');
+const fixture=createFixture({adminReview,fieldReview}),port=Number(process.env.PORT||(fieldReview?4197:adminReview?4196:4192));
 if(!Number.isInteger(port)||port<1||port>65535)throw Error('Invalid port');
 const mime={'.js':'text/javascript','.cjs':'text/javascript','.mjs':'text/javascript','.html':'text/html; charset=utf-8','.css':'text/css','.png':'image/png','.svg':'image/svg+xml','.jpg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.woff2':'font/woff2','.webm':'video/webm','.json':'application/json','.txt':'text/plain; charset=utf-8'};
 const calls=[];
 function seed(){
  const act=(who,action,payload)=>{const result=fixture.handle(who,{rpc:'mcpa_movement_action',args:{p_operation_id:require('node:crypto').randomUUID(),p_action:action,p_payload:payload}});if(result.error)throw Error(result.error.message);};
+ if(fieldReview){
+  for(const [n,who] of ['sky','architect'].entries()){
+   act(who,'reportRepair',{toolId:'SYN-0'+(21+n*10),notes:'Synthetic motor inspection'});
+   act(who,'reportMissing',{toolId:'SYN-0'+(22+n*10),notes:'Synthetic site stocktake'});
+  }
+ }
  act('sky','createRequest',{toolIds:['SYN-001'],destination:fixture.sites.sky.name,purpose:'Synthetic site preparation'});
  act('architect','createRequest',{toolIds:['SYN-009'],destination:fixture.sites.architect.name,purpose:'Synthetic survey preparation'});
  act('pau','createTransfer',{toolIds:['SYN-005'],receiverId:fixture.actors.sky.id,destinationId:fixture.sites.sky.id,notes:'Synthetic handover for design review'});
@@ -34,7 +42,8 @@ const server=http.createServer(async(req,res)=>{
   if(req.headers['sec-fetch-site']==='cross-site'||req.headers.origin&&req.headers.origin!=='http://127.0.0.1:'+port)return send(res,{error:'Local preview only.'},403);
   if(pathname==='/__sdk.js'){
    res.setHeader('Content-Type','text/javascript');
-   return res.end(fs.readFileSync(path.join(__dirname,'fixtures/offline-sdk.js'),'utf8')+
+   const reviewScript=fieldReview?fs.readFileSync(path.join(__dirname,'fixtures/field-review.js'),'utf8'):'';
+   return res.end(fs.readFileSync(path.join(__dirname,'fixtures/offline-sdk.js'),'utf8')+'\n'+reviewScript+
     '\nconst fixtureRole=new URLSearchParams(location.search).get("fixture");if('+JSON.stringify(Object.keys(fixture.actors))+'.includes(fixtureRole))localStorage.setItem("fixture.account",fixtureRole);else if(!localStorage.getItem("fixture.account"))localStorage.setItem("fixture.account","admin");\n'+
     'const reviewTheme=new URLSearchParams(location.search).get("theme");if(["dark","light"].includes(reviewTheme))localStorage.setItem("mcpa.theme",reviewTheme);else if(!localStorage.getItem("mcpa.theme"))localStorage.setItem("mcpa.theme","dark");');
   }

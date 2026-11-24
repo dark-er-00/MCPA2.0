@@ -298,7 +298,7 @@
     const transfer=current.kind==='transfer';
     const list=`<section class="card mv-records${transfer || current.kind==='request'?' mv-transfer-history':''}"><div class="mv-record-header"><h2>${transfer?'Transfer history':(admin()?'All':'Your')+' '+TITLES[current.kind].toLowerCase()}</h2><div class="mv-list-filters"><label class="mv-sr" for="mv-search">Search movement records</label><input id="mv-search" class="mv-input" type="search" data-record-search placeholder="Search ID, tool, person or project" value="${esc(current.search)}"><label class="mv-sr" for="mv-status">Filter by status</label><select id="mv-status" class="mv-input" data-status><option value="">All statuses</option></select></div></div><div data-list></div></section>`;
     const workspace=transfer?`${transferTabs()}<section role="tabpanel" id="mv-panel-send" aria-labelledby="mv-tab-send" data-transfer-panel="send"><div data-create-panel>${createForm()}</div></section>${operational()?`<section role="tabpanel" id="mv-panel-receive" aria-labelledby="mv-tab-receive" data-transfer-panel="receive"><div class="mv-receive-grid">${receivingQrPanel()}${transferLookup()}</div><section class="card card-pad"><h2>Incoming transfers awaiting confirmation</h2><div data-incoming></div></section></section>`:''}<section role="tabpanel" id="mv-panel-history" aria-labelledby="mv-tab-history" data-transfer-panel="history">${list}</section>`:`<div class="mv-workspace"><div data-create-panel>${createForm()}</div><div class="mv-record-area">${list}</div></div>`;
-    current.root.innerHTML=`<div class="movement-ui"><div class="page-head"><div><p class="eyebrow">Tool movement</p><h1 class="display">${TITLES[current.kind]}</h1><p class="sub">${descriptions()}</p></div></div><p class="sync-warning" data-sync-warning role="status"></p><div data-notice role="status" aria-live="polite"></div>${mode()==='demo'?'<div class="mv-demo-banner">Offline demo &middot; browser records</div>':''}<div data-summary class="mv-summary"></div>${workspace}<dialog id="movement-detail" class="mv-detail" data-detail aria-label="Movement details"><div data-detail-body></div></dialog><dialog class="mv-scanner" data-scanner-dialog aria-labelledby="mv-scanner-title"><div class="mv-section-heading"><h2 id="mv-scanner-title">Scan Receiver QR</h2>${button('Close','close-scanner')}</div><p class="mv-help">Ask the recipient to open Receive Transfer and generate their receiving QR.</p><div id="mv-receiver-camera"></div><p data-scanner-error role="alert"></p>${button('Try camera again','scan-receiver')}</dialog></div>`;
+    current.root.innerHTML=`<div class="movement-ui">${current.options.fieldInventory?`<div class="page-head"><div><h2>${current.kind==='repair'?'Repair':'Missing equipment'} reporting and history</h2><p class="sub">Your authorized reports across projects, including resolved cases.</p></div></div>`:`<div class="page-head"><div><p class="eyebrow">Tool movement</p><h1 class="display">${TITLES[current.kind]}</h1><p class="sub">${descriptions()}</p></div></div>`}<p class="sync-warning" data-sync-warning role="status"></p><div data-notice role="status" aria-live="polite"></div>${mode()==='demo'?'<div class="mv-demo-banner">Offline demo &middot; browser records</div>':''}<div data-summary class="mv-summary"></div>${workspace}<dialog id="movement-detail" class="mv-detail" data-detail aria-label="Movement details"><div data-detail-body></div></dialog><dialog class="mv-scanner" data-scanner-dialog aria-labelledby="mv-scanner-title"><div class="mv-section-heading"><h2 id="mv-scanner-title">Scan Receiver QR</h2>${button('Close','close-scanner')}</div><p class="mv-help">Ask the recipient to open Receive Transfer and generate their receiving QR.</p><div id="mv-receiver-camera"></div><p data-scanner-error role="alert"></p>${button('Try camera again','scan-receiver')}</dialog></div>`;
     const detail=current.root.querySelector('[data-detail]');
     detail.addEventListener('cancel',event=>{event.preventDefault();closeDetail();});
     detail.addEventListener('close',()=>{
@@ -648,7 +648,7 @@
     else if (action === 'stop-camera') await stopCamera();
     else if (action === 'retry') {
       const {kind, pendingTarget} = current;
-      const remount = mount(kind);
+      const remount = mount(kind,current.options);
       if (pendingTarget) void openRecord(kind, pendingTarget);
       await remount;
     }
@@ -719,7 +719,7 @@
     const root = options.root || document.getElementById(`screen-${kind}`);
     if (!root || !TITLES[kind]) return;
     dispose();
-    const active = { kind, root, requestIntro: options.requestIntro, requestPresentation: options.requestPresentation, generation: ++generation, search: '', status: '', detailId: '', message: '', busy: false, scanner: null, transferView: operational()||handler()?'send':'history', receivingToken:null, createDirty: false, detailDirty: false };
+    const active = { kind, root, options, requestIntro: options.requestIntro, requestPresentation: options.requestPresentation, generation: ++generation, search: '', status: '', detailId: '', message: '', busy: false, scanner: null, transferView: operational()||handler()?'send':'history', receivingToken:null, createDirty: false, detailDirty: false };
     let finishMount;
     active.mounted = new Promise(resolve => { finishMount = resolve; });
     current = active;

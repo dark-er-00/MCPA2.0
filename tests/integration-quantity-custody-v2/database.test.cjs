@@ -87,6 +87,12 @@ test('completed evidence cannot be deleted or overwritten before or after attach
   assert.equal((await f.query(f.actors.sky,"delete from storage.objects where name=$1 returning id",[ticket.objectName])).rows.length,0);
   await assert.rejects(f.db.query('delete from storage.objects where name=$1',[ticket.objectName]),/retained/);
   const b=await f.action(f.actors.sky,'submitReturn',{assetIds:['TOOL-002'],destinationId:f.sites.office,evidenceIds:[op]});
-  assert.equal((await f.snapshot(f.actors.sky)).evidence[0].movement_id,b.id);
+  const original=(await f.snapshot(f.actors.sky)).evidence[0];
+  assert.equal(original.movement_id,b.id);
+  const object=()=>f.db.query('select id,name,metadata from storage.objects where name=$1',[ticket.objectName]).then(result=>result.rows);
+  const before=await object();
+  await f.action(f.actors.admin,'inspectReturn',{id:b.id,inspections:[{assetId:'TOOL-002',outcome:'good',physicallyReceived:true,notes:'Inspected at Office'}]});
+  assert.deepEqual((await f.snapshot(f.actors.admin)).evidence.find(row=>row.id===original.id),original);
+  assert.deepEqual(await object(),before);
   await assert.rejects(f.db.query('delete from storage.objects where name=$1',[ticket.objectName]),/retained/);
 });
