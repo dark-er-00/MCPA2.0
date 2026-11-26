@@ -13,12 +13,15 @@
   const display = window.MCPADisplay;
   const workAreas = ['Structural', 'Mechanical', 'Electrical', 'Plumbing', 'Fire Safety', 'Architectural / Finishing Stage'];
   const projectStages = ['Planning/Designing', 'Permitting', 'Groundbreaking', 'Construction Phase', 'Turnover'];
+  const stageLabels = ['Not recorded', ...projectStages];
+  const pageSize = 9;
+  const projectOrder = new Intl.Collator('en-PH', {numeric:true, sensitivity:'base'});
   const updateTypes = ['Site inspection', 'Milestone', 'Delay', 'Work started', 'Work completed', 'Safety inspection', 'Work suspended', 'Work resumed', 'Correction', 'Other'];
   const defaultWeights = [30, 15, 15, 10, 10, 20];
   const percent = value => Number(value).toLocaleString('en-PH', {maximumFractionDigits: 2}) + '%';
   const options = (items, selected, empty = 'Not recorded') => `<option value="">${empty}</option>` + items.map(label => `<option${selected === label ? ' selected' : ''}>${escape(label)}</option>`).join('');
   const toolStatuses = Object.fromEntries(Object.entries(display.statuses.equipment).map(([key,label]) => [key,[label,['available','inuse','repair','underrepair','missing'].includes(key)?key:'disposed']]));
-  const state = { sites: [], equipment: [], profiles: [], selectedId: null, loading: false, saving: false, ready: false, dirty: false, disposed: false, scope: isEngineer() ? 'mine' : 'all', search: '', includeArchived: false, review: { search: '', status: '' } };
+  const state = { sites: [], equipment: [], profiles: [], selectedId: null, loading: false, saving: false, ready: false, dirty: false, disposed: false, scope: isEngineer() ? 'mine' : 'all', search: '', includeArchived: false, page: 1, review: { search: '', status: '' } };
   let dialogReturnFocus = null, officeId=null;
 
   function escape(value) {
@@ -40,9 +43,12 @@
     return `<span class="badge badge-${style}">${escape(label)}</span>`;
   }
   function currentSite() { return state.sites.find(site => site.id === state.selectedId && (!window.MCPAPermissions.operational(context().role) || assignedToMe(site))); }
-  function profession(site) {
-    const profile=state.profiles.find(person=>person.id===site.assigned_engineer_id)
-      ||(site.assigned_engineer_id===context().id?context():null);
+  function assignedProfile(site) {
+    if (!site.assigned_engineer_id) return null;
+    return state.profiles.find(person => person.id === site.assigned_engineer_id)
+      || (site.assigned_engineer_id === context().id ? context() : null);
+  }
+  function profession(profile) {
     return profile?.role==='engineer'?'Engr':profile?.role==='architect'?'Architect':'';
   }
   function assignedToMe(site) {
@@ -51,7 +57,7 @@
   function filteredSites() {
     return state.sites.filter(site => site.id!==officeId && (state.includeArchived || window.MCPAProjectScope.active(site, demo))
       && ((!window.MCPAPermissions.operational(context().role) && state.scope !== 'mine') || assignedToMe(site))
-      && (!state.search || [site.name, site.location, site.assigned_engineer, site.phase].some(value => String(value || '').toLowerCase().includes(state.search))));
+      && (!state.search || [site.name, site.location, site.assigned_engineer, cardAssignee(site), site.phase].some(value => String(value || '').toLowerCase().includes(state.search))));
   }
   function siteEquipment(site) { return state.equipment.filter(item => item.site_id === site.id); }
   function visibleEquipment(site) { return siteEquipment(site).filter(item => item.quantity > 0); }
@@ -148,12 +154,18 @@
         })
       };
     },
-    async save(values, original, operationId, reason) {
+    async save(values, original, operationId, reason, photo = null) {
       if (readOnly || isEngineer()) throw projectError('Only an Admin can edit live project records.');
-      const { data, error } = await client().rpc('mcpa_save_project', {
+      const args = {
         p_id: original?.id || null, p_version: original?.project_version ?? null,
         p_operation_id: operationId, p_patch: values, p_reason: reason || null
-      });
+      };
+      if (photo) {
+        if (!window.MCPAProjectPhotoStore) throw projectError('Photo storage is unavailable. Clear the selected photo to save the other project details.');
+        try { return await window.MCPAProjectPhotoStore.save(photo, args); }
+        catch (error) { throw projectError(error.message); }
+      }
+      const { data, error } = await client().rpc('mcpa_save_project', args);
       if (error) throw error;
       if (!data?.id) throw projectError('This project changed or is no longer editable. Close this form and retry after the next update.');
       return data;
@@ -255,27 +267,89 @@
     }
   }
 
-  function render() {
-    const projects = filteredSites();
-    root.querySelector('#projects-count').textContent = `${projects.length} of ${state.sites.filter(s=>s.id!==officeId).length} projects · ${new Set(state.sites.filter(site => site.id!==officeId&&!site.archived_at).map(site => site.assigned_engineer_id || site.assigned_engineer).filter(value => value && value !== 'Unassigned')).size} assigned people`;
+  function cardAssignee(site) {
+    if (!site.assigned_engineer_id && !demo) return 'Not assigned';
+    const linked = assignedProfile(site);
+    const name = linked?.name || site.assigned_engineer;
+    if (!name || /^unassigned$/i.test(name)) return site.assigned_engineer_id ? 'Accountable profile unavailable' : 'Not assigned';
+    const role = profession(linked);
+    if (role === 'Engr' && /\b(?:engr|engineer)\b/i.test(name)) return name;
+    if (role === 'Architect' && /\b(?:ar|architect)\b/i.test(name)) return name;
+    return role ? name + ' · ' + role : name;
+  }
+
+  function stageBadge(value, id = '') {
+    // Only the recorded stage field has stage semantics. Tolerate spelling case and slash spacing.
+    const key = String(value ?? '').trim().toLowerCase().replace(/\s*\/\s*/g, '/').replace(/\s+/g, ' ');
+    const index = Math.max(0, stageLabels.findIndex(label => label.toLowerCase() === key));
+    return `<span class="project-stage" ${id ? `id="project-stage-${id}"` : ''} data-stage="${index}"><span class="project-stage-dot" aria-hidden="true"></span>${stageLabels[index]}</span>`;
+  }
+
+  function photoSource(value) {
+    if (typeof value !== 'string' || !value.trim()) return '';
+    try {
+      const url = new URL(value, window.MCPAPaths.root);
+      const images = new URL('assets/images/', window.MCPAPaths.root);
+      if (url.origin === images.origin && url.pathname.startsWith(images.pathname) && /\.(?:jpe?g|webp|png|avif)$/i.test(url.pathname)) return url.href;
+    } catch { /* Malformed references use the same fallback as absent photographs. */ }
+    return '';
+  }
+
+  function projectCard(site) {
+    const photo = photoSource(site.project_photo_url);
+    const id = escape(site.id);
+    return `<button type="button" class="card site-card${photo?'':' text-only'}" data-action="open-site" data-id="${id}" aria-label="View ${escape(site.name)}" aria-describedby="project-stage-${id} project-location-${id} project-person-${id}">
+      ${photo?`<span class="project-media"><img class="project-photo" src="${escape(photo)}" alt="Project photograph" loading="lazy" decoding="async"></span>`:''}
+      <span class="project-card-info">${stageBadge(site.project_stage, id)}
+        <span class="project-card-text"><span class="site-card-title">${escape(site.name)}</span><span class="project-location" id="project-location-${id}">${escape(site.location || 'Location not recorded')}</span><span class="eng" id="project-person-${id}">${escape(cardAssignee(site))}</span></span>
+      </span></button>`;
+  }
+
+  function renderList() {
+    const projects = filteredSites().sort((a,b) => projectOrder.compare(a.name,b.name) || String(a.id).localeCompare(String(b.id)));
+    const pages = Math.max(1, Math.ceil(projects.length/pageSize));
+    state.page = Math.max(1, Math.min(state.page, pages));
+    const pageText = `Page ${state.page} of ${pages}`;
+    const pager = root.querySelector('.projects-pagination');
+    pager.hidden = pages <= 1;
+    pager.querySelector('[data-projects-page]').textContent = pageText;
+    pager.querySelector('[data-action="previous-projects"]').disabled = state.page === 1;
+    pager.querySelector('[data-action="next-projects"]').disabled = state.page === pages;
+    const portfolio = state.sites.filter(site => site.id !== officeId);
+    const assignees = new Set(portfolio.filter(site => window.MCPAProjectScope.active(site, demo))
+      .map(site => site.assigned_engineer_id || (demo && site.assigned_engineer))
+      .filter(person => person && person !== 'Unassigned'));
+    root.querySelector('#projects-count').textContent = `${projects.length} of ${portfolio.length} projects · ${assignees.size} assigned ${assignees.size === 1 ? 'person' : 'people'} · ${pageText}`;
     const scope=root.querySelector('#projects-scope');
     if(scope){scope.value=state.scope;scope.closest('label').hidden=readOnly;}
     root.querySelector('#projects-mode-note').textContent = demo ? 'Demo projects are read-only.' : 'Project records update automatically.';
-    root.querySelector('#sites-list').innerHTML = projects.length ? projects.map(site => {
-      const items = visibleEquipment(site);
-      const count = (...statuses) => totalQuantity(items.filter(item => statuses.includes(item.status)));
-      const totals = window.EquipmentTracking.tally(items, undefined, {assetsOnly:isEngineer()});
-      const stats = [['Total', totals.total], ['Available', totals.available], [display.status('inuse'), totals.deployed], ['Repair', count('repair', 'underrepair')]];
-      if (count('missing')) stats.push(['Missing', count('missing')]);
-      if (count('disposed')) stats.push([display.status('disposed'), count('disposed')]);
-      return `<button type="button" class="card site-card" data-action="open-site" data-id="${escape(site.id)}" aria-label="View ${escape(site.name)}">
-        <span class="site-card-top"><span><span class="site-card-title">${escape(site.name)}</span><span class="eng">${escape(site.assigned_engineer)}${profession(site)?` &middot; ${profession(site)}`:''} · ${escape(site.current_work_area || site.phase || 'Work area not recorded')}</span><span class="sites-muted">${escape(site.location)}${site.project_stage ? ' · ' + escape(site.project_stage) : ''}</span></span>${site.is_active === false ? '<span class="badge badge-disposed">Archived</span>' : ''}</span>
-        <span class="site-stat-row">${stats.filter(([, number]) => number > 0).map(([label, number]) => `<span class="site-stat"><span class="n">${number}</span><span class="l">${label}</span></span>`).join('')}</span>
-      </button>`;
-    }).join('') : `<div class="card empty-state sites-full"><p class="t">${state.scope === 'mine' ? 'No projects assigned to you' : 'No matching projects'}</p><p class="d">${state.scope === 'mine' ? 'An Admin can assign your profile to a project.' : 'Adjust the filters or add a project to track its equipment.'}</p><button type="button" class="btn btn-secondary btn-sm" data-action="add-site">+ Add Project</button></div>`;
-    renderDetail();
+    const list = root.querySelector('#sites-list');
+    if (projects.length) {
+      const start = (state.page - 1) * pageSize;
+      list.innerHTML = projects.slice(start, start + pageSize).map(projectCard).join('');
+    } else {
+      const unassigned = !state.search && state.scope === 'mine';
+      list.innerHTML = `<div class="card empty-state sites-full"><p class="t">${unassigned ? 'No projects assigned to you' : 'No matching projects'}</p>
+        <p class="d">${unassigned ? 'An Admin can assign your profile to a project.' : 'Adjust the search or filters to see other projects.'}</p>
+        ${readOnly ? '' : '<button type="button" class="btn btn-secondary btn-sm" data-action="add-site">+ Add Project</button>'}</div>`;
+    }
     syncControls();
   }
+
+  function render() { renderList(); renderDetail(); }
+
+  function movePage(delta) {
+    state.page += delta;
+    renderList();
+    root.querySelector('#sites-list .site-card')?.focus();
+  }
+
+  root.querySelector('#sites-list').addEventListener('error',event=>{
+    if (!event.target.matches('img.project-photo')) return;
+    const media=event.target.closest('.project-media');
+    media.closest('.site-card').classList.add('text-only');
+    media.remove();
+  },true);
 
   function inventoryTable(items, emptyText = 'No equipment is currently assigned to this project.') {
     return `<div class="table-wrap"><table><thead><tr><th>Tool</th>${isEngineer() ? '' : '<th>Quantity</th>'}<th>Status</th><th>Current Holder</th><th><span class="sites-muted">Details</span></th></tr></thead><tbody>${items.length ? items.map(item => `<tr>
@@ -299,10 +373,10 @@
       <div class="page-head"><div>
         <button type="button" class="sites-back eyebrow" data-action="all-sites">← All Projects</button>
         <h1 class="display" id="site-heading">${escape(site.name)}</h1>
-        <p class="sub">${escape(site.location)} · ${escape(site.current_work_area || 'Current work area not recorded')} · ${escape(site.project_stage || 'Project stage not recorded')}</p>
+        <p class="sub">${escape(site.location)} · ${escape(site.current_work_area || 'Current work area not recorded')} · ${stageBadge(site.project_stage)}</p>
         <p class="sites-muted">${site.construction_completion != null ? `Construction Completion: ${percent(site.construction_completion)} · ` : 'Construction Completion: Not configured · '}Legacy completion: ${percent(site.progress)}${site.phase ? ' · Legacy phase: ' + escape(site.phase) : ''}</p>
       </div><div class="page-head-actions">
-        ${site.is_active === false ? '<span class="badge badge-disposed">Archived</span>' : ''}
+        ${site.archived_at || site.is_active === false ? '<span class="badge badge-disposed">Archived</span>' : ''}
         <button type="button" class="btn btn-secondary btn-sm" data-action="project-history">Project History</button>
         <button type="button" class="btn btn-secondary btn-sm" data-action="site-update">Add Site Update</button>
         <button type="button" class="btn btn-secondary btn-sm" data-action="edit-site">Edit Project</button>
@@ -310,7 +384,7 @@
         <button type="button" class="btn btn-secondary btn-sm" data-action="review-tools">Review Assigned Tools</button>
       </div></div>
       <div class="grid grid-4 sites-summary">
-        <div class="card card-pad"><span class="k">Accountable person</span><div class="v">${escape(site.assigned_engineer)}</div>${profession(site)?`<span class="sites-muted">${profession(site)}</span>`:''}${site.assigned_engineer_id ? '' : '<span class="sites-muted">Profile link not recorded</span>'}</div>
+        <div class="card card-pad"><span class="k">Accountable person</span><div class="v">${escape(site.assigned_engineer)}</div><span class="sites-muted">${profession(assignedProfile(site))}</span>${site.assigned_engineer_id ? '' : '<span class="sites-muted">Profile link not recorded</span>'}</div>
         <div class="card card-pad"><span class="k">Equipment at Project</span><div class="v">${totalQuantity(items)} ${isEngineer()?'assets':'units'}</div></div>
         <div class="card card-pad"><span class="k">Last Inventory Check</span><div class="v">${formatDate(site.last_inventory_check)}</div></div>
         <div class="card card-pad"><span class="k">Last Movement</span><div class="v" data-last-movement>Loading…</div><button type="button" class="sites-text-button" data-action="view-movements">View movement history →</button></div>
@@ -373,6 +447,7 @@
     const legacy = site && !state.profiles.some(profile => profile.id === site.assigned_engineer_id);
     const linkedRole=state.profiles.find(profile=>profile.id===site?.assigned_engineer_id)?.role;
     const selectedRole=['engineer','architect'].includes(linkedRole)?linkedRole:'';
+    const currentPhoto = photoSource(site?.project_photo_url);
     state.dirty = false;
     openDialog(site ? 'Edit Project' : 'Add Project', `
       <form id="sites-form" data-id="${value('id')}">
@@ -386,7 +461,7 @@
         <details id="project-details" class="project-options"><summary>Project details <span>Stage, work area &amp; inventory check</span></summary><div class="form-grid">
           <div class="field"><label for="site-check">Last Inventory Check</label><input id="site-check" name="last_inventory_check" type="date" value="${value('last_inventory_check')}" max="${today()}"></div>
 
-          <div class="field"><label for="site-stage">Project Stage</label><select id="site-stage" name="project_stage">${options(projectStages, site?.project_stage)}</select></div>
+          <div class="field"><label for="site-stage">Project Stage</label><select id="site-stage" name="project_stage">${options(projectStages, site?.project_stage)}${site?.project_stage != null && !projectStages.includes(site.project_stage) ? `<option value="keep-recorded" selected>Keep recorded value (${escape(site.project_stage)})</option>` : ''}</select></div>
           <div class="field"><label for="site-phase">Current Work Area</label><select id="site-phase" name="current_work_area">${options(workAreas, site?.current_work_area, 'Select when known')}</select></div>
         </div>${site?.phase ? `<p class="sites-muted project-legacy">Original phase retained: <strong>${value('phase')}</strong>. ${workAreas.some(area => area.toLowerCase() === site.phase.trim().toLowerCase()) ? 'Select its matching area when ready.' : 'Review this legacy value before choosing a work area.'}</p>` : ''}</details>
         <details id="project-progress-section" class="project-options"><summary>Construction progress <span id="project-progress-summary">Not configured</span></summary>
@@ -409,9 +484,18 @@
           </details>
         </details>
         <details id="project-note" class="project-options"><summary>Project update <span>Optional note for history</span></summary><div class="field"><label for="site-reason">Reason / Progress Note (optional)</label><textarea id="site-reason" name="reason" rows="3" maxlength="4000" placeholder="Add context for Project History"></textarea></div></details>
+        <div class="field project-photo-field">
+          <label for="site-photo">Project Photo (optional)</label>
+          <input type="file" id="site-photo" accept="image/jpeg,image/png,image/webp" aria-describedby="site-photo-help site-photo-status">
+          <small id="site-photo-help" class="sites-muted">JPEG, PNG, or WebP. Maximum 5 MB. ${window.MCPAProjectPhotoStore ? escape(window.MCPAProjectPhotoStore.notice || '') : 'Permanent photo storage is unavailable. Clear any selection to save the project without uploading.'}</small>
+          <img class="site-photo-preview" alt="Current project photo" ${currentPhoto ? `src="${escape(currentPhoto)}"` : 'hidden'}>
+          <button type="button" class="btn btn-secondary btn-sm" data-clear-selection hidden>Clear selection</button>
+          <small id="site-photo-status" role="status"></small>
+        </div>
         <div class="sites-dialog-actions"><button type="button" class="btn btn-secondary" data-action="close-dialog">Cancel</button><button type="submit" class="btn btn-primary">${site ? 'Save Changes' : 'Create Project'}</button></div>
       </form>`, true, 'edit');
     state.editOriginal = site ? structuredClone(site) : null;
+    configurePhotoPicker(currentPhoto);
     const profession=root.querySelector('#site-profession'),person=root.querySelector('#site-engineer');
     const filterPeople=reset=>{
       if(reset)person.value='';
@@ -424,6 +508,54 @@
       for(let section=event.target.closest('details');section;section=section.parentElement.closest('details'))section.open=true;
     },true);
     updateProgressPreview();
+  }
+
+  function configurePhotoPicker(current) {
+    const picker = dialog.querySelector('#site-photo');
+    const preview = dialog.querySelector('.site-photo-preview');
+    const clear = dialog.querySelector('[data-clear-selection]');
+    const status = dialog.querySelector('#site-photo-status');
+    function restore() {
+      picker.setCustomValidity('');
+      preview.removeAttribute('src');
+      preview.alt = 'Current project photo';
+      preview.hidden = !current;
+      if (current) preview.src = current;
+      status.textContent = '';
+    }
+    preview.onerror = () => { preview.hidden = true; };
+    picker.onchange = async () => {
+      picker.form.dataset.photoSelection = crypto.randomUUID();
+      const file = picker.files[0];
+      restore();
+      clear.hidden = !file;
+      if (!file) return;
+      picker.setCustomValidity('Checking the selected image.');
+      try {
+        await window.EquipmentPhotos.validate(file);
+        const image = await createImageBitmap(file);
+        image.close();
+        if (!picker.isConnected || picker.files[0] !== file) return;
+        const reader = new FileReader();
+        const src = await new Promise((resolve,reject) => {
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = () => reject(new Error('The selected photo could not be read.'));
+          reader.readAsDataURL(file);
+        });
+        if (!picker.isConnected || picker.files[0] !== file) return;
+        preview.hidden = false;
+        preview.alt = 'Selected project photo';
+        preview.src = src;
+        picker.setCustomValidity('');
+        status.textContent = 'Selected ' + file.name;
+      } catch (e) {
+        if (picker.files[0] !== file) return;
+        const message = e.name === 'InvalidStateError' ? 'The image could not be read. Choose another photo.' : e.message;
+        picker.setCustomValidity(message);
+        status.textContent = message;
+      }
+    };
+    clear.onclick = () => { picker.value = ''; clear.hidden = true; restore(); picker.focus(); };
   }
 
   // Integer basis points match PostgreSQL NUMERIC round(...,2); no binary-float
@@ -481,7 +613,8 @@
     if (state.sites.some(site => site.id !== original?.id && normalizeName(site.name).toLowerCase() === values.name.toLowerCase())) {
       formError('A site with this name already exists. Please use a different name.'); return;
     }
-    values.project_stage ||= null;
+    if (values.project_stage === 'keep-recorded') delete values.project_stage;
+    else values.project_stage ||= null;
     values.current_work_area ||= null;
     try { const progress = readProgress(); if (progress.areas) values.construction_work_areas = progress.areas; }
     catch (error) { formError(error.message); root.querySelector('#project-progress-section').open = true; root.querySelector('#project-progress-editor').open = true; return; }
@@ -492,7 +625,9 @@
     formError('');
     setSaving(true);
     try {
-      const saved = await repository.save(values, original, operationFor(form, {values, reason}), reason);
+      const photo = form.querySelector('#site-photo').files[0];
+      const operation = operationFor(form, {values, reason, selection:form.dataset.photoSelection});
+      const saved = await repository.save(values, original, operation, reason, photo);
       if (!root.isConnected) return;
       state.sites = [...state.sites.filter(site => site.id !== saved.id), saved].sort((a, b) => a.name.localeCompare(b.name));
       state.selectedId = saved.id;
@@ -696,7 +831,7 @@
     const button = event.target.closest('[data-action]');
     if (!button || button.disabled || state.saving) return;
     const actions = {
-      refresh, 'add-site': () => editSite(), 'open-site': () => openSite(button.dataset.id),
+      refresh, 'previous-projects': () => movePage(-1), 'next-projects': () => movePage(1), 'add-site': () => editSite(), 'open-site': () => openSite(button.dataset.id),
       'all-sites': () => { feedback(''); showScreen('sites'); },
       'edit-site': () => { if (currentSite()) editSite(currentSite()); },
       'archive-site': archiveSite, 'confirm-archive': confirmArchive,
@@ -718,14 +853,14 @@
     if (event.target.closest('#sites-form')) { state.dirty = true; if (event.target.matches('[data-progress], #project-progress-enabled')) updateProgressPreview(); }
     if (event.target.id === 'project-history-search') filterHistory();
     if (event.target.id === 'sites-tool-search') filterTools();
-    if (event.target.id === 'projects-search') { state.search = event.target.value.trim().toLowerCase(); render(); }
+    if (event.target.id === 'projects-search') { state.search = event.target.value.trim().toLowerCase(); state.page = 1; renderList(); }
   });
   root.addEventListener('change', event => {
     if (event.target.id === 'project-history-type') filterHistory();
     if (event.target.id === 'project-progress-enabled') { updateProgressPreview(); if (event.target.checked) { root.querySelector('#project-progress-section').open = true; root.querySelector('#project-progress-editor').open = true; } }
     if (event.target.id === 'sites-tool-status') filterTools();
-    if (event.target.id === 'projects-scope' && !readOnly) { state.scope = event.target.value; render(); }
-    if (event.target.id === 'projects-archived') { state.includeArchived = event.target.checked; render(); }
+    if (event.target.id === 'projects-scope' && !readOnly) { state.scope = event.target.value; state.page = 1; renderList(); }
+    if (event.target.id === 'projects-archived') { state.includeArchived = event.target.checked; state.page = 1; renderList(); }
   });
   dialog.addEventListener('cancel', event => { event.preventDefault(); closeDialog(); });
   const stopWatching = demo ? () => {} : window.EquipmentTracking.watch(() => refresh(true), message => {
@@ -734,9 +869,10 @@
   window.MCPAProjects = {
     dispose() { state.disposed = true; stopWatching(); },
     cancelTarget() { state.navigation = (state.navigation || 0) + 1; },
-    capture: () => state.disposed ? null : ({search: state.search, scope: state.scope, includeArchived: state.includeArchived, review: state.review, reviewOpen: dialog.open && dialog.dataset.view === 'review'}),
+    capture: () => state.disposed ? null : ({page: state.page, search: state.search, scope: state.scope, includeArchived: state.includeArchived, review: state.review, reviewOpen: dialog.open && dialog.dataset.view === 'review'}),
     restore(saved) {
       if (!saved || state.disposed) return;
+      state.page = Number.isInteger(saved.page) ? saved.page : 1;
       state.search = saved.search; state.includeArchived = saved.includeArchived;
       state.scope = isEngineer() ? 'mine' : saved.scope;
       state.review = saved.review || {search:'',status:''}; state.restoreReview = saved.reviewOpen;

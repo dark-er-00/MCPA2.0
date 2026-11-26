@@ -87,3 +87,29 @@
 .mcpa-custody-v2 .b-return-dialog [data-close-return],.mcpa-custody-v2 .b-return-dialog [data-close-retirement]{margin-left:auto;flex-shrink:0}
 .b-return-dialog::backdrop{background:rgba(0,0,0,.65)}
 .mcpa-custody-v2 .b-return-dialog{position:fixed;inset:0;margin:auto}
+
+/* Admin Equipment Retirement */
+.mcpa-custody-v2.b-admin-retirement{width:100%;max-width:1200px;padding:clamp(16px,3vw,40px);margin-inline:auto}
+.b-admin-retirement .b-retirement-header{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-5,20px);margin-bottom:var(--space-7,32px)}
+.b-admin-retirement .b-retirement-header h1{font-family:var(--font-display);font-size:clamp(32px,3.4vw,52px);font-weight:700;letter-spacing:-.035em;line-height:1.08;margin:0 0 8px}
+.b-admin-retirement .b-retirement-header p{max-width:65ch;margin:0;font-size:14px}
+.b-admin-retirement .b-retirement-tabs{display:flex;gap:var(--space-2,8px);flex-shrink:0}
+.b-admin-retirement .b-retirement-tabs button{border-color:var(--line);transition:background-color .2s,border-color .2s}
+.b-admin-retirement .b-retirement-tabs [aria-pressed=true]{border-color:var(--gold);background:var(--brand-subtle);color:var(--text-primary)}
+.b-admin-retirement .b-proposal-row{display:grid;grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr));align-items:end}
+.b-admin-retirement [data-proposal]{gap:var(--space-4,16px)}
+.b-admin-retirement [data-proposal] textarea{min-height:92px}
+.b-admin-retirement [data-proposal] button:disabled{cursor:not-allowed}
+.b-admin-retirement [data-proposal][aria-busy=true] button{cursor:progress}
+.b-admin-retirement [data-retirement-history]>h3{margin:0 0 14px}
+.b-admin-retirement [data-retirement-history]>.b-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.b-admin-retirement [data-clear-retirement]{margin-top:8px}
+.b-admin-retirement .b-history{gap:var(--space-3,12px)}
+.b-admin-retirement .b-retirement-card{overflow-wrap:anywhere}
+.b-admin-retirement .b-retirement-meta{justify-content:flex-start}
+.b-admin-retirement .b-retirement-meta>span,.b-admin-retirement .b-retirement-head>div{min-width:0}
+.b-admin-retirement .b-state[data-state=approved]{background:var(--success-subtle,var(--success-bg));color:var(--success)}
+.b-admin-retirement .b-state[data-state=rejected]{background:var(--critical-subtle,var(--danger-bg));color:var(--critical,var(--danger))}
+@media(max-width:900px){.mcpa-custody-v2.b-admin-retirement{padding:var(--space-4,16px)}.b-admin-retirement .b-retirement-header{flex-wrap:wrap}}
+@media(max-width:650px){.mcpa-custody-v2.b-admin-retirement{padding:0}.b-admin-retirement .b-proposal-row,.b-admin-retirement [data-retirement-history]>.b-row{grid-template-columns:minmax(0,1fr)}.b-admin-retirement .b-retirement-view{min-height:44px}.b-admin-retirement .b-retirement-tabs{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.b-admin-retirement .b-retirement-tabs button{transition:none}}

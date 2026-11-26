@@ -20,7 +20,10 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  assert.ok(await evaluate("[...document.querySelector('#site-engineer').options].filter(o=>o.value&&!o.disabled).every(o=>o.dataset.profession==='architect')"));
  await fill('#site-engineer',a.architect.id);await submit('#sites-form');await wait("!document.querySelector('#sites-dialog').open");
  assert.equal((await f.db.query('select assigned_engineer_id from sites where id=$1',[f.sites.casa])).rows[0].assigned_engineer_id,a.architect.id);
- assert.ok((await evaluate("document.querySelector('[data-action=open-site][data-id=\""+f.sites.casa+"\"] .eng').textContent")).includes('Architect'));
+ const assignee=await evaluate("document.querySelector('[data-action=open-site][data-id=\""+f.sites.casa+"\"] .eng').textContent");
+ const profile=(await f.db.query('select name from profiles where id=$1',[a.architect.id])).rows[0];
+ assert.ok(assignee.includes(profile.name),'Project card shows the assigned profile name');
+ assert.match(assignee,/\barchitect\b/i);
  await click('[data-action=edit-site]');assert.equal(await evaluate("document.querySelector('#site-profession').value"),'architect');assert.equal(await evaluate("document.querySelector('#site-engineer').value"),a.architect.id);
  for(const dark of [false,true]){
   await command('Emulation.setDeviceMetricsOverride',{width:393,height:950,deviceScaleFactor:1,mobile:true});

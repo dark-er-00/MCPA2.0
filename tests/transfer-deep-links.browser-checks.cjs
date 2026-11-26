@@ -42,7 +42,10 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,go,login,logout,call
     const feedback=await evaluate("document.querySelector('[data-transfer-feedback]').textContent");
     assert.equal(await evaluate("document.querySelector('[data-transfer-view=history]').getAttribute('aria-pressed')"),'true');
     assert.equal(await evaluate(`document.querySelector('[data-transfer-record="${id}"]')`),null);
-    assert.equal(await evaluate("document.querySelectorAll('[data-transfer-decision]').length"),0);
+    const authorized=await f.rpc(a.architect,'mcpa_transfer_snapshot');
+    assert.ok(!authorized.transfers.some(t=>t.id===id));
+    const shown=await evaluate("Array.from(document.querySelectorAll('#screen-transfer.active [data-transfer-decision]'),form=>form.dataset.transferDecision)");
+    assert.deepEqual(shown.sort(),authorized.transfers.map(t=>t.id).sort(),'Fallback history only contains the signed-in Architect’s authorized records');
     if(missingFeedback)assert.equal(feedback,missingFeedback,'No distinction between missing and unauthorized records');else missingFeedback=feedback;
     assert.ok(feedback.includes('unavailable or outside your authorized records'));
     // The same fallback protects stale activity/direct routes and page refresh.

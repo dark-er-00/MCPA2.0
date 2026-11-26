@@ -17,11 +17,16 @@
       <label class="field">Scope<select id="projects-scope"><option value="mine">My projects</option><option value="all">All projects</option></select></label>
       <label class="checkbox-row"><input id="projects-archived" type="checkbox">Include archived projects</label>
     </div>
-    <p id="projects-count" class="inventory-sync"></p>
+    <p id="projects-count" class="inventory-sync" role="status"></p>
     <p id="projects-mode-note" class="inventory-sync"></p>
-    <div id="sites-list" class="grid grid-3" aria-live="polite" aria-busy="true">
+    <div id="sites-list" class="project-card-list" aria-busy="true">
       <div class="card empty-state sites-full"><p class="t">Loading projects…</p></div>
     </div>
+    <nav class="projects-pagination" aria-label="Project pages" hidden>
+      <button type="button" class="btn btn-secondary" data-action="previous-projects" aria-controls="sites-list">Previous</button>
+      <span data-projects-page></span>
+      <button type="button" class="btn btn-secondary" data-action="next-projects" aria-controls="sites-list">Next</button>
+    </nav>
   </section>
 
   <section class="screen" id="screen-site-detail" aria-labelledby="site-heading">

@@ -1,10 +1,81 @@
 /* Sites uses the shared cards, fields, tables, badges and theme tokens. */
 #sites-module .sites-full{grid-column:1/-1;}
-#sites-module .site-card{width:100%; text-align:left; color:var(--black); font:inherit;}
-#sites-module .site-card-top{gap:12px; flex-wrap:wrap;}
-#sites-module .site-card-title{display:block; font-family:var(--font-display); font-size:18px; font-weight:560; overflow-wrap:anywhere;}
-#sites-module .site-card .eng{display:block; line-height:1.5; overflow-wrap:anywhere;}
-#sites-module .site-stat-row{flex-wrap:wrap;}
+#screen-sites{container-type:inline-size}
+#sites-module .project-card-list{display:grid;grid-template-columns:minmax(0,1fr);grid-auto-rows:1fr;gap:18px;margin-top:16px}
+#sites-module .site-card{
+  width:100%;min-width:0;box-sizing:border-box;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);align-items:stretch;
+  min-height:148px;padding:12px;gap:16px;
+  text-align:left;font:inherit;color:var(--text-primary);background:var(--surface);
+  border:1px solid var(--border-strong);border-radius:var(--radius-lg,12px);box-shadow:none;
+  transition:border-color 200ms ease,background-color 200ms ease;
+}
+#sites-module .site-card:hover{transform:none;border-color:var(--gold-dim)}
+#sites-module .site-card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+#sites-module .project-media{position:relative;display:block;align-self:stretch;width:100%;min-width:0;min-height:0;overflow:hidden;border-radius:12px;background:var(--off-white)}
+#sites-module .project-photo{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+#sites-module .text-only .project-card-info{grid-column:1/-1}
+#sites-module .text-only .site-card-title{display:block;font-size:clamp(20px,1.9cqi,24px);block-size:auto;white-space:nowrap;text-overflow:ellipsis}
+#sites-module .text-only .project-card-text{align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end}
+#sites-module .site-card.text-only .eng{margin-top:auto}
+#sites-module .projects-pagination[hidden],#sites-module .project-photo-field [hidden]{display:none}
+#sites-module .project-photo-field{margin-top:20px;gap:8px}
+#sites-module .project-photo-field input{padding:8px}
+#sites-module .site-photo-preview{display:block;max-width:100%;width:176px;height:104px;object-fit:contain;object-position:left}
+#sites-module .project-photo-field button{align-self:flex-start}
+#sites-module .project-card-info{display:grid;grid-template-rows:auto 1fr;gap:6px;min-width:0}
+#sites-module .site-card .project-stage{gap:5px;padding:3px 7px;font-size:11px}
+#sites-module .site-card .project-stage-dot{width:6px;height:6px}
+#sites-module .project-stage{display:inline-flex;align-items:center;gap:8px;justify-self:end;align-self:start;padding:7px 12px;border-radius:var(--radius-sm,6px);background:var(--gray-light);color:var(--text-primary);font-size:13px;font-weight:600;line-height:1.35}
+#sites-module .project-stage-dot{flex:none;width:8px;height:8px;background:var(--project-stage-color);border-radius:50%}
+#sites-module [data-stage="0"]{--project-stage-color:#B9C0C9}
+#sites-module [data-stage="1"]{--project-stage-color:#B6A9F5}
+#sites-module [data-stage="2"]{--project-stage-color:#92C8F7}
+#sites-module [data-stage="3"]{--project-stage-color:#F7B69A}
+#sites-module [data-stage="4"]{--project-stage-color:#F3D27E}
+#sites-module [data-stage="5"]{--project-stage-color:#8FD9BB}
+#sites-module .project-card-text{display:block;align-self:center;min-width:0;overflow-wrap:anywhere}
+/* Reserve two title lines so location, divider and assignee share a baseline across rows. */
+#sites-module .site-card-title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;block-size:2lh;overflow:hidden;font:700 clamp(16px,1.5cqi,21px)/1.15 var(--font-display);letter-spacing:-.025em}
+#sites-module .project-location,#sites-module .site-card .eng{display:block;color:var(--text-secondary);font:400 13px/1.3 var(--font-body)}
+#sites-module .project-location{margin-top:4px}
+#sites-module .site-card .eng{margin-top:5px;padding-top:5px;border-top:1px solid var(--border)}
+#sites-module .project-location,#sites-module .site-card .eng{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#sites-module .projects-pagination{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:24px;font-size:14px}
+#sites-module .projects-pagination button{min-height:44px}
+#sites-module .projects-pagination button:disabled{cursor:default}
+@container(min-width:620px){
+  #sites-module .project-card-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@container(min-width:920px){
+  #sites-module .project-card-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #projects-count,#projects-mode-note{display:inline}
+  #projects-mode-note{margin-inline-start:12px}
+  #screen-sites .overview-filters{padding-block:10px;margin-bottom:16px}
+}
+@media(min-width:1100px){#screen-sites{padding-inline:6px}}
+@media(max-height:800px){
+  @container(min-width:920px){
+    #screen-sites .page-head{align-items:center;margin-bottom:8px!important}
+    #screen-sites .page-head>div:first-child{display:flex;align-items:baseline;gap:12px}
+    #screen-sites .page-head .sub{margin:0}
+    #screen-sites .overview-filters{padding:6px 12px;margin-bottom:12px}
+    #screen-sites .overview-filters .field{display:flex;flex-direction:row;align-items:center;gap:8px;white-space:nowrap}
+    #screen-sites .overview-filters .field :is(input,select){min-width:0;flex:1}
+    #sites-module .project-card-list{gap:14px;margin-top:12px}
+    #sites-module .site-card{min-height:134px;padding:10px;gap:14px}
+  }
+}
+@container(max-width:440px){
+  #sites-module .site-card{grid-template-columns:minmax(0,1fr);height:calc((100cqi - 30px)/2.6 + 185px);gap:14px;padding:14px}
+  #sites-module .site-card.text-only{grid-template-rows:minmax(0,1fr)}
+  #sites-module .text-only .project-card-text{justify-content:center}
+  #sites-module .text-only .site-card-title{font-size:26px}
+  #sites-module .project-media{aspect-ratio:2.6}
+  #sites-module .site-card-title{font-size:21px}
+  #sites-module .project-location{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;block-size:2lh;white-space:normal}
+}
+@media(prefers-reduced-motion:reduce){#sites-module .site-card{transition:none}}
 #sites-module .sites-back{display:inline-block; background:none; border:0; margin-bottom:8px; text-align:left;}
 #sites-module .sites-summary{margin-bottom:26px;}
 #sites-module .sites-summary .k{display:block; color:var(--gray); font-size:13px; margin-bottom:8px;}

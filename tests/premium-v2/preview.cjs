@@ -6,7 +6,9 @@ const {createFixture}=require('./engineer-assignment-preview-fixture.cjs');
 const root=path.resolve(__dirname,'../..'),publicRoot=path.join(root,'public'),v2Root=path.join(__dirname,'offline-assets');
 const adminReview=process.argv.includes('--admin-review');
 const fieldReview=process.argv.includes('--field-review');
-const fixture=createFixture({adminReview,fieldReview}),port=Number(process.env.PORT||(fieldReview?4197:adminReview?4196:4192));
+const projectReview=process.argv.includes('--projects-review');
+const fixture=createFixture({adminReview,fieldReview,projectReview}),port=Number(process.env.PORT||(projectReview?4199:fieldReview?4197:adminReview?4196:4192));
+const photoStore=projectReview ? require('./fixtures/project-photo-store.cjs')(fixture) : null;
 if(!Number.isInteger(port)||port<1||port>65535)throw Error('Invalid port');
 const mime={'.js':'text/javascript','.cjs':'text/javascript','.mjs':'text/javascript','.html':'text/html; charset=utf-8','.css':'text/css','.png':'image/png','.svg':'image/svg+xml','.jpg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.woff2':'font/woff2','.webm':'video/webm','.json':'application/json','.txt':'text/plain; charset=utf-8'};
 const calls=[];
@@ -42,18 +44,25 @@ const server=http.createServer(async(req,res)=>{
   if(req.headers['sec-fetch-site']==='cross-site'||req.headers.origin&&req.headers.origin!=='http://127.0.0.1:'+port)return send(res,{error:'Local preview only.'},403);
   if(pathname==='/__sdk.js'){
    res.setHeader('Content-Type','text/javascript');
-   const reviewScript=fieldReview?fs.readFileSync(path.join(__dirname,'fixtures/field-review.js'),'utf8'):'';
+   const reviewFile=projectReview?'project-review.js':fieldReview?'field-review.js':null;
+   const reviewScript=reviewFile?fs.readFileSync(path.join(__dirname,'fixtures',reviewFile),'utf8'):'';
    return res.end(fs.readFileSync(path.join(__dirname,'fixtures/offline-sdk.js'),'utf8')+'\n'+reviewScript+
     '\nconst fixtureRole=new URLSearchParams(location.search).get("fixture");if('+JSON.stringify(Object.keys(fixture.actors))+'.includes(fixtureRole))localStorage.setItem("fixture.account",fixtureRole);else if(!localStorage.getItem("fixture.account"))localStorage.setItem("fixture.account","admin");\n'+
     'const reviewTheme=new URLSearchParams(location.search).get("theme");if(["dark","light"].includes(reviewTheme))localStorage.setItem("mcpa.theme",reviewTheme);else if(!localStorage.getItem("mcpa.theme"))localStorage.setItem("mcpa.theme","dark");');
   }
+  if(photoStore && await photoStore.route(req,res,url,send))return;
   if(pathname==='/__fixture-api'&&req.method==='POST'){
    let body='';for await(const chunk of req){body+=chunk;if(body.length>4*1024*1024)return send(res,{error:'Fixture request too large'},413);}
    const q=JSON.parse(body);calls.push({actor:req.headers.authorization,rpc:q.rpc||null,table:q.table||null,write:q.write||null});
-   return send(res,fixture.handle(req.headers.authorization,q));
+   const result=fixture.handle(req.headers.authorization,q);
+   return send(res,photoStore ? photoStore.decorate(result,req.headers.authorization) : result);
   }
-  if(pathname==='/__health')return send(res,{status:'ok',port,version:'v2',fixture:'synthetic-javascript-no-database',baseline:'f6e022df84fcce0c0243b0aa9a7106c3ec292c31'});
+  if(pathname==='/__health')return send(res,{status:'ok',port,version:'v2',fixture:'synthetic-javascript-no-database',...(projectReview?{review:'project-cards'}:{baseline:'f6e022df84fcce0c0243b0aa9a7106c3ec292c31'})});
   if(pathname==='/__calls')return send(res,calls);
+  if(pathname==='/__fixture'&&projectReview){
+   res.setHeader('Content-Type','text/html; charset=utf-8');
+   return res.end(fs.readFileSync(path.join(__dirname,'fixtures/projects-index.html')));
+  }
   if(pathname==='/__fixture'){res.setHeader('Location','/index.html?fixture=admin&theme=dark#dashboard');return res.writeHead(302).end();}
   if(pathname.startsWith('/__stored/')){const stored=fixture.stored.get(decodeURIComponent(pathname.slice(10)));if(!stored)return send(res,{error:'Not found'},404);res.setHeader('Content-Type',stored.type);return res.end(Buffer.from(stored.bytes,'base64'));}
   if(pathname==='/app/core/config.js'){res.setHeader('Content-Type','text/javascript');return res.end(fs.readFileSync(path.join(__dirname,'fixtures/offline-config.js')));}
@@ -74,4 +83,17 @@ const server=http.createServer(async(req,res)=>{
  }catch(e){send(res,{error:'Invalid isolated preview request'},400);}
 });
 server.on('error',e=>{console.error('Preview failed:',e.code);process.exitCode=1;});
-server.listen(port,'127.0.0.1',()=>console.log('MCPA2.0 integrated review http://127.0.0.1:'+port+'/index.html?fixture=admin&theme=dark#dashboard — synthetic only, no database'));
+server.listen(port,'127.0.0.1',async()=>{
+ const origin='http://127.0.0.1:'+port;
+ try {
+  if(projectReview && process.argv.includes('--photo-example')){
+   const site=Object.values(fixture.sites).find(row=>row.name==='Garden Workshop');
+   const body=new FormData();
+   body.set('project',JSON.stringify({p_id:site.id,p_version:site.project_version,p_operation_id:require('node:crypto').randomUUID(),p_patch:{}}));
+   body.set('photo',new Blob([fs.readFileSync(path.join(publicRoot,'assets/images/login-slideshow/project-2.webp'))],{type:'image/webp'}),'sample.webp');
+   const saved=await fetch(origin+'/__project-photo-save',{method:'POST',headers:{Authorization:'admin'},body});
+   if(!saved.ok)throw Error('Could not prepare synthetic photo example');
+  }
+  console.log('MCPA2.0 integrated review '+origin+(projectReview?'/__fixture':'/index.html?fixture=admin&theme=dark#dashboard')+' — synthetic only, no database');
+ } catch(error){console.error(error.message);server.close();process.exitCode=1;}
+});

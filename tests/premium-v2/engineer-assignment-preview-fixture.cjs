@@ -1,7 +1,7 @@
 // Isolated UI model. Plain JavaScript only: no SQL, database driver or upstream service.
 const {randomUUID}=require('node:crypto');
 const clone=value=>structuredClone(value);
-exports.createFixture=({adminReview=false,fieldReview=false}={})=>{
+exports.createFixture=({adminReview=false,fieldReview=false,projectReview=false}={})=>{
  const uuid=n=>'10000000-0000-4000-8000-'+String(n).padStart(12,'0');
  const actors=Object.fromEntries([
   ['admin','Synthetic Admin','admin'],['admin2','Synthetic Second Admin','admin'],
@@ -11,6 +11,8 @@ exports.createFixture=({adminReview=false,fieldReview=false}={})=>{
  ].map(([key,name,role],i)=>[key,{id:uuid(i+1),name,role,account_status:'active',email:key+'@synthetic.invalid',username:key}]));
  const site=(n,name,person)=>({id:uuid(n),name,location:'Synthetic preview location',assigned_engineer_id:person?.id||null,assigned_engineer:person?.name||'Unassigned',is_active:true,archived_at:null,phase:'Structural',current_work_area:'Structural',project_stage:'Construction Phase',progress:15,status:'active',project_version:1});
  const sites={office:site(101,'Office'),casa:site(102,'Casa Buena',actors.pau),sky:site(103,'Sky Assigned Project',actors.sky),unassigned:site(104,'Synthetic Unassigned Project'),architect:site(105,'Architect Assigned Project',actors.architect)};
+ const projectCards=projectReview ? require('./fixtures/project-cards.cjs') : null;
+ projectCards?.seed({sites,actors,site});
  const tool=(n,name,place,holder=null,status='available')=>({id:'SYN-'+String(n).padStart(3,'0'),dbId:uuid(200+n),name,siteId:place.id,site:place.name,holderId:holder?.id||null,holder:holder?.name||'Unassigned',status,recordedStatus:status==='inuse'?'IN_USE':status.toUpperCase(),qty:1,cat:'Power Tools',brand:'Synthetic',model:'Fixture drill',condition:'Good',serial:'SYNTHETIC-'+n,trackingType:'Individual',movementLock:null,photo:null,notes:'Synthetic acceptance fixture only'});
  const tools=[
   tool(1,'Synthetic Assigned Project Drill',sites.sky),
@@ -138,6 +140,9 @@ exports.createFixture=({adminReview=false,fieldReview=false}={})=>{
    case 'mcpa_inventory_office':return {id:sites.office.id,name:'Office',label:'Office'};
    case 'mcpa_movement_snapshot':return snapshot(person);
    case 'mcpa_project_snapshot':return projectSnapshot(person);
+   case 'mcpa_save_project':
+    if (!projectCards) error('This synthetic project operation is not modeled.','PGRST202');
+    return once(person,args,()=>projectCards.save({sites,actors,history,person,args,error}));
    case 'mcpa_engineer_equipment_snapshot':if(!field(person))error('Engineer or Architect access required.','42501');return inventory(person);
    case 'mcpa_personal_equipment_snapshot':return {...snapshot(person),sites:activeAssigned(person),tools:clone(tools.filter(t=>t.holderId===person.id))};
    case 'mcpa_transfer_snapshot':return {...snapshot(person),transferVersion:3,recipients:Object.values(actors).filter(p=>['admin','engineer','architect'].includes(p.role))};

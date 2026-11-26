@@ -57,25 +57,29 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
   await fill('[data-equipment-search]',tag);assert.equal(await evaluate('document.querySelectorAll("[data-equipment-record]").length'),1);
   await fill('[data-equipment-search]','no-such-request');assert.ok(await evaluate('document.querySelector("[data-equipment-list]").textContent.includes("No requests match")'));
   await fill('[data-equipment-search]','');await fill('[data-equipment-type]','');
+  const recipientWrites=()=>calls.filter(c=>c.actor==='sky' && c.rpc==='mcpa_movement_action').length;
+  const writesBeforeInspection=recipientWrites();
   for(const requestId of [allocated.movement_id,named.id]) {
     const tr=transfers.find(t=>t.requestId===requestId),asset=requestId===named.id?'TOOL-001':tag;
-    await click(`[href="#transfer-inbox?record=${tr.id}"]`);await wait('document.querySelector('+JSON.stringify(`[data-transfer="${tr.id}"]`)+')');
-    const form=`[data-transfer="${tr.id}"]`;
-    assert.equal(await evaluate('document.querySelector('+JSON.stringify(form+' [name=condition]')+').value'),'');
-    assert.ok(await evaluate('document.querySelector('+JSON.stringify(form+' [data-accept-asset]')+').textContent.includes('+JSON.stringify(asset)+')'));
-    assert.ok(await evaluate('!!document.querySelector("[data-files]")'));
-    // Missing/disputed items are kept pending; no default Good or silent receipt.
-    assert.ok(await evaluate('document.querySelector(".b-content").textContent.includes("missing or disputed")'));
+    await click(`[href="#transfer-inbox?record=${tr.id}"]`);
+    const form=`[data-transfer-record="${tr.id}"][open] form[data-transfer-decision="${tr.id}"]`;
+    await wait('document.querySelector('+JSON.stringify(form)+')');
+    const row=form+` [data-review-asset="${asset}"]`;
+    assert.equal(await evaluate('document.querySelector('+JSON.stringify(row+' [name=condition]')+').value'),'');
+    assert.equal(await evaluate('document.querySelector('+JSON.stringify(row+' [name=tested]')+').checked'),false);
+    assert.ok(await evaluate('!!document.querySelector('+JSON.stringify(form+' [data-decision=refuseTransfer]')+')'));
     assert.equal((await f.tool(asset)).current_holder_id,null);
-    await fill(form+' [name=condition]','good');await fill(form+' [name=notes]','Printed Asset ID checked and physically tested.');await click(form+' [name=received]');
-    await submit(form);await wait('document.querySelector(".b-feedback").textContent.includes("accepted")');
+    await fill(row+' [name=condition]','good');await fill(row+' [name=notes]','Printed Asset ID checked and physically tested.');
+    assert.equal(await evaluate('document.querySelector('+JSON.stringify(form)+').checkValidity()'),false);
+    await click(row+' [name=tested]');await submit(form);
+    await wait('document.querySelector('+JSON.stringify(`[data-transfer-record="${tr.id}"][data-status="received"]`)+')');
     assert.equal((await f.tool(asset)).current_holder_id,f.actors.sky.id);
     await go('request');await wait('document.querySelector("[data-equipment-list]").textContent.includes("Inspected / Received")');
   }
   assert.equal(await evaluate('[...document.querySelectorAll("[data-equipment-record]")].filter(n=>n.querySelector(".equipment-row").textContent.includes("Inspected / Received")).length'),2);
   await go('masterlist');await wait('MovementStore.getState().tools.filter(t=>["TOOL-001",'+JSON.stringify(tag)+'].includes(t.id)&&t.holderId===MCPAAuth.profile.id).length===2');
   // No receipt can replay into a second handover or new custody transition.
-  assert.equal(calls.filter(c=>c.rpc==='mcpa_b_action').length,2);
+  assert.equal(recipientWrites()-writesBeforeInspection,2);
   await logout();await login('admin');await wait('MCPAAuth.profile?.role==="admin"');await go('request');await wait('document.querySelector("[data-equipment-list]")');
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});await shot('unified-admin-1440');
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'));await shot('unified-admin-390');

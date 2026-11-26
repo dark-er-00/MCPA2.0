@@ -81,6 +81,18 @@
         options.recordId=record;
       }else if(screen==='asset-retirement-v2'){
         path='app/portals/admin/asset-retirement/asset-retirement.mjs';fn='mountAssetRetirement';options.recordId=record;options.historyOnly=view==='history';
+        // The transfer reader includes unresolved movements and the active, linked Admin roster.
+        options.readMovements=async()=>{
+          const {data,error}=await wrapper.rpc('mcpa_transfer_snapshot');
+          if(error)throw error;
+          return data;
+        };
+        options.onRoute=(historyView,id='',replace=false)=>{
+          if(!alive())return;
+          const route=screen+(id?'?record='+encodeURIComponent(id)+'&view=history':historyView?'?view=history':'');
+          const nav=window.MCPANavigation,ticket=nav.begin(route,replace?{history:'replace'}:{});
+          void nav.activate(ticket,root,()=>{});
+        };
       }else{path='app/portals/engineer/retired-equipment/retired-equipment.mjs';fn='mountRetiredEquipment';options.historyOnly=true;options.recordId=record;}
       const module=await import(new URL(path,base));if(!alive())return;
       await add(module[fn](host,options));
@@ -132,7 +144,6 @@
       const records=(snapshot.returns||[]).filter(v=>!v.custodyVersion&&!v.inspectionBatchId);
       root.querySelector('[data-integration-history]').innerHTML=`<details class="integration-history" ${records.some(v=>v.id===record)?'open':''}><summary>Historical returns (${records.length})</summary>${records.map(v=>`<article><h3>${escape(v.id)}</h3><p>${escape((v.toolIds||[]).join(', '))} · ${escape(v.status)} · ${escape(v.returnedBy)}</p><p>${escape(v.notes)}</p></article>`).join('')||'<p>No historical returns.</p>'}</details>`;
     }
-    if(record&&screen==='asset-retirement-v2')host.querySelector(`[data-retirement-record="${CSS.escape(record)}"]`)?.setAttribute('open','');
     if(record&&screen==='outward-materials'&&person.role!=='admin')host.querySelector(`[data-open="${CSS.escape(record)}"]`)?.click();
   }
   window.MCPAIntegration={handles,mount,dispose};

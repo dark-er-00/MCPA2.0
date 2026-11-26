@@ -11,7 +11,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 if(process.argv.length===2)process.argv.push('--combined-integration');
 if(process.argv.includes('--auth')||process.argv.includes('--recipient-ux'))process.argv.push('--combined-integration');
 if(process.argv.includes('--review-fixes')||process.argv.includes('--final-races')||process.argv.includes('--unified-requests')||process.argv.includes('--engineer-consumables')||process.argv.includes('--functionality-audit'))process.argv.push('--combined-integration');
-const uiReview=process.argv.includes('--ui-review'),uiPreview=process.argv.includes('--ui-preview');
+const retirementPreview=process.argv.includes('--retirement-preview');
+const uiReview=process.argv.includes('--ui-review'),uiPreview=process.argv.includes('--ui-preview')||retirementPreview;
 const uiResilience=process.argv.includes('--ui-resilience');
 const adminPdf=process.argv.includes('--admin-pdf')||uiResilience;if(adminPdf)process.argv.push('--combined-integration');
 if(uiReview||uiPreview||process.argv.includes('--inventory-availability'))process.argv.push('--combined-integration');
@@ -30,13 +31,14 @@ window.supabase={createClient(){let listener;const session=()=>{const key=localS
  rpc(name,args){return request({rpc:name,args})},from(table){const q={table,columns:'*',filters:[]};return {select(cols='*'){q.columns=cols;return this},insert(values){q.write='insert';q.values=values;return this},update(values){q.write='update';q.values=values;return this},single(){q.single=true;return this},order(){return this},limit(n){q.end=n-1;return this},range(start,end){q.start=start;q.end=end;return this},eq(key,value){q.filters.push([key,value]);return this},then(resolve,reject){return request(q).then(resolve,reject)}}}
 }}};`;
 const server=http.createServer(async(req,res)=>{
+ if(retirementPreview&&(req.headers['sec-fetch-site']==='cross-site'||req.headers.origin&&req.headers.origin!=='http://127.0.0.1:'+server.address().port)){res.writeHead(403);res.end();return;}
  res.setHeader('Cache-Control','no-store');
  if(uiPreview)res.setHeader('Content-Security-Policy',"default-src 'self' data: blob:; connect-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:");
  if(process.argv.includes('--equipment-fixes')&&req.url.startsWith('/__qr?')){
   const asset=new URL(req.url,'http://localhost').searchParams.get('data');
   res.setHeader('Content-Type','image/png');res.end(await require('qrcode').toBuffer(asset,{width:120,margin:0}));return;
  }
- if(req.url==='/__sdk.js'){res.setHeader('Content-Type','text/javascript');res.end(sdk+(uiPreview?"const fixtureRole=new URLSearchParams(location.search).get('fixture');if(['admin','admin2','sky','pau','architect','secretary','handler'].includes(fixtureRole))localStorage.setItem('fixture.account',fixtureRole);else if(!localStorage.getItem('fixture.account'))localStorage.setItem('fixture.account','admin');window.__invitationTransport=true;document.addEventListener('DOMContentLoaded',()=>{document.title='MCPA - Isolated feature preview';});":'')+(accountServiceRun?'window.__auditTransport=true;':'')+(turnoverRun?`
+ if(req.url==='/__sdk.js'){res.setHeader('Content-Type','text/javascript');res.end(sdk+(retirementPreview?"const previewTheme=new URLSearchParams(location.search).get('theme');if(['dark','light'].includes(previewTheme))localStorage.setItem('mcpa.theme',previewTheme);else if(!localStorage.getItem('mcpa.theme'))localStorage.setItem('mcpa.theme','dark');":"")+(uiPreview?"const fixtureRole=new URLSearchParams(location.search).get('fixture');if(['admin','admin2','sky','pau','architect','secretary','handler'].includes(fixtureRole))localStorage.setItem('fixture.account',fixtureRole);else if(!localStorage.getItem('fixture.account'))localStorage.setItem('fixture.account','admin');window.__invitationTransport=true;document.addEventListener('DOMContentLoaded',()=>{document.title='MCPA - Isolated feature preview';});":'')+(accountServiceRun?'window.__auditTransport=true;':'')+(turnoverRun?`
   const originalFixtureClient=window.supabase.createClient;
   window.supabase.createClient=(...args)=>{const client=originalFixtureClient(...args);let stream=null;const channel=client.channel.bind(client),remove=client.removeChannel.bind(client);
     client.channel=(...values)=>{const current=channel(...values),subscribe=current.subscribe.bind(current);current.subscribe=(...subscriptions)=>{if(!stream){stream=new EventSource('/__events?account='+encodeURIComponent(localStorage.getItem('fixture.account')||''));stream.onopen=()=>window.__fixtureRealtimeReady=true;stream.onmessage=event=>{if(window.__fixtureRealtime===false)return;const notice=JSON.parse(event.data);for(const c of __channels)if(c.tables.includes(notice.table))c.notify?.({eventType:'INSERT'});};}return subscribe(...subscriptions);};return current;};
@@ -127,8 +129,9 @@ const server=http.createServer(async(req,res)=>{
  const file=path.resolve(root,'public','.'+pathname);
  if(!file.startsWith(root+path.sep)||!fs.existsSync(file)||fs.statSync(file).isDirectory()){res.writeHead(404);res.end();return;}
  let content=fs.readFileSync(file);if(file.endsWith(path.join('public','index.html')))content=content.toString().replace(/<script src="https:[^"]+"[^>]*><\/script>/g,'').replace('</head>','<script src="/__sdk.js"></script></head>');
+ if(retirementPreview&&file.endsWith(path.join('public','index.html')))content=content.toString().replace(/<link[^>]+href="https:[^"]+"[^>]*>/g,'');
  if(process.argv.includes('--equipment-fixes')&&file.endsWith('masterlist.js'))content=content.toString().replaceAll('https://api.qrserver.com/v1/create-qr-code/','/__qr');
- res.setHeader('Content-Type',({'.mjs':'text/javascript','.js':'text/javascript','.html':'text/html','.css':'text/css','.png':'image/png','.webp':'image/webp'})[path.extname(file)]||'text/plain');res.end(content);
+ res.setHeader('Content-Type',({'.mjs':'text/javascript','.js':'text/javascript','.html':'text/html','.css':'text/css','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.woff2':'font/woff2'})[path.extname(file)]||'text/plain');res.end(content);
 });
 const pause=ms=>new Promise(r=>setTimeout(r,ms));
 (async()=>{
@@ -188,7 +191,10 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
   await fixture.db.exec(fs.readFileSync(path.join(root,'supabase/drafts/engineer-ui/01-engineer-architect-parity.sql'),'utf8'));
   const previousRpc=fixture.rpc;fixture.rpc=(actor,name,args={})=>name==='mcpa_engineer_equipment_snapshot'?fixture.query(actor,'select public.mcpa_engineer_equipment_snapshot() value').then(r=>r.rows[0].value):previousRpc(actor,name,args);
  }
- server.listen(uiPreview?4183:0,'127.0.0.1');await once(server,'listening');
+ let previewRecord;
+ if(retirementPreview)previewRecord=await require('./equipment-retirement-v2/preview-seed.cjs')(fixture);
+ server.listen(retirementPreview?Number(process.env.PORT||4198):uiPreview?4183:0,'127.0.0.1');await once(server,'listening');
+ if(retirementPreview){console.log('Local retirement preview http://127.0.0.1:'+server.address().port+'/index.html?fixture=admin#asset-retirement-v2?view=history&record='+previewRecord);await new Promise(()=>{});}
  if(uiPreview){console.log('ISOLATED FEATURE PREVIEW http://127.0.0.1:4183/index.html - auto-signed-in synthetic Admin; no live services.');await new Promise(()=>{});}
  chrome=spawn(process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',['--headless=new',...(process.env.MCPA_CHROME_NO_SANDBOX==='1'?['--no-sandbox','--disable-gpu','--disable-gpu-sandbox']:[]),'--no-first-run','--no-default-browser-check','--disable-background-networking','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{windowsHide:true,stdio:'ignore'});
  let port;for(let i=0;i<100;i++){const p=path.join(profile,'DevToolsActivePort');if(fs.existsSync(p)){port=fs.readFileSync(p,'utf8').split('\n')[0];break;}await pause(100);}assert.ok(port);

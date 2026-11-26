@@ -1,6 +1,14 @@
 const assert=require('node:assert/strict'),{randomUUID:id}=require('node:crypto');
 exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login,logout,base,shot})=>{
  const a=f.actors;
+ const checkAccountDialog=async()=>{
+  assert.ok(await evaluate(`(()=>{
+   const dialog=document.querySelector('#account-panel'),title=dialog.querySelector('#account-form-title');
+   const box=title.getBoundingClientRect();
+   return dialog.matches(':modal') && box.width>0 && box.height>0 && box.top>=0 && box.bottom<=innerHeight
+    && box.left>=0 && box.right<=innerWidth+1 && title.contains(document.elementFromPoint(box.x+box.width/2,box.y+box.height/2));
+  })()`),'Add Account title should be visible in the open dialog');
+ };
  const saveItem=(unit,category)=>f.call(a.admin,'consumables_save_item',{p_id:id(),p_version:null,p_name:'Audit browser '+unit,p_unit:unit,p_minimum:2,p_opening:30,p_category:category,p_specification:'',p_item_code:null});
  const pcs=await saveItem('pcs','Cutting'),kg=await saveItem('kg','Welding');
  await command('Page.navigate',{url:base+'/2-engr/index.html'});await login('sky');await wait('MCPAAuth.profile?.role==="engineer"');
@@ -62,9 +70,10 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await evaluate('EquipmentTracking.client().functions.invoke=async()=>({error:{}})');
  await go('users');await wait('document.querySelector("#accounts-list tbody tr")');
  await wait('document.querySelector("#account-availability").textContent.includes("unavailable")');
- assert.equal(await evaluate('!!document.querySelector("#account-panel") && document.querySelector("#account-panel").getBoundingClientRect().height>0'),true);
- assert.equal(await evaluate('document.querySelector("#account-form button[type=submit]").disabled'),false);
+ assert.equal(await evaluate('document.querySelector("#account-panel").open'),false);
  await click('[data-open-account]');assert.equal(await evaluate('document.activeElement.id'),'account-name');
+ await checkAccountDialog();
+ assert.equal(await evaluate('document.querySelector("#account-form button[type=submit]").disabled'),false);
  assert.equal(await evaluate('document.querySelector("#account-name").readOnly'),false);
  assert.equal(await evaluate('document.querySelector("#account-profile").value'),'__new');
  await fill('#account-name','Restored inactive profile');await fill('#account-role','secretary');await submit('#account-form');
@@ -72,6 +81,7 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  const original=(await f.db.query('select * from profiles where name=$1',['Restored inactive profile'])).rows[0];
  assert.equal(original.account_status,'inactive');assert.equal(original.auth_user_id,null);
  // Duplicate submission is refused, preserving one company identity.
+ await click('[data-open-account]');
  await fill('#account-name','Restored inactive profile');await fill('#account-role','secretary');await submit('#account-form');
  await wait('document.querySelector("#accounts-feedback").textContent.includes("person with this name exists")');
  assert.equal((await f.db.query('select count(*)::int n from profiles where name=$1',['Restored inactive profile'])).rows[0].n,1);
@@ -87,16 +97,20 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  await wait('document.querySelector("#accounts-feedback").textContent==="Account added."');
  const active=(await f.db.query('select * from profiles where auth_user_id=$1',[activeAuth])).rows[0];assert.equal(active.role,'tool_handler');assert.equal(active.account_status,'active');
  await command('Page.reload');await wait('window.MCPAAuth?.profile?.role==="admin" && document.querySelector("#accounts-list tbody tr")');
+ await click('[data-open-account]');
  await fill('#account-profile',original.id);assert.equal(await evaluate('document.querySelector("#account-auth-id").value'),linkedAuth);assert.equal(await evaluate('document.querySelector("#account-auth-id").readOnly'),true);
- await click('[data-open-account]');assert.equal(await evaluate('document.querySelector("#account-profile").value'),'__new');assert.equal(await evaluate('document.querySelector("#account-name").value'),'');
- assert.equal(await evaluate('document.querySelector("#account-form-title").getBoundingClientRect().top>=document.querySelector("#topbar").getBoundingClientRect().bottom'),true);await shot('restored-add-account-desktop',true);
- // Removed invitation controls leave access editing available.
+ await click('[data-close-account]');await click('[data-open-account]');assert.equal(await evaluate('document.querySelector("#account-profile").value'),'__new');assert.equal(await evaluate('document.querySelector("#account-name").value'),'');
+ await checkAccountDialog();await shot('restored-add-account-desktop',true);
+ // The current Invite entry and the separate access editor are both available to Admin.
+ await click('[data-close-account]');
  await go('users');await wait('document.querySelector("#accounts-list tbody tr")');
- assert.equal(await evaluate('!!document.querySelector("[data-open-invite],#invite-panel,#invitation-link-panel,[data-invite],[data-resend],[data-retry],[data-revoke]")'),false);
+ await click('[data-invite]');await wait('document.querySelector("#account-lifecycle-dialog[open] [data-invite-form]")');
+ await click('[data-close-lifecycle]');
  await click('[data-edit]');await wait('!document.querySelector("#edit-panel").hidden');await shot('audit-accounts-desktop',true);await click('[data-close-edit]');
  // Remaining account editor saves access, and gated test-account creation works.
  await click('[data-edit]');await wait('!document.querySelector("#edit-panel").hidden');await submit('#edit-form');await wait('document.querySelector("#accounts-feedback").textContent.includes("Account access updated")');
- await wait('!document.querySelector("#development-panel").hidden');
+ await click('[data-open-account]');await wait('!document.querySelector("[data-open-development]").hidden');
+ await click('[data-open-development]');await wait('!document.querySelector("#development-panel").hidden');
  await fill('#development-name','Removal regression engineer');await fill('#development-email','removal-test@example.test');await fill('#development-password','Test account password 2026!');
  await click('#development-password-toggle');assert.equal(await evaluate('document.querySelector("#development-password").type'),'text');await click('#development-password-toggle');
  await submit('#development-form');await wait('document.querySelector("#accounts-feedback").textContent.includes("Test account created")');
@@ -124,7 +138,8 @@ exports.verify=async({fixture:f,evaluate,command,wait,click,fill,submit,go,login
  }
  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
  await login('admin');await wait('MCPAAuth.profile?.role==="admin"');await go('users');await wait('document.querySelector("#accounts-list tbody tr")');await click('[data-edit]');await wait('!document.querySelector("#edit-panel").hidden');
- assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'));await click('[data-close-edit]');await click('[data-open-account]');assert.equal(await evaluate('document.querySelector("#account-name").readOnly'),false);assert.equal(await evaluate('document.querySelector("#account-form-title").getBoundingClientRect().top>=Math.max(document.querySelector("#topbar").getBoundingClientRect().bottom,document.querySelector(".mobile-history").getBoundingClientRect().bottom)'),true);await shot('restored-add-account-mobile');
+ assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'));await click('[data-close-edit]');await click('[data-open-account]');assert.equal(await evaluate('document.querySelector("#account-name").readOnly'),false);
+ await checkAccountDialog();await shot('restored-add-account-mobile');await click('[data-close-account]');
  await logout();assert.equal(await evaluate('document.querySelector("#content").children.length'),0);
  console.log('PASS Audit UI: authorized dropdowns, whole/measured quantities, profile edits for all five roles and duplicate handling, disposed/sold discovery, original Add Account with inactive/active creation, verified linking, duplicate handling and Edge outage, account access, password recovery, desktop/mobile and logout');
 };
